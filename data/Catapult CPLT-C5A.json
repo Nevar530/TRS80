@@ -1,0 +1,57 @@
+{
+  "name": "Catapult",
+  "model": "CPLT-C5A",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "260 Fusion Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "484",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "weak_head_1",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "6",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\Catapult 3050U.jpg"
+  },
+  "era": "3068",
+  "displayName": "Catapult CPLT-C5A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
