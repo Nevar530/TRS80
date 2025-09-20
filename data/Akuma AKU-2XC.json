@@ -1,0 +1,63 @@
+{
+  "name": "Akuma",
+  "model": "AKU-2XC",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "270 Fusion Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "22",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "28",
+    "RT Armor": "28",
+    "CT Armor": "43",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "5",
+    "overview": "A low-cost alternative to the Atlas-K: the AKU-1X Akuma.",
+    "capabilities": "Akuma was smaller and lighter than an Atlas to minimize costs. The lighter fusion engine saved money. Despite its tiny size, the Akuma has comparable armor protection and ground speed. The 'Mech's enormous mask makes it look like the monster it's named after. The Combine MechWarrior fires first after the Akuma scares the adversary. Advanced weaponry function best at short and medium ranges on the 'Mech. The 'Mech's poor speed doesn't matter because it's designed for defense or slow advances against static or dug-in opponents.",
+    "deployment": "An offshoot of the 2X, this Akuma model keeps the MRM-40, Apollo FCS, and LB 10-X of the earlier variant. A second Medium Pulse Laser joins the first, and it also carries a C3 boosted slave, Angel ECM Suite, and a Coolant Pod to offset the loss of a heat sink. A Snub-Nose PPC replaces the Heavy PPC. The protection is further enhanced through the use of CASE.",
+    "history": "During the Clan invasion, Theodore Kurita issued a broad plea to manufacturers to develop more cost-effective BattleMechs, both in terms of original investment and ongoing maintenance. Independence Weaponry, known for their heavy and assault 'Mechs, reacted with the AKU-1X Akuma, a low-cost counterpart to their own Atlas-K. The Akuma shares several components with the original Atlas-D and has a price tag comparable to it. Independence Weaponry decreased the overall cost of both units by increasing demand for the same set of parts. The Ryuken-go have always been the most vocal supporters of the Akuma, fielding it in a variety of attack lances. Other front-line units were slow to embrace the Akuma until it demonstrated its worth during the assault on Clan Smoke Jaguar, and demand has since outstripped supply. The Akuma 1XJ recently made its debut in the counterassaults that eventually took the Davion worlds of Breed and Kesai IV in Duke Robinson's ill-fated onslaught against the Combine.",
+    "manufacturer": "Independence Weaponry (Refit)",
+    "primaryfactory": "New Samarkand",
+    "systemmanufacturer": "TARGETING:Matabushi Sentinel"
+  },
+  "era": "3077",
+  "displayName": "Akuma AKU-2XC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
