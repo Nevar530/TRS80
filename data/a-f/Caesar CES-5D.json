@@ -1,0 +1,55 @@
+{
+  "name": "Caesar",
+  "model": "CES-5D",
+  "tonnage": 70,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "280 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Hardened(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7982",
+    "Config": "Biped",
+    "quirk": "hyper_actuator",
+    "myomer": "Triple-Strength",
+    "LA armor": "22",
+    "RA armor": "22",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "30",
+    "HD armor": "9",
+    "LL armor": "27",
+    "RL armor": "27",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "11",
+    "Weapons": "4"
+  },
+  "era": "3148",
+  "displayName": "Caesar CES-5D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

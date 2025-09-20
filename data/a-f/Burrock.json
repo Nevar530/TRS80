@@ -1,0 +1,56 @@
+{
+  "name": "Burrock",
+  "model": null,
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "375 XL Engine",
+  "heatSinks": "20 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "3878",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "9",
+    "Weapons": "4"
+  },
+  "era": "3066",
+  "displayName": "Burrock",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

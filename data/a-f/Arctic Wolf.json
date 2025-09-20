@@ -1,0 +1,56 @@
+{
+  "name": "Arctic Wolf",
+  "model": null,
+  "tonnage": 40,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "280 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "99",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_target_short",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "13",
+    "HD Armor": "9",
+    "LL Armor": "10",
+    "RL Armor": "10",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "4",
+    "Weapons": "9"
+  },
+  "era": "3059",
+  "displayName": "Arctic Wolf",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

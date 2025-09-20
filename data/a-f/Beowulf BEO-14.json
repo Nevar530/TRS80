@@ -1,0 +1,56 @@
+{
+  "name": "Beowulf",
+  "model": "BEO-14",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "270 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "328",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "exp_actuator",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "21",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "6"
+  },
+  "era": "3075",
+  "displayName": "Beowulf BEO-14",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Berserker",
+  "model": "BRZ-D4",
+  "tonnage": 100,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "4",
+  "engine": "400 XL (Clan) Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Impact-Resistant(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6831",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "distracting",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "31",
+    "RT Armor": "31",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "LL Armor": "37",
+    "RL Armor": "37",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "6"
+  },
+  "era": "3112",
+  "displayName": "Berserker BRZ-D4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

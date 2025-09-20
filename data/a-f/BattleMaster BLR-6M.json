@@ -1,0 +1,55 @@
+{
+  "name": "BattleMaster",
+  "model": "BLR-6M",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "340 Fusion Engine(IS)",
+  "heatSinks": "14 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Command Console",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7978",
+    "Config": "Biped",
+    "quirk": "weak_head_1",
+    "myomer": "Standard",
+    "LA armor": "24",
+    "RA armor": "24",
+    "LT armor": "28",
+    "RT armor": "28",
+    "CT armor": "40",
+    "HD armor": "9",
+    "LL armor": "28",
+    "RL armor": "28",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "12",
+    "Weapons": "6"
+  },
+  "era": "3120",
+  "displayName": "BattleMaster BLR-6M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

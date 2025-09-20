@@ -1,0 +1,57 @@
+{
+  "name": "Argus",
+  "model": "AGS-4D",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "12 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.0-SNAPSHOT on 2024-07-20",
+    "mul id": "3730",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "easy_maintain",
+    "myomer": "Standard",
+    "LA armor": "19",
+    "RA armor": "19",
+    "LT armor": "20",
+    "RT armor": "20",
+    "CT armor": "28",
+    "HD armor": "9",
+    "LL armor": "27",
+    "RL armor": "27",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "9",
+    "Weapons": "5"
+  },
+  "era": "3062",
+  "displayName": "Argus AGS-4D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
