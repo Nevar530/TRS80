@@ -1,0 +1,64 @@
+{
+  "name": "Baboon",
+  "model": null,
+  "tonnage": 20,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "140 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Clan Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "clanname": "Howler",
+    "mul id": "189",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "searchlight",
+    "myomer": "Standard",
+    "LA armor": "5",
+    "RA armor": "5",
+    "LT armor": "7",
+    "RT armor": "7",
+    "CT armor": "8",
+    "HD armor": "7",
+    "LL armor": "6",
+    "RL armor": "6",
+    "RTL armor": "2",
+    "RTR armor": "2",
+    "RTC armor": "2",
+    "Weapons": "3",
+    "overview": "The Howler is a potent missile boat for its size. Meant to provide fire support to light garrison Stars.",
+    "capabilities": "It is relatively fast for a 'Mech its size, topping out at 119 km/h. Its good speed and armament is made possible by the use of an endo steel structure and three tons of ferro-fibrous armor.",
+    "deployment": "The 'Mech carries three LRM-5 launchers and three tons of ammunition. It is also used extensively as a training 'Mech.",
+    "history": "The Howler (or Baboon, as the Inner Sphere calls it) was first seen in Clan Jade Falcon's second-line Clusters. Once thought to be unique to that Clan, the design has now appeared among the Snow Ravens, Star Adders, and Steel Vipers. The Steel Vipers returned to the Clan homeworlds and restructured their touman after the Jade Falcons kicked them out of the Inner Sphere occupied zones. Aside from improvements in front-line troops, numerous second-line units gained new people and equipment. Steel Vipers addressed the needs of its heavy forces with designs like as the Matador, Scylla, the heavy laser form of the Phoenix Hawk IIC, and the upgraded version of the Viper. Lighter second-line BattleMech formations, on the other hand, lagged behind. The Viper Khans explored acceptable designs to correct this imbalance and eventually settled on the successful Baboon.",
+    "manufacturer": "Kindraa Matilda-Carroll Main Production Facility,CJF Factory Zone 5",
+    "primaryfactory": "Marshall (Molten),Blackjack",
+    "systemmanufacturer": "TARGETING:GEG Pattern 490/1"
+  },
+  "era": "2871",
+  "displayName": "Baboon",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
