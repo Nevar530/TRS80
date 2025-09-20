@@ -1,0 +1,64 @@
+{
+  "name": "Atlas III",
+  "model": "AS7-D3",
+  "tonnage": 100,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "4",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "12 IS Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Federated Suns"
+  ],
+  "extras": {
+    "mul id": "6358",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "pro_actuator",
+    "weaponquirk": "jettison_capable:RA:4:ISRotaryAC2",
+    "myomer": "Standard",
+    "LA armor": "34",
+    "RA armor": "34",
+    "LT armor": "32",
+    "RT armor": "32",
+    "CT armor": "50",
+    "HD armor": "9",
+    "LL armor": "42",
+    "RL armor": "42",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "12",
+    "Weapons": "7",
+    "overview": "A Dark Age-era evolution of the original Atlas, featuring a mix between advanced Clan and Inner Sphere technologies. The Atlas III is usually used as a Command 'Mech among the ranks of the AFFS and the Republic of the Sphere Armed Forces.",
+    "capabilities": "The D3's construction reflects its intended role as (almost) a custom design for Commanders. The 'Mech is designed for dealing punishing attacks, while retaining the survivability and speed of the original Atlas. Engineers used 19.5 ton of Standard Armor fitted to an Endo Steel skeleton, and for the MechWarrior's protection the Atlas III employs an Armored Cockpit and a pair of Small Shields, with the latter split between both arms.",
+    "deployment": "The D3's construction reflects its intended role as (almost) a custom design for Commanders. The 'Mech is designed for dealing punishing attacks, while retaining the survivability and speed of the original Atlas. Engineers used 19.5 ton of Standard Armor fitted to an Endo Steel skeleton, and for the MechWarrior's protection the Atlas III employs an Armored Cockpit and a pair of Small Shields, with the latter split between both arms. An advanced Angel ECM Suite has also been installed, giving the 'Mech greater capability to manage electronic warfare threats. Powering the Atlas III is the tried-and-true 300-rated Vlar Fusion Engine, which provides modest speeds and adequate protection on the battlefield. Along with the 'Mech's 12 Double Heat Sinks, a Radical Heat Sink System has been fitted in order to help manage the 'Mech's heat.",
+    "history": "The AS7-D versions of this generation of the Atlas was constructed with a mixture of Advanced Clan and Inner Sphere technologies. When it was first produced, the D3 was rare among the ranks of the AFFS and its ally, the Republic of the Sphere, where it was used by Battalion and Regimental leaders as a Command 'Mech. It is unclear if the D3 model of the 'Mech remained in production after the Draconis Combine's capture of Robinson in 3144.",
+    "manufacturer": "General Motors,Robinson Standard BattleWorks",
+    "primaryfactory": "El Dorado,Robinson",
+    "systemmanufacturer": "TARGETING:Dalban HiRez V"
+  },
+  "era": "3137",
+  "displayName": "Atlas III AS7-D3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
