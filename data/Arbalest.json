@@ -1,0 +1,56 @@
+{
+  "name": "Arbalest",
+  "model": null,
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "125 Fusion (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "62",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "5",
+    "RT Armor": "5",
+    "CT Armor": "8",
+    "HD Armor": "8",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "4"
+  },
+  "era": "3077",
+  "displayName": "Arbalest",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Argus",
+  "model": "AGS-5D",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Fusion Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": null,
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5683",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "no_arms",
+    "Myomer": "ISMASC",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "6"
+  },
+  "era": "3071",
+  "displayName": "Argus AGS-5D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

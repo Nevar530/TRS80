@@ -1,0 +1,63 @@
+{
+  "name": "Archangel",
+  "model": "C-ANG-OD Luminos",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Compact Engine(IS)",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "69",
+    "Config": "Biped Omnimech",
+    "role": "Juggernaut",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "12",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "47",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "8",
+    "overview": "Debuting in 3069, the Celestial series of OmniMechs are engineered to be used by the elite Word of Blake Manei Domini troops.",
+    "capabilities": "The Archangel is the largest of these. Designed to be an \"anchor\" for Word formations, the 'Mech is known as a \"zombie\" because of its ability to take extreme amounts of damage and continue operating. The Archangel features a compact fusion engine, compact gyro, a small cockpit, and nineteen and a half tons of standard armor, which frees up a large amount of internal space, while an Endo Steel frame opens up free tonnage, making heavier components possible. A C3i Computer helps direct and coordinate fire.",
+    "history": "Meant for work at longer ranges than the previous variants, the main guns of the Luminos are a pair of ER PPCs. Jump jets give it the ability to maneuver to a good position to snipe from more quickly, while a Guardian ECM Suite provides added defense. In case an enemy gets close, the Archangel D can utilize four Medium Pulse Lasers, an ER Small Laser, and a Small Pulse Laser that is devastating to unarmored infantry.",
+    "manufacturer": "Gibson Federated BattleMechs, Martinson Armaments",
+    "primaryfactory": "Gibson (Gibson Federated), Terra (Martinson)",
+    "systemmanufacturer": "TARGETING:Master’s Sight 1-Omega"
+  },
+  "era": "3069",
+  "displayName": "Archangel C-ANG-OD Luminos",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
