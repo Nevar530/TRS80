@@ -1,0 +1,55 @@
+{
+  "name": "Hunchback",
+  "model": "HBK-6P",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "200 Light Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7993",
+    "Config": "Biped",
+    "quirk": "battle_fists_ra",
+    "myomer": "Standard",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "24",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "8",
+    "Weapons": "8"
+  },
+  "era": "3133",
+  "displayName": "Hunchback HBK-6P",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Legionnaire",
+  "model": "LGN-2D",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "350 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1863",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_target_med",
+    "weaponquirk": "exposed_linkage:RT:3:ISRotaryAC5",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "1"
+  },
+  "era": "3073",
+  "displayName": "Legionnaire LGN-2D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

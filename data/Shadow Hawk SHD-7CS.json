@@ -1,0 +1,57 @@
+{
+  "name": "Shadow Hawk",
+  "model": "SHD-7CS",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "2907",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "Ejection": "Full Head Ejection System",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "4"
+  },
+  "era": "3066",
+  "displayName": "Shadow Hawk SHD-7CS",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Mangonel",
+  "model": "MNL-3W",
+  "tonnage": 70,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "350 XL (Clan) Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2013",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "23",
+    "RT Armor": "23",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "7",
+    "Weapons": "6"
+  },
+  "era": "3082",
+  "displayName": "Mangonel MNL-3W",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Cronus",
+  "model": "CNS-3M",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "275 Fusion Engine",
+  "heatSinks": "14 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4020",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "4"
+  },
+  "era": "3031",
+  "displayName": "Cronus CNS-3M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

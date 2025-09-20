@@ -1,0 +1,64 @@
+{
+  "name": "Koshi",
+  "model": "H",
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "175 XL (Clan) Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "clanname": "Mist Lynx",
+    "mul id": "1834",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "low_profile",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "7",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "10",
+    "HD Armor": "9",
+    "LL Armor": "5",
+    "RL Armor": "5",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "5",
+    "overview": "Weighing in at twenty five tons, the Mist Lynx is a lightweight workhorse OmniMech. The Mist Lynx is a common light OmniMech among the Clans that invaded the Inner Sphere, and is part of the toumans of every clan.",
+    "capabilities": "The Mist Lynx is built on a lightweight Endo Steel chassis to save weight and is powered by a 175 XL engine that gives the 'Mech a top speed of 118.8 km/h. The Mist Lynx also has six Jump Jets that allow the 'Mech to jump up to one hundred and eighty meters. The Mist Lynx has a fixed Active Probe that allows the 'Mech to protect itself from ambush by letting it detect any hidden enemy units before they can strike. For protection from enemy fire, the Mist Lynx has three and a half tons of Ferro-Fibrous armor.",
+    "deployment": "Before the Great Refusal, the Mist Lynx was most prominently fielded by Clan Smoke Jaguar and earned the code name Koshi, or \"small death\", from the DCMS forces which encountered it during Operation Revival. Designed by Clan Smoke Jaguar around 2910, production of the Mist Lynx was continued by Clans Ice Hellion and Steel Viper after the Annihilation of Clan Smoke Jaguar.",
+    "manufacturer": "Huntress Production Facility Epsilon, Arcadia BattleMech Plant CM-O3, Manufacturing Plant SFF-AL1",
+    "primaryfactory": "Huntress, Arcadia,  Alnabog",
+    "systemmanufacturer": "TARGETING:Series III GDS with Active Probe"
+  },
+  "era": "3059",
+  "displayName": "Koshi H",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

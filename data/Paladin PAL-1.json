@@ -1,0 +1,56 @@
+{
+  "name": "Paladin",
+  "model": "PAL-1",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2408",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "9",
+    "Weapons": "11"
+  },
+  "era": "3053",
+  "displayName": "Paladin PAL-1",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

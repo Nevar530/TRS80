@@ -1,0 +1,62 @@
+{
+  "name": "Lightray",
+  "model": "LGH-4W",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "385 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4519",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "exp_actuator",
+    "myomer": "Standard",
+    "LA armor": "18",
+    "RA armor": "18",
+    "LT armor": "19",
+    "RT armor": "19",
+    "CT armor": "26",
+    "HD armor": "9",
+    "LL armor": "26",
+    "RL armor": "26",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "4",
+    "overview": "The Lightray was designed by Martinson Armaments to be a heavy scout 'Mech and was put into production in 3064.",
+    "capabilities": "The Lightray is built on a lightweight Geometric 33B Endo Steel chassis to help maximize the available weight for weapons and equipment and features a gigantic LTV 385 XL engine, the largest that can possibly be carried by a 'Mech its size. The engine allows the scout 'Mech to outpace most other medium designs with a top speed of 118 kilometers per hour, though it lacks the added maneuverability that could be provided by jump jets. The Lightray carries ten and a half tons of Strasbourg Armaments Type 4 Ferro-Fibrous armor, giving the 'Mech a great deal of protection.",
+    "deployment": "The main weapon of the Lightray is its Tronel XIII Large Pulse Laser. Coupled with the Targeting Computer technology stolen from House Davion, this Word of Blake design is deadly accurate, even when moving at its top speed. The pair of Diverse Optics ER Medium Lasers and the Diverse Optics ER Small Laser add to the close-range damage the 'Mech can deal.",
+    "manufacturer": "Martinson Armaments",
+    "primaryfactory": "Australia, Terra",
+    "systemmanufacturer": "TARGETING:Scope 3580 with Targeting Computer"
+  },
+  "era": "3065",
+  "displayName": "Lightray LGH-4W",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

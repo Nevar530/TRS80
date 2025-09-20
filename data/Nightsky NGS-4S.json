@@ -1,0 +1,63 @@
+{
+  "name": "Nightsky",
+  "model": "NGS-4S",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2279",
+    "Config": "Biped",
+    "role": "Striker",
+    "weaponquirk": "mod_weapons:RA:4:Hatchet",
+    "myomer": "Standard",
+    "LA armor": "14",
+    "RA armor": "14",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "23",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "5",
+    "RTR armor": "5",
+    "RTC armor": "6",
+    "Weapons": "4",
+    "overview": "The Nightsky was a mid-range continuation of the Federated Commonwealth's successful Hatchetman-Axman series, which established melee combat weapons as a powerful and heat-efficient close-combat option for the experienced MechWarrior. Intended to provide both speed and firepower.",
+    "capabilities": "The Nightsky is built around a massive Vlar 300 XL extralight engine that propels the 'Mech up to speeds of 97.2 km/h. Superb ground speed and the added maneuverability provided by six HildCo Model 13 jump jets that allow the Nightsky to jump up to 180 meters make the Nightsky a capable heavy recon 'Mech. It is also protected with nine and a half tons of armor, providing the Nightsky with good armor protection for its size.",
+    "deployment": "The Nightsky is built with a powerful close range arsenal. The centerpiece of this is a massive four-ton hatchet that is built into its right arm, which allows the 'Mech to cut through another 'Mech's armor. The Nightsky is also armed with a Sutel Precision Line large pulse laser for medium to long range firepower, supported by two Sutel Precision Line medium pulse lasers and a Sutel Precision Line small pulse laser for close range support.",
+    "history": "After their introduction in 3053, Nightskys quickly proliferated throughout the Federated Commonwealth, with many replacing Hatchetmen or Axmen lost in the early years of the Clan invasion. The distribution of this design had become fairly even between the two once-allied states by the time of the Lyran secession from the Commonwealth, resulting in Nightskys appearing among as many pro-Victor Davion troops as pro-Katherine Steiner forces during the FedCom Civil War.",
+    "manufacturer": "Defiance Industries",
+    "primaryfactory": "Hesperus II",
+    "systemmanufacturer": "TARGETING:TharHes Ares-8a"
+  },
+  "era": "3053",
+  "displayName": "Nightsky NGS-4S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

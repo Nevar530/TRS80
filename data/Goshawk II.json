@@ -1,0 +1,56 @@
+{
+  "name": "Goshawk II",
+  "model": null,
+  "tonnage": 45,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "315 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1249",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "nimble_jumper",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "9"
+  },
+  "era": "3086",
+  "displayName": "Goshawk II",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

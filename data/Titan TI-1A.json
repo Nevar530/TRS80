@@ -1,0 +1,56 @@
+{
+  "name": "Titan",
+  "model": "TI-1A",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "22 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3257",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "33",
+    "RA Armor": "33",
+    "LT Armor": "27",
+    "RT Armor": "27",
+    "CT Armor": "41",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "15",
+    "RTR Armor": "15",
+    "RTC Armor": "20",
+    "Weapons": "13"
+  },
+  "era": "2765",
+  "displayName": "Titan TI-1A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

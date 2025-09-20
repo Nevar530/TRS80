@@ -1,0 +1,56 @@
+{
+  "name": "Fennec",
+  "model": "FEC-5CM",
+  "tonnage": 55,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "275 XXL (Clan) Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6900",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "27",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "5"
+  },
+  "era": "3133",
+  "displayName": "Fennec FEC-5CM",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

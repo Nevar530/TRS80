@@ -1,0 +1,56 @@
+{
+  "name": "Hellstar",
+  "model": null,
+  "tonnage": 95,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "380 XL (Clan) Engine",
+  "heatSinks": "30 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1481",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "32",
+    "RA Armor": "32",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "40",
+    "RL Armor": "40",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "4"
+  },
+  "era": "3079",
+  "displayName": "Hellstar",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

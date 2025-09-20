@@ -1,0 +1,56 @@
+{
+  "name": "No-Dachi",
+  "model": "NDA-2KC",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "350 XL Engine",
+  "heatSinks": "14 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2297",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "hyper_actuator",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "12",
+    "Weapons": "11"
+  },
+  "era": "3067",
+  "displayName": "No-Dachi NDA-2KC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

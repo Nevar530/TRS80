@@ -1,0 +1,55 @@
+{
+  "name": "Diomede",
+  "model": "D-M3D-M",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Fusion Engine(IS)",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "2",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Industrial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Industrial",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6823",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "Myomer": "Standard",
+    "LA Armor": "33",
+    "RA Armor": "33",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "12",
+    "RTR Armor": "12",
+    "RTC Armor": "16",
+    "Weapons": "7"
+  },
+  "era": "3092",
+  "displayName": "Diomede D-M3D-M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

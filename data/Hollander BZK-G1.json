@@ -1,0 +1,57 @@
+{
+  "name": "Hollander",
+  "model": "BZK-G1",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "175 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1537",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "unbalanced",
+    "weaponquirk": "stable_weapon:RT:2:ISLBXAC10",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "15",
+    "HD Armor": "9",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3056",
+  "displayName": "Hollander BZK-G1",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

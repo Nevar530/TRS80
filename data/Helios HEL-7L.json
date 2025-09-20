@@ -1,0 +1,57 @@
+{
+  "name": "Helios",
+  "model": "HEL-7L",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "240 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.0-SNAPSHOT on 2024-07-24",
+    "mul id": "7989",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "easy_maintain",
+    "myomer": "Standard",
+    "LA armor": "19",
+    "RA armor": "19",
+    "LT armor": "21",
+    "RT armor": "21",
+    "CT armor": "25",
+    "HD armor": "9",
+    "LL armor": "19",
+    "RL armor": "19",
+    "RTL armor": "5",
+    "RTR armor": "5",
+    "RTC armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3144",
+  "displayName": "Helios HEL-7L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

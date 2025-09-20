@@ -1,0 +1,61 @@
+{
+  "name": "Hermes",
+  "model": "HER-1A",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "270 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "1485",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "6",
+    "RT Armor": "6",
+    "CT Armor": "7",
+    "HD Armor": "7",
+    "LL Armor": "6",
+    "RL Armor": "6",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "3",
+    "Overview": "The Star League, showing its industrial and economic might, commissioned a new dedicated scout in 2632. Irian BattleMechs Unlimited won the contract, and was able to fulfill initial orders for this new Hermes quicker then anticipated. This caused concern in the SLDF's Quartermaster Command despite the 'Mech apparently meeting all requirements. These suspicions were quickly confirmed, as many 'Mechs in the initial run had unresolved issues with their electronics that made their targeting systems all but useless. While these problems were eventually rectified, the time needed for the fix was not insignificant, and the 'Mech would develop a negative reputation that would follow it during the remainder of the Star League era.",
+    "Capabilities": "Emphasizing mobility over firepower, the Hermes was faster than nearly every 'Mech in service at the time of its introduction. Once the glitches surrounding the targeting systems were fixed, the Alexis Photon proved popular with technicians as it reduced wear and tear on the laser systems. The initial production variant used a fuel-based flamer instead of the more modern version that would tap directly into a 'Mech's fusion plant. Considered to be quite safe, MechWarriors piloting Hermes could even choose to jettison the fuel storage cylinders if needed.",
+    "Deployment": "The Hermes only served in the SLDF for 19 years, after which they were put in storage or relegated to militia commands. The Succession Wars forced the Hermes back into frontline regiments through sheer need, though Irian chose to re-engineer the 'Mech in the heavier Hermes II instead of putting the base chassis back into production. Instead, Irian would refit existing Hermes chassises into the downgraded HER-1A variant as the Succession Wars spurred technological decline. Only seeing service in the Free Worlds League military, the variant would rapidly vanish after the rediscovery of advanced technology in the Helm Core.",
+    "systemmanufacturer": "TARGETING:Wasat",
+    "systemmode": "TARGETING:Aggressor"
+  },
+  "era": "2856",
+  "displayName": "Hermes HER-1A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Thresher",
+  "model": "2",
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "3199",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "imp_target_med",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "21",
+    "RL Armor": "21",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "6"
+  },
+  "era": "2858",
+  "displayName": "Thresher 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

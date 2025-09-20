@@ -1,0 +1,57 @@
+{
+  "name": "Marauder",
+  "model": "MAD-3R",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "16 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "2038",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "low_profile",
+    "weaponquirk": "exposed_linkage:RT:0:Autocannon/5",
+    "Myomer": "Standard",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "18",
+    "RL Armor": "18",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "5"
+  },
+  "era": "2819",
+  "displayName": "Marauder MAD-3R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

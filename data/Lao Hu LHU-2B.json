@@ -1,0 +1,62 @@
+{
+  "name": "Lao Hu",
+  "model": "LHU-2B",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "375 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4478",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "good_rep_1",
+    "myomer": "Standard",
+    "LA armor": "23",
+    "RA armor": "23",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "33",
+    "HD armor": "9",
+    "LL armor": "28",
+    "RL armor": "28",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "3",
+    "overview": "Designed by a student at the Victoria Academy of Arms and Technology, the Lao Hu (\"Tiger\") is based on the Thunder BattleMech and is designed to correct perceived flaws in the Thunder by using new technologies available to the Capellan Confederation.",
+    "capabilities": "The Lao Hu is built on a lightweight Chariot Type II Endo Steel that carries a GM 375 XL Engine which gives the 'Mech a top speed of 86.4 km/h while sacrificing some survivability for more free weight and a heavier weapons payload. The Lao Hu is protected by an impressive thirteen and a half tons of armor, making it capable of weathering hits from all but the heaviest weapons.",
+    "deployment": "The Lao Hu is capable of engaging an enemy at most any range. For long-range combat, the Lao Hu has a Martell ER Large Laser and a Zeus LRM-15 launcher, giving the 'Mech a powerful long range punch. For close combat, the Lao Hu has a devastating Shengli LB-X Autocannon/20 which is capable of firing both solid rounds for armor penetration and cluster rounds allowing it to find holes in already damaged armor and for anti-aircraft use.",
+    "manufacturer": "Shengli Arms",
+    "primaryfactory": "Victoria",
+    "systemmanufacturer": "TARGETING:O/P 911 Targeting and Tracking System"
+  },
+  "era": "3062",
+  "displayName": "Lao Hu LHU-2B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

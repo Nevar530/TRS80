@@ -1,0 +1,56 @@
+{
+  "name": "Peacekeeper",
+  "model": "PKP-2K",
+  "tonnage": 95,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "380 XL Engine(IS)",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Anti-Penetrative Ablation(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6836",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "rugged_1",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "27",
+    "RA Armor": "27",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "35",
+    "RL Armor": "35",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "13",
+    "Weapons": "4"
+  },
+  "era": "3116",
+  "displayName": "Peacekeeper PKP-2K",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

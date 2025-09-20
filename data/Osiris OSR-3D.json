@@ -1,0 +1,63 @@
+{
+  "name": "Osiris",
+  "model": "OSR-3D",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "8",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4763",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ext_twist",
+    "weaponquirk": "direct_torso_mount:CT:10:ISERMediumLaser",
+    "myomer": "Standard",
+    "LA armor": "8",
+    "RA armor": "8",
+    "LT armor": "8",
+    "RT armor": "8",
+    "CT armor": "10",
+    "HD armor": "7",
+    "LL armor": "11",
+    "RL armor": "11",
+    "RTL armor": "3",
+    "RTR armor": "3",
+    "RTC armor": "3",
+    "Weapons": "7",
+    "overview": "The Osiris was essentially modeled after the Clan Dragonfly and designed by the same engineers who designed the Anubis. The Osiris was designed to be a fast, hit-and-fade style offensive platform and can perform well in that capacity with its awesome speed, although it does appear to rely too heavily on its mobility to protect it from damage.",
+    "capabilities": "While the limits of Inner Sphere technology forced the designers to skimp on the specifications somewhat, the Osiris does maintain the same speed as the design it is based off of with its powerful Pharaoh 240 XL. The armor and jump capacity are sadly lacking, however, as the Osiris can only jump half as far as the Dragonfly with its four Rawlings 61 jump jets and is armored with four and a half tons of StarGuard Ferro-Fibrous.",
+    "deployment": "The Osiris' primary weapons are its five Bright Bloom ER Medium Lasers. They can dish out a lot of damage very quickly, and are perfect for a light 'Mech that may be operating far from resupply. The Harpoon-6 SRM-6 gives the 'Mech a supplementary short range punch, while the Double-Gun Machine Gun can quickly deal with unarmored infantry. Pilots do have to be very careful, however, as the 'Mech can overheat rather rapidly if it gets pushed too hard.",
+    "manufacturer": "Achernar BattleMechs",
+    "primaryfactory": "New Avalon",
+    "systemmanufacturer": "TARGETING:Federated Hunter Mk. VII"
+  },
+  "era": "3063",
+  "displayName": "Osiris OSR-3D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

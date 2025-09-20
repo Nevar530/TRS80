@@ -1,0 +1,56 @@
+{
+  "name": "Duan Gung",
+  "model": "D9-G9",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "175 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "935",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "10",
+    "HD Armor": "9",
+    "LL Armor": "6",
+    "RL Armor": "6",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "3"
+  },
+  "era": "3058",
+  "displayName": "Duan Gung D9-G9",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

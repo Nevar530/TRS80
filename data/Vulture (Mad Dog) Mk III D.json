@@ -1,0 +1,58 @@
+{
+  "name": "Vulture Mk III",
+  "model": "D",
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 The Clans"
+  ],
+  "extras": {
+    "clanname": "Mad Dog Mk III",
+    "mul id": "6275",
+    "Config": "Biped Omnimech",
+    "role": "Skirmisher",
+    "quirk": "variable_range_long",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "12",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "9",
+    "Weapons": "4"
+  },
+  "era": "3109",
+  "displayName": "Vulture Mk III D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

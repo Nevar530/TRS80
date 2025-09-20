@@ -1,0 +1,56 @@
+{
+  "name": "Shockwave",
+  "model": "SKW-6H",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "250 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6903",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "9",
+    "Weapons": "3"
+  },
+  "era": "3102",
+  "displayName": "Shockwave SKW-6H",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "Shadow Hawk IIC",
+  "model": "9",
+  "tonnage": 45,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "270 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6911",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "imp_life_support",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "4",
+    "overview": "The Shadow Hawk IIC is a second-line Clan BattleMech based upon the Shadow Hawk that was first fielded by the Star League.",
+    "capabilities": "The inexpensive unit is protected by seven and a half tons of Ferro-Fibrous armor, mounted on a weight-saving Endo Steel chassis. This medium 'Mech can reach a respectable top speed of 97 km/h, though it also carries enough jump jets to vault up to 180 meters at a time.",
+    "deployment": "This variant was introduced in the Dark Age. It carries an ER Large Laser, an ATM-6, and two ER Medium Lasers. It has a top speed of 96 km/h, and can jump 180 meters at a time.",
+    "manufacturer": "Unknown",
+    "primaryfactory": "Unknown",
+    "systemmanufacturer": "TARGETING:TRTTS Mark II"
+  },
+  "era": "3134",
+  "displayName": "Shadow Hawk IIC 9",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Nexus II",
+  "model": "NXS2-A",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Light Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2261",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "5",
+    "RT Armor": "5",
+    "CT Armor": "7",
+    "HD Armor": "8",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3066",
+  "displayName": "Nexus II NXS2-A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

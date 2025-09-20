@@ -1,0 +1,63 @@
+{
+  "name": "Firefly",
+  "model": "C",
+  "tonnage": 30,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "150 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1082",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "11",
+    "RT Armor": "11",
+    "CT Armor": "15",
+    "HD Armor": "8",
+    "LL Armor": "14",
+    "RL Armor": "14",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "5",
+    "Weapons": "8",
+    "overview": "The Firefly is a well-armed recon 'Mech that tips the scales at thirty tons, with a maximum ground speed of 86.4 km/h, the and ability to jump up to 120 meters. As a scout 'Mech, the Firefly gives average performance with its energy weapon-heavy arsenal and is useful in both a recon and guerrilla fighter role.",
+    "capabilities": "Although it was slow in comparison to other 'Mechs of its weight class, it was powerfully armed and armored, and it frequently served as an anvil against which opposing forces' recon units were smashed.",
+    "deployment": "This is a Clan variant of the Firefly that has been upgraded with all Clan technology and is also used by the Wolf's Dragoons. The Firefly C is built on an endo steel chassis and is armed with four ER small lasers, three medium pulse lasers, and an SRM-2 launcher.",
+    "history": "The Firefly, which entered service in the late 27th century, was one of the SLDF's primary light 'Mechs in its later years. Cases occurred in all House forces, but not in the numbers deployed by the SLDF, and all were presumed destroyed by the end of the Second Succession War, save for tales of anomalous examples in the Periphery. The design reappeared with Wolf's Dragoons in the early 31st century, raising eyebrows, yet the secret of the Firefly's origin was exposed when the Dragoons' Clan origins were revealed. In the 3040s, the advent of a small number of Fireflys with the Com Guard forces elicited a similar reaction.",
+    "manufacturer": "Strana Mechty MechWorks",
+    "primaryfactory": "Strana Mechty",
+    "systemmanufacturer": "TARGETING:Radcom TXX"
+  },
+  "era": "2839",
+  "displayName": "Firefly C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

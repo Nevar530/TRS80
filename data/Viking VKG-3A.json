@@ -1,0 +1,56 @@
+{
+  "name": "Viking",
+  "model": "VKG-3A",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "270 Compact Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3419",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "28",
+    "RT Armor": "28",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "14",
+    "Weapons": "6"
+  },
+  "era": "3074",
+  "displayName": "Viking VKG-3A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

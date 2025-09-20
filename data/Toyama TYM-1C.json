@@ -1,0 +1,56 @@
+{
+  "name": "Toyama",
+  "model": "TYM-1C",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 XL Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3280",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "LA Armor": "23",
+    "RA Armor": "23",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "31",
+    "RL Armor": "31",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "11",
+    "Weapons": "4"
+  },
+  "era": "3072",
+  "displayName": "Toyama TYM-1C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

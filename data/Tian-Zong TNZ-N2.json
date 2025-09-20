@@ -1,0 +1,56 @@
+{
+  "name": "Tian-Zong",
+  "model": "TNZ-N2",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Capellan Confederation"
+  ],
+  "extras": {
+    "mul id": "6470",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "command_mech",
+    "Myomer": "Standard",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "9",
+    "Weapons": "4"
+  },
+  "era": "3096",
+  "displayName": "Tian-Zong TNZ-N2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

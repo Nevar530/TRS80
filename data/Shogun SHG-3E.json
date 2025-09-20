@@ -1,0 +1,55 @@
+{
+  "name": "Shogun",
+  "model": "SHG-3E",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "255 Fusion Engine(IS)",
+  "heatSinks": "14 IS Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "8003",
+    "Config": "Biped",
+    "quirk": "non_standard",
+    "myomer": "Standard",
+    "LA armor": "27",
+    "RA armor": "27",
+    "LT armor": "27",
+    "RT armor": "27",
+    "CT armor": "40",
+    "HD armor": "9",
+    "LL armor": "27",
+    "RL armor": "27",
+    "RTL armor": "9",
+    "RTR armor": "9",
+    "RTC armor": "12",
+    "Weapons": "5"
+  },
+  "era": "3090",
+  "displayName": "Shogun SHG-3E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

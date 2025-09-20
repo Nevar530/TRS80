@@ -1,0 +1,56 @@
+{
+  "name": "Epimetheus",
+  "model": "Prime",
+  "tonnage": 80,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "4",
+  "engine": "400 XL (Clan) Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": "Torso-Mounted Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Unbound"
+  ],
+  "extras": {
+    "mul id": "4129",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "35",
+    "HD Armor": "7",
+    "LL Armor": "27",
+    "RL Armor": "27",
+    "RTL Armor": "13",
+    "RTR Armor": "13",
+    "RTC Armor": "14",
+    "Weapons": "5"
+  },
+  "era": "3053",
+  "displayName": "Epimetheus Prime",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

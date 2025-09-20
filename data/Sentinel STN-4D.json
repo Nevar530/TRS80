@@ -1,0 +1,56 @@
+{
+  "name": "Sentinel",
+  "model": "STN-4D",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "2863",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "19",
+    "HD Armor": "9",
+    "LL Armor": "14",
+    "RL Armor": "14",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "5",
+    "Weapons": "2"
+  },
+  "era": "3063",
+  "displayName": "Sentinel STN-4D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

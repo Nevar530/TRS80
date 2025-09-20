@@ -1,0 +1,56 @@
+{
+  "name": "Matador",
+  "model": "2",
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "240 Fusion (Clan) Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "2099",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "battle_fists_ra",
+    "Myomer": "Standard",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "9",
+    "Weapons": "7"
+  },
+  "era": "3069",
+  "displayName": "Matador 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

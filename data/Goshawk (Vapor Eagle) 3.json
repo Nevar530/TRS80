@@ -1,0 +1,57 @@
+{
+  "name": "Goshawk",
+  "model": "3",
+  "tonnage": 55,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "330 XL (Clan) Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "clanname": "Vapor Eagle",
+    "mul id": "1245",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "nimble_jumper",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "5",
+    "Weapons": "7"
+  },
+  "era": "3062",
+  "displayName": "Goshawk 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Lumberjack",
+  "model": "LM4/C",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 ICE Engine",
+  "heatSinks": "0 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Commercial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Industrial",
+  "cockpit": "Industrial Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1960",
+    "Config": "Biped",
+    "role": "Ambusher",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "9",
+    "HD Armor": "4",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "0"
+  },
+  "era": "2489",
+  "displayName": "Lumberjack LM4/C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

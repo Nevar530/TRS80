@@ -1,0 +1,56 @@
+{
+  "name": "Ymir",
+  "model": "BWP-3A",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "360 Fusion Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3622",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "29",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "10",
+    "Weapons": "5"
+  },
+  "era": "2733",
+  "displayName": "Ymir BWP-3A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

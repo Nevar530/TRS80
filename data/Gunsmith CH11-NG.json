@@ -1,0 +1,59 @@
+{
+  "name": "Gunsmith",
+  "model": "CH11-NG",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "250 XXL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Reflective(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Federated Suns"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.07 on 2025-07-07",
+    "mul id": "6332",
+    "Config": "Biped",
+    "role": "Striker",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "LA armor": "8",
+    "RA armor": "8",
+    "LT armor": "10",
+    "RT armor": "10",
+    "CT armor": "12",
+    "HD armor": "9",
+    "LL armor": "12",
+    "RL armor": "12",
+    "RTL armor": "2",
+    "RTR armor": "2",
+    "RTC armor": "3",
+    "Weapons": "4",
+    "manufacturer": "Jalastar Aerospace",
+    "primaryfactory": "Panpour"
+  },
+  "era": "3131",
+  "displayName": "Gunsmith CH11-NG",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

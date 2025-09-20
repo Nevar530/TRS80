@@ -1,0 +1,56 @@
+{
+  "name": "Mantis",
+  "model": "MTS-L",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "270 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2022",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "non_standard",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "14",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "5",
+    "Weapons": "4"
+  },
+  "era": "3064",
+  "displayName": "Mantis MTS-L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

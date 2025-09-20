@@ -1,0 +1,56 @@
+{
+  "name": "Firebee",
+  "model": "FRB-2E",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "175 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1079",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "weak_legs",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "11",
+    "HD Armor": "8",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "5",
+    "Weapons": "5"
+  },
+  "era": "2524",
+  "displayName": "Firebee FRB-2E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

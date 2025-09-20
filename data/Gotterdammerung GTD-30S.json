@@ -1,0 +1,54 @@
+{
+  "name": "Götterdämmerung",
+  "model": "GTD-30S",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Compact Engine(IS)",
+  "heatSinks": "14 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Torso-Mounted Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Lyran Commonwealth"
+  ],
+  "extras": {
+    "mul id": "8062",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "24",
+    "RA armor": "24",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "36",
+    "HD armor": "9",
+    "LL armor": "32",
+    "RL armor": "32",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "10",
+    "Weapons": "6"
+  },
+  "era": "3138",
+  "displayName": "Götterdämmerung GTD-30S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

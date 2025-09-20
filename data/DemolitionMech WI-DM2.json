@@ -1,0 +1,55 @@
+{
+  "name": "DemolitionMech",
+  "model": "WI-DM2",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "105 Fuel Cell Engine(IS)",
+  "heatSinks": "1 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Industrial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Industrial",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "869",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "9",
+    "HD Armor": "8",
+    "LL Armor": "9",
+    "RL Armor": "9",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "4",
+    "Weapons": "0"
+  },
+  "era": "2514",
+  "displayName": "DemolitionMech WI-DM2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

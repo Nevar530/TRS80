@@ -1,0 +1,57 @@
+{
+  "name": "Stinger",
+  "model": "STG-6L",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "160 Fusion Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "3066",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "cramped_cockpit",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "LA armor": "6",
+    "RA armor": "6",
+    "LT armor": "8",
+    "RT armor": "8",
+    "CT armor": "9",
+    "HD armor": "9",
+    "LL armor": "8",
+    "RL armor": "8",
+    "RTL armor": "2",
+    "RTR armor": "2",
+    "RTC armor": "3",
+    "Weapons": "2"
+  },
+  "era": "3067",
+  "displayName": "Stinger STG-6L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

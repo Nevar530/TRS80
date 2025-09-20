@@ -1,0 +1,56 @@
+{
+  "name": "Nexus",
+  "model": "NXS1-A",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "175 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2259",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "LA Armor": "3",
+    "RA Armor": "3",
+    "LT Armor": "3",
+    "RT Armor": "3",
+    "CT Armor": "5",
+    "HD Armor": "4",
+    "LL Armor": "4",
+    "RL Armor": "4",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "6"
+  },
+  "era": "3054",
+  "displayName": "Nexus NXS1-A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

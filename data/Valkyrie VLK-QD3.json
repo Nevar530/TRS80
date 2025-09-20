@@ -1,0 +1,57 @@
+{
+  "name": "Valkyrie",
+  "model": "VLK-QD3",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 Fusion Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "3376",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_com",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "LA armor": "8",
+    "RA armor": "8",
+    "LT armor": "10",
+    "RT armor": "10",
+    "CT armor": "12",
+    "HD armor": "8",
+    "LL armor": "12",
+    "RL armor": "12",
+    "RTL armor": "3",
+    "RTR armor": "3",
+    "RTC armor": "3",
+    "Weapons": "3"
+  },
+  "era": "3067",
+  "displayName": "Valkyrie VLK-QD3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

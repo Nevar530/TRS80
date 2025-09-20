@@ -1,0 +1,56 @@
+{
+  "name": "Lament",
+  "model": "LMT-2R",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "325 XL Engine(IS)",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6676",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "9",
+    "Weapons": "5"
+  },
+  "era": "3126",
+  "displayName": "Lament LMT-2R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

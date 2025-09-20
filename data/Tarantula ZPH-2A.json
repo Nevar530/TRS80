@@ -1,0 +1,56 @@
+{
+  "name": "Tarantula",
+  "model": "ZPH-2A",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "3161",
+    "Config": "Quad",
+    "role": "Scout",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "FLL Armor": "7",
+    "FRL Armor": "7",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "10",
+    "HD Armor": "6",
+    "RLL Armor": "7",
+    "RRL Armor": "7",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "3"
+  },
+  "era": "3060",
+  "displayName": "Tarantula ZPH-2A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

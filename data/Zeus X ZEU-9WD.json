@@ -1,0 +1,63 @@
+{
+  "name": "Zeus-X",
+  "model": "ZEU-9WD",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 Light Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "3646",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "27",
+    "RL Armor": "27",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "4",
+    "overview": "The original ZEU-X was a technological milestone. It was also an unwieldy mess of patchwork armor, reactive composites, and illogical short-range weapons, the limited manufacturing of which during the Civil War functioned only as propaganda. The following model was a massive failure, as the marriage of armored components and composite structure frequently ended in a pile of intact internal components as the only remains of a defeated ZEU-X2. A 3080s model was an inefficient jumping monster informed by Solaris research on the enigmatic Sasquatch. Only the sub-variant ZEU-WD series, which combined X-series improvements with conventional Zeus chassis, was a success.",
+    "capabilities": "Manufactured on by Defiance, the Zeus X was both a poster child for excellence in production engineering and an innovative high-technology platform, while at the same time struggling with emerging technologies.",
+    "deployment": "Starting life as one of Zeus-X testbeds, ZEUX0003 was gifted by the Kell Hounds to Black Widow Company commander Stacy Church. When Church landed on Outreach in 3071 it mounted a Light Fusion Engine and eleven and half tons of Light Ferro-Fibrous armor, and was armed with a Defiance 2002 Heavy PPC in its right arm, supported by an LB-X AC/20 mounted in the left arm and torso, and a pair of Medium Pulse Lasers. Two heat sinks were dropped to carry three tons of autocannon reloads.",
+    "history": "The Zeus personifies Steiner's \"wall of steel.\" The LCAF's indigenous pride and joy was reportedly the ultimate demonstration that superior production quality could compensate for weak battlefield prowess. It was picked for a facelift after three centuries of steadfast service to demonstrate Defiance's reputation as one of the Inner Sphere's major manufacturers. The Zeus X is equal parts celebrity and cutting-edge high-tech platform. Its modifications bring the ancient BattleMech up to date, even by thirty-second-century standards. The Zeus X-series is characterised structurally by a massive engine and a light yet brittle structure coated in layers of experimental armor. These qualities were carefully integrated with appropriate equipment when the ZEU-X4 was ready for manufacturing in the late 3110. The thick reactive plating is now production quality and completely covers the 'Mech. The LCAF received a command 'Mech when a roomy rumble seat was upgraded to a full console. Armed with modest but effective weapons, the ZEU-X4 attacks foes who are nothing more than approaching blots on the horizon. end of the Third Succession War, with the resulting ZEU-6T variant being the standard during the Fourth Succession War and later the War of 3039. The design was also well received by mercenary units, particularly the Zeta Battalion of Wolf's Dragoons.",
+    "manufacturer": "Defiance Industries,Defiance Manufacturing Annex",
+    "primaryfactory": "Hesperus II,Kwangjong-ni",
+    "systemmanufacturer": "TARGETING:TharHes Ares-7"
+  },
+  "era": "3067",
+  "displayName": "Zeus-X ZEU-9WD",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

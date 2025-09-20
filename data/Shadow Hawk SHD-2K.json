@@ -1,0 +1,61 @@
+{
+  "name": "Shadow Hawk",
+  "model": "SHD-2K",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "275 Fusion Engine",
+  "heatSinks": "17 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "2903",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "2",
+    "Overview": "The Shadow Hawk, from its inception, was designed to be a multi-purpose generalist. One of the fabled \"trio\" of 55-ton 'Mechs, its comrades are much more specialized designs. The Griffin is a long-ranged support platform, the Wolverine a heavy scout and skirmisher. The Shadow Hawk, however, can accomplish both roles—albeit, not as well as the two other designs. This has not hampered its popularity, and it has offered sterling service from the first days it entered battle.",
+    "Capabilities": "Most Shadow Hawks carry a varied array of weaponry. With both short and long-ranged weapons, missiles, lasers, and autocannons, the Shadow Hawk is never on a battlefield where it cannot contribute at least some firepower. Its speed is average for a design of its size, while the jump jets give it some maneuverability even on broken terrain. If the Shadow Hawk has one limitation, it is that it has difficulty bringing forward overwhelming firepower in any specific situation, causing some to disparage it as badly designed and flawed.",
+    "Deployment": "The Shadow Hawk is a widespread design. Every Successor State makes good use of the BattleMech, while the factories on Dunianshire ensure that a steady number enter periphery forces every year. As such a flexible design, it has a home in nearly every type of command, and few are the commanders who cannot find a use for their Shadow Hawk. Though some lambast it as a Griffin knockoff, the -2K variant is a more than capable design. With a PPC-based armament familiar to many Kuritan MechWarriors, it has served well in Combine and Rasalhague forces.",
+    "systemmanufacturer": "TARGETING:O/P",
+    "systemmode": "TARGETING:2000A"
+  },
+  "era": "2803",
+  "displayName": "Shadow Hawk SHD-2K",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

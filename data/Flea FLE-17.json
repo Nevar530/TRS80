@@ -1,0 +1,56 @@
+{
+  "name": "Flea",
+  "model": "FLE-17",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "120 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1137",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "no_arms",
+    "Myomer": "MASC",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "5",
+    "RT Armor": "5",
+    "CT Armor": "8",
+    "HD Armor": "5",
+    "LL Armor": "4",
+    "RL Armor": "4",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "5"
+  },
+  "era": "3049",
+  "displayName": "Flea FLE-17",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

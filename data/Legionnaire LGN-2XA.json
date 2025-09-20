@@ -1,0 +1,57 @@
+{
+  "name": "Legionnaire",
+  "model": "LGN-2XA",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "350 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1865",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "imp_target_med",
+    "weaponquirk": "exposed_linkage:RT:3:ISArrowIV",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "21",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "1"
+  },
+  "era": "3075",
+  "displayName": "Legionnaire LGN-2XA",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

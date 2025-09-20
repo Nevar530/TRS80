@@ -1,0 +1,56 @@
+{
+  "name": "Orion",
+  "model": "C",
+  "tonnage": 75,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Lamellor(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.02-SNAPSHOT on 2024-12-30",
+    "mul id": "7998",
+    "Config": "Biped",
+    "quirk": "rugged_1",
+    "myomer": "Standard",
+    "LA armor": "21",
+    "RA armor": "21",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "35",
+    "HD armor": "9",
+    "LL armor": "32",
+    "RL armor": "32",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "10",
+    "Weapons": "5"
+  },
+  "era": "3142",
+  "displayName": "Orion C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

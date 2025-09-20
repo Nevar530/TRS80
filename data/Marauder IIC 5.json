@@ -1,0 +1,63 @@
+{
+  "name": "Marauder IIC",
+  "model": "5",
+  "tonnage": 85,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "340 Fusion (Clan) Engine(IS)",
+  "heatSinks": "19 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3085 Unabridged - Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "2069",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "exp_actuator",
+    "myomer": "Standard",
+    "LA armor": "23",
+    "RA armor": "23",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "34",
+    "HD armor": "9",
+    "LL armor": "30",
+    "RL armor": "30",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "11",
+    "Weapons": "5",
+    "overview": "Given the Marauder's outstanding performance and sterling reputation, it was only natural for the Clans to commit resources to constructing a worthy successor.",
+    "capabilities": "While fundamentally comparable to the original Marauder in many aspects, even Golden Century ClanTech's sophisticated capabilities could not prevent the BattleMech's chassis from growing to accommodate all of its enhancements. As a result, the Marauder IIC received ten tons of overall bulk, similar to other classic 'Mechs modified by the Clans at the period. The IIC followed in both function and form the huge footsteps of its ancestor, emphasizing a perfect blend of long-range, high yield firepower, robust armor, and the mobility to keep up with its supporting troops. Although the Clans' dueling heritage prized individual warrior prowess and rapid encounters over drawn-out campaigns, their choice for high-power energy weapons over ballistics and missiles allows this 'Mech to stay lethal in the hands of an expert MechWarrior nearly indefinitely. When combined with its other characteristics, the Marauder IIC's battlefield durability cemented its position as a suitable command 'Mech, as well as its appeal among the glory-seeking warriors that comprise the majority of the Clan officer corps.",
+    "deployment": "Manufactured by the Jade Falcons from 3077 onward on a Sudeten-based production line adjacent to that of the Turkina, the IIC 5 is similar to the original, its arms carrying paired Type DDS \"Kingston\" ER PPCs for anti-'Mech duty but with underslung Tau-II AP Gauss Rifles to keep infantry at bay. Reminiscent of Star League Marauders GM Whirlwind, a HAG 20 sits in the dorsal assembly along with two tons of ammunition. The IIC 5 maintains the 11.5 tons of ferro fibrous armor used for the original, though some is shifted from the arms and side torsos to the legs and center torso. Nineteen double heat sinks keep the 'Mech's heat levels totally under control.",
+    "history": "The Marauder IIC had that designation prior to the introduction of Omni technology and the construction of the Timber Wolf. The Marauder IIC was built from the ground up in the image of its forefather, taking full advantage of the cutting-edge technology available at the time to improve on every aspect of the original. The end result was a bigger, stronger, more resilient, and durable Marauder—one that is still popular today, despite being classified as a \"second-line\" BattleMech. The Jade Falcons continue to build the Marauder IIC in its original architecture, joining the Rasalhague Dominion's \"Phoenix\" versions as the fearsome core of numerous Clan attack formations.",
+    "manufacturer": "Olivetti Weaponry",
+    "primaryfactory": "Sudeten",
+    "systemmanufacturer": "TARGETING:“Hermes” CT-42 Mk. II"
+  },
+  "era": "3070",
+  "displayName": "Marauder IIC 5",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

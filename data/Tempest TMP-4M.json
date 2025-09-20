@@ -1,0 +1,54 @@
+{
+  "name": "Tempest",
+  "model": "TMP-4M",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "260 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "8006",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "18",
+    "RA armor": "18",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "32",
+    "HD armor": "9",
+    "LL armor": "28",
+    "RL armor": "28",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3134",
+  "displayName": "Tempest TMP-4M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

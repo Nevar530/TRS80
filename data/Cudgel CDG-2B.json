@@ -1,0 +1,56 @@
+{
+  "name": "Cudgel",
+  "model": "CDG-2B",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "400 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": "Small Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "768",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "difficult_maintain",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "38",
+    "HD Armor": "9",
+    "LL Armor": "34",
+    "RL Armor": "34",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "6"
+  },
+  "era": "3068",
+  "displayName": "Cudgel CDG-2B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

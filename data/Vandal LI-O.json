@@ -1,0 +1,57 @@
+{
+  "name": "Vandal",
+  "model": "LI-O",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "325 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Torso-Mounted Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Capellan Confederation"
+  ],
+  "extras": {
+    "mul id": "6461",
+    "Config": "Biped Omnimech",
+    "role": "Skirmisher",
+    "quirk": "variable_range_long",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "32",
+    "HD Armor": "8",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "3"
+  },
+  "era": "3142",
+  "displayName": "Vandal LI-O",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

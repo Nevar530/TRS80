@@ -1,0 +1,56 @@
+{
+  "name": "Quickdraw",
+  "model": "QKD-5K2",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "4886",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "13",
+    "RA Armor": "13",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "8",
+    "Weapons": "7"
+  },
+  "era": "3057",
+  "displayName": "Quickdraw QKD-5K2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

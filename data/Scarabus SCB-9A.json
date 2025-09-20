@@ -1,0 +1,56 @@
+{
+  "name": "Scarabus",
+  "model": "SCB-9A",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2813",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "9",
+    "RA Armor": "9",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "12",
+    "HD Armor": "9",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "5"
+  },
+  "era": "3053",
+  "displayName": "Scarabus SCB-9A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

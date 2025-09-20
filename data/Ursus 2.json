@@ -1,0 +1,56 @@
+{
+  "name": "Ursus",
+  "model": "2",
+  "tonnage": 50,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3364",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "cramped_cockpit",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "24",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "5"
+  },
+  "era": "3074",
+  "displayName": "Ursus 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

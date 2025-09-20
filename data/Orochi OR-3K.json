@@ -1,0 +1,55 @@
+{
+  "name": "Orochi",
+  "model": "OR-3K",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "360 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7999",
+    "Config": "Biped",
+    "quirk": "no_arms",
+    "myomer": "Standard",
+    "LA armor": "30",
+    "RA armor": "30",
+    "LT armor": "28",
+    "RT armor": "28",
+    "CT armor": "44",
+    "HD armor": "9",
+    "LL armor": "38",
+    "RL armor": "38",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "14",
+    "Weapons": "5"
+  },
+  "era": "3144",
+  "displayName": "Orochi OR-3K",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

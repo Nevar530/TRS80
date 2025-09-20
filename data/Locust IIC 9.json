@@ -1,0 +1,57 @@
+{
+  "name": "Locust IIC",
+  "model": "9",
+  "tonnage": 25,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "4",
+  "engine": "350 XXL (Clan) Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "14",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1922",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "weak_legs",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "9",
+    "RT Armor": "9",
+    "CT Armor": "13",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "3",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Locustiic .jpg"
+  },
+  "era": "3085",
+  "displayName": "Locust IIC 9",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

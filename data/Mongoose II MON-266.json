@@ -1,0 +1,63 @@
+{
+  "name": "Mongoose II",
+  "model": "MON-266",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "2216",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_com",
+    "myomer": "Standard",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "12",
+    "RT armor": "12",
+    "CT armor": "14",
+    "HD armor": "9",
+    "LL armor": "16",
+    "RL armor": "16",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "5",
+    "Weapons": "1",
+    "overview": "Luthien Armor Works was working on an upgrade of the Mongoose for ComStar to be a faster and tougher scout 'Mech, when the chaos on Luthien during the early years of the Jihad forced them to look elsewhere.",
+    "capabilities": "The result is the Mongoose II, an effective hunter-killer that is able to find hidden enemies and provide long range fire support. Equipped with an impressive suite of electronics, the 'Mech carries a Beagle Active Probe, Guardian ECM Suite, C3i Computer, and MASC that enables it move up to 172 km/h in bursts. A respectable seven tons of armor protects the Mongoose II.",
+    "deployment": "The only ranged weapon on the Mongoose II is its Diverse Optics Sunbeam ER Large Laser. The ammo-independent weapon is just as potent at long range as at pointblank. With its quick speed, the Mongoose II can also close in to use its fists for quick hits, making this BattleMech an effective brawler.",
+    "history": "ComStar financed a refit of a lost Rim Worlds Republic factory on Kwangjong-ni. New versions of the Zeus and Banshee were walking off the line for battlefield testing when Word of Blake conquered Hesperus II. Anxious to stay solvent, ComStar C-bills paid for the upgrade to the Kwangjong-ni facility. In exchange, Defiance sold them sixty-six percent of its production for its first two years.",
+    "manufacturer": "Arc-Royal MechWorks, Defiance Manufacturing Annex",
+    "primaryfactory": "Arc-Royal,Kwangjong-ni",
+    "systemmanufacturer": "TARGETING:Nashan Trac V-102 with Active Probe"
+  },
+  "era": "3073",
+  "displayName": "Mongoose II MON-266",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

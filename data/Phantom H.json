@@ -1,0 +1,64 @@
+{
+  "name": "Phantom",
+  "model": "H",
+  "tonnage": 40,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "360 XL (Clan) Engine(IS)",
+  "heatSinks": "12 Clan Double",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2486",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "imp_sensors",
+    "myomer": "Standard",
+    "base chassis heat sinks": "12",
+    "LA armor": "12",
+    "RA armor": "12",
+    "LT armor": "11",
+    "RT armor": "11",
+    "CT armor": "12",
+    "HD armor": "9",
+    "LL armor": "13",
+    "RL armor": "13",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "8",
+    "Weapons": "8",
+    "overview": "The Phantom was pushed into production by Khan Phelan Ward shortly before the Refusal War between Clan Wolf and Clan Jade Falcon, designed around Khan Ward's extensive experience with Inner Sphere tactics.",
+    "capabilities": "Intended to push a medium reconnaissance 'Mech to the most extreme limits, the Phantom is built on a lightweight Type-A Endo Steel chassis and is propelled to a top speed of 151.2 km/h by a Light Force 360 XL Engine. The Phantom also boasts strong protection for its size with six tons of Composite A-2 Ferro-Fibrous armor.",
+    "deployment": "A very powerful close combat configuration, the H carries six Heavy Small Lasers and a Medium Pulse Laser, which are all linked to a Targeting Computer for increased accuracy. The 'Mech also has a Flamer that can be used for anti-infantry purposes.",
+    "history": "After the Wars of Reaving, the Phantom replaced the Fire Moth Omnimech for the remaining Home Clans because of its similar role and heavier profile.",
+    "manufacturer": "W-5 Facilities, Wolf Clan Site 1",
+    "primaryfactory": "Eden, Arc-Royal",
+    "systemmanufacturer": "TARGETING:Model 92 “Stalker”"
+  },
+  "era": "3062",
+  "displayName": "Phantom H",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

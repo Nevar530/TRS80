@@ -1,0 +1,56 @@
+{
+  "name": "Porcupine",
+  "model": "PRC-1N",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "180 XL Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2555",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "distracting",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "8",
+    "HD Armor": "8",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "4"
+  },
+  "era": "3063",
+  "displayName": "Porcupine PRC-1N",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

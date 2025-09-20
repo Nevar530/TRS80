@@ -1,0 +1,56 @@
+{
+  "name": "Hercules",
+  "model": "HRC-LS-9000",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "350 XL Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1482",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "7"
+  },
+  "era": "3054",
+  "displayName": "Hercules HRC-LS-9000",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

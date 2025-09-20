@@ -1,0 +1,63 @@
+{
+  "name": "Warhammer IIC",
+  "model": "11",
+  "tonnage": 80,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "320 Fusion (Clan) Engine(IS)",
+  "heatSinks": "24 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(IS/Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6858",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "LA Armor": "25",
+    "RA Armor": "25",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "5",
+    "overview": "The Clan's interpretation on the classic Warhammer has never been subtle. The BattleMech's hyper-advanced technology only emphasized and improved its duty as a frontline brawler; boosting its mass by 10 tons (with equivalent increases in armor protection) made it even more powerful.",
+    "capabilities": "Thanks to their technological expertise, they were able to add ten tons with the same speed and firepower and nearly double the armor of the original. The Warhammer IIC is built on an Endo Steel frame and is protected by tons of ferro-fibrous armor. The result is a dangerous 'Mech, able to hold its own in any battle against the Inner Sphere. Also note that the armor was the primary concern when designing the IIC version rivaling even 100 ton assault 'Mechs in durability and protection.",
+    "deployment": "Another Dark Age variant, this model carries a Heavy Large Laser in each arm, an ER Medium Laser in the head, and a Streak SRM-6 in the side torsos. To protect it from enemy infantry, each leg mounts a single A-Pod.",
+    "history": "The Warhammer IIC is now the most common Clan BattleMech in the Inner Sphere. These remarkable machines are fielded by every major Inner Sphere force, Clan, and many large mercenary groups. It is only found on the periphery, where its equally outstanding price tag is simply too high for these countries to justify.",
+    "manufacturer": "Snow Raven Industrial Complex Alpha,Mu Manufacturing Plant 3H,Sheridan LM-TA 8-10",
+    "primaryfactory": "Dante,Paxon,Sheridan",
+    "systemmanufacturer": "TARGETING:“Hephaestus” CT-44"
+  },
+  "era": "3124",
+  "displayName": "Warhammer IIC 11",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

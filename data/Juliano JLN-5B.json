@@ -1,0 +1,55 @@
+{
+  "name": "Juliano",
+  "model": "JLN-5B",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "360 XL Engine(IS)",
+  "heatSinks": "16 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Dark Age"
+  ],
+  "extras": {
+    "mul id": "8064",
+    "Config": "Biped",
+    "quirk": "combat_computer",
+    "myomer": "Standard",
+    "LA armor": "30",
+    "RA armor": "30",
+    "LT armor": "30",
+    "RT armor": "30",
+    "CT armor": "47",
+    "HD armor": "9",
+    "LL armor": "38",
+    "RL armor": "38",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "11",
+    "Weapons": "10"
+  },
+  "era": "3146",
+  "displayName": "Juliano JLN-5B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

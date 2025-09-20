@@ -1,0 +1,56 @@
+{
+  "name": "Hammerhands",
+  "model": "HMH-4D",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "225 Fusion Engine",
+  "heatSinks": "13 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1370",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "23",
+    "RL Armor": "23",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "9",
+    "Weapons": "5"
+  },
+  "era": "2492",
+  "displayName": "Hammerhands HMH-4D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

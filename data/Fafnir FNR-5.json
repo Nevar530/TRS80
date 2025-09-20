@@ -1,0 +1,57 @@
+{
+  "name": "Fafnir",
+  "model": "FNR-5",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4152",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "no_arms",
+    "weaponquirk": "stable_weapon:LT:0:ISHeavyGaussRifle",
+    "Myomer": "Standard",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "16",
+    "Weapons": "6"
+  },
+  "era": "3063",
+  "displayName": "Fafnir FNR-5",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

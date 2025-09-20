@@ -1,0 +1,56 @@
+{
+  "name": "Tessen",
+  "model": "TSN-1Cr",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "3172",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "4"
+  },
+  "era": "3069",
+  "displayName": "Tessen TSN-1Cr",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

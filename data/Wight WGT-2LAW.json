@@ -1,0 +1,56 @@
+{
+  "name": "Wight",
+  "model": "WGT-2LAW",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "175 Compact Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3548",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "weak_legs",
+    "Myomer": "Standard",
+    "LA Armor": "9",
+    "RA Armor": "9",
+    "LT Armor": "9",
+    "RT Armor": "9",
+    "CT Armor": "14",
+    "HD Armor": "8",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3075",
+  "displayName": "Wight WGT-2LAW",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

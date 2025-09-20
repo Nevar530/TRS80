@@ -1,0 +1,65 @@
+{
+  "name": "Man O' War",
+  "model": "X",
+  "tonnage": 80,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "3",
+  "engine": "400 XL (Clan) Engine",
+  "heatSinks": "16 Clan Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.49.19-SNAPSHOT on 2024-03-16",
+    "clanname": "Gargoyle",
+    "mul id": "6861",
+    "Config": "Biped Omnimech",
+    "role": "Skirmisher",
+    "weaponquirk": "stable_weapon:RA:7:CLERMediumLaser",
+    "myomer": "Standard",
+    "base chassis heat sinks": "16",
+    "LA armor": "23",
+    "RA armor": "23",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "30",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "10",
+    "Weapons": "9",
+    "overview": "The Gargoyle is an extremely fast assault OmniMech developed with the Timber Wolf as replacements for the first-generation Woodsman OmniMech. The Gargoyle is therefore commonly seen among Clan Wolf, and was a featured assault OmniMech during the Clan Invasion. The Gargoyle earned the name Man O' War from the Inner Sphere forces because of its effectiveness. Along with the Timber Wolf and Naga, the Gargoyle debuted in 2945.",
+    "capabilities": "The Gargoyle T was introduced in the Dark Age. It carries an ATM-9 and TSEMP Cannon from the Inner Sphere in the left arm. The right arm carries six ER Medium Lasers while a Small Pulse Laser is in the center torso. Three tons of ammunition are provided for the ATM system.",
+    "deployment": "The Gargoyle is capable of reaching ground speeds of up to 86.4 km/h thanks to its massive 400 Model SF-3 XL Engine, accounting for over twenty percent of the 'Mech's mass. Built on a standard structure, the Gargoyle has sixteen double heat sinks in its base chassis, which can dissipate heat from most of the Gargoyle's configurations quite effectively. The Gargoyle carries eleven tons of Ferro-Fibrous armor which is light for its size, but provides protection equal to that of most heavy 'Mechs. Even the Gargoyles relatively light twenty-one and half tons of available pod space emphasizes speed; all Gargoyle configs mount weaponry almost exclusively in the arms, reducing the amount of time required to alter the weapon systems; however, with most of the weaponry placed in the arms, the Gargoyle is at the risk of being disarmed by a couple of well-placed shots.",
+    "manufacturer": "Wolf Clan Site OZ-1, Tokasha Mechworks, Tamar HH Industriplex Alpha",
+    "primaryfactory": "Tamar, Tokasha,  Tamar",
+    "systemmanufacturer": "TARGETING:Version Kappa-III TTS"
+  },
+  "era": "3128",
+  "displayName": "Man O' War X",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

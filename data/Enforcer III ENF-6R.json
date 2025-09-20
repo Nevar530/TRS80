@@ -1,0 +1,54 @@
+{
+  "name": "Enforcer III",
+  "model": "ENF-6R",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "250 XL Engine(IS)",
+  "heatSinks": "12 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7985",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "19",
+    "RT armor": "19",
+    "CT armor": "24",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "5",
+    "RTR armor": "5",
+    "RTC armor": "7",
+    "Weapons": "3"
+  },
+  "era": "3102",
+  "displayName": "Enforcer III ENF-6R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

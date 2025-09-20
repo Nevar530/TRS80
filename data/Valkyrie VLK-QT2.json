@@ -1,0 +1,57 @@
+{
+  "name": "Valkyrie",
+  "model": "VLK-QT2",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "3380",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "13",
+    "HD Armor": "9",
+    "LL Armor": "11",
+    "RL Armor": "11",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "2",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Valkyrie .jpg"
+  },
+  "era": "3081",
+  "displayName": "Valkyrie VLK-QT2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

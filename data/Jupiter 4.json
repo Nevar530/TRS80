@@ -1,0 +1,56 @@
+{
+  "name": "Jupiter",
+  "model": "4",
+  "tonnage": 100,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "400 XL (Clan) Engine(IS)",
+  "heatSinks": "21 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6829",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "imp_target_long",
+    "Myomer": "Standard",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "16",
+    "Weapons": "6"
+  },
+  "era": "3093",
+  "displayName": "Jupiter 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

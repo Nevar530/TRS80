@@ -1,0 +1,56 @@
+{
+  "name": "Nyx",
+  "model": "NX-90",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "300 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2309",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "15",
+    "HD Armor": "9",
+    "LL Armor": "10",
+    "RL Armor": "10",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "5",
+    "Weapons": "1"
+  },
+  "era": "3080",
+  "displayName": "Nyx NX-90",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

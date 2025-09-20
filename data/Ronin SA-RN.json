@@ -1,0 +1,56 @@
+{
+  "name": "Ronin",
+  "model": "SA-RN",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "250 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2738",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "22",
+    "HD Armor": "8",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "5"
+  },
+  "era": "3051",
+  "displayName": "Ronin SA-RN",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

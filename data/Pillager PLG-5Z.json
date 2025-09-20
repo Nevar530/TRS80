@@ -1,0 +1,63 @@
+{
+  "name": "Pillager",
+  "model": "PLG-5Z",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "2529",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "battle_fists_ra",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "52",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "10",
+    "Weapons": "5",
+    "overview": "The largest BattleMech ever built by HildCo Interplanetary, the Pillager is built as a larger version of the Victor, and is intended for assaulting urban centers and hardened fortifications.",
+    "capabilities": "Based on a range of engine types, the Pillager has average mobility for its size, with a top speed of 54 km/h. Three HildCo Model 13 jump jets allow the 'Mech to jump up to ninety meters, increasing its mobility. The Pillager possesses outstanding armor protection and more than enough heat sinks to meet the Pillager's needs.",
+    "deployment": "This upgraded version of the 4Z removes the jump jets and a ton of Gauss ammo to mount an ER PPC. It takes advantage of the heat buildup from the Stealth Armor and PPC to mount Triple Strength Myomer so that it can move on the ground more quickly.",
+    "history": "The Pillager was the largest 'Mech ever built by HildCo during the Reunification War. The destruction of the manufacturing facilities that produced the Pillager's advanced technologies halted production during the Second Succession War, but the decoding of the Gray Death memory core allowed the Pillager to be reintroduced to the Inner Sphere. The Pillager has a long and colorful battle history. From the Reunification Battle through the Succession Wars, it has seen action in every war. Records show that during those fights, enemy forces tended to retreat at the sight of approaching Pillagers. The Pillager most recently demonstrated its amazing strength during the FedCom and the Capellan/St. Ives Civil Wars. When a Pillager-led unit attacked, many strongholds and defenses crumbled. Even now, in the struggle between Hasek's Capellan March and House Liao, the Pillager is making an impact on the battlefield, just as it did during the Amaris Civil War. The Pillager now serves in the majority of house militaries and mercenary troops. Because of the reintegration of St. Ives, the Capellan military has the most brawny 'Mechs.",
+    "manufacturer": "HildCo Interplanetary",
+    "primaryfactory": "St. Ives",
+    "systemmanufacturer": "TARGETING:C-Apple Churchill"
+  },
+  "era": "3070",
+  "displayName": "Pillager PLG-5Z",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

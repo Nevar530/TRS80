@@ -1,0 +1,63 @@
+{
+  "name": "Katana (Crockett)",
+  "model": "CRK-5003-2",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "255 Fusion Engine(IS)",
+  "heatSinks": "20 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1760",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "poor_life_support",
+    "myomer": "Standard",
+    "LA armor": "19",
+    "RA armor": "19",
+    "LT armor": "23",
+    "RT armor": "23",
+    "CT armor": "31",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "12",
+    "Weapons": "7",
+    "overview": "The Katana began its existence when the Draconis Combine was given several downgraded Crockett BattleMechs by ComStar as part of Operation Rosebud.",
+    "capabilities": "The Katana shares many of the same features as the Crockett, right down to the serial number. Just like the Crockett, the Katana mounts the same fusion engine and jump jets for similar ground speed and leaping ability. It is also protected by the same twelve and a half tons of armor and utilizes the same electronic systems. Unlike the original 'Mech, the Katana makes do with twenty standard heat sinks.",
+    "deployment": "In its left torso is a Blankenburg LB-X Autocannon/10 which draws from a two-ton ammo bin in the right torso. A pair of Magna Mk III Large Lasers split between both arms take the place of the extended-range versions found in the Crockett. For close-range combat it carries two Holly SRM-6s in either side torso, with two tons of reloads concentrated in the right side, and for point blank defense the 'Mech carries two Dodd Small Lasers mounted co-axially with the large lasers.",
+    "history": "During negotiations in 3035 Primus Myndo Waterly gave the Combine the Blankenburg Technologies storage facility on Soul as a gesture of good faith. The facility was handed over to Independence Weaponry (although for appearance's sake it was \"leased\" from Blankenburg) which, beyond a treasure trove of lostech weapons, also contained a number of Crocketts. IW went about reverse-engineering the weapons so they could produce copies at a nearby facility for sale to other Combine manufacturers and closely examined the Crocketts for several months. After making minor modifications these 'Mechs were renamed Katanas and used to replace Chargers in several DCMS units. The Katana quickly become a mainstay in many of the heavier mobile line units, especially after the invention of the C3 Computer. Recognizing the value in this new technology, IW quickly developed several new Katana variants which could effectively operate as part of C3 lances. When the \"lease\" expired and the Soul facility was returned to Blankenburg, the company hired on the entire IW Katana engineering team and entered into a technology-sharing agreement to continue production of new Katanas.",
+    "manufacturer": "Blankenburg Technologies (Refit)",
+    "primaryfactory": "Soul",
+    "systemmanufacturer": "TARGETING:Scope 30 RNDST"
+  },
+  "era": "3035",
+  "displayName": "Katana (Crockett) CRK-5003-2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "Shadow Hawk IIC",
+  "model": "5",
+  "tonnage": 45,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "270 Fusion (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2915",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_life_support",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "5",
+    "overview": "The Shadow Hawk IIC is a second-line Clan BattleMech based upon the Shadow Hawk that was first fielded by the Star League.",
+    "capabilities": "The inexpensive unit is protected by seven and a half tons of Ferro-Fibrous armor, mounted on a weight-saving Endo Steel chassis. This medium 'Mech can reach a respectable top speed of 97 km/h, though it also carries enough jump jets to vault up to 180 meters at a time.",
+    "deployment": "This variant uses twin Zeta-Series X Plasma Cannons and a trio of Tau-II AP Gauss Rifles to decimate non-BattleMech formations.",
+    "manufacturer": "Trellshire Heavy Industries (Refit)",
+    "primaryfactory": "Twycross",
+    "systemmanufacturer": "TARGETING:TRTTS Mark II"
+  },
+  "era": "3069",
+  "displayName": "Shadow Hawk IIC 5",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

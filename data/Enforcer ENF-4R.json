@@ -1,0 +1,64 @@
+{
+  "name": "Enforcer",
+  "model": "ENF-4R",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "200 Fusion Engine(IS)",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "976",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "barrel_fists_ra",
+    "weaponquirk": "imp_cooling:RA:3:Autocannon/10",
+    "myomer": "Standard",
+    "LA armor": "14",
+    "RA armor": "14",
+    "LT armor": "17",
+    "RT armor": "17",
+    "CT armor": "23",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "3",
+    "RTR armor": "3",
+    "RTC armor": "4",
+    "Weapons": "3",
+    "overview": "Since it first walked off of the production line, the Enforcer has been the iconic medium-weight workhorse of the Federated Suns' Succession Wars era military.",
+    "capabilities": "The Enforcer fulfilled the roles of a mobile barrage vehicle, laying down an intense hail of fire as a prelude to an offensive or to blunt an enemy's attack, and as a trooper 'Mech, using its thick frontal armor and good jumping distance of one hundred and twenty meters to effectively brawl with the enemy despite lacking hand actuators. The sturdy and inexpensive design's mobility also made it an ideal city fighter, especially when sniping the enemy during hit-and-run attacks. One of the design's problems was that, with most of its nine tons of armor concentrated forward, the amount of protection in its rear torso is less than on some light 'Mechs. The Enforcer's biggest flaw though was its limited ammunition stores, though when possible a truck-and-crane reloading system is used during less-mobile battles. Attempts were made to replace the small laser with another ton of ammunition, however there were complicated linkage problems in getting the ammo from the left torso to the right arm, increasing the rate of jamming or reducing the rate of fire to unacceptable levels. What's more the rounds had to be routed along the 'Mechs back where its armor was weakest.",
+    "deployment": "The Enforcer's primary weapon is a Federated Autocannon, an excellent large-caliber model firing in bursts of ten rounds and whose cooling jacket doubles as a protective sleeve for engaging in hand-to-hand combat. While one ton of ammunition only allows for ten bursts total, the rounds are stored in an equivalent number of big clips which are easy to eject and reload. Complementing the autocannon is a ChisComp 43 Large Laser in the left arm, both giving the Enforcer respectable intermediate range firepower, while a ChisComp 32 Small Laser in the left torso provides for close range combat.",
+    "history": "This is in large part due to production of the Enforcer remaining largely undisturbed throughout the Succession Wars, despite the relative lack of industrialization that has long hampered the Federated Suns. With the autocannon-obsessed Armed Forces of the Federated Suns building up its BattleMech forces upon the collapse of the Star League, the discovery on Achernar of schematics for an unbuilt autocannon-carrying Star League 'Mech was a case of perfect timing. Modifying the design by swapping two medium lasers for a single larger one, Achernar BattleMechs rushed it through development and began production in 2777.",
+    "manufacturer": "Achernar BattleMechs",
+    "primaryfactory": "New Avalon",
+    "systemmanufacturer": "TARGETING:Federated Hunter"
+  },
+  "era": "2777",
+  "displayName": "Enforcer ENF-4R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

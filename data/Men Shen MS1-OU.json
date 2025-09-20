@@ -1,0 +1,57 @@
+{
+  "name": "Men Shen",
+  "model": "MS1-OU",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "330 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2167",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "17",
+    "RA Armor": "17",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "26",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "6"
+  },
+  "era": "3077",
+  "displayName": "Men Shen MS1-OU",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

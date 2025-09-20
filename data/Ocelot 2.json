@@ -1,0 +1,56 @@
+{
+  "name": "Ocelot",
+  "model": "2",
+  "tonnage": 35,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "210 XL (Clan) Engine",
+  "heatSinks": "14 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "2314",
+    "Config": "Biped",
+    "role": "Striker",
+    "weaponquirk": "jettison_capable:RA:5:CLERMediumLaser",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "14",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "4",
+    "Weapons": "3"
+  },
+  "era": "3070",
+  "displayName": "Ocelot 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

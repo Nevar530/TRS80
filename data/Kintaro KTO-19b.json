@@ -1,0 +1,63 @@
+{
+  "name": "Kintaro",
+  "model": "KTO-19b",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1792",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "27",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "9",
+    "Weapons": "6",
+    "overview": "Introduced in 2587 for the SLDF, the Kintaro was designed with one sole mission: tagging enemy units with a Narc Missile Beacon. As such, it is a 'Mech that is intended to work in a team with a missile-heavy lance.",
+    "capabilities": "After it delivers its deadly package to the enemy, the Kintaro disengages and lets its lance mates do most of the work as their missiles track the signal from the beacon. The act of putting this into practice is far less simple. With a maximum speed of 86.4 km/h the Kintaro is not able to engage and disengage from enemy units as easily as its designers envisioned and because of this, if a pilot is not observant of their surroundings and the enemy, they can find themselves in a very dangerous situation.",
+    "deployment": "The KTO-19b was an upgrade utilized by the Royal Brigades of the SLDF. It used an XL Engine and Double Heat Sinks to free up space to upgrade the KTO-19's LRM-5 launcher to a larger LRM-15 with two tons of CASE-protected ammunition. CASE was also added to the SRM ammo bins, with the leftover half ton devoted to more armor.",
+    "history": "The Succession Wars saw the last known Narc factory destroyed in 2792, and the advances made during the Star League era became lostech. The loss of Narc beacons rendered the Kintaro's role unnecessary, and it became just another missile-armed 'Mech. By the Third Succession War the Kintaro was nearly extinct, but in the end was saved when General Dynamics rebuilt a Kintaro factory on Ozawa, though they could only produce the downgraded KTO-18 variant. ComStar however maintained a number of original Kintaros which they used to outfit their Com Guards. They also produced their own slightly-downgraded variant, the KTO-20, which they gifted to the Draconis Combine as part of Operation Rosebud. Concentrated among the Ghost Regiments and certain Sword of Light regiments, the superiority of these 'Mechs over their Federated Commonwealth cousins caused an overreaction during the War of 3039 as they were targeted for destruction more than necessary, leaving other units free to fight.",
+    "manufacturer": "General Mechanics",
+    "primaryfactory": "Mars",
+    "systemmanufacturer": "TARGETING:Starbeam 3000"
+  },
+  "era": "2731",
+  "displayName": "Kintaro KTO-19b",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

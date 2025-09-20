@@ -1,0 +1,56 @@
+{
+  "name": "Eagle",
+  "model": "EGL-1M",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "125 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "936",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "weak_head_1",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "12",
+    "HD Armor": "9",
+    "LL Armor": "9",
+    "RL Armor": "9",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "3"
+  },
+  "era": "3058",
+  "displayName": "Eagle EGL-1M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

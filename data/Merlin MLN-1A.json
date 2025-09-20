@@ -1,0 +1,63 @@
+{
+  "name": "Merlin",
+  "model": "MLN-1A",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "18 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard((Unknown Technology Base))"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "2177",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "26",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "6",
+    "overview": "The Merlin uses components that are all reliable and readily available, making the Merlin a durable and easy-to-repair 'Mech.",
+    "capabilities": "The 'Mech is powered by a Pitban 240 fusion engine that gives it a top speed of 64.8 km/h. The Merlin carries ten and a half tons of armor, which is a respectable amount of protection for its weight. Additionally, the Merlin carries eighteen heat sinks to handle its heavy heat load.",
+    "deployment": "The Merlin is armed to be able to engage an enemy at any range. For long range combat, the 'Mech carries a Magna Hellstar PPC and a Holly LRM-5 launcher. To protect itself at medium to short ranges, a pair of Martell Model 5 medium lasers provide the Merlin with respectable short range firepower. Finally, to protect the 'Mech against infantry attacks, the Merlin has a Zippo Flamer and a Sperry Browning Machine Gun. Four Pitban LFT-50 series jump jets allow the 'Mech to travel up to 120 meters in the air.",
+    "history": "The Merlin debuted in 3010 as a product of the rebuilt Mountain Wolf BattleMechs. The Merlin was hailed as a technological marvel at the time it was released, as it was the first completely new design to be developed in over 100 years.",
+    "manufacturer": "Mountain Wolf BattleMechs, Vandenberg Mechanized Industries",
+    "primaryfactory": "Alpheratz, New Vandenberg",
+    "systemmanufacturer": "TARGETING:Magestrix Gamma"
+  },
+  "era": "3010",
+  "displayName": "Merlin MLN-1A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

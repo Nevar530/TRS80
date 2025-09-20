@@ -1,0 +1,56 @@
+{
+  "name": "Shugenja",
+  "model": "SJA-7D",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "2942",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "32",
+    "RL Armor": "32",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "5"
+  },
+  "era": "3061",
+  "displayName": "Shugenja SJA-7D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

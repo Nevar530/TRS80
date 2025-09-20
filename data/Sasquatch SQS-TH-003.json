@@ -1,0 +1,56 @@
+{
+  "name": "Sasquatch",
+  "model": "SQS-TH-003",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "425 Large XXL Engine",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2800",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "27",
+    "RT Armor": "27",
+    "CT Armor": "39",
+    "HD Armor": "9",
+    "LL Armor": "33",
+    "RL Armor": "33",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "4"
+  },
+  "era": "3068",
+  "displayName": "Sasquatch SQS-TH-003",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Wolverine II",
+  "model": "WVR-7H",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 Fusion Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3585",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "pro_actuator",
+    "myomer": "Standard",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "20",
+    "RT armor": "20",
+    "CT armor": "20",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "8",
+    "Weapons": "3",
+    "overview": "The Wolverine commonly served as a heavy scout unit. Often deployed in situations where heavy opposition could easily destroy lighter BattleMechs, it has had a reliable service record ever since its initial deployment within the Star League Defense Force. With respectable armor, speed, and firepower, it can easily outfight lighter enemy scouts and defend itself capably if ambushed.",
+    "capabilities": "The autocannon, missile system and laser found on most Wolverines are all reliable and well-storied systems. Unfortunately, the jump jets suffer from an opposing reputation; the Northrup 12000's are underpowered and prone to breakdowns. The one defining system to be found on the Wolverine, however, are its superb Tek BattleCom and Garret T11-b communications systems. The comgear, regardless of the manufacturer, is well-shielded and features a multi-channel transmitter and receiver, making the Wolverine a powerful Command BattleMech for scouting formations.",
+    "deployment": "Similar in many ways to the 7D, the 7H—referred to as the Wolverine II—was used by the Royal Brigades of the SLDF starting in 2770 and was also an upgrade of the 6R. It utilizes an Endo Steel structure, Ferro-Fibrous armor, and double heat sinks to increase combat capabilities. Extra armor protects the legs, while CASE protects all the ammo bins. Like the 7D, the autocannon is upgraded to an Ultra-class model and the medium laser is upgraded to a pulse version. In addition, the SRM-6 is slaved to an Artemis IV Fire Control System to improve the accuracy of the individual missiles.",
+    "history": "A widespread part of every major military, the Wolverine has manufacturing plants scattered throughout the entire Inner Sphere. While certain states-notably the Free Worlds League-have larger numbers of the design, only the Capellans began facing a shortage of the Wolverine after the loss of their Nanking facilities.",
+    "manufacturer": "Kallon Industries and SLDF Research Division",
+    "primaryfactory": "New Earth",
+    "systemmanufacturer": "TARGETING:Garret T11S"
+  },
+  "era": "2770",
+  "displayName": "Wolverine II WVR-7H",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

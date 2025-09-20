@@ -1,0 +1,57 @@
+{
+  "name": "Jackal",
+  "model": "JA-KL-1532",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 XL Engine",
+  "heatSinks": "11 Single",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1653",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "weak_legs",
+    "weaponquirk": "imp_cooling:RT:3:ISERPPC",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "15",
+    "HD Armor": "8",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3052",
+  "displayName": "Jackal JA-KL-1532",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

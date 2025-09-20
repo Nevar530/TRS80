@@ -1,0 +1,57 @@
+{
+  "name": "Diomede",
+  "model": "D-M3D-3 ConstructionMech",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Fusion Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "2",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Industrial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Industrial",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "901",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "myomer": "Standard",
+    "LA armor": "33",
+    "RA armor": "33",
+    "LT armor": "30",
+    "RT armor": "30",
+    "CT armor": "45",
+    "HD armor": "9",
+    "LL armor": "42",
+    "RL armor": "42",
+    "RTL armor": "12",
+    "RTR armor": "12",
+    "RTC armor": "16",
+    "Weapons": "4",
+    "Liquid Storage": "SIZE:1.0",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\Diomede.jpg"
+  },
+  "era": "3084",
+  "displayName": "Diomede D-M3D-3 ConstructionMech",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

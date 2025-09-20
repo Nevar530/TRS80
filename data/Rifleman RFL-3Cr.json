@@ -1,0 +1,57 @@
+{
+  "name": "Rifleman",
+  "model": "RFL-3Cr",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 Fusion Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": "Small Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "2696",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "17",
+    "RA Armor": "17",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "17",
+    "RL Armor": "17",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "7",
+    "Weapons": "4",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\rifleman Silhouette.jpg"
+  },
+  "era": "3071",
+  "displayName": "Rifleman RFL-3Cr",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

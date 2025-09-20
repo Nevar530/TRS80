@@ -1,0 +1,56 @@
+{
+  "name": "Scylla",
+  "model": "2",
+  "tonnage": 100,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "400 XL Fusion Engine",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5723",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "oversized",
+    "Myomer": "Standard",
+    "LA Armor": "32",
+    "RA Armor": "32",
+    "LT Armor": "33",
+    "RT Armor": "33",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "9",
+    "RTR Armor": "9",
+    "RTC Armor": "11",
+    "Weapons": "7"
+  },
+  "era": "3079",
+  "displayName": "Scylla 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Neanderthal",
+  "model": "NTL-UG",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "400 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Free Worlds League"
+  ],
+  "extras": {
+    "mul id": "6514",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "non_standard",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "32",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "5"
+  },
+  "era": "3124",
+  "displayName": "Neanderthal NTL-UG",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

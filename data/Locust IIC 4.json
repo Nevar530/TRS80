@@ -1,0 +1,56 @@
+{
+  "name": "Locust IIC",
+  "model": "4",
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "200 Fusion (Clan) Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "1917",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "weak_legs",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "10",
+    "HD Armor": "8",
+    "LL Armor": "10",
+    "RL Armor": "10",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "7"
+  },
+  "era": "3064",
+  "displayName": "Locust IIC 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

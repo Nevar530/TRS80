@@ -1,0 +1,56 @@
+{
+  "name": "Thunder Fox",
+  "model": "TFT-F11",
+  "tonnage": 55,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "4",
+  "engine": "275 XXL Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Hardened(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Torso-Mounted Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6892",
+    "Config": "Quad",
+    "role": "Sniper",
+    "quirk": "easy_maintain",
+    "myomer": "Standard",
+    "FLL armor": "26",
+    "FRL armor": "26",
+    "LT armor": "21",
+    "RT armor": "21",
+    "CT armor": "31",
+    "HD armor": "9",
+    "RLL armor": "26",
+    "RRL armor": "26",
+    "RTL armor": "5",
+    "RTR armor": "5",
+    "RTC armor": "5",
+    "Weapons": "1"
+  },
+  "era": "3119",
+  "displayName": "Thunder Fox TFT-F11",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

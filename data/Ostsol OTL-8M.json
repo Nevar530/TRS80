@@ -1,0 +1,56 @@
+{
+  "name": "Ostsol",
+  "model": "OTL-8M",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "360 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "2378",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "low_profile",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "7"
+  },
+  "era": "3066",
+  "displayName": "Ostsol OTL-8M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

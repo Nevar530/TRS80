@@ -1,0 +1,63 @@
+{
+  "name": "Grand Titan",
+  "model": "T-IT-N10M",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "400 XL Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1265",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "29",
+    "RA Armor": "29",
+    "LT Armor": "31",
+    "RT Armor": "31",
+    "CT Armor": "42",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "11",
+    "RTR Armor": "11",
+    "RTC Armor": "19",
+    "Weapons": "10",
+    "overview": "The Grand Titan was designed by Vining Engineering and Salvage Team to take on the best 'Mechs that the Inner Sphere or the Clans had to offer.",
+    "capabilities": "The 'Mech is built on an Endo Steel chassis and with a LTV 400 XL Engine, which propels the Grand Titan to a top speed of 64.8 kph, to save as much weight as possible. The Grand Titan also carries eighteen tons of armor.",
+    "deployment": "The Grand Titan carries a large arsenal of weapons that allow it to work best at short to medium range. The longest-range weapon carried is a Holly LRM-15 launcher linked to an Artemis IV fire control system for greater accuracy. The 'Mech also carries two Diverse Optics Type 20 Large Pulse Lasers which it brings to bear on an enemy as it closes ranges. Once at close range, the 'Mech carries two Diverse Optics Medium Pulse Lasers, two Diverse Optics Small Pulse Lasers, and a pair of Holly SRM-6 launchers with Artemis IV fire control systems. For protection from missile attacks, the 'Mech has a McArthur Anti-Missile System.",
+    "history": "The design of the Grand Titan was sold to Earthwerks Incorporated in the Free Worlds League and has become a 'Mech commonly seen in the FWLM and the Word of Blake militia.",
+    "manufacturer": "Earthwerks Ltd.",
+    "primaryfactory": "Keystone Plant #3",
+    "systemmanufacturer": "TARGETING:O/P FiberFeed 201 with Artemis IV FCS Interface"
+  },
+  "era": "3054",
+  "displayName": "Grand Titan T-IT-N10M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

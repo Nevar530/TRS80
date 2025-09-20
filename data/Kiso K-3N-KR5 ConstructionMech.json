@@ -1,0 +1,54 @@
+{
+  "name": "Kiso",
+  "model": "K-3N-KR5 ConstructionMech",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "2",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Industrial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Industrial",
+  "cockpit": "Command Console",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1803",
+    "Config": "Quad",
+    "Myomer": "Standard",
+    "FLL Armor": "32",
+    "FRL Armor": "32",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "RLL Armor": "32",
+    "RRL Armor": "32",
+    "RTL Armor": "14",
+    "RTR Armor": "14",
+    "RTC Armor": "16",
+    "Weapons": "0"
+  },
+  "era": "2703",
+  "displayName": "Kiso K-3N-KR5 ConstructionMech",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

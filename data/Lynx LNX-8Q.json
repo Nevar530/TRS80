@@ -1,0 +1,56 @@
+{
+  "name": "Lynx",
+  "model": "LNX-8Q",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "275 Fusion Engine",
+  "heatSinks": "15 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard((Unknown Technology Base))"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "1966",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "multi_trac",
+    "Myomer": "Standard",
+    "LA Armor": "17",
+    "RA Armor": "17",
+    "LT Armor": "19",
+    "RT Armor": "19",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "25",
+    "RL Armor": "25",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "4"
+  },
+  "era": "2853",
+  "displayName": "Lynx LNX-8Q",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

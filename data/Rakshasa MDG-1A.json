@@ -1,0 +1,56 @@
+{
+  "name": "Rakshasa",
+  "model": "MDG-1A",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "375 XL Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2631",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "weak_head_1",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "32",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "9",
+    "Weapons": "7"
+  },
+  "era": "3055",
+  "displayName": "Rakshasa MDG-1A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

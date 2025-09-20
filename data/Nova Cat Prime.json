@@ -1,0 +1,64 @@
+{
+  "name": "Nova Cat",
+  "model": "Prime",
+  "tonnage": 70,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "280 XL (Clan) Engine(IS)",
+  "heatSinks": "25 Clan Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "2306",
+    "Config": "Biped Omnimech",
+    "role": "Sniper",
+    "quirk": "exp_actuator",
+    "myomer": "Standard",
+    "base chassis heat sinks": "11",
+    "LA armor": "22",
+    "RA armor": "22",
+    "LT armor": "23",
+    "RT armor": "23",
+    "CT armor": "35",
+    "HD armor": "9",
+    "LL armor": "30",
+    "RL armor": "30",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "8",
+    "Weapons": "5",
+    "overview": "A Nova Cat heavy OmniMech built to protect the Nova Cats spiritually and militarily.",
+    "capabilities": "The basic components of this design, combined with its characteristics as an OmniMech, make it very simple to repair and leave room for the large amount of double heat sinks most variants carry. 13 ½ tons of standard armor make this 'Mech very difficult to kill.",
+    "deployment": "The standard configuration is all long-range energy weapons, which, although allowing the Nova Cat to stay in the battle for a longer period of time, means the pilot will have to alternate their weapon choices to avoid overheating despite many additional heat sinks. Two ER PPCs are the 'Mech's main weapons, which are backed up with three ER Large Lasers.",
+    "history": "After its defeat on Tukayyid, Khan Severen Leroux of Clan Nova Cat commissioned the Nova Cat OmniMech, meant to protect the Clan both militarily and spiritually. The 12 meter tall 'Mech is inspired by the Night Gyr created by Clan Jade Falcon.",
+    "manufacturer": "Barcella Alpha, Irece Alpha",
+    "primaryfactory": "Barcella, Irece",
+    "systemmanufacturer": "TARGETING:Build 2 CAT TTS"
+  },
+  "era": "3059",
+  "displayName": "Nova Cat Prime",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

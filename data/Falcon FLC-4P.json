@@ -1,0 +1,56 @@
+{
+  "name": "Falcon",
+  "model": "FLC-4P",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "180 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1027",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "low_profile",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "14",
+    "HD Armor": "9",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3050",
+  "displayName": "Falcon FLC-4P",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Jade Hawk",
+  "model": "JHK-03",
+  "tonnage": 75,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "3",
+  "engine": "375 XL (Clan) Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "mul id": "6564",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "non_standard",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "29",
+    "RL Armor": "29",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "8"
+  },
+  "era": "3135",
+  "displayName": "Jade Hawk JHK-03",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

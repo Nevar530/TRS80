@@ -1,0 +1,56 @@
+{
+  "name": "Hammerhands",
+  "model": "HMH-6E",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "225 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1373",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "pro_actuator",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3077",
+  "displayName": "Hammerhands HMH-6E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

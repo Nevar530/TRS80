@@ -1,0 +1,56 @@
+{
+  "name": "Cougar",
+  "model": "X 2",
+  "tonnage": 35,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "175 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6952",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ubiquitous_clan",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "14",
+    "HD Armor": "8",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "2"
+  },
+  "era": "3089",
+  "displayName": "Cougar X 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Snake",
+  "model": "SNK-1V",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "225 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2974",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "11",
+    "RT Armor": "11",
+    "CT Armor": "16",
+    "HD Armor": "8",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "4"
+  },
+  "era": "3053",
+  "displayName": "Snake SNK-1V",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

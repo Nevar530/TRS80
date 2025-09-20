@@ -1,0 +1,66 @@
+{
+  "name": "Vulture",
+  "model": "E",
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "clanname": "Mad Dog",
+    "mul id": "3470",
+    "Config": "Biped Omnimech",
+    "role": "Sniper",
+    "quirk": "imp_target_med",
+    "myomer": "Standard",
+    "base chassis heat sinks": "12",
+    "nocrit": "Standard:None",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "16",
+    "RT armor": "16",
+    "CT armor": "23",
+    "HD armor": "9",
+    "LL armor": "23",
+    "RL armor": "23",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "7",
+    "Weapons": "2",
+    "overview": "The Mad Dog is a heavy Clan OmniMech used for long-range indirect fire support. With hunched shoulders, a protruding head, and reverse-jointed legs, the Mad Dog resembles a vulture, so much so that it was codenamed Vulture and Hagetaka (\"Vulture\" in Japanese) by the Inner Sphere forces which first encountered it.",
+    "capabilities": "The E configuration makes use of a Hyper-Assault Gauss Rifle 30 in each arm, though each one only has a single ton of ammunition to draw upon.",
+    "deployment": "The name also fit the battlefield role of the Mad Dog; to act as a support 'Mech, and it often holds a hill maintaining constant watch over the entire battlefield, like a vulture waiting for its prey. With its ample firepower and decent speed of 86.4 km/h, it makes a highly mobile firing platform, and as such has spread to near ubiquity among the forces deployed by the Clans, although the design is favored more by Clan Ghost Bear MechWarriors. The Mad Dog carries eight and a half tons of Ferro-Fibrous armor for decent protection, although it will not be able to stand up to heavy fire.",
+    "history": "The Mad Dog was designed by Clan Smoke Jaguar as a second generation OmniMech based on the original heavy OmniMech Lupus of Clan Coyote. The Mad Dog also used some of the same moulds of the Clan Wolf Timber Wolf OmniMech. However, despite using some of the same moulds (which might be viewed as high praise), the Mad Dog was named as a slur to the Lupus and Timber Wolf, and to Clans Wolf and Coyote. Because of its widespread production, most Clans maintain a large number of Mad Dogs in their toumans.",
+    "manufacturer": "Various,Svarstaad Industriplex Beta",
+    "primaryfactory": "Various,Svarstaad",
+    "systemmanufacturer": "TARGETING:Cat’s Eye MD6"
+  },
+  "era": "3069",
+  "displayName": "Vulture E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

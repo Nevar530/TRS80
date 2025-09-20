@@ -1,0 +1,57 @@
+{
+  "name": "Marauder",
+  "model": "MAD-5L",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "2040",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "low_profile",
+    "weaponquirk": "exposed_linkage:RT:6:ISERPPC",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "5"
+  },
+  "era": "3067",
+  "displayName": "Marauder MAD-5L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

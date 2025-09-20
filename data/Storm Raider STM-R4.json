@@ -1,0 +1,56 @@
+{
+  "name": "Storm Raider",
+  "model": "STM-R4",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "210 XL Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Impact-Resistant(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Lyran Commonwealth"
+  ],
+  "extras": {
+    "mul id": "6617",
+    "Config": "Biped",
+    "role": "Scout",
+    "weaponquirk": "jettison_capable:LA:4:ISRotaryAC2",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "17",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "1"
+  },
+  "era": "3108",
+  "displayName": "Storm Raider STM-R4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

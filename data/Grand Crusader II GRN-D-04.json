@@ -1,0 +1,56 @@
+{
+  "name": "Grand Crusader II",
+  "model": "GRN-D-04",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 Light Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1255",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "bad_rep_is",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "34",
+    "RL Armor": "34",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "5"
+  },
+  "era": "3066",
+  "displayName": "Grand Crusader II GRN-D-04",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

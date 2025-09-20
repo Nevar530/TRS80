@@ -1,0 +1,56 @@
+{
+  "name": "Watchman",
+  "model": "WTC-4DM",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Fusion Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "3533",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "16",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "4"
+  },
+  "era": "3063",
+  "displayName": "Watchman WTC-4DM",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

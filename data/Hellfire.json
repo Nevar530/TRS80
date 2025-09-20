@@ -1,0 +1,56 @@
+{
+  "name": "Hellfire",
+  "model": null,
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4300",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "difficult_maintain",
+    "Myomer": "MASC",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "9"
+  },
+  "era": "3058",
+  "displayName": "Hellfire",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

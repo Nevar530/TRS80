@@ -1,0 +1,59 @@
+{
+  "name": "Kuma",
+  "model": null,
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "360 XL (Clan) Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1849",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "hard_pilot",
+    "weaponquirk": "accurate:LA:3:CLHeavyLargeLaser",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "3",
+    "manufacturer": "Alshain Battleworx",
+    "primaryfactory": "Alshain"
+  },
+  "era": "3082",
+  "displayName": "Kuma",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

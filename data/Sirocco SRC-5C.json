@@ -1,0 +1,57 @@
+{
+  "name": "Sirocco",
+  "model": "SRC-5C",
+  "tonnage": 95,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "285 Fusion Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "2952",
+    "Config": "Quad",
+    "role": "Juggernaut",
+    "quirk": "difficult_maintain",
+    "weaponquirk": "direct_torso_mount:LT:7:ISERMediumLaser",
+    "Myomer": "Standard",
+    "FLL Armor": "40",
+    "FRL Armor": "40",
+    "LT Armor": "25",
+    "RT Armor": "25",
+    "CT Armor": "40",
+    "HD Armor": "9",
+    "RLL Armor": "40",
+    "RRL Armor": "40",
+    "RTL Armor": "15",
+    "RTR Armor": "15",
+    "RTC Armor": "20",
+    "Weapons": "9"
+  },
+  "era": "3060",
+  "displayName": "Sirocco SRC-5C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Dasher II",
+  "model": "3",
+  "tonnage": 40,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "3",
+  "engine": "320 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6920",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "poor_performance",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "4",
+    "Weapons": "1"
+  },
+  "era": "3136",
+  "displayName": "Dasher II 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

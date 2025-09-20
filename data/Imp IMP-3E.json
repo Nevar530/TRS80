@@ -1,0 +1,56 @@
+{
+  "name": "Imp",
+  "model": "IMP-3E",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine",
+  "heatSinks": "30 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1610",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "25",
+    "RA Armor": "25",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "40",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "12",
+    "RTR Armor": "12",
+    "RTC Armor": "21",
+    "Weapons": "6"
+  },
+  "era": "3050",
+  "displayName": "Imp IMP-3E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

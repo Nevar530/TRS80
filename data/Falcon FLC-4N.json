@@ -1,0 +1,61 @@
+{
+  "name": "Falcon",
+  "model": "FLC-4N",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "180 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "1022",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "low_profile",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "14",
+    "HD Armor": "9",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "5",
+    "Overview": "The Reunification War was, to the Great Houses and the SLDF, a conflict for which they were largely unprepared. Their doctrines and militaries were geared towards fighting each other with largely accepted tactics on mostly familiar ground. The periphery battlefields, located at the end of supply chains stretched to their limits, instead saw many examples of unconventional warfare and guerrilla tactics. The Falcon was to be a solution to this problem. Produced by Stormvanger Assemblies out of Hesperus II, the BattleMech was used to quickly bolster Star League forces.",
+    "Capabilities": "Respectably armored for its size, the Falcon was often used as a premier \"bug\" hunter. Lighter Stingers, Wasps, and Locusts could mount similar firepower, but the rugged toughness of the Falcon would always give it an edge in encounters with these common 'Mechs. Added as a last-minute modification to the chassis, the two rear-mounted machine guns were placed to deter infantry from ambushing or swarming the Falcon. With massive numbers of infantry regiments fielded during the Reunification War, these guns proved invaluable towards keeping the light 'Mech alive.",
+    "Deployment": "The Stormvanger Assemblies manufacturing plant was quickly destroyed at the onset of the Succession Wars. Attrition rapidly took its toll, and the Falcon disappeared from Inner Sphere battlefields for centuries. The appearance of Wolf's Dragoons, with many of their Star League-era BattleMechs, brought the Falcon back into the limelight, while ComStar's gift of BattleMechs to the Draconis Combine after the Fourth Succession War put limited numbers of the 'Mech in Kuritan hands. While the Falcon would see use within these two forces, occasionally spreading to commands allied to the Dragoons, the lack of any manufacturing plants meant that every Falcon destroyed was irreplaceable. Indeed, none have been seen since the end of the Jihad.",
+    "systemmanufacturer": "TARGETING:Dynatec",
+    "systemmode": "TARGETING:150A"
+  },
+  "era": "2582",
+  "displayName": "Falcon FLC-4N",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

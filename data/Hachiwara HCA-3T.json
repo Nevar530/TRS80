@@ -1,0 +1,56 @@
+{
+  "name": "Hachiwara",
+  "model": "HCA-3T",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "350 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1360",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "7"
+  },
+  "era": "3064",
+  "displayName": "Hachiwara HCA-3T",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

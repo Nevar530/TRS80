@@ -1,0 +1,56 @@
+{
+  "name": "JagerMech",
+  "model": "JM6-DGr",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "260 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "4389",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "anti_air",
+    "myomer": "Standard",
+    "LA armor": "8",
+    "RA armor": "8",
+    "LT armor": "17",
+    "RT armor": "17",
+    "CT armor": "18",
+    "HD armor": "9",
+    "LL armor": "12",
+    "RL armor": "12",
+    "RTL armor": "5",
+    "RTR armor": "5",
+    "RTC armor": "5",
+    "Weapons": "4"
+  },
+  "era": "3058",
+  "displayName": "JagerMech JM6-DGr",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

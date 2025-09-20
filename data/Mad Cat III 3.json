@@ -1,0 +1,56 @@
+{
+  "name": "Mad Cat III",
+  "model": "3",
+  "tonnage": 55,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "330 XL (Clan) Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6896",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "5"
+  },
+  "era": "3094",
+  "displayName": "Mad Cat III 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

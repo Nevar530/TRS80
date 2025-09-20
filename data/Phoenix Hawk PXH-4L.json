@@ -1,0 +1,58 @@
+{
+  "name": "Phoenix Hawk",
+  "model": "PXH-4L",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "270 Fusion Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "2503",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ubiquitous_is",
+    "weaponquirk": "jettison_capable:RA:4:ISERLargeLaser",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "23",
+    "HD armor": "6",
+    "LL armor": "15",
+    "RL armor": "15",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "5",
+    "Weapons": "5"
+  },
+  "era": "3066",
+  "displayName": "Phoenix Hawk PXH-4L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Wyvern",
+  "model": "WVE-5Nb",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "180 XL Engine",
+  "heatSinks": "13 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3598",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "5"
+  },
+  "era": "2660",
+  "displayName": "Wyvern WVE-5Nb",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

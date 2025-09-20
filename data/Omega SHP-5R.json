@@ -1,0 +1,54 @@
+{
+  "name": "Omega",
+  "model": "SHP-5R",
+  "tonnage": 150,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "23 IS Double",
+  "movement": {
+    "walk": "2",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": "Superheavy Cockpit",
+  "gyro": "Superheavy Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7997",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "44",
+    "RA armor": "44",
+    "LT armor": "45",
+    "RT armor": "45",
+    "CT armor": "60",
+    "HD armor": "12",
+    "LL armor": "62",
+    "RL armor": "62",
+    "RTL armor": "19",
+    "RTR armor": "19",
+    "RTC armor": "20",
+    "Weapons": "5"
+  },
+  "era": "3103",
+  "displayName": "Omega SHP-5R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

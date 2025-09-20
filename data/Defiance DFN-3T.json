@@ -1,0 +1,56 @@
+{
+  "name": "Defiance",
+  "model": "DFN-3T",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Light Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "851",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "stable",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "31",
+    "RL Armor": "31",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "9"
+  },
+  "era": "3074",
+  "displayName": "Defiance DFN-3T",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

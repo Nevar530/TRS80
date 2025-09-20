@@ -1,0 +1,56 @@
+{
+  "name": "Jaguar",
+  "model": "2",
+  "tonnage": 35,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "280 XL (Clan) Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Lyran Commonwealth"
+  ],
+  "extras": {
+    "mul id": "6613",
+    "Config": "Quad",
+    "role": "Striker",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "FLL Armor": "16",
+    "FRL Armor": "16",
+    "LT Armor": "11",
+    "RT Armor": "11",
+    "CT Armor": "17",
+    "HD Armor": "9",
+    "RLL Armor": "16",
+    "RRL Armor": "16",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "5",
+    "Weapons": "13"
+  },
+  "era": "3123",
+  "displayName": "Jaguar 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

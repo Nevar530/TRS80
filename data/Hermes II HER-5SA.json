@@ -1,0 +1,56 @@
+{
+  "name": "Hermes II",
+  "model": "HER-5SA",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1502",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "18",
+    "RL Armor": "18",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3068",
+  "displayName": "Hermes II HER-5SA",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

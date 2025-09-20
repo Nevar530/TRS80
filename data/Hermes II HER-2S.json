@@ -1,0 +1,61 @@
+{
+  "name": "Hermes II",
+  "model": "HER-2S",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "1497",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "17",
+    "HD Armor": "9",
+    "LL Armor": "14",
+    "RL Armor": "14",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "3",
+    "Overview": "The original Hermes scout 'Mech rapidly developed a poor reputation. Plagued by electronic glitches and oft-criticized for its lack of firepower or armor, manufacturing for the 'Mech ceased, and Irian's lines fell silent. The start of the Succession Wars, however, would create a massive demand for BattleMechs of any sort; Irian, instead of restarting their Hermes line as-is, would rework the chassis into the heavier, slower, and tougher Hermes II. Though early tests involving an advanced torso-mounted autocannon failed, Irian quickly redesigned the Hermes II to use a more reliable Oriente autocannon placed in one of the arms. The reliable 'Mech would rapidly become one of the main heavy scouts of the FWLM, serving in numbers that few other designs could match.",
+    "Capabilities": "With enough speed to stay ahead of most Free Worlds formations, the Hermes II carries decent firepower for its role. Seven and a half tons of armor keep the Hermes II well-protected, and it can outlast many other scouts on the field. The Hermes II uses many reliable and well-made systems; its E.A.R communications system is extremely advanced, able to connect to communications satellites and hard to track by enemy monitoring systems. The autocannon is durable and rarely malfunctions, and the flamer serves well as a utility weapon and as a means for the Hermes II to break visual contact with enemy forces.",
+    "Deployment": "As an Irian design, the Hermes II mostly serves within FWLM forces. It has served there for centuries, and massive production lines ensure large numbers of the 'Mech enter service every year. Battle salvage and a few minor sales have seen the HER-2S spread to other Successor and periphery states, though the ravages of the Jihad now limit deployment to the Free Worlds League and a few periphery commands.",
+    "systemmanufacturer": "TARGETING:Wasat",
+    "systemmode": "TARGETING:Aggressor"
+  },
+  "era": "2798",
+  "displayName": "Hermes II HER-2S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

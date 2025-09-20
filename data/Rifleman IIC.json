@@ -1,0 +1,63 @@
+{
+  "name": "Rifleman IIC",
+  "model": null,
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "195 Fusion (Clan) Engine(IS)",
+  "heatSinks": "19 Clan Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2710",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "imp_com",
+    "myomer": "Standard",
+    "LA armor": "20",
+    "RA armor": "20",
+    "LT armor": "20",
+    "RT armor": "20",
+    "CT armor": "30",
+    "HD armor": "9",
+    "LL armor": "30",
+    "RL armor": "30",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "12",
+    "Weapons": "5",
+    "overview": "The Rifleman IIC is an upgrade of the venerable Rifleman BattleMech. Five tons heavier than the design it is based on, the Rifleman IIC is also slower.",
+    "capabilities": "Five tons heavier than the design it is based on, the Rifleman IIC is also slower. This creates a great deal more room with which to mount other equipment. Further weight savings are found in the use of an Endo Steel frame. One of the first upgrades to the design was maxing out its protection, with eleven tons of Ferro-Fibrous armor.",
+    "deployment": "Simple, straightforward, and accurate; the Rifleman IIC is armed with four Large Pulse Lasers. This allows it to pick apart enemies from a respectable range, as well as easily target incoming aircraft. A single ER Small Laser is installed, seemingly as an afterthought. Nineteen double heat sinks keep heat mostly in check, though volley fire should be used. The vaunted anti-aircraft 'Mech is aided in its role by the inclusion of an Active Probe. To compensate for the loss of speed, the IIC mounts three jump jets that can propel the 'Mech up to ninety meters in one leap.",
+    "history": "An ancient rebuild of an already ancient design, the Rifleman IIC has soldiered on throughout the centuries. The ’Mech can be found in service with most Clans (a notable exception is Clan Wolf, which prefers the Glass Spider) and several Inner Sphere powers. Its simplicity is matched only by its effectiveness, and new variants continue to debut.",
+    "manufacturer": "Trellshire Heavy Industries (Refits), Various",
+    "primaryfactory": "Twycross, Various",
+    "systemmanufacturer": "TARGETING:GH D5j TTS with Active Probe"
+  },
+  "era": "2845",
+  "displayName": "Rifleman IIC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

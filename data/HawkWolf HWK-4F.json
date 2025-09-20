@@ -1,0 +1,56 @@
+{
+  "name": "HawkWolf",
+  "model": "HWK-4F",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 Fusion Engine(IS)",
+  "heatSinks": "14 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "mul id": "6576",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "25",
+    "RT Armor": "25",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "6",
+    "Weapons": "4"
+  },
+  "era": "3100",
+  "displayName": "HawkWolf HWK-4F",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

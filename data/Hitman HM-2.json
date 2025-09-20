@@ -1,0 +1,55 @@
+{
+  "name": "Hitman",
+  "model": "HM-2",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 XL Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1535",
+    "Config": "Biped",
+    "role": "Striker",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "10",
+    "HD Armor": "8",
+    "LL Armor": "9",
+    "RL Armor": "9",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "4"
+  },
+  "era": "3056",
+  "displayName": "Hitman HM-2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

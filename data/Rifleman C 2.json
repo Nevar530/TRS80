@@ -1,0 +1,57 @@
+{
+  "name": "Rifleman",
+  "model": "C 2",
+  "tonnage": 60,
+  "techBase": "Clan",
+  "rulesLevel": "4",
+  "engine": "360 XXL (Clan) Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "9"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2694",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "4",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Rifleman .jpg"
+  },
+  "era": "3083",
+  "displayName": "Rifleman C 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

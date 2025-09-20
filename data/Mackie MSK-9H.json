@@ -1,0 +1,56 @@
+{
+  "name": "Mackie",
+  "model": "MSK-9H",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "20 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1975",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "oversized",
+    "myomer": "Standard",
+    "LA armor": "34",
+    "RA armor": "34",
+    "LT armor": "32",
+    "RT armor": "32",
+    "CT armor": "50",
+    "HD armor": "9",
+    "LL armor": "41",
+    "RL armor": "41",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "11",
+    "Weapons": "5"
+  },
+  "era": "2576",
+  "displayName": "Mackie MSK-9H",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

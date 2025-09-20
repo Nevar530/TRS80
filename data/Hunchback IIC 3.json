@@ -1,0 +1,56 @@
+{
+  "name": "Hunchback IIC",
+  "model": "3",
+  "tonnage": 50,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "200 XL (Clan) Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "1570",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "bad_rep_clan",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "18",
+    "HD Armor": "8",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "4",
+    "Weapons": "6"
+  },
+  "era": "3062",
+  "displayName": "Hunchback IIC 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

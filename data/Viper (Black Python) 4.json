@@ -1,0 +1,57 @@
+{
+  "name": "Viper",
+  "model": "4",
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "375 XL (Clan) Engine",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "clanname": "Black Python",
+    "mul id": "3435",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "imp_target_short",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "9"
+  },
+  "era": "3067",
+  "displayName": "Viper 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

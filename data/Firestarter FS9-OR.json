@@ -1,0 +1,57 @@
+{
+  "name": "Firestarter",
+  "model": "FS9-OR",
+  "tonnage": 45,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "4",
+  "engine": "270 XL Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "1108",
+    "Config": "Biped Omnimech",
+    "role": "Sniper",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3059",
+  "displayName": "Firestarter FS9-OR",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "Longbow",
+  "model": "LGB-0W",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "340 Fusion Engine(IS)",
+  "heatSinks": "13 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "1930",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "no_arms",
+    "myomer": "Standard",
+    "LA armor": "9",
+    "RA armor": "9",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "21",
+    "HD armor": "9",
+    "LL armor": "18",
+    "RL armor": "18",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "5",
+    "overview": "The Longbow, introduced in 2480 as the LGB-0C Longbow, has seen service in the armies of the Inner Sphere since the days of the Star League and is one of the most well-known fire support 'Mechs in existence.",
+    "capabilities": "The Longbow is a massive BattleMech weighing in at 85 tons and is able to move at a top speed of 54.0 km/h, thanks to a Strand 255 fusion engine. The Longbow is protected by fourteen and a half tons of armor. Some have criticized the design for its lack of CASE - making an otherwise rugged 'Mech vulnerable to a loss by an ammunition explosion. As a fire-support 'Mech though, the Longbow is a trusted and reliable machine that can be counted on to carry out the mission it is designed for.",
+    "deployment": "To add some speed to the Longbow, the OW variant removes two Medium Lasers and five and a half tons of armor. This allowed the Strand 255 Fusion Engine to be replaced with a larger Strand 340, increasing the top speed of the Longbow to 64 km/h, allowing the 'Mech to keep up with most heavy 'Mechs. The LGB-0W used the O/P 3000 COMSET communications system and the Octagon Tartrac System C targeting and tracking system.",
+    "manufacturer": "StarCorps Industries,StarCorps (FWL) Industries,StarCorps Industries,StarCorps Industries",
+    "primaryfactory": "Crofton,Emris IV,Fletcher (TH),Loburg",
+    "systemmanufacturer": "TARGETING:Octagon Tartrac System C"
+  },
+  "era": "2529",
+  "displayName": "Longbow LGB-0W",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

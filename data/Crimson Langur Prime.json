@@ -1,0 +1,64 @@
+{
+  "name": "Crimson Langur",
+  "model": "Prime",
+  "tonnage": 50,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "350 XL (Clan) Engine(IS)",
+  "heatSinks": "14 Clan Double",
+  "movement": {
+    "walk": "7",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4019",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "pro_actuator",
+    "myomer": "Standard",
+    "base chassis heat sinks": "10",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "23",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "8",
+    "Weapons": "3",
+    "overview": "Khan Schmitt initiated many schemes to instill fresh energy in her Clan, one of which would result in new OmniMechs. The Crimson Langur, a fast medium mech designed for pilot safety, was born as a result of this.",
+    "capabilities": "The Crimson Langur is a remarkably fast 'Mech for its weight. In order to do this, it uses both an XL engine and an endo steel chassis to save weight. The design utilizes ten and a half tons of standard armor, the most the chassis can hold, though this weight only gives the Crimson Langur fifteen tons of pod space for modular equipment. To keep the warriors assigned to it in the fight longer, the Crimson Langur is equipped with a Full Head Ejection System.",
+    "deployment": "The Prime configuration of the Crimson Langur is an all-energy configuration. It mounts an arm-mounted ER large laser for long-range work and a pair of heavy medium lasers for close-range fighting. An advanced targeting computer aids the MechWarrior in hitting their targets. Four additional double heat sinks, bringing it up to 14, keep the design relatively cool. Five jump jets provide it a maximum jumping capacity of up to 150 meters. Finally, a light active probe helps to detect hidden units.",
+    "history": "As the Blood Spirits planned to isolate themselves from the Clans following the Great Refusal, the Star Adders increased their raids on the Spirits until the Trials of Possession threatened the security of York and the morale of Clan Blood Spirit. Khan Schmitt initiated many schemes to instill fresh energy in her Clan, one of which would result in new OmniMechs. But, because the Spirits' finances have always been limited, they contacted Kindraa Mick-Kreese in the hopes of forging a better relationship. Kindraa, a staunch Crusader, was eager to assist, and a period of co-development and production started. When finished, the OmniMech was christened Crimson Langur to honor the new alliance between the two Clans.",
+    "manufacturer": "Kindraa Mick-Kreese Primary Production Facility,Unknown,York Y2 Facility",
+    "primaryfactory": "Atreus (Clan),Haven (Colleen),York",
+    "systemmanufacturer": "TARGETING:York Y5- T&T5"
+  },
+  "era": "3065",
+  "displayName": "Crimson Langur Prime",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

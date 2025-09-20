@@ -1,0 +1,62 @@
+{
+  "name": "Thunder",
+  "model": "THR-3L",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "350 XL Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "3216",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "cowl",
+    "myomer": "Triple-Strength",
+    "LA armor": "22",
+    "RA armor": "22",
+    "LT armor": "23",
+    "RT armor": "23",
+    "CT armor": "34",
+    "HD armor": "9",
+    "LL armor": "30",
+    "RL armor": "30",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "9",
+    "Weapons": "4",
+    "overview": "The Thunder is a product of the aftermath of the Fourth Succession War.",
+    "capabilities": "The 3L variant of the Thunder is intended for artillery fire support. The 'Mech is armed with an Arrow IV artillery missile launcher and carries a pair of ER Medium Lasers and a Streak SRM-6 for close range protection. The 'Mech is also outfitted with Triple Strength Myomer, allowing it to travel at speeds of 97.2 km/h when operating at the correct temperature. The 'Mech is also armored with Stealth Armor, making it a much harder target to hit.",
+    "history": "The 'Mech was built to make the most of new technologies that had made their way to the Capellan Confederation at the beginning of the 3050s. This was done by building the 'Mech around a Magna 350 XL Engine to maximize the available weight in the 'Mech. The Thunder also uses double heat sinks to make it capable of handling a high heat load from its weapons systems. The 'Mech is well protected with thirteen and a half tons of armor. Its weapons payload, and the design in general, uses a mix of advanced and off the shelf parts. This balanced mix makes the Thunder a valuable asset on the modern battlefield.",
+    "manufacturer": "Ceres Metals Industries",
+    "primaryfactory": "Sian, Capella and St. Ives",
+    "systemmanufacturer": "TARGETING:C-Apple Churchill"
+  },
+  "era": "3066",
+  "displayName": "Thunder THR-3L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

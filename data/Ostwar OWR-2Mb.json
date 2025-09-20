@@ -1,0 +1,56 @@
+{
+  "name": "Ostwar",
+  "model": "OWR-2Mb",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "325 XL Engine(IS)",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2382",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "32",
+    "HD Armor": "9",
+    "LL Armor": "21",
+    "RL Armor": "21",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "9",
+    "Weapons": "5"
+  },
+  "era": "2620",
+  "displayName": "Ostwar OWR-2Mb",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

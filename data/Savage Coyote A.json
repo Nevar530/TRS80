@@ -1,0 +1,63 @@
+{
+  "name": "Savage Coyote",
+  "model": "A",
+  "tonnage": 85,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "255 XL (Clan) Engine(IS)",
+  "heatSinks": "14 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4982",
+    "Config": "Biped Omnimech",
+    "role": "Juggernaut",
+    "quirk": "oversized",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "25",
+    "RA Armor": "25",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "9",
+    "overview": "The Savage Coyote OmniMech was created as a showcase OmniMech. The 'Mech was also part of Khan Koga's attempts to revitalize the fading Clan that invented the OmniMech.",
+    "capabilities": "This assault 'Mech uses an XL Engine to save enough weight to devote forty-five tons of space to modular equipment and fifteen tons of armor. The base chassis contains fourteen fixed double heat sinks.",
+    "deployment": "Though the first alternate configuration is focused on close-range combat, it carries an ER Large Laser and Gauss Rifle for long-range work. Three ATM 6s are effective at all ranges, while a trio of Medium Pulse Lasers aid with the devastating attack. Enough jump jets to vault up to ninety meters at a time helps MechWarriors get into close range, while an Anti-Missile System grants added defensive capability.",
+    "history": "Following the development of Advanced Tactical Missile technology. The creation of the Savage Coyote was a direct result of both the warriors of Clan Coyote clamoring for new weapons to use and the election of Khan Sullivan Koga in 3052.",
+    "manufacturer": "Landen, Picuris, and Zuni ’Mech Production Complexes",
+    "systemmanufacturer": "TARGETING:TRTTS Mark II CWS"
+  },
+  "era": "3059",
+  "displayName": "Savage Coyote A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

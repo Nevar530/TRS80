@@ -1,0 +1,57 @@
+{
+  "name": "Emperor",
+  "model": "EMP-5A",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "270 Fusion Engine",
+  "heatSinks": "16 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard((Unknown Technology Base))"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "963",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "command_mech",
+    "weaponquirk": "imp_cooling:LA:3:Large Laser",
+    "Myomer": "Standard",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "48",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "7"
+  },
+  "era": "2502",
+  "displayName": "Emperor EMP-5A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

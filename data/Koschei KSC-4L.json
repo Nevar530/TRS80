@@ -1,0 +1,56 @@
+{
+  "name": "Koschei",
+  "model": "KSC-4L",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "325 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1823",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "weak_head_1",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "3"
+  },
+  "era": "2723",
+  "displayName": "Koschei KSC-4L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

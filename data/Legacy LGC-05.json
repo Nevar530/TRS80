@@ -1,0 +1,64 @@
+{
+  "name": "Legacy",
+  "model": "LGC-05",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "240 Compact Fusion Engine",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "2"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": null,
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5703",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "bad_rep_is",
+    "weaponquirk": "direct_torso_mount:LA:6:Light PPC",
+    "Myomer": "Standard",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "27",
+    "RT Armor": "27",
+    "CT Armor": "40",
+    "HD Armor": "9",
+    "LL Armor": "34",
+    "RL Armor": "34",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "8",
+    "overview": "The Legacy was produced as a testbed for new technologies, including the Ultra AC/10 and C3i Computer.",
+    "capabilities": "They upgraded its targeting system and included the C3i, which allows six units to coordinate fire. Its thick armor protection, standard fusion engine, and CASE give the Legacy remarkable staying power on the battlefield. One of the weaknesses of the 'Mech is its slow speed compared to other 'Mechs of similar size, but the inclusion of jump jets sought to counter that with superior maneuverability.",
+    "deployment": "This variant uses a Compact Engine and Compact Gyro to increase survivability. It has the same top speed as the standard Legacy and drops the jump range to sixty meters. Each arm carries a Medium Variable Speed Pulse Laser and a Light PPC, supported by two torso mounted MML-7s with Artemis IV fire control systems. A head-mounted ER Small Laser rounds out the armament. Thirteen double heat sinks are installed as well",
+    "history": "At the request of Word of Blake Precentor Martial Cameron St. Jamais. The designers used a failed Star League 'Mech called the Rising Star as the base for the Legacy.",
+    "manufacturer": "Skobel MechWorks",
+    "primaryfactory": "Russia, Terra",
+    "systemmanufacturer": "TARGETING:Falcon 15 Watcher"
+  },
+  "era": "3073",
+  "displayName": "Legacy LGC-05",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

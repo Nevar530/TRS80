@@ -1,0 +1,57 @@
+{
+  "name": "Night Wolf",
+  "model": null,
+  "tonnage": 90,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "360 XL (Clan) Engine",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2273",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "hyper_actuator",
+    "weaponquirk": "direct_torso_mount:HD:3:CLAntiMissileSystem",
+    "Myomer": "Standard",
+    "LA Armor": "25",
+    "RA Armor": "25",
+    "LT Armor": "28",
+    "RT Armor": "28",
+    "CT Armor": "37",
+    "HD Armor": "9",
+    "LL Armor": "32",
+    "RL Armor": "32",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "12",
+    "Weapons": "6"
+  },
+  "era": "3084",
+  "displayName": "Night Wolf",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Patron",
+  "model": "LoaderMech",
+  "tonnage": 15,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "30 Fuel Cell Engine(IS)",
+  "heatSinks": "1 Single",
+  "movement": {
+    "walk": "2",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heavy Industrial(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Industrial",
+  "cockpit": "Industrial Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.1-SNAPSHOT on 2024-11-09",
+    "mul id": "4792",
+    "Config": "Biped",
+    "role": "Ambusher",
+    "myomer": "Standard",
+    "LA armor": "2",
+    "RA armor": "2",
+    "LT armor": "2",
+    "RT armor": "2",
+    "CT armor": "3",
+    "HD armor": "3",
+    "LL armor": "2",
+    "RL armor": "2",
+    "RTL armor": "2",
+    "RTR armor": "2",
+    "RTC armor": "2",
+    "Weapons": "0",
+    "Cargo": "SIZE:1.0"
+  },
+  "era": "2550",
+  "displayName": "Patron LoaderMech",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

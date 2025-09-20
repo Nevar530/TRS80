@@ -1,0 +1,57 @@
+{
+  "name": "Flamberge",
+  "model": "C",
+  "tonnage": 70,
+  "techBase": "Clan",
+  "rulesLevel": "3",
+  "engine": "280 XL (Clan) Engine(IS)",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1118",
+    "Config": "Biped Omnimech",
+    "role": "Missile Boat",
+    "quirk": "imp_target_med",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "11",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "12",
+    "Weapons": "8"
+  },
+  "era": "3077",
+  "displayName": "Flamberge C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

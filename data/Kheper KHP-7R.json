@@ -1,0 +1,57 @@
+{
+  "name": "Kheper",
+  "model": "KHP-7R",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6675",
+    "Config": "Biped",
+    "role": "Brawler",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "24",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "5",
+    "manufacturer": "New Earth Trading Company",
+    "primaryfactory": "New Earth"
+  },
+  "era": "3135",
+  "displayName": "Kheper KHP-7R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

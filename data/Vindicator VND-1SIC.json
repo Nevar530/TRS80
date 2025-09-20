@@ -1,0 +1,63 @@
+{
+  "name": "Vindicator",
+  "model": "VND-1SIC",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "180 Fusion Engine",
+  "heatSinks": "15 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "3424",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "difficult_eject",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "18",
+    "RL Armor": "18",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "9",
+    "Weapons": "4",
+    "overview": "The Vindicator is one of the most well-known Capellan Confederation BattleMechs. This workhorse of the CCAF was built in 2826 between the First and Second Succession War to maximize the effectiveness of the Confederation's surviving production capabilities and fulfill as many roles as possible.",
+    "capabilities": "The 'Mech has a top speed of only 64.8 km/h, which allows it to keep up with most heavy 'Mechs and some slower medium 'Mechs. Four jump jets give it a jumping capability of up to 120 meters that, while not up to par with the greater distances of 'Mechs like the Phoenix Hawk, allows the Vindicator the ability to outmaneuver most heavier 'Mechs, as well as making it easier to traverse rough terrain. It also carries more armor than the Phoenix Hawk with good overall coverage, particularly on its rear torso and legs, making it better protected than smaller 'Mechs. Armament for the 'Mech is adequate though its primary weapons are unsuited for point-blank ranges, while sixteen heat sinks help keep it cool.",
+    "deployment": "A standardized modification of Michael Jones' St. Ives Blue adopted by the newly formed St. Ives Compact in 3031, the VND-1SIC downgrades the PPC to a Large Laser while upgrading the LRM rack to an LRM-10.",
+    "history": "Designed by committee, the Vindicator's \"jack-of-all-trades\" nature means it does not excel in any one role but fulfills them adequately. With almost all of its components produced on Capella, the Vindicator is also cheap, easy to mass produce, and quick to repair with a ready supply of spare parts. Unfortunately, early models of the Vindicator suffered from a design flaw wherein the head-mounted laser created a bulge in the cockpit. More than making the space cramped for tall MechWarriors, it also interfered with the ejection propulsion system, resulting in the deaths of a number of MechWarriors when their ejection seats exploded during ejection. Engineers managed to redesign the cockpit layout prior to the War of 3039, eliminating the deadly intrusion and decreasing the chance of said unfortunate malfunction. Due to its relatively lackluster design and the outrageous mark-ups on spare parts sold to out-of-state parties, the Vindicator has remained almost exclusive to the Capellan Confederation since its introduction. Even in the wake of the Fourth Succession War, with a good portion of their military complex and resources gone, the Capellan leadership continued funding production of this 'Mech and updated it with the rediscovery of lostech. Following the introduction of the Firestarter OmniMech and its spread by the Second Star League production of the Vindicator was curtailed, though the line would be partially revived with a couple of specialized variants in 3060.",
+    "manufacturer": "Refit",
+    "primaryfactory": "Refit",
+    "systemmanufacturer": "TARGETING:C-Apple Churchill"
+  },
+  "era": "3031",
+  "displayName": "Vindicator VND-1SIC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

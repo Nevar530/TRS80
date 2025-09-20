@@ -1,0 +1,58 @@
+{
+  "name": "Stinger",
+  "model": "STG-7S",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "120 XL Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "3068",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "cramped_cockpit",
+    "Myomer": "Standard",
+    "Ejection": "Full Head Ejection System",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "6",
+    "RT Armor": "6",
+    "CT Armor": "7",
+    "HD Armor": "9",
+    "LL Armor": "3",
+    "RL Armor": "5",
+    "RTL Armor": "1",
+    "RTR Armor": "1",
+    "RTC Armor": "2",
+    "Weapons": "1",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\stinger STG-6L.jpg"
+  },
+  "era": "3077",
+  "displayName": "Stinger STG-7S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

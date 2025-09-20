@@ -1,0 +1,56 @@
+{
+  "name": "Eyleuka",
+  "model": "EYL-45A",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Stealth"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": "Small Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1009",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "21",
+    "RL Armor": "21",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3069",
+  "displayName": "Eyleuka EYL-45A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

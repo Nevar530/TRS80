@@ -1,0 +1,57 @@
+{
+  "name": "Shadow Hawk",
+  "model": "SHD-3K",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "275 Fusion Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Heavy Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2904",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "3",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\Shadowhawk3050.jpg"
+  },
+  "era": "3075",
+  "displayName": "Shadow Hawk SHD-3K",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

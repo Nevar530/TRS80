@@ -1,0 +1,56 @@
+{
+  "name": "Werewolf",
+  "model": "WER-LF-004",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 XL Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "3535",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "16",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "6"
+  },
+  "era": "3056",
+  "displayName": "Werewolf WER-LF-004",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

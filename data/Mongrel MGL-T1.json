@@ -1,0 +1,57 @@
+{
+  "name": "Mongrel",
+  "model": "MGL-T1",
+  "tonnage": 50,
+  "techBase": "Mixed (Clan Chassis)",
+  "rulesLevel": "4",
+  "engine": "350 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Reactive(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Lyran Commonwealth"
+  ],
+  "extras": {
+    "mul id": "6618",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "easy_pilot",
+    "weaponquirk": "no_cooling:LA:2:Autocannon/5",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "19",
+    "RT Armor": "19",
+    "CT Armor": "24",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "4"
+  },
+  "era": "3092",
+  "displayName": "Mongrel MGL-T1",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

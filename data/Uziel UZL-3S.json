@@ -1,0 +1,62 @@
+{
+  "name": "Uziel",
+  "model": "UZL-3S",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "5332",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "myomer": "Standard",
+    "LA armor": "12",
+    "RA armor": "12",
+    "LT armor": "14",
+    "RT armor": "14",
+    "CT armor": "17",
+    "HD armor": "9",
+    "LL armor": "18",
+    "RL armor": "18",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "6",
+    "Weapons": "6",
+    "overview": "Built at Defiance Industries' Furillo plant, the Uziel is an effective medium 'Mech that is looked down upon by the LAAF simply because it is produced on Furillo and not at the prestigious Hesperus facility. A varied weapons mix makes the Uziel an excellent trooper 'Mech.",
+    "capabilities": "The Uziel is built on a Foundation E50 Endo Steel chassis that has a GM 300 XL engine that provides the 'Mech with a top speed of 97.2 km/h. The 'Mech's mobility is enhanced with six Rawlings 50 jump jets that allow the 'Mech to jump up to one hundred and eighty meters. The Uziel is armored with eight tons of Maximillian 100 armor that gives the Uziel adequate protection from enemy fire. To dissipate the heat produced by the 'Mech's weapons, it carries eleven double heat sinks.",
+    "deployment": "The Uziel has a wide variety of weapons for a medium 'Mech. For long range combat, the Uziel has a Defiance Shredder LB-X Autocannon/2 that can strike a target at extreme ranges. The rest of the Uziels arsenal is based around shorter range combat with a Thunderbolt-12 Large Pulse Laser and a Defiance Model XII ER Medium Laser for medium range combat. It also has two Diverse Optics Type ER Small Lasers and a Harvester 20K SRM-6 for close combat.",
+    "manufacturer": "Defiance Industries",
+    "primaryfactory": "Furillo",
+    "systemmanufacturer": "TARGETING:RCA Instatrac Mark XXII"
+  },
+  "era": "3065",
+  "displayName": "Uziel UZL-3S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

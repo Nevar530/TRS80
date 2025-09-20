@@ -1,0 +1,58 @@
+{
+  "name": "Phoenix Hawk",
+  "model": "PXH-7S",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "270 Light Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "2509",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ubiquitous_is",
+    "weaponquirk": "jettison_capable:RA:4:ISLargePulseLaser",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "LA armor": "14",
+    "RA armor": "14",
+    "LT armor": "16",
+    "RT armor": "16",
+    "CT armor": "21",
+    "HD armor": "9",
+    "LL armor": "22",
+    "RL armor": "22",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "7",
+    "Weapons": "6"
+  },
+  "era": "3067",
+  "displayName": "Phoenix Hawk PXH-7S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

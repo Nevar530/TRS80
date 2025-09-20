@@ -1,0 +1,57 @@
+{
+  "name": "Solitaire",
+  "model": null,
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "250 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "5097",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "weaponquirk": "stable_weapon:RT:2:CLHeavyLargeLaser",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "9",
+    "RT Armor": "9",
+    "CT Armor": "10",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3064",
+  "displayName": "Solitaire",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

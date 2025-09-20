@@ -1,0 +1,56 @@
+{
+  "name": "Wyvern",
+  "model": "WVE-5N",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "180 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "3597",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "4"
+  },
+  "era": "2660",
+  "displayName": "Wyvern WVE-5N",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

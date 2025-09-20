@@ -1,0 +1,56 @@
+{
+  "name": "Ebony",
+  "model": "MEB-13",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "225 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Heat-Dissipating(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6943",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_target_med",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "9",
+    "HD Armor": "6",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "1"
+  },
+  "era": "3137",
+  "displayName": "Ebony MEB-13",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

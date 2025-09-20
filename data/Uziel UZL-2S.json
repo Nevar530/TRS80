@@ -1,0 +1,62 @@
+{
+  "name": "Uziel",
+  "model": "UZL-2S",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "5331",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "myomer": "Standard",
+    "LA armor": "12",
+    "RA armor": "12",
+    "LT armor": "14",
+    "RT armor": "14",
+    "CT armor": "17",
+    "HD armor": "9",
+    "LL armor": "18",
+    "RL armor": "18",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "6",
+    "Weapons": "5",
+    "overview": "Built at Defiance Industries' Furillo plant, the Uziel is an effective medium 'Mech that is looked down upon by the LAAF simply because it is produced on Furillo and not at the prestigious Hesperus facility. A varied weapons mix makes the Uziel an excellent trooper 'Mech.",
+    "capabilities": "The Uziel is built on a Foundation E50 Endo Steel chassis that has a GM 300 XL engine that provides the 'Mech with a top speed of 97.2 km/h. The 'Mech's mobility is enhanced with six Rawlings 50 jump jets that allow the 'Mech to jump up to one hundred and eighty meters. The Uziel is armored with eight tons of Maximillian 100 armor that gives the Uziel adequate protection from enemy fire. To dissipate the heat produced by the 'Mech's weapons, it carries eleven double heat sinks.",
+    "deployment": "Based on the original prototype of the Uziel developed in 3063, the 2S carries a pair of PPCs as its primary weapons for long range combat. A SRM-6 launcher provides close combat capabilities and a pair of Machine Guns provide anti-infantry capabilities. A Beagle Active Probe allows the 'Mech to detect hidden units and protects the Uziel from ambushes.",
+    "manufacturer": "Defiance Industries",
+    "primaryfactory": "Furillo",
+    "systemmanufacturer": "TARGETING:RCA Instatrac Mark XXII"
+  },
+  "era": "3063",
+  "displayName": "Uziel UZL-2S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

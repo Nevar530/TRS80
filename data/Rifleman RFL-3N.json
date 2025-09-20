@@ -1,0 +1,56 @@
+{
+  "name": "Rifleman",
+  "model": "RFL-3N",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "2697",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "22",
+    "HD Armor": "6",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "6"
+  },
+  "era": "2770",
+  "displayName": "Rifleman RFL-3N",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

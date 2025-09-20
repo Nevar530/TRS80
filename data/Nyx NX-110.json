@@ -1,0 +1,56 @@
+{
+  "name": "Nyx",
+  "model": "NX-110",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Anti-Penetrative Ablation(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6936",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "12",
+    "HD Armor": "8",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "2"
+  },
+  "era": "3141",
+  "displayName": "Nyx NX-110",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

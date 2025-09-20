@@ -1,0 +1,57 @@
+{
+  "name": "Raptor",
+  "model": "RTX1-O",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "175 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "2647",
+    "Config": "Biped Omnimech",
+    "role": "Missile Boat",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "7",
+    "LA Armor": "5",
+    "RA Armor": "5",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "8",
+    "HD Armor": "6",
+    "LL Armor": "6",
+    "RL Armor": "6",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "9"
+  },
+  "era": "3052",
+  "displayName": "Raptor RTX1-O",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Raven",
+  "model": "RVN-4X",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "175 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "2669",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "11",
+    "RT Armor": "11",
+    "CT Armor": "16",
+    "HD Armor": "9",
+    "LL Armor": "15",
+    "RL Armor": "15",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "5"
+  },
+  "era": "3031",
+  "displayName": "Raven RVN-4X",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

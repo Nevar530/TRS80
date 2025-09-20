@@ -1,0 +1,54 @@
+{
+  "name": "Huron Warrior",
+  "model": "HUR-WO-R5L",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "250 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "7994",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "17",
+    "RT armor": "17",
+    "CT armor": "22",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "9",
+    "Weapons": "3"
+  },
+  "era": "3102",
+  "displayName": "Huron Warrior HUR-WO-R5L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

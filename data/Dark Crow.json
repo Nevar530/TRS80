@@ -1,0 +1,56 @@
+{
+  "name": "Dark Crow",
+  "model": null,
+  "tonnage": 55,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "330 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "827",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "low_arms",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "20",
+    "HD Armor": "8",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "4",
+    "Weapons": "4"
+  },
+  "era": "3084",
+  "displayName": "Dark Crow",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Locust",
+  "model": "LCT-5T",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "160 XL Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1909",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "9",
+    "HD Armor": "9",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "9"
+  },
+  "era": "3070",
+  "displayName": "Locust LCT-5T",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

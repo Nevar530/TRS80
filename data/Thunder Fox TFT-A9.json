@@ -1,0 +1,56 @@
+{
+  "name": "Thunder Fox",
+  "model": "TFT-A9",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "220 Fusion Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "3217",
+    "Config": "Quad",
+    "role": "Sniper",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "FLL Armor": "17",
+    "FRL Armor": "17",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "21",
+    "HD Armor": "9",
+    "RLL Armor": "17",
+    "RRL Armor": "17",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "4"
+  },
+  "era": "3077",
+  "displayName": "Thunder Fox TFT-A9",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

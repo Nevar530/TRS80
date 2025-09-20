@@ -1,0 +1,57 @@
+{
+  "name": "Rook",
+  "model": "NH-1B",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "220 Fusion Engine(IS)",
+  "heatSinks": "20 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard((Unknown Technology Base))"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2741",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "13",
+    "RA Armor": "13",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "19",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "8",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3076Rook.jpg"
+  },
+  "era": "3075",
+  "displayName": "Rook NH-1B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

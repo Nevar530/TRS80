@@ -1,0 +1,56 @@
+{
+  "name": "Onslaught",
+  "model": "SA-OS2",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "375 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2322",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "23",
+    "RA Armor": "23",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "10"
+  },
+  "era": "3062",
+  "displayName": "Onslaught SA-OS2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

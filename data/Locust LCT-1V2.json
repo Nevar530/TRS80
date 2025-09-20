@@ -1,0 +1,56 @@
+{
+  "name": "Locust",
+  "model": "LCT-1V2",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "160 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085u"
+  ],
+  "extras": {
+    "mul id": "1902",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "10",
+    "HD Armor": "8",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "5"
+  },
+  "era": "3065",
+  "displayName": "Locust LCT-1V2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

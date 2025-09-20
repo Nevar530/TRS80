@@ -1,0 +1,56 @@
+{
+  "name": "Valkyrie",
+  "model": "VLK-QA",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "150 Fusion Engine",
+  "heatSinks": "11 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "3372",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "9",
+    "RA Armor": "9",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "14",
+    "HD Armor": "8",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "2"
+  },
+  "era": "2787",
+  "displayName": "Valkyrie VLK-QA",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

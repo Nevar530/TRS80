@@ -1,0 +1,63 @@
+{
+  "name": "Rifleman IIC",
+  "model": "2",
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "260 Fusion (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2711",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "imp_com",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "29",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "4",
+    "overview": "The Rifleman IIC is an upgrade of the venerable Rifleman BattleMech. Five tons heavier than the design it is based on, the Rifleman IIC is also slower.",
+    "capabilities": "Five tons heavier than the design it is based on, the Rifleman IIC is also slower. This creates a great deal more room with which to mount other equipment. Further weight savings are found in the use of an Endo Steel frame. One of the first upgrades to the design was maxing out its protection, with eleven tons of Ferro-Fibrous armor.",
+    "deployment": "This variant removes all of the weapons and equipment, and replaces them with four Ultra Autocannon/2s and six tons of ammunition. The weight saved, plus a half ton from armor, is used to upgrade the engine to allow the 'Mech a top speed of 64 km/h. MechWarriors must be exceptionally wary of the large, vulnerable ammo bins.",
+    "history": "An ancient rebuild of an already ancient design, the Rifleman IIC has soldiered on throughout the centuries. The ’Mech can be found in service with most Clans (a notable exception is Clan Wolf, which prefers the Glass Spider) and several Inner Sphere powers. Its simplicity is matched only by its effectiveness, and new variants continue to debut.",
+    "manufacturer": "Various",
+    "primaryfactory": "Various",
+    "systemmanufacturer": "TARGETING:GH D5j TTS with Active Probe"
+  },
+  "era": "2997",
+  "displayName": "Rifleman IIC 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

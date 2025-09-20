@@ -1,0 +1,63 @@
+{
+  "name": "UrbanMech IIC",
+  "model": "2",
+  "tonnage": 30,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "90 Fusion (Clan) Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3362",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "11",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "8",
+    "Weapons": "2",
+    "overview": "The UrbanMech IIC is a Clan IIC-style upgrade of the original UrbanMech.",
+    "capabilities": "Designed as a cheap, efficient urban combat vehicle, the UrbanMech IIC improves upon its predecessor by utilizing an HAG/20 that allows the 'Mech's main gun to put down large volumes of fire, though the MechWarrior must still watch ammo consumption carefully. The flamer is a backup weapon that allows the design to stay in the fight after its ammunition has run out.",
+    "deployment": "Introduced during the Jihad in 3070, the UrbanMech IIC 2 swaps the autocannon and laser for a Class 20 Hyper Assault Gauss Rifle with 2 tons of ammunition and a Flamer.",
+    "history": "Around the same time as the development of the OmniMech during the Golden Century, Clan Coyote technicians reworked this venerable design. They studied battle data from as far back as the Amaris Civil War and used this research as the basis for their upgrades. They apparently decided that the UrbanMech (known as the Urbie to its fans and detractors alike) did not need much reworking. While the Coyotes field the most UrbanMech IICs, the 'Mechs are also fielded by the Goliath Scorpions, Snow Ravens, Ice Hellions, and Hell's Horses.",
+    "manufacturer": "Refit Transitional Facility HH-Beta,Beta Plant 2W",
+    "primaryfactory": "Nouveaux Paris,Tamaron",
+    "systemmanufacturer": "TARGETING:HT9 TTS"
+  },
+  "era": "3070",
+  "displayName": "UrbanMech IIC 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Jade Hawk",
+  "model": "2",
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "3",
+  "engine": "375 XL (Clan) Engine(IS)",
+  "heatSinks": "15 Laser",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "mul id": "6567",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "non_standard",
+    "Myomer": "Standard",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "32",
+    "RL Armor": "32",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "9"
+  },
+  "era": "3136",
+  "displayName": "Jade Hawk 2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

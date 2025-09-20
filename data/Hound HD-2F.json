@@ -1,0 +1,56 @@
+{
+  "name": "Hound",
+  "model": "HD-2F",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "280 Fusion Engine(IS)",
+  "heatSinks": "15 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "mul id": "6563",
+    "Config": "Biped",
+    "role": "Sniper",
+    "weaponquirk": "accurate:LT:0:ISLBXAC10",
+    "Myomer": "Standard",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "13",
+    "Weapons": "5"
+  },
+  "era": "3098",
+  "displayName": "Hound HD-2F",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

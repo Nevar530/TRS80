@@ -1,0 +1,55 @@
+{
+  "name": "Koshi (Standard)",
+  "model": "3",
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "175 XL (Clan) Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "mul id": "6549",
+    "Config": "Biped",
+    "role": "Scout",
+    "Myomer": "Standard",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "10",
+    "HD Armor": "9",
+    "LL Armor": "5",
+    "RL Armor": "5",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "7"
+  },
+  "era": "3095",
+  "displayName": "Koshi (Standard) 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

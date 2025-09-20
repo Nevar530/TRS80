@@ -1,0 +1,56 @@
+{
+  "name": "Marshal",
+  "model": "MHL-6MC",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "220 Light Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO 3060"
+  ],
+  "extras": {
+    "mul id": "2089",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "rugged_2",
+    "myomer": "Standard",
+    "LA armor": "18",
+    "RA armor": "18",
+    "LT armor": "19",
+    "RT armor": "19",
+    "CT armor": "27",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "7",
+    "Weapons": "7"
+  },
+  "era": "3073",
+  "displayName": "Marshal MHL-6MC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

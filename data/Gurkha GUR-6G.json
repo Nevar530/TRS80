@@ -1,0 +1,56 @@
+{
+  "name": "Gurkha",
+  "model": "GUR-6G",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "245 XL Fusion Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5663",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "exp_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "11",
+    "RA Armor": "11",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "14",
+    "HD Armor": "9",
+    "LL Armor": "15",
+    "RL Armor": "15",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "8"
+  },
+  "era": "3067",
+  "displayName": "Gurkha GUR-6G",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

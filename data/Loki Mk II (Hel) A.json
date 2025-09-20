@@ -1,0 +1,58 @@
+{
+  "name": "Loki Mk II",
+  "model": "A",
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "260 XL (Clan) Engine(IS)",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 The Clans"
+  ],
+  "extras": {
+    "clanname": "Hel",
+    "mul id": "6278",
+    "Config": "Biped Omnimech",
+    "role": "Brawler",
+    "quirk": "multi_trac",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "21",
+    "RL Armor": "21",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "7",
+    "Weapons": "9"
+  },
+  "era": "3121",
+  "displayName": "Loki Mk II A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

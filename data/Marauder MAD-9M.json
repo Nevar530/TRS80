@@ -1,0 +1,57 @@
+{
+  "name": "Marauder",
+  "model": "MAD-9M",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2047",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "low_profile",
+    "weaponquirk": "exposed_linkage:RT:6:ISStreakSRM6",
+    "Myomer": "Standard",
+    "LA Armor": "23",
+    "RA Armor": "23",
+    "LT Armor": "23",
+    "RT Armor": "23",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "31",
+    "RL Armor": "31",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "11",
+    "Weapons": "7"
+  },
+  "era": "3068",
+  "displayName": "Marauder MAD-9M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

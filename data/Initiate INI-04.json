@@ -1,0 +1,63 @@
+{
+  "name": "Initiate",
+  "model": "INI-04",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "160 Light Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1621",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "6",
+    "overview": "The Initiate is a reliable trooper 'Mech that is capable of filling a variety of roles on the modern battlefield.",
+    "capabilities": "It is built on a Geometric 1000 Endo Steel chassis to save weight and is powered by a LTV 160 fusion engine that gives it a top speed of 64.8 km/h. For protection from enemy fire, the Initiate carries eight and a half tons of armor that allows the 'Mech to stand up to fire from most other 'Mechs of the same weight class or lower, and enjoys increased durability because of its CASE system that protects against ammunition explosions.",
+    "deployment": "Introduced during the Jihad, this is a modernization of the 'Mech utilizing newer technologies. The WoB engineers first exchanged the 02 variant's fusion engine with a Light Fusion model. This new engine allowed for a slight increase of armor, but allow more room for this era's latest production weaponry. All the 'Mech's original weaponry has been removed in favor of a Seven-Tubed Multi-Missile Launcher, three Small Pulse Lasers, and a pair of Light PPCs. To keep the 'Mech more compatible with modern WoB formations, a C3i Computer was added. To help handle the 'Mech's heat load, an additional double heat sink was added as well.",
+    "history": "The Initiate started production after the Word of Blake retook Terra. This medium 'Mech has been produced in record numbers by the Word of Blake with no shortage of pilots.",
+    "manufacturer": "Martinson Armaments",
+    "primaryfactory": "Australia, Terra",
+    "systemmanufacturer": "TARGETING:Scope 2000"
+  },
+  "era": "3068",
+  "displayName": "Initiate INI-04",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

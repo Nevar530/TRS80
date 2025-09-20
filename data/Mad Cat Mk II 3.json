@@ -1,0 +1,62 @@
+{
+  "name": "Mad Cat Mk II",
+  "model": "3",
+  "tonnage": 90,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "360 XL Fusion Engine",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5716",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "imp_target_med",
+    "Myomer": "Standard",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "29",
+    "RT Armor": "29",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "9",
+    "RTR Armor": "9",
+    "RTC Armor": "12",
+    "Weapons": "9",
+    "overview": "Designed to be sold to fellow Clans, this rebuild of the Timber Wolf carries thirteen tons of ferro-fibrous armor while being one of most nimble BattleMechs of its class, yet still packing serious weaponry.",
+    "capabilities": "This variant removes the Gauss Rifles, jump jets, and one heat sink of the original and replaces them with a HAG/30 in each arm. The side torsos each mount an LRM-10 and a pair of ER Medium Lasers. A Light Active Probe is mounted in the head, and the remaining tonnage is given over to more armor protection.",
+    "deployment": "Despite this, Mk II's most notable potential buyers, Clan Wolf and Clan Jade Falcon, did not purchase even a single unit, though they won some numbers in Trials. Significant numbers of Mad Cat Mk II were sold to Clan Nova Cat, and the Mech served also in Clan Ice Hellion, Clan Jade Falcon, Clan Wolf-in-Exile in addition to Diamond Shark itself. On a limited basis, Clan Diamond Shark sold unmodified Mad Cat Mk IIs to Inner Sphere factions, most notably the Draconis Combine and Federated Commonwealth, and also the Lyran Alliance bought an unknown amount of Mad Cat Mark IIs.",
+    "history": "The Mad Cat Mk II was in development for fifteen months by the time production began in 3061. The sole rationale for the Mad Cat Mk II was to increase profits for Clan Diamond Shark after war with the Inner Sphere in the 3050s.",
+    "manufacturer": "Manufacturing Plant DSF-94",
+    "systemmanufacturer": "TARGETING:Dtrac Suite 4"
+  },
+  "era": "3082",
+  "displayName": "Mad Cat Mk II 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

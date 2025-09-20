@@ -1,0 +1,55 @@
+{
+  "name": "Hollander III",
+  "model": "BZK-D3",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "210 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Reflective(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Federated Suns"
+  ],
+  "extras": {
+    "mul id": "6335",
+    "Config": "Biped",
+    "role": "Striker",
+    "Myomer": "Standard",
+    "LA Armor": "7",
+    "RA Armor": "7",
+    "LT Armor": "12",
+    "RT Armor": "12",
+    "CT Armor": "15",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "4",
+    "Weapons": "4"
+  },
+  "era": "3118",
+  "displayName": "Hollander III BZK-D3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

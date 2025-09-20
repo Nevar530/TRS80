@@ -1,0 +1,61 @@
+{
+  "name": "Ostsol",
+  "model": "OTL-4D",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "16 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "2371",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "low_profile",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "22",
+    "HD Armor": "8",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "6",
+    "Overview": "Ostmann Industries had built up a solid portfolio of BattleMechs by 2693, having drawn up and produced the successful Ostwar, Ostsol, and Ostscout designs. Their attempt at a new member of their line-up, a heavy cavalry BattleMech capable of independent operations, would lead to the development of the Ostsol. Their manufacturing lines, however, were already overloaded by demand for the popular Ostsol, leading Ostmann  to partner with Kong Interstellar to manufacture the design on Kong's lines on Connaught. The pact would be profitable for both companies, and the Ostsol became a popular staple in both House armies and SLDF forces.",
+    "Capabilities": "The Ostsol was created to fulfill a contract for a rapid heavy BattleMech with a fully energy-based armament. In this, Ostmann Industries was successful. The Ostsol has offered sterling service as a heavy cavalry design since its inception, and the shattered supply lines of the Succession Wars did little to reduce the 'Mech's effectiveness. The TRSS.2L3 sensors, reused after their outstanding use on the Ostscout, give the Ostsol excellent data gathering capabilities for a 'Mech of its role. However, just as with the earlier Ostroc, the Ostsol suffers from fragile arms and often loses them in combat.",
+    "Deployment": "The Ostsol has been a popular fixture of House armies since its introduction. The Succession Wars did little to change this, and the 'Mech remained a common sight throughout the Inner Sphere. Repair and refit kits produced by Kong Interstellar helped keep Free Worlds League Ostsols in better condition than some, though their overall concentration of the venerable -4D remained similar to other states.",
+    "systemmanufacturer": "TARGETING:TRSS",
+    "systemmode": "TARGETING:.2L3"
+  },
+  "era": "2694",
+  "displayName": "Ostsol OTL-4D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Grigori",
+  "model": "C-GRG-OU Exanimus",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "240 Light Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": "Small Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1327",
+    "Config": "Biped Omnimech",
+    "role": "Sniper",
+    "quirk": "bad_rep_is",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "9",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "26",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "9",
+    "Weapons": "6",
+    "overview": "The Grigori is one of the Word of Blake's new Celestial series OmniMechs designed by Doctor Devon Cortland.",
+    "capabilities": "It is constructed on a standard chassis, but makes use of eleven tons of Light Ferro-Fibrous armor, a light fusion engine, and an XL Gyro; as well as the small cockpit that is common to all of the Celestials. Like the other Celestials, the Grigori has a C3i Computer to help direct its fire.",
+    "deployment": "The Exanimus configuration is designed to defend underwater locations. Equipped with a quartet of UMUs, it can travel at approximately 46km/h underwater. The use of a MASS allows support forces to rescue the pilot in case of a hull breach. Unlike most designs intended for underwater combat, the armament of the Exanimus lacks torpedoes. Instead it carries a Heavy PPC, ER PPC, a pair of ER Medium Lasers and a pair of ER Small Lasers. To ensure it finds enemy forces early, it also carries a Beagle Active Probe.",
+    "history": "The Grigori (named after fallen angels from Christianity) was added to the Word of Blake Militia's arsenal in late 3069 as Doctor Cortland oversaw the final production personally.",
+    "manufacturer": "Gibson Federated BattleMechs, Martinson Armaments",
+    "primaryfactory": "Gibson (Gibson Federated), Terra (Martinson)",
+    "systemmanufacturer": "TARGETING:Master’s Sight 1-Omega"
+  },
+  "era": "3077",
+  "displayName": "Grigori C-GRG-OU Exanimus",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

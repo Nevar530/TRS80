@@ -1,0 +1,63 @@
+{
+  "name": "Poseidon",
+  "model": "PSD-V2",
+  "tonnage": 125,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "375 XL Engine(IS)",
+  "heatSinks": "20 IS Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Superheavy Tripod Cockpit",
+  "gyro": "Superheavy Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6684",
+    "Config": "Tripod",
+    "role": "Juggernaut",
+    "quirk": "searchlight",
+    "myomer": "Standard",
+    "LA armor": "36",
+    "RA armor": "36",
+    "LT armor": "40",
+    "RT armor": "40",
+    "CT armor": "55",
+    "HD armor": "12",
+    "LL armor": "40",
+    "RL armor": "40",
+    "CL armor": "40",
+    "RTL armor": "12",
+    "RTR armor": "12",
+    "RTC armor": "21",
+    "Weapons": "14",
+    "overview": "<p>The Poseidon represents a groundbreaking achievement in BattleMech engineering, successfully surpassing the “100-ton barrier” that had long been a limit for Mech design. Emergent from the chaos of the Jihad and the technological innovations of the Word of Blake, the Poseidon was developed by the Republic of the Sphere as part of the ambitious Rhodes Project. This super-heavy tripod Mech, often referred to as a \"Colossal,\" embodies the culmination of efforts to create a Mech that is bigger, stronger, and more formidable than any predecessor. It stands as a testament to the Republic's readiness to embrace advanced warfare technology in the wake of the Blackout and the subsequent Fortress Republic initiative.</p>",
+    "capabilities": "<p>The PSD-V2 Poseidon, drawing inspiration from the Orca project and the Word of Blake’s Omega, features reengineered endo steel bones and reinforced actuators for enhanced stability and battlefield flexibility. Unlike its spiritual predecessor, the Orca, the Poseidon boasts greater stability and flexibility, making it a formidable presence on the battlefield. This super-heavy tripod is designed not just for raw power but also for operational versatility, showcasing the pinnacle of Mech engineering in the post-Jihad era.</p>",
+    "history": "<p>",
+    "manufacturer": "Rhodes Foundry",
+    "primaryfactory": "Devil’s Rock",
+    "systemmanufacturer": "TARGETING:Titan’s Vantage Mk. II with Apollo FCS"
+  },
+  "era": "3136",
+  "displayName": "Poseidon PSD-V2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

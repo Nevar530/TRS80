@@ -1,0 +1,55 @@
+{
+  "name": "Penetrator",
+  "model": "PTR-7D",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "12 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Reflective(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "8001",
+    "Config": "Biped",
+    "quirk": "stable",
+    "myomer": "Standard",
+    "LA armor": "20",
+    "RA armor": "20",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "32",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "9",
+    "Weapons": "8"
+  },
+  "era": "3133",
+  "displayName": "Penetrator PTR-7D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

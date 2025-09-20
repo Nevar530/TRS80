@@ -1,0 +1,57 @@
+{
+  "name": "Locust IIC",
+  "model": "6",
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "200 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1919",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "weak_legs",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "9",
+    "RT Armor": "9",
+    "CT Armor": "13",
+    "HD Armor": "8",
+    "LL Armor": "11",
+    "RL Armor": "11",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "9",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Locustiic .jpg"
+  },
+  "era": "3075",
+  "displayName": "Locust IIC 6",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

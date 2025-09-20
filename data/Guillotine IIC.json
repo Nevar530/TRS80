@@ -1,0 +1,63 @@
+{
+  "name": "Guillotine IIC",
+  "model": null,
+  "tonnage": 70,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "280 Fusion (Clan) Engine(IS)",
+  "heatSinks": "16 Clan Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1345",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "searchlight",
+    "myomer": "Standard",
+    "LA armor": "20",
+    "RA armor": "20",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "27",
+    "HD armor": "9",
+    "LL armor": "22",
+    "RL armor": "22",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "12",
+    "Weapons": "6",
+    "overview": "The Guillotine IIC is a simple upgrade of the original Guillotine BattleMech using Clan technology.",
+    "capabilities": "This version of that venerable 'Mech uses double heat sinks and an Endo Steel internal structure to save weight. These weight savings were used to upgrade the 'Mech's weapon systems. The original twelve tons of armor was left unchanged.",
+    "deployment": "From long range, the Guillotine IIC replaced the Large Laser of the original with a Clan Mk. XVII ER PPC. Of the original four Medium Lasers, two were upgraded to Kolibri Delta Series Large Pulse Lasers, while the other pair were replaced with Series 2f ER Medium Lasers. The SRM-6 was replaced with a lighter Clan Series 4d.",
+    "history": "Although Clan Coyote created this upgrade, Clan Star Adder was the first to use it in combat in 2892. With the introduction of the OmniMech, most Guillotine IICs were relegated to second-line and solahma duty.",
+    "manufacturer": "Omega Orbital Production Plant, Irian BattleMechs Unlimited (Refit ),  W-7 Facilities (Refit)",
+    "primaryfactory": "Unknown, Angell II, Weingarten",
+    "systemmanufacturer": "TARGETING:Series VI KITT"
+  },
+  "era": "2889",
+  "displayName": "Guillotine IIC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

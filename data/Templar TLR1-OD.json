@@ -1,0 +1,63 @@
+{
+  "name": "Templar",
+  "model": "TLR1-OD",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "340 XL Engine(IS)",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5707",
+    "Config": "Biped Omnimech",
+    "role": "Brawler",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "13",
+    "LA Armor": "28",
+    "RA Armor": "28",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "36",
+    "RL Armor": "36",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "10",
+    "Weapons": "4",
+    "capabilities": "This configuration carries a pair of Light Gauss Rifles in the torso and a Large X-Pulse Laser in each arm.",
+    "deployment": "The Templar is built on a lightweight Kallon Type XIX Endo Steel chassis and is powered by a KalTek 340 XL engine that gives the 'Mech a top speed of 64.8 km/h while sacrificing durability. The Templar has thirteen fixed double heat sinks and is armored with sixteen and a half tons of Starshield A armor with CASE fixed in the right torso. Overall, this allows the Templar to have forty tons of free pod space for weapons and equipment which the 'Mech uses effectively in its various configurations.",
+    "history": "With a noticeable lack of OmniMechs designed in the Federated Suns, Field Marshal Duke George Hasek went over the heads of the Department of the Quartermaster and commissioned Kallon Industries to design an assault OmniMech and backed the project with his own considerable financial resources. The resulting 'Mech is a force to be reckoned with on the modern battlefield.",
+    "manufacturer": "Kallon Industries",
+    "primaryfactory": "Talon",
+    "systemmanufacturer": "TARGETING:Spar 3C MegaTrak"
+  },
+  "era": "3063",
+  "displayName": "Templar TLR1-OD",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

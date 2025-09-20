@@ -1,0 +1,56 @@
+{
+  "name": "Peacekeeper",
+  "model": "PKP-1A",
+  "tonnage": 95,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "380 XL Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2452",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "rugged_1",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "40",
+    "RL Armor": "40",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "14",
+    "Weapons": "5"
+  },
+  "era": "3086",
+  "displayName": "Peacekeeper PKP-1A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Red Shift",
+  "model": "RDS-2A",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "180 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "4906",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "bad_rep_is",
+    "weaponquirk": "accurate:HD:3:ISTAG",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "9",
+    "HD Armor": "9",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3062",
+  "displayName": "Red Shift RDS-2A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

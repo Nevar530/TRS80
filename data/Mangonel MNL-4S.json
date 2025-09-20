@@ -1,0 +1,56 @@
+{
+  "name": "Mangonel",
+  "model": "MNL-4S",
+  "tonnage": 70,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "350 Light Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6871",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "no_arms",
+    "myomer": "Standard",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "29",
+    "HD armor": "9",
+    "LL armor": "22",
+    "RL armor": "22",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3088",
+  "displayName": "Mangonel MNL-4S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

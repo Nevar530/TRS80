@@ -1,0 +1,58 @@
+{
+  "name": "Phoenix Hawk",
+  "model": "PXH-1b 'Special'",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "270 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.0-SNAPSHOT on 2024-07-11",
+    "mul id": "2492",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "imp_com",
+    "weaponquirk": "jettison_capable:RA:4:ISERPPC",
+    "myomer": "Standard",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "23",
+    "HD armor": "6",
+    "LL armor": "15",
+    "RL armor": "15",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "5",
+    "Weapons": "6"
+  },
+  "era": "2760",
+  "displayName": "Phoenix Hawk PXH-1b 'Special'",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

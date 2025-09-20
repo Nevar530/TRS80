@@ -1,0 +1,57 @@
+{
+  "name": "Parash",
+  "model": null,
+  "tonnage": 35,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "245 XL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2428",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "low_profile",
+    "weaponquirk": "jettison_capable:RA:4:CLLargePulseLaser",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "16",
+    "HD Armor": "9",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "5",
+    "Weapons": "2"
+  },
+  "era": "3083",
+  "displayName": "Parash",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

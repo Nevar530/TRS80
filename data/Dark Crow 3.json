@@ -1,0 +1,56 @@
+{
+  "name": "Dark Crow",
+  "model": "3",
+  "tonnage": 55,
+  "techBase": "Clan",
+  "rulesLevel": "4",
+  "engine": "330 XXL (Clan) Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Lamellor(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "825",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "low_arms",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "4"
+  },
+  "era": "3084",
+  "displayName": "Dark Crow 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

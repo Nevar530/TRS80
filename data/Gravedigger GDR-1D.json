@@ -1,0 +1,57 @@
+{
+  "name": "Gravedigger",
+  "model": "GDR-1D",
+  "tonnage": 50,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "200 XL Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 The Clans"
+  ],
+  "extras": {
+    "mul id": "6264",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "pro_actuator",
+    "weaponquirk": "exposed_linkage:LA:5:CLERPPC",
+    "Myomer": "Standard",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "19",
+    "RT Armor": "19",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "3"
+  },
+  "era": "3105",
+  "displayName": "Gravedigger GDR-1D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Raven",
+  "model": "RVN-3L",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 XL Engine(IS)",
+  "heatSinks": "11 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "2664",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "11",
+    "RT Armor": "11",
+    "CT Armor": "11",
+    "HD Armor": "6",
+    "LL Armor": "8",
+    "RL Armor": "8",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "3",
+    "Weapons": "5"
+  },
+  "era": "3048",
+  "displayName": "Raven RVN-3L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

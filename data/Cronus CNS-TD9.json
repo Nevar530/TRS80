@@ -1,0 +1,57 @@
+{
+  "name": "Cronus",
+  "model": "CNS-TD9",
+  "tonnage": 55,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "330 XL Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067U"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.49.19-SNAPSHOT on 2024-03-10",
+    "mul id": "5680",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "easy_maintain",
+    "myomer": "Standard",
+    "LA armor": "11",
+    "RA armor": "11",
+    "LT armor": "14",
+    "RT armor": "14",
+    "CT armor": "20",
+    "HD armor": "9",
+    "LL armor": "14",
+    "RL armor": "14",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3072",
+  "displayName": "Cronus CNS-TD9",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

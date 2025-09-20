@@ -1,0 +1,56 @@
+{
+  "name": "Stinger",
+  "model": "STG-3G",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "120 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "3058",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "cramped_cockpit",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "7",
+    "RT Armor": "7",
+    "CT Armor": "8",
+    "HD Armor": "6",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "3",
+    "RTR Armor": "3",
+    "RTC Armor": "4",
+    "Weapons": "2"
+  },
+  "era": "2581",
+  "displayName": "Stinger STG-3G",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

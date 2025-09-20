@@ -1,0 +1,58 @@
+{
+  "name": "Marauder",
+  "model": "MAD-9W2",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "225 Light Engine(IS)",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Heavy Duty Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2051",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "low_profile",
+    "weaponquirk": "exposed_linkage:RT:7:ISSNPPC",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "11",
+    "Weapons": "5",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Marauder .jpg"
+  },
+  "era": "3080",
+  "displayName": "Marauder MAD-9W2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

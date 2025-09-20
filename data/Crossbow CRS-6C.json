@@ -1,0 +1,62 @@
+{
+  "name": "Crossbow",
+  "model": "CRS-6C",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "300 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "734",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "poor_target_long",
+    "Myomer": "Standard",
+    "LA Armor": "13",
+    "RA Armor": "13",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "17",
+    "HD Armor": "8",
+    "LL Armor": "16",
+    "RL Armor": "16",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "3",
+    "overview": "The predecessor to Clan Steel Viper's Crossbow OmniMech, the original Crossbow first saw battlefield action for the Lyran Commonwealth in 2468. The 60-ton 'Mech is speedy for its era, capable of 86 km/h. This came at the expense of armor, however, as the Crossbow is only protected by eight tons of armor.",
+    "capabilities": "This variant introduced in 2481, meant for close-quarters action, removed the missile launchers and one laser in favor of an Autocannon/10, though it had a limited ammunition supply",
+    "history": "The production model, the 6B, came a few years later. The heavy 'Mech was the first produced by Arcturan Arms and the third homegrown BattleMech produced in the Commonwealth. Arcturan Arms fell on hard times when the capital was relocated from Arcturus to Tharkad, forcing them to shut down the factory in 2490 after producing only a few hundred Crossbows. MacEnroe Motors bought out the financially troubled company in 2541, which shut down Crossbow production in 2550.",
+    "manufacturer": "Arcturan Arms, MacEnroe Motors",
+    "primaryfactory": "Arcturus",
+    "systemmanufacturer": "TARGETING:Arc Walker T&T Prime"
+  },
+  "era": "2481",
+  "displayName": "Crossbow CRS-6C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

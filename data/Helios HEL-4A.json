@@ -1,0 +1,56 @@
+{
+  "name": "Helios",
+  "model": "HEL-4A",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 Fusion Engine",
+  "heatSinks": "15 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1465",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "19",
+    "RA Armor": "19",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "5"
+  },
+  "era": "3060",
+  "displayName": "Helios HEL-4A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

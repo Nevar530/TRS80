@@ -1,0 +1,56 @@
+{
+  "name": "Stiletto",
+  "model": "STO-4A",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "280 Light Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "5131",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "difficult_eject",
+    "myomer": "Standard",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "11",
+    "RT armor": "11",
+    "CT armor": "16",
+    "HD armor": "8",
+    "LL armor": "14",
+    "RL armor": "14",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "5",
+    "Weapons": "3"
+  },
+  "era": "3061",
+  "displayName": "Stiletto STO-4A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

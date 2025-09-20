@@ -1,0 +1,58 @@
+{
+  "name": "Valkyrie",
+  "model": "VLK-QD1",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "150 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Project Phoenix"
+  ],
+  "extras": {
+    "mul id": "3374",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "imp_com",
+    "myomer": "Standard",
+    "ejection": "Full Head Ejection System",
+    "nocrit": "Standard:None",
+    "LA armor": "9",
+    "RA armor": "9",
+    "LT armor": "10",
+    "RT armor": "10",
+    "CT armor": "13",
+    "HD armor": "9",
+    "LL armor": "13",
+    "RL armor": "13",
+    "RTL armor": "3",
+    "RTR armor": "3",
+    "RTC armor": "4",
+    "Weapons": "2"
+  },
+  "era": "3067",
+  "displayName": "Valkyrie VLK-QD1",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

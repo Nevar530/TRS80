@@ -1,0 +1,56 @@
+{
+  "name": "Wyvern",
+  "model": "WVE-6N",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "180 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "3599",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "18",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "5"
+  },
+  "era": "2821",
+  "displayName": "Wyvern WVE-6N",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

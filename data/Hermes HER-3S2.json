@@ -1,0 +1,56 @@
+{
+  "name": "Hermes",
+  "model": "HER-3S2",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "270 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "9",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "1491",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "stable",
+    "Myomer": "MASC",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "6",
+    "RT Armor": "6",
+    "CT Armor": "6",
+    "HD Armor": "4",
+    "LL Armor": "4",
+    "RL Armor": "4",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "3"
+  },
+  "era": "3049",
+  "displayName": "Hermes HER-3S2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

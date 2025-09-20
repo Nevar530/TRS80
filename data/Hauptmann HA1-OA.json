@@ -1,0 +1,64 @@
+{
+  "name": "Hauptmann",
+  "model": "HA1-OA",
+  "tonnage": 95,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "285 Fusion Engine(IS)",
+  "heatSinks": "17 IS Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1421",
+    "Config": "Biped Omnimech",
+    "role": "Juggernaut",
+    "quirk": "ext_twist",
+    "myomer": "Standard",
+    "base chassis heat sinks": "11",
+    "LA armor": "32",
+    "RA armor": "32",
+    "LT armor": "30",
+    "RT armor": "30",
+    "CT armor": "45",
+    "HD armor": "9",
+    "LL armor": "40",
+    "RL armor": "40",
+    "RTL armor": "10",
+    "RTR armor": "10",
+    "RTC armor": "15",
+    "Weapons": "7",
+    "overview": "The first OmniMech both designed and built by the Lyran Alliance. The OmniMech is named after the rank held by officers in the LAAF.",
+    "capabilities": "The Hauptmann is built on a standard chassis and powered by a 285 fusion engine, adding to the 'Mech's durability as it cannot be killed by a side torso loss. The Hauptmann has eleven double heat sinks fixed on the chassis and can add more if needed in its various configurations. For protection, the Hauptmann carries eighteen and a half tons of armor and has CASE fixed in the right torso to protect against an ammunition explosion.",
+    "deployment": "Intended for close combat, the Hauptmann A is armed with four ER Medium Lasers as its primary short-ranged weapons with a pair of SRM-6 launchers linked to an Artemis IV fire control system for increased missile accuracy. For increased mobility, the Hauptmann A has three jump jets that allow the 'Mech to jump up to ninety meters. Finally, to defend itself if it ends up in a long range firefight, the Alpha configuration mounts a Gauss Rifle. To handle the massive heat load, it carries an additional six double heat sinks.",
+    "history": "The inspiration for the Hauptmann is drawn from the Daishi OmniMech used by the Clans. Using information from captured Daishis and data gleaned from the construction of the Firestarter OmniMech, which was shared by the Draconis Combine, the end result is a powerful OmniMech capable of defending itself in most combat situations.",
+    "manufacturer": "Coventry Metal Works",
+    "primaryfactory": "Coventry",
+    "systemmanufacturer": "TARGETING:Cyclops 9c"
+  },
+  "era": "3060",
+  "displayName": "Hauptmann HA1-OA",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

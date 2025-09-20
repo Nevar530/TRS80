@@ -1,0 +1,63 @@
+{
+  "name": "Grand Titan",
+  "model": "T-IT-N11M",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "400 XL Engine(IS)",
+  "heatSinks": "16 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1266",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "difficult_maintain",
+    "myomer": "Standard",
+    "LA armor": "29",
+    "RA armor": "29",
+    "LT armor": "31",
+    "RT armor": "31",
+    "CT armor": "42",
+    "HD armor": "9",
+    "LL armor": "38",
+    "RL armor": "38",
+    "RTL armor": "11",
+    "RTR armor": "11",
+    "RTC armor": "19",
+    "Weapons": "9",
+    "overview": "The Grand Titan was designed by Vining Engineering and Salvage Team to take on the best 'Mechs that the Inner Sphere or the Clans had to offer.",
+    "capabilities": "The 'Mech is built on an Endo Steel chassis and with a LTV 400 XL Engine, which propels the Grand Titan to a top speed of 64.8 kph, to save as much weight as possible. The Grand Titan also carries eighteen tons of armor.",
+    "deployment": "The N11M model of the Grand Titan is a major modification of the design. The 'Mech carries as its primary long-range weapons a Light Gauss Rifle and an ER PPC which gives the 'Mech powerful long-range reach. The 'Mech has for short-range combat four Medium Pulse Lasers and two Streak SRM-4 launchers. It is also protected by a Guardian ECM Suite. This upgrade brings the Grand Titan to modern standards and makes it as powerful on the battlefield now as it was when it was first released.",
+    "history": "The design of the Grand Titan was sold to Earthwerks Incorporated in the Free Worlds League and has become a 'Mech commonly seen in the FWLM and the Word of Blake militia.",
+    "manufacturer": "Earthwerks Ltd.",
+    "primaryfactory": "Keystone Plant #3",
+    "systemmanufacturer": "TARGETING:O/P FiberFeed 201 with Artemis IV FCS Interface"
+  },
+  "era": "3058",
+  "displayName": "Grand Titan T-IT-N11M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

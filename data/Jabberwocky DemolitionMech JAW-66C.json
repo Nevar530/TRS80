@@ -1,0 +1,62 @@
+{
+  "name": "Jabberwocky",
+  "model": "JAW-66C DemolitionMech",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Industrial",
+  "cockpit": "Industrial Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1651",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "Myomer": "Industrial Triple-Strength",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "5",
+    "RT Armor": "5",
+    "CT Armor": "9",
+    "HD Armor": "6",
+    "LL Armor": "6",
+    "RL Armor": "6",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "0",
+    "overview": "<p>The JAW-66A Jabberwocky, originally developed in 2549 as a general military support unit, fell short of expectations and was relegated to less critical tasks. However, its fortunes changed dramatically by 3069 when the Federated Suns, amid widespread devastation, urgently mobilized every available armed machine for combat, including the Jabberwocky. In response to the dire need for fortified engineering units, Jalastar Aerospace took the initiative in 3070 to introduce a completely reworked Jabberwocky, transforming it into a versatile and efficient IndustrialMech.</p>",
+    "capabilities": "<p>The JAW-66B Jabberwocky stands out for its simplicity in maintenance, thanks to its Panpour-produced components that are readily available. Unlike many IndustrialMechs, the Jabberwocky utilizes old neurohelmets, providing pilots with enhanced control over the 50-ton chassis. It is equipped with a salvage arm, spot welder, and a pair of Industrial-TSM powered lift hoists, allowing it to carry double its weight in salvage. The tracked propulsion system grants higher speed on paved surfaces, and its three jump jets add to its maneuverability in rough terrain. Additionally, its environmental sealing and searchlight make it suitable for operations in various hostile environments. The semi-modularity of the design, akin to the Mercury Mech rather than an OmniMech, allows for easy replacement of its rear torso or arms with different industrial equipment.</p>",
+    "deployment": "<p>Adapted for demolition tasks, the 66C variant replaces the spot welder with a rock cutter and removes the left lift hoist to enhance its demolition capabilities. This configuration is particularly useful in urban combat zones where rapid and efficient building demolition or breaching operations are crucial.</p>",
+    "history": "<p>The Jabberwocky IndustrialMech, originally developed in 2549, has undergone a remarkable transformation from an underperforming military support unit to a critical asset in engineering and battlefield operations. Its journey from obscurity to prominence is closely intertwined with the shifting demands and challenges faced by the Federated Suns during periods of intense conflict.<p>Initially intended for general military support, the JAW-66A Jabberwocky's limitations led to its relegation to secondary roles. However, the widespread devastation of the Jihad in 3069 compelled the Federated Suns to mobilize all available resources, resurrecting the Jabberwocky from storage and support units for frontline deployment. This move stripped many engineering units of their equipment, leaving them struggling with massive fortification and reconstruction efforts.<p>In 3070, amidst these challenges, Jalastar Aerospace recognized an opportunity to expand its market and introduced a completely reworked Jabberwocky, tailored for versatility in battlefield salvage and engineering tasks. The redesign, featuring components produced on Panpour and a track propulsion system for enhanced mobility, quickly garnered attention. Orders for the new Jabberwocky surged, with both Federated Suns support units and mercenary groups seeking to replenish their ranks with this adaptable machine.<p>Today, the Jabberwocky IndustrialMech stands as a testament to innovative engineering and adaptability in the face of adversity. Its various configurations, from the initial JAW-65A to the more versatile JAW-66B and specialized variants like the \"Demolition\" and \"Construction\" models, highlight the Mech's journey from an overlooked unit to an indispensable tool in both military and civilian engineering operations. The Jabberwocky's evolution not only reflects the changing landscape of Mech technology but also exemplifies the resilience and ingenuity of those who operate and maintain these machines in the ever-evolving theater of war.</p>",
+    "manufacturer": "Jalastar Aerospace",
+    "primaryfactory": "Panpour",
+    "systemmanufacturer": "TARGETING:Jal ConstrucTrak Mk I"
+  },
+  "era": "3070",
+  "displayName": "Jabberwocky JAW-66C DemolitionMech",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

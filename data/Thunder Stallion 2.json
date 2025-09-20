@@ -1,0 +1,56 @@
+{
+  "name": "Thunder Stallion",
+  "model": "2 'Fire Stallion'",
+  "tonnage": 85,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "255 Fusion (Clan) Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3225",
+    "Config": "Quad",
+    "role": "Missile Boat",
+    "quirk": "cramped_cockpit",
+    "Myomer": "Standard",
+    "FLL Armor": "36",
+    "FRL Armor": "36",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "RLL Armor": "36",
+    "RRL Armor": "36",
+    "RTL Armor": "16",
+    "RTR Armor": "16",
+    "RTC Armor": "20",
+    "Weapons": "6"
+  },
+  "era": "2877",
+  "displayName": "Thunder Stallion 2 'Fire Stallion'",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

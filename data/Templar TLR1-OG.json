@@ -1,0 +1,63 @@
+{
+  "name": "Templar",
+  "model": "TLR1-OG",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "340 XL Engine(IS)",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Jihad"
+  ],
+  "extras": {
+    "mul id": "5710",
+    "Config": "Biped Omnimech",
+    "role": "Sniper",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "13",
+    "LA Armor": "28",
+    "RA Armor": "28",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "36",
+    "RL Armor": "36",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "10",
+    "Weapons": "5",
+    "capabilities": "Apparently intended for long range direct fire support or anti-aircraft work, this configuration carries three LB 2-X autocannons, an ER PPC, and a Light Gauss Rifle. It can share targeting data with lancemates via a C3 Slave unit.",
+    "deployment": "The Templar is built on a lightweight Kallon Type XIX Endo Steel chassis and is powered by a KalTek 340 XL engine that gives the 'Mech a top speed of 64.8 km/h while sacrificing durability. The Templar has thirteen fixed double heat sinks and is armored with sixteen and a half tons of Starshield A armor with CASE fixed in the right torso. Overall, this allows the Templar to have forty tons of free pod space for weapons and equipment which the 'Mech uses effectively in its various configurations.",
+    "history": "With a noticeable lack of OmniMechs designed in the Federated Suns, Field Marshal Duke George Hasek went over the heads of the Department of the Quartermaster and commissioned Kallon Industries to design an assault OmniMech and backed the project with his own considerable financial resources. The resulting 'Mech is a force to be reckoned with on the modern battlefield.",
+    "manufacturer": "Kallon Industries",
+    "primaryfactory": "Talon",
+    "systemmanufacturer": "TARGETING:Spar 3C MegaTrak"
+  },
+  "era": "3069",
+  "displayName": "Templar TLR1-OG",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

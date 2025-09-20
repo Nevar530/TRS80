@@ -1,0 +1,56 @@
+{
+  "name": "Enforcer III",
+  "model": "ENF-6NAIS",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "250 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "984",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "barrel_fists_ra",
+    "Myomer": "Standard",
+    "LA Armor": "15",
+    "RA Armor": "15",
+    "LT Armor": "19",
+    "RT Armor": "19",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "3"
+  },
+  "era": "3074",
+  "displayName": "Enforcer III ENF-6NAIS",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

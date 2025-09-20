@@ -1,0 +1,56 @@
+{
+  "name": "Yeoman",
+  "model": "YMN-10-OR",
+  "tonnage": 60,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 Light Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3618",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "6",
+    "Weapons": "6"
+  },
+  "era": "3070",
+  "displayName": "Yeoman YMN-10-OR",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

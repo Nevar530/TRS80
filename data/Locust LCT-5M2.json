@@ -1,0 +1,56 @@
+{
+  "name": "Locust",
+  "model": "LCT-5M2",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "220 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "11",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6947",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "ubiquitous_is",
+    "Myomer": "Standard",
+    "LA Armor": "4",
+    "RA Armor": "4",
+    "LT Armor": "6",
+    "RT Armor": "6",
+    "CT Armor": "6",
+    "HD Armor": "7",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "2",
+    "Weapons": "3"
+  },
+  "era": "3087",
+  "displayName": "Locust LCT-5M2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

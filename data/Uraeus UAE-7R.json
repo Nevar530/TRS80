@@ -1,0 +1,56 @@
+{
+  "name": "Uraeus",
+  "model": "UAE-7R",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6677",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "bad_rep_clan",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "23",
+    "RT Armor": "23",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "29",
+    "RL Armor": "29",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "3"
+  },
+  "era": "3135",
+  "displayName": "Uraeus UAE-7R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

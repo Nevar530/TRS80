@@ -1,0 +1,56 @@
+{
+  "name": "Stalking Spider",
+  "model": "3",
+  "tonnage": 50,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "250 Fusion (Clan) Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3047",
+    "Config": "Quad",
+    "role": "Striker",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "FLL Armor": "21",
+    "FRL Armor": "21",
+    "LT Armor": "19",
+    "RT Armor": "19",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "RLL Armor": "21",
+    "RRL Armor": "21",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "5"
+  },
+  "era": "3072",
+  "displayName": "Stalking Spider 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

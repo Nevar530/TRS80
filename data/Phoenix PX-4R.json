@@ -1,0 +1,56 @@
+{
+  "name": "Phoenix",
+  "model": "PX-4R",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "250 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "2490",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "weaponquirk": "direct_torso_mount:LT:1:SRM 2",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "20",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "2"
+  },
+  "era": "2581",
+  "displayName": "Phoenix PX-4R",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

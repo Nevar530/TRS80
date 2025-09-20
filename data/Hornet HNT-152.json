@@ -1,0 +1,61 @@
+{
+  "name": "Hornet",
+  "model": "HNT-152",
+  "tonnage": 20,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "100 Fusion Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3039"
+  ],
+  "extras": {
+    "mul id": "1546",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "8",
+    "HD Armor": "8",
+    "LL Armor": "6",
+    "RL Armor": "6",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "4",
+    "Weapons": "3",
+    "Overview": "Kallon Industries designed the Hornet to fill the urban reconnaissance role for the SLDF. Unfortunately for Kallon, the Hornet was firmly rejected and the 'Mech was only produced for a scant two years before its lines shut down. After the collapse of the Star League, the furious combat (and casualties) of the Succession Wars would force many training, militia, or otherwise undesirable 'Mechs into frontline commands. As a result, when Kallon Industries rediscovered the plans for their Hornet design, they rushed it back into production knowing full well that they would doubtlessly be able to sell their full output.",
+    "Capabilities": "Slow but well armored for its size, the Hornet stands apart from other \"bug\" 'Mechs with its LRM rack. Giving it the ability to hit at ranges well beyond most other light scouts, the Hornet can easily harry larger 'Mechs or finish off fleeing units. Therefore, it is often used in the scout hunting or light fire support role, where it offers steady if somewhat lackluster service.",
+    "Deployment": "A common and straightforward field refit, the HNT-152 uses an SRM launcher instead of the standard LRM. Most were used by mercenary outfits, periphery forces, or planetary militias within the Federated Suns. It was only after its deployment by Wolf's Dragoons-who made good use of the design time and time again-that this Hornet saw larger deployment by House Davion.",
+    "systemmanufacturer": "TARGETING:Dalban",
+    "systemmode": "TARGETING:HiRez II"
+  },
+  "era": "2997",
+  "displayName": "Hornet HNT-152",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

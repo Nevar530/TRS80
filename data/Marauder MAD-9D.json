@@ -1,0 +1,57 @@
+{
+  "name": "Marauder",
+  "model": "MAD-9D",
+  "tonnage": 75,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "300 XL Engine(IS)",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(IS/Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6866",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "low_profile",
+    "weaponquirk": "exposed_linkage:RT:3:ISSBGR",
+    "Myomer": "Standard",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "23",
+    "RT Armor": "23",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "6"
+  },
+  "era": "3125",
+  "displayName": "Marauder MAD-9D",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

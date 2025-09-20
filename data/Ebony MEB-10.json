@@ -1,0 +1,56 @@
+{
+  "name": "Ebony",
+  "model": "MEB-10",
+  "tonnage": 25,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "250 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "10",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "940",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_target_med",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "8",
+    "RA Armor": "8",
+    "LT Armor": "10",
+    "RT Armor": "10",
+    "CT Armor": "12",
+    "HD Armor": "9",
+    "LL Armor": "12",
+    "RL Armor": "12",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "1"
+  },
+  "era": "3081",
+  "displayName": "Ebony MEB-10",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

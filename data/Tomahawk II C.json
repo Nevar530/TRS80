@@ -1,0 +1,64 @@
+{
+  "name": "Tomahawk II",
+  "model": "C",
+  "tonnage": 100,
+  "techBase": "Clan",
+  "rulesLevel": "4",
+  "engine": "300 XL (Clan) Engine(IS)",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 The Clans"
+  ],
+  "extras": {
+    "mul id": "6306",
+    "Config": "Biped Omnimech",
+    "role": "Missile Boat",
+    "quirk": "difficult_eject",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "12",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "LL Armor": "41",
+    "RL Armor": "41",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "9",
+    "overview": "The Tomahawk II is an Assault OmniMech first produced by Clan Wolf in 3088. The ‘Mech is considered to be, for its time, the superior 'Mech when compared to other contemporaries within the ranks of the Inner Sphere and Inner Sphere Clans.",
+    "capabilities": "The Tomahawk II is designed around the use of a DSAM Endo 10-Composite internal structure, which gives the design its cavernous pod capacity of 56 tons. The 'Mech is powered by a 300-Rated Starfire Extra-Light Fusion Engine, giving it a maximum speed of 54 kph. Protecting the engine and the Tomahawk II's other vitals is 19 tons of Advanced/3 standard armor, providing nearly maximum protection against enemy fire.",
+    "deployment": "Intended for the fire support role, the C Configuration carries a number of missile batteries and Pulse Laser technologies to play its role, while also providing a means of self-defense. The C Configuration sports six LRM-15 Launchers - one in each arm and two allocated to each side torso. The 'Mech's missile ammunition is found in the arms, with five tons worth of LRM munitions protected by CASE II. Backing up the 'Mech at closer ranges are three Large Pulse Lasers, each mounted in each of the 'Mech's torsos. Six additional Double Heat Sinks are provided to help manage the tremendous heat levels generated.",
+    "history": "The Tomahawk II was based on early prototypes developed during the Clan Invasion era, which were produced in limited numbers. The Tomahawk II was originally produced at the Wolves' W-7 Facilities on Weingarten until the late 3130s when the Clan undertook its migration to then exFree Worlds League space. Production of the 'Mech would resume on Keystone at Earthwerks-FWL, Incorporated. One of the Tomahawk II's most notable uses was during Clan Wolf's invasion of Tharkad in 3143. Beta Galaxy's Galaxy Commander Alaric Ward utilized a binary of Tomahawk IIs in order to demoralize Tharkard's Lyran defenders. He deployed this elite Binary of Tomahawk IIs to defeat elements of the 2nd Royals at Nagelring in July.",
+    "manufacturer": "Earthwerks-FWL, Inc.",
+    "primaryfactory": "Keystone",
+    "systemmanufacturer": "TARGETING:Build 4 MadCat TTS"
+  },
+  "era": "3088",
+  "displayName": "Tomahawk II C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

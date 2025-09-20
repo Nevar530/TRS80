@@ -1,0 +1,56 @@
+{
+  "name": "Raven II",
+  "model": "RVN-5X",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "280 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Capellan Confederation"
+  ],
+  "extras": {
+    "mul id": "6458",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_sensors",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "17",
+    "HD Armor": "9",
+    "LL Armor": "13",
+    "RL Armor": "13",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "4",
+    "Weapons": "4"
+  },
+  "era": "3123",
+  "displayName": "Raven II RVN-5X",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

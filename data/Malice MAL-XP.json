@@ -1,0 +1,56 @@
+{
+  "name": "Malice",
+  "model": "MAL-XP",
+  "tonnage": 100,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "400 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(IS/Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6725",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "pro_actuator",
+    "Myomer": "Standard",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "42",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "12",
+    "RTR Armor": "12",
+    "RTC Armor": "20",
+    "Weapons": "6"
+  },
+  "era": "3139",
+  "displayName": "Malice MAL-XP",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

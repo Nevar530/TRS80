@@ -1,0 +1,56 @@
+{
+  "name": "Mortis",
+  "model": "MS-1P",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "375 XL Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Capellan Confederation"
+  ],
+  "extras": {
+    "mul id": "6467",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "distracting",
+    "Myomer": "Standard",
+    "LA Armor": "21",
+    "RA Armor": "21",
+    "LT Armor": "25",
+    "RT Armor": "25",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "25",
+    "RL Armor": "25",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "3"
+  },
+  "era": "3122",
+  "displayName": "Mortis MS-1P",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

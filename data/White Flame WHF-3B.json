@@ -1,0 +1,57 @@
+{
+  "name": "White Flame",
+  "model": "WHF-3B",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "350 Light Engine(IS)",
+  "heatSinks": "11 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3067"
+  ],
+  "extras": {
+    "mul id": "5404",
+    "Config": "Quad",
+    "role": "Skirmisher",
+    "quirk": "exp_actuator",
+    "weaponquirk": "direct_torso_mount:LT:3:ISERMediumLaser",
+    "myomer": "Standard",
+    "FLL armor": "30",
+    "FRL armor": "30",
+    "LT armor": "23",
+    "RT armor": "23",
+    "CT armor": "34",
+    "HD armor": "9",
+    "RLL armor": "30",
+    "RRL armor": "30",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "5"
+  },
+  "era": "3065",
+  "displayName": "White Flame WHF-3B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

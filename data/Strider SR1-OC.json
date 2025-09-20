@@ -1,0 +1,57 @@
+{
+  "name": "Strider",
+  "model": "SR1-OC",
+  "tonnage": 40,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "240 Fusion Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "3087",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "easy_pilot",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "9",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "14",
+    "RT Armor": "14",
+    "CT Armor": "15",
+    "HD Armor": "9",
+    "LL Armor": "14",
+    "RL Armor": "14",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "3"
+  },
+  "era": "3057",
+  "displayName": "Strider SR1-OC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

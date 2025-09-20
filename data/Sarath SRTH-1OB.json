@@ -1,0 +1,57 @@
+{
+  "name": "Sarath",
+  "model": "SRTH-1OB",
+  "tonnage": 50,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "4",
+  "engine": "250 XL Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Free Worlds League"
+  ],
+  "extras": {
+    "mul id": "6508",
+    "Config": "Quad Omnimech",
+    "role": "Skirmisher",
+    "quirk": "bad_rep_is",
+    "Myomer": "Triple-Strength",
+    "Base Chassis Heat Sinks": "10",
+    "FLL Armor": "24",
+    "FRL Armor": "24",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "25",
+    "HD Armor": "8",
+    "RLL Armor": "24",
+    "RRL Armor": "24",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "7",
+    "Weapons": "8"
+  },
+  "era": "3122",
+  "displayName": "Sarath SRTH-1OB",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

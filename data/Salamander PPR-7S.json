@@ -1,0 +1,56 @@
+{
+  "name": "Salamander",
+  "model": "PPR-7S",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 Light Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2786",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "25",
+    "RA Armor": "25",
+    "LT Armor": "27",
+    "RT Armor": "27",
+    "CT Armor": "41",
+    "HD Armor": "9",
+    "LL Armor": "33",
+    "RL Armor": "33",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "5"
+  },
+  "era": "3064",
+  "displayName": "Salamander PPR-7S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

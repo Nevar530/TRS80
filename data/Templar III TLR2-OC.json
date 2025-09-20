@@ -1,0 +1,63 @@
+{
+  "name": "Templar III",
+  "model": "TLR2-OC",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "340 Light Engine(IS)",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Heavy Duty Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Federated Suns"
+  ],
+  "extras": {
+    "mul id": "6356",
+    "Config": "Biped Omnimech",
+    "role": "Brawler",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "13",
+    "LA Armor": "28",
+    "RA Armor": "28",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "36",
+    "RL Armor": "36",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "10",
+    "Weapons": "6",
+    "overview": "The Templar III is a Dark Age era Assault Class OmniMech, first produced by General Motors for the Federated Suns. It was intended as a replacement for the original Templar, whose factory lines were destroyed during the Jihad. General Motors established a new production line on New Valencia for what was to become the next generation of the Templar with newer technologies.",
+    "capabilities": "Like its predecessor, the Templar III is typically utilized as a Command 'Mech by AFFS forces. With its alternate configurations the 'Mech is able to handle various combat situations thanks to access to Advanced equipment.",
+    "deployment": "The second of the Templar III's advanced tech configurations, the C Configuration is armed with the following: a single Class 5 Rotary Autocannon, a pair of ER medium lasers, a Six-Tubed Streak SRM Launcher, an ER Small Laser, and a single Large Re-Engineered Laser. The autocannon is supplied with 3 tons of ammunition, while 1 ton of ammunition is allotted to the Streak Launcher.",
+    "history": "Among the most noticeable differences when comparing the original Templar to the Templar III is its smaller Pod Capacity. The new 'Mech has a 29 ton Pod capacity in comparison to the old Templar's 40 tons. However, the 'Mech's heavier Light Engine provides improved durability while retaining the original design's maximum speed and armor protection.",
+    "manufacturer": "General Motors",
+    "primaryfactory": "New Valencia",
+    "systemmanufacturer": "TARGETING:Spar 3C MegaTrak"
+  },
+  "era": "3120",
+  "displayName": "Templar III TLR2-OC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

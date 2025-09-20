@@ -1,0 +1,64 @@
+{
+  "name": "Legacy",
+  "model": "LGC-04-WVR",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "320 Light Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5702",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "bad_rep_is",
+    "weaponquirk": "direct_torso_mount:LT:2:ISSNPPC",
+    "Myomer": "Standard",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "40",
+    "HD Armor": "9",
+    "LL Armor": "34",
+    "RL Armor": "34",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "2",
+    "overview": "The Legacy was produced as a testbed for new technologies, including the Ultra AC/10 and C3i Computer.",
+    "capabilities": "They upgraded its targeting system and included the C3i, which allows six units to coordinate fire. Its thick armor protection, standard fusion engine, and CASE give the Legacy remarkable staying power on the battlefield. One of the weaknesses of the 'Mech is its slow speed compared to other 'Mechs of similar size, but the inclusion of jump jets sought to counter that with superior maneuverability.",
+    "deployment": "This Legacy uses the same frame and engine as the 03 model but uses a Compact Gyro to provide enough room to add MASC. This means it can reach a speed of 86km/h. The weaponry has been replaced with a pair of Snub-Nose PPCs, and the hand actuators have been replaced by Claws. The standard armor is replaced by Light Ferro-Fibrous.",
+    "history": "At the request of Word of Blake Precentor Martial Cameron St. Jamais. The designers used a failed Star League 'Mech called the Rising Star as the base for the Legacy.",
+    "manufacturer": "Skobel MechWorks",
+    "primaryfactory": "Russia, Terra",
+    "systemmanufacturer": "TARGETING:Falcon 15 Watcher"
+  },
+  "era": "3072",
+  "displayName": "Legacy LGC-04-WVR",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

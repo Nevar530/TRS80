@@ -1,0 +1,56 @@
+{
+  "name": "Gallant",
+  "model": "GLT-10-0",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "210 Light Engine(IS)",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6872",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "weaponquirk": "stable_weapon:RA:7:Large Re-engineered Laser",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "20",
+    "RT Armor": "20",
+    "CT Armor": "28",
+    "HD Armor": "9",
+    "LL Armor": "29",
+    "RL Armor": "29",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "13",
+    "Weapons": "4"
+  },
+  "era": "3130",
+  "displayName": "Gallant GLT-10-0",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Dragon II",
+  "model": "DRG-11K",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "260 Fusion Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Draconis Combine"
+  ],
+  "extras": {
+    "mul id": "6414",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "stable",
+    "weaponquirk": "poor_cooling:RA:3:ISERPPC",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "3"
+  },
+  "era": "3099",
+  "displayName": "Dragon II DRG-11K",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

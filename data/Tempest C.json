@@ -1,0 +1,54 @@
+{
+  "name": "Tempest",
+  "model": "C",
+  "tonnage": 65,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "2",
+  "engine": "260 XL Engine(IS)",
+  "heatSinks": "12 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3150"
+  ],
+  "extras": {
+    "mul id": "8005",
+    "Config": "Biped",
+    "myomer": "Standard",
+    "LA armor": "18",
+    "RA armor": "18",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "32",
+    "HD armor": "9",
+    "LL armor": "28",
+    "RL armor": "28",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "7",
+    "Weapons": "6"
+  },
+  "era": "3150",
+  "displayName": "Tempest C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

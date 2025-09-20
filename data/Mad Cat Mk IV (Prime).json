@@ -1,0 +1,59 @@
+{
+  "name": "Mad Cat Mk IV",
+  "model": "(Prime)",
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "3",
+  "engine": "375 XXL (Clan) Engine(IS)",
+  "heatSinks": "17 Clan Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Lamellor(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Mercenaries"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.50.1-SNAPSHOT on 2024-11-09",
+    "clanname": "Savage Wolf",
+    "mul id": "6570",
+    "Config": "Biped OmniMek",
+    "role": "Skirmisher",
+    "quirk": "pro_actuator",
+    "myomer": "Standard",
+    "base chassis heat sinks": "15",
+    "LA armor": "24",
+    "RA armor": "24",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "35",
+    "HD armor": "9",
+    "LL armor": "31",
+    "RL armor": "31",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "8",
+    "Weapons": "6"
+  },
+  "era": "3136",
+  "displayName": "Mad Cat Mk IV (Prime)",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

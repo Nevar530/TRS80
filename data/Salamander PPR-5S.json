@@ -1,0 +1,56 @@
+{
+  "name": "Salamander",
+  "model": "PPR-5S",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "320 XL Engine",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2782",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "26",
+    "RA Armor": "26",
+    "LT Armor": "28",
+    "RT Armor": "28",
+    "CT Armor": "42",
+    "HD Armor": "9",
+    "LL Armor": "34",
+    "RL Armor": "34",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "5"
+  },
+  "era": "3055",
+  "displayName": "Salamander PPR-5S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

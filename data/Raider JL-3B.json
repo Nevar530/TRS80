@@ -1,0 +1,54 @@
+{
+  "name": "Raider",
+  "model": "JL-3B",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "200 ICE Engine(IS)",
+  "heatSinks": "4 IS Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Dark Age"
+  ],
+  "extras": {
+    "mul id": "8071",
+    "Config": "Biped",
+    "myomer": "Triple-Strength",
+    "LA armor": "16",
+    "RA armor": "16",
+    "LT armor": "18",
+    "RT armor": "18",
+    "CT armor": "25",
+    "HD armor": "9",
+    "LL armor": "20",
+    "RL armor": "20",
+    "RTL armor": "6",
+    "RTR armor": "6",
+    "RTC armor": "7",
+    "Weapons": "5"
+  },
+  "era": "3138",
+  "displayName": "Raider JL-3B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

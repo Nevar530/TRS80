@@ -1,0 +1,62 @@
+{
+  "name": "Stealth",
+  "model": "STH-3S",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "315 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "7"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "3057",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "imp_sensors",
+    "Myomer": "Standard",
+    "LA Armor": "14",
+    "RA Armor": "14",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "21",
+    "HD Armor": "9",
+    "LL Armor": "22",
+    "RL Armor": "22",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "6",
+    "Weapons": "1",
+    "overview": "The Stealth is a heavy scout 'Mech that is in use by the Federated Suns and the Lyran Alliance.",
+    "capabilities": "The 'Mech has a GM 315 XL Engine that allows the Stealth to move at speeds of 118.8 kph and the MASC system on board can push the 'Mech to 151.2 kph in short bursts. This amazing mobility is augmented by jump jets which the Stealth can use to jump up to two hundred and ten meters. The Stealth is also outfitted with a Cyclops-Beagle Sensory Active Probe that the Stealth can use to find hidden enemy units.",
+    "deployment": "The 3S variant of the Stealth is built using reverse engineered Stealth Armor. The 'Mech is armed with a single ER PPC which has a very long range. The ER PPCs long range and the Stealth Armor combine to make the 3S an almost perfect sniper 'Mech.",
+    "manufacturer": "General Motors",
+    "primaryfactory": "Kathil",
+    "systemmanufacturer": "TARGETING:Dalban HiRez with Active Probe"
+  },
+  "era": "3067",
+  "displayName": "Stealth STH-3S",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

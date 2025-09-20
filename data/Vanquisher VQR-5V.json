@@ -1,0 +1,63 @@
+{
+  "name": "Vanquisher",
+  "model": "VQR-5V",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Compact Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "Heavy Duty Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: Jihad"
+  ],
+  "extras": {
+    "mul id": "5340",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "42",
+    "RL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "14",
+    "Weapons": "7",
+    "overview": "Based on the King Crab, and built in the same factory that first produced the Mackie, the Vanquisher has a legendary pedigree.",
+    "capabilities": "In order to allow it to carry as heavy a payload as possible without sacrificing durability, the 'Mech is built on a Hollis Alteration Mark VI Endo Steel that carries a Vlar 300 fusion engine, which propels the 'Mech to a top speed of 54 km/h. The Vanquisher is protected by nineteen and a half tons of armor with CASE in both side torsos to protect the 'Mech from going down in an ammunition explosion.",
+    "deployment": "An upgraded version of the Vanquisher, the 5V keeps the ER Large Lasers of the 2A. It trades out the Light Gauss rifles, however, in favor of a Heavy Gauss Rifle. Two of the ER Medium Lasers are retained, and a pair of B-Pods are added for defense against battle armor. Ferro-Fibrous armor is utilized, though a Compact Engine is needed to make room. A Heavy-Duty Gyro increases the 5V's survivability.",
+    "history": "The Vanquisher has its genesis in the development of reverse engineered Improved C3 Computers. Once the Word of Blake had perfected their version of C3i, Cameron St. Jamais contacted Skobel MechWorks and contracted them to produce a 'Mech that would showcase the features of the new system. The Vanquisher was the result of that request.",
+    "manufacturer": "Skobel MechWorks",
+    "primaryfactory": "Russia, Terra",
+    "systemmanufacturer": "TARGETING:Falcon 12b Watcher"
+  },
+  "era": "3069",
+  "displayName": "Vanquisher VQR-5V",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

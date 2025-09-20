@@ -1,0 +1,56 @@
+{
+  "name": "Supernova",
+  "model": "4",
+  "tonnage": 90,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "270 Fusion (Clan) Engine",
+  "heatSinks": "18 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "3135",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "imp_target_long",
+    "Myomer": "Standard",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "30",
+    "RT Armor": "30",
+    "CT Armor": "45",
+    "HD Armor": "9",
+    "LL Armor": "36",
+    "RL Armor": "36",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "8"
+  },
+  "era": "3067",
+  "displayName": "Supernova 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

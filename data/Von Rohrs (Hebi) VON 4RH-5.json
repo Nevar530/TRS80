@@ -1,0 +1,55 @@
+{
+  "name": "Von Rohrs (Hebi)",
+  "model": "VON 4RH-5",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "325 Fusion Engine",
+  "heatSinks": "15 Single",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3455",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "Myomer": "Standard",
+    "LA Armor": "13",
+    "RA Armor": "13",
+    "LT Armor": "15",
+    "RT Armor": "15",
+    "CT Armor": "22",
+    "HD Armor": "9",
+    "LL Armor": "20",
+    "RL Armor": "20",
+    "RTL Armor": "5",
+    "RTR Armor": "5",
+    "RTC Armor": "7",
+    "Weapons": "3"
+  },
+  "era": "2487",
+  "displayName": "Von Rohrs (Hebi) VON 4RH-5",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

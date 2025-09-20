@@ -1,0 +1,62 @@
+{
+  "name": "Lao Hu",
+  "model": "LHU-4E",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "375 XL Fusion Engine",
+  "heatSinks": "14 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth Armor"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo-Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5696",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "good_rep_1",
+    "Myomer": "Standard",
+    "LA Armor": "23",
+    "RA Armor": "23",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "6",
+    "overview": "Designed by a student at the Victoria Academy of Arms and Technology, the Lao Hu (\"Tiger\") is based on the Thunder BattleMech and is designed to correct perceived flaws in the Thunder by using new technologies available to the Capellan Confederation.",
+    "capabilities": "The Lao Hu is built on a lightweight Chariot Type II Endo Steel that carries a GM 375 XL Engine which gives the 'Mech a top speed of 86.4 km/h while sacrificing some survivability for more free weight and a heavier weapons payload. The Lao Hu is protected by an impressive thirteen and a half tons of armor, making it capable of weathering hits from all but the heaviest weapons.",
+    "deployment": "This variant is equipped with Stealth Armor powered by a Guardian ECM Suite. The weapons have been replaced so it carries a Heavy PPC, Gauss Rifle, and three Rocket Launcher 10s. The heat sinks have been increased to fourteen. To make room for all this equipment, the 4E uses an XL Gyro and a Small Cockpit.",
+    "manufacturer": "Shengli Arms",
+    "primaryfactory": "Victoria",
+    "systemmanufacturer": "TARGETING:O/P 911 Targeting and Tracking System"
+  },
+  "era": "3078",
+  "displayName": "Lao Hu LHU-4E",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

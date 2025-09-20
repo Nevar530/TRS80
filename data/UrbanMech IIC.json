@@ -1,0 +1,63 @@
+{
+  "name": "UrbanMech IIC",
+  "model": null,
+  "tonnage": 30,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "90 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "3361",
+    "Config": "Biped",
+    "role": "Sniper",
+    "quirk": "no_arms",
+    "myomer": "Standard",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "8",
+    "RT armor": "8",
+    "CT armor": "11",
+    "HD armor": "9",
+    "LL armor": "12",
+    "RL armor": "12",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "8",
+    "Weapons": "2",
+    "overview": "The UrbanMech IIC is a Clan IIC-style upgrade of the original UrbanMech.",
+    "capabilities": "Designed as a cheap, efficient urban combat vehicle, the UrbanMech IIC improves upon its predecessor by utilizing an Ultra AC/10 that allows the 'Mech's main gun to fire twice as fast as the old version, though the MechWarrior must still watch ammo consumption carefully. The ER Small Laser is a backup weapon that allows the design to stay in the fight after its ammunition has run out.",
+    "deployment": "They simply upgraded the autocannon to a Type 9 Ultra Autocannon/10 and the Small Laser to a Series 1 Extended Range Small Laser. The more advanced Clan technology allowed the technicians to increase the 'Mech's speed by fifty percent and improve its jumping capacity to 90 meters, though they did not change the six tons of standard armor or the ten standard heat sinks.",
+    "history": "Around the same time as the development of the OmniMech during the Golden Century, Clan Coyote technicians reworked this venerable design. They studied battle data from as far back as the Amaris Civil War and used this research as the basis for their upgrades. They apparently decided that the UrbanMech (known as the Urbie to its fans and detractors alike) did not need much reworking. While the Coyotes field the most UrbanMech IICs, the 'Mechs are also fielded by the Goliath Scorpions, Snow Ravens, Ice Hellions, and Hell's Horses.",
+    "manufacturer": "Beta Plant 2W",
+    "primaryfactory": "Tamaron",
+    "systemmanufacturer": "TARGETING:HT9 TTS"
+  },
+  "era": "2849",
+  "displayName": "UrbanMech IIC",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

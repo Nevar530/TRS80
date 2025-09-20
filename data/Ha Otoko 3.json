@@ -1,0 +1,56 @@
+{
+  "name": "Ha Otoko",
+  "model": "3",
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "260 Fusion (Clan) Engine",
+  "heatSinks": "13 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1354",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "bad_rep_clan",
+    "Myomer": "Standard",
+    "LA Armor": "20",
+    "RA Armor": "20",
+    "LT Armor": "23",
+    "RT Armor": "23",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "LL Armor": "29",
+    "RL Armor": "29",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "6"
+  },
+  "era": "3082",
+  "displayName": "Ha Otoko 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

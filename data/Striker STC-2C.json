@@ -1,0 +1,56 @@
+{
+  "name": "Striker",
+  "model": "STC-2C",
+  "tonnage": 80,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "320 Fusion Engine",
+  "heatSinks": "15 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard((Unknown Technology Base))"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "3094",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "22",
+    "RA Armor": "22",
+    "LT Armor": "25",
+    "RT Armor": "25",
+    "CT Armor": "35",
+    "HD Armor": "9",
+    "LL Armor": "26",
+    "RL Armor": "26",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "10",
+    "Weapons": "6"
+  },
+  "era": "2571",
+  "displayName": "Striker STC-2C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Venom",
+  "model": "SDR-9KE",
+  "tonnage": 35,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "280 XL Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "8",
+    "jump": "8"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3150"
+  ],
+  "extras": {
+    "mul id": "8007",
+    "Config": "Biped",
+    "quirk": "difficult_eject",
+    "myomer": "Standard",
+    "LA armor": "8",
+    "RA armor": "8",
+    "LT armor": "11",
+    "RT armor": "11",
+    "CT armor": "12",
+    "HD armor": "8",
+    "LL armor": "8",
+    "RL armor": "8",
+    "RTL armor": "2",
+    "RTR armor": "2",
+    "RTC armor": "2",
+    "Weapons": "3"
+  },
+  "era": "3108",
+  "displayName": "Venom SDR-9KE",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

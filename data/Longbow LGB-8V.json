@@ -1,0 +1,62 @@
+{
+  "name": "Longbow",
+  "model": "LGB-8V",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "255 XL Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "1938",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "no_arms",
+    "Myomer": "Standard",
+    "LA Armor": "28",
+    "RA Armor": "28",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "41",
+    "HD Armor": "9",
+    "LL Armor": "33",
+    "RL Armor": "33",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "12",
+    "Weapons": "5",
+    "overview": "The Longbow, introduced in 2480 as the LGB-0C Longbow, has seen service in the armies of the Inner Sphere since the days of the Star League and is one of the most well-known fire support 'Mechs in existence.",
+    "capabilities": "The Longbow is a massive BattleMech weighing in at 85 tons and is able to move at a top speed of 54.0 km/h, thanks to a Strand 255 fusion engine. The Longbow is protected by fourteen and a half tons of armor. Some have criticized the design for its lack of CASE - making an otherwise rugged 'Mech vulnerable to a loss by an ammunition explosion. As a fire-support 'Mech though, the Longbow is a trusted and reliable machine that can be counted on to carry out the mission it is designed for.",
+    "deployment": "This variant was introduced during the Jihad. By removing three of the 7V's Medium Pulse Lasers, designers were able to install two Arrow IV launchers with 10 rounds of ammunition per launcher. This variant retains two of the MPLs plus the ER Large Laser for direct fire and defense.",
+    "manufacturer": "StarCorps Industries,StarCorps (FWL) Industries,StarCorps Industries,StarCorps Industries",
+    "primaryfactory": "Crofton,Emris IV,Fletcher (TH),Loburg",
+    "systemmanufacturer": "TARGETING:Octagon Tartrac System C"
+  },
+  "era": "3068",
+  "displayName": "Longbow LGB-8V",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

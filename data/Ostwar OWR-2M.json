@@ -1,0 +1,56 @@
+{
+  "name": "Ostwar",
+  "model": "OWR-2M",
+  "tonnage": 65,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "235 Fusion Engine",
+  "heatSinks": "12 Single",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Primitive(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": "Primitive Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "XTR: Primitives I"
+  ],
+  "extras": {
+    "mul id": "4769",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "21",
+    "RT Armor": "21",
+    "CT Armor": "30",
+    "HD Armor": "9",
+    "LL Armor": "23",
+    "RL Armor": "23",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "5"
+  },
+  "era": "2470",
+  "displayName": "Ostwar OWR-2M",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

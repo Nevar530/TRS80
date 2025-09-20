@@ -1,0 +1,56 @@
+{
+  "name": "Lu Wei Bing",
+  "model": "LN-4B",
+  "tonnage": 85,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "340 Light Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Capellan Confederation"
+  ],
+  "extras": {
+    "mul id": "6471",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "easy_maintain",
+    "Myomer": "Standard",
+    "LA Armor": "28",
+    "RA Armor": "28",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "39",
+    "HD Armor": "9",
+    "LL Armor": "36",
+    "RL Armor": "36",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "4"
+  },
+  "era": "3110",
+  "displayName": "Lu Wei Bing LN-4B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

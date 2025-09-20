@@ -1,0 +1,57 @@
+{
+  "name": "White Flame",
+  "model": "WHF-4C",
+  "tonnage": 70,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "350 Light Engine(IS)",
+  "heatSinks": "13 IS Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "Standard Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3067 Unabridged"
+  ],
+  "extras": {
+    "mul id": "5693",
+    "Config": "Quad",
+    "role": "Skirmisher",
+    "quirk": "exp_actuator",
+    "weaponquirk": "direct_torso_mount:LT:3:ISMediumPulseLaser",
+    "myomer": "Standard",
+    "FLL armor": "30",
+    "FRL armor": "30",
+    "LT armor": "23",
+    "RT armor": "23",
+    "CT armor": "33",
+    "HD armor": "9",
+    "RLL armor": "30",
+    "RRL armor": "30",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "6"
+  },
+  "era": "3077",
+  "displayName": "White Flame WHF-4C",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

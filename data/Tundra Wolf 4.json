@@ -1,0 +1,57 @@
+{
+  "name": "Tundra Wolf",
+  "model": "4",
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine",
+  "heatSinks": "19 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "3318",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "weak_head_1",
+    "Myomer": "Standard",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "24",
+    "RT Armor": "24",
+    "CT Armor": "34",
+    "HD Armor": "9",
+    "LL Armor": "32",
+    "RL Armor": "32",
+    "RTL Armor": "8",
+    "RTR Armor": "8",
+    "RTC Armor": "12",
+    "Weapons": "7",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Tundra Wolf .jpg"
+  },
+  "era": "3077",
+  "displayName": "Tundra Wolf 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

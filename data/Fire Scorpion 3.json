@@ -1,0 +1,56 @@
+{
+  "name": "Fire Scorpion",
+  "model": "3",
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "260 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1073",
+    "Config": "Quad",
+    "role": "Skirmisher",
+    "quirk": "cowl",
+    "myomer": "Standard",
+    "FLL armor": "29",
+    "FRL armor": "29",
+    "LT armor": "22",
+    "RT armor": "22",
+    "CT armor": "31",
+    "HD armor": "9",
+    "RLL armor": "29",
+    "RRL armor": "29",
+    "RTL armor": "7",
+    "RTR armor": "7",
+    "RTC armor": "10",
+    "Weapons": "5"
+  },
+  "era": "3071",
+  "displayName": "Fire Scorpion 3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

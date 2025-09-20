@@ -1,0 +1,56 @@
+{
+  "name": "Ymir",
+  "model": "BWP-2B",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "1",
+  "engine": "360 Fusion Engine",
+  "heatSinks": "16 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "3620",
+    "Config": "Biped",
+    "role": "Missile Boat",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "LA Armor": "18",
+    "RA Armor": "18",
+    "LT Armor": "17",
+    "RT Armor": "17",
+    "CT Armor": "23",
+    "HD Armor": "9",
+    "LL Armor": "23",
+    "RL Armor": "23",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "9"
+  },
+  "era": "2475",
+  "displayName": "Ymir BWP-2B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

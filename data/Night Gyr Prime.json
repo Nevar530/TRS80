@@ -1,0 +1,64 @@
+{
+  "name": "Night Gyr",
+  "model": "Prime",
+  "tonnage": 75,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine(IS)",
+  "heatSinks": "20 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "4"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "mul id": "2270",
+    "Config": "Biped Omnimech",
+    "role": "Skirmisher",
+    "quirk": "difficult_maintain",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "12",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "33",
+    "HD Armor": "9",
+    "LL Armor": "28",
+    "RL Armor": "28",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "10",
+    "Weapons": "6",
+    "overview": "The Night Gyr came back with Clan Jade Falcon leaders following their return to the Clan homeworlds in 3051 to elect a new ilKhan. It has become more prevalent in the Falcon touman following the Refusal War.",
+    "capabilities": "No expense was spared in the manufacture of this OmniMech that uses an XL Engine and Endo Steel to save weight. It also incorporates eleven and a half tons of Ferro-Fibrous armor. Though it is on the slow end for a Clan heavy 'Mech, the Night Gyr mounts four fixed jump jets that enable it to jump up to 120 meters in a single bound. The design was a testbed for some new technologies, including the Laser Heat Sink, which was eventually phased out due to a lack of increased performance.",
+    "deployment": "The primary configuration is hard-hitting, mounting a pair of ER PPCs located in the left arm and an Ultra Autocannon/10 in the right. This blistering firepower can often take down an opponent before they are in range. Three Medium Pulse Lasers serve as accurate backups. Eight additional double heat sinks keep the 'Mech fairly cool.",
+    "history": "During the Wars of Reaving, Night Gyr's production facilities on Ironhold, would end up being destroyed in 3076.",
+    "manufacturer": "Ironhold Gamma Complex",
+    "primaryfactory": "Ironhold",
+    "systemmanufacturer": "TARGETING:Ironhold Mk II"
+  },
+  "era": "3052",
+  "displayName": "Night Gyr Prime",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

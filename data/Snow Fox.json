@@ -1,0 +1,56 @@
+{
+  "name": "Snow Fox",
+  "model": null,
+  "tonnage": 20,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "160 Fusion (Clan) Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "8",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "2979",
+    "Config": "Quad",
+    "role": "Striker",
+    "quirk": "hard_pilot",
+    "Myomer": "Standard",
+    "FLL Armor": "8",
+    "FRL Armor": "8",
+    "LT Armor": "8",
+    "RT Armor": "8",
+    "CT Armor": "9",
+    "HD Armor": "9",
+    "RLL Armor": "8",
+    "RRL Armor": "8",
+    "RTL Armor": "2",
+    "RTR Armor": "2",
+    "RTC Armor": "3",
+    "Weapons": "3"
+  },
+  "era": "3015",
+  "displayName": "Snow Fox",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

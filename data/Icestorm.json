@@ -1,0 +1,56 @@
+{
+  "name": "Icestorm",
+  "model": null,
+  "tonnage": 25,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "300 XL (Clan) Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "12",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1602",
+    "Config": "Biped",
+    "role": "Scout",
+    "quirk": "rugged_1",
+    "Myomer": "Standard",
+    "LA Armor": "6",
+    "RA Armor": "6",
+    "LT Armor": "6",
+    "RT Armor": "6",
+    "CT Armor": "8",
+    "HD Armor": "6",
+    "LL Armor": "7",
+    "RL Armor": "7",
+    "RTL Armor": "1",
+    "RTR Armor": "1",
+    "RTC Armor": "2",
+    "Weapons": "3"
+  },
+  "era": "2830",
+  "displayName": "Icestorm",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

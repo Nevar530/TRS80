@@ -1,0 +1,63 @@
+{
+  "name": "Raijin II",
+  "model": "RJN-200-A",
+  "tonnage": 50,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 XL Engine",
+  "heatSinks": "11 Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "2628",
+    "Config": "Biped",
+    "role": "Skirmisher",
+    "quirk": "bad_rep_is",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "24",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "8",
+    "Weapons": "5",
+    "overview": "The Raijin is designed to be highly mobile and capable of engaging an enemy at a variety of ranges.",
+    "capabilities": "The 'Mech's relatively light armor can be a liability if it is engaged in close combat or finds itself in a protracted engagement.",
+    "deployment": "The first of the Raijin II designs, the 200-A model completely redesigns the 'Mech to enhance its combat capabilities and is built on an Endo Steel chassis to save weight. Increased ground speed is achieved through the use of Triple Strength Myomers that increases the 'Mech's top speed to 118.8 km/h under the proper conditions. The 200-A model is protected by a respectable eleven tons of standard armor; giving it superior armor protection to older models. The 'Mech is armed with an Blankenburg ER PPC as its primary weapon. This is supported by three Diverse Optics Sunbeam ER Medium Lasers and a Holly Streak SRM-4 launcher for close combat. The RJN-200-A also carries Exeter Longscan 200 w/C3i Computer, allowing it to share targeting data with friendly units.",
+    "history": "The Raijin was designed after the Battle of Tukayyid to rearm ComGuard units that had suffered losses in the campaign. Despite having stockpiled Star League-era BattleMechs at his disposal, Precentor Martial Focht wanted something unfamiliar to both the Inner Sphere and the Clans. The Raijin was redesigned after Word of Blake forces lost considerable amounts of the design during its taking of Terra from ComStar in 3058. Newly redesigned Raijin II units began to be deployed in 3066, with older versions of the 'Mech being refitted to RJN-200-A variant standards. While off-shoots of the 200-A were deployed to elite Divisions.",
+    "manufacturer": "Krupp Armament Works",
+    "primaryfactory": "Terra",
+    "systemmanufacturer": "TARGETING:Garret T12A"
+  },
+  "era": "3066",
+  "displayName": "Raijin II RJN-200-A",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

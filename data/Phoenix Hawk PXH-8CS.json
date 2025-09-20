@@ -1,0 +1,59 @@
+{
+  "name": "Phoenix Hawk",
+  "model": "PXH-8CS",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "315 XXL Engine(IS)",
+  "heatSinks": "14 Double",
+  "movement": {
+    "walk": "7",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Standard Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2510",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ubiquitous_is",
+    "weaponquirk": "jettison_capable:RA:7:ISSNPPC",
+    "Myomer": "Standard",
+    "Ejection": "Full Head Ejection System",
+    "LA Armor": "12",
+    "RA Armor": "12",
+    "LT Armor": "16",
+    "RT Armor": "16",
+    "CT Armor": "19",
+    "HD Armor": "9",
+    "LL Armor": "19",
+    "RL Armor": "19",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "6",
+    "Weapons": "2",
+    "imagefile": ".\\data\\images\\fluff\\Mech\\phoenix hawk PXH-7CS.jpg"
+  },
+  "era": "3080",
+  "displayName": "Phoenix Hawk PXH-8CS",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

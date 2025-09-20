@@ -1,0 +1,63 @@
+{
+  "name": "Malak",
+  "model": "C-MK-O Invictus",
+  "tonnage": 30,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "210 Light Engine(IS)",
+  "heatSinks": "10 IS Double",
+  "movement": {
+    "walk": "7",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Light Ferro-Fibrous(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": "Small Cockpit",
+  "gyro": "XL Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3075"
+  ],
+  "extras": {
+    "mul id": "1994",
+    "Config": "Biped Omnimech",
+    "role": "Striker",
+    "quirk": "bad_rep_is",
+    "myomer": "Standard",
+    "base chassis heat sinks": "8",
+    "LA armor": "10",
+    "RA armor": "10",
+    "LT armor": "11",
+    "RT armor": "11",
+    "CT armor": "14",
+    "HD armor": "9",
+    "LL armor": "13",
+    "RL armor": "13",
+    "RTL armor": "3",
+    "RTR armor": "3",
+    "RTC armor": "4",
+    "Weapons": "4",
+    "overview": "The Malak is the lightest in the Word of Blake's Celestial series of OmniMechs designed for the Manei Domini. The Malak, Arabic for \"angel,\" features a dazzling array of new construction materials in an attempt to free up as much weight as possible in a fast and reliable package.",
+    "capabilities": "The 'Mech is protected with six tons of Light Ferro-Fibrous armor which weighs less than standard armor. To free up even more space, the 'Mech mounts an XL Gyro, and a small cockpit in addition to its Endo Steel frame. A C3i Computer allows it to sync with other Manei Domini so equipped. Nine and a half tons are left for modular equipment.",
+    "deployment": "The Invictus variant of this light 'Mech features a Light PPC, an ER Medium Laser, and a Flamer that allow it to operate far from supply lines. The SRM-2 is capable of mounting inferno munitions, which can make quick work of vehicles and infantry. To protect the 'Mech from ammunition explosions it mounts CASE in the right torso. For close combat it carries a Retractable Blade.",
+    "manufacturer": "Gibson Federated BattleMechs, Martinson Armaments",
+    "primaryfactory": "Gibson (Gibson Federated), Terra (Martinson)",
+    "systemmanufacturer": "TARGETING:Master’s Sight 1-Omega"
+  },
+  "era": "3069",
+  "displayName": "Malak C-MK-O Invictus",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

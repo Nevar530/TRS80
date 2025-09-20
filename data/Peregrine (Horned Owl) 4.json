@@ -1,0 +1,58 @@
+{
+  "name": "Peregrine",
+  "model": "4",
+  "tonnage": 35,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "210 Fusion (Clan) Engine(IS)",
+  "heatSinks": "10 Clan Double",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "generator": "MegaMek Suite 0.49.16-SNAPSHOT on 2023-12-29",
+    "clanname": "Horned Owl",
+    "mul id": "2475",
+    "Config": "Biped",
+    "role": "Striker",
+    "weaponquirk": "stable_weapon:CT:10:CLERMediumLaser",
+    "myomer": "Standard",
+    "LA armor": "9",
+    "RA armor": "9",
+    "LT armor": "10",
+    "RT armor": "10",
+    "CT armor": "13",
+    "HD armor": "9",
+    "LL armor": "11",
+    "RL armor": "11",
+    "RTL armor": "4",
+    "RTR armor": "4",
+    "RTC armor": "6",
+    "Weapons": "5"
+  },
+  "era": "3064",
+  "displayName": "Peregrine 4",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

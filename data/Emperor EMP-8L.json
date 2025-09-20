@@ -1,0 +1,56 @@
+{
+  "name": "Emperor",
+  "model": "EMP-8L",
+  "tonnage": 90,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "3",
+  "engine": "270 Fusion Engine(IS)",
+  "heatSinks": "12 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Stealth(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "Record Sheets: 3145 New Tech New Upgrades"
+  ],
+  "extras": {
+    "mul id": "6851",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "command_mech",
+    "Myomer": "Triple-Strength",
+    "LA Armor": "30",
+    "RA Armor": "30",
+    "LT Armor": "28",
+    "RT Armor": "28",
+    "CT Armor": "44",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "14",
+    "Weapons": "5"
+  },
+  "era": "3127",
+  "displayName": "Emperor EMP-8L",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

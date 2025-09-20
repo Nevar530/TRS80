@@ -1,0 +1,56 @@
+{
+  "name": "Great Turtle",
+  "model": "GTR-2",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "4",
+  "engine": "300 Compact Engine",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "3",
+    "jump": "3"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": "Torso-Mounted Cockpit",
+  "gyro": "Compact Gyro",
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "1282",
+    "Config": "Quad",
+    "role": "Juggernaut",
+    "quirk": "poor_performance",
+    "Myomer": "Standard",
+    "FLL Armor": "42",
+    "FRL Armor": "42",
+    "LT Armor": "32",
+    "RT Armor": "32",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "RLL Armor": "42",
+    "RRL Armor": "42",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "16",
+    "Weapons": "4"
+  },
+  "era": "3068",
+  "displayName": "Great Turtle GTR-2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

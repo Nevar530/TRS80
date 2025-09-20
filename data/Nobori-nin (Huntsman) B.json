@@ -1,0 +1,65 @@
+{
+  "name": "Nobori-nin",
+  "model": "B",
+  "tonnage": 50,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "250 XL (Clan) Engine(IS)",
+  "heatSinks": "10 Double",
+  "movement": {
+    "walk": "5",
+    "jump": "5"
+  },
+  "armor": {
+    "total": "Ferro-Fibrous(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Clan Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3058"
+  ],
+  "extras": {
+    "clanname": "Huntsman",
+    "mul id": "2290",
+    "Config": "Biped Omnimech",
+    "role": "Skirmisher",
+    "quirk": "stable",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "10",
+    "LA Armor": "16",
+    "RA Armor": "16",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "25",
+    "HD Armor": "9",
+    "LL Armor": "24",
+    "RL Armor": "24",
+    "RTL Armor": "6",
+    "RTR Armor": "6",
+    "RTC Armor": "7",
+    "Weapons": "6",
+    "overview": "Exemplifying the OmniMech concept, the flexible Huntsman was the premier medium 'Mech of Clan Nova Cat during Operation REVIVAL.",
+    "deployment": "The Huntsman B uses an ER PPC at long range. Close in, it can call upon an LB-X Autocannon/10 and a pair of Medium Pulse Lasers. Two Machine Guns can make short work of unarmored infantry.",
+    "capabilities": "No expense has been spared in the construction of this front-line OmniMech that uses an Extra-Light Engine, Endo Steel structure, and nine tons of Ferro-Fibrous armor. Five jump jets enable it to leap up to 150 meters at a time.",
+    "history": "First seen within the 119th Nova Cat Striker Cluster during the Battle of Luthien, a Draconis Combine Mustered Soldiery intelligence officer dubbed the OmniMech with the name of \"Nobori-nin\" (Japanese for \"Banner-bearer\") due to the single fin-like projection rising from the back of the 'Mech reminding him of the banner samurai worn on their backs in feudal Japan. Prized for its flexibility across a wide range of opponents and battlefield conditions, the Huntsman was almost exclusively a Nova Cat design during the initial Clan Invasion, but prior to the Word of Blake Jihad had entered service with Clans Diamond Shark, Cloud Cobra and Star Adder.",
+    "manufacturer": "Irece Alpha, Avon Alpha, and Brim Ironworks, Clan Protectorate Arms",
+    "primaryfactory": "Irece, Avon, Brim, Asellus Australis",
+    "systemmanufacturer": "JUMPJET:Northrup Starlifters M50s Standard"
+  },
+  "era": "3049",
+  "displayName": "Nobori-nin B",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

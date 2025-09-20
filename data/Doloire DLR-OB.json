@@ -1,0 +1,57 @@
+{
+  "name": "Doloire",
+  "model": "DLR-OB",
+  "tonnage": 80,
+  "techBase": "Mixed (IS Chassis)",
+  "rulesLevel": "3",
+  "engine": "320 XL (Clan) Engine",
+  "heatSinks": "17 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo-Composite",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3145 Republic of the Sphere"
+  ],
+  "extras": {
+    "mul id": "6680",
+    "Config": "Biped Omnimech",
+    "role": "Brawler",
+    "quirk": "command_mech",
+    "Myomer": "Standard",
+    "Base Chassis Heat Sinks": "12",
+    "LA Armor": "24",
+    "RA Armor": "24",
+    "LT Armor": "26",
+    "RT Armor": "26",
+    "CT Armor": "38",
+    "HD Armor": "9",
+    "LL Armor": "30",
+    "RL Armor": "30",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "11",
+    "Weapons": "5"
+  },
+  "era": "3121",
+  "displayName": "Doloire DLR-OB",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

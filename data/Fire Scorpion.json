@@ -1,0 +1,56 @@
+{
+  "name": "Fire Scorpion",
+  "model": null,
+  "tonnage": 65,
+  "techBase": "Clan",
+  "rulesLevel": "2",
+  "engine": "260 Fusion (Clan) Engine",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Clan)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3060"
+  ],
+  "extras": {
+    "mul id": "1071",
+    "Config": "Quad",
+    "role": "Sniper",
+    "quirk": "cowl",
+    "Myomer": "Standard",
+    "FLL Armor": "29",
+    "FRL Armor": "29",
+    "LT Armor": "22",
+    "RT Armor": "22",
+    "CT Armor": "31",
+    "HD Armor": "9",
+    "RLL Armor": "29",
+    "RRL Armor": "29",
+    "RTL Armor": "7",
+    "RTR Armor": "7",
+    "RTC Armor": "10",
+    "Weapons": "2"
+  },
+  "era": "2852",
+  "displayName": "Fire Scorpion",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

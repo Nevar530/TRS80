@@ -1,0 +1,57 @@
+{
+  "name": "Phoenix Hawk",
+  "model": "PXH-2",
+  "tonnage": 45,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "270 Fusion Engine(IS)",
+  "heatSinks": "10 Single",
+  "movement": {
+    "walk": "6",
+    "jump": "6"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Standard",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3085"
+  ],
+  "extras": {
+    "mul id": "2496",
+    "Config": "Biped",
+    "role": "Striker",
+    "quirk": "ubiquitous_is",
+    "weaponquirk": "jettison_capable:RA:4:Large Laser",
+    "Myomer": "Standard",
+    "LA Armor": "10",
+    "RA Armor": "10",
+    "LT Armor": "18",
+    "RT Armor": "18",
+    "CT Armor": "23",
+    "HD Armor": "8",
+    "LL Armor": "18",
+    "RL Armor": "18",
+    "RTL Armor": "4",
+    "RTR Armor": "4",
+    "RTC Armor": "5",
+    "Weapons": "3"
+  },
+  "era": "2599",
+  "displayName": "Phoenix Hawk PXH-2",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
