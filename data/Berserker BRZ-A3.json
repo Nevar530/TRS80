@@ -1,0 +1,56 @@
+{
+  "name": "Berserker",
+  "model": "BRZ-A3",
+  "tonnage": 100,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "400 XL Engine",
+  "heatSinks": "16 Double",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3055"
+  ],
+  "extras": {
+    "mul id": "329",
+    "Config": "Biped",
+    "role": "Juggernaut",
+    "quirk": "distracting",
+    "Myomer": "Standard",
+    "LA Armor": "34",
+    "RA Armor": "34",
+    "LT Armor": "31",
+    "RT Armor": "31",
+    "CT Armor": "46",
+    "HD Armor": "9",
+    "LL Armor": "38",
+    "RL Armor": "38",
+    "RTL Armor": "10",
+    "RTR Armor": "10",
+    "RTC Armor": "15",
+    "Weapons": "5"
+  },
+  "era": "3056",
+  "displayName": "Berserker BRZ-A3",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Black Knight",
+  "model": "BL-6-KNT",
+  "tonnage": 75,
+  "techBase": "Inner Sphere",
+  "rulesLevel": "2",
+  "engine": "300 Fusion Engine(IS)",
+  "heatSinks": "20 Single",
+  "movement": {
+    "walk": "4",
+    "jump": "0"
+  },
+  "armor": {
+    "total": "Standard(Inner Sphere)"
+  },
+  "armorByLocation": {},
+  "internalByLocation": {},
+  "structure": "IS Endo Steel",
+  "cockpit": null,
+  "gyro": null,
+  "weapons": [],
+  "equipment": [],
+  "ammo": [],
+  "bv": null,
+  "cost": null,
+  "sources": [
+    "TRO: 3050"
+  ],
+  "extras": {
+    "mul id": "358",
+    "Config": "Biped",
+    "role": "Brawler",
+    "quirk": "command_mech",
+    "myomer": "Standard",
+    "LA armor": "24",
+    "RA armor": "24",
+    "LT armor": "24",
+    "RT armor": "24",
+    "CT armor": "29",
+    "HD armor": "9",
+    "LL armor": "24",
+    "RL armor": "24",
+    "RTL armor": "8",
+    "RTR armor": "8",
+    "RTC armor": "10",
+    "Weapons": "8",
+    "overview": "The Black Knight was introduced in 2578 both as a front-line combatant and as a command BattleMech at the company and battalion level for the Star League Defense Force.",
+    "capabilities": "Thirteen tons of armor protection on an Endo Steel frame allows the Black Knight to withstand significant punishment. The biggest disadvantage of the design is its challenging heat curve, though the fact that it mounts twenty heat sinks ensures that the Black Knight can still disperse a significant amount of heat produced by its weapons. However, if the 'Mech is involved in a prolonged combat situation, a less experienced MechWarrior who is not competent at heat management may be in trouble. The Black Knight's superior communications equipment allowed it to readily coordinate a whole company of 'Mechs at the same time, as well as link together the command frequencies of an entire parent regiment and connect with orbital support satellites. Improved construction materials provided the Black Knight with a light but sturdy chassis capable of carrying more weaponry and armor for less weight. With the type and amount of weapons carried by the 'Mech, the only challenge the Black Knight faces is heat management.",
+    "deployment": "The Black Knight is an all-energy weapon 'Mech, with its primary armament being a Magna Hellstar II PPC in the right arm. The PPC is supported by two McCorkel Lasers in each side torso, which may do significant damage when the Black Knight approaches its foe. Finally, the 'Mech has four Maxell DT medium lasers, one in each arm and side torso, and a single Magna Small Laser in the head for close-range combat. The small laser, in particular, is directly linked to the Beagle Active Probe, which is positioned in the scanner's middle midsection, allowing the scanner to piggyback a low-power laser beam past any interfering obstacles. While this allows for a more deep inspection of items, the laser's restricted range limits this form of scanning to adjacent targets.",
+    "history": "The Black Knight first debuted in the Reunification War when they were fielded by the 3rd Heavy Assault Regiment in combat with the Taurian Concordat; following its success it was soon adopted by I Corps and the rest of the SLDF. When the Star League collapsed, Kong Interstellar continued producing Black Knights until their Connaught orbital factory was destroyed in 2802. In 2809, Kong was able to restart their production line, but was no longer capable of producing many of the more advanced components found in the Black Knight. As a result, Kong was forced to design a downgraded version, the BL-7-KNT. Finally the Black Knight production line was permanently destroyed in a raid by the Capellan Confederation in 2820, reducing the company to producing low-grade spare parts and performing maintenance. During the Succession Wars many Black Knights fell into the hands of the Great Houses, although as the years progressed they were increasingly forced to repair them with inferior components and their numbers slowly decreased. Some were modified with a number of nonstandard components such as jump jets but few if any survived into the thirty-first century. ComStar's stockpiles of Star League 'Mechs included the Black Knight, which they found to be an excellent command unit for Level II and Level III units when the Com Guards were formed, but the very few Black Knights gifted to the Draconis Combine during Operation ROSEBUD was apparently the result of a clerical error. For their part the Clans maintained the Black Knight, although by the time of the Clan Invasion it was reserved for solahma units. The Black Knight was one of several Clanbusters put together by ComStar leading up to the Battle of Tukayyid, and in 3063 Robinson Standard BattleWorks secured a license from Kong Interstellar to build a new variant, the BL-12-KNT. Two years later KIC finished rebuilding their plant and began producing Black Knights of their own.",
+    "manufacturer": "Kong Interstellar Corporation",
+    "primaryfactory": "Connaught",
+    "systemmanufacturer": "TARGETING:TransComm Beta"
+  },
+  "era": "2578",
+  "displayName": "Black Knight BL-6-KNT",
+  "_source": {
+    "origin": "MegaMek mm-data (meks)",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  }
+}
