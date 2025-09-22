@@ -263,9 +263,9 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 
 /* Results container should float above other UI and accept clicks */
 #search-results {
-  position: absolute;            /* or the positioning you use */
-  z-index: 9999;                 /* ensure it’s on top */
-  pointer-events: auto;          /* make sure clicks aren’t blocked */
+  position: absolute;
+  z-index: 9999;
+  pointer-events: auto;
   max-height: 300px;
   overflow: auto;
 }
@@ -279,14 +279,21 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   cursor: pointer;
   user-select: none;
   outline: none;
+  transition: background var(--transition), color var(--transition);
 }
 
 .result-item:hover,
 .result-item:focus {
-  background: rgba(255,255,255,0.08);   /* tweak for your theme */
+  background: var(--bt-amber);   /* 🔶 full amber highlight */
+  color: #000;                   /* black text */
 }
 
-/* Optional: lighter secondary text for variant */
+.result-item:hover .result-variant,
+.result-item:focus .result-variant {
+  color: #222;                   /* darker secondary text */
+}
+
+/* Optional: lighter secondary text for variant by default */
 .result-variant {
   opacity: .7;
   font-size: .9em;
