@@ -90,6 +90,76 @@
     }
   }
 
+// ----- Tech Readout helpers -----
+const toNum = (x) => {
+  if (x === null || x === undefined || x === '') return null;
+  const n = Number(x);
+  return Number.isFinite(n) ? n : null;
+};
+const calcRun = (walk) => {
+  const w = toNum(walk);
+  return w == null ? null : String(Math.ceil(w * 1.5)); // BT running = ceil(1.5 × walk)
+};
+function getMovement(m){
+  const mv = m.move || m.movement || m.Movement || {};
+  const walk = mv.walk ?? mv.Walk ?? mv.w ?? null;
+  const run  = mv.run  ?? mv.Run  ?? mv.r ?? calcRun(walk);
+  const jump = mv.jump ?? mv.Jump ?? mv.j ?? null;
+  return { walk, run, jump };
+}
+const listify = (v, sep=',') => Array.isArray(v) ? v : (typeof v === 'string' ? v.split(sep).map(s=>s.trim()).filter(Boolean) : []);
+const fmtMoney = (v) => {
+  if (v == null || v === '') return '—';
+  const n = toNum(String(v).replace(/[^\d.-]/g,''));
+  return n == null ? String(v) : n.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' C-bills';
+};
+const fmtMaybe = (v) => (v == null || v === '' ? '—' : String(v));
+
+const LOCS = [
+  {key:'HD', name:'Head'},
+  {key:'CT', name:'Center Torso', rearKey:'RTC'},
+  {key:'RT', name:'Right Torso',  rearKey:'RTR'},
+  {key:'LT', name:'Left Torso',   rearKey:'RTL'},
+  {key:'RA', name:'Right Arm'},
+  {key:'LA', name:'Left Arm'},
+  {key:'RL', name:'Right Leg'},
+  {key:'LL', name:'Left Leg'},
+];
+
+// Pull armor/internal values from multiple shapes (armorByLocation, extras "LA armor", etc.)
+function getArmorCell(armorByLoc, extras, locKey, rearKey){
+  // try structured armorByLocation first
+  let front = armorByLoc?.[locKey];
+  let rear  = rearKey ? (armorByLoc?.[rearKey]) : undefined;
+
+  // If objects like {a: 47, s: 14} appear, try to extract 'a'
+  const unpack = (val) => {
+    if (val == null) return null;
+    if (typeof val === 'object') {
+      const a = val.a ?? val.A ?? val.front ?? val.value ?? val.armor ?? null;
+      return a ?? null;
+    }
+    return val;
+  };
+  front = unpack(front);
+  rear  = unpack(rear);
+
+  // Fallback to extras keys like "LA armor" or "RTC armor"
+  if (front == null) front = extras?.[`${locKey} armor`] ?? null;
+  if (rearKey && rear == null) rear = extras?.[`${rearKey} armor`] ?? null;
+
+  return { front: front ?? '—', rear: rearKey ? (rear ?? '—') : '—' };
+}
+function getInternalCell(internalByLoc, locKey){
+  const val = internalByLoc?.[locKey];
+  if (val == null) return '—';
+  if (typeof val === 'object') {
+    const s = val.s ?? val.S ?? val.structure ?? val.value;
+    return s ?? JSON.stringify(val);
+  }
+  return String(val);
+}
+  
   /* ---------- Heat ---------- */
   function setHeat(current, capacity) {
     state.heat.current  = Math.max(0, current|0);
@@ -108,47 +178,198 @@
 
   /* ---------- Overview & Tech Readout ---------- */
   function updateOverview() {
-    const m = state.mech, p = state.pilot;
-    if (ovMech)   ovMech.textContent  = m?.displayName ?? m?.name ?? m?.Name ?? '—';
-    if (ovVar)    ovVar.textContent   = m?.variant ?? m?.Model ?? '—';
-    if (ovTons)   ovTons.textContent  = m?.tonnage != null ? String(m.tonnage) : (m?.Tonnage ?? '—');
-    if (ovPilot)  ovPilot.textContent = p?.name || '—';
-    if (ovGun)    ovGun.textContent   = p?.gunnery != null ? String(p.gunnery) : '—';
-    if (ovPil)    ovPil.textContent   = p?.piloting != null ? String(p.piloting) : '—';
-    if (ovMove)   ovMove.textContent  = m?.move
-      ? `W ${m.move.walk ?? '—'} / R ${m.move.run ?? '—'}${m.move.jump ? ' / J '+m.move.jump : ''}`
+  const m = state.mech, p = state.pilot;
+  if (ovMech)   ovMech.textContent  = m?.displayName ?? m?.name ?? m?.Name ?? '—';
+  if (ovVar)    ovVar.textContent   = m?.variant ?? m?.model ?? m?.Model ?? '—';
+  if (ovTons)   ovTons.textContent  = m?.tonnage != null ? String(m.tonnage) : (m?.Tonnage ?? '—');
+  if (ovPilot)  ovPilot.textContent = p?.name || '—';
+  if (ovGun)    ovGun.textContent   = p?.gunnery != null ? String(p.gunnery) : '—';
+  if (ovPil)    ovPil.textContent   = p?.piloting != null ? String(p.piloting) : '—';
+
+  const mv = getMovement(m || {});
+  if (ovMove) {
+    ovMove.textContent = (mv.walk || mv.run || mv.jump)
+      ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}`
       : (m?.Movement || '—');
-    if (ovWeps)   ovWeps.textContent  = (m?.weapons?.length
-      ? m.weapons.slice(0,6).map(w => `${w.name}${w.loc?' ['+w.loc+']':''}`).join(' • ')
-      : (m?.Weapons ? m.Weapons.slice(0,6).map(w => w.Name || w.name).join(' • ') : '—'));
   }
+
+  if (ovWeps) {
+    const w = Array.isArray(m?.weapons) ? m.weapons : (Array.isArray(m?.Weapons) ? m.Weapons : []);
+    ovWeps.textContent = w.length
+      ? w.slice(0,6).map(wi => `${wi.name || wi.Name || 'Weapon'}${(wi.loc || wi.Location) ? ' ['+(wi.loc||wi.Location)+']' : ''}`).join(' • ')
+      : '—';
+  }
+}
+
 
   const fmtAS = (o) => (o ? `${o.a ?? o.A ?? '-'} / ${o.s ?? o.S ?? '-'}` : '—');
 
   function renderTechOut() {
-    if (!techOut) return;
-    const m = state.mech;
-    if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
+  if (!techOut) return;
+  const m = state.mech;
+  if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
 
-    const armor = m.armor || m.Armor || {};
-    techOut.innerHTML = `
-      <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
+  // Primary facts
+  const name    = m.displayName || m.name || m.Name || '—';
+  const model   = m.model || m.variant || m.Model || '—';
+  const tons    = m.tonnage ?? m.Tonnage ?? '—';
+  const tech    = m.techBase || m.TechBase || '—';
+  const rules   = m.rulesLevel || m.Rules || '—';
+  const engine  = m.engine || m.Engine || '—';
+  const hs      = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
+  const struct  = m.structure || m.Structure || '—';
+  const cockpit = m.cockpit || m.Cockpit || '—';
+  const gyro    = m.gyro || m.Gyro || '—';
+  const role    = m.extras?.role || m.extras?.Role || '—';
+  const cfg     = m.extras?.Config || m.extras?.config || '—';
+  const myomer  = m.extras?.myomer || '—';
+
+  const mv = getMovement(m || {});
+  const mvStr = (mv.walk || mv.run || mv.jump)
+    ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}`
+    : (m?.Movement || '—');
+
+  // Armor / Internals
+  const armorSys = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
+  const armorBy  = m.armorByLocation || {};
+  const internal = m.internalByLocation || {};
+  const extras   = m.extras || {};
+
+  const armorRows = LOCS.map(loc => {
+    const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
+    const s = getInternalCell(internal, loc.key);
+    return `<tr>
+      <td>${loc.name}</td>
+      <td class="mono">${esc(a.front)}</td>
+      <td class="mono">${esc(a.rear)}</td>
+      <td class="mono">${esc(s)}</td>
+    </tr>`;
+  }).join('');
+
+  // Weapons / Equipment / Ammo (robust to different shapes)
+  const weapons = Array.isArray(m.weapons) ? m.weapons
+                 : Array.isArray(m.Weapons) ? m.Weapons : [];
+  const equipment = Array.isArray(m.equipment) ? m.equipment
+                   : Array.isArray(m.Equipment) ? m.Equipment : [];
+  const ammo = Array.isArray(m.ammo) ? m.ammo
+              : Array.isArray(m.Ammo) ? m.Ammo : [];
+
+  const mapItem = (x) => esc(
+    (x.name || x.Name || x.type || x.Type || 'Item') +
+    ((x.loc || x.Location) ? ` [${x.loc || x.Location}]` : '') +
+    (x.count ? ` x${x.count}` : '')
+  );
+
+  const weaponsHtml   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
+  const equipHtml     = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
+  const ammoHtml      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
+
+  // Narrative
+  const overview     = m.extras?.overview     || '';
+  const capabilities = m.extras?.capabilities || '';
+  const deployment   = m.extras?.deployment   || '';
+  const history      = m.extras?.history      || '';
+
+  // Mfr / factories
+  const manufacturers = listify(m.extras?.manufacturer);
+  const factories     = listify(m.extras?.primaryfactory);
+  const systems       = listify(m.extras?.systemmanufacturer);
+
+  // Meta
+  const bv   = m.bv ?? m.BV ?? '—';
+  const cost = fmtMoney(m.cost ?? m.Cost ?? null);
+  const era  = m.era || '—';
+  const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
+  const sourcesHtml = sourcesArr.length ? sourcesArr.map(esc).join(' • ') : '—';
+
+  // License
+  const lic = m._source?.license || '';
+  const licUrl = m._source?.license_url || '';
+  const origin = m._source?.origin || '';
+  const copyright = m._source?.copyright || '';
+
+  techOut.innerHTML = `
+    <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
+
+    <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div><strong>Chassis</strong><br>${esc(name)} ${model ? '('+esc(model)+')' : ''}</div>
+      <div><strong>Tonnage</strong><br>${esc(tons)}</div>
+      <div><strong>Tech Base</strong><br>${esc(tech)}</div>
+      <div><strong>Rules Level</strong><br>${esc(rules)}</div>
+      <div><strong>Engine</strong><br>${esc(engine)}</div>
+      <div><strong>Heat Sinks</strong><br>${esc(hs)}</div>
+      <div><strong>Movement</strong><br>${esc(mvStr)}</div>
+      <div><strong>Structure</strong><br>${esc(struct)}</div>
+      <div><strong>Cockpit</strong><br>${esc(cockpit)}</div>
+      <div><strong>Gyro</strong><br>${esc(gyro)}</div>
+      <div><strong>Config</strong><br>${esc(cfg)}</div>
+      <div><strong>Role</strong><br>${esc(role)}</div>
+      <div><strong>Myomer</strong><br>${esc(myomer)}</div>
+      <div><strong>Armor System</strong><br>${esc(armorSys)}</div>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div>
+      <strong>Armor & Internals by Location</strong>
+      <table class="small mono" style="width:100%; border-collapse:collapse; margin-top:6px;">
+        <thead>
+          <tr style="text-align:left;">
+            <th style="padding:4px 0;">Location</th>
+            <th style="padding:4px 0;">Armor</th>
+            <th style="padding:4px 0;">Rear</th>
+            <th style="padding:4px 0;">Internal</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${armorRows}
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div><strong>Weapons</strong><br>${weaponsHtml}</div>
+    <div style="margin-top:6px;"><strong>Equipment</strong><br>${equipHtml}</div>
+    <div style="margin-top:6px;"><strong>Ammo</strong><br>${ammoHtml}</div>
+
+    <hr class="modal-divider">
+
+    ${(overview || capabilities || deployment || history) ? `
+      ${overview ? `<div style="margin-bottom:8px;"><strong>Overview</strong><br>${esc(overview)}</div>` : ''}
+      ${capabilities ? `<div style="margin-bottom:8px;"><strong>Capabilities</strong><br>${esc(capabilities)}</div>` : ''}
+      ${deployment ? `<div style="margin-bottom:8px;"><strong>Deployment</strong><br>${esc(deployment)}</div>` : ''}
+      ${history ? `<div style="margin-bottom:8px;"><strong>History</strong><br>${esc(history)}</div>` : ''}
+      <hr class="modal-divider">` : ''}
+
+    <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div><strong>Battle Value (BV)</strong><br>${esc(bv)}</div>
+      <div><strong>Cost</strong><br>${esc(cost)}</div>
+      <div><strong>Era / Year</strong><br>${esc(era)}</div>
+      <div><strong>Sources</strong><br>${sourcesHtml}</div>
+    </div>
+
+    ${(manufacturers.length || factories.length || systems.length) ? `
+      <hr class="modal-divider">
       <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div><strong>Chassis</strong><br>${esc(m.displayName || m.name || m.Name || '—')} ${m.variant ? '('+esc(m.variant)+')' : (m.Model ? '('+esc(m.Model)+')' : '')}</div>
-        <div><strong>Tonnage</strong><br>${m.tonnage ?? m.Tonnage ?? '—'}</div>
-        <div><strong>Movement</strong><br>${m.move ? `W ${m.move.walk ?? '—'} / R ${m.move.run ?? '—'} ${m.move.jump ? '/ J '+m.move.jump : ''}` : (m.Movement || '—')}</div>
-        <div><strong>Heat Sinks</strong><br>${m.sinks?.count ?? m.HeatSinks ?? '—'} ${m.sinks?.type || ''}</div>
-        <div style="grid-column:1 / -1;">
-          <strong>Armor (A/S)</strong><br>
-          <span class="mono small dim">HD:${fmtAS(armor.HD)} CT:${fmtAS(armor.CT)} RT:${fmtAS(armor.RT)} LT:${fmtAS(armor.LT)} RA:${fmtAS(armor.RA)} LA:${fmtAS(armor.LA)} RL:${fmtAS(armor.RL)} LL:${fmtAS(armor.LL)}</span>
-        </div>
-        <div style="grid-column:1 / -1;"><strong>Weapons</strong><br>${
-          (m.weapons?.length ? m.weapons.map(w => `${esc(w.name)}${w.loc?' ['+esc(w.loc)+']':''}`).join(' • ')
-            : (m.Weapons?.length ? m.Weapons.map(w => `${esc(w.Name || '')}${w.Location ? ' ['+esc(w.Location)+']' : ''}`).join(' • ') : '—'))
-        }</div>
+        <div><strong>Manufacturers</strong><br>${manufacturers.map(esc).join(' • ') || '—'}</div>
+        <div><strong>Primary Factories</strong><br>${factories.map(esc).join(' • ') || '—'}</div>
+        <div style="grid-column:1 / -1;"><strong>Systems</strong><br>${systems.map(esc).join(' • ') || '—'}</div>
       </div>
-    `;
-  }
+    ` : ''}
+
+    ${lic || origin || copyright ? `
+      <hr class="modal-divider">
+      <div class="small dim">
+        <div>${esc(origin || '')}</div>
+        ${licUrl ? `<div>License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a></div>` :
+                    (lic ? `<div>License: ${esc(lic)}</div>` : '')}
+        ${copyright ? `<div>${esc(copyright)}</div>` : ''}
+      </div>
+    ` : ''}
+  `;
+}
+
 
   /* ---------- Manifest loading ---------- */
   async function loadManifest() {
