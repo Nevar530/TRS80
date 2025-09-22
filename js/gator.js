@@ -13,4 +13,4 @@ export const GATOR = {
          : sum <= 9 ? { text: `${sum}+`, cls:'tn-yellow', val:sum }
                     : { text: `${sum}+`, cls:'tn-red',    val:sum };
   }
-};
+}; 
