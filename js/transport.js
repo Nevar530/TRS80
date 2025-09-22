@@ -7,7 +7,7 @@ async function fetchJsonAbsolute(baseHref, pathOrUrl) {
   const res = await fetch(url, { cache:'no-store' });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.json();
-}
+} 
 
 export async function loadManifest() {
   const manifestUrl = new URL('data/manifest.json', document.baseURI).href;
