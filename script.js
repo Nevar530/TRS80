@@ -468,6 +468,9 @@ wrap.appendChild(panel);
     btnLoadMech.insertAdjacentElement('afterend', wrap);
 btnLoadMech.style.display = 'none';
 
+  // auto-load manifest on startup
+loadManifestForSearch().catch(err => console.error('Manifest auto-load failed', err));
+
 
     /* ------- Manifest load + index (in-memory) ------- */
     let entries = []; // {path,name?,id?,variant?, key (lowercased)}
@@ -646,9 +649,6 @@ if (document.readyState !== 'loading') {
 } else { 
   document.addEventListener('DOMContentLoaded', initGatorPanel);
 }
-
-// Auto-load manifest immediately (instead of requiring button click)
-loadManifest().catch(err => console.error('Manifest auto-load failed', err));
 
 console.info('Gator Console ready.');
 })();
