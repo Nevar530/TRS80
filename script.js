@@ -2,6 +2,34 @@
 (() => {
   'use strict';
 
+let manifest = [];
+let manifestUrl;
+
+async function loadManifest() {
+  manifestUrl = new URL('data/manifest.json', document.baseURI).href;
+  const res = await fetch(manifestUrl, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status} manifest`);
+  manifest = (await res.json()).map(m => ({
+    ...m,
+    path: (m.path || '').replace(/\\/g, '/').trim()
+  }));
+}
+
+async function loadMech(mechId) {
+  const m = manifest.find(x => String(x.id) === String(mechId));
+  if (!m) throw new Error(`Not in manifest: ${mechId}`);
+
+  // ✅ resolves "a-f/..." relative to ".../data/manifest.json"
+  const mechUrl = new URL(m.path, manifestUrl).href;
+  console.debug('Fetching:', mechUrl);
+
+  const res = await fetch(mechUrl, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${mechUrl}`);
+  const data = await res.json();
+  updateOverview(data);
+  updateTechReadout(data);
+}
+  
   /* ---------- DOM refs ---------- */
   const btnLoadManifest = document.getElementById('btn-load-manifest');
   const btnSettings     = document.getElementById('btn-settings');
