@@ -643,4 +643,3 @@
 
   console.info('Gator Console ready.');
 })();
-```0
