@@ -29,7 +29,14 @@
         <div class="divider"></div>
 
         <button id="btn-load-manifest" class="btn" title="Fetch manifest.json">Manifest</button>
-        <button id="btn-settings"      class="btn ghost" title="Settings (About & Attribution)">⚙</button>
+
+        <!-- ▼ minimal addition: placeholder for mech dropdown -->
+        <select id="mech-select" class="gtr-sel xs" aria-label="Mech list" style="display:none;">
+          <option>— no manifest loaded —</option>
+        </select>
+        <!-- ▲ dropdown stays hidden until manifest loads -->
+
+        <button id="btn-settings" class="btn ghost" title="Settings (About & Attribution)">⚙</button>
       </div>
     </header>
 
@@ -285,9 +292,9 @@
     </div>
   </div>
 
+  <!-- Toast (used by script.js) -->
+  <div id="toast" class="toast" hidden></div>
+
   <script src="./script.js" defer></script>
-</body>
-</html>    };
-  </script>
 </body>
 </html>
