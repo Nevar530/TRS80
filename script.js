@@ -6,29 +6,54 @@ let manifest = [];
 let manifestUrl;
 
 async function loadManifest() {
-  manifestUrl = new URL('data/manifest.json', document.baseURI).href;
-  const res = await fetch(manifestUrl, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`HTTP ${res.status} manifest`);
-  manifest = (await res.json()).map(m => ({
-    ...m,
-    path: (m.path || '').replace(/\\/g, '/').trim()
-  }));
+  try {
+    manifestUrl = new URL('data/manifest.json', document.baseURI).href;
+    const res = await fetch(manifestUrl, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} loading manifest.json`);
+    const items = await res.json();
+    manifest = items.map(m => ({
+      ...m,
+      path: (m.path || '').replace(/\\/g, '/').trim()
+    }));
+    console.log(`Manifest OK (${manifest.length})`, manifestUrl);
+  } catch (err) {
+    toast(`Failed to load manifest: ${err.message}`);
+    console.error(err);
+  }
 }
 
 async function loadMech(mechId) {
-  const m = manifest.find(x => String(x.id) === String(mechId));
-  if (!m) throw new Error(`Not in manifest: ${mechId}`);
+  try {
+    const m = manifest.find(x => String(x.id) === String(mechId));
+    if (!m) throw new Error(`Not in manifest: ${mechId}`);
 
-  // ✅ resolves "a-f/..." relative to ".../data/manifest.json"
-  const mechUrl = new URL(m.path, manifestUrl).href;
-  console.debug('Fetching:', mechUrl);
+    // ✅ resolves "a-f/..." relative to ".../data/manifest.json"
+    const mechUrl = new URL(m.path, manifestUrl).href;
+    console.debug('Fetching mech JSON:', mechUrl);
 
-  const res = await fetch(mechUrl, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${mechUrl}`);
-  const data = await res.json();
-  updateOverview(data);
-  updateTechReadout(data);
+    const res = await fetch(mechUrl, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} for ${mechUrl}`);
+
+    let data;
+    try { data = await res.json(); }
+    catch (e) { throw new Error(`Invalid JSON in ${mechUrl}: ${e.message}`); }
+
+    updateOverview(data);
+    updateTechReadout(data);
+    toast(`${data.name || mechId} loaded`);
+  } catch (err) {
+    toast(`Failed to load mech JSON: ${err.message}`);
+    console.error(err);
+  }
 }
+
+// tiny toast helper if you don’t have one
+function toast(msg) { 
+  const t = document.querySelector('.toast'); 
+  if (!t) { alert(msg); return; }
+  t.textContent = msg; t.hidden = false; setTimeout(()=> t.hidden = true, 2500);
+}
+
   
   /* ---------- DOM refs ---------- */
   const btnLoadManifest = document.getElementById('btn-load-manifest');
