@@ -654,6 +654,58 @@ function loadMech(mechId) {
   })();
   /* ===================== END SEARCH LOAD ===================== */
 
+// ---- Search dropdown behavior (hover, click, keyboard-safe) ----
+const searchInput   = document.getElementById('mech-search');
+const resultsBox    = document.getElementById('search-results');
+let blurHideTimer   = null;
+
+// Show results helper (call this after filtering manifest)
+function renderResults(items) {
+  resultsBox.innerHTML = items.map(m => `
+    <div class="result-item" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}">
+      <span class="result-name">${m.name}</span>
+      ${m.variant ? `<span class="result-variant"> ${m.variant}</span>` : ''}
+    </div>
+  `).join('');
+  resultsBox.hidden = items.length === 0;
+}
+
+// Prevent the “blur kills click” problem:
+// Use mousedown so selection happens before the input loses focus.
+resultsBox.addEventListener('mousedown', (e) => {
+  const item = e.target.closest('.result-item');
+  if (!item) return;
+  e.preventDefault();                 // keep focus so blur handler doesn’t hide early
+  const mechId = item.dataset.id;
+  loadMech(mechId);                   // your existing loader
+  hideResults();
+});
+
+// Also support keyboard Enter on a focused result
+resultsBox.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const item = e.target.closest('.result-item');
+    if (!item) return;
+    const mechId = item.dataset.id;
+    loadMech(mechId);
+    hideResults();
+  }
+});
+
+// Input focus/blur handling with a tiny delay so mousedown can run first
+searchInput.addEventListener('focus', () => {
+  clearTimeout(blurHideTimer);
+  if (resultsBox.children.length) resultsBox.hidden = false;
+});
+
+searchInput.addEventListener('blur', () => {
+  clearTimeout(blurHideTimer);
+  blurHideTimer = setTimeout(hideResults, 120);
+});
+
+function hideResults() {
+  resultsBox.hidden = true;
+}
 
   
   /* ---------- Init ---------- */
