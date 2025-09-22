@@ -351,9 +351,18 @@ function adaptMechSchema(m) {
 async function loadMechFromUrl(url) {
   try {
     showToast('Loading mech…');
-    const raw  = await safeFetchJson(url);
-    const mech = adaptMechSchema(raw);        // <-- adapt here
+    const raw = await safeFetchJson(url);
+
+    let mech = raw;
+    try {
+      mech = adaptMechSchema(raw) || raw;   // safe adapter + fallback
+    } catch (e) {
+      console.warn('[adapter] failed, using raw mech:', e);
+      mech = raw;
+    }
+
     state.mech = mech;
+    window.DEBUG_MECH = mech;               // quick peek in console if needed
     onMechChanged({ resetHeat: true });
     showToast(`${mech?.displayName || mech?.name || mech?.Model || 'Mech'} loaded`);
   } catch (err) {
@@ -368,10 +377,7 @@ async function loadMechById(id) {
   return loadMechFromUrl(m.url);
 }
 
-
-
-  
-  /* ---------- Import / Export ---------- */
+/* ---------- Import / Export ---------- */
 function loadMechFromFile() {
   const input = document.createElement('input');
   input.type = 'file';
@@ -381,8 +387,17 @@ function loadMechFromFile() {
     try {
       const text = await file.text();
       const raw  = JSON.parse(text);
-      const mech = adaptMechSchema(raw);        // <-- adapt here
+
+      let mech = raw;
+      try {
+        mech = adaptMechSchema(raw) || raw; // safe adapter + fallback
+      } catch (e) {
+        console.warn('[adapter] failed, using raw mech:', e);
+        mech = raw;
+      }
+
       state.mech = mech;
+      window.DEBUG_MECH = mech;
       onMechChanged({ resetHeat: true });
       showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
     } catch (e) {
@@ -393,8 +408,7 @@ function loadMechFromFile() {
   input.click();
 }
 
-
-  function importJson() {
+function importJson() {
   const input = document.createElement('input');
   input.type = 'file';
   input.accept = 'application/json';
@@ -405,14 +419,28 @@ function loadMechFromFile() {
       const data = JSON.parse(text);
 
       if (data.mech || data.pilot || data.heat) {
-        // Session-style import
-        if (data.mech)  state.mech  = adaptMechSchema(data.mech);  // <-- adapt mech only
+        // Session-style
+        if (data.mech) {
+          try {
+            state.mech = adaptMechSchema(data.mech) || data.mech;
+          } catch (e) {
+            console.warn('[adapter] session mech failed, using raw:', e);
+            state.mech = data.mech;
+          }
+        }
         if (data.pilot) state.pilot = data.pilot;
         if (data.heat)  state.heat  = data.heat;
+        window.DEBUG_MECH = state.mech;
         onMechChanged({ resetHeat: false });
       } else {
         // Plain mech JSON
-        state.mech = adaptMechSchema(data);                         // <-- adapt whole file
+        try {
+          state.mech = adaptMechSchema(data) || data;
+        } catch (e) {
+          console.warn('[adapter] plain mech failed, using raw:', e);
+          state.mech = data;
+        }
+        window.DEBUG_MECH = state.mech;
         onMechChanged({ resetHeat: true });
       }
 
@@ -424,6 +452,7 @@ function loadMechFromFile() {
   };
   input.click();
 }
+
 
 
   function exportState() {
