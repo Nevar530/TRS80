@@ -6,40 +6,32 @@ let manifest = [];
 let manifestUrl;
 
 async function loadManifest() {
-  try {
-    manifestUrl = new URL('data/manifest.json', document.baseURI).href;
-    const res = await fetch(manifestUrl, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status} loading manifest.json`);
-    const items = await res.json();
-    manifest = items.map(m => ({
-      ...m,
-      path: (m.path || '').replace(/\\/g, '/').trim()
-    }));
-    console.log(`Manifest OK (${manifest.length})`, manifestUrl);
-  } catch (err) {
-    toast(`Failed to load manifest: ${err.message}`);
-    console.error(err);
-  }
+  manifestUrl = new URL('data/manifest.json', document.baseURI).href;
+
+  const res = await fetch(manifestUrl, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status} loading manifest.json`);
+
+  const items = await res.json();
+
+  // Normalize and precompute absolute mech URLs
+  const base = new URL('.', manifestUrl); // folder of manifest (…/data/)
+  manifest = items.map(m => {
+    const raw = (m.path || '').replace(/\\/g, '/').trim(); // "a-f/Assassin ASN-21.json"
+    const abs = new URL(raw, base).href;                    // …/data/a-f/Assassin%20ASN-21.json
+    return { ...m, path: raw, url: abs };
+  });
+
+  console.log(`Manifest OK (${manifest.length}) base=`, base.href);
 }
 
-async function loadMech(mechId) {
-  try {
-    const m = manifest.find(x => String(x.id) === String(mechId));
-    if (!m) throw new Error(`Not in manifest: ${mechId}`);
-
-    // ✅ resolves "a-f/..." relative to ".../data/manifest.json"
-    const mechUrl = new URL(m.path, manifestUrl).href;
-    console.debug('Fetching mech JSON:', mechUrl);
-
-    const res = await fetch(mechUrl, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status} for ${mechUrl}`);
-
-    let data;
-    try { data = await res.json(); }
-    catch (e) { throw new Error(`Invalid JSON in ${mechUrl}: ${e.message}`); }
-
-    updateOverview(data);
-    updateTechReadout(data);
+async function loadMechById(id) {
+  const m = manifest.find(x => String(x.id) === String(id));
+  if (!m) throw new Error(`Not in manifest: ${id}`);
+  console.debug('Loading mech:', m.name, m.url);
+  const data = await safeFetchJson(m.url);   // << use m.url (absolute)
+  updateOverview(data);
+  updateTechReadout(data);
+}
     toast(`${data.name || mechId} loaded`);
   } catch (err) {
     toast(`Failed to load mech JSON: ${err.message}`);
@@ -122,10 +114,18 @@ function toast(msg) {
       toastEl.style.display = 'none';
     }, ms);
   };
-  const safeFetchJson = async (url) => {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`Fetch failed (${res.status}) for ${url}`);
-    return res.json();
+// script.js:127
+async function safeFetchJson(pathOrUrl) {
+  // If it's relative like "a-f/Assassin ASN-21.json", resolve against manifestUrl
+  const base = new URL('.', manifestUrl || document.baseURI);
+  const url  = pathOrUrl.startsWith('http')
+    ? pathOrUrl
+    : new URL(pathOrUrl, base).href;
+
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Fetch failed (HTTP ${res.status}) for ${url}`);
+  return res.json();
+}
   };
   const encodeSpaces = (p) => p.replace(/ /g, '%20');
 
