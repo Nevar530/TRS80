@@ -639,10 +639,16 @@ btnLoadMech.style.display = 'none';
   })();
   /* ===================== END SEARCH LOAD ===================== */
 
-  /* ---------- Init ---------- */
-  onMechChanged({ resetHeat: true });
-  if (document.readyState !== 'loading') { initGatorPanel(); }
-  else document.addEventListener('DOMContentLoaded', initGatorPanel);
+/* ---------- Init ---------- */
+onMechChanged({ resetHeat: true });
+if (document.readyState !== 'loading') { 
+  initGatorPanel(); 
+} else { 
+  document.addEventListener('DOMContentLoaded', initGatorPanel);
+}
 
-  console.info('Gator Console ready.');
+// Auto-load manifest immediately (instead of requiring button click)
+loadManifest().catch(err => console.error('Manifest auto-load failed', err));
+
+console.info('Gator Console ready.');
 })();
