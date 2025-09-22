@@ -1,4 +1,4 @@
-// Normalize various mech JSON shapes into a predictable shape
+// Normalize various mech JSON shapes into a predictable shape 
 export function normalizeMech(raw) {
   if (!raw || typeof raw !== 'object') return raw;
   const out = { ...raw, extras: { ...(raw.extras || {}) } };
