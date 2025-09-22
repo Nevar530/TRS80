@@ -2,55 +2,14 @@
 (() => {
   'use strict';
 
-let manifest = [];
-let manifestUrl;
+  /* ---------- Globals (manifest + base) ---------- */
+  let manifest = [];     // [{ id?, name?, variant?, path, url }]
+  let manifestUrl = '';  // absolute URL to .../data/manifest.json
 
-async function loadManifest() {
-  manifestUrl = new URL('data/manifest.json', document.baseURI).href;
-
-  const res = await fetch(manifestUrl, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`HTTP ${res.status} loading manifest.json`);
-
-  const items = await res.json();
-
-  // Normalize and precompute absolute mech URLs
-  const base = new URL('.', manifestUrl); // folder of manifest (…/data/)
-  manifest = items.map(m => {
-    const raw = (m.path || '').replace(/\\/g, '/').trim(); // "a-f/Assassin ASN-21.json"
-    const abs = new URL(raw, base).href;                    // …/data/a-f/Assassin%20ASN-21.json
-    return { ...m, path: raw, url: abs };
-  });
-
-  console.log(`Manifest OK (${manifest.length}) base=`, base.href);
-}
-
-async function loadMechById(id) {
-  const m = manifest.find(x => String(x.id) === String(id));
-  if (!m) throw new Error(`Not in manifest: ${id}`);
-  console.debug('Loading mech:', m.name, m.url);
-  const data = await safeFetchJson(m.url);   // << use m.url (absolute)
-  updateOverview(data);
-  updateTechReadout(data);
-}
-    toast(`${data.name || mechId} loaded`);
-  } catch (err) {
-    toast(`Failed to load mech JSON: ${err.message}`);
-    console.error(err);
-  }
-}
-
-// tiny toast helper if you don’t have one
-function toast(msg) { 
-  const t = document.querySelector('.toast'); 
-  if (!t) { alert(msg); return; }
-  t.textContent = msg; t.hidden = false; setTimeout(()=> t.hidden = true, 2500);
-}
-
-  
   /* ---------- DOM refs ---------- */
   const btnLoadManifest = document.getElementById('btn-load-manifest');
   const btnSettings     = document.getElementById('btn-settings');
-  const btnLoadMech     = document.getElementById('btn-load-mech'); // replaced by search UI (kept hidden as fallback)
+  const btnLoadMech     = document.getElementById('btn-load-mech'); // hidden, kept as fallback
   const btnCustomMech   = document.getElementById('btn-custom-mech');
   const btnImport       = document.getElementById('btn-import');
   const btnExport       = document.getElementById('btn-export');
@@ -99,12 +58,14 @@ function toast(msg) {
   };
 
   /* ---------- Utils ---------- */
+  const el = (sel) => document.querySelector(sel);
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => (
     {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
   ));
-  const showToast = (msg, ms = 1800) => {
-    if (!toastEl) return;
+
+  function showToast(msg, ms = 1800) {
+    if (!toastEl) { console.log('[toast]', msg); return; }
     toastEl.textContent = msg;
     toastEl.hidden = false;
     toastEl.style.display = 'block';
@@ -113,24 +74,24 @@ function toast(msg) {
       toastEl.hidden = true;
       toastEl.style.display = 'none';
     }, ms);
-  };
-// script.js:127
-async function safeFetchJson(pathOrUrl) {
-  // If it's relative like "a-f/Assassin ASN-21.json", resolve against manifestUrl
-  const base = new URL('.', manifestUrl || document.baseURI);
-  const url  = pathOrUrl.startsWith('http')
-    ? pathOrUrl
-    : new URL(pathOrUrl, base).href;
+  }
 
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Fetch failed (HTTP ${res.status}) for ${url}`);
-  return res.json();
-}
-  };
-  const encodeSpaces = (p) => p.replace(/ /g, '%20');
+  async function safeFetchJson(pathOrUrl) {
+    // Resolve relative to manifest folder when possible
+    const base = new URL('.', manifestUrl || document.baseURI);
+    const url  = /^https?:/i.test(pathOrUrl) ? pathOrUrl : new URL(pathOrUrl, base).href;
+
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Fetch failed (HTTP ${res.status}) for ${url}`);
+    try {
+      return await res.json();
+    } catch (e) {
+      throw new Error(`Invalid JSON in ${url}: ${e.message}`);
+    }
+  }
 
   /* ---------- Heat ---------- */
-  const setHeat = (current, capacity) => {
+  function setHeat(current, capacity) {
     state.heat.current  = Math.max(0, current|0);
     state.heat.capacity = Math.max(0, capacity|0);
     const cap = state.heat.capacity || 1;
@@ -143,10 +104,10 @@ async function safeFetchJson(pathOrUrl) {
     }
     if (heatNowTx) heatNowTx.textContent = String(state.heat.current);
     if (heatCapTx) heatCapTx.textContent = state.heat.capacity ? String(state.heat.capacity) : '—';
-  };
+  }
 
   /* ---------- Overview & Tech Readout ---------- */
-  const updateOverview = () => {
+  function updateOverview() {
     const m = state.mech, p = state.pilot;
     if (ovMech)   ovMech.textContent  = m?.displayName ?? m?.name ?? m?.Name ?? '—';
     if (ovVar)    ovVar.textContent   = m?.variant ?? m?.Model ?? '—';
@@ -160,10 +121,11 @@ async function safeFetchJson(pathOrUrl) {
     if (ovWeps)   ovWeps.textContent  = (m?.weapons?.length
       ? m.weapons.slice(0,6).map(w => `${w.name}${w.loc?' ['+w.loc+']':''}`).join(' • ')
       : (m?.Weapons ? m.Weapons.slice(0,6).map(w => w.Name || w.name).join(' • ') : '—'));
-  };
+  }
 
   const fmtAS = (o) => (o ? `${o.a ?? o.A ?? '-'} / ${o.s ?? o.S ?? '-'}` : '—');
-  const renderTechOut = () => {
+
+  function renderTechOut() {
     if (!techOut) return;
     const m = state.mech;
     if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
@@ -186,11 +148,319 @@ async function safeFetchJson(pathOrUrl) {
         }</div>
       </div>
     `;
-  };
+  }
+
+  /* ---------- Manifest loading ---------- */
+  async function loadManifest() {
+    try {
+      manifestUrl = new URL('data/manifest.json', document.baseURI).href;
+
+      const res = await fetch(manifestUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status} loading manifest.json`);
+
+      const raw = await res.json();
+
+      // Normalize any supported shapes: array | { group: [] } | { mechs: [] }
+      let items = [];
+      if (Array.isArray(raw)) {
+        items = raw;
+      } else if (raw && Array.isArray(raw.mechs)) {
+        items = raw.mechs;
+      } else if (raw && typeof raw === 'object') {
+        for (const v of Object.values(raw)) if (Array.isArray(v)) items.push(...v);
+      }
+
+      const base = new URL('.', manifestUrl); // folder of manifest (…/data/)
+      manifest = items
+        .filter(e => e && (e.path || e.url || e.file))
+        .map(e => {
+          const id  = e.id || null;
+          const nm  = e.displayName || e.displayname || e.name || null;
+          const varnt = e.variant || null;
+          const rawPath = (e.path || e.url || e.file || '').replace(/\\/g, '/').trim(); // "a-f/Assassin ASN-21.json"
+          const abs = /^https?:/i.test(rawPath) ? rawPath : new URL(rawPath, base).href; // …/data/a-f/Assassin%20ASN-21.json
+          return { id, name: nm, variant: varnt, path: rawPath, url: abs };
+        });
+
+      console.log(`Manifest OK (${manifest.length}) base=`, base.href);
+      showToast(`Manifest loaded — ${manifest.length} mechs`);
+    } catch (err) {
+      console.error(err);
+      showToast(`Failed to load manifest: ${err.message}`);
+    }
+  }
+
+  /* ---------- Load mech by absolute URL or by ID ---------- */
+  async function loadMechFromUrl(url) {
+    try {
+      showToast('Loading mech…');
+      const mech = await safeFetchJson(url);
+      state.mech = mech;
+      onMechChanged({ resetHeat: true });
+      showToast(`${mech?.displayName || mech?.name || mech?.Model || 'Mech'} loaded`);
+    } catch (err) {
+      console.error(err);
+      showToast(`Failed to load mech JSON: ${err.message}`);
+    }
+  }
+
+  async function loadMechById(id) {
+    const m = manifest.find(x => String(x.id) === String(id));
+    if (!m) { showToast(`Not in manifest: ${id}`); return; }
+    return loadMechFromUrl(m.url);
+  }
+
+  /* ---------- Import / Export ---------- */
+  function loadMechFromFile() {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'application/json';
+    input.onchange = async () => {
+      const file = input.files?.[0]; if (!file) return;
+      try {
+        const text = await file.text();
+        const mech = JSON.parse(text);
+        state.mech = mech;
+        onMechChanged({ resetHeat: true });
+        showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+      } catch (e) {
+        console.error(e);
+        showToast('Load failed (invalid JSON)');
+      }
+    };
+    input.click();
+  }
+
+  function importJson() {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'application/json';
+    input.onchange = async () => {
+      const file = input.files?.[0]; if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (data.mech || data.pilot || data.heat) {
+          if (data.mech)  state.mech  = data.mech;
+          if (data.pilot) state.pilot = data.pilot;
+          if (data.heat)  state.heat  = data.heat;
+          onMechChanged({ resetHeat: false });
+        } else {
+          state.mech = data;
+          onMechChanged({ resetHeat: true });
+        }
+        showToast('JSON imported');
+      } catch (e) {
+        console.error(e);
+        showToast('Import failed');
+      }
+    };
+    input.click();
+  }
+
+  function exportState() {
+    const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `gator_session_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('Session exported');
+  }
+
+  /* ---------- Settings/About modal ---------- */
+  function openModal(){
+    if (!modal) return;
+    modal.hidden = false;
+    const focusable = modal.querySelector('#modal-close');
+    focusable?.focus();
+    if (buildSpan) buildSpan.textContent = new Date().toISOString();
+    modal.addEventListener('click', backdropClose);
+    window.addEventListener('keydown', escClose);
+  }
+  function closeModal(){
+    if (!modal) return;
+    modal.hidden = true;
+    modal.removeEventListener('click', backdropClose);
+    window.removeEventListener('keydown', escClose);
+    btnSettings?.focus();
+  }
+  function backdropClose(e){ if (e.target === modal) closeModal(); }
+  function escClose(e){ if (e.key === 'Escape') closeModal(); }
+
+  /* ---------- Change handlers ---------- */
+  function onMechChanged({ resetHeat = true } = {}) {
+    const m = state.mech || null;
+    if (!m) {
+      setHeat(0, 0);
+      updateOverview();
+      renderTechOut();
+      return;
+    }
+    const cap = Number.isFinite(m?.heatCapacity) ? m.heatCapacity : (m?.sinks?.count ?? m?.HeatSinks ?? 0);
+    setHeat(resetHeat ? 0 : state.heat.current, cap);
+    updateOverview();
+    renderTechOut();
+  }
+
+  /* ===================== SEARCH UI (Typeahead over manifest; top 25) ===================== */
+  (function initSearch() {
+    try {
+      const toolbar = document.querySelector('.actions--top');
+      if (!toolbar || !btnLoadMech) return;
+
+      // Build search UI container
+      const wrap = document.createElement('div');
+      wrap.style.position = 'relative';
+      wrap.style.display = 'inline-block';
+      wrap.style.minWidth = '220px';
+      wrap.style.marginLeft = '6px';
+
+      const input = document.createElement('input');
+      input.type = 'search';
+      input.id = 'mech-search';
+      input.placeholder = 'Search mechs…';
+      input.autocomplete = 'off';
+      input.spellcheck = false;
+      Object.assign(input.style, {
+        padding: '6px 10px',
+        borderRadius: '6px',
+        border: '1px solid var(--border)',
+        background: '#0e1522',
+        color: 'var(--ink)',
+        width: '220px'
+      });
+
+      const panel = document.createElement('div');
+      panel.id = 'search-results';
+      Object.assign(panel.style, {
+        position: 'absolute',
+        top: 'calc(100% + 4px)',
+        left: '0',
+        zIndex: '100',
+        minWidth: '280px',
+        maxWidth: '420px',
+        maxHeight: '50vh',
+        overflowY: 'auto',
+        border: '1px solid var(--border)',
+        borderRadius: '8px',
+        background: 'var(--panel)',
+        display: 'none',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
+      });
+
+      wrap.appendChild(input);
+      wrap.appendChild(panel);
+      btnLoadMech.insertAdjacentElement('afterend', wrap);
+      btnLoadMech.style.display = 'none';
+
+      let open = false;
+      let hi = -1;
+      let results = [];
+
+      function openPanel(){ if (!open){ panel.style.display='block'; open = true; } }
+      function closePanel(){ if (open){ panel.style.display='none'; open = false; hi = -1; } }
+
+      function tokenize(q){
+        return q.trim().toLowerCase().split(/\s+/).filter(Boolean).slice(0,5);
+      }
+      function score(hit, terms){
+        let s = 0;
+        for (const t of terms){
+          const idx = hit.indexOf(t);
+          if (idx < 0) return -1;              // must contain all terms
+          if (idx === 0) s += 3;
+          else if (/\s/.test(hit[idx-1])) s += 2;
+          else s += 1;
+        }
+        return s - Math.log1p(hit.length)/2;   // tiny bias to shorter labels
+      }
+
+      function labelFor(m){
+        return m.name || m.id || m.variant || m.path;
+      }
+
+      function search(q){
+        if (!q) return [];
+        const terms = tokenize(q);
+        if (!terms.length) return [];
+        const scored = [];
+        for (const e of manifest){
+          const key = [e.name, e.variant, e.id, e.path].filter(Boolean).join(' ').toLowerCase();
+          const sc = score(key, terms);
+          if (sc >= 0) scored.push([sc, e]);
+        }
+        scored.sort((a,b)=> b[0]-a[0]);
+        return scored.slice(0,25).map(x=>x[1]);
+      }
+
+      function render(){
+        if (!results.length){
+          panel.innerHTML = `<div class="dim small" style="padding:8px;">No matches</div>`;
+          return;
+        }
+        panel.innerHTML = results.map((e,i)=> `
+          <div class="result-item${i===hi?' is-hi':''}" data-url="${e.url}" data-id="${e.id||''}" tabindex="0" role="button" aria-label="${esc(labelFor(e))}" style="padding:6px 8px; display:block; border-bottom:1px solid var(--border); cursor:pointer;">
+            <span class="result-name mono" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 60px);">${esc(labelFor(e))}</span>
+            <span class="result-variant dim mono small" style="float:right; margin-left:8px;">${esc(e.id || e.variant || '')}</span>
+          </div>
+        `).join('');
+      }
+
+      // Debounced input
+      let tId = 0;
+      input.addEventListener('input', () => {
+        const q = input.value;
+        clearTimeout(tId);
+        if (!q){ closePanel(); return; }
+        tId = setTimeout(() => {
+          results = search(q);
+          hi = results.length ? 0 : -1;
+          openPanel();
+          render();
+        }, 120);
+      });
+
+      // Mouse select (mousedown beats blur)
+      panel.addEventListener('mousedown', (e) => {
+        const row = e.target.closest('.result-item');
+        if (!row) return;
+        const url = row.getAttribute('data-url');
+        closePanel();
+        input.blur();
+        if (url) loadMechFromUrl(url);
+      });
+
+      // Keyboard nav
+      input.addEventListener('keydown', (e) => {
+        if (!open && ['ArrowDown','Enter'].includes(e.key)) {
+          if (input.value){ results = search(input.value); hi = results.length?0:-1; openPanel(); render(); }
+        }
+        if (!open) return;
+        if (e.key === 'ArrowDown'){ e.preventDefault(); hi = (hi + 1 + results.length) % results.length; render(); }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); hi = (hi - 1 + results.length) % results.length; render(); }
+        else if (e.key === 'Enter'){ e.preventDefault(); const m = results[hi]; if (m) { closePanel(); input.blur(); loadMechFromUrl(m.url); } }
+        else if (e.key === 'Escape'){ closePanel(); }
+      });
+
+      // Close when clicking away
+      document.addEventListener('click', (e) => {
+        if (wrap.contains(e.target)) return;
+        closePanel();
+      });
+
+      // Load manifest on focus or button click (and also once at start)
+      btnLoadManifest?.addEventListener('click', loadManifest);
+      input.addEventListener('focus', () => { if (!manifest.length) loadManifest(); });
+      if (!manifest.length) loadManifest();
+    } catch (e) {
+      console.error('Search init failed', e);
+      showToast('Search init failed');
+    }
+  })();
+  /* ===================== END SEARCH UI ===================== */
 
   /* ===================== BEGIN GATOR LOGIC (compact) ===================== */
-  const el = (sel) => document.querySelector(sel);
-
   function targetMovementModifierFromBand(band){
     const map = [0,1,2,3,4,5,6];
     const idx = Math.max(0, Math.min(6, band|0));
@@ -210,10 +480,12 @@ async function safeFetchJson(pathOrUrl) {
     const sum = G + A + T_total + O + R;
 
     const tnEl = el('#gtr-total');
-    tnEl.className = 'tn';
-    if (sum <= 2) { tnEl.textContent = 'Auto'; tnEl.classList.add('tn-auto'); }
-    else if (sum <= 9) { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-yellow'); }
-    else { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-red'); }
+    if (tnEl){
+      tnEl.className = 'tn';
+      if (sum <= 2) { tnEl.textContent = 'Auto'; tnEl.classList.add('tn-auto'); }
+      else if (sum <= 9) { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-yellow'); }
+      else { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-red'); }
+    }
 
     document.body.dataset.gatorTn = String(sum);
   }
@@ -238,30 +510,30 @@ async function safeFetchJson(pathOrUrl) {
     const rmin = el('#gtr-min');
 
     // Initialize from state
-    gunnerySel.value  = String(state.gator.G ?? 4);
-    attackerSel.value = String(state.gator.A ?? 0);
-    tgtBandSel.value  = String(state.gator.T ?? 0);
+    if (gunnerySel) gunnerySel.value  = String(state.gator.G ?? 4);
+    if (attackerSel) attackerSel.value = String(state.gator.A ?? 0);
+    if (tgtBandSel)  tgtBandSel.value  = String(state.gator.T ?? 0);
 
     // Wire changes
-    gunnerySel.addEventListener('change', () => { state.gator.G = +gunnerySel.value; recomputeGator(); });
-    attackerSel.addEventListener('change', () => { state.gator.A = +attackerSel.value; recomputeGator(); });
-    tgtBandSel .addEventListener('change', () => { state.gator.T = +tgtBandSel.value; recomputeGator(); });
-    tgtJumpChk.addEventListener('change', () => { state.gator.T_adv.jump = !!tgtJumpChk.checked; recomputeGator(); });
+    gunnerySel?.addEventListener('change', () => { state.gator.G = +gunnerySel.value; recomputeGator(); });
+    attackerSel?.addEventListener('change', () => { state.gator.A = +attackerSel.value; recomputeGator(); });
+    tgtBandSel ?.addEventListener('change', () => { state.gator.T = +tgtBandSel.value; recomputeGator(); });
+    tgtJumpChk?.addEventListener('change', () => { state.gator.T_adv.jump = !!tgtJumpChk.checked; recomputeGator(); });
 
     function setPosture({padj=false, prone=false, imm=false}){
       state.gator.T_adv.padj = padj; state.gator.T_adv.prone = prone; state.gator.T_adv.imm = imm;
       recomputeGator();
     }
-    tgtNone .addEventListener('change', ()=> setPosture({}));
-    tgtPadj .addEventListener('change', ()=> setPosture({padj:true}));
-    tgtProne.addEventListener('change', ()=> setPosture({prone:true}));
-    tgtImm  .addEventListener('change', ()=> setPosture({imm:true}));
+    tgtNone ?.addEventListener('change', ()=> setPosture({}));
+    tgtPadj ?.addEventListener('change', ()=> setPosture({padj:true}));
+    tgtProne?.addEventListener('change', ()=> setPosture({prone:true}));
+    tgtImm  ?.addEventListener('change', ()=> setPosture({imm:true}));
 
     function sumOther(){
       const v = (+wb.value||0)+(+wa.value||0)+(+ot.value||0)+(+st.value||0)+(+ht.value||0);
       state.gator.O = v; recomputeGator();
     }
-    [wb,wa,ot,st,ht].forEach(s => s.addEventListener('change', sumOther));
+    [wb,wa,ot,st,ht].forEach(s => s?.addEventListener('change', sumOther));
 
     function wireRangeSeg(){
       if(!rangeSeg) return;
@@ -314,113 +586,6 @@ async function safeFetchJson(pathOrUrl) {
   }
   /* ===================== END GATOR LOGIC ===================== */
 
-  /* ---------- Loading / Import / Export ---------- */
-  const loadMechFromFile = () => {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text();
-        const mech = JSON.parse(text);
-        state.mech = mech;
-        onMechChanged({ resetHeat: true });
-        showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-      } catch (e) {
-        console.error(e);
-        showToast('Load failed (invalid JSON)');
-      }
-    };
-    input.click();
-  };
-
-  const loadMechByPath = async (idOrPath) => {
-    try {
-      showToast('Loading mech…');
-      const url = idOrPath && idOrPath.endsWith('.json') ? idOrPath : './mechs/example_mech.json';
-      const mech = await safeFetchJson(url);
-      state.mech = mech;
-      onMechChanged({ resetHeat: true });
-      showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-    } catch (err) {
-      console.error(err);
-      showToast('Failed to load mech');
-    }
-  };
-
-  const importJson = () => {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text();
-        const data = JSON.parse(text);
-
-        if (data.mech || data.pilot || data.heat) {
-          if (data.mech)  state.mech  = data.mech;
-          if (data.pilot) state.pilot = data.pilot;
-          if (data.heat)  state.heat  = data.heat;
-          onMechChanged({ resetHeat: false });
-        } else {
-          state.mech = data;
-          onMechChanged({ resetHeat: true });
-        }
-        showToast('JSON imported');
-      } catch (e) {
-        console.error(e);
-        showToast('Import failed');
-      }
-    };
-    input.click();
-  };
-
-  const exportState = () => {
-    const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `gator_session_${Date.now()}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
-    showToast('Session exported');
-  };
-
-  /* ---------- Settings/About modal ---------- */
-  function openModal(){
-    if (!modal) return;
-    modal.hidden = false;
-    const focusable = modal.querySelector('#modal-close');
-    focusable?.focus();
-    if (buildSpan) buildSpan.textContent = new Date().toISOString();
-    modal.addEventListener('click', backdropClose);
-    window.addEventListener('keydown', escClose);
-  }
-  function closeModal(){
-    if (!modal) return;
-    modal.hidden = true;
-    modal.removeEventListener('click', backdropClose);
-    window.removeEventListener('keydown', escClose);
-    btnSettings?.focus();
-  }
-  function backdropClose(e){
-    if (e.target === modal) closeModal();
-  }
-  function escClose(e){
-    if (e.key === 'Escape') closeModal();
-  }
-
-  /* ---------- Change handlers ---------- */
-  const onMechChanged = ({ resetHeat = true } = {}) => {
-    const m = state.mech || DEMO_GRF1A; // demo fallback
-    state.mech = m;
-    const cap = Number.isFinite(m?.heatCapacity) ? m.heatCapacity : (m?.sinks?.count ?? m?.HeatSinks ?? 0);
-    setHeat(resetHeat ? 0 : state.heat.current, cap);
-
-    updateOverview();
-    renderTechOut();
-  };
-
   /* ---------- Wire UI ---------- */
   btnImport?.addEventListener('click', importJson);
   btnExport?.addEventListener('click', exportState);
@@ -430,7 +595,7 @@ async function safeFetchJson(pathOrUrl) {
   modalOk?.addEventListener('click', closeModal);
 
   // Legacy load button (now hidden by search UI, but kept as fallback)
-  btnLoadMech?.addEventListener('click', (e) => { if (e.altKey) loadMechByPath(); else loadMechFromFile(); });
+  btnLoadMech?.addEventListener('click', (e) => { if (e.altKey) loadMechFromUrl('./mechs/example_mech.json'); else loadMechFromFile(); });
 
   // Top swapper
   if (topSwapper){
@@ -450,322 +615,11 @@ async function safeFetchJson(pathOrUrl) {
     });
   }
 
-  /* ===================== SEARCH LOAD (Typeahead over manifest; top 25) ===================== */
-  (() => {
-    try {
-      const toolbar = document.querySelector('.actions--top');
-      if (!toolbar || !btnLoadMech) return;
-
-      // Build search UI next to the (now hidden) Load button
-      const wrap = document.createElement('div');
-      wrap.style.position = 'relative';
-      wrap.style.display = 'inline-block';
-      wrap.style.minWidth = '220px';
-      wrap.style.marginLeft = '6px';
-
-      const input = document.createElement('input');
-      input.type = 'search';
-      input.id = 'mech-search';
-      input.placeholder = 'Search mechs…';
-      input.autocomplete = 'off';
-      input.spellcheck = false;
-      Object.assign(input.style, {
-        padding: '6px 10px',
-        borderRadius: '6px',
-        border: '1px solid var(--border)',
-        background: '#0e1522',
-        color: 'var(--ink)',
-        width: '220px'
-      });
-
-      const panel = document.createElement('div');
-      panel.id = 'mech-results';
-      Object.assign(panel.style, {
-        position: 'absolute',
-        top: 'calc(100% + 4px)',
-        left: '0',
-        zIndex: '100',
-        minWidth: '280px',
-        maxWidth: '380px',
-        maxHeight: '50vh',
-        overflowY: 'auto',
-        border: '1px solid var(--border)',
-        borderRadius: '8px',
-        background: 'var(--panel)',
-        display: 'none',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
-      });
-
-      wrap.appendChild(input);
-      wrap.appendChild(panel);
-      btnLoadMech.insertAdjacentElement('afterend', wrap);
-      btnLoadMech.style.display = 'none';
-
-      /* ------- Manifest load + index (in-memory) ------- */
-      let entries = []; // {path,name?,id?,variant?, key (lowercased)}
-      let open = false;
-      let hi = -1; // highlighted index in current results
-      let results = []; // current filtered
-      let manifestLoaded = false;
-
-      function normalizeManifest(raw){
-        if (Array.isArray(raw)) return raw;
-        if (raw && Array.isArray(raw.mechs)) return raw.mechs;
-        // letter/grouped object
-        const out = [];
-        if (raw && typeof raw === 'object') {
-          for (const v of Object.values(raw)) if (Array.isArray(v)) out.push(...v);
-        }
-        return out;
-      }
-      function makeKey(e){
-        return [
-          e.displayName, e.displayname, e.name, e.variant, e.id, e.path
-        ].filter(Boolean).join(' ').toLowerCase();
-      }
-      async function loadManifestForSearch(){
-        if (manifestLoaded) return;
-        try{
-          const res = await fetch('./data/manifest.json', { cache: 'no-store' });
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const raw = await res.json();
-          const list = normalizeManifest(raw).filter(e => e && (e.path || e.url || e.file));
-          entries = list.map(e => {
-            const path = e.path || e.url || e.file;
-            return {
-              path,
-              name: e.displayName || e.displayname || e.name || null,
-              id: e.id || null,
-              variant: e.variant || null,
-              key: makeKey({ ...e, path })
-            };
-          });
-          manifestLoaded = true;
-          showToast(`Manifest ready — ${entries.length} mechs`);
-        }catch(err){
-          console.error(err);
-          showToast('Failed to load manifest');
-        }
-      }
-
-      // Manual refresh via button, plus auto-load on startup
-      btnLoadManifest?.addEventListener('click', loadManifestForSearch);
-      input.addEventListener('focus', () => { if (!manifestLoaded) loadManifestForSearch(); });
-      // Auto-load when app starts (no button click required)
-      loadManifestForSearch().catch(err => console.error('Manifest auto-load failed', err));
-
-      /* ------- Search & render (debounced, top 25) ------- */
-      function score(hit, terms){
-        // simple score: +3 prefix, +2 word boundary, +1 substring per term
-        let s = 0;
-        for (const t of terms){
-          const idx = hit.indexOf(t);
-          if (idx < 0) return -1; // must contain all terms
-          if (idx === 0) s += 3;
-          else if (/\s/.test(hit[idx-1])) s += 2;
-          else s += 1;
-        }
-        return s - Math.log1p(hit.length)/2; // light bonus for shorter strings
-      }
-      function tokenize(q){
-        return q.trim().toLowerCase().split(/\s+/).filter(Boolean).slice(0,5);
-      }
-      function search(q){
-        if (!q) return [];
-        const terms = tokenize(q);
-        if (!terms.length) return [];
-        const scored = [];
-        for (const e of entries){
-          const sc = score(e.key, terms);
-          if (sc >= 0) scored.push([sc, e]);
-        }
-        scored.sort((a,b)=> b[0]-a[0]);
-        return scored.slice(0,25).map(x=>x[1]);
-      }
-
-      function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-      function rowHtml(e, isHi){
-        const label = e.name || e.id || e.variant || e.path;
-        return `<div class="mech-row${isHi?' is-hi':''}" data-path="${escapeHtml(e.path)}" style="padding:6px 8px; cursor:pointer; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border);">
-          <div class="mono" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 60px);">
-            ${escapeHtml(label)}
-          </div>
-          <div class="dim mono small" style="margin-left:auto;">${escapeHtml(e.id || e.variant || '')}</div>
-        </div>`;
-      }
-
-      function openPanel(){ if (!open){ panel.style.display='block'; open = true; } }
-      function closePanel(){ if (open){ panel.style.display='none'; open = false; hi = -1; } }
-      function render(){
-        if (!results.length){ panel.innerHTML = `<div class="dim small" style="padding:8px;">No matches</div>`; return; }
-        panel.innerHTML = results.map((e,i)=> rowHtml(e, i===hi)).join('');
-      }
-
-      function highlight(delta){
-        if (!results.length) return;
-        hi = (hi + delta + results.length) % results.length;
-        render();
-        // ensure visible
-        const rows = panel.querySelectorAll('.mech-row');
-        const el = rows[hi];
-        if (el){
-          const boxTop = panel.scrollTop;
-          const boxBot = boxTop + panel.clientHeight;
-          const t = el.offsetTop, b = t + el.offsetHeight;
-          if (t < boxTop) panel.scrollTop = t;
-          else if (b > boxBot) panel.scrollTop = b - panel.clientHeight;
-        }
-      }
-
-      let tId = 0;
-      input.addEventListener('input', () => {
-        const q = input.value;
-        clearTimeout(tId);
-        if (!q){ closePanel(); return; }
-        tId = setTimeout(() => {
-          results = search(q);
-          hi = results.length ? 0 : -1;
-          openPanel();
-          render();
-        }, 120); // debounce
-      });
-
-      panel.addEventListener('mousedown', (e) => {
-        const row = e.target.closest('.mech-row');
-        if (!row) return;
-        pick(row.getAttribute('data-path'));
-      });
-
-      input.addEventListener('keydown', (e) => {
-        if (!open && ['ArrowDown','Enter'].includes(e.key)) {
-          if (input.value){ results = search(input.value); hi = results.length?0:-1; openPanel(); render(); }
-        }
-        if (!open) return;
-        if (e.key === 'ArrowDown'){ e.preventDefault(); highlight(+1); }
-        else if (e.key === 'ArrowUp'){ e.preventDefault(); highlight(-1); }
-        else if (e.key === 'Enter'){ e.preventDefault(); const p = results[hi]?.path; if (p) pick(p); }
-        else if (e.key === 'Escape'){ closePanel(); }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (wrap.contains(e.target)) return;
-        closePanel();
-      });
-
-      // Hook when a mech is clicked from search results
-function loadMech(mechId) {
-  // Find the mech entry in manifest
-  const mech = manifest.find(m => m.id === mechId);
-  if (!mech) return;
-
-  // Fetch the mech JSON file
-  fetch(mech.path)
-    .then(res => res.json())
-    .then(data => {
-      // Update Overview
-      document.getElementById('mech-name').textContent = data.name;
-      document.getElementById('mech-weight').textContent = data.weight + " tons";
-      document.getElementById('mech-class').textContent = data.class;
-      
-      // Update Tech Readout
-      const techPanel = document.getElementById('tech-readout');
-      techPanel.innerHTML = `
-        <h3>${data.name} (${data.variant})</h3>
-        <p><b>Tonnage:</b> ${data.weight}</p>
-        <p><b>Movement:</b> ${data.move}</p>
-        <p><b>Armor:</b> ${data.armor}</p>
-        <p><b>Weapons:</b></p>
-        <ul>
-          ${data.weapons.map(w => `<li>${w.name} (${w.location})</li>`).join('')}
-        </ul>
-      `;
-    })
-    .catch(err => console.error("Error loading mech:", err));
-}
-
-
-      /* ------- Pick & load a mech (calls your existing pipeline) ------- */
-      async function pick(path){
-        closePanel();
-        input.blur();
-        try{
-          showToast('Loading mech…');
-          const url = encodeSpaces(path);
-          const mech = await safeFetchJson(url);
-          state.mech = mech;
-          onMechChanged({ resetHeat: true });
-          showToast((mech.displayName || mech.name || mech.Model || 'Mech') + ' loaded');
-        }catch(err){
-          console.error(err);
-          showToast('Failed to load mech JSON');
-        }
-      }
-    } catch (e) {
-      console.error('Search init failed', e);
-      showToast('Search init failed');
-    }
-  })();
-  /* ===================== END SEARCH LOAD ===================== */
-
-// ---- Search dropdown behavior (hover, click, keyboard-safe) ----
-const searchInput   = document.getElementById('mech-search');
-const resultsBox    = document.getElementById('search-results');
-let blurHideTimer   = null;
-
-// Show results helper (call this after filtering manifest)
-function renderResults(items) {
-  resultsBox.innerHTML = items.map(m => `
-    <div class="result-item" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}">
-      <span class="result-name">${m.name}</span>
-      ${m.variant ? `<span class="result-variant"> ${m.variant}</span>` : ''}
-    </div>
-  `).join('');
-  resultsBox.hidden = items.length === 0;
-}
-
-// Prevent the “blur kills click” problem:
-// Use mousedown so selection happens before the input loses focus.
-resultsBox.addEventListener('mousedown', (e) => {
-  const item = e.target.closest('.result-item');
-  if (!item) return;
-  e.preventDefault();                 // keep focus so blur handler doesn’t hide early
-  const mechId = item.dataset.id;
-  loadMech(mechId);                   // your existing loader
-  hideResults();
-});
-
-// Also support keyboard Enter on a focused result
-resultsBox.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const item = e.target.closest('.result-item');
-    if (!item) return;
-    const mechId = item.dataset.id;
-    loadMech(mechId);
-    hideResults();
-  }
-});
-
-// Input focus/blur handling with a tiny delay so mousedown can run first
-searchInput.addEventListener('focus', () => {
-  clearTimeout(blurHideTimer);
-  if (resultsBox.children.length) resultsBox.hidden = false;
-});
-
-searchInput.addEventListener('blur', () => {
-  clearTimeout(blurHideTimer);
-  blurHideTimer = setTimeout(hideResults, 120);
-});
-
-function hideResults() {
-  resultsBox.hidden = true;
-}
-
-  
   /* ---------- Init ---------- */
   onMechChanged({ resetHeat: true });
-  if (document.readyState !== 'loading') { 
-    initGatorPanel(); 
-  } else { 
+  if (document.readyState !== 'loading') {
+    initGatorPanel();
+  } else {
     document.addEventListener('DOMContentLoaded', initGatorPanel);
   }
 
