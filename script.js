@@ -53,21 +53,6 @@
     gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
   };
 
-  /* ---------- DEMO placeholder: Griffin GRF-1A ---------- */
-  const DEMO_GRF1A = {
-    id: "grf_1a_demo",
-    name: "Griffin",
-    variant: "GRF-1A",
-    tonnage: 60,
-    move: { walk: 4, run: 6, jump: 3 },
-    sinks: { count: 11, type: "Single" },
-    weapons: [
-      { name: "Prototype PPC", loc: "RA" },
-      { name: "LRM-5",         loc: "RT" },
-      { name: "LRM-5 Ammo (1t)", loc: "RT" }
-    ]
-  };
-
   /* ---------- Utils ---------- */
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => (
@@ -614,6 +599,38 @@
         closePanel();
       });
 
+      // Hook when a mech is clicked from search results
+function loadMech(mechId) {
+  // Find the mech entry in manifest
+  const mech = manifest.find(m => m.id === mechId);
+  if (!mech) return;
+
+  // Fetch the mech JSON file
+  fetch(mech.path)
+    .then(res => res.json())
+    .then(data => {
+      // Update Overview
+      document.getElementById('mech-name').textContent = data.name;
+      document.getElementById('mech-weight').textContent = data.weight + " tons";
+      document.getElementById('mech-class').textContent = data.class;
+      
+      // Update Tech Readout
+      const techPanel = document.getElementById('tech-readout');
+      techPanel.innerHTML = `
+        <h3>${data.name} (${data.variant})</h3>
+        <p><b>Tonnage:</b> ${data.weight}</p>
+        <p><b>Movement:</b> ${data.move}</p>
+        <p><b>Armor:</b> ${data.armor}</p>
+        <p><b>Weapons:</b></p>
+        <ul>
+          ${data.weapons.map(w => `<li>${w.name} (${w.location})</li>`).join('')}
+        </ul>
+      `;
+    })
+    .catch(err => console.error("Error loading mech:", err));
+}
+
+
       /* ------- Pick & load a mech (calls your existing pipeline) ------- */
       async function pick(path){
         closePanel();
@@ -637,6 +654,8 @@
   })();
   /* ===================== END SEARCH LOAD ===================== */
 
+
+  
   /* ---------- Init ---------- */
   onMechChanged({ resetHeat: true });
   if (document.readyState !== 'loading') { 
