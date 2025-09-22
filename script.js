@@ -363,23 +363,6 @@ function renderMetaPanel({bv, cost, era, sourcesHtml, manufacturers, factories, 
 
 /* ====== TAB/Pane helpers ====== */
 function getPaneTargets() {
-  // Prefer existing #top-swapper panes if present; else build inside #techout
-  const top = document.getElementById('top-swapper');
-  if (top && top.querySelector('.swap-pane')) {
-    return {
-      mode: 'external',
-      container: top,
-      panes: {
-        overview: document.getElementById('pane-overview'),
-        armor:    document.getElementById('pane-armor'),
-        locs:     document.getElementById('pane-locations'),
-        weapons:  document.getElementById('pane-weapons'),
-        lore:     document.getElementById('pane-lore'),
-        meta:     document.getElementById('pane-meta'),
-      }
-    };
-  }
-  // Fallback: build tabs + panes inside #techout on the fly
   const wrap = document.getElementById('techout');
   if (!wrap) return null;
 
@@ -402,7 +385,6 @@ function getPaneTargets() {
         <div id="pane-meta"      class="swap-pane"></div>
       </div>
     `;
-    // Minimal tab behavior (independent of your global top-swapper)
     wrap.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-swap]');
       if (!btn) return;
@@ -432,12 +414,12 @@ function getPaneTargets() {
   };
 }
 
+
 /* ====== DROP-IN: renderTechOut (no-scroll, sectioned) ====== */
 function renderTechOut() {
   if (!techOut) return;
   const m = state.mech;
   if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
-  window.renderTechOut = renderTechOut;
 
   // Common derived pieces (reuse your existing logic)
   const mv = getMovement(m || {});
@@ -534,6 +516,7 @@ function renderTechOut() {
   }
 }
 
+  window.renderTechOut = renderTechOut;
 
   /* ---------- Heat ---------- */
   function setHeat(current, capacity) {
@@ -568,11 +551,16 @@ function renderTechOut() {
     setHeat(resetHeat ? 0 : state.heat.current, cap);
     updateOverview();
 
-    if (typeof window.renderTechOut === 'function') {
-      window.renderTechOut();
-    } else {
-      console.warn('renderTechOut is not defined');
-    }
+try {
+  if (typeof window.renderTechOut === 'function') {
+    window.renderTechOut();
+  } else if (techOut) {
+    techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>';
+  }
+} catch (e) {
+  console.error('[renderTechOut] crashed:', e);
+  if (techOut) techOut.innerHTML = `<div class="placeholder">Tech readout error: ${e.message}</div>`;
+}
   }
 
   /* ---------- Manifest loading ---------- */
@@ -615,7 +603,6 @@ function renderTechOut() {
     }
   }
 
-// --- SAFE ADAPTER (no-op fallback) ---
 if (typeof adaptMechSchema !== 'function') {
   function adaptMechSchema(m) { return m; }
 }
