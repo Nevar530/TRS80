@@ -3,38 +3,291 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>B^ttleTech // GATOR Console</title>
+  <title>B^ttleTech // Gator Console</title>
+  <link rel="icon" href="data:," />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <noscript><div class="noscript">This module requires JavaScript enabled.</div></noscript>
 
-  <div class="app is-embed">
-    <!-- === Manifest / Mech Loader UI === -->
-    <div id="manifest-row" class="manifest-row">
-      <button id="btn-load-manifest" type="button">Load Manifest</button>
-      <input id="manifest-file" type="file" accept=".json" style="display:none;" />
-      <div id="manifest-drop">Drop manifest.json here (or paste a .json URL)</div>
-      <select id="mech-select"><option>— no manifest loaded —</option></select>
-      <button id="btn-load-mech" type="button" disabled>Load Mech</button>
-    </div>
-    <!-- === /Manifest / Mech Loader UI === -->
+  <div class="app is-embed"><!-- keep .is-embed for compact widget -->
 
-    <!-- Your other app UI goes here -->
-    <div id="overview"></div>
-    <div id="tech-readout"></div>
-    <div id="weapons"></div>
+    <!-- Top bar (toolbar actions) -->
+    <header class="ui-topbar">
+      <div class="topbar-left">
+        <div class="brand">
+          <span class="glyph" aria-hidden="true">✚</span>
+          <span class="brand-text">[MECH]</span>
+        </div>
+      </div>
+      <div class="topbar-right actions actions--top">
+        <button id="btn-load-mech"   class="btn"       title="Load a mech JSON">Load</button>
+        <button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder">Custom</button>
+        <button id="btn-import"      class="btn ghost" title="Import session JSON" aria-label="Import">Import</button>
+        <button id="btn-export"      class="btn ghost" title="Export session JSON" aria-label="Export">Export</button>
+
+        <div class="divider"></div>
+
+        <button id="btn-load-manifest" class="btn" title="Fetch manifest.json">Manifest</button>
+        <button id="btn-settings"      class="btn ghost" title="Settings (About & Attribution)">⚙</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="col-right">
+
+        <!-- Swappable header card (Overview ↔ Tech Readout ↔ GATOR) -->
+        <div class="card" id="top-swapper">
+          <div class="card-h">
+            <div class="card-title">Current Selection</div>
+            <div class="tabs" role="tablist" aria-label="Top view switch">
+              <button class="tab is-active" role="tab" aria-selected="true"  data-swap="pane-overview">Overview</button>
+              <button class="tab"           role="tab" aria-selected="false" data-swap="pane-techreadout">Tech Readout</button>
+              <button class="tab"           role="tab" aria-selected="false" data-swap="pane-gator">GATOR</button>
+            </div>
+          </div>
+
+          <div class="card-c">
+            <!-- OVERVIEW -->
+            <section id="pane-overview" class="swap-pane is-active" role="tabpanel" aria-labelledby="Overview">
+              <div class="overview-flex">
+                <!-- Vertical Heat -->
+                <div class="vheat">
+                  <div class="vheat-bar" id="vheat" role="meter" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                    <div class="vheat-fill" id="vheat-fill" style="height:0%"></div>
+                  </div>
+                  <div class="vheat-legend mono small">
+                    <span id="heat-now">0</span>/<span id="heat-cap">—</span>
+                  </div>
+                </div>
+
+                <!-- Overview details -->
+                <div class="overview-grid">
+                  <div>
+                    <label class="dim small">Mech</label>
+                    <div id="ov-mech" class="mono">—</div>
+                  </div>
+                  <div>
+                    <label class="dim small">Variant</label>
+                    <div id="ov-variant" class="mono">—</div>
+                  </div>
+                  <div>
+                    <label class="dim small">Tonnage</label>
+                    <div id="ov-tons" class="mono">—</div>
+                  </div>
+                  <div>
+                    <label class="dim small">Pilot</label>
+                    <div id="ov-pilot" class="mono">—</div>
+                  </div>
+                  <div>
+                    <label class="dim small">Gunnery / Piloting</label>
+                    <div class="mono"><span id="ov-gun">—</span> / <span id="ov-pil">—</span></div>
+                  </div>
+                  <div>
+                    <label class="dim small">Movement</label>
+                    <div class="mono" id="ov-move">—</div>
+                  </div>
+                  <div style="grid-column:1 / -1;">
+                    <label class="dim small">Key Weapons</label>
+                    <div class="mono small dim" id="ov-weps">—</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- TECH READOUT -->
+            <section id="pane-techreadout" class="swap-pane" role="tabpanel" aria-labelledby="Tech Readout">
+              <div id="techout"><!-- script populates --></div>
+            </section>
+
+            <!-- GATOR (COMPACT) -->
+            <section id="pane-gator" class="swap-pane" role="tabpanel" aria-labelledby="GATOR">
+              <div class="card" id="gator-card">
+                <div class="card-h">
+                  <div class="card-title">G.A.T.O.R. (Target Number)</div>
+                </div>
+                <div class="card-c">
+                  <div id="gator-compact" class="gtr-compact">
+                    <div class="gtr-columns">
+                      <!-- Attacker -->
+                      <div class="gtr-col" data-role="attacker">
+                        <div class="gtr-title"><span class="dot dot-att"></span> Attacker</div>
+
+                        <label class="gtr-lab">Gunnery</label>
+                        <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery">
+                          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                          <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+                        </select>
+
+                        <label class="gtr-lab">Movement</label>
+                        <select class="gtr-sel" id="gtr-attacker-sel" aria-label="Attacker movement">
+                          <option value="0">Stationary (+0)</option>
+                          <option value="1">Walk (+1)</option>
+                          <option value="2">Run (+2)</option>
+                          <option value="3">Jump (+3)</option>
+                          <option value="2">Prone (+2)</option>
+                        </select>
+
+                        <!-- Attacker Dice -->
+                        <div class="gtr-roller">
+                          <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
+                            <option>2d6</option><option>1d6</option><option>1d8</option><option>1d10</option><option>1d20</option>
+                          </select>
+                          <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
+                          <button class="icon-btn" id="btn-roll-att" title="Roll attacker">
+                            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>
+                          </button>
+                          <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
+                        </div>
+                      </div>
+
+                      <!-- Target -->
+                      <div class="gtr-col" data-role="target">
+                        <div class="gtr-title"><span class="dot dot-tgt"></span> Target</div>
+
+                        <label class="gtr-lab">Move Mods (MP spent)</label>
+                        <select class="gtr-sel" id="gtr-target-band" aria-label="Target movement band">
+                          <option value="0">0–2 (0)</option>
+                          <option value="1">3–4 (+1)</option>
+                          <option value="2">5–6 (+2)</option>
+                          <option value="3">7–9 (+3)</option>
+                          <option value="4">10–17 (+4)</option>
+                          <option value="5">18–24 (+5)</option>
+                          <option value="6">25+ (+6)</option>
+                        </select>
+
+                        <div class="gtr-toggles">
+                          <label class="chk"><input type="checkbox" id="gtr-tgt-jump"> +Jump</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-none" checked> normal</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-padj"> prone (adj) = -2</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-prone"> prone = +1</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-imm"> immobile = -4</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Other + Range -->
+                    <div class="gtr-rows">
+                      <div class="gtr-row">
+                        <label class="gtr-lab">Other</label>
+                        <div class="gtr-groups">
+                          <select class="gtr-sel xs" id="gtr-wb" aria-label="Woods Between">
+                            <option value="0">Woods Between: —</option>
+                            <option value="1">Lv1 (+1)</option>
+                            <option value="2">Lv2 (+2)</option>
+                            <option value="2">Lv1×2 (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-wa" aria-label="Woods Among">
+                            <option value="0">Woods Among: —</option>
+                            <option value="1">Lv1 (+1)</option>
+                            <option value="2">Lv2 (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-ot" aria-label="Other Terrain">
+                            <option value="0">Other Terrain: —</option>
+                            <option value="1">Partial Cover (+1)</option>
+                            <option value="1">Water Lv1 (+1)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-st" aria-label="Second Target">
+                            <option value="0">2nd Target: —</option>
+                            <option value="1">Front Arc (+1)</option>
+                            <option value="2">Side/Rear (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-ht" aria-label="Heat">
+                            <option value="0">Heat: —</option>
+                            <option value="1">≤ 8 (+1)</option>
+                            <option value="2">≤ 13 (+2)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="gtr-row">
+                        <label class="gtr-lab">Range</label>
+                        <div class="gtr-groups" id="gtr-range-wrap">
+                          <!-- segmented buttons for range -->
+                          <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
+                            <button data-val="0" class="is-active" title="Short (+0)">Short</button>
+                            <button data-val="2" title="Medium (+2)">Med</button>
+                            <button data-val="4" title="Long (+4)">Long</button>
+                          </div>
+                          <!-- Minimum as compact dropdown -->
+                          <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
+                            <option value="eq">Minimum: Equal</option>
+                            <option value="-1">-1 (+2)</option>
+                            <option value="-2">-2 (+3)</option>
+                            <option value="-3">-3 (+4)</option>
+                            <option value="-4">-4 (+5)</option>
+                            <option value="-5">-5 (+6)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Output + Roll both -->
+                    <div class="gtr-footer">
+                      <div class="gtr-tn">
+                        <div>Target Number</div>
+                        <div id="gtr-total" class="tn tn-auto">Auto</div>
+                      </div>
+                      <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">roll both</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Footer with attribution -->
+    <footer class="app-footer" role="contentinfo">
+      <div class="app-footer-row mono small">
+        <span>Mech data © MegaMek Data (CC BY-NC-SA 4.0). Non-commercial fan tool.</span>
+        <span class="sep">•</span>
+        <span>BattleTech, BattleMech, ’Mech, AeroTech are trademarks of their respective owners.</span>
+        <button id="footer-about" class="linklike" aria-label="Open About & Attribution">About</button>
+      </div>
+    </footer>
+
   </div>
 
-  <script src="./script.js"></script>
-  <script>
-    // Hook mech data into your existing renderers
-    window.onMechLoaded = (mech, entry) => {
-      if (window.populateOverview)    window.populateOverview(mech, entry);
-      if (window.populateTechReadout) window.populateTechReadout(mech, entry);
-      if (window.populateWeapons)     window.populateWeapons(mech, entry);
-      console.log('Loaded mech:', entry?.name || entry?.path, mech);
-    };
+  <!-- Settings / About Modal -->
+  <div id="settings-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+    <div class="modal-card" role="document">
+      <header class="modal-h">
+        <h2 id="about-title">About & Attribution</h2>
+        <button id="modal-close" class="icon-btn" aria-label="Close">✕</button>
+      </header>
+      <div class="modal-c">
+        <p class="small">
+          This project uses data adapted from <strong>“MegaMek Data (C) 2025 by The MegaMek Team”</strong>,
+          licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>.
+          Converted JSON remains under the same license (ShareAlike). This is a fan-made, non-commercial tool.
+        </p>
+        <p class="small dim">
+          BattleTech, BattleMech, ’Mech, and AeroTech are registered trademarks of The Topps Company, Inc. All Rights Reserved.
+          Catalyst Game Labs and the Catalyst Game Labs logo are trademarks of InMediaRes Productions, LLC.
+          MechWarrior is a trademark of Microsoft Corporation. This project is not endorsed by or affiliated with the above.
+        </p>
+        <hr class="modal-divider" />
+        <div class="small">
+          <div><strong>Source:</strong> MegaMek <code>mm-data</code> (meks)</div>
+          <div><strong>License:</strong> CC BY-NC-SA 4.0</div>
+          <div><strong>Project:</strong> GATOR Console</div>
+          <div id="build-line"><strong>Build:</strong> <span data-build-ts></span></div>
+        </div>
+      </div>
+      <footer class="modal-f">
+        <button id="modal-ok" class="btn sm">OK</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>    };
   </script>
 </body>
 </html>
