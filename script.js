@@ -1,124 +1,646 @@
-/* ===== Gator Console – script.js (with manifest dropdown support) ===== */
+/* ===== Gator Console – script.js (Overview/Tech + Compact G.A.T.O.R. + SEARCH LOAD) ===== */
 (() => {
   'use strict';
 
   /* ---------- DOM refs ---------- */
   const btnLoadManifest = document.getElementById('btn-load-manifest');
   const btnSettings     = document.getElementById('btn-settings');
-  const btnLoadMech     = document.getElementById('btn-load-mech');
+  const btnLoadMech     = document.getElementById('btn-load-mech'); // will be replaced by search input
   const btnCustomMech   = document.getElementById('btn-custom-mech');
   const btnImport       = document.getElementById('btn-import');
   const btnExport       = document.getElementById('btn-export');
 
-  const mechDropdownWrap = document.createElement('div');
-  mechDropdownWrap.style.marginLeft = '6px';
-  const mechDropdown = document.createElement('select');
-  mechDropdown.id = 'mech-dropdown';
-  mechDropdown.className = 'btn ghost';
-  mechDropdown.style.maxWidth = '180px';
-  mechDropdown.innerHTML = `<option value="">— Select Mech —</option>`;
-  mechDropdownWrap.appendChild(mechDropdown);
-  document.querySelector('.actions--top').appendChild(mechDropdownWrap);
+  // Overview heat
+  const vheatBar  = document.getElementById('vheat');
+  const vheatFill = document.getElementById('vheat-fill');
+  const heatNowTx = document.getElementById('heat-now');
+  const heatCapTx = document.getElementById('heat-cap');
 
-  /* ---------- State ---------- */
-  let currentMech = null;
-  let manifestData = null;
+  // Top swapper tabs
+  const topSwapper = document.getElementById('top-swapper');
 
-  /* ---------- Helpers ---------- */
-  const toast = (msg, ms=2200) => {
-    let t = document.querySelector('.toast');
-    if (!t) {
-      t = document.createElement('div');
-      t.className = 'toast';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    t.hidden = false;
-    t.style.display = 'block';
-    setTimeout(() => { t.hidden = true; t.style.display = 'none'; }, ms);
+  // Overview fields
+  const ovMech   = document.getElementById('ov-mech');
+  const ovVar    = document.getElementById('ov-variant');
+  const ovTons   = document.getElementById('ov-tons');
+  const ovPilot  = document.getElementById('ov-pilot');
+  const ovGun    = document.getElementById('ov-gun');
+  const ovPil    = document.getElementById('ov-pil');
+  const ovMove   = document.getElementById('ov-move');
+  const ovWeps   = document.getElementById('ov-weps');
+
+  // Tech readout
+  const techOut  = document.getElementById('techout');
+
+  // G.A.T.O.R. panel
+  const gCard    = document.getElementById('gator-card');
+
+  // Footer & Modal
+  const footerAbout = document.getElementById('footer-about');
+  const modal       = document.getElementById('settings-modal');
+  const modalClose  = document.getElementById('modal-close');
+  const modalOk     = document.getElementById('modal-ok');
+  const buildSpan   = document.querySelector('[data-build-ts]');
+
+  // Toast
+  const toastEl = document.getElementById('toast');
+
+  /* ---------- App state ---------- */
+  const state = {
+    mech: null,
+    pilot: { name: '—', gunnery: 4, piloting: 5 },
+    heat: { current: 0, capacity: 0 },
+    gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
   };
 
-  async function fetchManifest() {
-    try {
-      const res = await fetch('./data/manifest.json');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      manifestData = await res.json();
-      toast('Manifest loaded.');
-      populateDropdown();
-    } catch (err) {
-      console.error(err);
-      toast('Failed to load manifest.');
+  /* ---------- DEMO placeholder: Griffin GRF-1A ---------- */
+  const DEMO_GRF1A = {
+    id: "grf_1a_demo",
+    name: "Griffin",
+    variant: "GRF-1A",
+    tonnage: 60,
+    move: { walk: 4, run: 6, jump: 3 },
+    sinks: { count: 11, type: "Single" },
+    weapons: [
+      { name: "Prototype PPC", loc: "RA" },
+      { name: "LRM-5",         loc: "RT" },
+      { name: "LRM-5 Ammo (1t)", loc: "RT" }
+    ]
+  };
+
+  /* ---------- Utils ---------- */
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&gt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const showToast = (msg, ms = 1800) => {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    toastEl.style.display = 'block';
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => {
+      toastEl.hidden = true;
+      toastEl.style.display = 'none';
+    }, ms);
+  };
+  const safeFetchJson = async (url) => {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Fetch failed (${res.status}) for ${url}`);
+    return res.json();
+  };
+  const encodeSpaces = (p) => p.replace(/ /g, '%20');
+
+  /* ---------- Heat ---------- */
+  const setHeat = (current, capacity) => {
+    state.heat.current  = Math.max(0, current|0);
+    state.heat.capacity = Math.max(0, capacity|0);
+    const cap = state.heat.capacity || 1;
+    const pct = clamp((state.heat.current / cap) * 100, 0, 100);
+
+    if (vheatFill) vheatFill.style.height = pct.toFixed(1) + '%';
+    if (vheatBar){
+      vheatBar.setAttribute('aria-valuenow', String(state.heat.current));
+      vheatBar.setAttribute('aria-valuemax', String(state.heat.capacity || 50));
     }
+    if (heatNowTx) heatNowTx.textContent = String(state.heat.current);
+    if (heatCapTx) heatCapTx.textContent = state.heat.capacity ? String(state.heat.capacity) : '—';
+  };
+
+  /* ---------- Overview & Tech Readout ---------- */
+  const updateOverview = () => {
+    const m = state.mech, p = state.pilot;
+    if (ovMech)   ovMech.textContent  = m?.name ?? m?.displayName ?? '—';
+    if (ovVar)    ovVar.textContent   = m?.variant ?? m?.Model ?? '—';
+    if (ovTons)   ovTons.textContent  = m?.tonnage != null ? String(m.tonnage) : (m?.Tonnage ?? '—');
+    if (ovPilot)  ovPilot.textContent = p?.name || '—';
+    if (ovGun)    ovGun.textContent   = p?.gunnery != null ? String(p.gunnery) : '—';
+    if (ovPil)    ovPil.textContent   = p?.piloting != null ? String(p.piloting) : '—';
+    if (ovMove)   ovMove.textContent  = m?.move
+      ? `W ${m.move.walk ?? '—'} / R ${m.move.run ?? '—'}${m.move.jump ? ' / J '+m.move.jump : ''}`
+      : (m?.Movement || '—');
+    if (ovWeps)   ovWeps.textContent  = (m?.weapons?.length
+      ? m.weapons.slice(0,6).map(w => `${w.name}${w.loc?' ['+w.loc+']':''}`).join(' • ')
+      : (m?.Weapons ? m.Weapons.slice(0,6).map(w => w.Name || w.name).join(' • ') : '—'));
+  };
+
+  const fmtAS = (o) => (o ? `${o.a ?? o.A ?? '-'} / ${o.s ?? o.S ?? '-'}` : '—');
+  const renderTechOut = () => {
+    if (!techOut) return;
+    const m = state.mech;
+    if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
+
+    const armor = m.armor || m.Armor || {};
+    techOut.innerHTML = `
+      <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
+      <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div><strong>Chassis</strong><br>${esc(m.displayName || m.name || m.Name || '—')} ${m.variant ? '('+esc(m.variant)+')' : (m.Model ? '('+esc(m.Model)+')' : '')}</div>
+        <div><strong>Tonnage</strong><br>${m.tonnage ?? m.Tonnage ?? '—'}</div>
+        <div><strong>Movement</strong><br>${m.move ? `W ${m.move.walk ?? '—'} / R ${m.move.run ?? '—'} ${m.move.jump ? '/ J '+m.move.jump : ''}` : (m.Movement || '—')}</div>
+        <div><strong>Heat Sinks</strong><br>${m.sinks?.count ?? m.HeatSinks ?? '—'} ${m.sinks?.type || ''}</div>
+        <div style="grid-column:1 / -1;">
+          <strong>Armor (A/S)</strong><br>
+          <span class="mono small dim">HD:${fmtAS(armor.HD)} CT:${fmtAS(armor.CT)} RT:${fmtAS(armor.RT)} LT:${fmtAS(armor.LT)} RA:${fmtAS(armor.RA)} LA:${fmtAS(armor.LA)} RL:${fmtAS(armor.RL)} LL:${fmtAS(armor.LL)}</span>
+        </div>
+        <div style="grid-column:1 / -1;"><strong>Weapons</strong><br>${
+          (m.weapons?.length ? m.weapons.map(w => `${esc(w.name)}${w.loc?' ['+esc(w.loc)+']':''}`).join(' • ')
+            : (m.Weapons?.length ? m.Weapons.map(w => `${esc(w.Name || '')}${w.Location ? ' ['+esc(w.Location)+']' : ''}`).join(' • ') : '—'))
+        }</div>
+      </div>
+    `;
+  };
+
+  /* ===================== BEGIN GATOR LOGIC (compact) ===================== */
+  const el = (sel) => document.querySelector(sel);
+
+  function targetMovementModifierFromBand(band){
+    const map = [0,1,2,3,4,5,6];
+    const idx = Math.max(0, Math.min(6, band|0));
+    return map[idx];
   }
 
-  function populateDropdown() {
-    if (!manifestData) return;
-    mechDropdown.innerHTML = `<option value="">— Select Mech —</option>`;
-    manifestData.forEach(entry => {
-      const opt = document.createElement('option');
-      opt.value = entry.path;
-      opt.textContent = entry.displayName || entry.name || entry.path;
-      mechDropdown.appendChild(opt);
+  function recomputeGator(){
+    const { G, A, T, T_adv, O, R } = state.gator;
+
+    let T_total = targetMovementModifierFromBand(T);
+    if (T_adv.jump) T_total += 1;
+
+    if (T_adv.padj)       T_total = -2;
+    else if (T_adv.prone) T_total = 1;
+    else if (T_adv.imm)   T_total = -4;
+
+    const sum = G + A + T_total + O + R;
+
+    const tnEl = el('#gtr-total');
+    tnEl.className = 'tn';
+    if (sum <= 2) { tnEl.textContent = 'Auto'; tnEl.classList.add('tn-auto'); }
+    else if (sum <= 9) { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-yellow'); }
+    else { tnEl.textContent = `${sum}+`; tnEl.classList.add('tn-red'); }
+
+    document.body.dataset.gatorTn = String(sum);
+  }
+
+  function initGatorPanel(){
+    if (!gCard) return;
+
+    // Select refs
+    const gunnerySel = el('#gtr-gunnery-sel');
+    const attackerSel = el('#gtr-attacker-sel');
+    const tgtBandSel  = el('#gtr-target-band');
+    const tgtJumpChk  = el('#gtr-tgt-jump');
+    const tgtNone     = el('#gtr-tgt-none');
+    const tgtPadj     = el('#gtr-tgt-padj');
+    const tgtProne    = el('#gtr-tgt-prone');
+    const tgtImm      = el('#gtr-tgt-imm');
+
+    const wb = el('#gtr-wb'); const wa = el('#gtr-wa'); const ot = el('#gtr-ot'); const st = el('#gtr-st'); const ht = el('#gtr-ht');
+
+    // Range segmented buttons + minimum dropdown
+    const rangeSeg = el('#gtr-range-seg');
+    const rmin = el('#gtr-min');
+
+    // Initialize from state
+    gunnerySel.value  = String(state.gator.G ?? 4);
+    attackerSel.value = String(state.gator.A ?? 0);
+    tgtBandSel.value  = String(state.gator.T ?? 0);
+
+    // Wire changes
+    gunnerySel.addEventListener('change', () => { state.gator.G = +gunnerySel.value; recomputeGator(); });
+    attackerSel.addEventListener('change', () => { state.gator.A = +attackerSel.value; recomputeGator(); });
+    tgtBandSel .addEventListener('change', () => { state.gator.T = +tgtBandSel.value; recomputeGator(); });
+    tgtJumpChk.addEventListener('change', () => { state.gator.T_adv.jump = !!tgtJumpChk.checked; recomputeGator(); });
+
+    function setPosture({padj=false, prone=false, imm=false}){
+      state.gator.T_adv.padj = padj; state.gator.T_adv.prone = prone; state.gator.T_adv.imm = imm;
+      recomputeGator();
+    }
+    tgtNone .addEventListener('change', ()=> setPosture({}));
+    tgtPadj .addEventListener('change', ()=> setPosture({padj:true}));
+    tgtProne.addEventListener('change', ()=> setPosture({prone:true}));
+    tgtImm  .addEventListener('change', ()=> setPosture({imm:true}));
+
+    function sumOther(){
+      const v = (+wb.value||0)+(+wa.value||0)+(+ot.value||0)+(+st.value||0)+(+ht.value||0);
+      state.gator.O = v; recomputeGator();
+    }
+    [wb,wa,ot,st,ht].forEach(s => s.addEventListener('change', sumOther));
+
+    function wireRangeSeg(){
+      if(!rangeSeg) return;
+      rangeSeg.addEventListener('click', (e)=>{
+        const btn = e.target.closest('button[data-val]');
+        if(!btn) return;
+        rangeSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('is-active', b===btn));
+        state.gator.R = Number(btn.dataset.val)||0;
+        recomputeGator();
+      });
+    }
+    wireRangeSeg();
+
+    rmin?.addEventListener('change', ()=> { state.gator.Rmin = rmin.value; });
+
+    sumOther();
+    recomputeGator();
+
+    /* --- Dice roller --- */
+    const attDice = el('#roll-att-dice'), attMod = el('#roll-att-mod'), attRes = el('#roll-att-res');
+    const tgtDice = el('#roll-tgt-dice'), tgtMod = el('#roll-tgt-mod'), tgtRes = el('#roll-tgt-res');
+    const btnAtt  = el('#btn-roll-att'), btnTgt = el('#btn-roll-tgt'), btnBoth = el('#btn-roll-both');
+
+    function parseDice(str){ const m = (str||'2d6').match(/(\d+)d(\d+)/i); return m?{n:+m[1],s:+m[2]}:{n:2,s:6}; }
+    const rollOne = (s)=> Math.floor(Math.random()*s)+1;
+    function rollDice(str){ const {n,s}=parseDice(str); const r=[]; for(let i=0;i<n;i++) r.push(rollOne(s)); return r; }
+    function bounce(el){ el.style.transform='translateY(-6px)'; el.style.transition='transform .15s ease'; requestAnimationFrame(()=> el.style.transform=''); }
+
+    function doRoll(side){
+      const isAtt = side==='att';
+      const dice = isAtt? attDice.value : tgtDice?.value || '2d6';
+      const mod  = Number((isAtt? attMod.value : tgtMod?.value) || 0);
+      const res  = isAtt? attRes : tgtRes;
+
+      const rolls = rollDice(dice);
+      const total = rolls.reduce((a,b)=>a+b,0)+mod;
+      if (res){ res.textContent = total; res.title = `rolls: ${rolls.join(', ')} + ${mod}`; bounce(res); }
+      return total;
+    }
+
+    btnAtt?.addEventListener('click', ()=> doRoll('att'));
+    btnTgt?.addEventListener('click', ()=> doRoll('tgt'));
+    btnBoth?.addEventListener('click', ()=> { doRoll('att'); doRoll('tgt'); });
+
+    window.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){
+        doRoll('att'); doRoll('tgt');
+      }
+    });
+  }
+  /* ===================== END GATOR LOGIC ===================== */
+
+  /* ---------- Loading / Import / Export ---------- */
+  // NOTE: "Manifest" will now power the search index (see Typeahead section below)
+
+  const loadMechFromFile = () => {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'application/json';
+    input.onchange = async () => {
+      const file = input.files?.[0]; if (!file) return;
+      try {
+        const text = await file.text();
+        const mech = JSON.parse(text);
+        state.mech = mech;
+        onMechChanged({ resetHeat: true });
+        showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+      } catch (e) {
+        console.error(e);
+        showToast('Load failed (invalid JSON)');
+      }
+    };
+    input.click();
+  };
+
+  const loadMechByPath = async (idOrPath) => {
+    try {
+      showToast('Loading mech…');
+      const url = idOrPath && idOrPath.endsWith('.json') ? idOrPath : './mechs/example_mech.json';
+      const mech = await safeFetchJson(url);
+      state.mech = mech;
+      onMechChanged({ resetHeat: true });
+      showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+    } catch (err) {
+      console.error(err);
+      showToast('Failed to load mech');
+    }
+  };
+
+  const importJson = () => {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'application/json';
+    input.onchange = async () => {
+      const file = input.files?.[0]; if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (data.mech || data.pilot || data.heat) {
+          if (data.mech)  state.mech  = data.mech;
+          if (data.pilot) state.pilot = data.pilot;
+          if (data.heat)  state.heat  = data.heat;
+          onMechChanged({ resetHeat: false });
+        } else {
+          state.mech = data;
+          onMechChanged({ resetHeat: true });
+        }
+        showToast('JSON imported');
+      } catch (e) {
+        console.error(e);
+        showToast('Import failed');
+      }
+    };
+    input.click();
+  };
+
+  const exportState = () => {
+    const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `gator_session_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('Session exported');
+  };
+
+  /* ---------- Settings/About modal ---------- */
+  function openModal(){
+    if (!modal) return;
+    modal.hidden = false;
+    // trap focus basics
+    const focusable = modal.querySelector('#modal-close');
+    focusable?.focus();
+    // set build timestamp
+    if (buildSpan) buildSpan.textContent = new Date().toISOString();
+    // dismiss on backdrop click
+    modal.addEventListener('click', backdropClose);
+    window.addEventListener('keydown', escClose);
+  }
+  function closeModal(){
+    if (!modal) return;
+    modal.hidden = true;
+    modal.removeEventListener('click', backdropClose);
+    window.removeEventListener('keydown', escClose);
+    btnSettings?.focus();
+  }
+  function backdropClose(e){
+    if (e.target === modal) closeModal();
+  }
+  function escClose(e){
+    if (e.key === 'Escape') closeModal();
+  }
+
+  /* ---------- Change handlers ---------- */
+  const onMechChanged = ({ resetHeat = true } = {}) => {
+    const m = state.mech || DEMO_GRF1A; // demo fallback
+    state.mech = m;
+    const cap = Number.isFinite(m?.heatCapacity) ? m.heatCapacity : (m?.sinks?.count ?? m?.HeatSinks ?? 0);
+    setHeat(resetHeat ? 0 : state.heat.current, cap);
+
+    updateOverview();
+    renderTechOut();
+  };
+
+  /* ---------- Wire UI ---------- */
+  // Keep "Import" as mech file loader
+  btnImport?.addEventListener('click', importJson);
+
+  // Export & Settings
+  btnExport?.addEventListener('click', exportState);
+  btnSettings?.addEventListener('click', openModal);
+  footerAbout?.addEventListener('click', openModal);
+  modalClose?.addEventListener('click', closeModal);
+  modalOk?.addEventListener('click', closeModal);
+
+  // If user still clicks the old Load button (before we swap it), keep legacy behavior:
+  btnLoadMech?.addEventListener('click', (e) => { if (e.altKey) loadMechByPath(); else loadMechFromFile(); });
+
+  // Top swapper
+  if (topSwapper){
+    const swapTabs = topSwapper.querySelectorAll('[data-swap]');
+    topSwapper.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-swap]');
+      if (!btn) return;
+      const id = btn.getAttribute('data-swap');
+      swapTabs.forEach(b => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      topSwapper.querySelectorAll('.swap-pane').forEach(p => {
+        p.classList.toggle('is-active', p.id === id);
+      });
     });
   }
 
-  async function loadMechFromPath(path) {
-    try {
-      const res = await fetch(path);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const mech = await res.json();
-      currentMech = mech;
-      updateOverview(mech);
-      updateTechReadout(mech);
-      toast(mech.displayName || mech.Name || 'Mech loaded.');
-    } catch (err) {
-      console.error(err);
-      toast('Failed to load mech JSON.');
+  /* ===================== SEARCH LOAD (Typeahead over manifest; top 25) ===================== */
+  (() => {
+    const toolbar = document.querySelector('.actions--top');
+    if (!toolbar || !btnLoadMech) return;
+
+    // Replace the Load button with a search input + results panel
+    const wrap = document.createElement('div');
+    wrap.style.position = 'relative';
+    wrap.style.display = 'inline-block';
+    wrap.style.minWidth = '220px';
+
+    const input = document.createElement('input');
+    input.type = 'search';
+    input.id = 'mech-search';
+    input.placeholder = 'Search mechs…';
+    input.autocomplete = 'off';
+    input.spellcheck = false;
+    Object.assign(input.style, {
+      padding: '6px 10px',
+      borderRadius: '6px',
+      border: '1px solid var(--border)',
+      background: '#0e1522',
+      color: 'var(--ink)',
+      width: '220px'
+    });
+
+    const panel = document.createElement('div');
+    panel.id = 'mech-results';
+    Object.assign(panel.style, {
+      position: 'absolute',
+      top: 'calc(100% + 4px)',
+      left: '0',
+      zIndex: '100',
+      minWidth: '280px',
+      maxWidth: '380px',
+      maxHeight: '50vh',
+      overflowY: 'auto',
+      border: '1px solid var(--border)',
+      borderRadius: '8px',
+      background: 'var(--panel)',
+      display: 'none',
+      boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
+    });
+
+    wrap.appendChild(input);
+    wrap.appendChild(panel);
+    toolbar.replaceChild(wrap, btnLoadMech); // swap button → search
+
+    /* ------- Manifest load + index (in-memory) ------- */
+    let entries = []; // {path,name?,id?,variant?, key (lowercased)}
+    let open = false;
+    let hi = -1; // highlighted index in current results
+    let results = []; // current filtered
+    let manifestLoaded = false;
+
+    function normalizeManifest(raw){
+      if (Array.isArray(raw)) return raw;
+      if (raw && Array.isArray(raw.mechs)) return raw.mechs;
+      // letter/grouped
+      const out = [];
+      if (raw && typeof raw === 'object') {
+        for (const v of Object.values(raw)) if (Array.isArray(v)) out.push(...v);
+      }
+      return out;
     }
-  }
+    function makeKey(e){
+      const parts = [
+        e.displayName, e.displayname, e.name, e.variant, e.id, e.path
+      ].filter(Boolean).join(' ').toLowerCase();
+      return parts;
+    }
+    async function loadManifestForSearch(){
+      if (manifestLoaded) return;
+      try{
+        const res = await fetch('./data/manifest.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const raw = await res.json();
+        const list = normalizeManifest(raw).filter(e => e && (e.path || e.url || e.file));
+        entries = list.map(e => {
+          const path = e.path || e.url || e.file;
+          return {
+            path,
+            name: e.displayName || e.displayname || e.name || null,
+            id: e.id || null,
+            variant: e.variant || null,
+            key: makeKey({ ...e, path })
+          };
+        });
+        manifestLoaded = true;
+        showToast(`Manifest ready — ${entries.length} mechs`);
+      }catch(err){
+        console.error(err);
+        showToast('Failed to load manifest');
+      }
+    }
 
-  function updateOverview(mech) {
-    document.getElementById('ov-mech').textContent = mech.Name || '—';
-    document.getElementById('ov-variant').textContent = mech.Model || '—';
-    document.getElementById('ov-tons').textContent = mech.Tonnage || '—';
-    document.getElementById('ov-pilot').textContent = mech.Pilot || '—';
-    document.getElementById('ov-gun').textContent = mech.Gunnery || '—';
-    document.getElementById('ov-pil').textContent = mech.Piloting || '—';
-    document.getElementById('ov-move').textContent = mech.Movement || '—';
-    document.getElementById('ov-weps').textContent =
-      mech.Weapons ? mech.Weapons.map(w => w.Name).join(', ') : '—';
-    document.getElementById('heat-cap').textContent = mech.HeatSinks || '—';
-    document.getElementById('heat-now').textContent = '0';
-    document.getElementById('vheat-fill').style.height = '0%';
-  }
+    // Trigger manifest load
+    btnLoadManifest?.addEventListener('click', loadManifestForSearch);
+    input.addEventListener('focus', () => { if (!manifestLoaded) loadManifestForSearch(); });
 
-  function updateTechReadout(mech) {
-    const wrap = document.getElementById('techout');
-    if (!wrap) return;
-    wrap.innerHTML = '';
-    const pre = document.createElement('pre');
-    pre.textContent = JSON.stringify(mech, null, 2);
-    wrap.appendChild(pre);
-  }
+    /* ------- Search & render (debounced, top 25) ------- */
+    function score(hit, terms){
+      // simple score: +3 prefix, +2 word boundary, +1 substring per term
+      let s = 0;
+      for (const t of terms){
+        const idx = hit.indexOf(t);
+        if (idx < 0) return -1; // must contain all terms
+        if (idx === 0) s += 3;
+        else if (/\s/.test(hit[idx-1])) s += 2;
+        else s += 1;
+      }
+      // light bonus for shorter strings
+      return s - Math.log1p(hit.length)/2;
+    }
+    function tokenize(q){
+      return q.trim().toLowerCase().split(/\s+/).filter(Boolean).slice(0,5);
+    }
+    function search(q){
+      if (!q) return [];
+      const terms = tokenize(q);
+      if (!terms.length) return [];
+      const scored = [];
+      for (const e of entries){
+        const sc = score(e.key, terms);
+        if (sc >= 0) scored.push([sc, e]);
+      }
+      scored.sort((a,b)=> b[0]-a[0]);
+      return scored.slice(0,25).map(x=>x[1]);
+    }
 
-  /* ---------- Events ---------- */
-  btnLoadManifest?.addEventListener('click', fetchManifest);
+    function rowHtml(e, isHi){
+      const label = e.name || e.id || e.variant || e.path;
+      return `<div class="mech-row${isHi?' is-hi':''}" data-path="${escapeHtml(e.path)}" style="padding:6px 8px; cursor:pointer; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border);">
+        <div class="mono" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 60px);">
+          ${escapeHtml(label)}
+        </div>
+        <div class="dim mono small" style="margin-left:auto;">${escapeHtml(e.id || e.variant || '')}</div>
+      </div>`;
+    }
+    function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
-  mechDropdown.addEventListener('change', e => {
-    if (e.target.value) loadMechFromPath(e.target.value);
-  });
+    function openPanel(){ if (!open){ panel.style.display='block'; open = true; } }
+    function closePanel(){ if (open){ panel.style.display='none'; open = false; hi = -1; } }
+    function render(){
+      if (!results.length){ panel.innerHTML = `<div class="dim small" style="padding:8px;">No matches</div>`; return; }
+      panel.innerHTML = results.map((e,i)=> rowHtml(e, i===hi)).join('');
+    }
 
-  btnSettings?.addEventListener('click', () => {
-    document.getElementById('settings-modal').hidden = false;
-  });
-  document.getElementById('modal-close')?.addEventListener('click', () => {
-    document.getElementById('settings-modal').hidden = true;
-  });
-  document.getElementById('modal-ok')?.addEventListener('click', () => {
-    document.getElementById('settings-modal').hidden = true;
-  });
+    function highlight(delta){
+      if (!results.length) return;
+      hi = (hi + delta + results.length) % results.length;
+      render();
+      // ensure visible
+      const rows = panel.querySelectorAll('.mech-row');
+      const el = rows[hi];
+      if (el){
+        const boxTop = panel.scrollTop;
+        const boxBot = boxTop + panel.clientHeight;
+        const t = el.offsetTop, b = t + el.offsetHeight;
+        if (t < boxTop) panel.scrollTop = t;
+        else if (b > boxBot) panel.scrollTop = b - panel.clientHeight;
+      }
+    }
 
-  /* Build info line */
-  document.querySelector('[data-build-ts]')?.textContent =
-    new Date().toLocaleString();
+    let tId = 0;
+    input.addEventListener('input', () => {
+      const q = input.value;
+      clearTimeout(tId);
+      if (!q){ closePanel(); return; }
+      tId = setTimeout(() => {
+        results = search(q);
+        hi = results.length ? 0 : -1;
+        openPanel();
+        render();
+      }, 120); // debounce
+    });
+
+    panel.addEventListener('mousedown', (e) => {
+      const row = e.target.closest('.mech-row');
+      if (!row) return;
+      pick(row.getAttribute('data-path'));
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (!open && ['ArrowDown','Enter'].includes(e.key)) {
+        if (input.value){ results = search(input.value); hi = results.length?0:-1; openPanel(); render(); }
+      }
+      if (!open) return;
+      if (e.key === 'ArrowDown'){ e.preventDefault(); highlight(+1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); highlight(-1); }
+      else if (e.key === 'Enter'){ e.preventDefault(); const p = results[hi]?.path; if (p) pick(p); }
+      else if (e.key === 'Escape'){ closePanel(); }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (wrap.contains(e.target)) return;
+      closePanel();
+    });
+
+    /* ------- Pick & load a mech (calls your existing pipeline) ------- */
+    async function pick(path){
+      closePanel();
+      input.blur();
+      try{
+        showToast('Loading mech…');
+        const url = encodeSpaces(path);
+        const mech = await safeFetchJson(url);
+        state.mech = mech;
+        onMechChanged({ resetHeat: true });
+        showToast((mech.displayName || mech.name || mech.Model || 'Mech') + ' loaded');
+      }catch(err){
+        console.error(err);
+        showToast('Failed to load mech JSON');
+      }
+    }
+  })();
+  /* ===================== END SEARCH LOAD ===================== */
+
+  /* ---------- Init ---------- */
+  onMechChanged({ resetHeat: true });
+  if (document.readyState !== 'loading') { initGatorPanel(); }
+  else document.addEventListener('DOMContentLoaded', initGatorPanel);
+
+  console.info('Gator Console ready.');
 })();
+```0
