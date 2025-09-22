@@ -419,52 +419,55 @@
   }
 
   /* ===================== SEARCH LOAD (Typeahead over manifest; top 25) ===================== */
-  (() => {
-    const toolbar = document.querySelector('.actions--top');
-    if (!toolbar || !btnLoadMech) return;
+  // SAFER: add search next to the Load button (don't replace it)
+const toolbar = document.querySelector('.actions--top');
+if (!toolbar || !btnLoadMech) return;
 
-    // Replace the Load button with a search input + results panel
-    const wrap = document.createElement('div');
-    wrap.style.position = 'relative';
-    wrap.style.display = 'inline-block';
-    wrap.style.minWidth = '220px';
+const wrap = document.createElement('div');
+wrap.style.position = 'relative';
+wrap.style.display = 'inline-block';
+wrap.style.minWidth = '220px';
+wrap.style.marginLeft = '6px'; // small gap after the Load button
 
-    const input = document.createElement('input');
-    input.type = 'search';
-    input.id = 'mech-search';
-    input.placeholder = 'Search mechs…';
-    input.autocomplete = 'off';
-    input.spellcheck = false;
-    Object.assign(input.style, {
-      padding: '6px 10px',
-      borderRadius: '6px',
-      border: '1px solid var(--border)',
-      background: '#0e1522',
-      color: 'var(--ink)',
-      width: '220px'
-    });
+const input = document.createElement('input');
+input.type = 'search';
+input.id = 'mech-search';
+input.placeholder = 'Search mechs…';
+input.autocomplete = 'off';
+input.spellcheck = false;
+Object.assign(input.style, {
+  padding: '6px 10px',
+  borderRadius: '6px',
+  border: '1px solid var(--border)',
+  background: '#0e1522',
+  color: 'var(--ink)',
+  width: '220px'
+});
 
-    const panel = document.createElement('div');
-    panel.id = 'mech-results';
-    Object.assign(panel.style, {
-      position: 'absolute',
-      top: 'calc(100% + 4px)',
-      left: '0',
-      zIndex: '100',
-      minWidth: '280px',
-      maxWidth: '380px',
-      maxHeight: '50vh',
-      overflowY: 'auto',
-      border: '1px solid var(--border)',
-      borderRadius: '8px',
-      background: 'var(--panel)',
-      display: 'none',
-      boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
-    });
+const panel = document.createElement('div');
+panel.id = 'mech-results';
+Object.assign(panel.style, {
+  position: 'absolute',
+  top: 'calc(100% + 4px)',
+  left: '0',
+  zIndex: '100',
+  minWidth: '280px',
+  maxWidth: '380px',
+  maxHeight: '50vh',
+  overflowY: 'auto',
+  border: '1px solid var(--border)',
+  borderRadius: '8px',
+  background: 'var(--panel)',
+  display: 'none',
+  boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
+});
 
-    wrap.appendChild(input);
-    wrap.appendChild(panel);
-    toolbar.replaceChild(wrap, btnLoadMech); // swap button → search
+wrap.appendChild(input);
+wrap.appendChild(panel);
+  
+    btnLoadMech.insertAdjacentElement('afterend', wrap);
+btnLoadMech.style.display = 'none';
+
 
     /* ------- Manifest load + index (in-memory) ------- */
     let entries = []; // {path,name?,id?,variant?, key (lowercased)}
