@@ -381,9 +381,6 @@ function renderLocationBreakdown(mech) {
 
     <hr class="modal-divider">
 
-    <div><strong>Weapons</strong><br>${weaponsHtml}</div>
-
-
       <div><strong>Weapons</strong><br>${weaponsHtml}</div>
       <div style="margin-top:6px;"><strong>Equipment</strong><br>${equipHtml}</div>
       <div style="margin-top:6px;"><strong>Ammo</strong><br>${ammoHtml}</div>
