@@ -1,5 +1,5 @@
 import { Store } from './store.js';
-import { loadMechFromUrl, loadManifest } from './transport.js';
+import { loadMechFromUrl, loadManifest } from './transport.js'; 
 
 function buildIndex(manifest) {
   return manifest.map(m => {
