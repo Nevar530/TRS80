@@ -296,3 +296,7 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   color:#222 !important;
 }
 
+#techout table.small.mono tbody tr td {
+  padding: 6px 0;   /* more vertical space */
+}
+
