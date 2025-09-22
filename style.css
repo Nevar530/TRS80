@@ -260,3 +260,34 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 #pane-gator .card,
 #pane-gator .card-c,
 #pane-gator .gtr-compact{ max-width:100%; box-sizing:border-box; }
+
+/* Results container should float above other UI and accept clicks */
+#search-results {
+  position: absolute;            /* or the positioning you use */
+  z-index: 9999;                 /* ensure it’s on top */
+  pointer-events: auto;          /* make sure clicks aren’t blocked */
+  max-height: 300px;
+  overflow: auto;
+}
+
+/* Each row is clickable and highlights on hover/focus */
+.result-item {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  padding: .4rem .6rem;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.result-item:hover,
+.result-item:focus {
+  background: rgba(255,255,255,0.08);   /* tweak for your theme */
+}
+
+/* Optional: lighter secondary text for variant */
+.result-variant {
+  opacity: .7;
+  font-size: .9em;
+}
