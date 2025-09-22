@@ -256,7 +256,7 @@ function renderFactsPanel(m, {mvStr, armorSys, struct, cockpit, gyro, role, cfg,
   const tech    = m.techBase || m.TechBase || '—';
   const rules   = m.rulesLevel || m.Rules || '—';
   const engine  = m.engine || m.Engine || '—';
-  const hs      = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—';
+  const hs = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
 
   return `
     <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
