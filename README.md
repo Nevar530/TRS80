@@ -1,6 +1,9 @@
 # BMS-GATOR
 REPO for basic BattleTech Mechs and Hand Combat tracking
 
+[![Play BMS-GATOR](https://img.shields.io/badge/▶️%20Play%20BMS--GATOR-blue?style=for-the-badge)](https://nevar530.github.io/BMS-GATOR/)
+
+---
 
 ## Licensing
 
