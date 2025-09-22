@@ -195,6 +195,59 @@
 
   const fmtAS = (o) => (o ? `${o.a ?? o.A ?? '-'} / ${o.s ?? o.S ?? '-'}` : '—');
 
+// --- Per-location breakdown helpers ---
+const LOC_ORDER = [
+  ["Head", "head"],
+  ["Center Torso", "centerTorso"],
+  ["Right Torso", "rightTorso"],
+  ["Left Torso", "leftTorso"],
+  ["Right Arm", "rightArm"],
+  ["Left Arm", "leftArm"],
+  ["Right Leg", "rightLeg"],
+  ["Left Leg", "leftLeg"]
+];
+
+// collapse duplicates: ["LRM 15","LRM 15","Gyro","Gyro","Gyro"] -> "LRM 15 x2 • Gyro x3"
+function collapseLine(items = []) {
+  const seen = new Map();
+  const order = [];
+  for (const raw of items) {
+    const s = String(raw).trim();
+    if (!s) continue;
+    if (!seen.has(s)) { seen.set(s, 1); order.push(s); }
+    else seen.set(s, seen.get(s) + 1);
+  }
+  return order.map(k => seen.get(k) > 1 ? `${k} x${seen.get(k)}` : k).join(' • ');
+}
+
+// returns HTML string; safe to insert in renderTechOut
+function renderLocationBreakdown(mech) {
+  const locs = mech?.locations || null;
+  if (!locs) return ''; // nothing to show
+  const rows = LOC_ORDER.map(([label, key]) => {
+    const items = Array.isArray(locs[key]) ? locs[key] : [];
+    const line = collapseLine(items);
+    return line ? `<tr><td>${label}</td><td class="mono">${line}</td></tr>` : '';
+  }).join('');
+  if (!rows.trim()) return '';
+  return `
+    <hr class="modal-divider">
+    <div>
+      <strong>Equipment by Location</strong>
+      <table class="small mono" style="width:100%; border-collapse:collapse; margin-top:6px;">
+        <thead>
+          <tr style="text-align:left;">
+            <th style="padding:4px 0; width:160px;">Location</th>
+            <th style="padding:4px 0;">Items</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+  
   function renderTechOut() {
     if (!techOut) return;
     const m = state.mech;
@@ -278,6 +331,7 @@
     const licUrl = m._source?.license_url || '';
     const origin = m._source?.origin || '';
     const copyright = m._source?.copyright || '';
+    const locBreakHtml = renderLocationBreakdown(m);
 
     techOut.innerHTML = `
       <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
@@ -319,6 +373,16 @@
       </div>
 
       <hr class="modal-divider">
+
+      </table>
+    </div>
+
+    ${locBreakHtml}  <!-- NEW: per-location items -->
+
+    <hr class="modal-divider">
+
+    <div><strong>Weapons</strong><br>${weaponsHtml}</div>
+
 
       <div><strong>Weapons</strong><br>${weaponsHtml}</div>
       <div style="margin-top:6px;"><strong>Equipment</strong><br>${equipHtml}</div>
