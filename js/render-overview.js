@@ -1,4 +1,4 @@
-export function renderOverview(state) {
+export function renderOverview(state) { 
   const m = state.mech, p = state.pilot, mv = m? m._mv : null;
   const $ = (id) => document.getElementById(id);
 
