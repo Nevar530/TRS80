@@ -14,4 +14,4 @@ export const Store = (() => {
   const update = (key, patch) => { Object.assign(state[key], patch); subs.forEach(fn => fn(state)); };
   const subscribe = (fn) => { subs.add(fn); return () => subs.delete(fn); };
   return { get, set, update, subscribe };
-})();
+})(); 
