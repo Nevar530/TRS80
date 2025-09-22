@@ -437,6 +437,7 @@ function renderTechOut() {
   if (!techOut) return;
   const m = state.mech;
   if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
+  window.renderTechOut = renderTechOut;
 
   // Common derived pieces (reuse your existing logic)
   const mv = getMovement(m || {});
@@ -614,6 +615,11 @@ function renderTechOut() {
     }
   }
 
+// --- SAFE ADAPTER (no-op fallback) ---
+if (typeof adaptMechSchema !== 'function') {
+  function adaptMechSchema(m) { return m; }
+}
+  
   /* ---------- Load mech by absolute URL or by ID ---------- */
   async function loadMechFromUrl(url) {
     try {
@@ -621,12 +627,12 @@ function renderTechOut() {
       const raw = await safeFetchJson(url);
 
       let mech = raw;
-      try {
-        mech = adaptMechSchema(raw) || raw;   // safe adapter + fallback
-      } catch (e) {
-        console.warn('[adapter] failed, using raw mech:', e);
-        mech = raw;
-      }
+try {
+  mech = (typeof adaptMechSchema === 'function' ? adaptMechSchema(raw) : raw) || raw;
+} catch (e) {
+  console.warn('[adapter] failed, using raw mech:', e);
+  mech = raw;
+}
 
       state.mech = mech;
       window.DEBUG_MECH = mech;               // quick peek in console if needed
