@@ -176,15 +176,23 @@ function getInternalCell(internalByLoc, locKey){
     if (heatCapTx) heatCapTx.textContent = state.heat.capacity ? String(state.heat.capacity) : '—';
   }
 
-  /* ---------- Overview & Tech Readout ---------- */
-  function updateOverview() {
+/* ---------- Overview & Tech Readout ---------- */
+function updateOverview() {
   const m = state.mech, p = state.pilot;
-  if (ovMech)   ovMech.textContent  = m?.displayName ?? m?.name ?? m?.Name ?? '—';
-  if (ovVar)    ovVar.textContent   = m?.variant ?? m?.model ?? m?.Model ?? '—';
-  if (ovTons)   ovTons.textContent  = m?.tonnage != null ? String(m.tonnage) : (m?.Tonnage ?? '—');
-  if (ovPilot)  ovPilot.textContent = p?.name || '—';
-  if (ovGun)    ovGun.textContent   = p?.gunnery != null ? String(p.gunnery) : '—';
-  if (ovPil)    ovPil.textContent   = p?.piloting != null ? String(p.piloting) : '—';
+  if (ovMech) ovMech.textContent = m?.displayName ?? m?.name ?? m?.Name ?? '—';
+  if (ovVar)  ovVar.textContent  = m?.variant ?? m?.model ?? m?.Model ?? '—';
+
+  // Tonnage with mass fallback
+  if (ovTons) {
+    ovTons.textContent =
+      m?.tonnage != null ? String(m.tonnage) :
+      (m?.Tonnage != null ? String(m.Tonnage) :
+      (m?.mass != null ? String(m.mass) : '—'));
+  }
+
+  if (ovPilot) ovPilot.textContent = p?.name || '—';
+  if (ovGun)   ovGun.textContent   = p?.gunnery != null ? String(p.gunnery) : '—';
+  if (ovPil)   ovPil.textContent   = p?.piloting != null ? String(p.piloting) : '—';
 
   const mv = getMovement(m || {});
   if (ovMove) {
@@ -196,181 +204,107 @@ function getInternalCell(internalByLoc, locKey){
   if (ovWeps) {
     const w = Array.isArray(m?.weapons) ? m.weapons : (Array.isArray(m?.Weapons) ? m.Weapons : []);
     ovWeps.textContent = w.length
-      ? w.slice(0,6).map(wi => `${wi.name || wi.Name || 'Weapon'}${(wi.loc || wi.Location) ? ' ['+(wi.loc||wi.Location)+']' : ''}`).join(' • ')
+      ? w.slice(0, 6).map(wi => `${wi.name || wi.Name || 'Weapon'}${(wi.loc || wi.Location) ? ' [' + (wi.loc || wi.Location) + ']' : ''}`).join(' • ')
       : '—';
   }
 }
 
+/* --- Minimal schema adapter: new JSON -> your current fields (DROP-IN) --- */
+function adaptMechSchema(m) {
+  if (!m || typeof m !== 'object') return m;
 
-  const fmtAS = (o) => (o ? `${o.a ?? o.A ?? '-'} / ${o.s ?? o.S ?? '-'}` : '—');
+  const out = { ...m };
+  out.extras = out.extras || {};
 
-  function renderTechOut() {
-  if (!techOut) return;
-  const m = state.mech;
-  if (!m) { techOut.innerHTML = '<div class="placeholder">Load or build a mech to view details.</div>'; return; }
+  // 1) Text/lore -> extras.* (your UI already reads these)
+  if (m.text) {
+    out.extras.overview     = out.extras.overview     ?? m.text.overview;
+    out.extras.capabilities = out.extras.capabilities ?? m.text.capabilities;
+    out.extras.deployment   = out.extras.deployment   ?? m.text.deployment;
+    out.extras.history      = out.extras.history      ?? m.text.history;
+  }
 
-  // Primary facts
-  const name    = m.displayName || m.name || m.Name || '—';
-  const model   = m.model || m.variant || m.Model || '—';
-  const tons    = m.tonnage ?? m.Tonnage ?? '—';
-  const tech    = m.techBase || m.TechBase || '—';
-  const rules   = m.rulesLevel || m.Rules || '—';
-  const engine  = m.engine || m.Engine || '—';
-  const hs      = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
-  const struct  = m.structure || m.Structure || '—';
-  const cockpit = m.cockpit || m.Cockpit || '—';
-  const gyro    = m.gyro || m.Gyro || '—';
-  const role    = m.extras?.role || m.extras?.Role || '—';
-  const cfg     = m.extras?.Config || m.extras?.config || '—';
-  const myomer  = m.extras?.myomer || '—';
+  // 2) Meta -> extras.* (role/Config/myomer/manufacturer/primaryfactory/systemmanufacturer)
+  if (m.role != null)   out.extras.role   = out.extras.role   ?? m.role;
+  if (m.config != null) out.extras.Config = out.extras.Config ?? m.config;
+  if (m.myomer != null) out.extras.myomer = out.extras.myomer ?? m.myomer;
 
-  const mv = getMovement(m || {});
-  const mvStr = (mv.walk || mv.run || mv.jump)
-    ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}`
-    : (m?.Movement || '—');
+  // Manufacturer/Factories/Systems
+  if (m.manufacturers) {
+    const prim = m.manufacturers.primary || [];
+    const fac  = m.manufacturers.primaryFactory || [];
+    const sys  = m.manufacturers.systems || {};
 
-  // Armor / Internals
-  const armorSys = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
-  const armorBy  = m.armorByLocation || {};
-  const internal = m.internalByLocation || {};
-  const extras   = m.extras || {};
+    if (!out.extras.manufacturer && prim.length)     out.extras.manufacturer = prim.join(', ');
+    if (!out.extras.primaryfactory && fac.length)    out.extras.primaryfactory = fac;
+    if (!out.extras.systemmanufacturer) {
+      const sysList = [];
+      if (sys.chassis)        sysList.push(`CHASSIS:${sys.chassis}`);
+      if (sys.engine)         sysList.push(`ENGINE:${sys.engine}`);
+      if (sys.armor)          sysList.push(`ARMOR:${sys.armor}`);
+      if (sys.communications) sysList.push(`COMMUNICATIONS:${sys.communications}`);
+      if (sys.targeting)      sysList.push(`TARGETING:${sys.targeting}`);
+      if (sysList.length) out.extras.systemmanufacturer = sysList;
+    }
+  }
 
-  const armorRows = LOCS.map(loc => {
-    const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
-    const s = getInternalCell(internal, loc.key);
-    return `<tr>
-      <td>${loc.name}</td>
-      <td class="mono">${esc(a.front)}</td>
-      <td class="mono">${esc(a.rear)}</td>
-      <td class="mono">${esc(s)}</td>
-    </tr>`;
-  }).join('');
+  // 3) Armor map -> armorByLocation + extras["<LOC> armor"] fallbacks your UI already supports
+  if (m.armor && typeof m.armor === 'object') {
+    out.armorByLocation = out.armorByLocation || {
+      HD:  m.armor.head ?? null,
+      CT:  m.armor.centerTorso ?? null,
+      LT:  m.armor.leftTorso ?? null,
+      RT:  m.armor.rightTorso ?? null,
+      LA:  m.armor.leftArm ?? null,
+      RA:  m.armor.rightArm ?? null,
+      LL:  m.armor.leftLeg ?? null,
+      RL:  m.armor.rightLeg ?? null,
+      RTC: m.armor.rearCenterTorso ?? null,
+      RTL: m.armor.rearLeftTorso ?? null,
+      RTR: m.armor.rearRightTorso ?? null
+    };
 
-  // Weapons / Equipment / Ammo (robust to different shapes)
-  const weapons = Array.isArray(m.weapons) ? m.weapons
-                 : Array.isArray(m.Weapons) ? m.Weapons : [];
-  const equipment = Array.isArray(m.equipment) ? m.equipment
-                   : Array.isArray(m.Equipment) ? m.Equipment : [];
-  const ammo = Array.isArray(m.ammo) ? m.ammo
-              : Array.isArray(m.Ammo) ? m.Ammo : [];
+    out.extras["RTC armor"] = out.extras["RTC armor"] ?? m.armor.rearCenterTorso;
+    out.extras["RTL armor"] = out.extras["RTL armor"] ?? m.armor.rearLeftTorso;
+    out.extras["RTR armor"] = out.extras["RTR armor"] ?? m.armor.rearRightTorso;
+    out.extras["HD armor"]  = out.extras["HD armor"]  ?? m.armor.head;
+    out.extras["CT armor"]  = out.extras["CT armor"]  ?? m.armor.centerTorso;
+    out.extras["LT armor"]  = out.extras["LT armor"]  ?? m.armor.leftTorso;
+    out.extras["RT armor"]  = out.extras["RT armor"]  ?? m.armor.rightTorso;
+    out.extras["LA armor"]  = out.extras["LA armor"]  ?? m.armor.leftArm;
+    out.extras["RA armor"]  = out.extras["RA armor"]  ?? m.armor.rightArm;
+    out.extras["LL armor"]  = out.extras["LL armor"]  ?? m.armor.leftLeg;
+    out.extras["RL armor"]  = out.extras["RL armor"]  ?? m.armor.rightLeg;
+  }
 
-  const mapItem = (x) => esc(
-    (x.name || x.Name || x.type || x.Type || 'Item') +
-    ((x.loc || x.Location) ? ` [${x.loc || x.Location}]` : '') +
-    (x.count ? ` x${x.count}` : '')
-  );
+  // 4) Weapons -> normalize to {name, loc} for your UI
+  if (Array.isArray(m.weapons)) {
+    out.weapons = m.weapons.map(w => ({
+      name: w.name || w.type || 'Weapon',
+      loc:  w.loc  || w.location || ''
+    }));
+  }
 
-  const weaponsHtml   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
-  const equipHtml     = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
-  const ammoHtml      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
+  // 5) Era pass-through
+  if (m.era != null && out.era == null) out.era = m.era;
 
-  // Narrative
-  const overview     = m.extras?.overview     || '';
-  const capabilities = m.extras?.capabilities || '';
-  const deployment   = m.extras?.deployment   || '';
-  const history      = m.extras?.history      || '';
+  // 6) Ensure tonnage exists for UIs that read 'tonnage'
+  if (out.tonnage == null && out.mass != null) out.tonnage = out.mass;
 
-  // Mfr / factories
-  const manufacturers = listify(m.extras?.manufacturer);
-  const factories     = listify(m.extras?.primaryfactory);
-  const systems       = listify(m.extras?.systemmanufacturer);
+  // 7) Map single source -> sources[] so your UI shows it
+  if (!out.sources && out.source) out.sources = [String(out.source)];
 
-  // Meta
-  const bv   = m.bv ?? m.BV ?? '—';
-  const cost = fmtMoney(m.cost ?? m.Cost ?? null);
-  const era  = m.era || '—';
-  const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
-  const sourcesHtml = sourcesArr.length ? sourcesArr.map(esc).join(' • ') : '—';
+  // 8) Heat capacity hint from "heatSinks" like "12 Single"
+  if (out.heatCapacity == null && out.heatSinks != null) {
+    const mhs = String(out.heatSinks).match(/\d+/);
+    if (mhs) out.heatCapacity = Number(mhs[0]);
+  }
 
-  // License
-  const lic = m._source?.license || '';
-  const licUrl = m._source?.license_url || '';
-  const origin = m._source?.origin || '';
-  const copyright = m._source?.copyright || '';
-
-  techOut.innerHTML = `
-    <div class="mono small dim" style="margin-bottom:6px;">${esc(m.id || m.ID || '')}</div>
-
-    <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div><strong>Chassis</strong><br>${esc(name)} ${model ? '('+esc(model)+')' : ''}</div>
-      <div><strong>Tonnage</strong><br>${esc(tons)}</div>
-      <div><strong>Tech Base</strong><br>${esc(tech)}</div>
-      <div><strong>Rules Level</strong><br>${esc(rules)}</div>
-      <div><strong>Engine</strong><br>${esc(engine)}</div>
-      <div><strong>Heat Sinks</strong><br>${esc(hs)}</div>
-      <div><strong>Movement</strong><br>${esc(mvStr)}</div>
-      <div><strong>Structure</strong><br>${esc(struct)}</div>
-      <div><strong>Cockpit</strong><br>${esc(cockpit)}</div>
-      <div><strong>Gyro</strong><br>${esc(gyro)}</div>
-      <div><strong>Config</strong><br>${esc(cfg)}</div>
-      <div><strong>Role</strong><br>${esc(role)}</div>
-      <div><strong>Myomer</strong><br>${esc(myomer)}</div>
-      <div><strong>Armor System</strong><br>${esc(armorSys)}</div>
-    </div>
-
-    <hr class="modal-divider">
-
-    <div>
-      <strong>Armor & Internals by Location</strong>
-      <table class="small mono" style="width:100%; border-collapse:collapse; margin-top:6px;">
-        <thead>
-          <tr style="text-align:left;">
-            <th style="padding:4px 0;">Location</th>
-            <th style="padding:4px 0;">Armor</th>
-            <th style="padding:4px 0;">Rear</th>
-            <th style="padding:4px 0;">Internal</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${armorRows}
-        </tbody>
-      </table>
-    </div>
-
-    <hr class="modal-divider">
-
-    <div><strong>Weapons</strong><br>${weaponsHtml}</div>
-    <div style="margin-top:6px;"><strong>Equipment</strong><br>${equipHtml}</div>
-    <div style="margin-top:6px;"><strong>Ammo</strong><br>${ammoHtml}</div>
-
-    <hr class="modal-divider">
-
-    ${(overview || capabilities || deployment || history) ? `
-      ${overview ? `<div style="margin-bottom:8px;"><strong>Overview</strong><br>${esc(overview)}</div>` : ''}
-      ${capabilities ? `<div style="margin-bottom:8px;"><strong>Capabilities</strong><br>${esc(capabilities)}</div>` : ''}
-      ${deployment ? `<div style="margin-bottom:8px;"><strong>Deployment</strong><br>${esc(deployment)}</div>` : ''}
-      ${history ? `<div style="margin-bottom:8px;"><strong>History</strong><br>${esc(history)}</div>` : ''}
-      <hr class="modal-divider">` : ''}
-
-    <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div><strong>Battle Value (BV)</strong><br>${esc(bv)}</div>
-      <div><strong>Cost</strong><br>${esc(cost)}</div>
-      <div><strong>Era / Year</strong><br>${esc(era)}</div>
-      <div><strong>Sources</strong><br>${sourcesHtml}</div>
-    </div>
-
-    ${(manufacturers.length || factories.length || systems.length) ? `
-      <hr class="modal-divider">
-      <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div><strong>Manufacturers</strong><br>${manufacturers.map(esc).join(' • ') || '—'}</div>
-        <div><strong>Primary Factories</strong><br>${factories.map(esc).join(' • ') || '—'}</div>
-        <div style="grid-column:1 / -1;"><strong>Systems</strong><br>${systems.map(esc).join(' • ') || '—'}</div>
-      </div>
-    ` : ''}
-
-    ${lic || origin || copyright ? `
-      <hr class="modal-divider">
-      <div class="small dim">
-        <div>${esc(origin || '')}</div>
-        ${licUrl ? `<div>License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a></div>` :
-                    (lic ? `<div>License: ${esc(lic)}</div>` : '')}
-        ${copyright ? `<div>${esc(copyright)}</div>` : ''}
-      </div>
-    ` : ''}
-  `;
+  return out;
 }
 
 
+  
   /* ---------- Manifest loading ---------- */
   async function loadManifest() {
     try {
@@ -411,72 +345,86 @@ function getInternalCell(internalByLoc, locKey){
     }
   }
 
-  /* ---------- Load mech by absolute URL or by ID ---------- */
-  async function loadMechFromUrl(url) {
+
+  
+ /* ---------- Load mech by absolute URL or by ID ---------- */
+async function loadMechFromUrl(url) {
+  try {
+    showToast('Loading mech…');
+    const raw  = await safeFetchJson(url);
+    const mech = adaptMechSchema(raw);        // <-- adapt here
+    state.mech = mech;
+    onMechChanged({ resetHeat: true });
+    showToast(`${mech?.displayName || mech?.name || mech?.Model || 'Mech'} loaded`);
+  } catch (err) {
+    console.error(err);
+    showToast(`Failed to load mech JSON: ${err.message}`);
+  }
+}
+
+async function loadMechById(id) {
+  const m = manifest.find(x => String(x.id) === String(id));
+  if (!m) { showToast(`Not in manifest: ${id}`); return; }
+  return loadMechFromUrl(m.url);
+}
+
+
+
+  
+  /* ---------- Import / Export ---------- */
+function loadMechFromFile() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'application/json';
+  input.onchange = async () => {
+    const file = input.files?.[0]; if (!file) return;
     try {
-      showToast('Loading mech…');
-      const mech = await safeFetchJson(url);
+      const text = await file.text();
+      const raw  = JSON.parse(text);
+      const mech = adaptMechSchema(raw);        // <-- adapt here
       state.mech = mech;
       onMechChanged({ resetHeat: true });
-      showToast(`${mech?.displayName || mech?.name || mech?.Model || 'Mech'} loaded`);
-    } catch (err) {
-      console.error(err);
-      showToast(`Failed to load mech JSON: ${err.message}`);
+      showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+    } catch (e) {
+      console.error(e);
+      showToast('Load failed (invalid JSON)');
     }
-  }
+  };
+  input.click();
+}
 
-  async function loadMechById(id) {
-    const m = manifest.find(x => String(x.id) === String(id));
-    if (!m) { showToast(`Not in manifest: ${id}`); return; }
-    return loadMechFromUrl(m.url);
-  }
-
-  /* ---------- Import / Export ---------- */
-  function loadMechFromFile() {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text();
-        const mech = JSON.parse(text);
-        state.mech = mech;
-        onMechChanged({ resetHeat: true });
-        showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-      } catch (e) {
-        console.error(e);
-        showToast('Load failed (invalid JSON)');
-      }
-    };
-    input.click();
-  }
 
   function importJson() {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text();
-        const data = JSON.parse(text);
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'application/json';
+  input.onchange = async () => {
+    const file = input.files?.[0]; if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
 
-        if (data.mech || data.pilot || data.heat) {
-          if (data.mech)  state.mech  = data.mech;
-          if (data.pilot) state.pilot = data.pilot;
-          if (data.heat)  state.heat  = data.heat;
-          onMechChanged({ resetHeat: false });
-        } else {
-          state.mech = data;
-          onMechChanged({ resetHeat: true });
-        }
-        showToast('JSON imported');
-      } catch (e) {
-        console.error(e);
-        showToast('Import failed');
+      if (data.mech || data.pilot || data.heat) {
+        // Session-style import
+        if (data.mech)  state.mech  = adaptMechSchema(data.mech);  // <-- adapt mech only
+        if (data.pilot) state.pilot = data.pilot;
+        if (data.heat)  state.heat  = data.heat;
+        onMechChanged({ resetHeat: false });
+      } else {
+        // Plain mech JSON
+        state.mech = adaptMechSchema(data);                         // <-- adapt whole file
+        onMechChanged({ resetHeat: true });
       }
-    };
-    input.click();
-  }
+
+      showToast('JSON imported');
+    } catch (e) {
+      console.error(e);
+      showToast('Import failed');
+    }
+  };
+  input.click();
+}
+
 
   function exportState() {
     const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
