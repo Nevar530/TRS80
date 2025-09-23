@@ -35,11 +35,16 @@ async function loadWeaponsDb() {
     const list = await fetchJson('data/weapons.json');
     state.weaponsDb = Array.isArray(list) ? list : [];
     state.weaponsMap = new Map();
+
     for (const w of state.weaponsDb) {
-      const id = String(w.id ?? w.name ?? '').toLowerCase();
-      const nm = String(w.name ?? '').toLowerCase();
-      if (id) state.weaponsMap.set(id, w);
-      if (nm && !state.weaponsMap.has(nm)) state.weaponsMap.set(nm, w);
+      const keys = new Set();
+      if (w.id)   keys.add(normKey(w.id));
+      if (w.name) keys.add(normKey(w.name));
+      // NEW: alias indexing
+      const aliases = Array.isArray(w.aliases) ? w.aliases : [];
+      for (const a of aliases) if (a) keys.add(normKey(a));
+
+      for (const k of keys) if (k && !state.weaponsMap.has(k)) state.weaponsMap.set(k, w);
     }
     // inject tiny CSS once
     if (!document.getElementById('weap-mini-css')) {
@@ -60,9 +65,14 @@ async function loadWeaponsDb() {
 
 function getWeaponRefByName(name){
   if (!name) return null;
-  const key = String(name).toLowerCase().trim();
+  const key = normKey(name);
   return state.weaponsMap.get(key) || null;
 }
+
+  const normKey = (s) => String(s||'')
+  .toLowerCase()
+  .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
+  .trim();
 
   
   /* ---------- Manifest + Fetch ---------- */
