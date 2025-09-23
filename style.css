@@ -265,3 +265,24 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 
 /* keep consistency with GATOR subtabs (already defined);
    no extra styles needed unless you want a unique look */
+
+/* Hide scrollbars globally inside the app, keep scrolling */
+.app, .app * {
+  -ms-overflow-style: none;   /* IE/old Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+.app *::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;              /* Chrome/Safari/new Edge */
+}
+
+/* Optional: smoother feel + no browser bounce chaining */
+.app {
+  overscroll-behavior: contain;
+}
+
+/* If any panel forces scrollbars via 'overflow: scroll', switch to auto */
+.swap-pane, .gtr-pane, .card-c {
+  overflow: auto;             /* scrolls when needed, bar stays hidden */
+}
