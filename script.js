@@ -693,6 +693,7 @@ async function loadMechFromUrl(url) {
   const fJump       = document.getElementById('f-jump');
   const fMinWalk    = document.getElementById('f-minwalk');
   const fRoles      = document.getElementById('f-roles');
+const fRules      = document.getElementById('f-rules'); // NEW
 
   function openFilterModal(){
     if (!fModal) return;
@@ -738,7 +739,7 @@ async function loadMechFromUrl(url) {
               .split(/[,\s]+/)
               .map(s=>s.trim())
               .filter(Boolean)
-              .map(s=>s.toLowerCase())
+              .map(s=>s.toLowerCase()),
        rulesLevel: (fRules?.value || "") || null,
     };
 
@@ -767,8 +768,12 @@ async function loadMechFromUrl(url) {
     };
 
     // apply over full manifest (if no filters active -> null to use full set)
-    const anyOn = filterState.tech || filterState.classes.size || filterState.canJump ||
-                  filterState.minWalk != null || filterState.roles.length;
+const anyOn = filterState.tech
+           || filterState.classes.size
+           || filterState.canJump
+           || filterState.minWalk != null
+           || filterState.roles.length
+           || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
     manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
 
     // tell search UI to rebuild its index from the filtered set
@@ -781,7 +786,7 @@ async function loadMechFromUrl(url) {
   }
 
   function clearFilters(){
-    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[] };
+    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
     manifestFiltered = null;
     window._rebuildSearchIndex?.();
     closeFilterModal();
