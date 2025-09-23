@@ -739,7 +739,7 @@ async function loadMechFromUrl(url) {
               .map(s=>s.trim())
               .filter(Boolean)
               .map(s=>s.toLowerCase())
-       rulesLevel: (fRules?.value || "") || null
+       rulesLevel: (fRules?.value || "") || null,
     };
 
     // turn state into a predicate (requires enriched manifest entries to be effective)
