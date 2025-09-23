@@ -151,8 +151,8 @@ const offense     = expectedDmg * sustain * 16;
 
 // Defense: armor+structure scaled by mobility (use max of walk/run/jump for TMM-ish)
 const bestMP        = Math.max(Number(mech?._mv?.walk)||0, Number(mech?._mv?.run)||0, Number(mech?._mv?.jump)||0);
-const tmm           = bestMP <= 2 ? 0 : bestMP <= 4 ? 1 : bestMP <= 6 ? 2 : bestMP <= 9 ? 3 : bestMP <= 17 ? 4 : 5;
-const mobilityBonus = 1 + (0.15 * tmm) + (0.05 * Math.min(Number(mech?._mv?.jump)||0, 6));
+const tmmVal        = bestMP <= 2 ? 0 : bestMP <= 4 ? 1 : bestMP <= 6 ? 2 : bestMP <= 9 ? 3 : bestMP <= 17 ? 4 : 5;
+const mobilityBonus = 1 + (0.15 * tmmVal) + (0.05 * Math.min(Number(mech?._mv?.jump)||0, 6));
 const defenseBase   = (armorPts + structPts);
 const defense       = defenseBase * 2.25 * mobilityBonus;
 
