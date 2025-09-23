@@ -848,24 +848,44 @@ function renderOverviewWeaponsMini(mech){
     });
     rmin?.addEventListener('change', ()=> { state.gator.Rmin = rmin.value; });
 
-    // Dice
-    const attDice = byId('roll-att-dice'), attMod = byId('roll-att-mod'), attRes = byId('roll-att-res');
-    const btnAtt  = byId('btn-roll-att'), btnBoth = byId('btn-roll-both');
-    const parseDice = (str)=> (str||'2d6').match(/(\d+)d(\d+)/i)?.slice(1).map(Number) || [2,6];
-    const rollOne = (s)=> Math.floor(Math.random()*s)+1;
-    const bounce = (el)=>{ el.style.transform='translateY(-6px)'; el.style.transition='transform .15s ease'; requestAnimationFrame(()=> el.style.transform=''); };
-    function doRoll(){
-      const [n,sides] = parseDice(attDice?.value); const mod = Number(attMod?.value||0);
-      const rolls = Array.from({length:n}, ()=> rollOne(sides));
-      const total = rolls.reduce((a,b)=>a+b,0)+mod;
-      if (attRes){ attRes.textContent = total; attRes.title = `rolls: ${rolls.join(', ')} + ${mod}`; bounce(attRes); }
-      return total;
-    }
-    btnAtt?.addEventListener('click', doRoll);
-    btnBoth?.addEventListener('click', doRoll);
-    window.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)) doRoll(); });
+// Dice
+const attDice = byId('roll-att-dice'),
+      attMod  = byId('roll-att-mod'),
+      attRes  = byId('roll-att-res'),
+      btnAtt  = byId('btn-roll-att'),
+      btnBoth = byId('btn-roll-both'),
+      attDetail = byId('roll-att-detail'); // ← NEW (optional)
 
-    sumOther(); recompute();
+const parseDice = (str)=> (str||'2d6').match(/(\d+)d(\d+)/i)?.slice(1).map(Number) || [2,6];
+const rollOne   = (s)=> Math.floor(Math.random()*s)+1;
+const bounce    = (el)=>{ el.style.transform='translateY(-6px)'; el.style.transition='transform .15s ease'; requestAnimationFrame(()=> el.style.transform=''); };
+
+function doRoll(){
+  const [n, sides] = parseDice(attDice?.value);
+  const mod = Number(attMod?.value || 0);
+  const rolls = Array.from({ length: n }, () => rollOne(sides));
+  const sum   = rolls.reduce((a,b)=> a+b, 0);
+  const total = sum + mod;
+
+  if (attRes){
+    attRes.textContent = total;
+    attRes.title = `rolls: ${rolls.join(', ')}${mod ? ` + ${mod}` : ''}`;
+    bounce(attRes);
+  }
+  if (attDetail){
+    attDetail.textContent = `[${rolls.join(' + ')}]${mod ? ` + ${mod}` : ''}`;
+  }
+  return total;
+}
+
+btnAtt ?.addEventListener('click', doRoll);
+btnBoth?.addEventListener('click', doRoll);
+window.addEventListener('keydown', (e)=>{
+  if (e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)) doRoll();
+});
+
+sumOther(); recompute();
+
   }
 
   function initGatorSubtabs(){
