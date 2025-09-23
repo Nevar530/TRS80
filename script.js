@@ -680,7 +680,7 @@ function renderOverviewWeaponsMini(mech){
     const anchor = btnLoadMech || byId('btn-load-manifest') || toolbar.lastElementChild;
 
     const wrap = document.createElement('div');
-    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'220px', marginLeft:'6px' });
+    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'200px', marginLeft:'6px' });
 
     const input = document.createElement('input');
     Object.assign(input, { type:'search', id:'mech-search', placeholder:'Search mechs…', autocomplete:'off', spellcheck:false });
