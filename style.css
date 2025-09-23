@@ -294,3 +294,13 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 
 #btn-roll-att, #btn-roll-both { background: var(--bt-amber); color:#000; font-weight:400; }
 
+/* Icon-only buttons */
+.btn.icon {
+  padding: 4px;          /* tighter padding */
+  width: 28px;           /* fixed square */
+  height: 28px;
+  font-size: 16px;       /* scale emoji/arrow */
+  display: inline-flex;  
+  align-items: center;   
+  justify-content: center;
+}
