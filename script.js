@@ -227,13 +227,19 @@
         .forEach(id => byId(id).textContent = '—');
       ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
         .forEach(id => byId(id).hidden = true);
-      // Armor table
-      ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
+      
+// Armor table
+['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
   .forEach(k => { byId('ar-'+k).textContent = '—'; });
-      ['HD','CT','RT','LT','RA','LA','RL','LL'].forEach(k => byId('in-'+k)?.textContent='—');
-      byId('tr-weapons').textContent='—'; byId('tr-equipment').textContent='—'; byId('tr-ammo').textContent='—';
-      return;
-    }
+
+['HD','CT','RT','LT','RA','LA','RL','LL']
+  .forEach(k => { if (byId('in-'+k)) byId('in-'+k).textContent = '—'; });
+
+byId('tr-weapons').textContent   = '—';
+byId('tr-equipment').textContent = '—';
+byId('tr-ammo').textContent      = '—';
+return;
+
 
     // Basics
     byId('tr-name').textContent  = m.displayName || m.name || m.Name || '—';
