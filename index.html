@@ -198,133 +198,153 @@
                   <div class="card-title">G.A.T.O.R. (Target Number)</div>
                 </div>
                 <div class="card-c">
-                  <div id="gator-compact" class="gtr-compact">
-                    <div class="gtr-columns">
-                      <!-- Attacker -->
-                      <div class="gtr-col" data-role="attacker">
-                        <div class="gtr-title"><span class="dot dot-att"></span> Attacker</div>
+                 <div id="gator-compact" class="gtr-compact">
 
-                        <label class="gtr-lab">Gunnery</label>
-                        <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery">
-                          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                          <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
-                        </select>
+  <!-- Sub-tabs -->
+  <div class="gtr-subtabs" role="tablist" aria-label="GATOR sections">
+    <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-gtr-tab="gtr-pane-G">G</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-A">A</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-T">T</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-O">O</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-R">R</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-D">Dice/TN</button>
+  </div>
 
-                        <label class="gtr-lab">Movement</label>
-                        <select class="gtr-sel" id="gtr-attacker-sel" aria-label="Attacker movement">
-                          <option value="0">Stationary (+0)</option>
-                          <option value="1">Walk (+1)</option>
-                          <option value="2">Run (+2)</option>
-                          <option value="3">Jump (+3)</option>
-                          <option value="2">Prone (+2)</option>
-                        </select>
+  <!-- G -->
+  <section id="gtr-pane-G" class="gtr-pane is-active" role="tabpanel" aria-labelledby="G">
+    <div class="gtr-col">
+      <div class="gtr-title"><span class="dot dot-att"></span> Gunnery</div>
+      <label class="gtr-lab">Gunnery</label>
+      <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery">
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+        <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+      </select>
+    </div>
+  </section>
 
-                        <!-- Attacker Dice -->
-                        <div class="gtr-roller">
-                          <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
-                            <option>2d6</option><option>1d6</option><option>1d8</option><option>1d10</option><option>1d20</option>
-                          </select>
-                          <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
-                          <button class="icon-btn" id="btn-roll-att" title="Roll attacker">
-                            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>
-                          </button>
-                          <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
-                        </div>
-                      </div>
+  <!-- A -->
+  <section id="gtr-pane-A" class="gtr-pane" role="tabpanel" aria-labelledby="A">
+    <div class="gtr-col">
+      <div class="gtr-title"><span class="dot dot-att"></span> Attacker Movement</div>
+      <label class="gtr-lab">Movement</label>
+      <select class="gtr-sel" id="gtr-attacker-sel" aria-label="Attacker movement">
+        <option value="0">Stationary (+0)</option>
+        <option value="1">Walk (+1)</option>
+        <option value="2">Run (+2)</option>
+        <option value="3">Jump (+3)</option>
+        <option value="2">Prone (+2)</option>
+      </select>
+    </div>
+  </section>
 
-                      <!-- Target -->
-                      <div class="gtr-col" data-role="target">
-                        <div class="gtr-title"><span class="dot dot-tgt"></span> Target</div>
+  <!-- T -->
+  <section id="gtr-pane-T" class="gtr-pane" role="tabpanel" aria-labelledby="T">
+    <div class="gtr-col">
+      <div class="gtr-title"><span class="dot dot-tgt"></span> Target Movement</div>
 
-                        <label class="gtr-lab">Move Mods (MP spent)</label>
-                        <select class="gtr-sel" id="gtr-target-band" aria-label="Target movement band">
-                          <option value="0">0–2 (0)</option>
-                          <option value="1">3–4 (+1)</option>
-                          <option value="2">5–6 (+2)</option>
-                          <option value="3">7–9 (+3)</option>
-                          <option value="4">10–17 (+4)</option>
-                          <option value="5">18–24 (+5)</option>
-                          <option value="6">25+ (+6)</option>
-                        </select>
+      <label class="gtr-lab">Move Mods (MP spent)</label>
+      <select class="gtr-sel" id="gtr-target-band" aria-label="Target movement band">
+        <option value="0">0–2 (0)</option>
+        <option value="1">3–4 (+1)</option>
+        <option value="2">5–6 (+2)</option>
+        <option value="3">7–9 (+3)</option>
+        <option value="4">10–17 (+4)</option>
+        <option value="5">18–24 (+5)</option>
+        <option value="6">25+ (+6)</option>
+      </select>
 
-                        <div class="gtr-toggles">
-                          <label class="chk"><input type="checkbox" id="gtr-tgt-jump"> +Jump</label>
-                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-none" checked> normal</label>
-                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-padj"> prone (adj) = -2</label>
-                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-prone"> prone = +1</label>
-                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-imm"> immobile = -4</label>
-                        </div>
-                      </div>
-                    </div>
+      <div class="gtr-toggles" style="margin-top:6px;">
+        <label class="chk"><input type="checkbox" id="gtr-tgt-jump"> +Jump</label>
+        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-none" checked> normal</label>
+        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-padj"> prone (adj) = -2</label>
+        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-prone"> prone = +1</label>
+        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-imm"> immobile = -4</label>
+      </div>
+    </div>
+  </section>
 
-                    <!-- Other + Range -->
-                    <div class="gtr-rows">
-                      <div class="gtr-row">
-                        <label class="gtr-lab">Other</label>
-                        <div class="gtr-groups">
-                          <select class="gtr-sel xs" id="gtr-wb" aria-label="Woods Between">
-                            <option value="0">Woods Between: —</option>
-                            <option value="1">Lv1 (+1)</option>
-                            <option value="2">Lv2 (+2)</option>
-                            <option value="2">Lv1×2 (+2)</option>
-                          </select>
-                          <select class="gtr-sel xs" id="gtr-wa" aria-label="Woods Among">
-                            <option value="0">Woods Among: —</option>
-                            <option value="1">Lv1 (+1)</option>
-                            <option value="2">Lv2 (+2)</option>
-                          </select>
-                          <select class="gtr-sel xs" id="gtr-ot" aria-label="Other Terrain">
-                            <option value="0">Other Terrain: —</option>
-                            <option value="1">Partial Cover (+1)</option>
-                            <option value="1">Water Lv1 (+1)</option>
-                          </select>
-                          <select class="gtr-sel xs" id="gtr-st" aria-label="Second Target">
-                            <option value="0">2nd Target: —</option>
-                            <option value="1">Front Arc (+1)</option>
-                            <option value="2">Side/Rear (+2)</option>
-                          </select>
-                          <select class="gtr-sel xs" id="gtr-ht" aria-label="Heat">
-                            <option value="0">Heat: —</option>
-                            <option value="1">≤ 8 (+1)</option>
-                            <option value="2">≤ 13 (+2)</option>
-                          </select>
-                        </div>
-                      </div>
+  <!-- O -->
+  <section id="gtr-pane-O" class="gtr-pane" role="tabpanel" aria-labelledby="O">
+    <div class="gtr-col">
+      <div class="gtr-title">Other Modifiers</div>
+      <div class="gtr-groups">
+        <select class="gtr-sel xs" id="gtr-wb" aria-label="Woods Between">
+          <option value="0">Woods Between: —</option>
+          <option value="1">Lv1 (+1)</option>
+          <option value="2">Lv2 (+2)</option>
+          <option value="2">Lv1×2 (+2)</option>
+        </select>
+        <select class="gtr-sel xs" id="gtr-wa" aria-label="Woods Among">
+          <option value="0">Woods Among: —</option>
+          <option value="1">Lv1 (+1)</option>
+          <option value="2">Lv2 (+2)</option>
+        </select>
+        <select class="gtr-sel xs" id="gtr-ot" aria-label="Other Terrain">
+          <option value="0">Other Terrain: —</option>
+          <option value="1">Partial Cover (+1)</option>
+          <option value="1">Water Lv1 (+1)</option>
+        </select>
+        <select class="gtr-sel xs" id="gtr-st" aria-label="Second Target">
+          <option value="0">2nd Target: —</option>
+          <option value="1">Front Arc (+1)</option>
+          <option value="2">Side/Rear (+2)</option>
+        </select>
+        <select class="gtr-sel xs" id="gtr-ht" aria-label="Heat">
+          <option value="0">Heat: —</option>
+          <option value="1">≤ 8 (+1)</option>
+          <option value="2">≤ 13 (+2)</option>
+        </select>
+      </div>
+    </div>
+  </section>
 
-                      <div class="gtr-row">
-                        <label class="gtr-lab">Range</label>
-                        <div class="gtr-groups" id="gtr-range-wrap">
-                          <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
-                            <button data-val="0" class="is-active" title="Short (+0)">Short</button>
-                            <button data-val="2" title="Medium (+2)">Med</button>
-                            <button data-val="4" title="Long (+4)">Long</button>
-                          </div>
-                          <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
-                            <option value="eq">Minimum: Equal</option>
-                            <option value="-1">-1 (+2)</option>
-                            <option value="-2">-2 (+3)</option>
-                            <option value="-3">-3 (+4)</option>
-                            <option value="-4">-4 (+5)</option>
-                            <option value="-5">-5 (+6)</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
+  <!-- R -->
+  <section id="gtr-pane-R" class="gtr-pane" role="tabpanel" aria-labelledby="R">
+    <div class="gtr-col">
+      <div class="gtr-title">Range</div>
+      <div class="gtr-groups" id="gtr-range-wrap">
+        <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
+          <button data-val="0" class="is-active" title="Short (+0)">Short</button>
+          <button data-val="2" title="Medium (+2)">Med</button>
+          <button data-val="4" title="Long (+4)">Long</button>
+        </div>
+        <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
+          <option value="eq">Minimum: Equal</option>
+          <option value="-1">-1 (+2)</option>
+          <option value="-2">-2 (+3)</option>
+          <option value="-3">-3 (+4)</option>
+          <option value="-4">-4 (+5)</option>
+          <option value="-5">-5 (+6)</option>
+        </select>
+      </div>
+    </div>
+  </section>
 
-                    <!-- Output + Roll both -->
-                    <div class="gtr-footer">
-                      <div class="gtr-tn">
-                        <div>Target Number</div>
-                        <div id="gtr-total" class="tn tn-auto">Auto</div>
-                      </div>
-                      <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">roll both</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+  <!-- Dice/TN -->
+  <section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
+    <div class="gtr-col">
+      <div class="gtr-title">Dice & Target Number</div>
+      <div class="gtr-roller" style="margin-bottom:8px;">
+        <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
+          <option>2d6</option><option>1d6</option><option>1d8</option><option>1d10</option><option>1d20</option>
+        </select>
+        <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
+        <button class="icon-btn" id="btn-roll-att" title="Roll attacker">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>
+        </button>
+        <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
+      </div>
 
-          </div>
+      <div class="gtr-footer" style="padding-top:0; border-top:0;">
+        <div class="gtr-tn">
+          <div>Target Number</div>
+          <div id="gtr-total" class="tn tn-auto">Auto</div>
+        </div>
+        <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">roll both</button>
+      </div>
+    </div>
+  </section>
+</div>
         </div>
 
       </section>
