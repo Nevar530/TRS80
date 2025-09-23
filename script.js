@@ -16,7 +16,8 @@ const state = {
 
   /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
   let manifestFiltered = null;       // null = no filters; otherwise filtered array
-  let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[] };
+  let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
+
 
   /* ---------- Helpers ---------- */
   const $ = (sel) => document.querySelector(sel);
@@ -705,6 +706,7 @@ async function loadMechFromUrl(url) {
     if (fJump) fJump.checked   = !!filterState.canJump;
     if (fMinWalk) fMinWalk.value  = filterState.minWalk ?? "";
     if (fRoles) fRoles.value    = filterState.roles.join(', ');
+    if (fRules) fRules.value = filterState.rulesLevel ?? "";
   }
 
   function closeFilterModal(){
@@ -736,6 +738,7 @@ async function loadMechFromUrl(url) {
               .map(s=>s.trim())
               .filter(Boolean)
               .map(s=>s.toLowerCase())
+       rulesLevel: (fRules?.value || "") || null
     };
 
     // turn state into a predicate (requires enriched manifest entries to be effective)
@@ -757,6 +760,8 @@ async function loadMechFromUrl(url) {
         const hit = tokens.some(t => filterState.roles.includes(t));
         if (!hit) return false;
       }
+      const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
+  if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
       return true;
     };
 
