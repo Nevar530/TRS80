@@ -6,7 +6,8 @@
     "damage": 2,
     "heat": 1,
     "ammo": "AC/2 ammo (45)",
-    "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 }
+    "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 },
+    "aliases": ["ac 2","ac2","autocannon/2","autocannon 2","a/c-2"]
   },
   {
     "id": "AC/5",
@@ -15,7 +16,8 @@
     "damage": 5,
     "heat": 1,
     "ammo": "AC/5 ammo (20)",
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 }
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 },
+    "aliases": ["ac 5","ac5","autocannon/5","autocannon 5","a/c-5"]
   },
   {
     "id": "AC/10",
@@ -24,7 +26,8 @@
     "damage": 10,
     "heat": 3,
     "ammo": "AC/10 ammo (10)",
-    "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 }
+    "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 },
+    "aliases": ["ac 10","ac10","autocannon/10","autocannon 10","a/c-10"]
   },
   {
     "id": "AC/20",
@@ -33,7 +36,8 @@
     "damage": 20,
     "heat": 7,
     "ammo": "AC/20 ammo (5)",
-    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["ac 20","ac20","autocannon/20","autocannon 20","a/c-20"]
   },
   {
     "id": "Machine Gun",
@@ -42,43 +46,8 @@
     "damage": 2,
     "heat": 0,
     "ammo": "MG ammo (200)",
-    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
-  },
-  {
-    "id": "PPC",
-    "name": "PPC",
-    "type": "Energy",
-    "damage": 10,
-    "heat": 10,
-    "ammo": null,
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 }
-  },
-  {
-    "id": "Large Laser",
-    "name": "Large Laser",
-    "type": "Energy",
-    "damage": 8,
-    "heat": 8,
-    "ammo": null,
-    "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 }
-  },
-  {
-    "id": "Medium Laser",
-    "name": "Medium Laser",
-    "type": "Energy",
-    "damage": 5,
-    "heat": 3,
-    "ammo": null,
-    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
-  },
-  {
-    "id": "Small Laser",
-    "name": "Small Laser",
-    "type": "Energy",
-    "damage": 3,
-    "heat": 1,
-    "ammo": null,
-    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 },
+    "aliases": ["mg","machinegun","m.g."]
   },
   {
     "id": "Flamer",
@@ -87,71 +56,124 @@
     "damage": 2,
     "heat": 3,
     "ammo": null,
-    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 },
+    "aliases": ["vehicle flamer","infantry flamer"]
+  },
+
+  {
+    "id": "Small Laser",
+    "name": "Small Laser",
+    "type": "Energy",
+    "damage": 3,
+    "heat": 1,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 },
+    "aliases": ["sl","sml laser","small lsr"]
   },
   {
-    "id": "SRM-2",
-    "name": "SRM-2",
-    "type": "Missile",
-    "damage": 2,
-    "heat": 2,
-    "ammo": "SRM ammo (50)",
-    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
-  },
-  {
-    "id": "SRM-4",
-    "name": "SRM-4",
-    "type": "Missile",
-    "damage": 2,
+    "id": "Medium Laser",
+    "name": "Medium Laser",
+    "type": "Energy",
+    "damage": 5,
     "heat": 3,
-    "ammo": "SRM ammo (25)",
-    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["ml","med laser","medium lsr"]
   },
   {
-    "id": "SRM-6",
-    "name": "SRM-6",
-    "type": "Missile",
-    "damage": 2,
-    "heat": 4,
-    "ammo": "SRM ammo (15)",
-    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
+    "id": "Large Laser",
+    "name": "Large Laser",
+    "type": "Energy",
+    "damage": 8,
+    "heat": 8,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 },
+    "aliases": ["ll","lg laser","large lsr"]
   },
+
   {
-    "id": "LRM-5",
-    "name": "LRM-5",
-    "type": "Missile",
-    "damage": 1,
+    "id": "ER Small Laser",
+    "name": "ER Small Laser",
+    "type": "Energy",
+    "damage": 3,
     "heat": 2,
-    "ammo": "LRM ammo (24)",
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 2, "medium": 4, "long": 6 },
+    "aliases": ["ersl","er small lsr","er sl"]
   },
   {
-    "id": "LRM-10",
-    "name": "LRM-10",
-    "type": "Missile",
-    "damage": 1,
-    "heat": 4,
-    "ammo": "LRM ammo (12)",
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
-  },
-  {
-    "id": "LRM-15",
-    "name": "LRM-15",
-    "type": "Missile",
-    "damage": 1,
+    "id": "ER Medium Laser",
+    "name": "ER Medium Laser",
+    "type": "Energy",
+    "damage": 5,
     "heat": 5,
-    "ammo": "LRM ammo (8)",
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 },
+    "aliases": ["erml","er med laser","er medium lsr","er ml"]
   },
   {
-    "id": "LRM-20",
-    "name": "LRM-20",
-    "type": "Missile",
-    "damage": 1,
-    "heat": 6,
-    "ammo": "LRM ammo (6)",
-    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
+    "id": "ER Large Laser",
+    "name": "ER Large Laser",
+    "type": "Energy",
+    "damage": 8,
+    "heat": 12,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 7, "medium": 14, "long": 19 },
+    "aliases": ["erll","er lg laser","er large lsr","er ll"]
   },
+
+  {
+    "id": "Small Pulse Laser",
+    "name": "Small Pulse Laser",
+    "type": "Energy",
+    "damage": 3,
+    "heat": 2,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 },
+    "aliases": ["spl","small pulse","s pulse laser"]
+  },
+  {
+    "id": "Medium Pulse Laser",
+    "name": "Medium Pulse Laser",
+    "type": "Energy",
+    "damage": 6,
+    "heat": 4,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 2, "medium": 4, "long": 6 },
+    "aliases": ["mpl","med pulse","m pulse laser","medium pulse lsr"]
+  },
+  {
+    "id": "Large Pulse Laser",
+    "name": "Large Pulse Laser",
+    "type": "Energy",
+    "damage": 9,
+    "heat": 10,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["lpl","lg pulse","l pulse laser","large pulse lsr"]
+  },
+
+  {
+    "id": "PPC",
+    "name": "PPC",
+    "type": "Energy",
+    "damage": 10,
+    "heat": 10,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 },
+    "aliases": ["particle projector cannon","ppc standard"]
+  },
+  {
+    "id": "ER PPC",
+    "name": "ER PPC",
+    "type": "Energy",
+    "damage": 10,
+    "heat": 15,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 7, "medium": 14, "long": 23 },
+    "aliases": ["erppc","extended range ppc","er ppc"]
+  },
+
   {
     "id": "Gauss Rifle",
     "name": "Gauss Rifle",
@@ -159,6 +181,285 @@
     "damage": 15,
     "heat": 1,
     "ammo": "Gauss ammo (8)",
-    "range": { "pointblank": 0, "short": 7, "medium": 14, "long": 21 }
-  }
+    "range": { "pointblank": 0, "short": 7, "medium": 14, "long": 21 },
+    "aliases": ["gauss","gr"]
+  },
+
+  {
+    "id": "SRM-2",
+    "name": "SRM 2",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 2,
+    "ammo": "SRM ammo (50)",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["srm2","srm 2","s.r.m. 2"]
+  },
+  {
+    "id": "SRM-4",
+    "name": "SRM 4",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 3,
+    "ammo": "SRM ammo (25)",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["srm4","srm 4","s.r.m. 4"]
+  },
+  {
+    "id": "SRM-6",
+    "name": "SRM 6",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 4,
+    "ammo": "SRM ammo (15)",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["srm6","srm 6","s.r.m. 6"]
+  },
+
+  {
+    "id": "LRM-5",
+    "name": "LRM 5",
+    "type": "Missile",
+    "damage": 1,
+    "heat": 2,
+    "ammo": "LRM ammo (24)",
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 },
+    "aliases": ["lrm5","lrm 5","l.r.m. 5"]
+  },
+  {
+    "id": "LRM-10",
+    "name": "LRM 10",
+    "type": "Missile",
+    "damage": 1,
+    "heat": 4,
+    "ammo": "LRM ammo (12)",
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 },
+    "aliases": ["lrm10","lrm 10","l.r.m. 10"]
+  },
+  {
+    "id": "LRM-15",
+    "name": "LRM 15",
+    "type": "Missile",
+    "damage": 1,
+    "heat": 5,
+    "ammo": "LRM ammo (8)",
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 },
+    "aliases": ["lrm15","lrm 15","l.r.m. 15"]
+  },
+  {
+    "id": "LRM-20",
+    "name": "LRM 20",
+    "type": "Missile",
+    "damage": 1,
+    "heat": 6,
+    "ammo": "LRM ammo (6)",
+    "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 },
+    "aliases": ["lrm20","lrm 20","l.r.m. 20","lrm-20"]
+  },
+
+  {
+    "id": "Streak SRM-2",
+    "name": "Streak SRM 2",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 2,
+    "ammo": "Streak SRM ammo",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["streak srm2","ssrm-2","ssrm 2","streak 2"]
+  },
+  {
+    "id": "Streak SRM-4",
+    "name": "Streak SRM 4",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 3,
+    "ammo": "Streak SRM ammo",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["streak srm4","ssrm-4","ssrm 4","streak 4"]
+  },
+  {
+    "id": "Streak SRM-6",
+    "name": "Streak SRM 6",
+    "type": "Missile",
+    "damage": 2,
+    "heat": 4,
+    "ammo": "Streak SRM ammo",
+    "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+    "aliases": ["streak srm6","ssrm-6","ssrm 6","streak 6"]
+  },
+{
+  "id": "LB 2-X AC",
+  "name": "LB 2-X AC",
+  "type": "Ballistic",
+  "damage": 2,
+  "heat": 1,
+  "ammo": "LB 2-X ammo",
+  "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 },
+  "aliases": ["lb2x","lb 2x","lbx 2","lbx-2","lb 2-x","lb 2 x","lbx/2","lb 2-x ac"]
+},
+{
+  "id": "LB 5-X AC",
+  "name": "LB 5-X AC",
+  "type": "Ballistic",
+  "damage": 5,
+  "heat": 1,
+  "ammo": "LB 5-X ammo",
+  "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 },
+  "aliases": ["lb5x","lb 5x","lbx 5","lbx-5","lb 5-x","lb 5 x","lbx/5","lb 5-x ac"]
+},
+{
+  "id": "LB 10-X AC",
+  "name": "LB 10-X AC",
+  "type": "Ballistic",
+  "damage": 10,
+  "heat": 2,
+  "ammo": "LB 10-X ammo",
+  "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 },
+  "aliases": ["lb10x","lb 10x","lbx 10","lbx-10","lb 10-x","lb 10 x","lbx/10","lb 10-x ac","lb 10-x autocannon"]
+},
+{
+  "id": "LB 20-X AC",
+  "name": "LB 20-X AC",
+  "type": "Ballistic",
+  "damage": 20,
+  "heat": 6,
+  "ammo": "LB 20-X ammo",
+  "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+  "aliases": ["lb20x","lb 20x","lbx 20","lbx-20","lb 20-x","lb 20 x","lbx/20","lb 20-x ac","lb 20-x autocannon"]
+},
+
+{
+  "id": "Ultra AC/2",
+  "name": "Ultra AC/2",
+  "type": "Ballistic",
+  "damage": 2,
+  "heat": 1,
+  "ammo": "Ultra AC/2 ammo",
+  "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 },
+  "aliases": ["uac/2","uac 2","ultra 2","ultra ac 2","ultra autocannon/2"]
+},
+{
+  "id": "Ultra AC/5",
+  "name": "Ultra AC/5",
+  "type": "Ballistic",
+  "damage": 5,
+  "heat": 1,
+  "ammo": "Ultra AC/5 ammo",
+  "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 },
+  "aliases": ["uac/5","uac 5","ultra 5","ultra ac 5","ultra autocannon/5"]
+},
+{
+  "id": "Ultra AC/10",
+  "name": "Ultra AC/10",
+  "type": "Ballistic",
+  "damage": 10,
+  "heat": 3,
+  "ammo": "Ultra AC/10 ammo",
+  "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 },
+  "aliases": ["uac/10","uac 10","ultra 10","ultra ac 10","ultra autocannon/10"]
+},
+{
+  "id": "Ultra AC/20",
+  "name": "Ultra AC/20",
+  "type": "Ballistic",
+  "damage": 20,
+  "heat": 7,
+  "ammo": "Ultra AC/20 ammo",
+  "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 },
+  "aliases": ["uac/20","uac 20","ultra 20","ultra ac 20","ultra autocannon/20"]
+},
+
+{
+  "id": "Rotary AC/2",
+  "name": "Rotary AC/2",
+  "type": "Ballistic",
+  "damage": 2,
+  "heat": 1,
+  "ammo": "RAC/2 ammo",
+  "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 },
+  "aliases": ["rac/2","rac 2","rotary 2","rotac/2","rotary autocannon/2"]
+},
+{
+  "id": "Rotary AC/5",
+  "name": "Rotary AC/5",
+  "type": "Ballistic",
+  "damage": 5,
+  "heat": 1,
+  "ammo": "RAC/5 ammo",
+  "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 },
+  "aliases": ["rac/5","rac 5","rotary 5","rotac/5","rotary autocannon/5"]
+},
+
+  {
+  "id": "Punch",
+  "name": "Punch",
+  "type": "Melee",
+  "damage": "(t/5)/10",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["punch","fist","unarmed strike"]
+},
+  
+{
+  "id": "Kick",
+  "name": "Kick",
+  "type": "Melee",
+  "damage": "t/5",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["kick","stomp","leg attack"]
+},
+{
+  "id": "Hatchet",
+  "name": "Hatchet",
+  "type": "Melee",
+  "damage": "t/5",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["hatchet","axe","battleaxe","mech axe"]
+},
+{
+  "id": "Sword",
+  "name": "Sword",
+  "type": "Melee",
+  "damage": "t/5",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["sword","blade","mech sword","longsword"]
+},
+{
+  "id": "Claw",
+  "name": "Claw",
+  "type": "Melee",
+  "damage": "t/5",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["claw","talon","mech claw"]
+},
+{
+  "id": "Charge",
+  "name": "Charge",
+  "type": "Melee",
+  "damage": "t/10",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["charge","ram","body check"]
+},
+{
+  "id": "DFA",
+  "name": "Death From Above",
+  "type": "Melee",
+  "damage": "t/5|t/10",
+  "heat": 0,
+  "ammo": null,
+  "range": { "pointblank": 0, "short": 0, "medium": 0, "long": 0 },
+  "aliases": ["dfa","death from above","jump crush"]
+}
+  
 ]
