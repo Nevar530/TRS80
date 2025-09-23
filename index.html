@@ -100,95 +100,112 @@
 
             <!-- TECH READOUT (pure HTML – JS just fills the spans) -->
             <section id="pane-techreadout" class="swap-pane" role="tabpanel" aria-labelledby="Tech Readout">
-              <div class="tro-grid">
-                <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
-                <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
-                <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
-                <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
-                <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
-                <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
-                <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
-                <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
-                <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
-                <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
-                <div><strong>Config</strong><br><span id="tr-config">—</span></div>
-                <div><strong>Role</strong><br><span id="tr-role">—</span></div>
-                <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
-                <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
-              </div>
+             <!-- Tech Readout with sub-tabs -->
+<div id="tech-compact" class="tr-compact">
 
-              <hr class="modal-divider">
+  <!-- Sub-tabs (reuse GATOR tab styles: .gtr-subtabs / .gtr-subtab / .gtr-pane) -->
+  <div class="gtr-subtabs" role="tablist" aria-label="Tech Readout sections">
+    <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-tr-tab="tr-pane-C">Chassis &amp; Systems</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-AI">Armor &amp; Internals</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-EQ">Equipment</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-LORE">Lore &amp; History</button>
+  </div>
 
-              <!-- Armor & Internals per location -->
-              <div>
-                <strong>Armor & Internals by Location</strong>
-                <table class="small mono fullw">
-                  <thead>
-                    <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Head</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
-                    <tr><td>Center Torso</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
-                    <tr><td>Right Torso</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
-                    <tr><td>Left Torso</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
-                    <tr><td>Right Arm</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
-                    <tr><td>Left Arm</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
-                    <tr><td>Right Leg</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
-                    <tr><td>Left Leg</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
-                  </tbody>
-                </table>
-              </div>
+  <!-- Chassis & Systems -->
+  <section id="tr-pane-C" class="gtr-pane is-active" role="tabpanel" aria-labelledby="Chassis & Systems">
+    <div class="tro-grid">
+      <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
+      <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
+      <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
+      <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
+      <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
+      <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
+      <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
+      <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
+      <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
+      <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
+      <div><strong>Config</strong><br><span id="tr-config">—</span></div>
+      <div><strong>Role</strong><br><span id="tr-role">—</span></div>
+      <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
+      <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
+    </div>
 
-              <hr class="modal-divider">
+    <hr class="modal-divider">
 
-              <!-- Equipment by Location -->
-              <div id="loc-equip-wrap" hidden>
-                <strong>Equipment by Location</strong>
-                <table class="small mono fullw">
-                  <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
-                  <tbody id="loc-equip-body"></tbody>
-                </table>
-                <hr class="modal-divider">
-              </div>
+    <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
 
-              <!-- Weapons / Equipment / Ammo -->
-              <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
-              <div class="mt6"><strong>Equipment</strong><div class="mt6" id="tr-equipment">—</div></div>
-              <div class="mt6"><strong>Ammo</strong><div class="mt6" id="tr-ammo">—</div></div>
+    <hr class="modal-divider">
 
-              <hr class="modal-divider">
+    <div class="tro-grid">
+      <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
+      <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
+      <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
+      <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
+    </div>
 
-              <!-- Narrative -->
-              <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
-              <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
-              <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
-              <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+    <div id="tr-mfr-wrap" hidden>
+      <hr class="modal-divider">
+      <div class="tro-grid">
+        <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
+        <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
+        <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
+      </div>
+    </div>
 
-              <hr class="modal-divider">
+    <div id="tr-license-wrap" class="small dim" hidden>
+      <hr class="modal-divider">
+      <div id="tr-origin"></div>
+      <div id="tr-license"></div>
+      <div id="tr-copyright"></div>
+    </div>
+  </section>
 
-              <!-- Meta -->
-              <div class="tro-grid">
-                <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
-                <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
-                <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
-                <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
-              </div>
+  <!-- Armor & Internals -->
+  <section id="tr-pane-AI" class="gtr-pane" role="tabpanel" aria-labelledby="Armor & Internals">
+    <div>
+      <strong>Armor &amp; Internals by Location</strong>
+      <table class="small mono fullw">
+        <thead>
+          <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Head</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
+          <tr><td>Center Torso</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
+          <tr><td>Right Torso</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
+          <tr><td>Left Torso</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
+          <tr><td>Right Arm</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
+          <tr><td>Left Arm</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
+          <tr><td>Right Leg</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
+          <tr><td>Left Leg</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-              <div id="tr-mfr-wrap" hidden>
-                <hr class="modal-divider">
-                <div class="tro-grid">
-                  <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
-                  <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
-                  <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
-                </div>
-              </div>
+    <hr class="modal-divider">
 
-              <div id="tr-license-wrap" class="small dim" hidden>
-                <hr class="modal-divider">
-                <div id="tr-origin"></div>
-                <div id="tr-license"></div>
-                <div id="tr-copyright"></div>
-              </div>
+    <div id="loc-equip-wrap" hidden>
+      <strong>Equipment by Location</strong>
+      <table class="small mono fullw">
+        <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
+        <tbody id="loc-equip-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Equipment -->
+  <section id="tr-pane-EQ" class="gtr-pane" role="tabpanel" aria-labelledby="Equipment">
+    <div><strong>Equipment</strong><div class="mt6" id="tr-equipment">—</div></div>
+    <div class="mt6"><strong>Ammo</strong><div class="mt6" id="tr-ammo">—</div></div>
+  </section>
+
+  <!-- Lore & History -->
+  <section id="tr-pane-LORE" class="gtr-pane" role="tabpanel" aria-labelledby="Lore & History">
+    <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
+    <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
+    <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
+    <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+  </section>
+</div>
             </section>
 
             <!-- GATOR (COMPACT) -->
