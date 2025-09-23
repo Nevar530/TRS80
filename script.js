@@ -3,14 +3,16 @@
   'use strict';
 
   /* ---------- State ---------- */
-  const state = {
-    mech: null,
-    pilot: { name: '—', gunnery: 4, piloting: 5 },
-    heat: { current: 0, capacity: 0 },
-    gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
-    manifest: [],
-    manifestUrl: ''
-  };
+const state = {
+  mech: null,
+  pilot: { name: '—', gunnery: 4, piloting: 5 },
+  heat: { current: 0, capacity: 0 },
+  gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
+  manifest: [],
+  manifestUrl: '',
+  weaponsDb: [],            // <— NEW: raw list
+  weaponsMap: new Map()     // <— NEW: lookup by id/name (lowercased)
+};
 
   /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
   let manifestFiltered = null;       // null = no filters; otherwise filtered array
@@ -28,6 +30,41 @@
   const fmtMoney = (v) => { if (v == null || v === '') return '—'; const n = toNum(String(v).replace(/[^\d.-]/g,'')); return n == null ? String(v) : n.toLocaleString(undefined,{maximumFractionDigits:0}) + ' C-bills'; };
   function showToast(msg, ms=1600){ const t = byId('toast'); if(!t){console.log('[toast]',msg);return;} t.textContent=msg; t.hidden=false; t.style.display='block'; clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.hidden=true; t.style.display='none'; },ms); }
 
+async function loadWeaponsDb() {
+  try {
+    const list = await fetchJson('data/weapons.json');
+    state.weaponsDb = Array.isArray(list) ? list : [];
+    state.weaponsMap = new Map();
+    for (const w of state.weaponsDb) {
+      const id = String(w.id ?? w.name ?? '').toLowerCase();
+      const nm = String(w.name ?? '').toLowerCase();
+      if (id) state.weaponsMap.set(id, w);
+      if (nm && !state.weaponsMap.has(nm)) state.weaponsMap.set(nm, w);
+    }
+    // inject tiny CSS once
+    if (!document.getElementById('weap-mini-css')) {
+      const st = document.createElement('style');
+      st.id = 'weap-mini-css';
+      st.textContent = `
+        .weapons-mini{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+        .weapons-mini th,.weapons-mini td{padding:3px 6px;border-bottom:1px solid var(--border,#2a2f3a)}
+        .weapons-mini thead th{text-align:left;background:#0e1522}
+        .dim{opacity:.7}
+      `;
+      document.head.appendChild(st);
+    }
+  } catch (e) {
+    console.warn('[weapons] failed to load weapons.json', e);
+  }
+}
+
+function getWeaponRefByName(name){
+  if (!name) return null;
+  const key = String(name).toLowerCase().trim();
+  return state.weaponsMap.get(key) || null;
+}
+
+  
   /* ---------- Manifest + Fetch ---------- */
   async function fetchJson(pathOrUrl) {
     const base = new URL('.', state.manifestUrl || document.baseURI);
@@ -162,12 +199,68 @@
       ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : '—';
     byId('ov-move').textContent = mvStr;
 
-    const w = Array.isArray(m?.weapons) ? m.weapons : [];
-    byId('ov-weps').textContent = w.length
-      ? w.slice(0,6).map(wi => `${wi.name}${wi.loc?` [${wi.loc}]`:''}`).join(' • ')
-      : '—';
+const w = Array.isArray(m?.weapons) ? m.weapons : [];
+byId('ov-weps').textContent = w.length
+  ? w.slice(0,6).map(wi => `${wi.name}${wi.loc?` [${wi.loc}]`:''}`).join(' • ')
+  : '—';
+
+// NEW: render the mini stats table under the line above
+renderOverviewWeaponsMini(m);
+
   }
 
+function renderOverviewWeaponsMini(mech){
+  const host = byId('ov-weps');
+  if (!host) return;
+
+  // ensure a sibling container just under the "Key Weapons" line
+  let wrap = byId('ov-weps-mini');
+  if (!wrap) {
+    wrap = document.createElement('div');
+    wrap.id = 'ov-weps-mini';
+    wrap.className = 'weapon-block';
+    // insert after #ov-weps
+    host.insertAdjacentElement('afterend', wrap);
+  }
+
+  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
+  if (!list.length) { wrap.innerHTML = ''; return; }
+
+  const rows = list.map(w => {
+    const ref = getWeaponRefByName(w.name);
+    if (!ref) {
+      // unknown: show blanks per your rule
+      return `<tr>
+        <td>${esc(w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
+        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+      </tr>`;
+    }
+    const r = ref.range || {};
+    return `<tr>
+      <td>${esc(ref.name || w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
+      <td>${esc(ref.type ?? '—')}</td>
+      <td>${ref.heat ?? '—'}</td>
+      <td>${ref.ammo ?? '—'}</td>
+      <td>${r.pointblank ?? 0}</td>
+      <td>${r.short ?? '—'}</td>
+      <td>${r.medium ?? '—'}</td>
+      <td>${r.long ?? '—'}</td>
+    </tr>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <table class="weapons-mini">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Heat</th><th>Ammo</th>
+            <th>PB</th><th>S</th><th>M</th><th>L</th></tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+  
+  
   /* ---------- Tech Readout fill (no innerHTML building of layout) ---------- */
   const LOCS = [
     {key:'HD', name:'Head'},
@@ -834,13 +927,17 @@
   }
 
   /* ---------- Init ---------- */
-  function init(){
-    setHeat(0,0);
-    updateOverview();
-    fillTechReadout();
-    initUI();
-    console.info('Gator Console ready (single-file).');
-  }
+function init(){
+  loadWeaponsDb().then(()=> {
+    renderOverviewWeaponsMini(state.mech);
+  });
+  setHeat(0,0);
+  updateOverview();
+  fillTechReadout();
+  initUI();
+  console.info('Gator Console ready (single-file).');
+}
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
