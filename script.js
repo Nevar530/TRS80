@@ -684,7 +684,7 @@ function renderOverviewWeaponsMini(mech){
 
     const input = document.createElement('input');
     Object.assign(input, { type:'search', id:'mech-search', placeholder:'Search mechs…', autocomplete:'off', spellcheck:false });
-    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'220px' });
+    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'200px' });
 
     const panel = document.createElement('div');
     panel.id = 'search-results';
