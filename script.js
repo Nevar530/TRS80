@@ -1,4 +1,4 @@
-/* ===== Gator Console – single-file script (clean, no modules) ===== */
+/* ===== Gator Console – single-file script (clean, with search + filters + tabs) ===== */
 (() => {
   'use strict';
 
@@ -11,6 +11,10 @@
     manifest: [],
     manifestUrl: ''
   };
+
+  /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
+  let manifestFiltered = null;       // null = no filters; otherwise filtered array
+  let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[] };
 
   /* ---------- Helpers ---------- */
   const $ = (sel) => document.querySelector(sel);
@@ -49,9 +53,23 @@
         .map(e => {
           const path = (e.path || e.url || e.file || '').replace(/\\/g,'/').trim();
           const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
-          return { id: e.id || null, name: e.displayName || e.displayname || e.name || null, variant: e.variant || null, path, url: abs };
+          return {
+            id: e.id || null,
+            name: e.displayName || e.displayname || e.name || null,
+            variant: e.variant || null,
+            path,
+            url: abs,
+            // optional enriched fields for filtering (if present in manifest)
+            tons: e.tons ?? e.tonnage ?? e.mass,
+            tech: e.tech ?? e.techBase,
+            role: e.role,
+            class: e.class,
+            move: e.move
+          };
         });
 
+      // Refresh search index if search has mounted
+      window._rebuildSearchIndex?.();
       showToast(`Manifest loaded — ${state.manifest.length} mechs`);
     } catch (err) {
       console.error(err);
@@ -210,8 +228,8 @@
       ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
         .forEach(id => byId(id).hidden = true);
       // Armor table
-      ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL'].forEach(k => byId((k==='RTC'||k==='RTR'||k==='RTL')?'ar-'+k:'ar-'+k).textContent='—');
-      ['HD','CT','RT','LT','RA','LA','RL','LL'].forEach(k => byId('in-'+k).textContent='—');
+      ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL'].forEach(k => byId('ar-'+k)?.textContent='—');
+      ['HD','CT','RT','LT','RA','LA','RL','LL'].forEach(k => byId('in-'+k)?.textContent='—');
       byId('tr-weapons').textContent='—'; byId('tr-equipment').textContent='—'; byId('tr-ammo').textContent='—';
       return;
     }
@@ -399,6 +417,115 @@
   function backdropClose(e){ if (e.target === byId('settings-modal')) closeModal(); }
   function escClose(e){ if (e.key === 'Escape') closeModal(); }
 
+  /* ---------- Filter modal ---------- */
+  const btnCustomMech = byId('btn-custom-mech'); // used to open filter modal
+  const fModal      = document.getElementById('filter-modal');
+  const fClose      = document.getElementById('filter-close');
+  const fApply      = document.getElementById('filter-apply');
+  const fClear      = document.getElementById('filter-clear');
+
+  const fTech       = document.getElementById('f-tech');
+  const fClassL     = document.getElementById('f-class-L');
+  const fClassM     = document.getElementById('f-class-M');
+  const fClassH     = document.getElementById('f-class-H');
+  const fClassA     = document.getElementById('f-class-A');
+  const fJump       = document.getElementById('f-jump');
+  const fMinWalk    = document.getElementById('f-minwalk');
+  const fRoles      = document.getElementById('f-roles');
+
+  function openFilterModal(){
+    if (!fModal) return;
+    document.body.classList.add('modal-open');
+    fModal.hidden = false;
+    // preload UI from state
+    if (fTech) fTech.value = filterState.tech || "";
+    if (fClassL) fClassL.checked = filterState.classes.has('Light');
+    if (fClassM) fClassM.checked = filterState.classes.has('Medium');
+    if (fClassH) fClassH.checked = filterState.classes.has('Heavy');
+    if (fClassA) fClassA.checked = filterState.classes.has('Assault');
+    if (fJump) fJump.checked   = !!filterState.canJump;
+    if (fMinWalk) fMinWalk.value  = filterState.minWalk ?? "";
+    if (fRoles) fRoles.value    = filterState.roles.join(', ');
+  }
+
+  function closeFilterModal(){
+    if (!fModal) return;
+    fModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    btnCustomMech?.focus();
+  }
+
+  btnCustomMech?.addEventListener('click', openFilterModal);
+  fClose?.addEventListener('click', closeFilterModal);
+
+  /* Build predicate from controls, filter manifest, and close */
+  function applyFilters(){
+    // capture state
+    const classes = new Set();
+    if (fClassL?.checked) classes.add('Light');
+    if (fClassM?.checked) classes.add('Medium');
+    if (fClassH?.checked) classes.add('Heavy');
+    if (fClassA?.checked) classes.add('Assault');
+
+    filterState = {
+      tech: fTech?.value || "",
+      classes,
+      canJump: !!fJump?.checked,
+      minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
+      roles: (fRoles?.value || "")
+              .split(/[,\s]+/)
+              .map(s=>s.trim())
+              .filter(Boolean)
+              .map(s=>s.toLowerCase())
+    };
+
+    // turn state into a predicate (requires enriched manifest entries to be effective)
+    const pred = (m) => {
+      const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
+      const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
+      const mv   = m.move || {};
+      const w    = mv.w ?? mv.walk ?? null;
+      const j    = mv.j ?? mv.jump ?? 0;
+      const role = (m.role || (m.extras?.role) || "").toLowerCase();
+      const tech = m.tech || m.techBase || "";
+
+      if (filterState.tech && tech !== filterState.tech) return false;
+      if (filterState.classes.size && !filterState.classes.has(cls)) return false;
+      if (filterState.canJump && !(j > 0)) return false;
+      if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
+      if (filterState.roles.length){
+        const tokens = role.split(/[\/, ]+/).filter(Boolean);
+        const hit = tokens.some(t => filterState.roles.includes(t));
+        if (!hit) return false;
+      }
+      return true;
+    };
+
+    // apply over full manifest (if no filters active -> null to use full set)
+    const anyOn = filterState.tech || filterState.classes.size || filterState.canJump ||
+                  filterState.minWalk != null || filterState.roles.length;
+    manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
+
+    // tell search UI to rebuild its index from the filtered set
+    window._rebuildSearchIndex?.();
+
+    closeFilterModal();
+
+    // if search UI is open, re-render its list
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  }
+
+  function clearFilters(){
+    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[] };
+    manifestFiltered = null;
+    window._rebuildSearchIndex?.();
+    closeFilterModal();
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  }
+
+  fApply?.addEventListener('click', applyFilters);
+  fClear?.addEventListener('click', clearFilters);
+
   /* ---------- Tabs ---------- */
   function initTabs(){
     const topSwapper = byId('top-swapper');
@@ -449,8 +576,11 @@
     const openPanel  = () => { if (!open){ panel.style.display='block'; open = true; } };
     const closePanel = () => { if (open){ panel.style.display='none'; open = false; hi = -1; } };
 
-    function buildIndex(manifest) {
-      return manifest.map(m => {
+    function currentList() {
+      return manifestFiltered ?? state.manifest;
+    }
+    function buildIndex(list) {
+      return list.map(m => {
         const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
         return { ...m, _key: ' ' + label + ' ' };
       });
@@ -477,6 +607,9 @@
           <span class="result-variant dim mono small" style="float:right; margin-left:8px;">${e.id || e.variant || ''}</span>
         </div>`).join('');
     }
+
+    function rebuildIndex() { index = buildIndex(currentList()); }
+    window._rebuildSearchIndex = rebuildIndex; // expose for filters/manifest loader
 
     let tId = 0;
     input.addEventListener('input', () => {
@@ -514,13 +647,13 @@
 
     // manifest hooks
     byId('btn-load-manifest')?.addEventListener('click', async () => {
-      await loadManifest(); index = buildIndex(state.manifest);
+      await loadManifest(); rebuildIndex();
     });
     input.addEventListener('focus', async () => {
-      if (!state.manifest.length) { await loadManifest(); index = buildIndex(state.manifest); }
+      if (!state.manifest.length) { await loadManifest(); rebuildIndex(); }
     });
     // autoload once
-    (async ()=>{ if (!state.manifest.length) { await loadManifest(); index = buildIndex(state.manifest); } })();
+    (async ()=>{ if (!state.manifest.length) { await loadManifest(); rebuildIndex(); } else { rebuildIndex(); } })();
   }
 
   /* ---------- GATOR ---------- */
@@ -607,6 +740,57 @@
     sumOther(); recompute();
   }
 
+  /* ---------- Subtabs (GATOR & Tech Readout) ---------- */
+  function initGatorSubtabs(){
+    const root = document.getElementById('gator-compact');
+    if (!root) return;
+    const tabs = root.querySelectorAll('.gtr-subtab');
+    const panes= root.querySelectorAll('.gtr-pane');
+
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
+      const id = btn.getAttribute('data-gtr-tab');
+      tabs.forEach(b => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+    });
+
+    root.addEventListener('click', (e) => {
+      const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
+      const pane = document.getElementById(btn.getAttribute('data-gtr-tab'));
+      const firstInput = pane?.querySelector('select, input, button');
+      if (firstInput) setTimeout(()=> firstInput.focus(), 0);
+    });
+  }
+
+  function initTechSubtabs(){
+    const root = document.getElementById('tech-compact');
+    if (!root) return;
+
+    const tabs  = root.querySelectorAll('.gtr-subtab');
+    const panes = root.querySelectorAll('.gtr-pane');
+
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.gtr-subtab');
+      if (!btn) return;
+      const id = btn.getAttribute('data-tr-tab');
+
+      tabs.forEach(b => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+      const pane = document.getElementById(id);
+      const first = pane && pane.querySelector('select, input, button, [tabindex]');
+      if (first) setTimeout(()=> first.focus(), 0);
+    });
+  }
+
   /* ---------- Wire UI ---------- */
   function initUI(){
     byId('btn-import')?.addEventListener('click', importJson);
@@ -625,63 +809,9 @@
     initTabs();
     initSearchUI();
     initGator();
-initGatorSubtabs();   // <-- new line
-initTechSubtabs();   // <-- add this line
+    initGatorSubtabs();
+    initTechSubtabs();
   }
-
-function initGatorSubtabs(){
-  const root = document.getElementById('gator-compact');
-  if (!root) return;
-  const tabs = root.querySelectorAll('.gtr-subtab');
-  const panes= root.querySelectorAll('.gtr-pane');
-
-  root.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-    const id = btn.getAttribute('data-gtr-tab');
-    tabs.forEach(b => {
-      const active = b === btn;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-selected', String(active));
-    });
-    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
-  });
-
-  // Optional: focus first control when switching
-  root.addEventListener('click', (e) => {
-    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-    const pane = document.getElementById(btn.getAttribute('data-gtr-tab'));
-    const firstInput = pane?.querySelector('select, input, button');
-    if (firstInput) setTimeout(()=> firstInput.focus(), 0);
-  });
-}
-
-
-function initTechSubtabs(){
-  const root = document.getElementById('tech-compact');
-  if (!root) return;
-
-  const tabs  = root.querySelectorAll('.gtr-subtab');
-  const panes = root.querySelectorAll('.gtr-pane');
-
-  root.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.gtr-subtab');
-    if (!btn) return;
-    const id = btn.getAttribute('data-tr-tab');
-
-    tabs.forEach(b => {
-      const active = b === btn;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-selected', String(active));
-    });
-    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
-
-    // optional: focus first control in the pane
-    const pane = document.getElementById(id);
-    const first = pane && pane.querySelector('select, input, button, [tabindex]');
-    if (first) setTimeout(()=> first.focus(), 0);
-  });
-}
-
 
   /* ---------- Init ---------- */
   function init(){
