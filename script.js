@@ -233,12 +233,13 @@
   .forEach(k => { byId('ar-'+k).textContent = '—'; });
 
 ['HD','CT','RT','LT','RA','LA','RL','LL']
-  .forEach(k => { if (byId('in-'+k)) byId('in-'+k).textContent = '—'; });
+  .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; });
 
 byId('tr-weapons').textContent   = '—';
 byId('tr-equipment').textContent = '—';
 byId('tr-ammo').textContent      = '—';
 return;
+
 
 
     // Basics
@@ -747,56 +748,58 @@ return;
     sumOther(); recompute();
   }
 
-  /* ---------- Subtabs (GATOR & Tech Readout) ---------- */
   function initGatorSubtabs(){
-    const root = document.getElementById('gator-compact');
-    if (!root) return;
-    const tabs = root.querySelectorAll('.gtr-subtab');
-    const panes= root.querySelectorAll('.gtr-pane');
+  const root = document.getElementById('gator-compact');
+  if (!root) return;
 
-    root.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-      const id = btn.getAttribute('data-gtr-tab');
-      tabs.forEach(b => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-      panes.forEach(p => p.classList.toggle('is-active', p.id === id));
-    });
+  const tabs  = root.querySelectorAll('.gtr-subtab');
+  const panes = root.querySelectorAll('.gtr-pane');
 
-    root.addEventListener('click', (e) => {
-      const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-      const pane = document.getElementById(btn.getAttribute('data-gtr-tab'));
-      const firstInput = pane?.querySelector('select, input, button');
-      if (firstInput) setTimeout(()=> firstInput.focus(), 0);
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gtr-subtab');
+    if (!btn) return;
+    const id = btn.getAttribute('data-gtr-tab');
+
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
     });
-  }
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+    // focus first control in the newly active pane
+    const pane = document.getElementById(id);
+    const first = pane && pane.querySelector('select, input, button, [tabindex]');
+    if (first) setTimeout(() => first.focus(), 0);
+  });
+}
+
 
   function initTechSubtabs(){
-    const root = document.getElementById('tech-compact');
-    if (!root) return;
+  const root = document.getElementById('tech-compact');
+  if (!root) return;
 
-    const tabs  = root.querySelectorAll('.gtr-subtab');
-    const panes = root.querySelectorAll('.gtr-pane');
+  const tabs  = root.querySelectorAll('.gtr-subtab');
+  const panes = root.querySelectorAll('.gtr-pane');
 
-    root.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.gtr-subtab');
-      if (!btn) return;
-      const id = btn.getAttribute('data-tr-tab');
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gtr-subtab');
+    if (!btn) return;
+    const id = btn.getAttribute('data-tr-tab');
 
-      tabs.forEach(b => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-      panes.forEach(p => p.classList.toggle('is-active', p.id === id));
-
-      const pane = document.getElementById(id);
-      const first = pane && pane.querySelector('select, input, button, [tabindex]');
-      if (first) setTimeout(()=> first.focus(), 0);
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
     });
-  }
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+    const pane = document.getElementById(id);
+    const first = pane && pane.querySelector('select, input, button, [tabindex]');
+    if (first) setTimeout(() => first.focus(), 0);
+  });
+}
+
 
   /* ---------- Wire UI ---------- */
   function initUI(){
