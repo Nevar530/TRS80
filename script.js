@@ -230,10 +230,10 @@
       
 // Armor table
 ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
-  .forEach(k => { byId('ar-'+k).textContent = '—'; });
+  .forEach(k => { byId('ar-'+k).textContent = '—'; };
 
 ['HD','CT','RT','LT','RA','LA','RL','LL']
-  .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; });
+  .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; };
 
 byId('tr-weapons').textContent   = '—';
 byId('tr-equipment').textContent = '—';
