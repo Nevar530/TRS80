@@ -337,31 +337,31 @@
   </section>
 
   <!-- Dice/TN -->
-  <section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
-    <div class="gtr-col">
-      <div class="gtr-title">Dice & Target Number</div>
-      <div class="gtr-roller" style="margin-bottom:8px;">
-        <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
-          <option>2d6</option><option>1d6</option>
-        </select>
-        <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
-        <span>=</span>
-        <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
-      </div>
-
-      <div class="gtr-footer" style="padding-top:0; border-top:0;">
-        <div class="gtr-tn">
-          <div>Target Number</div>
-          <div id="gtr-total" class="tn tn-auto">Auto</div>
-        </div>
-        <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">Roll</button>
-      </div>
+<section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
+  <div class="gtr-col">
+    <div class="gtr-title">Dice & Target Number</div>
+    <div class="gtr-roller" style="margin-bottom:8px;">
+      <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
+        <option>2d6</option>
+        <option>1d6</option>
+      </select>
+      <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
+      <span>=</span>
+      <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
+      <!-- NEW: dice breakdown -->
+      <div id="roll-att-detail" class="small dim" style="margin-left:6px;"> </div>
     </div>
-  </section>
-</div>
-        </div>
 
-      </section>
+    <div class="gtr-footer" style="padding-top:0; border-top:0;">
+      <div class="gtr-tn">
+        <div>Target Number</div>
+        <div id="gtr-total" class="tn tn-auto">Auto</div>
+      </div>
+      <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">Roll</button>
+    </div>
+  </div>
+</section>
+
     </main>
 
     <!-- Footer with attribution -->
