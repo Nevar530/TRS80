@@ -680,11 +680,11 @@ function renderOverviewWeaponsMini(mech){
     const anchor = btnLoadMech || byId('btn-load-manifest') || toolbar.lastElementChild;
 
     const wrap = document.createElement('div');
-    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'200px', marginLeft:'6px' });
+    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'180px', marginLeft:'6px' });
 
     const input = document.createElement('input');
     Object.assign(input, { type:'search', id:'mech-search', placeholder:'Search mechs…', autocomplete:'off', spellcheck:false });
-    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'200px' });
+    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'180px' });
 
     const panel = document.createElement('div');
     panel.id = 'search-results';
