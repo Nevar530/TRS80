@@ -690,7 +690,7 @@ function renderOverviewWeaponsMini(mech){
     panel.id = 'search-results';
     Object.assign(panel.style, {
       position:'absolute', top:'calc(100% + 4px)', left:'0', zIndex:'100',
-      minWidth:'280px', maxWidth:'420px', maxHeight:'50vh', overflowY:'auto',
+      minWidth:'200px', maxWidth:'300px', maxHeight:'50vh', overflowY:'auto',
       border:'1px solid var(--border)', borderRadius:'8px', background:'var(--panel)',
       display:'none', boxShadow:'0 8px 24px rgba(0,0,0,0.35)'
     });
