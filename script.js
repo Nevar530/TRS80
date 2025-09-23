@@ -228,19 +228,20 @@ function ensureInternals(mech){
         .map(e => {
           const path = (e.path || e.url || e.file || '').replace(/\\/g,'/').trim();
           const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
-          return {
-            id: e.id || null,
-            name: e.displayName || e.displayname || e.name || null,
-            variant: e.variant || null,
-            path,
-            url: abs,
-            // optional enriched fields for filtering (if present in manifest)
-            tons: e.tons ?? e.tonnage ?? e.mass,
-            tech: e.tech ?? e.techBase,
-            role: e.role,
-            class: e.class,
-            move: e.move
-          };
+return {
+  id: e.id || null,
+  name: e.displayName || e.displayname || e.name || null,
+  variant: e.variant || null,
+  path,
+  url: abs,
+  tons: e.tons ?? e.tonnage ?? e.mass,
+  tech: e.tech ?? e.techBase,
+  role: e.role,
+  class: e.class,
+  move: e.move,
+  // 👇 add this properly
+  rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
+};
         });
 
       // Refresh search index if search has mounted
