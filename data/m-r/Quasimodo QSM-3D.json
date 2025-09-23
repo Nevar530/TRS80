@@ -1,55 +1,171 @@
 {
   "name": "Quasimodo",
+  "chassis": "Quasimodo",
   "model": "QSM-3D",
-  "tonnage": 55,
+  "mulId": 6509,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3140,
+  "source": "TRO: 3145 Free Worlds League",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "275 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 27,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 26,
+    "leftLeg": 26,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 184
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Free Worlds League"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    },
+    {
+      "type": "Medium VSP Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium VSP Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium VSP Laser",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "mul id": "6509",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "27",
-    "HD Armor": "9",
-    "LL Armor": "26",
-    "RL Armor": "26",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "6"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERMediumLaser",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Blue Shield Particle Field Damper",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Blue Shield Particle Field Damper",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "Blue Shield Particle Field Damper"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "Blue Shield Particle Field Damper",
+      "Medium VSP Laser",
+      "Medium VSP Laser",
+      "Medium VSP Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Blue Shield Particle Field Damper"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERSmallLaser",
+      "Sensors",
+      "Life Support",
+      "ER Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Blue Shield Particle Field Damper"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Blue Shield Particle Field Damper"
+    ]
   },
-  "era": "3140",
-  "displayName": "Quasimodo QSM-3D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

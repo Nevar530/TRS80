@@ -1,59 +1,157 @@
 {
   "name": "Kuma",
-  "model": null,
-  "tonnage": 60,
+  "chassis": "Kuma",
+  "mulId": 1849,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3082,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "360 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "6",
-    "jump": "8"
+    "walk": 6,
+    "jump": 8
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 201
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "hard_pilot"
   ],
-  "extras": {
-    "mul id": "1849",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "hard_pilot",
-    "weaponquirk": "accurate:LA:3:CLHeavyLargeLaser",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "3",
-    "manufacturer": "Alshain Battleworx",
-    "primaryfactory": "Alshain"
+  "weapons": [
+    {
+      "type": "Heavy Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Heavy Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet"
+    ]
   },
-  "era": "3082",
-  "displayName": "Kuma",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [
+      "Alshain Battleworx"
+    ],
+    "primaryFactory": [
+      "Alshain"
+    ],
+    "systems": {}
   }
 }

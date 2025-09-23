@@ -1,56 +1,144 @@
 {
   "name": "Dark Crow",
+  "chassis": "Dark Crow",
   "model": "2",
-  "tonnage": 55,
+  "mulId": 824,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3084,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 55,
   "engine": "330 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 8,
+    "centerTorso": 20,
+    "rightTorso": 17,
+    "leftTorso": 17,
+    "rightArm": 11,
+    "leftArm": 11,
+    "rightLeg": 16,
+    "leftLeg": 16,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 128
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "low_arms"
   ],
-  "extras": {
-    "mul id": "824",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "low_arms",
-    "Myomer": "Standard",
-    "LA Armor": "11",
-    "RA Armor": "11",
-    "LT Armor": "17",
-    "RT Armor": "17",
-    "CT Armor": "20",
-    "HD Armor": "8",
-    "LL Armor": "16",
-    "RL Armor": "16",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "4",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "LB 5-X AC",
+      "location": "LA"
+    },
+    {
+      "type": "LB 5-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "LB 5-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "LB 5-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERLargeLaser",
+      "CLERSmallLaser",
+      "Clan LB 5-X AC Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Large Laser",
+      "ER Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "Clan LB 5-X Cluster Ammo",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3084",
-  "displayName": "Dark Crow 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

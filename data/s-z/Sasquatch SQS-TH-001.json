@@ -1,56 +1,185 @@
 {
   "name": "Sasquatch",
+  "chassis": "Sasquatch",
   "model": "SQS-TH-001",
-  "tonnage": 85,
+  "mulId": 2798,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3054,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 85,
   "engine": "340 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 39,
+    "rightTorso": 27,
+    "leftTorso": 27,
+    "rightArm": 26,
+    "leftArm": 26,
+    "rightLeg": 33,
+    "leftLeg": 33,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 248
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "2798",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "26",
-    "RA Armor": "26",
-    "LT Armor": "27",
-    "RT Armor": "27",
-    "CT Armor": "39",
-    "HD Armor": "9",
-    "LL Armor": "33",
-    "RL Armor": "33",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "10"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Gauss Rifle",
+      "location": "RA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "RT"
+    },
+    {
+      "type": "AMS",
+      "location": "RT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "IS Gauss Ammo",
+      "IS Gauss Ammo",
+      "Gauss Rifle"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Machine Gun",
+      "Machine Gun"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "SRM 6",
+      "SRM 6",
+      "Machine Gun",
+      "ISAntiMissileSystem",
+      "IS Machine Gun Ammo - Half",
+      "IS Ammo SRM-6",
+      "ISAMS Ammo",
+      "SRM 6",
+      "Machine Gun",
+      "AMS"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Small Laser (R)",
+      "Sensors",
+      "Life Support",
+      "Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3054",
-  "displayName": "Sasquatch SQS-TH-001",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

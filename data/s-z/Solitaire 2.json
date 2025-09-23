@@ -1,57 +1,141 @@
 {
   "name": "Solitaire",
+  "chassis": "Solitaire",
   "model": "2",
-  "tonnage": 25,
+  "mulId": 5655,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3080,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 25,
   "engine": "250 XL Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "CLMASC",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "10",
-    "jump": "0"
+    "walk": 10,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous"
+    "type": "Ferro-Fibrous",
+    "head": 9,
+    "centerTorso": 10,
+    "rightTorso": 9,
+    "leftTorso": 9,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 3,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 86
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "5655",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "exp_actuator",
-    "weaponquirk": "stable_weapon:RT:2:CLHeavyLargeLaser",
-    "Myomer": "CLMASC",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "9",
-    "RT Armor": "9",
-    "CT Armor": "10",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "3",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "1 CLHeavyLargeLaser",
+      "location": "RT"
+    },
+    {
+      "type": "1 CLHeavyMediumLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 CLHeavySmallLaser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo-Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo-Steel",
+      "Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavySmallLaser",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Ferro-Fibrous",
+      "1 CLHeavyMediumLaser",
+      "1 CLHeavySmallLaser"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "Endo-Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 CLHeavyLargeLaser"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "CLMASC"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3080",
-  "displayName": "Solitaire 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,170 @@
 {
   "name": "Neanderthal",
+  "chassis": "Neanderthal",
   "model": "NTL-UG",
-  "tonnage": 80,
+  "mulId": 6514,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3124,
+  "source": "TRO: 3145 Free Worlds League",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 80,
   "engine": "400 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 32,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 15,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 232
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Free Worlds League"
+  "quirks": [
+    "stable",
+    "distracting",
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "6514",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "non_standard",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "32",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "15",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Large Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "TSM",
+      "TSM"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Large Laser",
+      "Large Laser",
+      "Small Laser",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Large Laser",
+      "Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Large Laser",
+      "Large Laser",
+      "Small Laser",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Large Laser",
+      "Small Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ]
   },
-  "era": "3124",
-  "displayName": "Neanderthal NTL-UG",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

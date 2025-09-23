@@ -1,57 +1,161 @@
 {
   "name": "Valkyrie",
+  "chassis": "Valkyrie",
   "model": "VLK-QD3",
-  "tonnage": 30,
+  "mulId": 3376,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3067,
+  "source": "TRO: Project Phoenix",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 30,
   "engine": "210 Fusion Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "7",
-    "jump": "6"
+    "walk": 7,
+    "jump": 6
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 8,
+    "centerTorso": 12,
+    "rightTorso": 10,
+    "leftTorso": 10,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 3,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 89
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: Project Phoenix"
+  "quirks": [
+    "easy_maintain",
+    "imp_com"
   ],
-  "extras": {
-    "mul id": "3376",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "imp_com",
-    "myomer": "Standard",
-    "ejection": "Full Head Ejection System",
-    "LA armor": "8",
-    "RA armor": "8",
-    "LT armor": "10",
-    "RT armor": "10",
-    "CT armor": "12",
-    "HD armor": "8",
-    "LL armor": "12",
-    "RL armor": "12",
-    "RTL armor": "3",
-    "RTR armor": "3",
-    "RTC armor": "3",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "LRM 5",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "LRM 5",
+      "IS Ammo LRM-5",
+      "ISCASE",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "LRM 5"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3067",
-  "displayName": "Valkyrie VLK-QD3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

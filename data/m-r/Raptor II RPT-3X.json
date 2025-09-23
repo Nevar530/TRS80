@@ -1,56 +1,163 @@
 {
   "name": "Raptor II",
+  "chassis": "Raptor II",
   "model": "RPT-3X",
-  "tonnage": 40,
+  "mulId": 2659,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3084,
+  "source": "TRO: 3085",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 40,
   "engine": "280 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "7",
-    "jump": "0"
+    "walk": 7,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 15,
+    "leftLeg": 15,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 127
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "no_arms",
+    "no_eject"
   ],
-  "extras": {
-    "mul id": "2659",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "no_eject",
-    "Myomer": "Standard",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "15",
-    "RL Armor": "15",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "4",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISERMediumLaser",
+      "Mek Void Signature System",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISERMediumLaser",
+      "Mek Void Signature System",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "IS Streak SRM 6 Ammo",
+      "Mek Void Signature System",
+      "Light Ferro-Fibrous",
+      "Streak SRM 6"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "IS Streak SRM 6 Ammo",
+      "ISMASC",
+      "ISMASC",
+      "Mek Void Signature System",
+      "Light Ferro-Fibrous",
+      "Streak SRM 6"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Mek Void Signature System",
+      "Light Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Mek Void Signature System",
+      "Light Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Mek Void Signature System",
+      "Light Ferro-Fibrous"
+    ]
   },
-  "era": "3084",
-  "displayName": "Raptor II RPT-3X",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

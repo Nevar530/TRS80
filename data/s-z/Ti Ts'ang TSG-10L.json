@@ -1,56 +1,198 @@
 {
   "name": "Ti Ts'ang",
+  "chassis": "Ti Ts'ang",
   "model": "TSG-10L",
-  "tonnage": 60,
+  "mulId": 6884,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3125,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "360 XXL Engine(IS)",
+  "structure": "IS Endo-Composite",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Heat-Dissipating(Inner Sphere)"
+    "type": "Heat-Dissipating (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Composite",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "hyper_actuator"
   ],
-  "extras": {
-    "mul id": "6884",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "hyper_actuator",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "9",
-    "Weapons": "10"
+  "weapons": [
+    {
+      "type": "Medium VSP Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "TAG",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISMediumVSPLaser",
+      "ISMediumVSPLaser",
+      "Small Laser",
+      "Small Laser",
+      "Small Laser",
+      "Small Laser",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Heat-Dissipating",
+      "Medium VSP Laser",
+      "Small Laser",
+      "Small Laser",
+      "Small Laser",
+      "Small Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Heat-Dissipating"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Medium Laser",
+      "Medium Laser",
+      "IS Endo-Composite",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Medium Laser",
+      "Medium Laser",
+      "ISChaffPod",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Supercharger",
+      "ISTAG",
+      "TAG"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo-Composite",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Heat-Dissipating",
+      "IS Heat-Dissipating"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Heat-Dissipating",
+      "IS Heat-Dissipating"
+    ]
   },
-  "era": "3125",
-  "displayName": "Ti Ts'ang TSG-10L",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

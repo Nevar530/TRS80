@@ -1,55 +1,176 @@
 {
   "name": "Flashfire",
+  "chassis": "Flashfire",
   "model": "FLS-P4",
-  "tonnage": 30,
+  "mulId": 1121,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3055,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 30,
   "engine": "180 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 8,
+    "centerTorso": 11,
+    "rightTorso": 7,
+    "leftTorso": 7,
+    "rightArm": 7,
+    "leftArm": 7,
+    "rightLeg": 9,
+    "leftLeg": 9,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 80
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Flamer",
+      "location": "LA"
+    },
+    {
+      "type": "Flamer",
+      "location": "LA"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Flamer",
+      "location": "RA"
+    },
+    {
+      "type": "Flamer",
+      "location": "RA"
+    }
   ],
-  "extras": {
-    "mul id": "1121",
-    "Config": "Biped",
-    "role": "Striker",
-    "Myomer": "Standard",
-    "LA Armor": "7",
-    "RA Armor": "7",
-    "LT Armor": "7",
-    "RT Armor": "7",
-    "CT Armor": "11",
-    "HD Armor": "8",
-    "LL Armor": "9",
-    "RL Armor": "9",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "7",
-    "Weapons": "7"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMediumPulseLaser",
+      "Flamer",
+      "Flamer",
+      "Endo Steel",
+      "Endo Steel",
+      "Medium Pulse Laser",
+      "Flamer",
+      "Flamer"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "SRM 6",
+      "SRM 6",
+      "ISMediumPulseLaser",
+      "Flamer",
+      "Flamer",
+      "IS Ammo SRM-6",
+      "SRM 6",
+      "Medium Pulse Laser",
+      "Flamer",
+      "Flamer"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3055",
-  "displayName": "Flashfire FLS-P4",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

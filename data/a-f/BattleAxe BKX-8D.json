@@ -1,56 +1,183 @@
 {
   "name": "BattleAxe",
+  "chassis": "BattleAxe",
   "model": "BKX-8D",
-  "tonnage": 70,
+  "mulId": 279,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 70,
   "engine": "280 Light Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "15 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 217
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "279",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "22",
-    "RA Armor": "22",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "33",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "11",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "MML 7",
+      "location": "LT"
+    },
+    {
+      "type": "MML 7",
+      "location": "RT"
+    },
+    {
+      "type": "MML 7",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "Light Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "Light Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "IS Ammo MML-7 LRM",
+      "IS Ammo MML-7 LRM",
+      "IS Ammo MML-7 SRM",
+      "IS Ammo MML-7 SRM",
+      "ISCASE",
+      "Light Ferro-Fibrous",
+      "MML 7"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "MML 7",
+      "MML 7"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISC3SlaveUnit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3073",
-  "displayName": "BattleAxe BKX-8D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

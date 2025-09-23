@@ -1,56 +1,167 @@
 {
   "name": "Shiro",
+  "chassis": "Shiro",
   "model": "SH-1V",
-  "tonnage": 75,
+  "mulId": 6416,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "4",
+  "era": 3135,
+  "source": "TRO: 3145 Draconis Combine",
+  "rulesLevel": 4,
+  "role": "Missile Boat",
+  "mass": 75,
   "engine": "375 XL Engine(IS)",
+  "structure": "IS Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Hardened(Inner Sphere)"
+    "type": "Hardened (InnerSphere)",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 168
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Draconis Combine"
+  "quirks": [
+    "distracting"
   ],
-  "extras": {
-    "mul id": "6416",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "distracting",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "8",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "LRM 10",
+      "location": "RT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "RT"
+    },
+    {
+      "type": "LB 2-X AC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "IS LB 2-X AC Ammo",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "LB 2-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Sword",
+      "Sword",
+      "Sword",
+      "Sword",
+      "Sword",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLRM10",
+      "CLLRM10",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "LRM 10",
+      "LRM 10"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLRM10",
+      "CLLRM10",
+      "Clan Ammo LRM-10",
+      "Clan Ammo LRM-10",
+      "Clan Ammo LRM-10",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "LRM 10",
+      "LRM 10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo-Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ]
   },
-  "era": "3135",
-  "displayName": "Shiro SH-1V",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

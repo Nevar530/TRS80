@@ -1,57 +1,148 @@
 {
   "name": "Gùn",
+  "chassis": "Gùn",
   "model": "GN-2OB",
-  "tonnage": 20,
+  "mulId": 6452,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3134,
+  "source": "TRO: 3145 Capellan Confederation",
+  "rulesLevel": 3,
+  "role": "Sniper",
+  "mass": 20,
   "engine": "100 Fusion Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 7,
+    "centerTorso": 7,
+    "rightTorso": 6,
+    "leftTorso": 6,
+    "rightArm": 6,
+    "leftArm": 6,
+    "rightLeg": 6,
+    "leftLeg": 6,
+    "rearCenterTorso": 2,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 56
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Capellan Confederation"
+  "quirks": [
+    "imp_target_short"
   ],
-  "extras": {
-    "mul id": "6452",
-    "Config": "Biped Omnimech",
-    "role": "Sniper",
-    "quirk": "imp_target_short",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "4",
-    "LA Armor": "6",
-    "RA Armor": "6",
-    "LT Armor": "6",
-    "RT Armor": "6",
-    "CT Armor": "7",
-    "HD Armor": "7",
-    "LL Armor": "6",
-    "RL Armor": "6",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "2",
-    "Weapons": "2"
+  "weapons": [
+    {
+      "type": "TAG",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISTAG (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "TAG"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser (omnipod)",
+      "ISERLargeLaser (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "BloodhoundActiveProbe (omnipod)",
+      "BloodhoundActiveProbe (omnipod)",
+      "BloodhoundActiveProbe (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISAngelECMSuite (omnipod)",
+      "ISAngelECMSuite (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3134",
-  "displayName": "Gùn GN-2OB",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

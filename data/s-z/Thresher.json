@@ -1,56 +1,161 @@
 {
   "name": "Thresher",
-  "model": null,
-  "tonnage": 60,
+  "chassis": "Thresher",
+  "mulId": 3198,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 2849,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 22,
+    "rightTorso": 17,
+    "leftTorso": 17,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 21,
+    "leftLeg": 21,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "imp_target_med"
   ],
-  "extras": {
-    "mul id": "3198",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "imp_target_med",
-    "Myomer": "Standard",
-    "LA Armor": "14",
-    "RA Armor": "14",
-    "LT Armor": "17",
-    "RT Armor": "17",
-    "CT Armor": "22",
-    "HD Armor": "9",
-    "LL Armor": "21",
-    "RL Armor": "21",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "SRM 6",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Ultra AC/10",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLSRM6",
+      "CLMediumPulseLaser",
+      "Clan Ammo SRM-6",
+      "Endo Steel",
+      "SRM 6",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLSRM6",
+      "CLMediumPulseLaser",
+      "Clan Ammo SRM-6",
+      "Endo Steel",
+      "SRM 6",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLERMediumLaser",
+      "CLMASC",
+      "CLMASC",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "Clan Ultra AC/10 Ammo",
+      "Clan Ultra AC/10 Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "Ultra AC/10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "2849",
-  "displayName": "Thresher",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,168 @@
 {
   "name": "Prefect",
+  "chassis": "Prefect",
   "model": "PRF-2R",
-  "tonnage": 75,
+  "mulId": 2571,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3086,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 75,
   "engine": "375 Light Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "17 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 35,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 215
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "ext_twist"
   ],
-  "extras": {
-    "mul id": "2571",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "ext_twist",
-    "Myomer": "Standard",
-    "LA Armor": "22",
-    "RA Armor": "22",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "35",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "9",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "LT"
+    },
+    {
+      "type": "Light PPC",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Snub-Nose PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Snub-Nose PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Light PPC",
+      "Light PPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Light PPC"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Light PPC",
+      "Light PPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Light PPC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3086",
-  "displayName": "Prefect PRF-2R",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

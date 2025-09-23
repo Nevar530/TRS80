@@ -1,56 +1,121 @@
 {
   "name": "Thunder Fox",
+  "chassis": "Thunder Fox",
   "model": "TFT-C3",
-  "tonnage": 55,
+  "mulId": 3218,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3085,
+  "source": "TRO: 3085",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "220 Light Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightLeg": 17,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": "Command Console",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "easy_maintain"
   ],
-  "extras": {
-    "mul id": "3218",
-    "Config": "Quad",
-    "role": "Skirmisher",
-    "quirk": "easy_maintain",
-    "Myomer": "Standard",
-    "FLL Armor": "17",
-    "FRL Armor": "17",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "21",
-    "HD Armor": "9",
-    "RLL Armor": "17",
-    "RRL Armor": "17",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "C3 Master with TAG",
+      "location": "LT"
+    },
+    {
+      "type": "Medium X-Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMediumXPulseLaser",
+      "ISERMediumLaser",
+      "ISC3MasterUnit",
+      "ISC3MasterUnit",
+      "ISC3MasterUnit",
+      "ISC3MasterUnit",
+      "ISC3MasterUnit",
+      "C3 Master with TAG",
+      "Medium X-Pulse Laser",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "ER Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3085",
-  "displayName": "Thunder Fox TFT-C3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

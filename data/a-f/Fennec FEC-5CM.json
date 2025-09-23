@@ -1,56 +1,173 @@
 {
   "name": "Fennec",
+  "chassis": "Fennec",
   "model": "FEC-5CM",
-  "tonnage": 55,
+  "mulId": 6900,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3133,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 3,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "275 XXL (Clan) Engine",
+  "structure": "IS Endo-Composite",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 27,
+    "rightTorso": 21,
+    "leftTorso": 21,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 170
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Composite",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "no_arms"
   ],
-  "extras": {
-    "mul id": "6900",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "no_arms",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "21",
-    "RT Armor": "21",
-    "CT Armor": "27",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Large Re-engineered Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Re-engineered Laser",
+      "location": "RA"
+    },
+    {
+      "type": "C3 Master Boosted with TAG",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "CLERMediumLaser",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "ER Medium Laser",
+      "Large Re-engineered Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "CLERMediumLaser",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "ER Medium Laser",
+      "Large Re-engineered Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Radical Heat Sink System",
+      "Radical Heat Sink System",
+      "Radical Heat Sink System",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Endo-Composite"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISC3MasterBoostedSystemUnit",
+      "ISC3MasterBoostedSystemUnit",
+      "ISC3MasterBoostedSystemUnit",
+      "ISC3MasterBoostedSystemUnit",
+      "ISC3MasterBoostedSystemUnit",
+      "ISC3MasterBoostedSystemUnit",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "C3 Master Boosted with TAG"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLLightActiveProbe",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ]
   },
-  "era": "3133",
-  "displayName": "Fennec FEC-5CM",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,173 @@
 {
   "name": "Malice",
+  "chassis": "Malice",
   "model": "MAL-XP",
-  "tonnage": 100,
+  "mulId": 6725,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3139,
+  "source": "TRO: 3145 Republic of the Sphere",
+  "rulesLevel": 3,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "400 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(IS/Clan)"
+    "type": "Standard (IS/Clan)",
+    "head": 9,
+    "centerTorso": 42,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 34,
+    "leftArm": 34,
+    "rightLeg": 42,
+    "leftLeg": 42,
+    "rearCenterTorso": 20,
+    "rearRightTorso": 12,
+    "rearLeftTorso": 12,
+    "total": 307
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Republic of the Sphere"
+  "quirks": [
+    "pro_actuator"
   ],
-  "extras": {
-    "mul id": "6725",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "pro_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "34",
-    "RA Armor": "34",
-    "LT Armor": "30",
-    "RT Armor": "30",
-    "CT Armor": "42",
-    "HD Armor": "9",
-    "LL Armor": "42",
-    "RL Armor": "42",
-    "RTL Armor": "12",
-    "RTR Armor": "12",
-    "RTC Armor": "20",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "LB 5-X AC",
+      "location": "RT"
+    },
+    {
+      "type": "LB 5-X AC",
+      "location": "LT"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "LB 10-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "LB 10-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "Clan LB 5-X Cluster Ammo",
+      "Clan LB 10-X AC Ammo",
+      "Clan LB 10-X Cluster Ammo",
+      "IS Endo Steel",
+      "LB 5-X AC",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "CLLBXAC5",
+      "Clan LB 5-X Cluster Ammo",
+      "Clan LB 10-X AC Ammo",
+      "Clan LB 10-X Cluster Ammo",
+      "IS Endo Steel",
+      "LB 5-X AC",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3139",
-  "displayName": "Malice MAL-XP",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

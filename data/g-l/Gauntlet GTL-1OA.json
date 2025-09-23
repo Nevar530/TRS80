@@ -1,57 +1,163 @@
 {
   "name": "Gauntlet",
+  "chassis": "Gauntlet",
   "model": "GTL-1OA",
-  "tonnage": 55,
+  "mulId": 6622,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3128,
+  "source": "TRO: 3145 Lyran Commonwealth",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "275 Light Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 24,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 169
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Lyran Commonwealth"
+  "quirks": [
+    "poor_life_support"
   ],
-  "extras": {
-    "mul id": "6622",
-    "Config": "Biped Omnimech",
-    "role": "Skirmisher",
-    "quirk": "poor_life_support",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "24",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "10",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Light PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "RA"
+    },
+    {
+      "type": "MML 7",
+      "location": "LT"
+    },
+    {
+      "type": "MML 7",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Light PPC (omnipod)",
+      "Light PPC (omnipod)",
+      "IS Ammo MML-7 LRM (omnipod)",
+      "IS Ammo MML-7 SRM (omnipod)",
+      "ISCASEII (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "Light PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Light PPC (omnipod)",
+      "Light PPC (omnipod)",
+      "IS Ammo MML-7 LRM (omnipod)",
+      "IS Ammo MML-7 SRM (omnipod)",
+      "ISCASEII (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "Light PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "MML 7"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "ISMML7 (omnipod)",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "MML 7"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Light Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3128",
-  "displayName": "Gauntlet GTL-1OA",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

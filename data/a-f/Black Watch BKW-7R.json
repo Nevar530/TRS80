@@ -1,56 +1,157 @@
 {
   "name": "Black Watch",
+  "chassis": "Black Watch",
   "model": "BKW-7R",
-  "tonnage": 85,
+  "mulId": 371,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3061,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 85,
   "engine": "255 Fusion Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "3",
-    "jump": "3"
+    "walk": 3,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 37,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 31,
+    "leftLeg": 31,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 240
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "easy_pilot"
   ],
-  "extras": {
-    "mul id": "371",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "easy_pilot",
-    "Myomer": "Standard",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "37",
-    "HD Armor": "9",
-    "LL Armor": "31",
-    "RL Armor": "31",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "12",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Light Gauss Rifle",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/10",
+      "location": "RA"
+    },
+    {
+      "type": "MRM 40",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISLightGaussRifle",
+      "ISLightGaussRifle",
+      "ISLightGaussRifle",
+      "ISLightGaussRifle",
+      "ISLightGaussRifle",
+      "Light Gauss Rifle"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "Ultra AC/10"
+    ],
+    "leftTorso": [
+      "Jump Jet",
+      "MRM 40",
+      "MRM 40",
+      "MRM 40",
+      "MRM 40",
+      "MRM 40",
+      "MRM 40",
+      "MRM 40",
+      "IS Light Gauss Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "MRM 40"
+    ],
+    "rightTorso": [
+      "Jump Jet",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "IS MRM 40 Ammo",
+      "IS MRM 40 Ammo",
+      "ISCASE",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISC3SlaveUnit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3061",
-  "displayName": "Black Watch BKW-7R",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

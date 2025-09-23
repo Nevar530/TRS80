@@ -1,56 +1,172 @@
 {
   "name": "Imp",
+  "chassis": "Imp",
   "model": "C",
-  "tonnage": 100,
+  "mulId": 1606,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 2863,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "300 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "25 Double",
   "movement": {
-    "walk": "3",
-    "jump": "0"
+    "walk": 3,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 44,
+    "rightTorso": 32,
+    "leftTorso": 32,
+    "rightArm": 34,
+    "leftArm": 34,
+    "rightLeg": 42,
+    "leftLeg": 42,
+    "rearCenterTorso": 15,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 304
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "command_mech",
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "1606",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "34",
-    "RA Armor": "34",
-    "LT Armor": "32",
-    "RT Armor": "32",
-    "CT Armor": "44",
-    "HD Armor": "9",
-    "LL Armor": "42",
-    "RL Armor": "42",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "15",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "1 CLMediumPulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 CLERPPC",
+      "location": "RT"
+    },
+    {
+      "type": "1 CLMediumPulseLaser",
+      "location": "RT"
+    },
+    {
+      "type": "1 CLERPPC",
+      "location": "LT"
+    },
+    {
+      "type": "1 CLMediumPulseLaser",
+      "location": "LT"
+    },
+    {
+      "type": "2 CLMediumPulseLaser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLMediumPulseLaser",
+      "1 CLMediumPulseLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLArtemisIV"
+    ],
+    "leftTorso": [
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLERPPC",
+      "CLERPPC",
+      "CLMediumPulseLaser",
+      "CLLRM20 Ammo (Clan) Artemis-capable",
+      "CLLRM20 Ammo (Clan) Artemis-capable",
+      "CLLRM20 Ammo (Clan) Artemis-capable",
+      "1 CLERPPC",
+      "1 CLMediumPulseLaser"
+    ],
+    "rightTorso": [
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLERPPC",
+      "CLERPPC",
+      "CLMediumPulseLaser",
+      "1 CLERPPC",
+      "1 CLMediumPulseLaser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLMediumPulseLaser",
+      "CLMediumPulseLaser",
+      "2 CLMediumPulseLaser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink"
+    ]
   },
-  "era": "2863",
-  "displayName": "Imp C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

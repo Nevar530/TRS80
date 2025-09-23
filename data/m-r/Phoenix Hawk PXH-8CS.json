@@ -1,59 +1,161 @@
 {
   "name": "Phoenix Hawk",
+  "chassis": "Phoenix Hawk",
   "model": "PXH-8CS",
-  "tonnage": 45,
+  "mulId": 2510,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3080,
+  "source": "TRO: 3085",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 45,
   "engine": "315 XXL Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "7",
-    "jump": "6"
+    "walk": 7,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 19,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 19,
+    "leftLeg": 19,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 136
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "command_mech",
+    "imp_com",
+    "ubiquitous_clan",
+    "ubiquitous_is"
   ],
-  "extras": {
-    "mul id": "2510",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "ubiquitous_is",
-    "weaponquirk": "jettison_capable:RA:7:ISSNPPC",
-    "Myomer": "Standard",
-    "Ejection": "Full Head Ejection System",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "19",
-    "HD Armor": "9",
-    "LL Armor": "19",
-    "RL Armor": "19",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "2",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\phoenix hawk PXH-7CS.jpg"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Snub-Nose PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISSNPPC",
+      "ISSNPPC",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "Endo Steel",
+      "Snub-Nose PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISC3SlaveUnit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3080",
-  "displayName": "Phoenix Hawk PXH-8CS",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

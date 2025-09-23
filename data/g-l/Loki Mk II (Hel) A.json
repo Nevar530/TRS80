@@ -1,58 +1,193 @@
 {
   "name": "Loki Mk II",
+  "chassis": "Loki Mk II",
   "model": "A",
-  "tonnage": 65,
+  "mulId": 6278,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3121,
+  "source": "TRO: 3145 The Clans",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 65,
   "engine": "260 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "16 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 21,
+    "leftLeg": 21,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 182
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 The Clans"
+  "quirks": [
+    "multi_trac"
   ],
-  "extras": {
-    "clanname": "Hel",
-    "mul id": "6278",
-    "Config": "Biped Omnimech",
-    "role": "Brawler",
-    "quirk": "multi_trac",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "21",
-    "RL Armor": "21",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "7",
-    "Weapons": "9"
+  "weapons": [
+    {
+      "type": "ER PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "LT"
+    },
+    {
+      "type": "Improved Heavy Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Improved Heavy Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLERPPC (omnipod)",
+      "CLERPPC (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "ER PPC",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLERPPC (omnipod)",
+      "CLERPPC (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "ER PPC",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLBXAC10 (omnipod)",
+      "CLLBXAC10 (omnipod)",
+      "CLLBXAC10 (omnipod)",
+      "CLLBXAC10 (omnipod)",
+      "CLLBXAC10 (omnipod)",
+      "Clan LB 10-X AC Ammo (omnipod)",
+      "Clan LB 10-X Cluster Ammo (omnipod)",
+      "CLAPGaussRifle Ammo (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "LB 10-X AC"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLImprovedMediumHeavyLaser (omnipod)",
+      "CLImprovedMediumHeavyLaser (omnipod)",
+      "CLImprovedMediumHeavyLaser (omnipod)",
+      "CLImprovedMediumHeavyLaser (omnipod)",
+      "CLAPGaussRifle (omnipod)",
+      "CLAPGaussRifle (omnipod)",
+      "CLAngelECMSuite (omnipod)",
+      "CLAngelECMSuite (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "Improved Heavy Medium Laser",
+      "Improved Heavy Medium Laser",
+      "AP Gauss Rifle",
+      "AP Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ]
   },
-  "era": "3121",
-  "displayName": "Loki Mk II A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

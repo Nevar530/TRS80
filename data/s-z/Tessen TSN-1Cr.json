@@ -1,56 +1,168 @@
 {
   "name": "Tessen",
+  "chassis": "Tessen",
   "model": "TSN-1Cr",
-  "tonnage": 50,
+  "mulId": 3172,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 50,
   "engine": "300 XL Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 16,
+    "leftArm": 16,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 161
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "3172",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "bad_rep_is",
-    "Myomer": "Standard",
-    "LA Armor": "16",
-    "RA Armor": "16",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "iNarc",
+      "location": "LA"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "TAG",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISImprovedNarc",
+      "ISImprovedNarc",
+      "ISImprovedNarc",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "ISC3SlaveUnit",
+      "Endo Steel",
+      "Endo Steel",
+      "iNarc"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISMediumPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER PPC",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISCASE",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISTAG",
+      "Sensors",
+      "Life Support",
+      "TAG"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3069",
-  "displayName": "Tessen TSN-1Cr",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

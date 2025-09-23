@@ -1,57 +1,164 @@
 {
   "name": "Rifleman",
+  "chassis": "Rifleman",
   "model": "RFL-7X",
-  "tonnage": 60,
+  "mulId": 2704,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3081,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "360 XL Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 22,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 161
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "anti_air",
+    "imp_com",
+    "searchlight",
+    "ubiquitous_clan",
+    "ubiquitous_is"
   ],
-  "extras": {
-    "mul id": "2704",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "ubiquitous_is",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "22",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "4",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\3085 Rifleman .jpg"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Light PPC",
+      "Light PPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Snub-Nose PPC",
+      "Light PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Light PPC",
+      "Light PPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Snub-Nose PPC",
+      "Light PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Light Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ]
   },
-  "era": "3081",
-  "displayName": "Rifleman RFL-7X",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

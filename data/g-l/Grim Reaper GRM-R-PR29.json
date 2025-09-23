@@ -1,56 +1,163 @@
 {
   "name": "Grim Reaper",
+  "chassis": "Grim Reaper",
   "model": "GRM-R-PR29",
-  "tonnage": 55,
+  "mulId": 1328,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3052,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "275 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 26,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 26,
+    "leftLeg": 26,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 185
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "easy_maintain",
+    "pro_actuator"
   ],
-  "extras": {
-    "mul id": "1328",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "pro_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "26",
-    "HD Armor": "9",
-    "LL Armor": "26",
-    "RL Armor": "26",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "SRM 6",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "RT"
+    },
+    {
+      "type": "AMS",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "SRM 6",
+      "SRM 6",
+      "ISMediumPulseLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "SRM 6",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Ammo SRM-6",
+      "ISCASE",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "IS Ammo LRM-20",
+      "IS Ammo LRM-20",
+      "ISAMS Ammo",
+      "Ferro-Fibrous",
+      "LRM 20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISAntiMissileSystem",
+      "Ferro-Fibrous",
+      "AMS"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3052",
-  "displayName": "Grim Reaper GRM-R-PR29",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,57 +1,166 @@
 {
   "name": "Rook",
+  "chassis": "Rook",
   "model": "NH-1B",
-  "tonnage": 55,
+  "mulId": 2741,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 3075,
+  "source": "TRO: 3085",
+  "rulesLevel": 1,
+  "role": "Brawler",
+  "mass": 55,
   "engine": "220 Fusion Engine(IS)",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "20 Single",
   "movement": {
-    "walk": "4",
-    "jump": "3"
+    "walk": 4,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard((Unknown Technology Base))"
+    "type": "Standard ( (UnknownTechnologyBase))",
+    "head": 9,
+    "centerTorso": 19,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 13,
+    "leftArm": 13,
+    "rightLeg": 19,
+    "leftLeg": 19,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 136
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "2741",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "13",
-    "RA Armor": "13",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "19",
-    "HD Armor": "9",
-    "LL Armor": "19",
-    "RL Armor": "19",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "8",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\3076Rook.jpg"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "PPC",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Jump Jet",
+      "Medium Laser",
+      "Medium Laser (R)",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightTorso": [
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Jump Jet",
+      "PPC",
+      "PPC",
+      "PPC",
+      "Medium Laser",
+      "Medium Laser (R)",
+      "PPC",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Small Laser",
+      "Sensors",
+      "Life Support",
+      "Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ]
   },
-  "era": "3075",
-  "displayName": "Rook NH-1B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,54 +1,165 @@
 {
   "name": "Götterdämmerung",
+  "chassis": "Götterdämmerung",
   "model": "GTD-20C",
-  "tonnage": 75,
+  "mulId": 8061,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3138,
+  "source": "TRO: 3145 Lyran Commonwealth",
+  "rulesLevel": 3,
+  "mass": 75,
   "engine": "300 Compact Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 IS Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Lamellor(Clan)"
+    "type": "Ferro-Lamellor (Clan)",
+    "head": 9,
+    "centerTorso": 36,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 231
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Torso-Mounted Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Lyran Commonwealth"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "LRM 15",
+      "location": "H"
+    }
   ],
-  "extras": {
-    "mul id": "8061",
-    "Config": "Biped",
-    "myomer": "Standard",
-    "LA armor": "24",
-    "RA armor": "24",
-    "LT armor": "24",
-    "RT armor": "24",
-    "CT armor": "36",
-    "HD armor": "9",
-    "LL armor": "32",
-    "RL armor": "32",
-    "RTL armor": "8",
-    "RTR armor": "8",
-    "RTC armor": "10",
-    "Weapons": "7"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERPPC",
+      "CLERPPC",
+      "ER PPC"
+    ],
+    "leftTorso": [
+      "Life Support",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor"
+    ],
+    "rightTorso": [
+      "Life Support",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Cockpit",
+      "Sensors",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Sensors",
+      "Sensors",
+      "CLLRM15",
+      "CLLRM15",
+      "Clan Ammo LRM-15",
+      "LRM 15"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor"
+    ]
   },
-  "era": "3138",
-  "displayName": "Götterdämmerung GTD-20C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

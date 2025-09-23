@@ -1,56 +1,113 @@
 {
   "name": "Stalking Spider",
+  "chassis": "Stalking Spider",
   "model": "2",
-  "tonnage": 50,
+  "mulId": 3046,
+  "config": "Quad",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3060,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 50,
   "engine": "250 Fusion (Clan) Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 15,
+    "leftTorso": 15,
+    "rightLeg": 20,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 153
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "3046",
-    "Config": "Quad",
-    "role": "Skirmisher",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "FLL Armor": "20",
-    "FRL Armor": "20",
-    "LT Armor": "15",
-    "RT Armor": "15",
-    "CT Armor": "21",
-    "HD Armor": "9",
-    "RLL Armor": "20",
-    "RRL Armor": "20",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Clan TAG",
+      "location": "LT"
+    },
+    {
+      "type": "Heavy Large Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLMediumPulseLaser",
+      "CLMediumPulseLaser",
+      "CLTAG",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLActiveProbe",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser",
+      "Clan TAG"
+    ],
+    "rightTorso": [
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLMASC",
+      "CLMASC",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Heavy Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3060",
-  "displayName": "Stalking Spider 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

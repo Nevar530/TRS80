@@ -1,56 +1,160 @@
 {
   "name": "Watchman",
+  "chassis": "Watchman",
   "model": "WTC-4DM",
-  "tonnage": 40,
+  "mulId": 3533,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3063,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 40,
   "engine": "200 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 16,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 137
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "easy_maintain",
+    "easy_pilot",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "3533",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "16",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "PPC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "PPC",
+      "PPC",
+      "PPC",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Medium Laser",
+      "Medium Laser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3063",
-  "displayName": "Watchman WTC-4DM",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

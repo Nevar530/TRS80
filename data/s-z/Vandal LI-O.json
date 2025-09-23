@@ -1,57 +1,152 @@
 {
   "name": "Vandal",
+  "chassis": "Vandal",
   "model": "LI-O",
-  "tonnage": 65,
+  "mulId": 6461,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3142,
+  "source": "TRO: 3145 Capellan Confederation",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 65,
   "engine": "325 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 8,
+    "centerTorso": 32,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 19,
+    "leftArm": 19,
+    "rightLeg": 26,
+    "leftLeg": 26,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Torso-Mounted Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Capellan Confederation"
+  "quirks": [
+    "variable_range_long"
   ],
-  "extras": {
-    "mul id": "6461",
-    "Config": "Biped Omnimech",
-    "role": "Skirmisher",
-    "quirk": "variable_range_long",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "19",
-    "RA Armor": "19",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "32",
-    "HD Armor": "8",
-    "LL Armor": "26",
-    "RL Armor": "26",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Large VSP Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Rotary AC/5",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLargeVSPLaser (omnipod)",
+      "ISLargeVSPLaser (omnipod)",
+      "ISLargeVSPLaser (omnipod)",
+      "ISLargeVSPLaser (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Large VSP Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISRotaryAC5 (omnipod)",
+      "ISRotaryAC5 (omnipod)",
+      "ISRotaryAC5 (omnipod)",
+      "ISRotaryAC5 (omnipod)",
+      "ISRotaryAC5 (omnipod)",
+      "ISRotaryAC5 (omnipod)",
+      "ISERSmallLaser (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Rotary AC/5",
+      "ER Small Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "Supercharger",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "ISRotaryAC5 Ammo (omnipod)",
+      "ISRotaryAC5 Ammo (omnipod)",
+      "ISCASEII"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Cockpit",
+      "Sensors"
+    ],
+    "head": [
+      "Sensors",
+      "Sensors",
+      "ISAngelECMSuite (omnipod)",
+      "ISAngelECMSuite (omnipod)",
+      "ISC3BoostedSystemSlaveUnit (omnipod)",
+      "ISC3BoostedSystemSlaveUnit (omnipod)"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3142",
-  "displayName": "Vandal LI-O",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

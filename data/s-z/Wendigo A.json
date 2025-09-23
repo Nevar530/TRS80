@@ -1,57 +1,141 @@
 {
   "name": "Wendigo",
+  "chassis": "Wendigo",
   "model": "A",
-  "tonnage": 50,
+  "mulId": 6404,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "4",
+  "era": 3150,
+  "source": "TRO: 3145 Draconis Combine",
+  "rulesLevel": 4,
+  "role": "Sniper",
+  "mass": 50,
   "engine": "300 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Clan Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Reflective(Clan)"
+    "type": "Reflective (Clan)",
+    "head": 8,
+    "centerTorso": 22,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 16,
+    "leftArm": 16,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": "Torso-Mounted Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Draconis Combine"
+  "quirks": [
+    "distracting"
   ],
-  "extras": {
-    "mul id": "6404",
-    "Config": "Biped Omnimech",
-    "role": "Sniper",
-    "quirk": "distracting",
-    "myomer": "Standard",
-    "base chassis heat sinks": "12",
-    "LA armor": "16",
-    "RA armor": "16",
-    "LT armor": "16",
-    "RT armor": "16",
-    "CT armor": "22",
-    "HD armor": "8",
-    "LL armor": "20",
-    "RL armor": "20",
-    "RTL armor": "5",
-    "RTR armor": "5",
-    "RTC armor": "8",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Large Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 15",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLargePulseLaser (OMNIPOD)",
+      "CLLargePulseLaser (OMNIPOD)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Large Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLargePulseLaser (OMNIPOD)",
+      "CLLargePulseLaser (OMNIPOD)",
+      "Clan Reflective",
+      "Clan Reflective",
+      "Clan Reflective",
+      "Large Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "CLDoubleHeatSink (OMNIPOD)",
+      "CLDoubleHeatSink (OMNIPOD)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Reflective"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "CLDoubleHeatSink (OMNIPOD)",
+      "CLDoubleHeatSink (OMNIPOD)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Reflective"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Cockpit",
+      "Sensors"
+    ],
+    "head": [
+      "Sensors",
+      "Sensors",
+      "CLLRM15 (OMNIPOD)",
+      "CLLRM15 (OMNIPOD)",
+      "Clan Ammo LRM-15 (OMNIPOD)",
+      "Clan Ammo LRM-15 (OMNIPOD)",
+      "LRM 15"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3150",
-  "displayName": "Wendigo A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,133 @@
 {
   "name": "Mackie",
+  "chassis": "Mackie",
   "model": "MSK-6S",
-  "tonnage": 100,
+  "mulId": 1973,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 2443,
+  "source": "TRO: 3075",
+  "rulesLevel": 4,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "360 Fusion Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "15 Single",
   "movement": {
-    "walk": "3",
-    "jump": "0"
+    "walk": 3,
+    "jump": 0
   },
   "armor": {
-    "total": "Primitive(Inner Sphere)"
+    "type": "Primitive (InnerSphere)",
+    "head": 9,
+    "centerTorso": 31,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 214
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": "Primitive Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "easy_maintain",
+    "pro_actuator",
+    "rugged_1",
+    "oversized"
   ],
-  "extras": {
-    "mul id": "1973",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "oversized",
-    "myomer": "Standard",
-    "LA armor": "24",
-    "RA armor": "24",
-    "LT armor": "20",
-    "RT armor": "20",
-    "CT armor": "31",
-    "HD armor": "9",
-    "LL armor": "28",
-    "RL armor": "28",
-    "RTL armor": "10",
-    "RTR armor": "10",
-    "RTC armor": "10",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "AC/10",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Primitive Prototype PPC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Primitive Prototype PPC",
+      "Primitive Prototype PPC",
+      "Primitive Prototype PPC",
+      "Primitive Prototype PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Autocannon/10",
+      "Autocannon/10",
+      "Autocannon/10",
+      "Autocannon/10",
+      "Autocannon/10",
+      "Autocannon/10",
+      "Autocannon/10",
+      "AC/10"
+    ],
+    "rightTorso": [
+      "IS Ammo AC/10",
+      "IS Ammo AC/10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "2443",
-  "displayName": "Mackie MSK-6S",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

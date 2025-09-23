@@ -1,56 +1,124 @@
 {
   "name": "Fire Scorpion",
+  "chassis": "Fire Scorpion",
   "model": "3",
-  "tonnage": 65,
+  "mulId": 1073,
+  "config": "Quad",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3071,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 65,
   "engine": "260 Fusion (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 31,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightLeg": 29,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 224
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "cowl"
   ],
-  "extras": {
-    "mul id": "1073",
-    "Config": "Quad",
-    "role": "Skirmisher",
-    "quirk": "cowl",
-    "myomer": "Standard",
-    "FLL armor": "29",
-    "FRL armor": "29",
-    "LT armor": "22",
-    "RT armor": "22",
-    "CT armor": "31",
-    "HD armor": "9",
-    "RLL armor": "29",
-    "RRL armor": "29",
-    "RTL armor": "7",
-    "RTR armor": "7",
-    "RTC armor": "10",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Ultra AC/20",
+      "location": "LT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "Clan Ultra AC/20 Ammo",
+      "Clan Ultra AC/20 Ammo",
+      "Clan Ultra AC/20 Ammo",
+      "Clan Ultra AC/20 Ammo",
+      "Ultra AC/20"
+    ],
+    "rightTorso": [
+      "CLAPGaussRifle",
+      "CLAPGaussRifle",
+      "CLAPGaussRifle",
+      "CLAPGaussRifle",
+      "CLAPGaussRifle Ammo",
+      "CLAPGaussRifle Ammo",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "Clan Endo Steel",
+      "AP Gauss Rifle",
+      "AP Gauss Rifle",
+      "AP Gauss Rifle",
+      "AP Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLActiveProbe",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3071",
-  "displayName": "Fire Scorpion 3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

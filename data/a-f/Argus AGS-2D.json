@@ -1,56 +1,147 @@
 {
   "name": "Argus",
+  "chassis": "Argus",
   "model": "AGS-2D",
-  "tonnage": 60,
+  "mulId": 3729,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3062,
+  "source": "TRO: 3067",
+  "rulesLevel": 2,
+  "role": "Missile Boat",
+  "mass": 60,
   "engine": "300 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 26,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 176
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067"
+  "quirks": [
+    "easy_maintain",
+    "no_arms"
   ],
-  "extras": {
-    "mul id": "3729",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "no_arms",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "26",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "9",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "1 ISERPPC",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISLRM15",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLRM15",
+      "ISLRM15",
+      "ISLRM15",
+      "ISArtemisIV",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "1 ISERPPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISLRM15",
+      "ISLRM15",
+      "ISLRM15",
+      "ISArtemisIV",
+      "ISLRM15 Ammo Artemis-capable",
+      "ISLRM15 Ammo Artemis-capable",
+      "ISLRM15 Ammo Artemis-capable",
+      "ISLRM15 Ammo Artemis-capable",
+      "ISCASE",
+      "1 ISLRM15"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ]
   },
-  "era": "3062",
-  "displayName": "Argus AGS-2D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

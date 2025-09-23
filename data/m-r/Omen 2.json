@@ -1,57 +1,173 @@
 {
   "name": "Omen",
+  "chassis": "Omen",
   "model": "2",
-  "tonnage": 85,
+  "mulId": 6853,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "3",
+  "era": 3141,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 3,
+  "role": "Juggernaut",
+  "mass": 85,
   "engine": "255 XL (Clan) Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "15 Double",
   "movement": {
-    "walk": "3",
-    "jump": "3"
+    "walk": 3,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 40,
+    "rightTorso": 25,
+    "leftTorso": 25,
+    "rightArm": 28,
+    "leftArm": 28,
+    "rightLeg": 36,
+    "leftLeg": 36,
+    "rearCenterTorso": 14,
+    "rearRightTorso": 11,
+    "rearLeftTorso": 11,
+    "total": 263
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "pro_actuator",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "6853",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "28",
-    "RA Armor": "28",
-    "LT Armor": "25",
-    "RT Armor": "25",
-    "CT Armor": "40",
-    "HD Armor": "9",
-    "LL Armor": "36",
-    "RL Armor": "36",
-    "RTL Armor": "11",
-    "RTR Armor": "11",
-    "RTC Armor": "14",
-    "Weapons": "6",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\3085Omen.jpg"
+  "weapons": [
+    {
+      "type": "AMS",
+      "location": "H"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ATM 9",
+      "location": "LT"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLLargePulseLaser",
+      "CLLargePulseLaser",
+      "CLMediumPulseLaser",
+      "Large Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLLBXAC10",
+      "CLERMediumLaser",
+      "Clan LB 10-X AC Ammo",
+      "Clan LB 10-X AC Ammo",
+      "Clan LB 10-X Cluster Ammo",
+      "ER Medium Laser",
+      "LB 10-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "Clan Ammo ATM-9",
+      "Clan Ammo ATM-9",
+      "HarJel III Self-Repair System",
+      "HarJel III Self-Repair System",
+      "ATM 9"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Jump Jet",
+      "CLAMS Ammo",
+      "HarJel III Self-Repair System",
+      "HarJel III Self-Repair System"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "HarJel III Self-Repair System",
+      "HarJel III Self-Repair System"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLAntiMissileSystem",
+      "Sensors",
+      "Life Support",
+      "AMS"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ]
   },
-  "era": "3141",
-  "displayName": "Omen 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,58 +1,168 @@
 {
   "name": "Beowulf",
+  "chassis": "Beowulf",
   "model": "BEO-12",
-  "tonnage": 45,
+  "mulId": 327,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3059,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 45,
   "engine": "270 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "command_mech",
+    "ext_twist",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "327",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "14",
-    "RA Armor": "14",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "4",
-    "manufacturer": "Odin Manufacturing",
-    "primaryfactory": "Orestes"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "TAG",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "Large Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISMASC",
+      "ISMASC",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISTAG",
+      "Sensors",
+      "Life Support",
+      "TAG"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3059",
-  "displayName": "Beowulf BEO-12",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [
+      "Odin Manufacturing"
+    ],
+    "primaryFactory": [
+      "Orestes"
+    ],
+    "systems": {}
   }
 }

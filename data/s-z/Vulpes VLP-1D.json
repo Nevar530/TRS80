@@ -1,56 +1,159 @@
 {
   "name": "Vulpes",
+  "chassis": "Vulpes",
   "model": "VLP-1D",
-  "tonnage": 60,
+  "mulId": 6346,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "4",
+  "era": 3133,
+  "source": "TRO: 3145 Federated Suns",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 XXL (Clan) Engine",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth(Inner Sphere)"
+    "type": "Stealth (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Federated Suns"
+  "quirks": [
+    "distracting",
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "6346",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "9",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Rotary AC/5",
+      "location": "RT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "CLERLargeLaser",
+      "IS Stealth",
+      "IS Stealth",
+      "ER Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "CLERLargeLaser",
+      "IS Stealth",
+      "IS Stealth",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISRotaryAC5 Ammo",
+      "ISRotaryAC5 Ammo",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "ISCASE",
+      "IS Stealth",
+      "IS Stealth"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "IS Stealth",
+      "IS Stealth",
+      "Rotary AC/5"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Stealth",
+      "IS Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Stealth",
+      "IS Stealth"
+    ]
   },
-  "era": "3133",
-  "displayName": "Vulpes VLP-1D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

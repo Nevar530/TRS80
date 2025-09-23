@@ -1,55 +1,161 @@
 {
   "name": "Hitotsume Kozo",
+  "chassis": "Hitotsume Kozo",
   "model": "HKZ-1P",
-  "tonnage": 55,
+  "mulId": 6413,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3136,
+  "source": "TRO: 3145 Draconis Combine",
+  "rulesLevel": 3,
+  "role": "Brawler",
+  "mass": 55,
   "engine": "275 XL Engine(IS)",
+  "structure": "IS Endo-Steel",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "4"
+    "walk": 5,
+    "jump": 4
   },
   "armor": {
-    "total": "Hardened(Inner Sphere)"
+    "type": "Hardened (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 13,
+    "leftTorso": 13,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 13,
+    "leftLeg": 13,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 116
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Draconis Combine"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/10",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "mul id": "6413",
-    "Config": "Biped",
-    "role": "Brawler",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "13",
-    "RT Armor": "13",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "13",
-    "RL Armor": "13",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "5",
-    "Weapons": "3"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "IS Endo-Steel",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "Ultra AC/10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo-Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ]
   },
-  "era": "3136",
-  "displayName": "Hitotsume Kozo HKZ-1P",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

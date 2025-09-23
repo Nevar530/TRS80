@@ -1,56 +1,158 @@
 {
   "name": "Wyvern",
+  "chassis": "Wyvern",
   "model": "WVE-10N",
-  "tonnage": 45,
+  "mulId": 3596,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3065,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 45,
   "engine": "180 Fusion Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 15,
+    "leftTorso": 15,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 17,
+    "leftLeg": 17,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 128
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "3596",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "15",
-    "RT Armor": "15",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "17",
-    "RL Armor": "17",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "5",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 10",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISMediumPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "ER PPC",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "IS Ammo LRM-10",
+      "ISCASE",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 10",
+      "LRM 10",
+      "LRM 10"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Endo Steel"
+    ]
   },
-  "era": "3065",
-  "displayName": "Wyvern WVE-10N",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

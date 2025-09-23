@@ -1,54 +1,160 @@
 {
   "name": "Omega",
+  "chassis": "Omega",
   "model": "SHP-5R",
-  "tonnage": 150,
+  "mulId": 7997,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3103,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 3,
+  "mass": 150,
   "engine": "300 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "23 IS Double",
   "movement": {
-    "walk": "2",
-    "jump": "0"
+    "walk": 2,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 12,
+    "centerTorso": 60,
+    "rightTorso": 45,
+    "leftTorso": 45,
+    "rightArm": 44,
+    "leftArm": 44,
+    "rightLeg": 62,
+    "leftLeg": 62,
+    "rearCenterTorso": 20,
+    "rearRightTorso": 19,
+    "rearLeftTorso": 19,
+    "total": 432
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": "Superheavy Cockpit",
-  "gyro": "Superheavy Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "LB 10-X AC",
+      "location": "LA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy PPC",
+      "location": "LT"
+    },
+    {
+      "type": "Heavy PPC",
+      "location": "RT"
+    },
+    {
+      "type": "Heavy PPC",
+      "location": "CT"
+    }
   ],
-  "extras": {
-    "mul id": "7997",
-    "Config": "Biped",
-    "myomer": "Standard",
-    "LA armor": "44",
-    "RA armor": "44",
-    "LT armor": "45",
-    "RT armor": "45",
-    "CT armor": "60",
-    "HD armor": "12",
-    "LL armor": "62",
-    "RL armor": "62",
-    "RTL armor": "19",
-    "RTR armor": "19",
-    "RTC armor": "20",
-    "Weapons": "5"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "IS LB 10-X AC Ammo|IS LB 10-X AC Ammo",
+      "ISCASEII",
+      "LB 10-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "IS LB 10-X Cluster Ammo|IS LB 10-X Cluster Ammo",
+      "ISCASEII",
+      "LB 10-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heavy PPC",
+      "Heavy PPC",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Heavy PPC"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heavy PPC",
+      "Heavy PPC",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Heavy PPC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Heavy PPC",
+      "Heavy PPC",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISGuardianECMSuite",
+      "ISC3SlaveUnit",
+      "Heavy PPC"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink"
+    ]
   },
-  "era": "3103",
-  "displayName": "Omega SHP-5R",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,62 +1,177 @@
 {
   "name": "Uziel",
+  "chassis": "Uziel",
   "model": "UZL-2S",
-  "tonnage": 50,
+  "mulId": 5331,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3063,
+  "source": "TRO: 3067",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 50,
   "engine": "300 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 IS Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 17,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 18,
+    "leftLeg": 18,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 128
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067"
+  "quirks": [
+    "cowl",
+    "bad_rep_is",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "5331",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "exp_actuator",
-    "myomer": "Standard",
-    "LA armor": "12",
-    "RA armor": "12",
-    "LT armor": "14",
-    "RT armor": "14",
-    "CT armor": "17",
-    "HD armor": "9",
-    "LL armor": "18",
-    "RL armor": "18",
-    "RTL armor": "4",
-    "RTR armor": "4",
-    "RTC armor": "6",
-    "Weapons": "5",
+  "weapons": [
+    {
+      "type": "PPC",
+      "location": "LA"
+    },
+    {
+      "type": "PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 6",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "PPC",
+      "PPC",
+      "PPC",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "PPC",
+      "PPC",
+      "PPC",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Machine Gun",
+      "IS Machine Gun Ammo - Half",
+      "IS Ammo SRM-6",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe",
+      "IS Endo Steel",
+      "Machine Gun"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Machine Gun",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Machine Gun"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "SRM 6",
+      "SRM 6",
+      "SRM 6"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
+  },
+  "text": {
     "overview": "Built at Defiance Industries' Furillo plant, the Uziel is an effective medium 'Mech that is looked down upon by the LAAF simply because it is produced on Furillo and not at the prestigious Hesperus facility. A varied weapons mix makes the Uziel an excellent trooper 'Mech.",
     "capabilities": "The Uziel is built on a Foundation E50 Endo Steel chassis that has a GM 300 XL engine that provides the 'Mech with a top speed of 97.2 km/h. The 'Mech's mobility is enhanced with six Rawlings 50 jump jets that allow the 'Mech to jump up to one hundred and eighty meters. The Uziel is armored with eight tons of Maximillian 100 armor that gives the Uziel adequate protection from enemy fire. To dissipate the heat produced by the 'Mech's weapons, it carries eleven double heat sinks.",
     "deployment": "Based on the original prototype of the Uziel developed in 3063, the 2S carries a pair of PPCs as its primary weapons for long range combat. A SRM-6 launcher provides close combat capabilities and a pair of Machine Guns provide anti-infantry capabilities. A Beagle Active Probe allows the 'Mech to detect hidden units and protects the Uziel from ambushes.",
-    "manufacturer": "Defiance Industries",
-    "primaryfactory": "Furillo",
-    "systemmanufacturer": "TARGETING:RCA Instatrac Mark XXII"
+    "history": ""
   },
-  "era": "3063",
-  "displayName": "Uziel UZL-2S",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Defiance Industries"
+    ],
+    "primaryFactory": [
+      "Furillo"
+    ],
+    "systems": {
+      "chassis": "Foundation E50 Endo Steel",
+      "engine": "GM 300 XL",
+      "armor": "Maximillian 100",
+      "jumpjet": "Rawlings 50",
+      "communications": "Neil 6000-g",
+      "targeting": "RCA Instatrac Mark XXII"
+    }
   }
 }

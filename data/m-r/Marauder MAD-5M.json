@@ -1,57 +1,162 @@
 {
   "name": "Marauder",
+  "chassis": "Marauder",
   "model": "MAD-5M",
-  "tonnage": 75,
+  "mulId": 2041,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3051,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 75,
   "engine": "300 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "16 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 35,
+    "rightTorso": 17,
+    "leftTorso": 17,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 18,
+    "leftLeg": 18,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 184
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "command_mech",
+    "hyper_actuator",
+    "low_profile"
   ],
-  "extras": {
-    "mul id": "2041",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "low_profile",
-    "weaponquirk": "exposed_linkage:RT:6:ISLBXAC10",
-    "Myomer": "Standard",
-    "LA Armor": "22",
-    "RA Armor": "22",
-    "LT Armor": "17",
-    "RT Armor": "17",
-    "CT Armor": "35",
-    "HD Armor": "9",
-    "LL Armor": "18",
-    "RL Armor": "18",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Large Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "ISMediumPulseLaser",
+      "Large Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "ISMediumPulseLaser",
+      "Large Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "IS LB 10-X AC Ammo",
+      "ISCASE"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "LB 10-X AC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3051",
-  "displayName": "Marauder MAD-5M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

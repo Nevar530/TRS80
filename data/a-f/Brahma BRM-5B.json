@@ -1,55 +1,159 @@
 {
   "name": "Brahma",
+  "chassis": "Brahma",
   "model": "BRM-5B",
-  "tonnage": 60,
+  "mulId": 427,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3080,
+  "source": "Record Sheets: 3085 Unabridged - Cutting Edge",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "15 IS Double",
   "movement": {
-    "walk": "5",
-    "jump": "3"
+    "walk": 5,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 29,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3085 Unabridged - Cutting Edge"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "Large X-Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "mul id": "427",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "myomer": "Standard",
-    "LA armor": "20",
-    "RA armor": "20",
-    "LT armor": "20",
-    "RT armor": "20",
-    "CT armor": "29",
-    "HD armor": "9",
-    "LL armor": "28",
-    "RL armor": "28",
-    "RTL armor": "8",
-    "RTR armor": "8",
-    "RTC armor": "10",
-    "Weapons": "6"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "SRM 6",
+      "SRM 6",
+      "IS Ammo SRM-6",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "ISCASE",
+      "SRM 6"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "ISLargeXPulseLaser",
+      "ISLargeXPulseLaser",
+      "ISERSmallLaser",
+      "Large X-Pulse Laser",
+      "ER Small Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3080",
-  "displayName": "Brahma BRM-5B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

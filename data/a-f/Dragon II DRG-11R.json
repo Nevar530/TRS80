@@ -1,57 +1,168 @@
 {
   "name": "Dragon II",
+  "chassis": "Dragon II",
   "model": "DRG-11R",
-  "tonnage": 65,
+  "mulId": 6415,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "4",
+  "era": 3102,
+  "source": "TRO: 3145 Draconis Combine",
+  "rulesLevel": 4,
+  "role": "Missile Boat",
+  "mass": 65,
   "engine": "325 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 211
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Draconis Combine"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "6415",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "stable",
-    "weaponquirk": "poor_cooling:RA:3:CLERPPC",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Arrow IV",
+      "location": "CT"
+    },
+    {
+      "type": "B-Pod",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLMediumPulseLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLERPPC",
+      "CLERPPC",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLArrowIVAmmo",
+      "CLArrowIVAmmo",
+      "CLArrowIVClusterAmmo",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "ISCASEII",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLArrowIV",
+      "CLBPod",
+      "Arrow IV",
+      "B-Pod"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Light Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous"
+    ]
   },
-  "era": "3102",
-  "displayName": "Dragon II DRG-11R",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

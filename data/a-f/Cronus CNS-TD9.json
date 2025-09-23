@@ -1,57 +1,163 @@
 {
   "name": "Cronus",
+  "chassis": "Cronus",
   "model": "CNS-TD9",
-  "tonnage": 55,
+  "mulId": 5680,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3072,
+  "source": "TRO: 3067U",
+  "rulesLevel": 3,
+  "role": "Striker",
+  "mass": 55,
   "engine": "330 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 IS Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth(Inner Sphere)"
+    "type": "Stealth (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 11,
+    "leftArm": 11,
+    "rightLeg": 14,
+    "leftLeg": 14,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 120
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067U"
+  "quirks": [
+    "easy_maintain"
   ],
-  "extras": {
-    "generator": "MegaMek Suite 0.49.19-SNAPSHOT on 2024-03-10",
-    "mul id": "5680",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "easy_maintain",
-    "myomer": "Standard",
-    "LA armor": "11",
-    "RA armor": "11",
-    "LT armor": "14",
-    "RT armor": "14",
-    "CT armor": "20",
-    "HD armor": "9",
-    "LL armor": "14",
-    "RL armor": "14",
-    "RTL armor": "4",
-    "RTR armor": "4",
-    "RTC armor": "5",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Small VSP Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Small VSP Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Small VSP Laser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSmallVSPLaser",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Stealth",
+      "IS Stealth",
+      "Small VSP Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSmallVSPLaser",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Stealth",
+      "IS Stealth",
+      "Small VSP Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISSmallVSPLaser",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "IS Stealth",
+      "IS Stealth",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Small VSP Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Stealth",
+      "IS Stealth"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "ISTargeting Computer",
+      "ISTargeting Computer"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Stealth",
+      "IS Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Stealth",
+      "IS Stealth"
+    ]
   },
-  "era": "3072",
-  "displayName": "Cronus CNS-TD9",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

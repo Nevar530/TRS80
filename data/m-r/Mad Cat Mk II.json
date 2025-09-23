@@ -1,56 +1,181 @@
 {
   "name": "Mad Cat Mk II",
-  "model": null,
-  "tonnage": 90,
+  "chassis": "Mad Cat Mk II",
+  "mulId": 4565,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3062,
+  "source": "TRO: 3067",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 90,
   "engine": "360 XL (Clan) Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "4",
-    "jump": "3"
+    "walk": 4,
+    "jump": 3
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 38,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightArm": 27,
+    "leftArm": 27,
+    "rightLeg": 34,
+    "leftLeg": 34,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 249
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067"
+  "quirks": [
+    "imp_target_med"
   ],
-  "extras": {
-    "mul id": "4565",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "imp_target_med",
-    "Myomer": "Standard",
-    "LA Armor": "27",
-    "RA Armor": "27",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "38",
-    "HD Armor": "9",
-    "LL Armor": "34",
-    "RL Armor": "34",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "8"
+  "weapons": [
+    {
+      "type": "Gauss Rifle",
+      "location": "LA"
+    },
+    {
+      "type": "Gauss Rifle",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "Endo Steel",
+      "Gauss Rifle"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "Ferro-Fibrous",
+      "Gauss Rifle"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "Jump Jet",
+      "CLLRM10",
+      "Clan Ammo LRM-10",
+      "Clan Gauss Ammo",
+      "Clan Gauss Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "LRM 10"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "Jump Jet",
+      "CLLRM10",
+      "Clan Ammo LRM-10",
+      "Clan Gauss Ammo",
+      "Clan Gauss Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "LRM 10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3062",
-  "displayName": "Mad Cat Mk II",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

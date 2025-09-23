@@ -1,56 +1,161 @@
 {
   "name": "Brahma",
+  "chassis": "Brahma",
   "model": "BRM-5A",
-  "tonnage": 60,
+  "mulId": 426,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3080,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "5",
-    "jump": "3"
+    "walk": 5,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 29,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "AMS",
+      "location": "H"
+    },
+    {
+      "type": "Light Auto Cannon/5",
+      "location": "RT"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "Flamer",
+      "location": "LA"
+    }
   ],
-  "extras": {
-    "mul id": "426",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "weaponquirk": "stable_weapon:RT:7:Light Auto Cannon/5",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "29",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "7"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Flamer",
+      "Flamer"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "IS Streak SRM 6 Ammo",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "ISCASE",
+      "Streak SRM 6"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "Light Auto Cannon/5",
+      "Light Auto Cannon/5",
+      "IS Ammo LAC/5",
+      "ISCASE",
+      "Light Auto Cannon/5"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "ISAMS Ammo"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISAntiMissileSystem",
+      "Sensors",
+      "Life Support",
+      "AMS"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3080",
-  "displayName": "Brahma BRM-5A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

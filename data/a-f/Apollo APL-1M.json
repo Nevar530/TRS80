@@ -1,56 +1,142 @@
 {
   "name": "Apollo",
+  "chassis": "Apollo",
   "model": "APL-1M",
-  "tonnage": 55,
+  "mulId": 54,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3054,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Missile Boat",
+  "mass": 55,
   "engine": "220 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 28,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 26,
+    "leftLeg": 26,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 184
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "fast_reload",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "54",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "28",
-    "HD Armor": "9",
-    "LL Armor": "26",
-    "RL Armor": "26",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "LRM 15",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 15",
+      "location": "RT"
+    },
+    {
+      "type": "Small Pulse Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Small Pulse Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "LRM 15",
+      "LRM 15",
+      "LRM 15",
+      "ISArtemisIV",
+      "IS Ammo LRM-15 Artemis-capable",
+      "IS Ammo LRM-15 Artemis-capable",
+      "LRM 15"
+    ],
+    "rightTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "LRM 15",
+      "LRM 15",
+      "LRM 15",
+      "ISArtemisIV",
+      "IS Ammo LRM-15 Artemis-capable",
+      "IS Ammo LRM-15 Artemis-capable",
+      "LRM 15"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISSmallPulseLaser",
+      "ISSmallPulseLaser",
+      "Small Pulse Laser",
+      "Small Pulse Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3054",
-  "displayName": "Apollo APL-1M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

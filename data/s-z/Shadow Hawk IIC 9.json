@@ -1,62 +1,160 @@
 {
   "name": "Shadow Hawk IIC",
+  "chassis": "Shadow Hawk IIC",
   "model": "9",
-  "tonnage": 45,
+  "mulId": 6911,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3134,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 45,
   "engine": "270 Fusion (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 17,
+    "leftTorso": 17,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 144
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "battle_fists_la",
+    "battle_fists_ra",
+    "imp_life_support"
   ],
-  "extras": {
-    "mul id": "6911",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "imp_life_support",
-    "Myomer": "Standard",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "17",
-    "RT Armor": "17",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "4",
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ATM 6",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLERLargeLaser",
+      "ER Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERMediumLaser",
+      "Clan Endo Steel",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Clan Ammo ATM-6",
+      "Clan Ammo ATM-6",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "CLATM6",
+      "CLATM6",
+      "CLATM6",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "ATM 6"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "Clan Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ]
+  },
+  "text": {
     "overview": "The Shadow Hawk IIC is a second-line Clan BattleMech based upon the Shadow Hawk that was first fielded by the Star League.",
     "capabilities": "The inexpensive unit is protected by seven and a half tons of Ferro-Fibrous armor, mounted on a weight-saving Endo Steel chassis. This medium 'Mech can reach a respectable top speed of 97 km/h, though it also carries enough jump jets to vault up to 180 meters at a time.",
     "deployment": "This variant was introduced in the Dark Age. It carries an ER Large Laser, an ATM-6, and two ER Medium Lasers. It has a top speed of 96 km/h, and can jump 180 meters at a time.",
-    "manufacturer": "Unknown",
-    "primaryfactory": "Unknown",
-    "systemmanufacturer": "TARGETING:TRTTS Mark II"
+    "history": ""
   },
-  "era": "3134",
-  "displayName": "Shadow Hawk IIC 9",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Unknown"
+    ],
+    "primaryFactory": [
+      "Unknown"
+    ],
+    "systems": {
+      "chassis": "Lang T3",
+      "engine": "Consolidated Fusion 270 Standard",
+      "armor": "Compound H17 Ferro-Fibrous",
+      "jumpjet": "Northrup Starlifters M45",
+      "communications": "JNE Integrated",
+      "targeting": "TRTTS Mark II"
+    }
   }
 }

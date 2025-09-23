@@ -1,57 +1,180 @@
 {
   "name": "Stooping Hawk",
+  "chassis": "Stooping Hawk",
   "model": "F",
-  "tonnage": 55,
+  "mulId": 3081,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3072,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 55,
   "engine": "275 Fusion (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "5",
-    "jump": "8"
+    "walk": 5,
+    "jump": 8
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 28,
+    "rightTorso": 21,
+    "leftTorso": 21,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 172
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "rugged_2"
   ],
-  "extras": {
-    "mul id": "3081",
-    "Config": "Biped Omnimech",
-    "role": "Striker",
-    "quirk": "rugged_2",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "21",
-    "RT Armor": "21",
-    "CT Armor": "28",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "Heavy Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Heavy Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "CT"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "CT"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLHeavyMediumLaser (omnipod)",
+      "CLHeavyMediumLaser (omnipod)",
+      "CLHeavyMediumLaser (omnipod)",
+      "CLHeavyMediumLaser (omnipod)",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Heavy Medium Laser",
+      "Heavy Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Streak SRM 4 Ammo (omnipod)",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLStreakSRM4 (omnipod)",
+      "CLStreakSRM4 (omnipod)",
+      "Streak SRM 4",
+      "Streak SRM 4"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLHeavySmallLaser (omnipod)",
+      "Sensors",
+      "Life Support",
+      "Heavy Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ]
   },
-  "era": "3072",
-  "displayName": "Stooping Hawk F",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,175 @@
 {
   "name": "Paladin",
+  "chassis": "Paladin",
   "model": "PAL-3",
-  "tonnage": 60,
+  "mulId": 2410,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3068,
+  "source": "TRO: 3055",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "360 XXL Engine",
+  "structure": "Reinforced",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 21,
+    "leftTorso": 21,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 25,
+    "leftLeg": 25,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 188
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Reinforced",
-  "cockpit": "Small Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "difficult_maintain",
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "2410",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "non_standard",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "21",
-    "RT Armor": "21",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "25",
-    "RL Armor": "25",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "9",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Ultra AC/20",
+      "location": "LA"
+    },
+    {
+      "type": "Medium X-Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "Ultra AC/20"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISMediumXPulseLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Medium X-Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Machine Gun",
+      "Machine Gun",
+      "Machine Gun",
+      "Machine Gun",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Machine Gun",
+      "Machine Gun",
+      "Machine Gun",
+      "Machine Gun"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Ultra AC/20 Ammo",
+      "IS Ultra AC/20 Ammo",
+      "IS Ammo MG - Full",
+      "ISCASE",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3068",
-  "displayName": "Paladin PAL-3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

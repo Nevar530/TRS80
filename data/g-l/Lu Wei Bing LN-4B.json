@@ -1,56 +1,168 @@
 {
   "name": "Lu Wei Bing",
+  "chassis": "Lu Wei Bing",
   "model": "LN-4B",
-  "tonnage": 85,
+  "mulId": 6471,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3110,
+  "source": "TRO: 3145 Capellan Confederation",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 85,
   "engine": "340 Light Engine(IS)",
+  "structure": "IS Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 39,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightArm": 28,
+    "leftArm": 28,
+    "rightLeg": 36,
+    "leftLeg": 36,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 256
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Capellan Confederation"
+  "quirks": [
+    "easy_maintain"
   ],
-  "extras": {
-    "mul id": "6471",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "easy_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "28",
-    "RA Armor": "28",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "39",
-    "HD Armor": "9",
-    "LL Armor": "36",
-    "RL Armor": "36",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "LB 20-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "MML 5",
+      "location": "LT"
+    },
+    {
+      "type": "Light PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Light PPC",
+      "Light PPC",
+      "Light PPC",
+      "Light PPC",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "Light PPC",
+      "Light PPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "LB 20-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISMML5",
+      "ISMML5",
+      "ISMML5",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "IS Endo-Steel",
+      "MML 5"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISLBXAC20",
+      "IS LB 20-X AC Ammo",
+      "IS LB 20-X AC Ammo",
+      "IS LB 20-X Cluster Ammo",
+      "IS LB 20-X Cluster Ammo",
+      "IS Ammo MML-5 LRM",
+      "IS Ammo MML-5 SRM",
+      "ISCASEII"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISAngelECMSuite",
+      "ISAngelECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit (armored)",
+      "IS Endo-Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Steel",
+      "IS Endo-Steel"
+    ]
   },
-  "era": "3110",
-  "displayName": "Lu Wei Bing LN-4B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

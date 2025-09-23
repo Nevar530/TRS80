@@ -1,56 +1,157 @@
 {
   "name": "Griffin IIC",
+  "chassis": "Griffin IIC",
   "model": "7",
-  "tonnage": 40,
+  "mulId": 1316,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "4",
+  "era": 3083,
+  "source": "TRO: 3085",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 40,
   "engine": "280 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "7",
-    "jump": "7"
+    "walk": 7,
+    "jump": 7
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 18,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 18,
+    "leftLeg": 18,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 124
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "battle_fists_la",
+    "battle_fists_ra"
   ],
-  "extras": {
-    "mul id": "1316",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "battle_fists_ra",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "18",
-    "HD Armor": "9",
-    "LL Armor": "18",
-    "RL Armor": "18",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Streak LRM 10",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "CLStreakSRM6",
+      "CLStreakSRM6",
+      "Clan Streak SRM 6 Ammo",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "ER Medium Pulse Laser",
+      "Streak SRM 6"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "CLStreakLRM10",
+      "CLStreakLRM10",
+      "Clan Streak LRM 10 Ammo",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "ER Medium Pulse Laser",
+      "Streak LRM 10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3083",
-  "displayName": "Griffin IIC 7",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

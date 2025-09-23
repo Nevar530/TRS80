@@ -1,56 +1,169 @@
 {
   "name": "Quickdraw",
+  "chassis": "Quickdraw",
   "model": "QKD-9M",
-  "tonnage": 60,
+  "mulId": 6887,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3086,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 17,
+    "leftArm": 17,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 178
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "hyper_actuator",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "6887",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "17",
-    "RA Armor": "17",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "8",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 15",
+      "location": "LT"
+    },
+    {
+      "type": "TAG",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Large Laser",
+      "Large Laser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Large Laser",
+      "Large Laser",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "LRM 15",
+      "LRM 15",
+      "LRM 15",
+      "IS Ammo LRM-15",
+      "IS Ammo LRM-15",
+      "IS Ammo LRM-15",
+      "ISCASEII",
+      "LRM 15"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "ISTAG",
+      "TAG"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Light Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3086",
-  "displayName": "Quickdraw QKD-9M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

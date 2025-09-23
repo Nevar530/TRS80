@@ -1,56 +1,147 @@
 {
   "name": "Rifleman",
+  "chassis": "Rifleman",
   "model": "RFL-3N",
-  "tonnage": 60,
+  "mulId": 2697,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 2770,
+  "source": "TRO: 3039",
+  "rulesLevel": 1,
+  "role": "Sniper",
+  "mass": 60,
   "engine": "240 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 6,
+    "centerTorso": 22,
+    "rightTorso": 15,
+    "leftTorso": 15,
+    "rightArm": 15,
+    "leftArm": 15,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 120
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3039"
+  "quirks": [
+    "anti_air",
+    "imp_com",
+    "searchlight",
+    "ubiquitous_clan",
+    "ubiquitous_is"
   ],
-  "extras": {
-    "mul id": "2697",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "ubiquitous_is",
-    "Myomer": "Standard",
-    "LA Armor": "15",
-    "RA Armor": "15",
-    "LT Armor": "15",
-    "RT Armor": "15",
-    "CT Armor": "22",
-    "HD Armor": "6",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "4",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Autocannon/5",
+      "location": "LA"
+    },
+    {
+      "type": "Autocannon/5",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Large Laser",
+      "Autocannon/5"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Autocannon/5",
+      "Large Laser",
+      "Autocannon/5"
+    ],
+    "leftTorso": [
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightTorso": [
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Ammo AC/5"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "2770",
-  "displayName": "Rifleman RFL-3N",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

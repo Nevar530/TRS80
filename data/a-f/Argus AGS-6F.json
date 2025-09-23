@@ -1,56 +1,154 @@
 {
   "name": "Argus",
+  "chassis": "Argus",
   "model": "AGS-6F",
-  "tonnage": 60,
+  "mulId": 5684,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3078,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 Light Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous"
+    "type": "LightFerro-Fibrous",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 19,
+    "leftArm": 19,
+    "rightLeg": 27,
+    "leftLeg": 27,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 195
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "easy_maintain",
+    "no_arms"
   ],
-  "extras": {
-    "mul id": "5684",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "no_arms",
-    "Myomer": "Standard",
-    "LA Armor": "19",
-    "RA Armor": "19",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "27",
-    "RL Armor": "27",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "10",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISSRM6",
+      "ISSRM6",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20",
+      "ISAC20"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "ISERMediumLaser",
+      "ISSRM6 Ammo",
+      "ISCASE",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "1 ISERMediumLaser"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "ISERMediumLaser",
+      "ISAC20 Ammo",
+      "ISAC20 Ammo",
+      "ISAC20 Ammo",
+      "ISAC20 Ammo",
+      "ISCASE",
+      "Endo-Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "1 ISERMediumLaser"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ]
   },
-  "era": "3078",
-  "displayName": "Argus AGS-6F",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,168 @@
 {
   "name": "Buccaneer",
+  "chassis": "Buccaneer",
   "model": "BCN-5W",
-  "tonnage": 55,
+  "mulId": 437,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 55,
   "engine": "275 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "7"
+    "walk": 5,
+    "jump": 7
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 24,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 17,
+    "leftArm": 17,
+    "rightLeg": 23,
+    "leftLeg": 23,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 169
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "imp_target_short",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "437",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "bad_rep_is",
-    "Myomer": "Standard",
-    "LA Armor": "17",
-    "RA Armor": "17",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "24",
-    "HD Armor": "9",
-    "LL Armor": "23",
-    "RL Armor": "23",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Plasma Rifle",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "RT"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "RT"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "RT"
+    },
+    {
+      "type": "Heavy Machine Gun Array",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifleAmmo",
+      "ISPlasmaRifleAmmo",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "Plasma Rifle"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "ISHMGA",
+      "IS Heavy Machine Gun Ammo - Half",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun Array"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ]
   },
-  "era": "3069",
-  "displayName": "Buccaneer BCN-5W",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

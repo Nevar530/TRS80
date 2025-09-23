@@ -1,56 +1,205 @@
 {
   "name": "Sphinx",
+  "chassis": "Sphinx",
   "model": "2",
-  "tonnage": 75,
+  "mulId": 3006,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3080,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 75,
   "engine": "375 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "22 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 216
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "easy_maintain",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "3006",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "23",
-    "RT Armor": "23",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "11",
-    "Weapons": "12"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLMASC",
+      "CLMASC",
+      "CLMASC",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Small Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERLargeLaser",
+      "CLERLargeLaser",
+      "ER Large Laser",
+      "ER Large Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ]
   },
-  "era": "3080",
-  "displayName": "Sphinx 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

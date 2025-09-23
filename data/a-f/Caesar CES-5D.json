@@ -1,55 +1,165 @@
 {
   "name": "Caesar",
+  "chassis": "Caesar",
   "model": "CES-5D",
-  "tonnage": 70,
+  "mulId": 7982,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3148,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 3,
+  "mass": 70,
   "engine": "280 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 IS Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Hardened(Inner Sphere)"
+    "type": "Hardened (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 27,
+    "leftLeg": 27,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 208
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [
+    "hyper_actuator"
   ],
-  "extras": {
-    "mul id": "7982",
-    "Config": "Biped",
-    "quirk": "hyper_actuator",
-    "myomer": "Triple-Strength",
-    "LA armor": "22",
-    "RA armor": "22",
-    "LT armor": "22",
-    "RT armor": "22",
-    "CT armor": "30",
-    "HD armor": "9",
-    "LL armor": "27",
-    "RL armor": "27",
-    "RTL armor": "8",
-    "RTR armor": "8",
-    "RTC armor": "11",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "HAG/20",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLMediumPulseLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Triple Strength Myomer",
+      "Triple Strength Myomer",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERPPC",
+      "CLERPPC",
+      "CLMediumPulseLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER PPC",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Supercharger",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Triple Strength Myomer",
+      "Triple Strength Myomer",
+      "Triple Strength Myomer"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLHAG20",
+      "CLHAG20",
+      "CLHAG20",
+      "CLHAG20",
+      "CLHAG20",
+      "CLHAG20",
+      "Hyper-Assault Gauss Rifle/20 Ammo",
+      "Hyper-Assault Gauss Rifle/20 Ammo",
+      "Triple Strength Myomer",
+      "HAG/20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Talons",
+      "Talons"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Talons",
+      "Talons"
+    ]
   },
-  "era": "3148",
-  "displayName": "Caesar CES-5D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

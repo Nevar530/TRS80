@@ -1,56 +1,163 @@
 {
   "name": "Uraeus",
+  "chassis": "Uraeus",
   "model": "UAE-7R",
-  "tonnage": 75,
+  "mulId": 6677,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3135,
+  "source": "TRO: 3145 Republic of the Sphere",
+  "rulesLevel": 3,
+  "role": "Brawler",
+  "mass": 75,
   "engine": "300 Fusion Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 29,
+    "leftLeg": 29,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 220
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Republic of the Sphere"
+  "quirks": [
+    "bad_rep_clan"
   ],
-  "extras": {
-    "mul id": "6677",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "bad_rep_clan",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "23",
-    "RT Armor": "23",
-    "CT Armor": "33",
-    "HD Armor": "9",
-    "LL Armor": "29",
-    "RL Armor": "29",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Ultra AC/10",
+      "location": "RA"
+    },
+    {
+      "type": "Bombast Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumVibroblade",
+      "ISMediumVibroblade",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous",
+      "Ultra AC/10"
+    ],
+    "leftTorso": [
+      "Bombast Laser (T)",
+      "Bombast Laser (T)",
+      "Bombast Laser (T)",
+      "ISShoulderTurret (armored)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Bombast Laser"
+    ],
+    "rightTorso": [
+      "ISStreakSRM4",
+      "IS Streak SRM 4 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "ISCASEII",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Streak SRM 4"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Light Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Light Ferro-Fibrous",
+      "IS Light Ferro-Fibrous"
+    ]
   },
-  "era": "3135",
-  "displayName": "Uraeus UAE-7R",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

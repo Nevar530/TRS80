@@ -1,57 +1,133 @@
 {
   "name": "Sarath",
+  "chassis": "Sarath",
   "model": "SRTH-1OA",
-  "tonnage": 50,
+  "mulId": 6507,
+  "config": "Quad Omnimech",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "4",
+  "era": 3122,
+  "source": "TRO: 3145 Free Worlds League",
+  "rulesLevel": 4,
+  "role": "Missile Boat",
+  "mass": 50,
   "engine": "250 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 8,
+    "centerTorso": 25,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightLeg": 24,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 184
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Free Worlds League"
+  "quirks": [
+    "distracting",
+    "compact_mech",
+    "low_profile",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "6507",
-    "Config": "Quad Omnimech",
-    "role": "Missile Boat",
-    "quirk": "bad_rep_is",
-    "Myomer": "Triple-Strength",
-    "Base Chassis Heat Sinks": "10",
-    "FLL Armor": "24",
-    "FRL Armor": "24",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "25",
-    "HD Armor": "8",
-    "RLL Armor": "24",
-    "RRL Armor": "24",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "7",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "LRM 15",
+      "location": "RT"
+    },
+    {
+      "type": "LRM 15",
+      "location": "RT"
+    },
+    {
+      "type": "MML 3",
+      "location": "RT"
+    },
+    {
+      "type": "MML 3",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Ammo LRM-15 (omnipod)",
+      "Clan Ammo LRM-15 (omnipod)",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLRM15 (T) (omnipod)",
+      "CLLRM15 (T) (omnipod)",
+      "CLLRM15 (T) (omnipod)",
+      "CLLRM15 (T) (omnipod)",
+      "ISMML3 (T) (omnipod)",
+      "ISMML3 (T) (omnipod)",
+      "ISMML3 (T) (omnipod)",
+      "ISMML3 (T) (omnipod)",
+      "ISQuadTurret",
+      "LRM 15",
+      "LRM 15",
+      "MML 3",
+      "MML 3"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet (omnipod)",
+      "CLERSmallLaser (omnipod)",
+      "ER Small Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERSmallLaser",
+      "Sensors",
+      "Life Support",
+      "ER Small Laser"
+    ]
   },
-  "era": "3122",
-  "displayName": "Sarath SRTH-1OA",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

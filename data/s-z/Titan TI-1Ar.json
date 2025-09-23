@@ -1,56 +1,207 @@
 {
   "name": "Titan",
+  "chassis": "Titan",
   "model": "TI-1Ar",
-  "tonnage": 100,
+  "mulId": 6826,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3123,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "300 Fusion Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "16 Double",
   "movement": {
-    "walk": "3",
-    "jump": "0"
+    "walk": 3,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 41,
+    "rightTorso": 27,
+    "leftTorso": 27,
+    "rightArm": 33,
+    "leftArm": 33,
+    "rightLeg": 42,
+    "leftLeg": 42,
+    "rearCenterTorso": 20,
+    "rearRightTorso": 15,
+    "rearLeftTorso": 15,
+    "total": 304
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "pro_actuator"
   ],
-  "extras": {
-    "mul id": "6826",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "pro_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "33",
-    "RA Armor": "33",
-    "LT Armor": "27",
-    "RT Armor": "27",
-    "CT Armor": "41",
-    "HD Armor": "9",
-    "LL Armor": "42",
-    "RL Armor": "42",
-    "RTL Armor": "15",
-    "RTR Armor": "15",
-    "RTC Armor": "20",
-    "Weapons": "14"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "PPC",
+      "location": "LT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "LT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "LT"
+    },
+    {
+      "type": "PPC",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "CT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "PPC",
+      "PPC",
+      "PPC",
+      "Medium Laser",
+      "Medium Laser",
+      "PPC",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "PPC",
+      "PPC",
+      "PPC",
+      "SRM 4",
+      "SRM 4",
+      "IS Ammo SRM-4",
+      "ISCASE",
+      "PPC",
+      "SRM 4",
+      "SRM 4"
+    ],
+    "rightTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "PPC",
+      "PPC",
+      "PPC",
+      "SRM 4",
+      "SRM 4",
+      "IS Ammo SRM-4",
+      "ISCASE",
+      "PPC",
+      "SRM 4",
+      "SRM 4"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "SRM 4",
+      "SRM 4"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Medium Laser",
+      "Sensors",
+      "Life Support",
+      "Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3123",
-  "displayName": "Titan TI-1Ar",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

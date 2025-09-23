@@ -1,56 +1,164 @@
 {
   "name": "Toyama",
+  "chassis": "Toyama",
   "model": "TYM-1C",
-  "tonnage": 75,
+  "mulId": 3280,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3072,
+  "source": "TRO: 3060",
+  "rulesLevel": 3,
+  "role": "Missile Boat",
+  "mass": 75,
   "engine": "300 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 23,
+    "leftArm": 23,
+    "rightLeg": 31,
+    "leftLeg": 31,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 224
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "bad_rep_clan",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "3280",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "bad_rep_is",
-    "Myomer": "Standard",
-    "LA Armor": "23",
-    "RA Armor": "23",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "31",
-    "RL Armor": "31",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "11",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Gauss Rifle",
+      "location": "LA"
+    },
+    {
+      "type": "Medium VSP",
+      "location": "RA"
+    },
+    {
+      "type": "Medium VSP",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Gauss Rifle"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Medium VSP",
+      "Medium VSP"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Gauss Ammo",
+      "IS Gauss Ammo",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "ISArtemisIV",
+      "IS Ammo LRM-20 Artemis-capable",
+      "IS Ammo LRM-20 Artemis-capable",
+      "ISCASE",
+      "LRM 20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3072",
-  "displayName": "Toyama TYM-1C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

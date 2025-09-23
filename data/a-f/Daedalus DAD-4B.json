@@ -1,56 +1,175 @@
 {
   "name": "Daedalus",
+  "chassis": "Daedalus",
   "model": "DAD-4B",
-  "tonnage": 45,
+  "mulId": 792,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3067,
+  "source": "TRO: 3055",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 45,
   "engine": "270 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "792",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "14",
-    "RA Armor": "14",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "ISMediumPulseLaser",
+      "IS Streak SRM 6 Ammo",
+      "Endo Steel",
+      "Streak SRM 6",
+      "Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "ISMediumPulseLaser",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "Medium Pulse Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Supercharger",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "ISERSmallLaser",
+      "ISERSmallLaser",
+      "ER Small Laser",
+      "ER Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3067",
-  "displayName": "Daedalus DAD-4B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,57 +1,131 @@
 {
   "name": "Phoenix Hawk",
+  "chassis": "Phoenix Hawk",
   "model": "PXH-1D",
-  "tonnage": 45,
+  "mulId": 2494,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 2586,
+  "source": "TRO: 3039",
+  "rulesLevel": 1,
+  "role": "Skirmisher",
+  "mass": 45,
   "engine": "270 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Single",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 6,
+    "centerTorso": 23,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 15,
+    "leftLeg": 15,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 128
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3039"
+  "quirks": [
+    "command_mech",
+    "imp_com",
+    "ubiquitous_clan",
+    "ubiquitous_is"
   ],
-  "extras": {
-    "mul id": "2494",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "ubiquitous_is",
-    "weaponquirk": "jettison_capable:RA:4:Large Laser",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "23",
-    "HD Armor": "6",
-    "LL Armor": "15",
-    "RL Armor": "15",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Medium Laser",
+      "Large Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightTorso": [
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink"
+    ]
   },
-  "era": "2586",
-  "displayName": "Phoenix Hawk PXH-1D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

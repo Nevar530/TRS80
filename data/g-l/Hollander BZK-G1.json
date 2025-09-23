@@ -1,57 +1,158 @@
 {
   "name": "Hollander",
+  "chassis": "Hollander",
   "model": "BZK-G1",
-  "tonnage": 35,
+  "mulId": 1537,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3056,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 35,
   "engine": "175 Fusion Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 15,
+    "rightTorso": 12,
+    "leftTorso": 12,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 13,
+    "leftLeg": 13,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 107
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "reinforced_legs",
+    "unbalanced"
   ],
-  "extras": {
-    "mul id": "1537",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "unbalanced",
-    "weaponquirk": "stable_weapon:RT:2:ISLBXAC10",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "12",
-    "RT Armor": "12",
-    "CT Armor": "15",
-    "HD Armor": "9",
-    "LL Armor": "13",
-    "RL Armor": "13",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Heat Sink",
+      "Heat Sink",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "Endo Steel",
+      "LB 10-X AC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS LB 10-X AC Ammo",
+      "IS LB 10-X Cluster Ammo"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3056",
-  "displayName": "Hollander BZK-G1",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

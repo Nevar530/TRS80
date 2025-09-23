@@ -1,56 +1,116 @@
 {
   "name": "Scorpion",
+  "chassis": "Scorpion",
   "model": "SCP-12C",
-  "tonnage": 55,
+  "mulId": 2834,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3067,
+  "source": "TRO: 3085u",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "330 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 24,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightLeg": 26,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 197
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085u"
+  "quirks": [
+    "bad_rep_clan",
+    "bad_rep_is",
+    "hard_pilot"
   ],
-  "extras": {
-    "mul id": "2834",
-    "Config": "Quad",
-    "role": "Skirmisher",
-    "quirk": "hard_pilot",
-    "Myomer": "Standard",
-    "FLL Armor": "26",
-    "FRL Armor": "26",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "24",
-    "HD Armor": "9",
-    "RLL Armor": "26",
-    "RRL Armor": "26",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RT"
+    },
+    {
+      "type": "iNarc",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERSmallLaser",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "ISiNarc Pods",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISImprovedNarc",
+      "ISImprovedNarc",
+      "ISImprovedNarc",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER PPC",
+      "iNarc"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISC3iUnit",
+      "ISC3iUnit"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3067",
-  "displayName": "Scorpion SCP-12C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

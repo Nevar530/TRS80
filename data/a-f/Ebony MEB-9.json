@@ -1,56 +1,149 @@
 {
   "name": "Ebony",
+  "chassis": "Ebony",
   "model": "MEB-9",
-  "tonnage": 25,
+  "mulId": 942,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3081,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 25,
   "engine": "250 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "10",
-    "jump": "0"
+    "walk": 10,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth(Inner Sphere)"
+    "type": "Stealth (InnerSphere)",
+    "head": 7,
+    "centerTorso": 12,
+    "rightTorso": 10,
+    "leftTorso": 10,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 9,
+    "leftLeg": 9,
+    "rearCenterTorso": 3,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 80
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "imp_target_med"
   ],
-  "extras": {
-    "mul id": "942",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "imp_target_med",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "10",
-    "RT Armor": "10",
-    "CT Armor": "12",
-    "HD Armor": "7",
-    "LL Armor": "9",
-    "RL Armor": "9",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "3",
-    "Weapons": "1"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth",
+      "Snub-Nose PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ]
   },
-  "era": "3081",
-  "displayName": "Ebony MEB-9",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

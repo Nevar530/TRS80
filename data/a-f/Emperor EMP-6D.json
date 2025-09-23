@@ -1,56 +1,182 @@
 {
   "name": "Emperor",
+  "chassis": "Emperor",
   "model": "EMP-6D",
-  "tonnage": 90,
+  "mulId": 966,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 90,
   "engine": "270 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "3",
-    "jump": "3"
+    "walk": 3,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 48,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 30,
+    "leftArm": 30,
+    "rightLeg": 38,
+    "leftLeg": 38,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 279
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "command_mech"
   ],
-  "extras": {
-    "mul id": "966",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "command_mech",
-    "Myomer": "Standard",
-    "LA Armor": "30",
-    "RA Armor": "30",
-    "LT Armor": "30",
-    "RT Armor": "30",
-    "CT Armor": "48",
-    "HD Armor": "9",
-    "LL Armor": "38",
-    "RL Armor": "38",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "H"
+    },
+    {
+      "type": "Rotary AC/5",
+      "location": "RA"
+    },
+    {
+      "type": "Rotary AC/5",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "Rotary AC/5"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "ISRotaryAC5",
+      "Rotary AC/5"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERMediumLaser",
+      "ISRotaryAC5 Ammo",
+      "ISRotaryAC5 Ammo",
+      "ISCASE",
+      "ER Large Laser",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERMediumLaser",
+      "ISRotaryAC5 Ammo",
+      "ISRotaryAC5 Ammo",
+      "ISCASE",
+      "ER Large Laser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERMediumLaser",
+      "Sensors",
+      "Life Support",
+      "ER Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "ISRotaryAC5 Ammo"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "ISRotaryAC5 Ammo"
+    ]
   },
-  "era": "3069",
-  "displayName": "Emperor EMP-6D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

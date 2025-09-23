@@ -1,57 +1,146 @@
 {
   "name": "Preta",
+  "chassis": "Preta",
   "model": "C-PRT-OB Infernus",
-  "tonnage": 45,
+  "mulId": 2575,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 45,
   "engine": "270 Light Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 13,
+    "leftArm": 13,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 144
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "imp_com",
+    "imp_sensors",
+    "bad_rep_clan",
+    "bad_rep_is",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "2575",
-    "Config": "Biped Omnimech",
-    "role": "Sniper",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "13",
-    "RA Armor": "13",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "2"
+  "weapons": [
+    {
+      "type": "Heavy PPC",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDoubleHeatSink (omnipod)",
+      "ISDoubleHeatSink (omnipod)",
+      "ISDoubleHeatSink (omnipod)",
+      "Heavy PPC (omnipod)",
+      "Heavy PPC (omnipod)",
+      "Heavy PPC (omnipod)",
+      "Heavy PPC (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Heavy PPC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISC3iUnit",
+      "ISC3iUnit"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "ISERMediumLaser (omnipod)",
+      "ER Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3069",
-  "displayName": "Preta C-PRT-OB Infernus",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

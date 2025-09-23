@@ -1,56 +1,162 @@
 {
   "name": "Black Hawk (Standard)",
-  "model": null,
-  "tonnage": 50,
+  "chassis": "Black Hawk (Standard)",
+  "mulId": 6554,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "TRO: 3145 Mercenaries",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 50,
   "engine": "250 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Clan Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 19,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 13,
+    "leftArm": 13,
+    "rightLeg": 19,
+    "leftLeg": 19,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 136
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Mercenaries"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "Streak SRM 4",
+      "location": "LA"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "LA"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "RA"
+    },
+    {
+      "type": "Streak SRM 4",
+      "location": "RA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "generator": "MegaMek Suite 0.49.16-SNAPSHOT on 2023-12-30",
-    "mul id": "6554",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "myomer": "Standard",
-    "LA armor": "13",
-    "RA armor": "13",
-    "LT armor": "14",
-    "RT armor": "14",
-    "CT armor": "19",
-    "HD armor": "9",
-    "LL armor": "19",
-    "RL armor": "19",
-    "RTL armor": "5",
-    "RTR armor": "5",
-    "RTC armor": "6",
-    "Weapons": "6"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLStreakSRM4",
+      "CLStreakSRM4",
+      "Streak SRM 4",
+      "Streak SRM 4"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLStreakSRM4",
+      "CLStreakSRM4",
+      "Streak SRM 4",
+      "Streak SRM 4"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLERLargeLaser",
+      "Clan Streak SRM 4 Ammo",
+      "Clan Streak SRM 4 Ammo",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLERLargeLaser",
+      "Clan Streak SRM 4 Ammo",
+      "Clan Streak SRM 4 Ammo",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Clan Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3073",
-  "displayName": "Black Hawk (Standard)",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

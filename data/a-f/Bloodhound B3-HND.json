@@ -1,56 +1,175 @@
 {
   "name": "Bloodhound",
+  "chassis": "Bloodhound",
   "model": "B3-HND",
-  "tonnage": 45,
+  "mulId": 5671,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3081,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 3,
+  "role": "Striker",
+  "mass": 45,
   "engine": "315 XL Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "7",
-    "jump": "0"
+    "walk": 7,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 20,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 18,
+    "leftLeg": 18,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 144
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "imp_sensors",
+    "pro_actuator"
   ],
-  "extras": {
-    "mul id": "5671",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "pro_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "14",
-    "RA Armor": "14",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "20",
-    "HD Armor": "9",
-    "LL Armor": "18",
-    "RL Armor": "18",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "9"
+  "weapons": [
+    {
+      "type": "1 ISBPod",
+      "location": "CT"
+    },
+    {
+      "type": "1 ISBeagleActiveProbe",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISERFlamer",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISERFlamer",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISERFlamer",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISERFlamer",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumPulseLaser",
+      "ISERFlamer",
+      "ISERFlamer",
+      "Endo-Steel",
+      "Endo-Steel",
+      "1 ISERFlamer",
+      "1 ISERFlamer",
+      "1 ISMediumPulseLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumPulseLaser",
+      "ISERFlamer",
+      "ISERFlamer",
+      "ISFluidGun",
+      "ISFluidGun",
+      "Endo-Steel",
+      "Endo-Steel",
+      "1 ISMediumPulseLaser",
+      "1 ISERFlamer",
+      "1 ISERFlamer"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISBeagleActiveProbe",
+      "ISBeagleActiveProbe",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "1 ISBeagleActiveProbe"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISFluidGun Ammo",
+      "ISFluidGun Ammo",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISBPod",
+      "1 ISBPod"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo-Steel",
+      "Endo-Steel"
+    ]
   },
-  "era": "3081",
-  "displayName": "Bloodhound B3-HND",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

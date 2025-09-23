@@ -1,56 +1,179 @@
 {
   "name": "Beowulf",
+  "chassis": "Beowulf",
   "model": "BEO-14",
-  "tonnage": 45,
+  "mulId": 328,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3075,
+  "source": "TRO: 3060",
+  "rulesLevel": 3,
+  "role": "Skirmisher",
+  "mass": 45,
   "engine": "270 XL Engine",
+  "structure": "Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 17,
+    "leftTorso": 17,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "command_mech",
+    "ext_twist",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "328",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "exp_actuator",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "14",
-    "RA Armor": "14",
-    "LT Armor": "17",
-    "RT Armor": "17",
-    "CT Armor": "21",
-    "HD Armor": "9",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Medium VSP",
+      "location": "LA"
+    },
+    {
+      "type": "Medium VSP",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "ISMediumVariableSpeedLaser",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "Medium VSP",
+      "Medium VSP"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERMediumLaser",
+      "Sword",
+      "Sword",
+      "Sword",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISERSmallLaser",
+      "Small Laser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Small Laser",
+      "Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "ISERSmallLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Small Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISC3SlaveUnit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "TSM"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "TSM"
+    ]
   },
-  "era": "3075",
-  "displayName": "Beowulf BEO-14",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

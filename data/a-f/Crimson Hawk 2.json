@@ -1,56 +1,143 @@
 {
   "name": "Crimson Hawk",
+  "chassis": "Crimson Hawk",
   "model": "2",
-  "tonnage": 25,
+  "mulId": 722,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 25,
   "engine": "125 XL (Clan) Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 12,
+    "rightTorso": 9,
+    "leftTorso": 9,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 89
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "pro_actuator"
   ],
-  "extras": {
-    "mul id": "722",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "pro_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "9",
-    "RT Armor": "9",
-    "CT Armor": "12",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "4",
-    "Weapons": "2"
+  "weapons": [
+    {
+      "type": "Heavy Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Large Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "Ferro-Fibrous",
+      "Heavy Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Jump Jet",
+      "Jump Jet",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Jump Jet",
+      "Jump Jet",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "Ferro-Fibrous",
+      "Heavy Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ]
   },
-  "era": "3073",
-  "displayName": "Crimson Hawk 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

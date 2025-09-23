@@ -1,56 +1,158 @@
 {
   "name": "Burrock",
-  "model": null,
-  "tonnage": 75,
+  "chassis": "Burrock",
+  "mulId": 3878,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3066,
+  "source": "TRO: 3067",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 75,
   "engine": "375 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "20 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 28,
+    "rightTorso": 21,
+    "leftTorso": 21,
+    "rightArm": 21,
+    "leftArm": 21,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 200
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "3878",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "LA Armor": "21",
-    "RA Armor": "21",
-    "LT Armor": "21",
-    "RT Armor": "21",
-    "CT Armor": "28",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "9",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "2 CLHeavyMediumLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 CLHeavyMediumLaser",
+      "location": "RT"
+    },
+    {
+      "type": "3 CLHeavyMediumLaser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "2 CLHeavyMediumLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "3 CLHeavyMediumLaser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLDouble Heat Sink",
+      "CLHeavyMediumLaser",
+      "CLHeavyMediumLaser",
+      "CLUltraAC20 Ammo",
+      "CLUltraAC20 Ammo",
+      "CLUltraAC20 Ammo",
+      "CLUltraAC20 Ammo",
+      "1 CLHeavyMediumLaser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3066",
-  "displayName": "Burrock",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

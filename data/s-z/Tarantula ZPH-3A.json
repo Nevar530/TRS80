@@ -1,56 +1,113 @@
 {
   "name": "Tarantula",
+  "chassis": "Tarantula",
   "model": "ZPH-3A",
-  "tonnage": 25,
+  "mulId": 3162,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3063,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 25,
   "engine": "200 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "8",
-    "jump": "7"
+    "walk": 8,
+    "jump": 7
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 10,
+    "rightTorso": 8,
+    "leftTorso": 8,
+    "rightLeg": 12,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 97
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "easy_pilot",
+    "ext_twist",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "3162",
-    "Config": "Quad",
-    "role": "Striker",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "FLL Armor": "12",
-    "FRL Armor": "12",
-    "LT Armor": "8",
-    "RT Armor": "8",
-    "CT Armor": "10",
-    "HD Armor": "9",
-    "RLL Armor": "12",
-    "RRL Armor": "12",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "2"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "ISMediumPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "ISMediumPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Medium Pulse Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3063",
-  "displayName": "Tarantula ZPH-3A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

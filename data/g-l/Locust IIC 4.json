@@ -1,56 +1,164 @@
 {
   "name": "Locust IIC",
+  "chassis": "Locust IIC",
   "model": "4",
-  "tonnage": 25,
+  "mulId": 1917,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3064,
+  "source": "TRO: 3085u",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 25,
   "engine": "200 Fusion (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "8",
-    "jump": "0"
+    "walk": 8,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 8,
+    "centerTorso": 10,
+    "rightTorso": 8,
+    "leftTorso": 8,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 10,
+    "leftLeg": 10,
+    "rearCenterTorso": 2,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 76
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085u"
+  "quirks": [
+    "easy_maintain",
+    "low_profile",
+    "no_arms",
+    "weak_legs"
   ],
-  "extras": {
-    "mul id": "1917",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "weak_legs",
-    "Myomer": "Standard",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "8",
-    "RT Armor": "8",
-    "CT Armor": "10",
-    "HD Armor": "8",
-    "LL Armor": "10",
-    "RL Armor": "10",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "2",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "Heavy Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLHeavySmallLaser",
+      "CLHeavySmallLaser",
+      "CLHeavySmallLaser",
+      "Heavy Small Laser",
+      "Heavy Small Laser",
+      "Heavy Small Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLHeavySmallLaser",
+      "CLHeavySmallLaser",
+      "CLHeavySmallLaser",
+      "Heavy Small Laser",
+      "Heavy Small Laser",
+      "Heavy Small Laser"
+    ],
+    "leftTorso": [
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "Endo Steel",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3064",
-  "displayName": "Locust IIC 4",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

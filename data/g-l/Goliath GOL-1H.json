@@ -1,63 +1,125 @@
 {
   "name": "Goliath",
+  "chassis": "Goliath",
   "model": "GOL-1H",
-  "tonnage": 80,
+  "mulId": 1229,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 2652,
+  "source": "TRO: 3039",
+  "rulesLevel": 1,
+  "role": "Sniper",
+  "mass": 80,
   "engine": "320 Fusion Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "17 Single",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightLeg": 30,
+    "rearCenterTorso": 19,
+    "rearRightTorso": 13,
+    "rearLeftTorso": 13,
+    "total": 232
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3039"
+  "quirks": [
+    "multi_trac",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "1229",
-    "Config": "Quad",
-    "role": "Sniper",
-    "quirk": "exp_actuator",
-    "myomer": "Standard",
-    "FLL armor": "24",
-    "FRL armor": "24",
-    "LT armor": "20",
-    "RT armor": "20",
-    "CT armor": "30",
-    "HD armor": "9",
-    "RLL armor": "30",
-    "RRL armor": "30",
-    "RTL armor": "13",
-    "RTR armor": "13",
-    "RTC armor": "19",
-    "Weapons": "5",
+  "weapons": [
+    {
+      "type": "LRM 10",
+      "location": "LT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LT"
+    },
+    {
+      "type": "PPC",
+      "location": "RT"
+    },
+    {
+      "type": "LRM 10",
+      "location": "RT"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "LRM 10",
+      "LRM 10",
+      "Machine Gun",
+      "IS Ammo MG - Full",
+      "LRM 10",
+      "Machine Gun"
+    ],
+    "rightTorso": [
+      "PPC",
+      "PPC",
+      "PPC",
+      "LRM 10",
+      "LRM 10",
+      "Machine Gun",
+      "PPC",
+      "LRM 10",
+      "Machine Gun"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Ammo LRM-10",
+      "IS Ammo LRM-10"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ]
+  },
+  "text": {
     "overview": "The Goliath is based on lessons that were learned from the Scorpion.",
     "capabilities": "The Goliath is armed with what would be considered a paltry armament for a 'Mech of its size.",
     "deployment": "The primary weapon is a Rand PPC. This is backed up by two Holly LRM-10 launchers. The Goliath has respectable firepower at long ranges, but when an enemy closes though the 'Mech only has two Ramsey-65 Machine Guns to rely on for defense.",
-    "history": "The Goliath is the second 'Mech built in 2652 by Brigadier Corporation. The first and most important difference is that the Goliath weighs in at 80 tons allowing it to carry a much heavier weapons payload and armor at the cost of mobility. The Goliath is used as a general assault 'Mech and until recently was not usually seen in large numbers because of the bias against quad 'Mechs prior to the 3060s. In the late 3060s the Goliath saw renewed production and renewed popularity and has since become a powerful and respected assault 'Mech. In 3143, The Corean Enterprises - MacAdams-Suharno plant on Stewart was captured by Clan Wolf, and it's GOL-6M variant production line converted to produce a Clan version of the 'Mech.",
-    "manufacturer": "Brigadier Corporation, Corean Enterprises - MacAdams-Suharno",
-    "primaryfactory": "Oliver, Stewart",
-    "systemmanufacturer": "TARGETING:Corean B-Tech"
+    "history": "The Goliath is the second 'Mech built in 2652 by Brigadier Corporation. The first and most important difference is that the Goliath weighs in at 80 tons allowing it to carry a much heavier weapons payload and armor at the cost of mobility. The Goliath is used as a general assault 'Mech and until recently was not usually seen in large numbers because of the bias against quad 'Mechs prior to the 3060s. In the late 3060s the Goliath saw renewed production and renewed popularity and has since become a powerful and respected assault 'Mech. In 3143, The Corean Enterprises - MacAdams-Suharno plant on Stewart was captured by Clan Wolf, and it's GOL-6M variant production line converted to produce a Clan version of the 'Mech."
   },
-  "era": "2652",
-  "displayName": "Goliath GOL-1H",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Brigadier Corporation",
+      "Corean Enterprises - MacAdams-Suharno"
+    ],
+    "primaryFactory": [
+      "Oliver",
+      "Stewart"
+    ],
+    "systems": {
+      "chassis": "Corean VIII",
+      "engine": "Hermes 320",
+      "armor": "StarSlab /3",
+      "communications": "Corean TransBand-J9",
+      "targeting": "Corean B-Tech"
+    }
   }
 }

@@ -1,63 +1,132 @@
 {
   "name": "Goliath",
+  "chassis": "Goliath",
   "model": "GOL-3L",
-  "tonnage": 80,
+  "mulId": 1231,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3082,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Missile Boat",
+  "mass": 80,
   "engine": "400 XL Engine(IS)",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth(Inner Sphere)"
+    "type": "Stealth (InnerSphere)",
+    "head": 9,
+    "centerTorso": 38,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightLeg": 34,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 263
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "multi_trac",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "1231",
-    "Config": "Quad",
-    "role": "Missile Boat",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "FLL Armor": "34",
-    "FRL Armor": "34",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "38",
-    "HD Armor": "9",
-    "RLL Armor": "34",
-    "RRL Armor": "34",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "4",
+  "weapons": [
+    {
+      "type": "MML 7",
+      "location": "LT"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RT"
+    },
+    {
+      "type": "MML 7",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "IS Ammo MML-7 LRM",
+      "IS Ammo MML-7 SRM",
+      "ISCASE",
+      "Stealth",
+      "Stealth",
+      "MML 7"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "Stealth",
+      "Stealth",
+      "ER PPC",
+      "MML 7"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "IS Ammo MML-7 LRM",
+      "Medium Pulse Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ]
+  },
+  "text": {
     "overview": "The Goliath is based on lessons that were learned from the Scorpion.",
     "capabilities": "The Goliath is armed with what would be considered a paltry armament for a 'Mech of its size.",
     "deployment": "This is a Capellan Confederation variant introduced in 3082. A larger engine increases the top speed of the Goliath to approximately 86 km/h. Equipped with Stealth Armor and a Guardian ECM Suite for protection, the 'Mech carries an ER PPC and two MML-7s. Though the ammo in the side torso is protected by CASE, the ammo in the center torso isn't.",
-    "history": "The Goliath is the second 'Mech built in 2652 by Brigadier Corporation. The first and most important difference is that the Goliath weighs in at 80 tons allowing it to carry a much heavier weapons payload and armor at the cost of mobility. The Goliath is used as a general assault 'Mech and until recently was not usually seen in large numbers because of the bias against quad 'Mechs prior to the 3060s. In the late 3060s the Goliath saw renewed production and renewed popularity and has since become a powerful and respected assault 'Mech. In 3143, The Corean Enterprises - MacAdams-Suharno plant on Stewart was captured by Clan Wolf, and it's GOL-6M variant production line converted to produce a Clan version of the 'Mech.",
-    "manufacturer": "Hollis Incorporated",
-    "primaryfactory": "Corey",
-    "systemmanufacturer": "TARGETING:Corean B-Tech"
+    "history": "The Goliath is the second 'Mech built in 2652 by Brigadier Corporation. The first and most important difference is that the Goliath weighs in at 80 tons allowing it to carry a much heavier weapons payload and armor at the cost of mobility. The Goliath is used as a general assault 'Mech and until recently was not usually seen in large numbers because of the bias against quad 'Mechs prior to the 3060s. In the late 3060s the Goliath saw renewed production and renewed popularity and has since become a powerful and respected assault 'Mech. In 3143, The Corean Enterprises - MacAdams-Suharno plant on Stewart was captured by Clan Wolf, and it's GOL-6M variant production line converted to produce a Clan version of the 'Mech."
   },
-  "era": "3082",
-  "displayName": "Goliath GOL-3L",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Hollis Incorporated"
+    ],
+    "primaryFactory": [
+      "Corey"
+    ],
+    "systems": {
+      "chassis": "Corean VIII",
+      "engine": "Hermes 400 XL",
+      "armor": "StarSlab Stealth with CASE",
+      "communications": "Corean TransBand-J9",
+      "targeting": "Corean B-Tech"
+    }
   }
 }

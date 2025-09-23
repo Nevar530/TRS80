@@ -1,56 +1,123 @@
 {
   "name": "Blue Flame",
+  "chassis": "Blue Flame",
   "model": "BLF-21",
-  "tonnage": 45,
+  "mulId": 3840,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3062,
+  "source": "TRO: 3067",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 45,
   "engine": "225 Light Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 IS Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 15,
+    "leftTorso": 15,
+    "rightLeg": 22,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 169
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3067"
+  "quirks": [
+    "directional_torso_mount",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "3840",
-    "Config": "Quad",
-    "role": "Sniper",
-    "quirk": "bad_rep_is",
-    "myomer": "Standard",
-    "FLL armor": "22",
-    "FRL armor": "22",
-    "LT armor": "15",
-    "RT armor": "15",
-    "CT armor": "21",
-    "HD armor": "9",
-    "RLL armor": "22",
-    "RRL armor": "22",
-    "RTL armor": "7",
-    "RTR armor": "7",
-    "RTC armor": "7",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Streak SRM 2",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Streak SRM 2",
+      "location": "RT"
+    },
+    {
+      "type": "Streak SRM 2",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISStreakSRM2",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER Large Laser",
+      "Streak SRM 2"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISStreakSRM2",
+      "IS Streak SRM 2 Ammo",
+      "ER Large Laser",
+      "Streak SRM 2"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISC3iUnit",
+      "ISC3iUnit"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISStreakSRM2",
+      "Sensors",
+      "Life Support",
+      "Streak SRM 2"
+    ]
   },
-  "era": "3062",
-  "displayName": "Blue Flame BLF-21",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

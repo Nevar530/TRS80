@@ -1,56 +1,168 @@
 {
   "name": "Mantis",
+  "chassis": "Mantis",
   "model": "MTS-L",
-  "tonnage": 30,
+  "mulId": 2022,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3064,
+  "source": "TRO: 3055",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 30,
   "engine": "270 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "9",
-    "jump": "0"
+    "walk": 9,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 14,
+    "rightTorso": 10,
+    "leftTorso": 10,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 98
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "2022",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "non_standard",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "10",
-    "RT Armor": "10",
-    "CT Armor": "14",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "5",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "TSM",
+      "TSM"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "IS Lance",
+      "IS Lance",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "TSM",
+      "TSM"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "Supercharger",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "TSM",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "TSM",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Endo Steel"
+    ]
   },
-  "era": "3064",
-  "displayName": "Mantis MTS-L",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

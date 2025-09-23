@@ -1,56 +1,137 @@
 {
   "name": "Quasit",
+  "chassis": "Quasit",
   "model": "QUA-51M MilitiaMech",
-  "tonnage": 45,
+  "mulId": 2607,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 45,
   "engine": "225 Fusion Engine(IS)",
+  "structure": "IS Industrial",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Heavy Industrial(Inner Sphere)"
+    "type": "HeavyIndustrial (InnerSphere)",
+    "head": 8,
+    "centerTorso": 20,
+    "rightTorso": 13,
+    "leftTorso": 13,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 15,
+    "leftLeg": 15,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 120
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Industrial",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "MML 5",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "generator": "MegaMek Suite 0.50.1-SNAPSHOT on 2024-11-09",
-    "mul id": "2607",
-    "Config": "Biped",
-    "role": "Brawler",
-    "myomer": "Standard",
-    "LA armor": "10",
-    "RA armor": "10",
-    "LT armor": "13",
-    "RT armor": "13",
-    "CT armor": "20",
-    "HD armor": "8",
-    "LL armor": "15",
-    "RL armor": "15",
-    "RTL armor": "5",
-    "RTR armor": "5",
-    "RTC armor": "6",
-    "Weapons": "4"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMML5",
+      "ISMML5",
+      "ISMML5",
+      "Environmental Sealing",
+      "MML 5"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Medium Laser",
+      "Environmental Sealing",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "IS Ammo MML-5 SRM",
+      "IS Ammo MML-5 LRM",
+      "Environmental Sealing"
+    ],
+    "rightTorso": [
+      "Machine Gun",
+      "IS Machine Gun Ammo - Half",
+      "Environmental Sealing",
+      "Machine Gun"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Environmental Sealing"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Environmental Sealing",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Environmental Sealing"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Environmental Sealing"
+    ]
   },
-  "era": "3073",
-  "displayName": "Quasit QUA-51M MilitiaMech",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

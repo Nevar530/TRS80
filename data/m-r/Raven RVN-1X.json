@@ -1,56 +1,126 @@
 {
   "name": "Raven",
+  "chassis": "Raven",
   "model": "RVN-1X",
-  "tonnage": 35,
+  "mulId": 2662,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3024,
+  "source": "TRO: 3039",
+  "rulesLevel": 4,
+  "role": "Scout",
+  "mass": 35,
   "engine": "175 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 6,
+    "centerTorso": 8,
+    "rightTorso": 6,
+    "leftTorso": 6,
+    "rightArm": 6,
+    "leftArm": 6,
+    "rightLeg": 8,
+    "leftLeg": 8,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 64
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3039"
+  "quirks": [
+    "no_arms"
   ],
-  "extras": {
-    "mul id": "2662",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "no_arms",
-    "Myomer": "Standard",
-    "LA Armor": "6",
-    "RA Armor": "6",
-    "LT Armor": "6",
-    "RT Armor": "6",
-    "CT Armor": "8",
-    "HD Armor": "6",
-    "LL Armor": "8",
-    "RL Armor": "8",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "4",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "ISElectronicWarfareEquipment",
+      "ISElectronicWarfareEquipment",
+      "ISElectronicWarfareEquipment",
+      "ISElectronicWarfareEquipment",
+      "IS Ammo SRM-6"
+    ],
+    "rightTorso": [
+      "SRM 6",
+      "SRM 6",
+      "SRM 6"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ]
   },
-  "era": "3024",
-  "displayName": "Raven RVN-1X",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

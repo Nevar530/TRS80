@@ -1,56 +1,168 @@
 {
   "name": "Rakshasa",
+  "chassis": "Rakshasa",
   "model": "MDG-1Ar",
-  "tonnage": 75,
+  "mulId": 2632,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3076,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 75,
   "engine": "375 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "15 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 21,
+    "leftArm": 21,
+    "rightLeg": 28,
+    "leftLeg": 28,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 208
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "easy_maintain",
+    "weak_head_1"
   ],
-  "extras": {
-    "mul id": "2632",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "weak_head_1",
-    "Myomer": "Standard",
-    "LA Armor": "21",
-    "RA Armor": "21",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "33",
-    "HD Armor": "9",
-    "LL Armor": "28",
-    "RL Armor": "28",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "10",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "LA"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "MML 7",
+      "location": "LT"
+    },
+    {
+      "type": "MML 7",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Medium Laser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Snub-Nose PPC",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Medium Laser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Snub-Nose PPC",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "IS Ammo MML-7 LRM",
+      "IS Ammo MML-7 LRM",
+      "IS Ammo MML-7 SRM",
+      "ISCASE",
+      "Endo Steel",
+      "MML 7"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "ISMML7",
+      "Endo Steel",
+      "Endo Steel",
+      "MML 7"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel"
+    ]
   },
-  "era": "3076",
-  "displayName": "Rakshasa MDG-1Ar",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

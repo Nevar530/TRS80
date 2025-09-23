@@ -1,56 +1,164 @@
 {
   "name": "Sha Yu",
+  "chassis": "Sha Yu",
   "model": "SYU-6B",
-  "tonnage": 40,
+  "mulId": 5670,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3070,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 40,
   "engine": "280 XL Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "7",
-    "jump": "0"
+    "walk": 7,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth Armor"
+    "type": "StealthArmor",
+    "head": 9,
+    "centerTorso": 17,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 11,
+    "leftArm": 11,
+    "rightLeg": 14,
+    "leftLeg": 14,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 120
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "imp_com"
   ],
-  "extras": {
-    "mul id": "5670",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "imp_com",
-    "Myomer": "Standard",
-    "LA Armor": "11",
-    "RA Armor": "11",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "17",
-    "HD Armor": "9",
-    "LL Armor": "14",
-    "RL Armor": "14",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "1 ISGuardianECM",
+      "location": "CT"
+    },
+    {
+      "type": "1 ISMediumLaser",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISMediumLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISSNPPC",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISSNPPC",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "1 ISSNPPC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISSNPPC",
+      "ISSNPPC",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "1 ISSNPPC"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISMediumLaser",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "1 ISMediumLaser"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISMediumLaser",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "1 ISMediumLaser"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISGuardianECM",
+      "ISGuardianECM",
+      "1 ISGuardianECM"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth Armor",
+      "Stealth Armor"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth Armor",
+      "Stealth Armor"
+    ]
   },
-  "era": "3070",
-  "displayName": "Sha Yu SYU-6B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

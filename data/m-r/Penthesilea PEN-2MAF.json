@@ -1,56 +1,166 @@
 {
   "name": "Penthesilea",
+  "chassis": "Penthesilea",
   "model": "PEN-2MAF",
-  "tonnage": 75,
+  "mulId": 2471,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3085,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 75,
   "engine": "300 Fusion Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 231
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "2471",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "32",
-    "RL Armor": "32",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "12",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "ER PPC",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "LB 20-X AC",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "ER PPC",
+      "ER Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "ISLBXAC20",
+      "IS LB 20-X AC Ammo",
+      "IS LB 20-X Cluster Ammo",
+      "ISCASE",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Light Ferro-Fibrous",
+      "LB 20-X AC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERMediumLaser",
+      "Sensors",
+      "Life Support",
+      "ER Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Light Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Light Ferro-Fibrous"
+    ]
   },
-  "era": "3085",
-  "displayName": "Penthesilea PEN-2MAF",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

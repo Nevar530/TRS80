@@ -1,55 +1,158 @@
 {
   "name": "Hercules",
+  "chassis": "Hercules",
   "model": "HRC-LS-9003",
-  "tonnage": 70,
+  "mulId": 7990,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3088,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 2,
+  "mass": 70,
   "engine": "350 XL Engine(IS)",
+  "structure": "IS Composite",
+  "myomer": "Standard",
   "heatSinks": "14 IS Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 197
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Composite",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "7990",
-    "Config": "Biped",
-    "quirk": "difficult_maintain",
-    "myomer": "Standard",
-    "LA armor": "18",
-    "RA armor": "18",
-    "LT armor": "22",
-    "RT armor": "22",
-    "CT armor": "34",
-    "HD armor": "9",
-    "LL armor": "24",
-    "RL armor": "24",
-    "RTL armor": "8",
-    "RTR armor": "8",
-    "RTC armor": "10",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/10",
+      "location": "RA"
+    },
+    {
+      "type": "ER PPC",
+      "location": "RT"
+    },
+    {
+      "type": "Anti-Missile System",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumPulseLaser",
+      "IS Ferro-Fibrous",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "ISUltraAC10",
+      "IS Ferro-Fibrous",
+      "Ultra AC/10"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISAngelECMSuite",
+      "ISAngelECMSuite",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "IS Ultra AC/10 Ammo",
+      "ISAMS Ammo",
+      "ISCASEII",
+      "IS Ferro-Fibrous",
+      "ER PPC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISAntiMissileSystem",
+      "IS Ferro-Fibrous",
+      "Anti-Missile System"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ]
   },
-  "era": "3088",
-  "displayName": "Hercules HRC-LS-9003",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

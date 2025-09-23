@@ -1,56 +1,107 @@
 {
   "name": "Tarantula",
+  "chassis": "Tarantula",
   "model": "ZPH-2A",
-  "tonnage": 25,
+  "mulId": 3161,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3060,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 25,
   "engine": "200 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "8",
-    "jump": "8"
+    "walk": 8,
+    "jump": 8
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 6,
+    "centerTorso": 10,
+    "rightTorso": 7,
+    "leftTorso": 7,
+    "rightLeg": 7,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 72
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "easy_pilot",
+    "ext_twist",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "3161",
-    "Config": "Quad",
-    "role": "Scout",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "FLL Armor": "7",
-    "FRL Armor": "7",
-    "LT Armor": "7",
-    "RT Armor": "7",
-    "CT Armor": "10",
-    "HD Armor": "6",
-    "RLL Armor": "7",
-    "RRL Armor": "7",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Streak SRM 2",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISStreakSRM2",
+      "IS Streak SRM 2 Ammo",
+      "Streak SRM 2"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3060",
-  "displayName": "Tarantula ZPH-2A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

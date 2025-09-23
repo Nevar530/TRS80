@@ -1,63 +1,164 @@
 {
   "name": "Templar",
+  "chassis": "Templar",
   "model": "TLR1-OD",
-  "tonnage": 85,
+  "mulId": 5707,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3063,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 4,
+  "role": "Brawler",
+  "mass": 85,
   "engine": "340 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 44,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightArm": 28,
+    "leftArm": 28,
+    "rightLeg": 36,
+    "leftLeg": 36,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 263
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "easy_maintain"
   ],
-  "extras": {
-    "mul id": "5707",
-    "Config": "Biped Omnimech",
-    "role": "Brawler",
-    "quirk": "easy_maintain",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "13",
-    "LA Armor": "28",
-    "RA Armor": "28",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "44",
-    "HD Armor": "9",
-    "LL Armor": "36",
-    "RL Armor": "36",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "10",
-    "Weapons": "4",
+  "weapons": [
+    {
+      "type": "Large X-Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large X-Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Light Gauss Rifle",
+      "location": "LT"
+    },
+    {
+      "type": "Light Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLargeXPulseLaser (omnipod)",
+      "ISLargeXPulseLaser (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Large X-Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLargeXPulseLaser (omnipod)",
+      "ISLargeXPulseLaser (omnipod)",
+      "IS Endo Steel",
+      "Large X-Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Light Gauss Rifle"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISLightGaussRifle (omnipod)",
+      "ISCASE",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Light Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Light Gauss Ammo (omnipod)",
+      "IS Light Gauss Ammo (omnipod)"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
+  },
+  "text": {
+    "overview": "",
     "capabilities": "This configuration carries a pair of Light Gauss Rifles in the torso and a Large X-Pulse Laser in each arm.",
     "deployment": "The Templar is built on a lightweight Kallon Type XIX Endo Steel chassis and is powered by a KalTek 340 XL engine that gives the 'Mech a top speed of 64.8 km/h while sacrificing durability. The Templar has thirteen fixed double heat sinks and is armored with sixteen and a half tons of Starshield A armor with CASE fixed in the right torso. Overall, this allows the Templar to have forty tons of free pod space for weapons and equipment which the 'Mech uses effectively in its various configurations.",
-    "history": "With a noticeable lack of OmniMechs designed in the Federated Suns, Field Marshal Duke George Hasek went over the heads of the Department of the Quartermaster and commissioned Kallon Industries to design an assault OmniMech and backed the project with his own considerable financial resources. The resulting 'Mech is a force to be reckoned with on the modern battlefield.",
-    "manufacturer": "Kallon Industries",
-    "primaryfactory": "Talon",
-    "systemmanufacturer": "TARGETING:Spar 3C MegaTrak"
+    "history": "With a noticeable lack of OmniMechs designed in the Federated Suns, Field Marshal Duke George Hasek went over the heads of the Department of the Quartermaster and commissioned Kallon Industries to design an assault OmniMech and backed the project with his own considerable financial resources. The resulting 'Mech is a force to be reckoned with on the modern battlefield."
   },
-  "era": "3063",
-  "displayName": "Templar TLR1-OD",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Kallon Industries"
+    ],
+    "primaryFactory": [
+      "Talon"
+    ],
+    "systems": {
+      "chassis": "Kallon Type XIX Endo Steel",
+      "engine": "KalTek 340 Extralight",
+      "armor": "Starshield A with CASE",
+      "communications": "Newberg Telescan 17",
+      "targeting": "Spar 3C MegaTrak"
+    }
   }
 }

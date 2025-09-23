@@ -1,57 +1,162 @@
 {
   "name": "Enforcer III",
+  "chassis": "Enforcer III",
   "model": "ENF-6H",
-  "tonnage": 50,
+  "mulId": 981,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3064,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 50,
   "engine": "250 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 24,
+    "rightTorso": 19,
+    "leftTorso": 19,
+    "rightArm": 16,
+    "leftArm": 16,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 160
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "battle_fists_la"
   ],
-  "extras": {
-    "mul id": "981",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "battle_fists_la",
-    "weaponquirk": "fast_reload:RA:2:ISUltraAC20",
-    "Myomer": "Standard",
-    "LA Armor": "16",
-    "RA Armor": "16",
-    "LT Armor": "19",
-    "RT Armor": "19",
-    "CT Armor": "24",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Ultra AC/20",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "ISUltraAC20",
+      "Ultra AC/20"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser",
+      "IS Ultra AC/20 Ammo",
+      "IS Ultra AC/20 Ammo",
+      "IS Ultra AC/20 Ammo",
+      "IS Ultra AC/20 Ammo",
+      "ISCASE",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "ISERMediumLaser",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3064",
-  "displayName": "Enforcer III ENF-6H",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

@@ -1,56 +1,159 @@
 {
   "name": "Epimetheus",
+  "chassis": "Epimetheus",
   "model": "Prime",
-  "tonnage": 80,
+  "mulId": 4129,
+  "config": "Biped",
   "techBase": "Mixed (Clan Chassis)",
-  "rulesLevel": "4",
+  "era": 3053,
+  "source": "Unbound",
+  "rulesLevel": 4,
+  "role": "Sniper",
+  "mass": 80,
   "engine": "400 XL (Clan) Engine",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 7,
+    "centerTorso": 35,
+    "rightTorso": 21,
+    "leftTorso": 21,
+    "rightArm": 21,
+    "leftArm": 21,
+    "rightLeg": 27,
+    "leftLeg": 27,
+    "rearCenterTorso": 14,
+    "rearRightTorso": 13,
+    "rearLeftTorso": 13,
+    "total": 220
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": "Torso-Mounted Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Unbound"
+  "quirks": [
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "4129",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "non_standard",
-    "Myomer": "Standard",
-    "LA Armor": "21",
-    "RA Armor": "21",
-    "LT Armor": "21",
-    "RT Armor": "21",
-    "CT Armor": "35",
-    "HD Armor": "7",
-    "LL Armor": "27",
-    "RL Armor": "27",
-    "RTL Armor": "13",
-    "RTR Armor": "13",
-    "RTC Armor": "14",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Ultra AC/10",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERLargeLaser",
+      "CLMediumPulseLaser",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERLargeLaser",
+      "CLMediumPulseLaser",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "ER Large Laser",
+      "Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Life Support",
+      "Clan Ultra AC/10 Ammo",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Cockpit",
+      "Sensors"
+    ],
+    "head": [
+      "Sensors",
+      "Sensors",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "CLUltraAC10",
+      "Ultra AC/10"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ]
   },
-  "era": "3053",
-  "displayName": "Epimetheus Prime",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

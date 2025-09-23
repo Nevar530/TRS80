@@ -1,56 +1,160 @@
 {
   "name": "Hermes",
+  "chassis": "Hermes",
   "model": "HER-4WB",
-  "tonnage": 30,
+  "mulId": 1495,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3068,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 30,
   "engine": "270 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "MASC",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "9",
-    "jump": "0"
+    "walk": 9,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth"
+    "type": "Stealth",
+    "head": 9,
+    "centerTorso": 11,
+    "rightTorso": 9,
+    "leftTorso": 9,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 88
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "imp_com",
+    "stable"
   ],
-  "extras": {
-    "mul id": "1495",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "stable",
-    "Myomer": "MASC",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "9",
-    "RT Armor": "9",
-    "CT Armor": "11",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "4",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISGuardianECM",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "ISMediumPulseLaser",
+      "1 ISMediumPulseLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "ISMediumPulseLaser",
+      "1 ISMediumPulseLaser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMASC",
+      "ISMASC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth Armor",
+      "Stealth Armor"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECM",
+      "ISGuardianECM",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth Armor",
+      "Stealth Armor",
+      "1 ISGuardianECM"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "1 ISMediumPulseLaser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth Armor",
+      "Stealth Armor"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth Armor",
+      "Stealth Armor"
+    ]
   },
-  "era": "3068",
-  "displayName": "Hermes HER-4WB",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

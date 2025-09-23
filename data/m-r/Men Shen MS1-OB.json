@@ -1,57 +1,167 @@
 {
   "name": "Men Shen",
+  "chassis": "Men Shen",
   "model": "MS1-OB",
-  "tonnage": 55,
+  "mulId": 2162,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3060,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 55,
   "engine": "330 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 26,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 17,
+    "leftArm": 17,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 176
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "imp_com",
+    "imp_sensors",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "2162",
-    "Config": "Biped Omnimech",
-    "role": "Striker",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "17",
-    "RA Armor": "17",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "26",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "7",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "LB 2-X AC",
+      "location": "LA"
+    },
+    {
+      "type": "LB 2-X AC",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "LB 2-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "ISLBXAC2 (omnipod)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "LB 2-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser (omnipod)",
+      "ISERMediumLaser (omnipod)",
+      "IS LB 2-X AC Ammo (omnipod)",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser (omnipod)",
+      "ISERMediumLaser (omnipod)",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3060",
-  "displayName": "Men Shen MS1-OB",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

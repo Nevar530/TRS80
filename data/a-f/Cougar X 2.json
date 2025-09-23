@@ -1,56 +1,149 @@
 {
   "name": "Cougar",
+  "chassis": "Cougar",
   "model": "X 2",
-  "tonnage": 35,
+  "mulId": 6952,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3089,
+  "source": "Record Sheets: 3145 New Tech New Upgrades",
+  "rulesLevel": 3,
+  "role": "Striker",
+  "mass": 35,
   "engine": "175 XL (Clan) Engine",
+  "structure": "IS Composite",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "8"
+    "walk": 5,
+    "jump": 8
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 8,
+    "centerTorso": 14,
+    "rightTorso": 12,
+    "leftTorso": 12,
+    "rightArm": 11,
+    "leftArm": 11,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 105
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Composite",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3145 New Tech New Upgrades"
+  "quirks": [
+    "ubiquitous_clan"
   ],
-  "extras": {
-    "mul id": "6952",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "ubiquitous_clan",
-    "Myomer": "Standard",
-    "LA Armor": "11",
-    "RA Armor": "11",
-    "LT Armor": "12",
-    "RT Armor": "12",
-    "CT Armor": "14",
-    "HD Armor": "8",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "2"
+  "weapons": [
+    {
+      "type": "Streak LRM 15",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLStreakLRM15",
+      "CLStreakLRM15",
+      "CLStreakLRM15",
+      "Clan Streak LRM 15 Ammo",
+      "Clan Streak LRM 15 Ammo",
+      "Streak LRM 15"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "ER Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Improved Jump Jet",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ]
   },
-  "era": "3089",
-  "displayName": "Cougar X 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

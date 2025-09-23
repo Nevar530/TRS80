@@ -1,56 +1,147 @@
 {
   "name": "Excalibur",
+  "chassis": "Excalibur",
   "model": "EXC-B1",
-  "tonnage": 70,
+  "mulId": 997,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 2619,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 70,
   "engine": "350 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "11 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 16,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 13,
+    "leftArm": 13,
+    "rightLeg": 13,
+    "leftLeg": 13,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 120
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "vestigial_hands_la",
+    "vestigial_hands_ra"
   ],
-  "extras": {
-    "mul id": "997",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "vestigial_hands_ra",
-    "Myomer": "Standard",
-    "LA Armor": "13",
-    "RA Armor": "13",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "16",
-    "HD Armor": "9",
-    "LL Armor": "13",
-    "RL Armor": "13",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "5",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Gauss Rifle",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "LT"
+    },
+    {
+      "type": "AMS",
+      "location": "LT"
+    },
+    {
+      "type": "Small Pulse Laser",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISSmallPulseLaser",
+      "Small Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "ISGaussRifle",
+      "Gauss Rifle"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "LRM 20",
+      "ISArtemisIV",
+      "ISAntiMissileSystem",
+      "IS Ammo LRM-20 Artemis-capable",
+      "IS Ammo LRM-20 Artemis-capable",
+      "LRM 20",
+      "AMS"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS Gauss Ammo",
+      "IS Gauss Ammo"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISAMS Ammo"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "2619",
-  "displayName": "Excalibur EXC-B1",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

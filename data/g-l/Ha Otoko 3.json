@@ -1,56 +1,166 @@
 {
   "name": "Ha Otoko",
+  "chassis": "Ha Otoko",
   "model": "3",
-  "tonnage": 65,
+  "mulId": 1354,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3082,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Missile Boat",
+  "mass": 65,
   "engine": "260 Fusion (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 31,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 29,
+    "leftLeg": 29,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 208
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "bad_rep_clan"
   ],
-  "extras": {
-    "mul id": "1354",
-    "Config": "Biped",
-    "role": "Missile Boat",
-    "quirk": "bad_rep_clan",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "23",
-    "RT Armor": "23",
-    "CT Armor": "31",
-    "HD Armor": "9",
-    "LL Armor": "29",
-    "RL Armor": "29",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "10",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 20",
+      "location": "RT"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "RA"
+    },
+    {
+      "type": "AP Gauss Rifle",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERMediumLaser",
+      "CLAPGaussRifle",
+      "ER Medium Laser",
+      "AP Gauss Rifle"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERLargeLaser",
+      "CLAPGaussRifle",
+      "ER Large Laser",
+      "AP Gauss Rifle"
+    ],
+    "leftTorso": [
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLArtemisIV",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "LRM 20"
+    ],
+    "rightTorso": [
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLArtemisIV",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "Clan Ammo LRM-20 (Clan) Artemis-capable",
+      "CLAPGaussRifle Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "LRM 20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLECMSuite",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink"
+    ]
   },
-  "era": "3082",
-  "displayName": "Ha Otoko 3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

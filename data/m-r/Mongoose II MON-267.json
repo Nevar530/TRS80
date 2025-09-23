@@ -1,63 +1,162 @@
 {
   "name": "Mongoose II",
+  "chassis": "Mongoose II",
   "model": "MON-267",
-  "tonnage": 40,
+  "mulId": 2217,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 40,
   "engine": "320 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "8",
-    "jump": "0"
+    "walk": 8,
+    "jump": 0
   },
   "armor": {
-    "total": "Stealth"
+    "type": "Stealth",
+    "head": 8,
+    "centerTorso": 14,
+    "rightTorso": 11,
+    "leftTorso": 11,
+    "rightArm": 9,
+    "leftArm": 9,
+    "rightLeg": 15,
+    "leftLeg": 15,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 104
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "command_mech",
+    "imp_com"
   ],
-  "extras": {
-    "mul id": "2217",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "imp_com",
-    "Myomer": "Standard",
-    "LA Armor": "9",
-    "RA Armor": "9",
-    "LT Armor": "11",
-    "RT Armor": "11",
-    "CT Armor": "14",
-    "HD Armor": "8",
-    "LL Armor": "15",
-    "RL Armor": "15",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "4",
-    "Weapons": "1",
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe",
+      "ISMASC",
+      "ISMASC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISTargeting Computer",
+      "ISTargeting Computer",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Stealth",
+      "Stealth"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ER Large Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISC3SlaveUnit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ]
+  },
+  "text": {
     "overview": "Luthien Armor Works was working on an upgrade of the Mongoose for ComStar to be a faster and tougher scout 'Mech, when the chaos on Luthien during the early years of the Jihad forced them to look elsewhere.",
     "capabilities": "The result is the Mongoose II, an effective hunter-killer that is able to find hidden enemies and provide long range fire support. Equipped with an impressive suite of electronics, the 'Mech carries a Beagle Active Probe, Guardian ECM Suite, C3i Computer, and MASC that enables it move up to 172 km/h in bursts. A respectable seven tons of armor protects the Mongoose II.",
     "deployment": "This variant is built using a C3 Slave Unit so that it can integrate with the C3 systems in use by the Lyran Alliance. Six and a half tons of Stealth Armor use the ECM Suite to make the 267 a difficult target at range, taking advantage of the long range weapon. A Targeting Computer makes the laser even more accurate.",
-    "history": "ComStar financed a refit of a lost Rim Worlds Republic factory on Kwangjong-ni. New versions of the Zeus and Banshee were walking off the line for battlefield testing when Word of Blake conquered Hesperus II. Anxious to stay solvent, ComStar C-bills paid for the upgrade to the Kwangjong-ni facility. In exchange, Defiance sold them sixty-six percent of its production for its first two years.",
-    "manufacturer": "Arc-Royal MechWorks, Defiance Manufacturing Annex",
-    "primaryfactory": "Arc-Royal,Kwangjong-ni",
-    "systemmanufacturer": "TARGETING:Nashan Trac V-102 with Active Probe"
+    "history": "ComStar financed a refit of a lost Rim Worlds Republic factory on Kwangjong-ni. New versions of the Zeus and Banshee were walking off the line for battlefield testing when Word of Blake conquered Hesperus II. Anxious to stay solvent, ComStar C-bills paid for the upgrade to the Kwangjong-ni facility. In exchange, Defiance sold them sixty-six percent of its production for its first two years."
   },
-  "era": "3073",
-  "displayName": "Mongoose II MON-267",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Arc-Royal MechWorks",
+      "Defiance Manufacturing Annex"
+    ],
+    "primaryFactory": [
+      "Arc-Royal",
+      "Kwangjong-ni"
+    ],
+    "systems": {
+      "chassis": "Alshain Type 69-40S",
+      "engine": "Pitban 320 XL",
+      "armor": "Unknown Stealth",
+      "communications": "Nashan Comm-i U-284",
+      "targeting": "Nashan Trac V-102 with Active Probe"
+    }
   }
 }

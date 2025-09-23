@@ -1,55 +1,168 @@
 {
   "name": "Devastator",
+  "chassis": "Devastator",
   "model": "DVS-10",
-  "tonnage": 100,
+  "mulId": 7984,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3142,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 3,
+  "mass": 100,
   "engine": "400 XL Engine(IS)",
+  "structure": "IS Endo-Composite",
+  "myomer": "Standard",
   "heatSinks": "18 IS Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 47,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 34,
+    "leftArm": 34,
+    "rightLeg": 40,
+    "leftLeg": 40,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 295
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo-Composite",
-  "cockpit": "Standard Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [
+    "hyper_actuator",
+    "searchlight"
   ],
-  "extras": {
-    "mul id": "7984",
-    "Config": "Biped",
-    "quirk": "searchlight",
-    "myomer": "Standard",
-    "LA armor": "34",
-    "RA armor": "34",
-    "LT armor": "30",
-    "RT armor": "30",
-    "CT armor": "47",
-    "HD armor": "9",
-    "LL armor": "40",
-    "RL armor": "40",
-    "RTL armor": "10",
-    "RTR armor": "10",
-    "RTC armor": "11",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Large Re-engineered Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Re-engineered Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Re-engineered Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Medium Re-engineered Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder (ARMORED)",
+      "Upper Arm Actuator",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "IS Endo-Composite",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Large Re-engineered Laser"
+    ],
+    "rightArm": [
+      "Shoulder (ARMORED)",
+      "Upper Arm Actuator",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "Large Re-engineered Laser",
+      "IS Endo-Composite",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Large Re-engineered Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "ISMASC",
+      "IS Endo-Composite"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Supercharger (ARMORED)",
+      "IS Endo-Composite",
+      "IS Endo-Composite",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro (ARMORED)",
+      "Gyro (ARMORED)",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Medium Re-engineered Laser",
+      "Medium Re-engineered Laser",
+      "Medium Re-engineered Laser",
+      "Medium Re-engineered Laser",
+      "Medium Re-engineered Laser",
+      "Medium Re-engineered Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip (ARMORED)",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Composite",
+      "IS Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip (ARMORED)",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo-Composite",
+      "IS Ferro-Fibrous"
+    ]
   },
-  "era": "3142",
-  "displayName": "Devastator DVS-10",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

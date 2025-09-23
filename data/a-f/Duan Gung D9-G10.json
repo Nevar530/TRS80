@@ -1,56 +1,162 @@
 {
   "name": "Duan Gung",
+  "chassis": "Duan Gung",
   "model": "D9-G10",
-  "tonnage": 25,
+  "mulId": 934,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3070,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 25,
   "engine": "175 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "7",
-    "jump": "6"
+    "walk": 7,
+    "jump": 6
   },
   "armor": {
-    "total": "Stealth(Inner Sphere)"
+    "type": "Stealth (InnerSphere)",
+    "head": 9,
+    "centerTorso": 10,
+    "rightTorso": 8,
+    "leftTorso": 8,
+    "rightArm": 5,
+    "leftArm": 5,
+    "rightLeg": 6,
+    "leftLeg": 6,
+    "rearCenterTorso": 3,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 64
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "pro_actuator",
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "934",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "non_standard",
-    "Myomer": "Standard",
-    "LA Armor": "5",
-    "RA Armor": "5",
-    "LT Armor": "8",
-    "RT Armor": "8",
-    "CT Armor": "10",
-    "HD Armor": "9",
-    "LL Armor": "6",
-    "RL Armor": "6",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "3",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Light PPC",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Medium Laser",
+      "Stealth",
+      "Stealth",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Medium Laser",
+      "Stealth",
+      "Stealth",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "Light PPC",
+      "Light PPC",
+      "Stealth",
+      "Stealth",
+      "Light PPC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERSmallLaser",
+      "Sensors",
+      "Life Support",
+      "ER Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ]
   },
-  "era": "3070",
-  "displayName": "Duan Gung D9-G10",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

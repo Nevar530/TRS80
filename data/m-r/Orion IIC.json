@@ -1,56 +1,158 @@
 {
   "name": "Orion IIC",
-  "model": null,
-  "tonnage": 75,
+  "chassis": "Orion IIC",
+  "mulId": 2340,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 2841,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 75,
   "engine": "300 Fusion (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 230
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "anti_air",
+    "easy_maintain",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "2340",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "32",
-    "RL Armor": "32",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "11",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "SRM 4",
+      "location": "LT"
+    },
+    {
+      "type": "Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLLRM20",
+      "CLERLargeLaser",
+      "ER Large Laser",
+      "LRM 20"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLERLargeLaser",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "CLSRM4",
+      "Clan Ammo LRM-20",
+      "Clan Ammo LRM-20",
+      "Clan Ammo LRM-20",
+      "Clan Ammo SRM-4",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "SRM 4"
+    ],
+    "rightTorso": [
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "Clan Gauss Ammo",
+      "Clan Gauss Ammo",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "2841",
-  "displayName": "Orion IIC",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

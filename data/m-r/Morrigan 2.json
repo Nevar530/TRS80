@@ -1,57 +1,176 @@
 {
   "name": "Morrigan",
+  "chassis": "Morrigan",
   "model": "2",
-  "tonnage": 35,
+  "mulId": 2229,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3084,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 35,
   "engine": "280 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "8",
-    "jump": "0"
+    "walk": 8,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 15,
+    "rightTorso": 11,
+    "leftTorso": 11,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 16,
+    "leftLeg": 16,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 115
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "weak_legs"
   ],
-  "extras": {
-    "mul id": "2229",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "weak_legs",
-    "weaponquirk": "stable_weapon:RA:3:CLHeavyLargeLaser",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "11",
-    "RT Armor": "11",
-    "CT Armor": "15",
-    "HD Armor": "9",
-    "LL Armor": "16",
-    "RL Armor": "16",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "9"
+  "weapons": [
+    {
+      "type": "Heavy Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Small Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Small Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Heavy Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLSmallPulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Small Pulse Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLERSmallLaser",
+      "CLERSmallLaser",
+      "CLSmallPulseLaser",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "Endo Steel",
+      "Ferro-Fibrous",
+      "Small Pulse Laser",
+      "ER Small Laser",
+      "ER Small Laser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Endo Steel",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3084",
-  "displayName": "Morrigan 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

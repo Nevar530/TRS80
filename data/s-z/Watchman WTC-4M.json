@@ -1,56 +1,145 @@
 {
   "name": "Watchman",
+  "chassis": "Watchman",
   "model": "WTC-4M",
-  "tonnage": 40,
+  "mulId": 3534,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3055,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 40,
   "engine": "200 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Single",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 8,
+    "centerTorso": 16,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 136
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "easy_maintain",
+    "easy_pilot",
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "3534",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "16",
-    "HD Armor": "8",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LA"
+    },
+    {
+      "type": "Machine Gun",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Machine Gun",
+      "Machine Gun",
+      "Large Laser",
+      "Machine Gun",
+      "Machine Gun"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "leftTorso": [
+      "IS Ammo MG - Full",
+      "ISCASE"
+    ],
+    "rightTorso": [
+      "Heat Sink",
+      "Heat Sink"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3055",
-  "displayName": "Watchman WTC-4M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

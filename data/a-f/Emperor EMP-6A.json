@@ -1,57 +1,174 @@
 {
   "name": "Emperor",
+  "chassis": "Emperor",
   "model": "EMP-6A",
-  "tonnage": 90,
+  "mulId": 964,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 2612,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 90,
   "engine": "270 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "3",
-    "jump": "3"
+    "walk": 3,
+    "jump": 3
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 48,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 30,
+    "leftArm": 30,
+    "rightLeg": 38,
+    "leftLeg": 38,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 279
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "command_mech"
   ],
-  "extras": {
-    "mul id": "964",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "command_mech",
-    "weaponquirk": "imp_cooling:LA:9:Large Laser",
-    "Myomer": "Standard",
-    "LA Armor": "30",
-    "RA Armor": "30",
-    "LT Armor": "30",
-    "RT Armor": "30",
-    "CT Armor": "48",
-    "HD Armor": "9",
-    "LL Armor": "38",
-    "RL Armor": "38",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "H"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "LA"
+    },
+    {
+      "type": "LB 10-X AC",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "Large Laser",
+      "Large Laser",
+      "Large Laser",
+      "LB 10-X AC"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "ISLBXAC10",
+      "Large Laser",
+      "Large Laser",
+      "Large Laser",
+      "LB 10-X AC"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMediumPulseLaser",
+      "IS LB 10-X AC Ammo",
+      "IS LB 10-X Cluster Ammo",
+      "ISCASE",
+      "Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMediumPulseLaser",
+      "IS LB 10-X AC Ammo",
+      "IS LB 10-X Cluster Ammo",
+      "ISCASE",
+      "Medium Pulse Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Medium Laser",
+      "Sensors",
+      "Life Support",
+      "Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ]
   },
-  "era": "2612",
-  "displayName": "Emperor EMP-6A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

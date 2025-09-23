@@ -1,58 +1,178 @@
 {
   "name": "Phoenix Hawk L",
+  "chassis": "Phoenix Hawk L",
   "model": "'Fenikkusu Taka' PXH-11K",
-  "tonnage": 35,
+  "mulId": 6390,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3116,
+  "source": "TRO: 3145 Draconis Combine",
+  "rulesLevel": 3,
+  "role": "Scout",
+  "mass": 35,
   "engine": "210 XL Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "6"
+    "walk": 6,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 17,
+    "rightTorso": 11,
+    "leftTorso": 11,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 104
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Draconis Combine"
+  "quirks": [
+    "poor_sealing"
   ],
-  "extras": {
-    "mul id": "6390",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "poor_sealing",
-    "weaponquirk": "accurate:RA:4:TSEMP Cannon",
-    "Myomer": "Standard",
-    "Ejection": "Full Head Ejection System",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "11",
-    "RT Armor": "11",
-    "CT Armor": "17",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "4",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "LA"
+    },
+    {
+      "type": "Heavy Machine Gun",
+      "location": "LA"
+    },
+    {
+      "type": "TSEMP Cannon",
+      "location": "RA"
+    },
+    {
+      "type": "MML 3",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMML3",
+      "ISMML3",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Heavy Machine Gun",
+      "Heavy Machine Gun",
+      "MML 3"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "TSEMP Cannon",
+      "TSEMP Cannon",
+      "TSEMP Cannon",
+      "TSEMP Cannon",
+      "TSEMP Cannon",
+      "ISERMediumLaser",
+      "Heavy Machine Gun",
+      "IS Endo Steel",
+      "ER Medium Laser",
+      "Heavy Machine Gun",
+      "TSEMP Cannon"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "IS Ammo MML-3 LRM",
+      "IS Ammo MML-3 SRM",
+      "IS Heavy Machine Gun Ammo - Half",
+      "ISCASE",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Jump Jet",
+      "Jump Jet",
+      "Jump Jet",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "IS Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3116",
-  "displayName": "Phoenix Hawk L 'Fenikkusu Taka' PXH-11K",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

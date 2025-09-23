@@ -1,57 +1,177 @@
 {
   "name": "Night Wolf",
-  "model": null,
-  "tonnage": 90,
+  "chassis": "Night Wolf",
+  "mulId": 2273,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3084,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 90,
   "engine": "360 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "18 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 37,
+    "rightTorso": 28,
+    "leftTorso": 28,
+    "rightArm": 25,
+    "leftArm": 25,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 248
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "hyper_actuator"
   ],
-  "extras": {
-    "mul id": "2273",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "hyper_actuator",
-    "weaponquirk": "direct_torso_mount:HD:3:CLAntiMissileSystem",
-    "Myomer": "Standard",
-    "LA Armor": "25",
-    "RA Armor": "25",
-    "LT Armor": "28",
-    "RT Armor": "28",
-    "CT Armor": "37",
-    "HD Armor": "9",
-    "LL Armor": "32",
-    "RL Armor": "32",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "12",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "ATM 9",
+      "location": "LA"
+    },
+    {
+      "type": "Plasma Cannon",
+      "location": "LA"
+    },
+    {
+      "type": "ATM 9",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Heavy Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "AMS",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "CLPlasmaCannon",
+      "Clan Ammo ATM-9",
+      "Clan Ammo ATM-9 ER",
+      "Clan Ammo ATM-9 HE",
+      "Endo Steel",
+      "ATM 9",
+      "Plasma Cannon"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "CLATM9",
+      "CLERMediumLaser",
+      "Clan Ammo ATM-9",
+      "Clan Ammo ATM-9 ER",
+      "Clan Ammo ATM-9 HE",
+      "Endo Steel",
+      "ATM 9",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLPlasmaCannonAmmo",
+      "CLPlasmaCannonAmmo",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLHeavyLargeLaser",
+      "CLTargeting Computer",
+      "CLTargeting Computer",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Heavy Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLAMS Ammo",
+      "CLECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLAntiMissileSystem",
+      "Sensors",
+      "Life Support",
+      "AMS"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3084",
-  "displayName": "Night Wolf",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

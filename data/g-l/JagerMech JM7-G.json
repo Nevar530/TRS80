@@ -1,56 +1,165 @@
 {
   "name": "JagerMech",
+  "chassis": "JagerMech",
   "model": "JM7-G",
-  "tonnage": 70,
+  "mulId": 4392,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3068,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 70,
   "engine": "280 XL Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous"
+    "type": "Ferro-Fibrous",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 197
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "anti_air"
   ],
-  "extras": {
-    "mul id": "4392",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "anti_air",
-    "Myomer": "Standard",
-    "LA Armor": "22",
-    "RA Armor": "22",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "6",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "1 ISRotaryAC2",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISLBXAC2",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISRotaryAC2",
+      "ISRotaryAC2",
+      "ISRotaryAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISRotaryAC2",
+      "ISRotaryAC2",
+      "ISRotaryAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "ISLBXAC2",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 ISRotaryAC2",
+      "1 ISLBXAC2"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISERMediumLaser",
+      "ISLBXAC2 Ammo",
+      "IS Rotary AC/2 Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ISCASE",
+      "1 ISERMediumLaser"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISERMediumLaser",
+      "ISLBXAC2 CL Ammo",
+      "IS Rotary AC/2 Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ISCASE",
+      "1 ISERMediumLaser"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3068",
-  "displayName": "JagerMech JM7-G",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

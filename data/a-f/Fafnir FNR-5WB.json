@@ -1,56 +1,174 @@
 {
   "name": "Fafnir",
+  "chassis": "Fafnir",
   "model": "FNR-5WB",
-  "tonnage": 100,
+  "mulId": 5719,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3073,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "300 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "22 Double",
   "movement": {
-    "walk": "3",
-    "jump": "0"
+    "walk": 3,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 46,
+    "rightTorso": 32,
+    "leftTorso": 32,
+    "rightArm": 34,
+    "leftArm": 34,
+    "rightLeg": 42,
+    "leftLeg": 42,
+    "rearCenterTorso": 16,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 307
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "no_arms"
   ],
-  "extras": {
-    "mul id": "5719",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "no_arms",
-    "Myomer": "Standard",
-    "LA Armor": "34",
-    "RA Armor": "34",
-    "LT Armor": "32",
-    "RT Armor": "32",
-    "CT Armor": "46",
-    "HD Armor": "9",
-    "LL Armor": "42",
-    "RL Armor": "42",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "16",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "1 ISImprovedC3CPU",
+      "location": "CT"
+    },
+    {
+      "type": "1 ISPlasmaRifle",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISPlasmaRifle",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISPlasmaRifle",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISERMediumLaser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISERMediumLaser",
+      "1 ISERMediumLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISERMediumLaser",
+      "1 ISERMediumLaser"
+    ],
+    "leftTorso": [
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle Ammo",
+      "ISPlasmaRifle Ammo",
+      "1 ISPlasmaRifle"
+    ],
+    "rightTorso": [
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISDouble Heat Sink",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle",
+      "ISPlasmaRifle Ammo",
+      "ISPlasmaRifle Ammo",
+      "1 ISPlasmaRifle",
+      "1 ISPlasmaRifle"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISImprovedC3CPU",
+      "ISImprovedC3CPU",
+      "1 ISImprovedC3CPU"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISPlasmaRifle Ammo",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3073",
-  "displayName": "Fafnir FNR-5WB",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

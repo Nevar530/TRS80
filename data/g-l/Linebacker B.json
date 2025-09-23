@@ -1,57 +1,156 @@
 {
   "name": "Linebacker",
+  "chassis": "Linebacker",
   "model": "B",
-  "tonnage": 65,
+  "mulId": 1887,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3052,
+  "source": "TRO: 3055",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 65,
   "engine": "390 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 192
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "1887",
-    "Config": "Biped Omnimech",
-    "role": "Skirmisher",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "14",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "10",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERMediumLaser (omnipod)",
+      "CLERMediumLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLERMediumLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERSmallLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "ER Small Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLGaussRifle (omnipod)",
+      "CLGaussRifle (omnipod)",
+      "CLGaussRifle (omnipod)",
+      "CLGaussRifle (omnipod)",
+      "CLGaussRifle (omnipod)",
+      "CLGaussRifle (omnipod)",
+      "Clan Gauss Ammo (omnipod)",
+      "Clan Gauss Ammo (omnipod)",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous",
+      "Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Clan Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Ferro-Fibrous"
+    ]
   },
-  "era": "3052",
-  "displayName": "Linebacker B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

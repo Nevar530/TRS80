@@ -1,56 +1,176 @@
 {
   "name": "Ostsol",
+  "chassis": "Ostsol",
   "model": "OTL-5D",
-  "tonnage": 60,
+  "mulId": 2373,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3065,
+  "source": "TRO: 3085u",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 60,
   "engine": "300 Fusion Engine(IS)",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "16 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 8,
+    "centerTorso": 22,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085u"
+  "quirks": [
+    "imp_sensors",
+    "low_profile"
   ],
-  "extras": {
-    "mul id": "2373",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "low_profile",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "22",
-    "RT Armor": "22",
-    "CT Armor": "22",
-    "HD Armor": "8",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "9"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Rocket Launcher 10",
+      "location": "LT"
+    },
+    {
+      "type": "Rocket Launcher 10",
+      "location": "LT"
+    },
+    {
+      "type": "Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Rocket Launcher 10",
+      "location": "RT"
+    },
+    {
+      "type": "Rocket Launcher 10",
+      "location": "RT"
+    },
+    {
+      "type": "Rocket Launcher 10",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "Large Laser",
+      "Large Laser",
+      "Medium Laser",
+      "RL10",
+      "RL10",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Large Laser",
+      "Medium Laser",
+      "Rocket Launcher 10",
+      "Rocket Launcher 10"
+    ],
+    "rightTorso": [
+      "Large Laser",
+      "Large Laser",
+      "Medium Laser",
+      "RL10",
+      "RL10",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Large Laser",
+      "Medium Laser",
+      "Rocket Launcher 10",
+      "Rocket Launcher 10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "RL10",
+      "Ferro-Fibrous",
+      "Rocket Launcher 10"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Ferro-Fibrous",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ]
   },
-  "era": "3065",
-  "displayName": "Ostsol OTL-5D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

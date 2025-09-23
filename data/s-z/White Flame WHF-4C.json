@@ -1,57 +1,128 @@
 {
   "name": "White Flame",
+  "chassis": "White Flame",
   "model": "WHF-4C",
-  "tonnage": 70,
+  "mulId": 5693,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3077,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 70,
   "engine": "350 Light Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "13 IS Double",
   "movement": {
-    "walk": "5",
-    "jump": "5"
+    "walk": 5,
+    "jump": 5
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightLeg": 30,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 232
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "bad_rep_is",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "5693",
-    "Config": "Quad",
-    "role": "Skirmisher",
-    "quirk": "exp_actuator",
-    "weaponquirk": "direct_torso_mount:LT:3:ISMediumPulseLaser",
-    "myomer": "Standard",
-    "FLL armor": "30",
-    "FRL armor": "30",
-    "LT armor": "23",
-    "RT armor": "23",
-    "CT armor": "33",
-    "HD armor": "9",
-    "RLL armor": "30",
-    "RRL armor": "30",
-    "RTL armor": "7",
-    "RTR armor": "7",
-    "RTC armor": "10",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "TAG",
+      "location": "H"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISSNPPC",
+      "ISSNPPC",
+      "ISERMediumLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Snub-Nose PPC",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Jump Jet",
+      "IS Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "ISTAG",
+      "ISERMediumLaser",
+      "TAG",
+      "ER Medium Laser"
+    ]
   },
-  "era": "3077",
-  "displayName": "White Flame WHF-4C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

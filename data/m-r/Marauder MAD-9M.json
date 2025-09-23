@@ -1,57 +1,185 @@
 {
   "name": "Marauder",
+  "chassis": "Marauder",
   "model": "MAD-9M",
-  "tonnage": 75,
+  "mulId": 2047,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3068,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 75,
   "engine": "300 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "16 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 34,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightArm": 23,
+    "leftArm": 23,
+    "rightLeg": 31,
+    "leftLeg": 31,
+    "rearCenterTorso": 11,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 224
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "command_mech",
+    "hyper_actuator",
+    "low_profile"
   ],
-  "extras": {
-    "mul id": "2047",
-    "Config": "Biped",
-    "role": "Brawler",
-    "quirk": "low_profile",
-    "weaponquirk": "exposed_linkage:RT:6:ISStreakSRM6",
-    "Myomer": "Standard",
-    "LA Armor": "23",
-    "RA Armor": "23",
-    "LT Armor": "23",
-    "RT Armor": "23",
-    "CT Armor": "34",
-    "HD Armor": "9",
-    "LL Armor": "31",
-    "RL Armor": "31",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "11",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "LT"
+    },
+    {
+      "type": "Streak SRM 6",
+      "location": "RT"
+    },
+    {
+      "type": "TAG",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Large Laser",
+      "ER Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "ER Large Laser",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "IS Streak SRM 6 Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Streak SRM 6"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISStreakSRM6",
+      "ISStreakSRM6",
+      "IS Streak SRM 6 Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Streak SRM 6"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISTAG",
+      "Sensors",
+      "Life Support",
+      "TAG"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3068",
-  "displayName": "Marauder MAD-9M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

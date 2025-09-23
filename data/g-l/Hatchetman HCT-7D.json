@@ -1,55 +1,146 @@
 {
   "name": "Hatchetman",
+  "chassis": "Hatchetman",
   "model": "HCT-7D",
-  "tonnage": 45,
+  "mulId": 7988,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3092,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 3,
+  "mass": 45,
   "engine": "225 Fusion Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "11 IS Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 14,
+    "leftArm": 14,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": "Standard Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    }
   ],
-  "extras": {
-    "mul id": "7988",
-    "Config": "Biped",
-    "myomer": "Standard",
-    "ejection": "Full Head Ejection System",
-    "LA armor": "14",
-    "RA armor": "14",
-    "LT armor": "16",
-    "RT armor": "16",
-    "CT armor": "21",
-    "HD armor": "9",
-    "LL armor": "22",
-    "RL armor": "22",
-    "RTL armor": "6",
-    "RTR armor": "6",
-    "RTC armor": "6",
-    "Weapons": "4"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightTorso": [
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "ISTargeting Computer",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine (ARMORED)",
+      "Fusion Engine (ARMORED)",
+      "Fusion Engine (ARMORED)",
+      "Gyro (ARMORED)",
+      "Gyro (ARMORED)",
+      "Fusion Engine (ARMORED)",
+      "Fusion Engine (ARMORED)",
+      "Fusion Engine (ARMORED)",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "IS Ferro-Fibrous"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3092",
-  "displayName": "Hatchetman HCT-7D",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

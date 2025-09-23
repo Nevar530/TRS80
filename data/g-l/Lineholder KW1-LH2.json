@@ -1,56 +1,146 @@
 {
   "name": "Lineholder",
+  "chassis": "Lineholder",
   "model": "KW1-LH2",
-  "tonnage": 55,
+  "mulId": 1893,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 3058,
+  "source": "TRO: 3058",
+  "rulesLevel": 1,
+  "role": "Skirmisher",
+  "mass": 55,
   "engine": "275 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "14 Single",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard((Unknown Technology Base))"
+    "type": "Standard ( (UnknownTechnologyBase))",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 18,
+    "leftArm": 18,
+    "rightLeg": 19,
+    "leftLeg": 19,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 160
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "easy_maintain"
   ],
-  "extras": {
-    "mul id": "1893",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "easy_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "18",
-    "RA Armor": "18",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "19",
-    "RL Armor": "19",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "LRM 5",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 5",
+      "location": "RA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "LRM 5",
+      "LRM 5",
+      "LRM 5",
+      "LRM 5"
+    ],
+    "leftTorso": [
+      "Heat Sink",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightTorso": [
+      "Heat Sink",
+      "Medium Laser",
+      "Medium Laser",
+      "IS Ammo LRM-5",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3058",
-  "displayName": "Lineholder KW1-LH2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

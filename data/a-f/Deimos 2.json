@@ -1,63 +1,206 @@
 {
   "name": "Deimos",
+  "chassis": "Deimos",
   "model": "2",
-  "tonnage": 85,
+  "mulId": 852,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "4",
+  "era": 3084,
+  "source": "TRO: 3085",
+  "rulesLevel": 4,
+  "role": "Sniper",
+  "mass": 85,
   "engine": "340 XL (Clan) Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 40,
+    "rightTorso": 28,
+    "leftTorso": 28,
+    "rightArm": 26,
+    "leftArm": 26,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 249
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "anti_air"
   ],
-  "extras": {
-    "mul id": "852",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "anti_air",
-    "Myomer": "Standard",
-    "LA Armor": "26",
-    "RA Armor": "26",
-    "LT Armor": "28",
-    "RT Armor": "28",
-    "CT Armor": "40",
-    "HD Armor": "9",
-    "LL Armor": "32",
-    "RL Armor": "32",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "11",
+  "weapons": [
+    {
+      "type": "Ultra AC/2",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/2",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/2",
+      "location": "LA"
+    },
+    {
+      "type": "Ultra AC/2",
+      "location": "RA"
+    },
+    {
+      "type": "Ultra AC/2",
+      "location": "RA"
+    },
+    {
+      "type": "Ultra AC/2",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 15",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 15",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Laser AMS",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ultra AC/2",
+      "Ultra AC/2",
+      "Ultra AC/2"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "CLUltraAC2",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Ultra AC/2",
+      "Ultra AC/2",
+      "Ultra AC/2"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLRM15",
+      "CLLRM15",
+      "CLERMediumLaser",
+      "Clan Ammo LRM-15",
+      "Clan Ultra AC/2 Ammo",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "LRM 15",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLLRM15",
+      "CLLRM15",
+      "CLERMediumLaser",
+      "Clan Ammo LRM-15",
+      "Clan Ultra AC/2 Ammo",
+      "CLMASC",
+      "CLMASC",
+      "CLMASC",
+      "LRM 15",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLLaserAntiMissileSystem",
+      "Sensors",
+      "Life Support",
+      "Laser AMS"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous"
+    ]
+  },
+  "text": {
     "overview": "The Deimos is a Clan Assault OmniMech, which was developed by Clan Snow Raven.",
     "capabilities": "The 85-tonner is powered by a Type 255-rated Extralight Fusion Engine, which it shares with the second-line Assault 'Mech, the Omen. Fourteen Double Heat Sinks are fitted to mitigate any heat issues that the 'Mech's systems may generate. Because its top speed is slower than more typical OmniMechs of the same size, engineers installed a MASC system, which allows the Deimos to go marginally faster and keep up with comparable older designs. The 'Mech is protected by 14.5 tons of Standard Armor, where it again differs from more typical contemporaries. Aside from its 43-ton equipment capacity, the 'Mech has a few permanently mounted weapons. These include two ER Medium Lasers, one assigned to each of the 'Mech's side torsos. To provide protection from inbound missile fire, an Anti-Missile System is mounted in the Deimos' head. The single ton of ammunition for the AMS is located in the center torso.",
     "deployment": "A Non-Omni variant of the Deimos, this design features mainly Experimental equipment. This variant was speculated by Armed Forces of the Federated Suns intelligence as being based on the original prototype of the Deimos. The 'Mech features the same weapons layout (including the Omni design's permanently mounted weapons) as the Primary Configuration. The Deimos' head-mounted AMS system is exchanged for an experimental Laser version. The 'Mech's armor capacity has been reduced to 13 tons, and uses Ferro-Fibrous instead of standard armor. Its engine is upgraded to a 340-rated XL Fusion, while only equipping ten double heat sinks. Its MASC equipment allows the design to move at speeds reaching 86 kph.",
-    "history": "The 'Mech was first introduced during the middle of the 3060s, allegedly on the Kerensky Cluster world of Lum. However, Inner Sphere intelligence agencies stopped hearing rumors about the 'Mech during the Jihad and it faded from memory. In 3085, the Snow Ravens revealed the existence of the Deimos to the Inner Sphere. It was produced on the Clan's Inner Sphere world, Dante. When it first appeared in the Inner Sphere, the Deimos was considered the pride of the Clan and at least one was assigned to every cluster within the Snow Raven touman.",
-    "manufacturer": "Snow Raven Industrial Complex Alpha",
-    "primaryfactory": "Dante",
-    "systemmanufacturer": "TARGETING:Hermes CT-44"
+    "history": "The 'Mech was first introduced during the middle of the 3060s, allegedly on the Kerensky Cluster world of Lum. However, Inner Sphere intelligence agencies stopped hearing rumors about the 'Mech during the Jihad and it faded from memory. In 3085, the Snow Ravens revealed the existence of the Deimos to the Inner Sphere. It was produced on the Clan's Inner Sphere world, Dante. When it first appeared in the Inner Sphere, the Deimos was considered the pride of the Clan and at least one was assigned to every cluster within the Snow Raven touman."
   },
-  "era": "3084",
-  "displayName": "Deimos 2",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Snow Raven Industrial Complex Alpha"
+    ],
+    "primaryFactory": [
+      "Dante"
+    ],
+    "systems": {
+      "chassis": "Model MHO-14E Endo-Steel",
+      "engine": "Type 255 Extralight",
+      "armor": "Longanecker PlastiSteel",
+      "communications": "TDWS-37 Mk. 2.2",
+      "targeting": "Hermes CT-44"
+    }
   }
 }

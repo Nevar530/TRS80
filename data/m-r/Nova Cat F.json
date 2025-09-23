@@ -1,64 +1,176 @@
 {
   "name": "Nova Cat",
+  "chassis": "Nova Cat",
   "model": "F",
-  "tonnage": 70,
+  "mulId": 2304,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3070,
+  "source": "TRO: 3060",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 70,
   "engine": "280 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "4",
-    "jump": "6"
+    "walk": 4,
+    "jump": 6
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 9,
+    "centerTorso": 35,
+    "rightTorso": 23,
+    "leftTorso": 23,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 216
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3060"
+  "quirks": [
+    "ext_twist",
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "2304",
-    "Config": "Biped Omnimech",
-    "role": "Skirmisher",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "11",
-    "LA Armor": "22",
-    "RA Armor": "22",
-    "LT Armor": "23",
-    "RT Armor": "23",
-    "CT Armor": "35",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "8",
-    "Weapons": "5",
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "CLMediumPulseLaser (omnipod)",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser",
+      "Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLLargePulseLaser (omnipod)",
+      "CLLargePulseLaser (omnipod)",
+      "CLLargePulseLaser (omnipod)",
+      "CLLargePulseLaser (omnipod)",
+      "Large Pulse Laser",
+      "Large Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "CLECMSuite (omnipod)"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "Clan Improved Jump Jet (omnipod)",
+      "CLTargeting Computer (omnipod)",
+      "CLTargeting Computer (omnipod)",
+      "CLTargeting Computer (omnipod)",
+      "CLTargeting Computer (omnipod)"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Clan Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Endo Steel",
+      "Clan Endo Steel"
+    ]
+  },
+  "text": {
     "overview": "A Nova Cat heavy OmniMech built to protect the Nova Cats spiritually and militarily.",
     "capabilities": "The basic components of this design, combined with its characteristics as an OmniMech, make it very simple to repair and leave room for the large amount of double heat sinks most variants carry. 13 ½ tons of standard armor make this 'Mech very difficult to kill.",
     "deployment": "Developed during the Jihad, this configuration utilizes the development of Improved Jump Jets for tactical advantage. The 'Mech has been given six of these Improved Jump Jets fitted to the side torsos. It is armed with pair Large Pulse Lasers in its right arm, where its left has three medium size pulses. To handle the 'mech additional heat, it has been fitted with three Double Heat Sinks. To improve accuracy, a Targeting Computer is added with an ECM Suite to protect it from enemy electronics.",
-    "history": "After its defeat on Tukayyid, Khan Severen Leroux of Clan Nova Cat commissioned the Nova Cat OmniMech, meant to protect the Clan both militarily and spiritually. The 12 meter tall 'Mech is inspired by the Night Gyr created by Clan Jade Falcon.",
-    "manufacturer": "Barcella Alpha, Irece Alpha",
-    "primaryfactory": "Barcella, Irece",
-    "systemmanufacturer": "TARGETING:Build 2 CAT TTS"
+    "history": "After its defeat on Tukayyid, Khan Severen Leroux of Clan Nova Cat commissioned the Nova Cat OmniMech, meant to protect the Clan both militarily and spiritually. The 12 meter tall 'Mech is inspired by the Night Gyr created by Clan Jade Falcon."
   },
-  "era": "3070",
-  "displayName": "Nova Cat F",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "manufacturers": {
+    "primary": [
+      "Barcella Alpha",
+      "Irece Alpha"
+    ],
+    "primaryFactory": [
+      "Barcella",
+      "Irece"
+    ],
+    "systems": {
+      "chassis": "Mynx Type Heavy",
+      "engine": "Consolidated Fusion 280 Extralight",
+      "armor": "Alpha Compound Plate",
+      "communications": "JNE Integrated",
+      "targeting": "Build 2 CAT TTS"
+    }
   }
 }

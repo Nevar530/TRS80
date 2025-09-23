@@ -1,57 +1,111 @@
 {
   "name": "Scorpion",
+  "chassis": "Scorpion",
   "model": "SCP-10M",
-  "tonnage": 55,
+  "mulId": 2833,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3080,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Sniper",
+  "mass": 55,
   "engine": "385 XL Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "7",
-    "jump": "0"
+    "walk": 7,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 21,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightLeg": 18,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 144
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "bad_rep_clan",
+    "bad_rep_is",
+    "hard_pilot"
   ],
-  "extras": {
-    "mul id": "2833",
-    "Config": "Quad",
-    "role": "Sniper",
-    "quirk": "hard_pilot",
-    "Myomer": "Standard",
-    "FLL Armor": "18",
-    "FRL Armor": "18",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "21",
-    "HD Armor": "9",
-    "RLL Armor": "18",
-    "RRL Armor": "18",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "6",
-    "Weapons": "2",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\Scorpion FINAL.jpg"
+  "weapons": [
+    {
+      "type": "LRM 10",
+      "location": "LT"
+    },
+    {
+      "type": "Heavy PPC",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 10",
+      "LRM 10",
+      "IS Ammo LRM-10",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "LRM 10"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heavy PPC",
+      "Heavy PPC",
+      "Heavy PPC",
+      "Heavy PPC",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Heavy PPC"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ]
   },
-  "era": "3080",
-  "displayName": "Scorpion SCP-10M",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

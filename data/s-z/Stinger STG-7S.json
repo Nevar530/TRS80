@@ -1,58 +1,152 @@
 {
   "name": "Stinger",
+  "chassis": "Stinger",
   "model": "STG-7S",
-  "tonnage": 20,
+  "mulId": 3068,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3077,
+  "source": "TRO: 3085",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 20,
   "engine": "120 XL Engine(IS)",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "6",
-    "jump": "8"
+    "walk": 6,
+    "jump": 8
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 7,
+    "rightTorso": 6,
+    "leftTorso": 6,
+    "rightArm": 4,
+    "leftArm": 4,
+    "rightLeg": 5,
+    "leftLeg": 3,
+    "rearCenterTorso": 2,
+    "rearRightTorso": 1,
+    "rearLeftTorso": 1,
+    "total": 48
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3085"
+  "quirks": [
+    "rugged_1",
+    "ubiquitous_clan",
+    "ubiquitous_is",
+    "cramped_cockpit"
   ],
-  "extras": {
-    "mul id": "3068",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "cramped_cockpit",
-    "Myomer": "Standard",
-    "Ejection": "Full Head Ejection System",
-    "LA Armor": "4",
-    "RA Armor": "4",
-    "LT Armor": "6",
-    "RT Armor": "6",
-    "CT Armor": "7",
-    "HD Armor": "9",
-    "LL Armor": "3",
-    "RL Armor": "5",
-    "RTL Armor": "1",
-    "RTR Armor": "1",
-    "RTC Armor": "2",
-    "Weapons": "1",
-    "imagefile": ".\\data\\images\\fluff\\Mech\\stinger STG-6L.jpg"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERMediumLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Improved Jump Jet",
+      "Improved Jump Jet"
+    ]
   },
-  "era": "3077",
-  "displayName": "Stinger STG-7S",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

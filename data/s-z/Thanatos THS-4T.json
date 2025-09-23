@@ -1,56 +1,178 @@
 {
   "name": "Thanatos",
+  "chassis": "Thanatos",
   "model": "TNS-4T",
-  "tonnage": 75,
+  "mulId": 5700,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3062,
+  "source": "Record Sheets: 3067 Unabridged",
+  "rulesLevel": 2,
+  "role": "Skirmisher",
+  "mass": 75,
   "engine": "300 XL Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 28,
+    "rightTorso": 25,
+    "leftTorso": 25,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 27,
+    "leftLeg": 27,
+    "rearCenterTorso": 13,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 208
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3067 Unabridged"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "5700",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "25",
-    "RT Armor": "25",
-    "CT Armor": "28",
-    "HD Armor": "9",
-    "LL Armor": "27",
-    "RL Armor": "27",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "13",
-    "Weapons": "8"
+  "weapons": [
+    {
+      "type": "1 ISC3SlaveUnit",
+      "location": "CT"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISGuardianECM",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20",
+      "ISLBXAC20"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISMRM20",
+      "ISMRM20",
+      "ISMRM20",
+      "ISMRM20 Ammo",
+      "ISMRM20 Ammo",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISLBXAC20",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "ISLBXAC20 Ammo",
+      "ISLBXAC20 Ammo",
+      "ISLBXAC20 CL Ammo",
+      "ISGuardianECM",
+      "ISGuardianECM",
+      "Endo-Steel",
+      "1 ISMediumPulseLaser",
+      "1 ISMediumPulseLaser",
+      "1 ISGuardianECM"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "1 ISMediumPulseLaser",
+      "1 ISMediumPulseLaser"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "ISC3SlaveUnit",
+      "Endo-Steel",
+      "1 ISC3SlaveUnit"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo-Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3062",
-  "displayName": "Thanatos TNS-4T",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

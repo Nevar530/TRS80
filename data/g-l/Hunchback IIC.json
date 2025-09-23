@@ -1,56 +1,163 @@
 {
   "name": "Hunchback IIC",
-  "model": null,
-  "tonnage": 50,
+  "chassis": "Hunchback IIC",
+  "mulId": 1568,
+  "config": "Biped",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 2856,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Ambusher",
+  "mass": 50,
   "engine": "200 XL (Clan) Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Clan)"
+    "type": "Standard (Clan)",
+    "head": 8,
+    "centerTorso": 18,
+    "rightTorso": 12,
+    "leftTorso": 12,
+    "rightArm": 6,
+    "leftArm": 6,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 3,
+    "rearLeftTorso": 3,
+    "total": 96
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "bad_rep_clan"
   ],
-  "extras": {
-    "mul id": "1568",
-    "Config": "Biped",
-    "role": "Ambusher",
-    "quirk": "bad_rep_clan",
-    "Myomer": "Standard",
-    "LA Armor": "6",
-    "RA Armor": "6",
-    "LT Armor": "12",
-    "RT Armor": "12",
-    "CT Armor": "18",
-    "HD Armor": "8",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "3",
-    "RTR Armor": "3",
-    "RTC Armor": "4",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Ultra AC/20",
+      "location": "LT"
+    },
+    {
+      "type": "Ultra AC/20",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "CLDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "Clan Ultra AC/20 Ammo",
+      "Endo Steel",
+      "Ultra AC/20"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "CLUltraAC20",
+      "Clan Ultra AC/20 Ammo",
+      "Endo Steel",
+      "Ultra AC/20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser",
+      "CLERMediumLaser",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Endo Steel",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "2856",
-  "displayName": "Hunchback IIC",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

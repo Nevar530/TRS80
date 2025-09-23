@@ -1,57 +1,175 @@
 {
   "name": "Deva",
+  "chassis": "Deva",
   "model": "C-DVA-OA Dominus",
-  "tonnage": 70,
+  "mulId": 886,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Brawler",
+  "mass": 70,
   "engine": "280 Light Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "11 IS Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 22,
+    "leftArm": 22,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 216
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": "Small Cockpit",
-  "gyro": "Heavy Duty Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "imp_com",
+    "imp_sensors",
+    "bad_rep_clan",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "886",
-    "Config": "Biped Omnimech",
-    "role": "Brawler",
-    "quirk": "bad_rep_is",
-    "myomer": "Standard",
-    "base chassis heat sinks": "11",
-    "LA armor": "22",
-    "RA armor": "22",
-    "LT armor": "20",
-    "RT armor": "20",
-    "CT armor": "33",
-    "HD armor": "9",
-    "LL armor": "30",
-    "RL armor": "30",
-    "RTL armor": "10",
-    "RTR armor": "10",
-    "RTC armor": "10",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Rotary AC/5",
+      "location": "LA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "MML 7",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Light PPC",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISRotaryAC5 (OMNIPOD)",
+      "ISERSmallLaser (OMNIPOD)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "Rotary AC/5",
+      "ER Small Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISMML7 (OMNIPOD)",
+      "ISMML7 (OMNIPOD)",
+      "ISMML7 (OMNIPOD)",
+      "ISMML7 (OMNIPOD)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "MML 7"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISRotaryAC5 Ammo (OMNIPOD)",
+      "ISRotaryAC5 Ammo (OMNIPOD)",
+      "ISRotaryAC5 Ammo (OMNIPOD)",
+      "IS Ammo MML-7 LRM (OMNIPOD)",
+      "IS Ammo MML-7 SRM (OMNIPOD)",
+      "ISCASE (OMNIPOD)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser (OMNIPOD)",
+      "ISERMediumLaser (OMNIPOD)",
+      "ISC3iUnit",
+      "ISC3iUnit",
+      "ISTargeting Computer (OMNIPOD)",
+      "ISTargeting Computer (OMNIPOD)",
+      "ISTargeting Computer (OMNIPOD)",
+      "ISTargeting Computer (OMNIPOD)",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Light PPC (OMNIPOD)",
+      "Light PPC (OMNIPOD)",
+      "Light PPC"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Endo Steel",
+      "IS Endo Steel"
+    ]
   },
-  "era": "3069",
-  "displayName": "Deva C-DVA-OA Dominus",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

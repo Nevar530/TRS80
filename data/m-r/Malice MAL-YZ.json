@@ -1,55 +1,178 @@
 {
   "name": "Malice",
+  "chassis": "Malice",
   "model": "MAL-YZ",
-  "tonnage": 100,
+  "mulId": 6727,
+  "config": "Biped",
   "techBase": "Mixed (Clan Chassis)",
-  "rulesLevel": "3",
+  "era": 3142,
+  "source": "TRO: 3145 Republic of the Sphere",
+  "rulesLevel": 3,
+  "role": "Sniper",
+  "mass": 100,
   "engine": "400 XXL (Clan) Engine",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "12 Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Lamellor(Clan)"
+    "type": "Ferro-Lamellor (Clan)",
+    "head": 9,
+    "centerTorso": 42,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 32,
+    "leftArm": 32,
+    "rightLeg": 41,
+    "leftLeg": 41,
+    "rearCenterTorso": 20,
+    "rearRightTorso": 12,
+    "rearLeftTorso": 12,
+    "total": 301
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": "Standard Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Republic of the Sphere"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "Clan TAG",
+      "location": "H"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Large Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Laser AMS",
+      "location": "LA"
+    },
+    {
+      "type": "Laser AMS",
+      "location": "RA"
+    }
   ],
-  "extras": {
-    "mul id": "6727",
-    "Config": "Biped",
-    "role": "Sniper",
-    "Myomer": "Standard",
-    "LA Armor": "32",
-    "RA Armor": "32",
-    "LT Armor": "30",
-    "RT Armor": "30",
-    "CT Armor": "42",
-    "HD Armor": "9",
-    "LL Armor": "41",
-    "RL Armor": "41",
-    "RTL Armor": "12",
-    "RTR Armor": "12",
-    "RTC Armor": "20",
-    "Weapons": "7"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLargePulseLaser",
+      "CLLargePulseLaser",
+      "CLLaserAntiMissileSystem",
+      "CLModularArmor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Large Pulse Laser",
+      "Laser AMS"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLLargePulseLaser",
+      "CLLargePulseLaser",
+      "CLLaserAntiMissileSystem",
+      "CLModularArmor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Large Pulse Laser",
+      "Laser AMS"
+    ],
+    "leftTorso": [
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "CLERLargeLaser",
+      "RemoteSensorDispenser",
+      "Clan Coolant Pod",
+      "CLModularArmor",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "CLERLargeLaser",
+      "RemoteSensorDispenser",
+      "Clan Coolant Pod",
+      "CLModularArmor",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Gyro (armored)",
+      "Gyro (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "Fusion Engine (armored)",
+      "CLAngelECMSuite",
+      "CLAngelECMSuite",
+      "ISC3SlaveUnit",
+      "CLModularArmor"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "CLTAG",
+      "Sensors",
+      "Life Support",
+      "Clan TAG"
+    ],
+    "leftLeg": [
+      "Hip (armored)",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLModularArmor"
+    ],
+    "rightLeg": [
+      "Hip (armored)",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "CLModularArmor"
+    ]
   },
-  "era": "3142",
-  "displayName": "Malice MAL-YZ",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

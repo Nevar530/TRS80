@@ -1,56 +1,192 @@
 {
   "name": "Cudgel",
+  "chassis": "Cudgel",
   "model": "CDG-2A",
-  "tonnage": 80,
+  "mulId": 767,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3066,
+  "source": "TRO: 3055",
+  "rulesLevel": 3,
+  "role": "Juggernaut",
+  "mass": 80,
   "engine": "400 XL Engine",
+  "structure": "Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Light Ferro-Fibrous(Inner Sphere)"
+    "type": "LightFerro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 38,
+    "rightTorso": 26,
+    "leftTorso": 26,
+    "rightArm": 26,
+    "leftArm": 26,
+    "rightLeg": 34,
+    "leftLeg": 34,
+    "rearCenterTorso": 12,
+    "rearRightTorso": 8,
+    "rearLeftTorso": 8,
+    "total": 247
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": "Small Cockpit",
-  "gyro": "Standard Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "767",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "difficult_maintain",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "26",
-    "RA Armor": "26",
-    "LT Armor": "26",
-    "RT Armor": "26",
-    "CT Armor": "38",
-    "HD Armor": "9",
-    "LL Armor": "34",
-    "RL Armor": "34",
-    "RTL Armor": "8",
-    "RTR Armor": "8",
-    "RTC Armor": "12",
-    "Weapons": "10"
+  "weapons": [
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "Small Laser",
+      "location": "CT"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Mace",
+      "Mace",
+      "Mace",
+      "Mace",
+      "Mace",
+      "Mace",
+      "Mace",
+      "Mace"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "Light Ferro-Fibrous"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "Medium Laser",
+      "Medium Laser (R)",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "TSM",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser",
+      "ISERMediumLaser",
+      "Medium Laser",
+      "Medium Laser (R)",
+      "Light Ferro-Fibrous",
+      "Light Ferro-Fibrous",
+      "TSM",
+      "ER Medium Laser",
+      "ER Medium Laser",
+      "Medium Laser",
+      "Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Small Laser (R)",
+      "Light Ferro-Fibrous",
+      "Small Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Medium Laser",
+      "Light Ferro-Fibrous",
+      "Medium Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "TSM",
+      "TSM"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "TSM",
+      "TSM"
+    ]
   },
-  "era": "3066",
-  "displayName": "Cudgel CDG-2A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

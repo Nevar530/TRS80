@@ -1,56 +1,179 @@
 {
   "name": "Flashfire",
+  "chassis": "Flashfire",
   "model": "FLS-P5",
-  "tonnage": 30,
+  "mulId": 1122,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3067,
+  "source": "TRO: 3055",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 30,
   "engine": "180 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "6",
-    "jump": "4"
+    "walk": 6,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 12,
+    "rightTorso": 10,
+    "leftTorso": 10,
+    "rightArm": 8,
+    "leftArm": 8,
+    "rightLeg": 12,
+    "leftLeg": 12,
+    "rearCenterTorso": 3,
+    "rearRightTorso": 2,
+    "rearLeftTorso": 2,
+    "total": 88
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [],
+  "weapons": [
+    {
+      "type": "ER Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Fluid Gun",
+      "location": "LA"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Fluid Gun",
+      "location": "RA"
+    }
   ],
-  "extras": {
-    "mul id": "1122",
-    "Config": "Biped",
-    "role": "Striker",
-    "weaponquirk": "mod_weapons:LA:8:IS Fluid Gun",
-    "Myomer": "Standard",
-    "LA Armor": "8",
-    "RA Armor": "8",
-    "LT Armor": "10",
-    "RT Armor": "10",
-    "CT Armor": "12",
-    "HD Armor": "9",
-    "LL Armor": "12",
-    "RL Armor": "12",
-    "RTL Armor": "2",
-    "RTR Armor": "2",
-    "RTC Armor": "3",
-    "Weapons": "7"
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERSmallLaser",
+      "ISERSmallLaser",
+      "IS Fluid Gun",
+      "IS Fluid Gun",
+      "ISFluidGun Ammo",
+      "Spikes",
+      "ER Small Laser",
+      "ER Small Laser",
+      "Fluid Gun"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "SRM 6",
+      "SRM 6",
+      "ISERSmallLaser",
+      "ISERSmallLaser",
+      "IS Fluid Gun",
+      "IS Fluid Gun",
+      "ISFluidGun Ammo",
+      "IS Ammo SRM-6",
+      "SRM 6",
+      "ER Small Laser",
+      "ER Small Laser",
+      "Fluid Gun"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet",
+      "Jump Jet"
+    ]
   },
-  "era": "3067",
-  "displayName": "Flashfire FLS-P5",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

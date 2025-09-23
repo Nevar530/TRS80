@@ -1,58 +1,170 @@
 {
   "name": "Vulture Mk III",
+  "chassis": "Vulture Mk III",
   "model": "B",
-  "tonnage": 60,
+  "mulId": 6273,
+  "config": "Biped Omnimech",
   "techBase": "Clan",
-  "rulesLevel": "2",
+  "era": 3109,
+  "source": "TRO: 3145 The Clans",
+  "rulesLevel": 2,
+  "role": "Missile Boat",
+  "mass": 60,
   "engine": "300 XL (Clan) Engine(IS)",
+  "structure": "Clan Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "14 Double",
   "movement": {
-    "walk": "5",
-    "jump": "4"
+    "walk": 5,
+    "jump": 4
   },
   "armor": {
-    "total": "Ferro-Fibrous(Clan)"
+    "type": "Ferro-Fibrous (Clan)",
+    "head": 9,
+    "centerTorso": 30,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightArm": 16,
+    "leftArm": 16,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 7,
+    "rearLeftTorso": 7,
+    "total": 182
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Clan Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 The Clans"
+  "quirks": [
+    "stable",
+    "variable_range_long"
   ],
-  "extras": {
-    "clanname": "Mad Dog Mk III",
-    "mul id": "6273",
-    "Config": "Biped Omnimech",
-    "role": "Missile Boat",
-    "quirk": "variable_range_long",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "12",
-    "LA Armor": "16",
-    "RA Armor": "16",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "30",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "7",
-    "RTR Armor": "7",
-    "RTC Armor": "9",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "ER Large Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 20",
+      "location": "LT"
+    },
+    {
+      "type": "LRM 20",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLERLargeLaser (omnipod)",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "Clan Endo Steel",
+      "ER Large Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "CLERLargeLaser (omnipod)",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "Clan Ferro-Fibrous",
+      "ER Large Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "Clan Ammo LRM-20 (omnipod)",
+      "Clan Ammo LRM-20 (omnipod)",
+      "LRM 20"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLDoubleHeatSink (omnipod)",
+      "CLDoubleHeatSink (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "CLLRM20 (omnipod)",
+      "Clan Ammo LRM-20 (omnipod)",
+      "Clan Ammo LRM-20 (omnipod)",
+      "LRM 20"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "CLERMediumLaser (omnipod)",
+      "CLERMediumLaser (omnipod)",
+      "ER Medium Laser",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet (omnipod)",
+      "Jump Jet (omnipod)"
+    ]
   },
-  "era": "3109",
-  "displayName": "Vulture Mk III B",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

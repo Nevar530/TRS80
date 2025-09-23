@@ -1,56 +1,133 @@
 {
   "name": "Ymir",
+  "chassis": "Ymir",
   "model": "BWP-2E",
-  "tonnage": 90,
+  "mulId": 5429,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 2478,
+  "source": "TRO: 3075",
+  "rulesLevel": 1,
+  "role": "Sniper",
+  "mass": 90,
   "engine": "360 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "16 Single",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 25,
+    "rightTorso": 18,
+    "leftTorso": 18,
+    "rightArm": 19,
+    "leftArm": 19,
+    "rightLeg": 24,
+    "leftLeg": 24,
+    "rearCenterTorso": 8,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 176
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "stable"
   ],
-  "extras": {
-    "mul id": "5429",
-    "Config": "Biped",
-    "role": "Sniper",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "LA Armor": "19",
-    "RA Armor": "19",
-    "LT Armor": "18",
-    "RT Armor": "18",
-    "CT Armor": "25",
-    "HD Armor": "9",
-    "LL Armor": "24",
-    "RL Armor": "24",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "8",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Particle Cannon",
+      "location": "LA"
+    },
+    {
+      "type": "Particle Cannon",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 10",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 6",
+      "location": "LT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Particle Cannon",
+      "Particle Cannon",
+      "Particle Cannon",
+      "Particle Cannon"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Particle Cannon",
+      "Particle Cannon",
+      "Particle Cannon",
+      "Particle Cannon"
+    ],
+    "leftTorso": [
+      "SRM 6",
+      "SRM 6",
+      "IS Ammo SRM-6",
+      "SRM 6"
+    ],
+    "rightTorso": [
+      "LRM 10",
+      "LRM 10",
+      "IS Ammo LRM-10",
+      "LRM 10"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink"
+    ]
   },
-  "era": "2478",
-  "displayName": "Ymir BWP-2E",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

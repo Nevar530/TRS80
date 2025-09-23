@@ -1,56 +1,172 @@
 {
   "name": "Wildfire",
+  "chassis": "Wildfire",
   "model": "P1-WF",
-  "tonnage": 65,
+  "mulId": 5409,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3053,
+  "source": "Unbound",
+  "rulesLevel": 4,
+  "role": "Skirmisher",
+  "mass": 65,
   "engine": "390 XL Fusion Engine",
+  "structure": "Endo-Steel",
+  "myomer": "Standard",
   "heatSinks": "13 Double",
   "movement": {
-    "walk": "6",
-    "jump": "0"
+    "walk": 6,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous"
+    "type": "Ferro-Fibrous",
+    "head": 9,
+    "centerTorso": 33,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 20,
+    "leftArm": 20,
+    "rightLeg": 23,
+    "leftLeg": 23,
+    "rearCenterTorso": 9,
+    "rearRightTorso": 6,
+    "rearLeftTorso": 6,
+    "total": 197
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo-Steel",
-  "cockpit": "Torso-Mounted Cockpit",
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Unbound"
+  "quirks": [
+    "non_standard",
+    "prototype"
   ],
-  "extras": {
-    "mul id": "5409",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "prototype",
-    "Myomer": "Standard",
-    "LA Armor": "20",
-    "RA Armor": "20",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "33",
-    "HD Armor": "9",
-    "LL Armor": "23",
-    "RL Armor": "23",
-    "RTL Armor": "6",
-    "RTR Armor": "6",
-    "RTC Armor": "9",
-    "Weapons": "7"
+  "weapons": [
+    {
+      "type": "1 ISMachine Gun",
+      "location": "H"
+    },
+    {
+      "type": "1 ISLargePulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISMediumPulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "1 ISSmallPulseLaser",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISStreakSRM2",
+      "location": "LL"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "ISMediumPulseLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 ISLargePulseLaser",
+      "1 ISMediumPulseLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISSmallPulseLaser",
+      "ISMachine Gun",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 ISSmallPulseLaser"
+    ],
+    "leftTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Life Support",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Life Support",
+      "ISMG Ammo (200)",
+      "ISStreakSRM2 Ammo",
+      "ISCASE",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "centerTorso": [
+      "Engine",
+      "Engine",
+      "Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Engine",
+      "Engine",
+      "Engine",
+      "Cockpit",
+      "Sensors"
+    ],
+    "head": [
+      "Sensors",
+      "Sensors",
+      "ISMachine Gun",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "1 ISMachine Gun"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "ISStreakSRM2",
+      "Ferro-Fibrous",
+      "1 ISStreakSRM2"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "ISStreakSRM2",
+      "Ferro-Fibrous"
+    ]
   },
-  "era": "3053",
-  "displayName": "Wildfire P1-WF",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

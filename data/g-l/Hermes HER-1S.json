@@ -1,56 +1,147 @@
 {
   "name": "Hermes",
+  "chassis": "Hermes",
   "model": "HER-1S",
-  "tonnage": 30,
+  "mulId": 1487,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 2632,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Scout",
+  "mass": 30,
   "engine": "270 Fusion Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "9",
-    "jump": "0"
+    "walk": 9,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous"
+    "type": "Ferro-Fibrous",
+    "head": 7,
+    "centerTorso": 14,
+    "rightTorso": 9,
+    "leftTorso": 9,
+    "rightArm": 9,
+    "leftArm": 9,
+    "rightLeg": 10,
+    "leftLeg": 10,
+    "rearCenterTorso": 4,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 89
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "imp_com",
+    "stable"
   ],
-  "extras": {
-    "mul id": "1487",
-    "Config": "Biped",
-    "role": "Scout",
-    "quirk": "stable",
-    "Myomer": "Standard",
-    "LA Armor": "9",
-    "RA Armor": "9",
-    "LT Armor": "9",
-    "RT Armor": "9",
-    "CT Armor": "14",
-    "HD Armor": "7",
-    "LL Armor": "10",
-    "RL Armor": "10",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "4",
-    "Weapons": "3"
+  "weapons": [
+    {
+      "type": "1 ISMediumLaser",
+      "location": "RA"
+    },
+    {
+      "type": "1 ISMediumLaser",
+      "location": "CT"
+    },
+    {
+      "type": "1 ISFlamer",
+      "location": "LA"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISFlamer",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 ISFlamer"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMediumLaser",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "Ferro-Fibrous",
+      "1 ISMediumLaser"
+    ],
+    "leftTorso": [
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "rightTorso": [
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel",
+      "Endo-Steel"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumLaser",
+      "1 ISMediumLaser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "2632",
-  "displayName": "Hermes HER-1S",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

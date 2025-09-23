@@ -1,57 +1,132 @@
 {
   "name": "Owens",
+  "chassis": "Owens",
   "model": "OW-1E",
-  "tonnage": 35,
+  "mulId": 2389,
+  "config": "Biped Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3060,
+  "source": "TRO: 3058",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 35,
   "engine": "280 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Single",
   "movement": {
-    "walk": "8",
-    "jump": "0"
+    "walk": 8,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 16,
+    "rightTorso": 12,
+    "leftTorso": 12,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 15,
+    "leftLeg": 15,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 112
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3058"
+  "quirks": [
+    "imp_sensors"
   ],
-  "extras": {
-    "mul id": "2389",
-    "Config": "Biped Omnimech",
-    "role": "Striker",
-    "quirk": "imp_sensors",
-    "Myomer": "Standard",
-    "Base Chassis Heat Sinks": "10",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "12",
-    "RT Armor": "12",
-    "CT Armor": "16",
-    "HD Armor": "9",
-    "LL Armor": "15",
-    "RL Armor": "15",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "4"
+  "weapons": [
+    {
+      "type": "Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "Medium Laser",
+      "location": "LA"
+    },
+    {
+      "type": "MRM 10",
+      "location": "RA"
+    },
+    {
+      "type": "TAG",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "ISMediumPulseLaser (omnipod)",
+      "Medium Laser (omnipod)",
+      "Medium Pulse Laser",
+      "Medium Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "MRM 10 (omnipod)",
+      "MRM 10 (omnipod)",
+      "MRM 10"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe",
+      "BeagleActiveProbe"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "IS MRM 10 Ammo (omnipod)",
+      "ISTAG",
+      "ISC3SlaveUnit",
+      "TAG"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3060",
-  "displayName": "Owens OW-1E",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

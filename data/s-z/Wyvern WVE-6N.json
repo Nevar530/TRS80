@@ -1,56 +1,145 @@
 {
   "name": "Wyvern",
+  "chassis": "Wyvern",
   "model": "WVE-6N",
-  "tonnage": 45,
+  "mulId": 3599,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "1",
+  "era": 2821,
+  "source": "TRO: 3039",
+  "rulesLevel": 1,
+  "role": "Skirmisher",
+  "mass": 45,
   "engine": "180 Fusion Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "12 Single",
   "movement": {
-    "walk": "4",
-    "jump": "4"
+    "walk": 4,
+    "jump": 4
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 9,
+    "centerTorso": 18,
+    "rightTorso": 14,
+    "leftTorso": 14,
+    "rightArm": 12,
+    "leftArm": 12,
+    "rightLeg": 20,
+    "leftLeg": 20,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 136
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3039"
+  "quirks": [
+    "rugged_1"
   ],
-  "extras": {
-    "mul id": "3599",
-    "Config": "Biped",
-    "role": "Skirmisher",
-    "quirk": "rugged_1",
-    "Myomer": "Standard",
-    "LA Armor": "12",
-    "RA Armor": "12",
-    "LT Armor": "14",
-    "RT Armor": "14",
-    "CT Armor": "18",
-    "HD Armor": "9",
-    "LL Armor": "20",
-    "RL Armor": "20",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Small Laser",
+      "location": "RA"
+    },
+    {
+      "type": "LRM 10",
+      "location": "CT"
+    },
+    {
+      "type": "SRM 6",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Large Laser",
+      "Large Laser",
+      "Small Laser",
+      "Small Laser",
+      "Large Laser",
+      "Small Laser",
+      "Small Laser"
+    ],
+    "leftTorso": [
+      "Heat Sink",
+      "Heat Sink",
+      "Jump Jet",
+      "IS Ammo LRM-10"
+    ],
+    "rightTorso": [
+      "Heat Sink",
+      "Heat Sink",
+      "Jump Jet",
+      "SRM 6",
+      "SRM 6",
+      "IS Ammo SRM-6",
+      "SRM 6"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "LRM 10",
+      "LRM 10",
+      "LRM 10"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Jump Jet"
+    ]
   },
-  "era": "2821",
-  "displayName": "Wyvern WVE-6N",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

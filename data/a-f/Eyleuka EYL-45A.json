@@ -1,56 +1,170 @@
 {
   "name": "Eyleuka",
+  "chassis": "Eyleuka",
   "model": "EYL-45A",
-  "tonnage": 55,
+  "mulId": 1009,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3069,
+  "source": "TRO: 3075",
+  "rulesLevel": 2,
+  "role": "Striker",
+  "mass": 55,
   "engine": "275 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "7"
+    "walk": 5,
+    "jump": 7
   },
   "armor": {
-    "total": "Stealth"
+    "type": "Stealth",
+    "head": 9,
+    "centerTorso": 22,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 15,
+    "leftArm": 15,
+    "rightLeg": 21,
+    "leftLeg": 21,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": "Small Cockpit",
-  "gyro": "Compact Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "1009",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "exp_actuator",
-    "Myomer": "Standard",
-    "LA Armor": "15",
-    "RA Armor": "15",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "22",
-    "HD Armor": "9",
-    "LL Armor": "21",
-    "RL Armor": "21",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "7",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "TAG",
+      "location": "LT"
+    },
+    {
+      "type": "ER Large Laser",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RA"
+    },
+    {
+      "type": "MML 9",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISMML9",
+      "ISMML9",
+      "ISMML9",
+      "ISMML9",
+      "ISMML9",
+      "IS Ammo MML-9 SRM",
+      "Stealth",
+      "Stealth",
+      "MML 9"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "ISERLargeLaser",
+      "ISERLargeLaser",
+      "ISERMediumLaser",
+      "Stealth",
+      "Stealth",
+      "ER Large Laser",
+      "ER Medium Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "ISTAG",
+      "Stealth",
+      "Stealth",
+      "TAG"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "ISERMediumLaser",
+      "Stealth",
+      "Stealth",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Improved Jump Jet",
+      "Improved Jump Jet",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "IS Ammo MML-9 LRM",
+      "IS Ammo MML-9 LRM"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Stealth",
+      "Stealth"
+    ]
   },
-  "era": "3069",
-  "displayName": "Eyleuka EYL-45A",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

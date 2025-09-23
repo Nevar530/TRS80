@@ -1,56 +1,166 @@
 {
   "name": "Imp",
+  "chassis": "Imp",
   "model": "IMP-3E",
-  "tonnage": 100,
+  "mulId": 1610,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "2",
+  "era": 3050,
+  "source": "TRO: 3050",
+  "rulesLevel": 2,
+  "role": "Juggernaut",
+  "mass": 100,
   "engine": "300 XL Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "30 Single",
   "movement": {
-    "walk": "3",
-    "jump": "0"
+    "walk": 3,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard Armor"
+    "type": "StandardArmor",
+    "head": 9,
+    "centerTorso": 40,
+    "rightTorso": 30,
+    "leftTorso": 30,
+    "rightArm": 25,
+    "leftArm": 25,
+    "rightLeg": 42,
+    "leftLeg": 42,
+    "rearCenterTorso": 21,
+    "rearRightTorso": 12,
+    "rearLeftTorso": 12,
+    "total": 288
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3050"
+  "quirks": [
+    "command_mech",
+    "difficult_maintain"
   ],
-  "extras": {
-    "mul id": "1610",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "difficult_maintain",
-    "Myomer": "Standard",
-    "LA Armor": "25",
-    "RA Armor": "25",
-    "LT Armor": "30",
-    "RT Armor": "30",
-    "CT Armor": "40",
-    "HD Armor": "9",
-    "LL Armor": "42",
-    "RL Armor": "42",
-    "RTL Armor": "12",
-    "RTR Armor": "12",
-    "RTC Armor": "21",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "1 ISERPPC",
+      "location": "LT"
+    },
+    {
+      "type": "1 ISERPPC",
+      "location": "RT"
+    },
+    {
+      "type": "1 ISLargePulseLaser",
+      "location": "LA"
+    },
+    {
+      "type": "2 ISMediumPulseLaser",
+      "location": "CT"
+    },
+    {
+      "type": "2 ISMediumLaser",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "1 ISLargePulseLaser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "ISLRM15",
+      "ISLRM15",
+      "ISLRM15"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISLRM15 Ammo",
+      "ISLRM15 Ammo",
+      "ISCASE",
+      "1 ISERPPC"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "Heat Sink",
+      "ISERPPC",
+      "ISERPPC",
+      "ISERPPC",
+      "ISMediumLaser",
+      "ISMediumLaser",
+      "1 ISERPPC",
+      "2 ISMediumLaser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISMediumPulseLaser",
+      "ISMediumPulseLaser",
+      "2 ISMediumPulseLaser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Heat Sink",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heat Sink",
+      "Heat Sink"
+    ]
   },
-  "era": "3050",
-  "displayName": "Imp IMP-3E",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

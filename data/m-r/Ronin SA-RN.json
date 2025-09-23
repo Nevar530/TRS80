@@ -1,56 +1,161 @@
 {
   "name": "Ronin",
+  "chassis": "Ronin",
   "model": "SA-RN",
-  "tonnage": 50,
+  "mulId": 2738,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3051,
+  "source": "TRO: 3055",
+  "rulesLevel": 3,
+  "role": "Striker",
+  "mass": 50,
   "engine": "250 XL Engine",
+  "structure": "Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 8,
+    "centerTorso": 22,
+    "rightTorso": 16,
+    "leftTorso": 16,
+    "rightArm": 15,
+    "leftArm": 15,
+    "rightLeg": 22,
+    "leftLeg": 22,
+    "rearCenterTorso": 6,
+    "rearRightTorso": 5,
+    "rearLeftTorso": 5,
+    "total": 152
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3055"
+  "quirks": [
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "2738",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "non_standard",
-    "Myomer": "Standard",
-    "LA Armor": "15",
-    "RA Armor": "15",
-    "LT Armor": "16",
-    "RT Armor": "16",
-    "CT Armor": "22",
-    "HD Armor": "8",
-    "LL Armor": "22",
-    "RL Armor": "22",
-    "RTL Armor": "5",
-    "RTR Armor": "5",
-    "RTC Armor": "6",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Large Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "SRM 4",
+      "location": "LT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "LT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "RT"
+    },
+    {
+      "type": "SRM 4",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "ISClaw",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "ISLargePulseLaser",
+      "ISLargePulseLaser",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Large Pulse Laser"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "SRM 4",
+      "ISArtemisIV",
+      "SRM 4",
+      "ISArtemisIV",
+      "IS Ammo SRM-4 Artemis-capable",
+      "IS Ammo SRM-4 Artemis-capable",
+      "ISCASE",
+      "Endo Steel",
+      "SRM 4",
+      "SRM 4"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "SRM 4",
+      "ISArtemisIV",
+      "SRM 4",
+      "ISArtemisIV",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "Endo Steel",
+      "SRM 4",
+      "SRM 4"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Endo Steel"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator"
+    ]
   },
-  "era": "3051",
-  "displayName": "Ronin SA-RN",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

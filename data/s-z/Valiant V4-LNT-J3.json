@@ -1,56 +1,175 @@
 {
   "name": "Valiant",
+  "chassis": "Valiant",
   "model": "V4-LNT-J3",
-  "tonnage": 30,
+  "mulId": 3368,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3074,
+  "source": "TRO: 3075",
+  "rulesLevel": 4,
+  "role": "Striker",
+  "mass": 30,
   "engine": "210 Light Engine",
+  "structure": "Standard",
+  "myomer": "Standard",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "7",
-    "jump": "0"
+    "walk": 7,
+    "jump": 0
   },
   "armor": {
-    "total": "Heavy Ferro-Fibrous"
+    "type": "HeavyFerro-Fibrous",
+    "head": 9,
+    "centerTorso": 15,
+    "rightTorso": 10,
+    "leftTorso": 10,
+    "rightArm": 10,
+    "leftArm": 10,
+    "rightLeg": 14,
+    "leftLeg": 14,
+    "rearCenterTorso": 5,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 105
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3075"
+  "quirks": [
+    "imp_target_short",
+    "pro_actuator",
+    "weak_head_1"
   ],
-  "extras": {
-    "mul id": "3368",
-    "Config": "Biped",
-    "role": "Striker",
-    "quirk": "weak_head_1",
-    "Myomer": "Standard",
-    "LA Armor": "10",
-    "RA Armor": "10",
-    "LT Armor": "10",
-    "RT Armor": "10",
-    "CT Armor": "15",
-    "HD Armor": "9",
-    "LL Armor": "14",
-    "RL Armor": "14",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "5",
-    "Weapons": "6"
+  "weapons": [
+    {
+      "type": "Flamer",
+      "location": "RA"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "CT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Flamer",
+      "ISSmallShield",
+      "ISSmallShield",
+      "ISSmallShield",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Flamer"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISERMediumLaser",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERSmallLaser",
+      "ISERSmallLaser",
+      "ER Small Laser",
+      "ER Small Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERSmallLaser",
+      "Sensors",
+      "Life Support",
+      "ER Small Laser"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Heavy Ferro-Fibrous",
+      "Heavy Ferro-Fibrous"
+    ]
   },
-  "era": "3074",
-  "displayName": "Valiant V4-LNT-J3",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

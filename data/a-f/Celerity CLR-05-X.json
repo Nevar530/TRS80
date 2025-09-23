@@ -1,56 +1,95 @@
 {
   "name": "Celerity",
+  "chassis": "Celerity",
   "model": "CLR-05-X",
-  "tonnage": 15,
+  "mulId": 6710,
+  "config": "Quad",
   "techBase": "Inner Sphere",
-  "rulesLevel": "4",
+  "era": 3138,
+  "source": "TRO: 3145 Republic of the Sphere",
+  "rulesLevel": 4,
+  "role": "Scout",
+  "mass": 15,
   "engine": "240 XXL Engine(IS)",
+  "structure": "IS Composite",
+  "myomer": "Standard",
   "heatSinks": "10 IS Double",
   "movement": {
-    "walk": "16",
-    "jump": "0"
+    "walk": 16,
+    "jump": 0
   },
   "armor": {
-    "total": "Impact-Resistant(Inner Sphere)"
+    "type": "Impact-Resistant (InnerSphere)",
+    "head": 4,
+    "centerTorso": 5,
+    "rightTorso": 4,
+    "leftTorso": 4,
+    "rightLeg": 2,
+    "rearCenterTorso": 1,
+    "rearRightTorso": 1,
+    "rearLeftTorso": 1,
+    "total": 28
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Composite",
-  "cockpit": "Small Cockpit",
-  "gyro": "XL Gyro",
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Republic of the Sphere"
+  "quirks": [
+    "exp_actuator"
   ],
-  "extras": {
-    "mul id": "6710",
-    "Config": "Quad",
-    "role": "Scout",
-    "quirk": "exp_actuator",
-    "myomer": "Standard",
-    "FLL armor": "2",
-    "FRL armor": "2",
-    "LT armor": "4",
-    "RT armor": "4",
-    "CT armor": "5",
-    "HD armor": "4",
-    "RLL armor": "2",
-    "RRL armor": "2",
-    "RTL armor": "1",
-    "RTR armor": "1",
-    "RTC armor": "1",
-    "Weapons": "0"
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISDoubleHeatSink",
+      "ISMASC",
+      "Spikes"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISDroneOperatingSystem",
+      "Supercharger",
+      "Spikes",
+      "IS Impact-Resistant",
+      "IS Impact-Resistant"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Sensors"
+    ]
   },
-  "era": "3138",
-  "displayName": "Celerity CLR-05-X",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

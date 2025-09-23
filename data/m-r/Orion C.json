@@ -1,56 +1,172 @@
 {
   "name": "Orion",
+  "chassis": "Orion",
   "model": "C",
-  "tonnage": 75,
+  "mulId": 7998,
+  "config": "Biped",
   "techBase": "Mixed (IS Chassis)",
-  "rulesLevel": "3",
+  "era": 3142,
+  "source": "Record Sheets: 3150",
+  "rulesLevel": 3,
+  "mass": 75,
   "engine": "300 Fusion Engine(IS)",
+  "structure": "IS Endo Steel",
+  "myomer": "Standard",
   "heatSinks": "10 IS Double",
   "movement": {
-    "walk": "4",
-    "jump": "0"
+    "walk": 4,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Lamellor(Clan)"
+    "type": "Ferro-Lamellor (Clan)",
+    "head": 9,
+    "centerTorso": 35,
+    "rightTorso": 22,
+    "leftTorso": 22,
+    "rightArm": 21,
+    "leftArm": 21,
+    "rightLeg": 32,
+    "leftLeg": 32,
+    "rearCenterTorso": 10,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 224
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Endo Steel",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "Record Sheets: 3150"
+  "quirks": [
+    "easy_maintain",
+    "anti_air",
+    "rugged_1"
   ],
-  "extras": {
-    "generator": "MegaMek Suite 0.50.02-SNAPSHOT on 2024-12-30",
-    "mul id": "7998",
-    "Config": "Biped",
-    "quirk": "rugged_1",
-    "myomer": "Standard",
-    "LA armor": "21",
-    "RA armor": "21",
-    "LT armor": "22",
-    "RT armor": "22",
-    "CT armor": "35",
-    "HD armor": "9",
-    "LL armor": "32",
-    "RL armor": "32",
-    "RTL armor": "10",
-    "RTR armor": "10",
-    "RTC armor": "10",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "LA"
+    },
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "RA"
+    },
+    {
+      "type": "Streak LRM 15",
+      "location": "LT"
+    },
+    {
+      "type": "ER Medium Pulse Laser",
+      "location": "LT"
+    },
+    {
+      "type": "Gauss Rifle",
+      "location": "RT"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER Medium Pulse Laser"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "IS Endo Steel",
+      "ER Medium Pulse Laser"
+    ],
+    "leftTorso": [
+      "CLStreakLRM15",
+      "CLStreakLRM15",
+      "CLStreakLRM15",
+      "CLERMediumPulseLaser",
+      "CLERMediumPulseLaser",
+      "Clan Streak LRM 15 Ammo",
+      "Clan Streak LRM 15 Ammo",
+      "CLCASEII",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Streak LRM 15",
+      "ER Medium Pulse Laser"
+    ],
+    "rightTorso": [
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "CLGaussRifle",
+      "Clan Gauss Ammo",
+      "Clan Gauss Ammo",
+      "CLCASEII",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor",
+      "Gauss Rifle"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Clan Ferro-Lamellor",
+      "Clan Ferro-Lamellor"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "Clan Ferro-Lamellor",
+      "Sensors",
+      "Life Support"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Lamellor"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "Clan Ferro-Lamellor"
+    ]
   },
-  "era": "3142",
-  "displayName": "Orion C",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

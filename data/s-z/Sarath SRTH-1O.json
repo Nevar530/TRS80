@@ -1,57 +1,129 @@
 {
   "name": "Sarath",
+  "chassis": "Sarath",
   "model": "SRTH-1O",
-  "tonnage": 50,
+  "mulId": 6506,
+  "config": "Quad Omnimech",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3122,
+  "source": "TRO: 3145 Free Worlds League",
+  "rulesLevel": 3,
+  "role": "Skirmisher",
+  "mass": 50,
   "engine": "250 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "10 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Standard(Inner Sphere)"
+    "type": "Standard (InnerSphere)",
+    "head": 8,
+    "centerTorso": 25,
+    "rightTorso": 20,
+    "leftTorso": 20,
+    "rightLeg": 24,
+    "rearCenterTorso": 7,
+    "rearRightTorso": 4,
+    "rearLeftTorso": 4,
+    "total": 184
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Free Worlds League"
+  "quirks": [
+    "distracting",
+    "compact_mech",
+    "low_profile",
+    "bad_rep_is"
   ],
-  "extras": {
-    "mul id": "6506",
-    "Config": "Quad Omnimech",
-    "role": "Skirmisher",
-    "quirk": "bad_rep_is",
-    "Myomer": "Triple-Strength",
-    "Base Chassis Heat Sinks": "10",
-    "FLL Armor": "24",
-    "FRL Armor": "24",
-    "LT Armor": "20",
-    "RT Armor": "20",
-    "CT Armor": "25",
-    "HD Armor": "8",
-    "RLL Armor": "24",
-    "RRL Armor": "24",
-    "RTL Armor": "4",
-    "RTR Armor": "4",
-    "RTC Armor": "7",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Heavy PPC",
+      "location": "RT"
+    },
+    {
+      "type": "Light PPC",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "RT"
+    },
+    {
+      "type": "ER Medium Laser",
+      "location": "CT"
+    },
+    {
+      "type": "ER Small Laser",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "BeagleActiveProbe (omnipod)",
+      "BeagleActiveProbe (omnipod)",
+      "Spikes (omnipod)",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Heavy PPC (T) (omnipod)",
+      "Heavy PPC (T) (omnipod)",
+      "Heavy PPC (T) (omnipod)",
+      "Heavy PPC (T) (omnipod)",
+      "Light PPC (T) (omnipod)",
+      "Light PPC (T) (omnipod)",
+      "ISERMediumLaser (T) (omnipod)",
+      "ISQuadTurret",
+      "Spikes (omnipod)",
+      "Heavy PPC",
+      "Light PPC",
+      "ER Medium Laser"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISERMediumLaser (omnipod)",
+      "Spikes (omnipod)",
+      "ER Medium Laser"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISERSmallLaser",
+      "Sensors",
+      "Life Support",
+      "ER Small Laser"
+    ]
   },
-  "era": "3122",
-  "displayName": "Sarath SRTH-1O",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }

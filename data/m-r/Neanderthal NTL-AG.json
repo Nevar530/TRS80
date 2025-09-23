@@ -1,56 +1,171 @@
 {
   "name": "Neanderthal",
+  "chassis": "Neanderthal",
   "model": "NTL-AG",
-  "tonnage": 80,
+  "mulId": 6513,
+  "config": "Biped",
   "techBase": "Inner Sphere",
-  "rulesLevel": "3",
+  "era": 3128,
+  "source": "TRO: 3145 Free Worlds League",
+  "rulesLevel": 3,
+  "role": "Juggernaut",
+  "mass": 80,
   "engine": "400 XL Engine(IS)",
+  "structure": "IS Standard",
+  "myomer": "Triple-Strength",
   "heatSinks": "11 Double",
   "movement": {
-    "walk": "5",
-    "jump": "0"
+    "walk": 5,
+    "jump": 0
   },
   "armor": {
-    "total": "Ferro-Fibrous(Inner Sphere)"
+    "type": "Ferro-Fibrous (InnerSphere)",
+    "head": 9,
+    "centerTorso": 32,
+    "rightTorso": 24,
+    "leftTorso": 24,
+    "rightArm": 24,
+    "leftArm": 24,
+    "rightLeg": 30,
+    "leftLeg": 30,
+    "rearCenterTorso": 15,
+    "rearRightTorso": 10,
+    "rearLeftTorso": 10,
+    "total": 232
   },
-  "armorByLocation": {},
-  "internalByLocation": {},
-  "structure": "IS Standard",
-  "cockpit": null,
-  "gyro": null,
-  "weapons": [],
-  "equipment": [],
-  "ammo": [],
-  "bv": null,
-  "cost": null,
-  "sources": [
-    "TRO: 3145 Free Worlds League"
+  "quirks": [
+    "stable",
+    "distracting",
+    "non_standard"
   ],
-  "extras": {
-    "mul id": "6513",
-    "Config": "Biped",
-    "role": "Juggernaut",
-    "quirk": "non_standard",
-    "Myomer": "Triple-Strength",
-    "LA Armor": "24",
-    "RA Armor": "24",
-    "LT Armor": "24",
-    "RT Armor": "24",
-    "CT Armor": "32",
-    "HD Armor": "9",
-    "LL Armor": "30",
-    "RL Armor": "30",
-    "RTL Armor": "10",
-    "RTR Armor": "10",
-    "RTC Armor": "15",
-    "Weapons": "5"
+  "weapons": [
+    {
+      "type": "Snub-Nose PPC",
+      "location": "RT"
+    },
+    {
+      "type": "Snub-Nose PPC",
+      "location": "LT"
+    },
+    {
+      "type": "M-Pod",
+      "location": "LT"
+    },
+    {
+      "type": "M-Pod",
+      "location": "RT"
+    },
+    {
+      "type": "M-Pod",
+      "location": "H"
+    }
+  ],
+  "locations": {
+    "leftArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "TSM",
+      "TSM",
+      "TSM",
+      "TSM"
+    ],
+    "rightArm": [
+      "Shoulder",
+      "Upper Arm Actuator",
+      "Lower Arm Actuator",
+      "Hand Actuator",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "Hatchet",
+      "TSM",
+      "TSM"
+    ],
+    "leftTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISSNPPC",
+      "ISSNPPC",
+      "PPC Capacitor",
+      "ISMPod",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Snub-Nose PPC",
+      "M-Pod"
+    ],
+    "rightTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISSNPPC",
+      "ISSNPPC",
+      "PPC Capacitor",
+      "ISMPod",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous",
+      "Snub-Nose PPC",
+      "M-Pod"
+    ],
+    "centerTorso": [
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Gyro",
+      "Fusion Engine",
+      "Fusion Engine",
+      "Fusion Engine",
+      "ISGuardianECMSuite",
+      "ISGuardianECMSuite"
+    ],
+    "head": [
+      "Life Support",
+      "Sensors",
+      "Cockpit",
+      "ISMPod",
+      "Sensors",
+      "Life Support",
+      "M-Pod"
+    ],
+    "leftLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ],
+    "rightLeg": [
+      "Hip",
+      "Upper Leg Actuator",
+      "Lower Leg Actuator",
+      "Foot Actuator",
+      "IS Ferro-Fibrous",
+      "IS Ferro-Fibrous"
+    ]
   },
-  "era": "3128",
-  "displayName": "Neanderthal NTL-AG",
-  "_source": {
-    "origin": "MegaMek mm-data (meks)",
-    "license": "CC BY-NC-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "copyright": "MegaMek Data © 2025 The MegaMek Team"
+  "text": {
+    "overview": "",
+    "capabilities": "",
+    "deployment": "",
+    "history": ""
+  },
+  "manufacturers": {
+    "primary": [],
+    "primaryFactory": [],
+    "systems": {}
   }
 }
