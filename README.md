@@ -29,9 +29,3 @@ All UI is designed to be **touch-friendly**, **no-scrollbar**, and **embed-sized
 
 **Play online:**  
 👉 https://nevar530.github.io/BMS-GATOR/
-
-**Run locally (no build tools):**
-```bash
-git clone https://github.com/nevar530/BMS-GATOR.git
-cd BMS-GATOR
-# open index.html in a browser
