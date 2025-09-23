@@ -1,4 +1,4 @@
-/* ===== Gator Console – FULL style.css (compact, embed-ready) ===== */
+/* ===== Gator Console – style.css (compact, embed-ready) ===== */
 
 /* ---------- Core theme ---------- */
 :root {
@@ -79,8 +79,8 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   border-radius: var(--radius); font-size: 13px; cursor: pointer; transition: background var(--transition);
 }
 .tab.is-active { background: var(--accent-dim); border-color: var(--accent); color: #000; }
-.tabpane { display: none; overflow: visible; }
-.tabpane.is-active { display: block; }
+.swap-pane { display:none; }
+.swap-pane.is-active { display:block; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -94,47 +94,22 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 
 /* ---------- Vertical Heat (Overview) ---------- */
 .overview-flex{ display:flex; gap:10px; align-items:stretch; }
-.vheat{
-  width: 28px;
-  display:flex; flex-direction:column; align-items:center; gap:4px;
-}
-.vheat-bar{
-  position:relative;
-  width: 12px;
-  height: var(--vheat-h);
-  background: var(--border);
-  border-radius: 6px;
-  overflow:hidden;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
-}
-.vheat-bar::after{
-  content:"";
-  position:absolute; inset:0;
-  pointer-events:none;
-  background: repeating-linear-gradient(
-    to top,
-    transparent 0,
-    transparent calc(10% - 1px),
-    rgba(0,0,0,0.45) calc(10% - 1px),
-    rgba(0,0,0,0.45) 10%
-  );
+.vheat{ width: 28px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.vheat-bar{ position:relative; width: 12px; height: var(--vheat-h); background: var(--border); border-radius: 6px; overflow:hidden; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15); }
+.vheat-bar::after{ content:""; position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(to top, transparent 0, transparent calc(10% - 1px), rgba(0,0,0,0.45) calc(10% - 1px), rgba(0,0,0,0.45) 10%);
   mix-blend-mode:multiply;
 }
-.vheat-fill{
-  position:absolute; left:0; bottom:0; width:100%; height:0%;
-  background: var(--accent);
-  transition: height var(--transition);
-}
+.vheat-fill{ position:absolute; left:0; bottom:0; width:100%; height:0%; background: var(--accent); transition: height var(--transition); }
 .vheat-legend{ font-size:11.5px; color:var(--muted); }
-
-/* ---------- Overview & Swapper ---------- */
-#top-swapper .card-h { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-#top-swapper .tabs { display:inline-flex; gap:4px; margin:0; }
-#top-swapper .tab { padding:4px 8px; font-size:12.5px; line-height:1; border-radius:6px; }
-.swap-pane { display:none; }
-.swap-pane.is-active { display:block; }
 .overview-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 8px; flex:1; }
 .overview-grid label { display:block; font-size:11px; color:var(--muted); margin-bottom:2px; }
+
+/* ---------- Tech Readout ---------- */
+.tro-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.fullw { width:100%; border-collapse:collapse; margin-top:6px; }
+.fullw th, .fullw td { padding:6px 0; text-align:left; }
+.mt6 { margin-top:6px; }
 
 /* ===================== GATOR (COMPACT) ===================== */
 .gtr-compact{ display:flex; flex-direction:column; gap:8px; }
@@ -193,13 +168,9 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   border-top: 1px solid var(--border);
   padding: 6px 10px;
 }
-.app-footer-row{
-  display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-}
+.app-footer-row{ display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
 .app-footer .sep{ opacity:.5; }
-.linklike{
-  background:transparent; border:0; color: var(--accent); cursor:pointer; text-decoration:underline; padding:0 2px;
-}
+.linklike{ background:transparent; border:0; color: var(--accent); cursor:pointer; text-decoration:underline; padding:0 2px; }
 
 /* ---------- Modal ---------- */
 .modal[hidden]{ display:none; }
@@ -228,7 +199,7 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   max-height: 100%;
   border: 1px solid var(--border);
   border-radius: 10px;
-  overflow-x: hidden; overflow-y: auto; /* vertical scroll only */
+  overflow-x: hidden; overflow-y: auto;
   background: var(--panel);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   font-size: var(--embed-font);
@@ -242,10 +213,7 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 .app.is-embed .card-h, .app.is-embed .panel-h { padding: 4px 6px; }
 .app.is-embed .card-c, .app.is-embed .panel-c { padding: 6px; }
 .app.is-embed #top-swapper .tab { padding: 3px 6px; font-size: 12px; }
-.app.is-embed .toast {
-  position: absolute; bottom: 8px; right: 8px;
-  font-size: 12px; padding: 6px 8px;
-}
+.app.is-embed .toast { position: absolute; bottom: 8px; right: 8px; font-size: 12px; padding: 6px 8px; }
 
 /* ===== Narrow/Embed clamps for GATOR ===== */
 .app.is-embed #pane-gator .gtr-columns{ grid-template-columns:1fr !important; }
@@ -253,50 +221,19 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 .app.is-embed #pane-gator .gtr-compact{ gap:6px; }
 .app.is-embed #pane-gator .gtr-col{ padding:6px; }
 
-/* remove width pressure from selects */
-#pane-gator .gtr-sel.xs{ min-width:unset; width:100%; }
-
-/* keep everything inside the card */
-#pane-gator .card,
-#pane-gator .card-c,
-#pane-gator .gtr-compact{ max-width:100%; box-sizing:border-box; }
-
-/* Make the dropdown visible, clickable, and styled */
+/* Search dropdown */
 #search-results{
-  position:absolute;
-  z-index:9999;
-  pointer-events:auto;
-  max-height:300px;
-  overflow:auto;
-  background: rgba(0,0,0,.8);     /* add bg so amber pops */
-  border:1px solid var(--border);
-  border-radius:6px;
+  position:absolute; z-index:9999; pointer-events:auto; max-height:300px; overflow:auto;
+  background: rgba(0,0,0,.8);
+  border:1px solid var(--border); border-radius:6px;
 }
-
-/* Rows should span full width so the bg shows */
 #search-results .result-item{
-  display:block;                   /* block = full row */
-  width:100%;
-  padding:.4rem .6rem;
-  cursor:pointer;
-  user-select:none;
+  display:block; width:100%; padding:.4rem .6rem; cursor:pointer; user-select:none;
   transition:background var(--transition), color var(--transition);
 }
-
-/* 🔶 Force amber row on hover/focus with high specificity */
 #search-results .result-item:hover,
 #search-results .result-item:focus{
-  background: var(--bt-amber) !important;
-  color:#000 !important;
+  background: var(--bt-amber) !important; color:#000 !important;
 }
-
-/* optional: variant tone on hover */
 #search-results .result-item:hover .result-variant,
-#search-results .result-item:focus .result-variant{
-  color:#222 !important;
-}
-
-#techout table.small.mono tbody tr td {
-  padding: 6px 0;   /* more vertical space */
-}
-
+#search-results .result-item:focus .result-variant{ color:#222 !important; }
