@@ -292,5 +292,5 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 #filter-modal .gtr-in.tiny { width:100%; }
 #filter-modal .chk { user-select:none; }
 
-#btn-roll-att, #btn-roll-both { background: var(--bt-amber); color:#000; font-weight:800; }
+#btn-roll-att, #btn-roll-both { background: var(--bt-amber); color:#000; font-weight:400; }
 
