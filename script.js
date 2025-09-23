@@ -220,66 +220,72 @@
   }
 
   function fillTechReadout() {
-    const m = state.mech;
-    if (!m) {
-      // Clear basic headline items; rest can keep placeholders
-      ['tr-name','tr-model','tr-tons','tr-tech','tr-rules','tr-engine','tr-hs','tr-move','tr-structure','tr-cockpit','tr-gyro','tr-config','tr-role','tr-myomer','tr-armor-sys','tr-bv','tr-cost','tr-era','tr-sources']
-        .forEach(id => byId(id).textContent = '—');
-      ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
-        .forEach(id => byId(id).hidden = true);
-      
-// Armor table
-['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
-  .forEach(k => { byId('ar-'+k).textContent = '—'; };
+  const m = state.mech;
 
-['HD','CT','RT','LT','RA','LA','RL','LL']
-  .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; };
+  if (!m) {
+    // Clear basic headline items; rest can keep placeholders
+    ['tr-name','tr-model','tr-tons','tr-tech','tr-rules','tr-engine','tr-hs','tr-move','tr-structure','tr-cockpit','tr-gyro','tr-config','tr-role','tr-myomer','tr-armor-sys','tr-bv','tr-cost','tr-era','tr-sources']
+      .forEach(id => byId(id).textContent = '—');
+    ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
+      .forEach(id => byId(id).hidden = true);
 
-byId('tr-weapons').textContent   = '—';
-byId('tr-equipment').textContent = '—';
-byId('tr-ammo').textContent      = '—';
-return;
+    // Armor table
+    ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
+      .forEach(k => { const cell = byId('ar-'+k); if (cell) cell.textContent = '—'; });
 
+    ['HD','CT','RT','LT','RA','LA','RL','LL']
+      .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; });
 
+    byId('tr-weapons').textContent   = '—';
+    byId('tr-equipment').textContent = '—';
+    byId('tr-ammo').textContent      = '—';
+    return; // <-- early exit when no mech loaded
+  } // <-- CLOSE the if (!m) block
 
-    // Basics
-    byId('tr-name').textContent  = m.displayName || m.name || m.Name || '—';
-    byId('tr-model').textContent = m.model || m.variant || m.Model || '—';
-    byId('tr-tons').textContent  = m.tonnage ?? m.Tonnage ?? m.mass ?? '—';
-    byId('tr-tech').textContent  = m.techBase || m.TechBase || '—';
-    byId('tr-rules').textContent = m.rulesLevel || m.Rules || '—';
-    byId('tr-engine').textContent= m.engine || m.Engine || '—';
-    const hs = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
-    byId('tr-hs').textContent    = hs;
+  // Basics
+  byId('tr-name').textContent  = m.displayName || m.name || m.Name || '—';
+  byId('tr-model').textContent = m.model || m.variant || m.Model || '—';
+  byId('tr-tons').textContent  = m.tonnage ?? m.Tonnage ?? m.mass ?? '—';
+  byId('tr-tech').textContent  = m.techBase || m.TechBase || '—';
+  byId('tr-rules').textContent = m.rulesLevel || m.Rules || '—';
+  byId('tr-engine').textContent= m.engine || m.Engine || '—';
+  const hs = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
+  byId('tr-hs').textContent    = hs;
 
-    const mv = getMovement(m || {});
-    const mvStr = (mv.walk || mv.run || mv.jump) ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : (m?.Movement || '—');
-    byId('tr-move').textContent  = mvStr;
+  const mv = getMovement(m || {});
+  const mvStr = (mv.walk || mv.run || mv.jump) ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : (m?.Movement || '—');
+  byId('tr-move').textContent  = mvStr;
 
-    byId('tr-structure').textContent = m.structure || m.Structure || '—';
-    byId('tr-cockpit').textContent   = m.cockpit || m.Cockpit || '—';
-    byId('tr-gyro').textContent      = m.gyro || m.Gyro || '—';
-    byId('tr-config').textContent    = m.extras?.Config || m.extras?.config || '—';
-    byId('tr-role').textContent      = m.extras?.role || m.extras?.Role || '—';
-    byId('tr-myomer').textContent    = m.extras?.myomer || '—';
-    byId('tr-armor-sys').textContent = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
+  byId('tr-structure').textContent = m.structure || m.Structure || '—';
+  byId('tr-cockpit').textContent   = m.cockpit || m.Cockpit || '—';
+  byId('tr-gyro').textContent      = m.gyro || m.Gyro || '—';
+  byId('tr-config').textContent    = m.extras?.Config || m.extras?.config || '—';
+  byId('tr-role').textContent      = m.extras?.role || m.extras?.Role || '—';
+  byId('tr-myomer').textContent    = m.extras?.myomer || '—';
+  byId('tr-armor-sys').textContent = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
 
-    // Armor/Internals table
-    const armorBy  = m.armorByLocation || {};
-    const internal = m.internalByLocation || {};
-    const extras   = m.extras || {};
-    for (const loc of LOCS) {
-      const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
-      const s = getInternalCell(internal, loc.key);
-      byId('ar-'+loc.key).textContent = a.front;
-      if (loc.rearKey) byId('ar-'+loc.rearKey).textContent = a.rear;
-      byId('in-'+loc.key).textContent = s;
+  // Armor/Internals table
+  const armorBy  = m.armorByLocation || {};
+  const internal = m.internalByLocation || {};
+  const extras   = m.extras || {};
+  for (const loc of LOCS) {
+    const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
+    const s = getInternalCell(internal, loc.key);
+    const arCell = byId('ar-'+loc.key);
+    if (arCell) arCell.textContent = a.front;
+    if (loc.rearKey) {
+      const rearCell = byId('ar-'+loc.rearKey);
+      if (rearCell) rearCell.textContent = a.rear;
     }
+    const inCell = byId('in-'+loc.key);
+    if (inCell) inCell.textContent = s;
+  }
 
-    // Per-location equipment
-    const locs = m?.locations || null;
-    if (locs) {
-      const tbody = byId('loc-equip-body');
+  // Per-location equipment
+  const locs = m?.locations || null;
+  if (locs) {
+    const tbody = byId('loc-equip-body');
+    if (tbody) {
       tbody.innerHTML = '';
       let rows = 0;
       for (const [label, key] of LOC_ORDER) {
@@ -293,61 +299,65 @@ return;
         rows++;
       }
       byId('loc-equip-wrap').hidden = rows === 0;
-    } else {
-      byId('loc-equip-wrap').hidden = true;
     }
-
-    // Weapons / Equipment / Ammo
-    const mapItem = (x) => (x.name || x.Name || x.type || x.Type || 'Item') + ((x.loc||x.Location)?` [${x.loc||x.Location}]`:'') + (x.count?` x${x.count}`:'');
-    const weapons   = Array.isArray(m.weapons) ? m.weapons : (Array.isArray(m.Weapons) ? m.Weapons : []);
-    const equipment = Array.isArray(m.equipment) ? m.equipment : (Array.isArray(m.Equipment) ? m.Equipment : []);
-    const ammo      = Array.isArray(m.ammo) ? m.ammo : (Array.isArray(m.Ammo) ? m.Ammo : []);
-    byId('tr-weapons').textContent   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
-    byId('tr-equipment').textContent = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
-    byId('tr-ammo').textContent      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
-
-    // Narrative
-    const setBlock = (key, wrapId, textId) => {
-      const val = m.extras?.[key] || '';
-      const wrap = byId(wrapId), tx = byId(textId);
-      if (val) { tx.textContent = val; wrap.hidden = false; } else { wrap.hidden = true; tx.textContent=''; }
-    };
-    setBlock('overview',     'tr-overview-wrap',     'tr-overview');
-    setBlock('capabilities', 'tr-capabilities-wrap', 'tr-capabilities');
-    setBlock('deployment',   'tr-deployment-wrap',   'tr-deployment');
-    setBlock('history',      'tr-history-wrap',      'tr-history');
-
-    // Meta
-    byId('tr-bv').textContent    = m.bv ?? m.BV ?? '—';
-    byId('tr-cost').textContent  = fmtMoney(m.cost ?? m.Cost ?? null);
-    byId('tr-era').textContent   = m.era || '—';
-    const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
-    byId('tr-sources').textContent = sourcesArr.length ? sourcesArr.join(' • ') : '—';
-
-    const manufacturers = listify(m.extras?.manufacturer);
-    const factories     = listify(m.extras?.primaryfactory);
-    const systems       = listify(m.extras?.systemmanufacturer);
-    const mfrWrap = byId('tr-mfr-wrap');
-    if (manufacturers.length || factories.length || systems.length) {
-      byId('tr-mfrs').textContent = manufacturers.join(' • ') || '—';
-      byId('tr-factories').textContent = factories.join(' • ') || '—';
-      byId('tr-systems').textContent = systems.join(' • ') || '—';
-      mfrWrap.hidden = false;
-    } else mfrWrap.hidden = true;
-
-    const licWrap = byId('tr-license-wrap');
-    const lic = m._source?.license || '';
-    const licUrl = m._source?.license_url || '';
-    const origin = m._source?.origin || '';
-    const copyright = m._source?.copyright || '';
-    if (lic || origin || copyright) {
-      byId('tr-origin').textContent = origin || '';
-      byId('tr-license').innerHTML = licUrl ? `License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a>` :
-                                             (lic ? `License: ${esc(lic)}` : '');
-      byId('tr-copyright').textContent = copyright || '';
-      licWrap.hidden = false;
-    } else licWrap.hidden = true;
+  } else {
+    byId('loc-equip-wrap').hidden = true;
   }
+
+  // Weapons / Equipment / Ammo
+  const mapItem = (x) => (x.name || x.Name || x.type || x.Type || 'Item') +
+                         ((x.loc||x.Location)?` [${x.loc||x.Location}]`:'') +
+                         (x.count?` x${x.count}`:'');
+  const weapons   = Array.isArray(m.weapons) ? m.weapons : (Array.isArray(m.Weapons) ? m.Weapons : []);
+  const equipment = Array.isArray(m.equipment) ? m.equipment : (Array.isArray(m.Equipment) ? m.Equipment : []);
+  const ammo      = Array.isArray(m.ammo) ? m.ammo : (Array.isArray(m.Ammo) ? m.Ammo : []);
+  byId('tr-weapons').textContent   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
+  byId('tr-equipment').textContent = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
+  byId('tr-ammo').textContent      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
+
+  // Narrative
+  const setBlock = (key, wrapId, textId) => {
+    const val = m.extras?.[key] || '';
+    const wrap = byId(wrapId), tx = byId(textId);
+    if (val) { tx.textContent = val; wrap.hidden = false; } else { wrap.hidden = true; tx.textContent=''; }
+  };
+  setBlock('overview',     'tr-overview-wrap',     'tr-overview');
+  setBlock('capabilities', 'tr-capabilities-wrap', 'tr-capabilities');
+  setBlock('deployment',   'tr-deployment-wrap',   'tr-deployment');
+  setBlock('history',      'tr-history-wrap',      'tr-history');
+
+  // Meta
+  byId('tr-bv').textContent    = m.bv ?? m.BV ?? '—';
+  byId('tr-cost').textContent  = fmtMoney(m.cost ?? m.Cost ?? null);
+  byId('tr-era').textContent   = m.era || '—';
+  const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
+  byId('tr-sources').textContent = sourcesArr.length ? sourcesArr.join(' • ') : '—';
+
+  const manufacturers = listify(m.extras?.manufacturer);
+  const factories     = listify(m.extras?.primaryfactory);
+  const systems       = listify(m.extras?.systemmanufacturer);
+  const mfrWrap = byId('tr-mfr-wrap');
+  if (manufacturers.length || factories.length || systems.length) {
+    byId('tr-mfrs').textContent = manufacturers.join(' • ') || '—';
+    byId('tr-factories').textContent = factories.join(' • ') || '—';
+    byId('tr-systems').textContent = systems.join(' • ') || '—';
+    mfrWrap.hidden = false;
+  } else mfrWrap.hidden = true;
+
+  const licWrap = byId('tr-license-wrap');
+  const lic = m._source?.license || '';
+  const licUrl = m._source?.license_url || '';
+  const origin = m._source?.origin || '';
+  const copyright = m._source?.copyright || '';
+  if (lic || origin || copyright) {
+    byId('tr-origin').textContent = origin || '';
+    byId('tr-license').innerHTML = licUrl ? `License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a>` :
+                                           (lic ? `License: ${esc(lic)}` : '');
+    byId('tr-copyright').textContent = copyright || '';
+    licWrap.hidden = false;
+  } else licWrap.hidden = true;
+}
+
 
   /* ---------- Mech load ---------- */
   async function loadMechFromUrl(url) {
