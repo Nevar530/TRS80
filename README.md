@@ -3,7 +3,9 @@
 A compact, fast, **BattleTech** helper for table or VTT: browse mechs, read Tech Readouts, and compute **G.A.T.O.R.** target numbers without rules-flipping.
 
 [![Play BMS-GATOR](https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Play%20BMS--GATOR-0b63f6?style=for-the-badge)](https://nevar530.github.io/BMS-GATOR/)
-![Static Badge](https://img.shields.io/badge/HTML-CSS-JS-20232a?logo=html5&logoColor=fff)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
 ![License: MIT](https://img.shields.io/badge/Code-MIT-brightgreen)
 ![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Data-CC%20BY--NC--SA%204.0-orange)
 
