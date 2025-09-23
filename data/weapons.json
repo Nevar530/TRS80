@@ -3,6 +3,7 @@
     "id": "AC/2",
     "name": "AC/2",
     "type": "Ballistic",
+    "damage": 2,
     "heat": 1,
     "ammo": "AC/2 ammo (45)",
     "range": { "pointblank": 0, "short": 9, "medium": 18, "long": 36 }
@@ -11,6 +12,7 @@
     "id": "AC/5",
     "name": "AC/5",
     "type": "Ballistic",
+    "damage": 5,
     "heat": 1,
     "ammo": "AC/5 ammo (20)",
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 }
@@ -19,6 +21,7 @@
     "id": "AC/10",
     "name": "AC/10",
     "type": "Ballistic",
+    "damage": 10,
     "heat": 3,
     "ammo": "AC/10 ammo (10)",
     "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 }
@@ -27,14 +30,25 @@
     "id": "AC/20",
     "name": "AC/20",
     "type": "Ballistic",
+    "damage": 20,
     "heat": 7,
     "ammo": "AC/20 ammo (5)",
     "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
   },
   {
+    "id": "Machine Gun",
+    "name": "Machine Gun",
+    "type": "Ballistic",
+    "damage": 2,
+    "heat": 0,
+    "ammo": "MG ammo (200)",
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
+  },
+  {
     "id": "PPC",
     "name": "PPC",
     "type": "Energy",
+    "damage": 10,
     "heat": 10,
     "ammo": null,
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 18 }
@@ -43,6 +57,7 @@
     "id": "Large Laser",
     "name": "Large Laser",
     "type": "Energy",
+    "damage": 8,
     "heat": 8,
     "ammo": null,
     "range": { "pointblank": 0, "short": 5, "medium": 10, "long": 15 }
@@ -51,6 +66,7 @@
     "id": "Medium Laser",
     "name": "Medium Laser",
     "type": "Energy",
+    "damage": 5,
     "heat": 3,
     "ammo": null,
     "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
@@ -59,7 +75,17 @@
     "id": "Small Laser",
     "name": "Small Laser",
     "type": "Energy",
+    "damage": 3,
     "heat": 1,
+    "ammo": null,
+    "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
+  },
+  {
+    "id": "Flamer",
+    "name": "Flamer",
+    "type": "Energy",
+    "damage": 2,
+    "heat": 3,
     "ammo": null,
     "range": { "pointblank": 0, "short": 1, "medium": 2, "long": 3 }
   },
@@ -67,6 +93,7 @@
     "id": "SRM-2",
     "name": "SRM-2",
     "type": "Missile",
+    "damage": 2,
     "heat": 2,
     "ammo": "SRM ammo (50)",
     "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
@@ -75,6 +102,7 @@
     "id": "SRM-4",
     "name": "SRM-4",
     "type": "Missile",
+    "damage": 2,
     "heat": 3,
     "ammo": "SRM ammo (25)",
     "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
@@ -83,6 +111,7 @@
     "id": "SRM-6",
     "name": "SRM-6",
     "type": "Missile",
+    "damage": 2,
     "heat": 4,
     "ammo": "SRM ammo (15)",
     "range": { "pointblank": 0, "short": 3, "medium": 6, "long": 9 }
@@ -91,6 +120,7 @@
     "id": "LRM-5",
     "name": "LRM-5",
     "type": "Missile",
+    "damage": 1,
     "heat": 2,
     "ammo": "LRM ammo (24)",
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
@@ -99,6 +129,7 @@
     "id": "LRM-10",
     "name": "LRM-10",
     "type": "Missile",
+    "damage": 1,
     "heat": 4,
     "ammo": "LRM ammo (12)",
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
@@ -107,6 +138,7 @@
     "id": "LRM-15",
     "name": "LRM-15",
     "type": "Missile",
+    "damage": 1,
     "heat": 5,
     "ammo": "LRM ammo (8)",
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
@@ -115,6 +147,7 @@
     "id": "LRM-20",
     "name": "LRM-20",
     "type": "Missile",
+    "damage": 1,
     "heat": 6,
     "ammo": "LRM ammo (6)",
     "range": { "pointblank": 0, "short": 6, "medium": 12, "long": 21 }
@@ -123,6 +156,7 @@
     "id": "Gauss Rifle",
     "name": "Gauss Rifle",
     "type": "Ballistic",
+    "damage": 15,
     "heat": 1,
     "ammo": "Gauss ammo (8)",
     "range": { "pointblank": 0, "short": 7, "medium": 14, "long": 21 }
