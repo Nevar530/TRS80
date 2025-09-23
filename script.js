@@ -626,6 +626,7 @@
     initSearchUI();
     initGator();
 initGatorSubtabs();   // <-- new line
+initTechSubtabs();   // <-- add this line
   }
 
 function initGatorSubtabs(){
@@ -653,6 +654,34 @@ function initGatorSubtabs(){
     if (firstInput) setTimeout(()=> firstInput.focus(), 0);
   });
 }
+
+
+function initTechSubtabs(){
+  const root = document.getElementById('tech-compact');
+  if (!root) return;
+
+  const tabs  = root.querySelectorAll('.gtr-subtab');
+  const panes = root.querySelectorAll('.gtr-pane');
+
+  root.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.gtr-subtab');
+    if (!btn) return;
+    const id = btn.getAttribute('data-tr-tab');
+
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
+    });
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+    // optional: focus first control in the pane
+    const pane = document.getElementById(id);
+    const first = pane && pane.querySelector('select, input, button, [tabindex]');
+    if (first) setTimeout(()=> first.focus(), 0);
+  });
+}
+
 
   /* ---------- Init ---------- */
   function init(){
