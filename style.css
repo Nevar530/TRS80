@@ -286,3 +286,8 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 .swap-pane, .gtr-pane, .card-c {
   overflow: auto;             /* scrolls when needed, bar stays hidden */
 }
+
+
+/* Filter modal tweaks (optional) */
+#filter-modal .gtr-in.tiny { width:100%; }
+#filter-modal .chk { user-select:none; }
