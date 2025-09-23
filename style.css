@@ -237,3 +237,16 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 }
 #search-results .result-item:hover .result-variant,
 #search-results .result-item:focus .result-variant{ color:#222 !important; }
+
+/* ===== GATOR sub-tabs (G, A, T, O, R, Dice/TN) ===== */
+.gtr-subtabs{ display:flex; gap:6px; margin-bottom:6px; }
+.gtr-subtab{
+  padding:4px 8px; font-size:12px; line-height:1;
+  background:transparent; border:1px solid var(--border); border-radius:6px; cursor:pointer;
+}
+.gtr-subtab.is-active{ background:var(--accent-dim); color:#000; border-color:var(--accent); }
+.gtr-pane{ display:none; }
+.gtr-pane.is-active{ display:block; }
+
+/* keep panes compact inside widget */
+#pane-gator .card-c{ overflow:visible; }
