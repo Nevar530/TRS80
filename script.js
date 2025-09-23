@@ -74,6 +74,107 @@ function getWeaponRefByName(name){
   .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
   .trim();
 
+// ---- BV-lite helpers (estimator for missing BV) ----
+function sumArmorPoints(armorBy = {}) {
+  const keys = ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL'];
+  let s = 0;
+  for (const k of keys) {
+    const v = armorBy[k];
+    if (v == null) continue;
+    if (typeof v === 'object') s += Number(v.a ?? v.A ?? v.front ?? v.value ?? v.armor ?? 0);
+    else s += Number(v) || 0;
+  }
+  return s;
+}
+function sumInternalPoints(internalBy = {}) {
+  // Matches your internal keys; ensureInternals already set these.
+  const keys = ['HD','CT','RT','LT','RA','LA','RL','LL'];
+  let s = 0;
+  for (const k of keys) {
+    const v = internalBy[k];
+    if (v == null) continue;
+    if (typeof v === 'object') s += Number(v.s ?? v.S ?? v.structure ?? v.value ?? 0);
+    else s += Number(v) || 0;
+  }
+  return s;
+}
+function tmmFromWalk(walkMP) {
+  // Approximate standard TMM from hexes moved; use walk as a proxy.
+  const w = Number(walkMP)||0;
+  if (w <= 2) return 0;
+  if (w <= 4) return 1;
+  if (w <= 6) return 2;
+  if (w <= 9) return 3;
+  if (w <= 17) return 4;
+  return 5; // very fast
+}
+function weaponAlpha(mech) {
+  // Use your weapons DB to get damage + heat. Fall back to 0 if unknown.
+  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
+  let dmgShort=0, dmgMed=0, dmgLong=0, heat=0;
+  for (const w of list) {
+    const ref = getWeaponRefByName(w.name);
+    if (!ref) continue;
+    const r = ref.range || {};
+    const d = Number(ref.damage)||0;
+    // Simple model: full damage at any band it can reach
+    if (r.short != null)  dmgShort += d;
+    if (r.medium != null) dmgMed   += d;
+    if (r.long != null)   dmgLong  += d;
+    heat += Number(ref.heat)||0;
+  }
+  return { dmgShort, dmgMed, dmgLong, heat };
+}
+function sustainableFactor(alphaHeat, heatCap) {
+  // Penalize if alpha exceeds sinks; clamp to a floor so PPC boats aren’t gutted.
+  if (!alphaHeat) return 1;
+  const over = Math.max(0, alphaHeat - (Number(heatCap)||0));
+  if (over <= 0) return 1;
+  const f = 1 - (over / (alphaHeat*1.5)); // allow some overheat management
+  return Math.max(0.5, Math.min(1, f));
+}
+function estimateBV(mech) {
+  // Gather basics
+  const mv = mech?._mv || {};
+  const walk = Number(mv.walk)||0;
+  const jump = Number(mv.jump)||0;
+  const tmm  = tmmFromWalk(walk);
+  const armorPts = sumArmorPoints(mech.armorByLocation || {});
+  const structPts= sumInternalPoints(mech.internalByLocation || {});
+  const { dmgShort, dmgMed, dmgLong, heat } = weaponAlpha(mech);
+  const heatCap = Number(mech?.heatCapacity)||0;
+
+  // Offense: weighted by typical engagement time (short>med>long), heat-sustained
+  const expectedDmg = (dmgShort*0.6) + (dmgMed*0.3) + (dmgLong*0.1);
+  const sustain = sustainableFactor(heat, heatCap);
+  const offense = expectedDmg * sustain * 100; // scale to BV-ish magnitude
+
+  // Defense: armor+structure scaled by mobility
+  const defenseBase = (armorPts + structPts);
+  const mobilityBonus = 1 + (0.15 * tmm) + (0.05 * Math.min(jump,6));
+  const defense = defenseBase * 10 * mobilityBonus;
+
+  // Small bumps for common defensive gear if present in text
+  const text = JSON.stringify(mech.equipment || mech.extras || {}).toLowerCase();
+  let specials = 1;
+  if (text.includes('ecm')) specials += 0.03;
+  if (text.includes('ams')) specials += 0.02;
+  if (text.includes('case')) specials += 0.02;
+
+  const bv = Math.round((offense + defense) * specials);
+  return Math.max(1, bv);
+}
+function ensureBV(mech){
+  if (!mech) return mech;
+  if (mech.bv == null && mech.BV == null) {
+    const bv = estimateBV(mech);
+    mech.bv = bv; // use lowercase like the rest of your UI
+  }
+  return mech;
+}
+
+
+  
 // ---- Internals by tonnage (Total Warfare) + filler ----
 function getInternalsByTonnage(t) {
   const ton = Math.max(20, Math.min(100, Number(t)||0));
@@ -496,14 +597,21 @@ async function loadMechFromUrl(url) {
   try {
     showToast('Loading mech…');
     const raw  = await fetchJson(url);
-    const mech = ensureInternals(normalizeMech(raw) || raw);  // ← add ensureInternals here
+    const mech = ensureBV(ensureInternals(normalizeMech(raw) || raw));  // one-and-done
     state.mech = mech; window.DEBUG_MECH = mech;
-    const cap = Number.isFinite(mech?.heatCapacity) ? mech.heatCapacity : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
+
+    const cap = Number.isFinite(mech?.heatCapacity) 
+      ? mech.heatCapacity 
+      : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
+
     setHeat(0, cap|0);
     updateOverview();
     fillTechReadout();
     showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-  } catch (err) { /* ... */ }
+  } catch (err) {
+    console.error(err);
+    showToast(`Failed to load mech JSON: ${err.message}`);
+  }
 }
 
   /* ---------- Import / Export ---------- */
@@ -515,14 +623,14 @@ async function loadMechFromUrl(url) {
     try {
       const text = await file.text(); const data = JSON.parse(text);
       if (data.mech || data.pilot || data.heat) {
-        if (data.mech) state.mech = ensureInternals(normalizeMech(data.mech) || data.mech);
+        if (data.mech) state.mech = ensureBV(ensureInternals(normalizeMech(data.mech) || data.mech));
         if (data.pilot) state.pilot = data.pilot;
         if (data.heat)  state.heat  = data.heat;
         window.DEBUG_MECH = state.mech;
         setHeat(state.heat.current|0, state.heat.capacity|0);
         updateOverview(); fillTechReadout();
       } else {
-        state.mech = ensureInternals(normalizeMech(data) || data);
+        state.mech = ensureBV(ensureInternals(normalizeMech(data) || data));
         window.DEBUG_MECH = state.mech;
         const cap = Number.isFinite(state.mech?.heatCapacity) ? state.mech.heatCapacity : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
         setHeat(0, cap|0); updateOverview(); fillTechReadout();
