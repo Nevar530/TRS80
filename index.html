@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>B^ttleTech // Gator Console</title>
   <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="./style.css?v=4">
+  <link rel="stylesheet" href="./style.css?v=5">
 </head>
 <body>
   <noscript><div class="noscript">This module requires JavaScript enabled.</div></noscript>
@@ -30,11 +30,7 @@
 
         <button id="btn-load-manifest" class="btn" title="Fetch manifest.json">Manifest</button>
 
-        <!-- ▼ minimal addition: placeholder for mech dropdown -->
-        <select id="mech-select" class="gtr-sel xs" aria-label="Mech list" style="display:none;">
-          <option>— no manifest loaded —</option>
-        </select>
-        <!-- ▲ dropdown stays hidden until manifest loads -->
+        <!-- ▼ Search mounts here (JS inserts input next to this button) -->
 
         <button id="btn-settings" class="btn ghost" title="Settings (About & Attribution)">⚙</button>
       </div>
@@ -102,9 +98,97 @@
               </div>
             </section>
 
-            <!-- TECH READOUT -->
+            <!-- TECH READOUT (pure HTML – JS just fills the spans) -->
             <section id="pane-techreadout" class="swap-pane" role="tabpanel" aria-labelledby="Tech Readout">
-              <div id="techout"><!-- script populates --></div>
+              <div class="tro-grid">
+                <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
+                <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
+                <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
+                <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
+                <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
+                <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
+                <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
+                <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
+                <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
+                <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
+                <div><strong>Config</strong><br><span id="tr-config">—</span></div>
+                <div><strong>Role</strong><br><span id="tr-role">—</span></div>
+                <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
+                <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
+              </div>
+
+              <hr class="modal-divider">
+
+              <!-- Armor & Internals per location -->
+              <div>
+                <strong>Armor & Internals by Location</strong>
+                <table class="small mono fullw">
+                  <thead>
+                    <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Head</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
+                    <tr><td>Center Torso</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
+                    <tr><td>Right Torso</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
+                    <tr><td>Left Torso</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
+                    <tr><td>Right Arm</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
+                    <tr><td>Left Arm</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
+                    <tr><td>Right Leg</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
+                    <tr><td>Left Leg</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr class="modal-divider">
+
+              <!-- Equipment by Location -->
+              <div id="loc-equip-wrap" hidden>
+                <strong>Equipment by Location</strong>
+                <table class="small mono fullw">
+                  <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
+                  <tbody id="loc-equip-body"></tbody>
+                </table>
+                <hr class="modal-divider">
+              </div>
+
+              <!-- Weapons / Equipment / Ammo -->
+              <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
+              <div class="mt6"><strong>Equipment</strong><div class="mt6" id="tr-equipment">—</div></div>
+              <div class="mt6"><strong>Ammo</strong><div class="mt6" id="tr-ammo">—</div></div>
+
+              <hr class="modal-divider">
+
+              <!-- Narrative -->
+              <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
+              <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
+              <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
+              <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+
+              <hr class="modal-divider">
+
+              <!-- Meta -->
+              <div class="tro-grid">
+                <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
+                <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
+                <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
+                <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
+              </div>
+
+              <div id="tr-mfr-wrap" hidden>
+                <hr class="modal-divider">
+                <div class="tro-grid">
+                  <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
+                  <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
+                  <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
+                </div>
+              </div>
+
+              <div id="tr-license-wrap" class="small dim" hidden>
+                <hr class="modal-divider">
+                <div id="tr-origin"></div>
+                <div id="tr-license"></div>
+                <div id="tr-copyright"></div>
+              </div>
             </section>
 
             <!-- GATOR (COMPACT) -->
@@ -210,13 +294,11 @@
                       <div class="gtr-row">
                         <label class="gtr-lab">Range</label>
                         <div class="gtr-groups" id="gtr-range-wrap">
-                          <!-- segmented buttons for range -->
                           <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
                             <button data-val="0" class="is-active" title="Short (+0)">Short</button>
                             <button data-val="2" title="Medium (+2)">Med</button>
                             <button data-val="4" title="Long (+4)">Long</button>
                           </div>
-                          <!-- Minimum as compact dropdown -->
                           <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
                             <option value="eq">Minimum: Equal</option>
                             <option value="-1">-1 (+2)</option>
@@ -295,6 +377,6 @@
   <!-- Toast (used by script.js) -->
   <div id="toast" class="toast" hidden></div>
 
-  <script type="module" src="./js/app.js"></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>
