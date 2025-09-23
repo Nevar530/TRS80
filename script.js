@@ -240,6 +240,7 @@ function renderOverviewWeaponsMini(mech){
     return `<tr>
       <td>${esc(ref.name || w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
       <td>${esc(ref.type ?? '—')}</td>
+      <td>${ref.damage ?? '—'}</td>
       <td>${ref.heat ?? '—'}</td>
       <td>${ref.ammo ?? '—'}</td>
       <td>${r.pointblank ?? 0}</td>
@@ -251,10 +252,16 @@ function renderOverviewWeaponsMini(mech){
 
   wrap.innerHTML = `
     <table class="weapons-mini">
-      <thead>
-        <tr><th>Name</th><th>Type</th><th>Heat</th><th>Ammo</th>
-            <th>PB</th><th>S</th><th>M</th><th>L</th></tr>
-      </thead>
+          <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dmg</th>
+        <th>Type</th>
+        <th>Ht</th>
+        <th>A</th>
+        <th>PB</th><th>S</th><th>M</th><th>L</th>
+      </tr>
+    </thead>
       <tbody>${rows}</tbody>
     </table>`;
 }
