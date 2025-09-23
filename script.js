@@ -74,6 +74,28 @@ function getWeaponRefByName(name){
   .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
   .trim();
 
+// ---- Internals by tonnage (Total Warfare) + filler ----
+function getInternalsByTonnage(t) {
+  const ton = Math.max(20, Math.min(100, Number(t)||0));
+  let CT, ST, ARM, LEG;
+  if (ton <= 35)      { CT = 10; ST = 7;  ARM = 5;  LEG = 7;  }
+  else if (ton <= 55) { CT = 18; ST = 13; ARM = 9;  LEG = 13; }
+  else if (ton <= 75) { CT = 22; ST = 15; ARM = 11; LEG = 15; }
+  else                { CT = 31; ST = 21; ARM = 15; LEG = 21; }
+  return { HD:3, CT, RT:ST, LT:ST, RA:ARM, LA:ARM, RL:LEG, LL:LEG };
+}
+
+function ensureInternals(mech){
+  if (!mech) return mech;
+  // Only fill if missing or empty
+  const ibl = mech.internalByLocation;
+  const empty = !ibl || Object.values(ibl).every(v => v == null || v === '—');
+  if (empty && mech.tonnage != null) {
+    mech.internalByLocation = getInternalsByTonnage(mech.tonnage);
+  }
+  return mech;
+}
+
   
   /* ---------- Manifest + Fetch ---------- */
   async function fetchJson(pathOrUrl) {
@@ -126,7 +148,7 @@ function getWeaponRefByName(name){
 
   /* ---------- Schema normalization ---------- */
   function normalizeMech(raw) {
-    if (!raw || typeof raw !== 'object') return raw;
+     if (!raw || typeof raw !== 'object') return raw;
     const out = { ...raw, extras: { ...(raw.extras||{}) } };
 
     out.displayName = out.displayName || out.name || out.Name || '—';
@@ -470,49 +492,46 @@ function renderOverviewWeaponsMini(mech){
 
 
   /* ---------- Mech load ---------- */
-  async function loadMechFromUrl(url) {
-    try {
-      showToast('Loading mech…');
-      const raw = await fetchJson(url);
-      const mech = normalizeMech(raw) || raw;
-      state.mech = mech; window.DEBUG_MECH = mech;
-      const cap = Number.isFinite(mech?.heatCapacity) ? mech.heatCapacity : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
-      setHeat(0, cap|0);
-      updateOverview();
-      fillTechReadout();
-      showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-    } catch (err) {
-      console.error(err);
-      showToast(`Failed to load mech JSON: ${err.message}`);
-    }
-  }
+async function loadMechFromUrl(url) {
+  try {
+    showToast('Loading mech…');
+    const raw  = await fetchJson(url);
+    const mech = ensureInternals(normalizeMech(raw) || raw);  // ← add ensureInternals here
+    state.mech = mech; window.DEBUG_MECH = mech;
+    const cap = Number.isFinite(mech?.heatCapacity) ? mech.heatCapacity : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
+    setHeat(0, cap|0);
+    updateOverview();
+    fillTechReadout();
+    showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+  } catch (err) { /* ... */ }
+}
 
   /* ---------- Import / Export ---------- */
-  function importJson() {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text(); const data = JSON.parse(text);
-        if (data.mech || data.pilot || data.heat) {
-          if (data.mech) state.mech = normalizeMech(data.mech) || data.mech;
-          if (data.pilot) state.pilot = data.pilot;
-          if (data.heat)  state.heat  = data.heat;
-          window.DEBUG_MECH = state.mech;
-          setHeat(state.heat.current|0, state.heat.capacity|0);
-          updateOverview(); fillTechReadout();
-        } else {
-          state.mech = normalizeMech(data) || data;
-          window.DEBUG_MECH = state.mech;
-          const cap = Number.isFinite(state.mech?.heatCapacity) ? state.mech.heatCapacity : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
-          setHeat(0, cap|0); updateOverview(); fillTechReadout();
-        }
-        showToast('JSON imported');
-      } catch (e) { console.error(e); showToast('Import failed'); }
-    };
-    input.click();
-  }
+ function importJson() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = 'application/json';
+  input.onchange = async () => {
+    const file = input.files?.[0]; if (!file) return;
+    try {
+      const text = await file.text(); const data = JSON.parse(text);
+      if (data.mech || data.pilot || data.heat) {
+        if (data.mech) state.mech = ensureInternals(normalizeMech(data.mech) || data.mech);
+        if (data.pilot) state.pilot = data.pilot;
+        if (data.heat)  state.heat  = data.heat;
+        window.DEBUG_MECH = state.mech;
+        setHeat(state.heat.current|0, state.heat.capacity|0);
+        updateOverview(); fillTechReadout();
+      } else {
+        state.mech = ensureInternals(normalizeMech(data) || data);
+        window.DEBUG_MECH = state.mech;
+        const cap = Number.isFinite(state.mech?.heatCapacity) ? state.mech.heatCapacity : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
+        setHeat(0, cap|0); updateOverview(); fillTechReadout();
+      }
+      showToast('JSON imported');
+    } catch (e) { console.error(e); showToast('Import failed'); }
+  };
+  input.click();
+}
   function exportState() {
     const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -963,6 +982,7 @@ sumOther(); recompute();
     initTechSubtabs();
   }
 
+  
   /* ---------- Init ---------- */
 function init(){
   loadWeaponsDb().then(()=> {
