@@ -154,8 +154,4 @@ renderOverview(Store.get());
 renderHeat(Store.get());
 renderTechOutFromState(Store.get());
 
-// Typeahead search over manifest
-import { initSearchUI } from './search.js';
-initSearchUI();
-
 console.info('Gator Console (modular) ready.');
