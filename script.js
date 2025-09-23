@@ -46,7 +46,7 @@ async function loadWeaponsDb() {
       const st = document.createElement('style');
       st.id = 'weap-mini-css';
       st.textContent = `
-        .weapons-mini{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+        .weapons-mini{width:100%;border-collapse:collapse;font-size:10px;margin-top:6px}
         .weapons-mini th,.weapons-mini td{padding:3px 6px;border-bottom:1px solid var(--border,#2a2f3a)}
         .weapons-mini thead th{text-align:left;background:#0e1522}
         .dim{opacity:.7}
@@ -255,11 +255,11 @@ function renderOverviewWeaponsMini(mech){
           <thead>
       <tr>
         <th>Name</th>
-        <th>Dmg</th>
         <th>Type</th>
+        <th>Dmg</th>
         <th>Ht</th>
         <th>A</th>
-        <th>PB</th><th>S</th><th>M</th><th>L</th>
+        <th>C</th><th>S</th><th>M</th><th>L</th>
       </tr>
     </thead>
       <tbody>${rows}</tbody>
