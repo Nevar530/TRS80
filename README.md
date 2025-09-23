@@ -29,3 +29,23 @@ All UI is designed to be **touch-friendly**, **no-scrollbar**, and **embed-sized
 
 **Play online:**  
 👉 https://nevar530.github.io/BMS-GATOR/
+
+---
+
+## 🔗 More BattleTech Tools
+
+### [BATTLETECH // Mobile Skirmish](https://nevar530.github.io/Battletech-Mobile-Skirmish/)
+[![Play on GitHub Pages](https://img.shields.io/badge/Play%20Now-GitHub%20Pages-brightgreen?style=for-the-badge)](https://nevar530.github.io/Battletech-Mobile-Skirmish/)
+
+Take **BattleTech** anywhere.  
+A browser-based **hex map skirmish tool** designed for quick games on tablets, laptops, or desktops — no maps, dice, or minis required. Just open the link and play.
+
+**Features:**
+- 🎲 Hex grid engine with terrain + height painting
+- ⚔️ Add/manage mechs, pilots, initiative
+- 🔭 LOS & measurement tools
+- 🗺 Map presets + import/export
+- 📊 [Flechs Sheets](https://sheets.flechs.net) integration
+- 🌐 Online play via Firebase (beta)
+
+👉 Repo: [Battletech-Mobile-Skirmish](https://github.com/nevar530/Battletech-Mobile-Skirmish)
