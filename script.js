@@ -625,7 +625,34 @@
     initTabs();
     initSearchUI();
     initGator();
+initGatorSubtabs();   // <-- new line
   }
+
+function initGatorSubtabs(){
+  const root = document.getElementById('gator-compact');
+  if (!root) return;
+  const tabs = root.querySelectorAll('.gtr-subtab');
+  const panes= root.querySelectorAll('.gtr-pane');
+
+  root.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
+    const id = btn.getAttribute('data-gtr-tab');
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
+    });
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+  });
+
+  // Optional: focus first control when switching
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
+    const pane = document.getElementById(btn.getAttribute('data-gtr-tab'));
+    const firstInput = pane?.querySelector('select, input, button');
+    if (firstInput) setTimeout(()=> firstInput.focus(), 0);
+  });
+}
 
   /* ---------- Init ---------- */
   function init(){
