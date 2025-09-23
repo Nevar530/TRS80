@@ -250,3 +250,18 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
 
 /* keep panes compact inside widget */
 #pane-gator .card-c{ overflow:visible; }
+
+/* Tech Readout layout helpers */
+.tr-compact .tro-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.fullw{ width:100%; border-collapse:collapse; }
+.fullw th, .fullw td{ padding:6px 0; text-align:left; }
+
+.mt6{ margin-top:6px; }
+
+/* keep consistency with GATOR subtabs (already defined);
+   no extra styles needed unless you want a unique look */
