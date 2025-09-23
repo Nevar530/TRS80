@@ -166,7 +166,8 @@ else if (/\bcase\b/.test(text))                     specials += 0.02;
 
 const bv = Math.round((offense + defense) * specials);
 return Math.max(1, bv);
-
+}
+  
 function ensureBV(mech){
   if (!mech) return mech;
   if (mech.bv == null && mech.BV == null) {
