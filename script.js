@@ -144,26 +144,29 @@ function estimateBV(mech) {
   const { dmgShort, dmgMed, dmgLong, heat } = weaponAlpha(mech);
   const heatCap = Number(mech?.heatCapacity)||0;
 
-  // Offense: weighted by typical engagement time (short>med>long), heat-sustained
-  const expectedDmg = (dmgShort*0.6) + (dmgMed*0.3) + (dmgLong*0.1);
-  const sustain = sustainableFactor(heat, heatCap);
-  const offense = expectedDmg * sustain * 100; // scale to BV-ish magnitude
+// Offense: weighted by typical engagement time (short>med>long), heat-sustained
+const expectedDmg = (dmgShort*0.6) + (dmgMed*0.3) + (dmgLong*0.1);
+const sustain     = sustainableFactor(heat, heatCap);
+const offense     = expectedDmg * sustain * 16;
 
-  // Defense: armor+structure scaled by mobility
-  const defenseBase = (armorPts + structPts);
-  const mobilityBonus = 1 + (0.15 * tmm) + (0.05 * Math.min(jump,6));
-  const defense = defenseBase * 10 * mobilityBonus;
+// Defense: armor+structure scaled by mobility (use max of walk/run/jump for TMM-ish)
+const bestMP        = Math.max(Number(mech?._mv?.walk)||0, Number(mech?._mv?.run)||0, Number(mech?._mv?.jump)||0);
+const tmm           = bestMP <= 2 ? 0 : bestMP <= 4 ? 1 : bestMP <= 6 ? 2 : bestMP <= 9 ? 3 : bestMP <= 17 ? 4 : 5;
+const mobilityBonus = 1 + (0.15 * tmm) + (0.05 * Math.min(Number(mech?._mv?.jump)||0, 6));
+const defenseBase   = (armorPts + structPts);
+const defense       = defenseBase * 2.25 * mobilityBonus;
 
-  // Small bumps for common defensive gear if present in text
-  const text = JSON.stringify(mech.equipment || mech.extras || {}).toLowerCase();
-  let specials = 1;
-  if (text.includes('ecm')) specials += 0.03;
-  if (text.includes('ams')) specials += 0.02;
-  if (text.includes('case')) specials += 0.02;
+// Small bumps for common defensive gear if present in text
+const text = JSON.stringify(mech.equipment || mech.extras || {}).toLowerCase();
+let specials = 1;
+if (/\b(ecm|guardian ecm|angel ecm)\b/.test(text)) specials += 0.03;
+if (/\bams\b/.test(text))                           specials += 0.02;
+if (/\bcase ii\b/.test(text))                       specials += 0.03; // better than CASE
+else if (/\bcase\b/.test(text))                     specials += 0.02;
 
-  const bv = Math.round((offense + defense) * specials);
-  return Math.max(1, bv);
-}
+const bv = Math.round((offense + defense) * specials);
+return Math.max(1, bv);
+
 function ensureBV(mech){
   if (!mech) return mech;
   if (mech.bv == null && mech.BV == null) {
