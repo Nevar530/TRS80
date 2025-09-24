@@ -509,7 +509,7 @@ function renderOverviewWeaponsMini(mech){
   byId('tr-cockpit').textContent   = m.cockpit || m.Cockpit || '—';
   byId('tr-gyro').textContent      = m.gyro || m.Gyro || '—';
   byId('tr-config').textContent    = m.extras?.Config || m.extras?.config || '—';
-  byId('tr-role').textContent      = m.extras?.role || m.extras?.Role || '—';
+ byId('tr-role').textContent = m.role || m.extras?.role || m.extras?.Role || '—';
   byId('tr-myomer').textContent    = m.extras?.myomer || '—';
   byId('tr-armor-sys').textContent = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
 
