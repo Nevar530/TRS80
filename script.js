@@ -238,8 +238,11 @@ return {
   tech: e.tech ?? e.techBase,
   role: e.role,
   class: e.class,
-  move: e.move,
-  // 👇 add this properly
+    const mvRaw = e.movement ?? e.move ?? {};
+    const walk  = Number(mvRaw.walk ?? mvRaw.w ?? 0) || 0;
+    const jump  = Number(mvRaw.jump ?? mvRaw.j ?? 0) || 0;
+    return { move: { w: walk, walk, j: jump, jump } };
+  })(),
   rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
 };
         });
@@ -744,24 +747,25 @@ const fRules      = document.getElementById('f-rules'); // NEW
     };
 
     // turn state into a predicate (requires enriched manifest entries to be effective)
-    const pred = (m) => {
-      const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
-      const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
-      const mv   = m.move || {};
-      const w    = mv.w ?? mv.walk ?? null;
-      const j    = mv.j ?? mv.jump ?? 0;
-      const role = (m.role || (m.extras?.role) || "").toLowerCase();
-      const tech = m.tech || m.techBase || "";
+const pred = (m) => {
+  const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
+  const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
+  const mv   = m.move || {};
+  const w    = mv.w ?? mv.walk ?? null;
+  const j    = mv.j ?? mv.jump ?? 0;
+  const role = (m.role || (m.extras?.role) || "").toLowerCase();
+  const tech = m.tech || m.techBase || "";
 
       if (filterState.tech && tech !== filterState.tech) return false;
       if (filterState.classes.size && !filterState.classes.has(cls)) return false;
       if (filterState.canJump && !(j > 0)) return false;
       if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
-      if (filterState.roles.length){
-        const tokens = role.split(/[\/, ]+/).filter(Boolean);
-        const hit = tokens.some(t => filterState.roles.includes(t));
-        if (!hit) return false;
-      }
+  if (filterState.roles.length){
+    // support multi-word roles and slashes/commas in data
+    const tokens = role.split(/[\/,]+|\s+(?![xX]\d+)/).map(s=>s.trim()).filter(Boolean);
+    const hit = tokens.some(t => filterState.roles.includes(t));
+    if (!hit) return false;
+  }
       const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
   if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
       return true;
