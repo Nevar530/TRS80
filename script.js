@@ -704,6 +704,7 @@ async function loadMechFromUrl(url) {
   const fMinWalk    = document.getElementById('f-minwalk');
   const fRoles      = document.getElementById('f-roles');
 const fRules      = document.getElementById('f-rules'); // NEW
+  const fSource     = document.getElementById('f-source'); // NEW
 
   function openFilterModal(){
     if (!fModal) return;
@@ -719,6 +720,7 @@ const fRules      = document.getElementById('f-rules'); // NEW
     if (fMinWalk) fMinWalk.value  = filterState.minWalk ?? "";
     if (fRoles) fRoles.value    = filterState.roles.join(', ');
     if (fRules) fRules.value = filterState.rulesLevel ?? "";
+    if (fSource) fSource.value = filterState.source || "";
   }
 
   function closeFilterModal(){
@@ -751,6 +753,7 @@ function applyFilters(){
     minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
     roles, // <- use the local variable
     rulesLevel: (fRules?.value || "") || null,
+    source: fSource?.value || "",   // NEW
   };
 
   // turn state into a predicate (requires enriched manifest entries to be effective)
@@ -774,7 +777,10 @@ function applyFilters(){
       const hit = tokens.some(t => filterState.roles.includes(t));
       if (!hit) return false;
     }
-
+if (filterState.source) {
+  const srcStr = (m.source || (Array.isArray(m.sources) ? m.sources.join(' • ') : '') || '');
+  if (srcStr !== filterState.source) return false;
+}
     const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
     if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
 
@@ -788,6 +794,7 @@ function applyFilters(){
              || filterState.minWalk != null
              || filterState.roles.length
              || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
+             || filterState.source;
   manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
 
   // tell search UI to rebuild its index from the filtered set
