@@ -732,69 +732,70 @@ const fRules      = document.getElementById('f-rules'); // NEW
   fClose?.addEventListener('click', closeFilterModal);
 
   /* Build predicate from controls, filter manifest, and close */
-  function applyFilters(){
-    // capture state
-    const classes = new Set();
-    if (fClassL?.checked) classes.add('Light');
-    if (fClassM?.checked) classes.add('Medium');
-    if (fClassH?.checked) classes.add('Heavy');
-    if (fClassA?.checked) classes.add('Assault');
+function applyFilters(){
+  // capture state
+  const classes = new Set();
+  if (fClassL?.checked) classes.add('Light');
+  if (fClassM?.checked) classes.add('Medium');
+  if (fClassH?.checked) classes.add('Heavy');
+  if (fClassA?.checked) classes.add('Assault');
 
-    filterState = {
-      tech: fTech?.value || "",
-      classes,
-      canJump: !!fJump?.checked,
-      minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
-      roles: (fRoles?.value || "")
-              .split(/[,\s]+/)
-              .map(s=>s.trim())
-              .filter(Boolean)
-              .map(s=>s.toLowerCase()),
-       rulesLevel: (fRules?.value || "") || null,
-    };
+  // roles from checkboxes (MINIMAL CHANGE)
+  const roles = Array.from(document.querySelectorAll('.f-role:checked'))
+    .map(cb => (cb.dataset.role || '').toLowerCase());
 
-    // turn state into a predicate (requires enriched manifest entries to be effective)
-const pred = (m) => {
-  const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
-  const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
-  const mv   = m.move || {};
-  const w    = mv.w ?? mv.walk ?? null;
-  const j    = mv.j ?? mv.jump ?? 0;
-  const role = (m.role || (m.extras?.role) || "").toLowerCase();
-  const tech = m.tech || m.techBase || "";
+  filterState = {
+    tech: fTech?.value || "",
+    classes,
+    canJump: !!fJump?.checked,
+    minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
+    roles, // <- use the local variable
+    rulesLevel: (fRules?.value || "") || null,
+  };
 
-      if (filterState.tech && tech !== filterState.tech) return false;
-      if (filterState.classes.size && !filterState.classes.has(cls)) return false;
-      if (filterState.canJump && !(j > 0)) return false;
-      if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
-  if (filterState.roles.length){
-    // support multi-word roles and slashes/commas in data
-    const tokens = role.split(/[\/,]+|\s+(?![xX]\d+)/).map(s=>s.trim()).filter(Boolean);
-    const hit = tokens.some(t => filterState.roles.includes(t));
-    if (!hit) return false;
-  }
-      const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
-  if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
-      return true;
-    };
+  // turn state into a predicate (requires enriched manifest entries to be effective)
+  const pred = (m) => {
+    const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
+    const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
+    const mv   = m.move || {};
+    const w    = mv.w ?? mv.walk ?? null;
+    const j    = mv.j ?? mv.jump ?? 0;
+    const role = (m.role || (m.extras?.role) || "").toLowerCase();
+    const tech = m.tech || m.techBase || "";
 
-    // apply over full manifest (if no filters active -> null to use full set)
-const anyOn = filterState.tech
-           || filterState.classes.size
-           || filterState.canJump
-           || filterState.minWalk != null
-           || filterState.roles.length
-           || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
-    manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
+    if (filterState.tech && tech !== filterState.tech) return false;
+    if (filterState.classes.size && !filterState.classes.has(cls)) return false;
+    if (filterState.canJump && !(j > 0)) return false;
+    if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
 
-    // tell search UI to rebuild its index from the filtered set
-    window._rebuildSearchIndex?.();
+    if (filterState.roles.length){
+      // supports "Juggernaut / Brawler" etc.
+      const tokens = role.split(/[\/,]+|\s+(?![xX]\d+)/).map(s=>s.trim()).filter(Boolean);
+      const hit = tokens.some(t => filterState.roles.includes(t));
+      if (!hit) return false;
+    }
 
-    closeFilterModal();
+    const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
+    if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
 
-    // if search UI is open, re-render its list
-    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
-  }
+    return true;
+  };
+
+  // apply over full manifest (if no filters active -> null to use full set)
+  const anyOn = filterState.tech
+             || filterState.classes.size
+             || filterState.canJump
+             || filterState.minWalk != null
+             || filterState.roles.length
+             || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
+  manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
+
+  // tell search UI to rebuild its index from the filtered set
+  window._rebuildSearchIndex?.();
+  closeFilterModal();
+  document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+}
+
 
   function clearFilters(){
     filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
