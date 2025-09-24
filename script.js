@@ -1,16 +1,23 @@
-/* ===== Gator Console – single-file script (clean, no modules) ===== */
+/* ===== Gator Console – single-file script (clean, with search + filters + tabs) ===== */
 (() => {
   'use strict';
 
   /* ---------- State ---------- */
-  const state = {
-    mech: null,
-    pilot: { name: '—', gunnery: 4, piloting: 5 },
-    heat: { current: 0, capacity: 0 },
-    gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
-    manifest: [],
-    manifestUrl: ''
-  };
+const state = {
+  mech: null,
+  pilot: { name: '—', gunnery: 4, piloting: 5 },
+  heat: { current: 0, capacity: 0 },
+  gator: { G:4, A:0, T:0, T_adv:{jump:false, padj:false, prone:false, imm:false}, O:0, R:0, Rmin:'eq' },
+  manifest: [],
+  manifestUrl: '',
+  weaponsDb: [],            // <— NEW: raw list
+  weaponsMap: new Map()     // <— NEW: lookup by id/name (lowercased)
+};
+
+  /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
+  let manifestFiltered = null;       // null = no filters; otherwise filtered array
+  let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
+
 
   /* ---------- Helpers ---------- */
   const $ = (sel) => document.querySelector(sel);
@@ -24,6 +31,178 @@
   const fmtMoney = (v) => { if (v == null || v === '') return '—'; const n = toNum(String(v).replace(/[^\d.-]/g,'')); return n == null ? String(v) : n.toLocaleString(undefined,{maximumFractionDigits:0}) + ' C-bills'; };
   function showToast(msg, ms=1600){ const t = byId('toast'); if(!t){console.log('[toast]',msg);return;} t.textContent=msg; t.hidden=false; t.style.display='block'; clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.hidden=true; t.style.display='none'; },ms); }
 
+async function loadWeaponsDb() {
+  try {
+    const list = await fetchJson('data/weapons.json');
+    state.weaponsDb = Array.isArray(list) ? list : [];
+    state.weaponsMap = new Map();
+
+    for (const w of state.weaponsDb) {
+      const keys = new Set();
+      if (w.id)   keys.add(normKey(w.id));
+      if (w.name) keys.add(normKey(w.name));
+      // NEW: alias indexing
+      const aliases = Array.isArray(w.aliases) ? w.aliases : [];
+      for (const a of aliases) if (a) keys.add(normKey(a));
+
+      for (const k of keys) if (k && !state.weaponsMap.has(k)) state.weaponsMap.set(k, w);
+    }
+    // inject tiny CSS once
+    if (!document.getElementById('weap-mini-css')) {
+      const st = document.createElement('style');
+      st.id = 'weap-mini-css';
+      st.textContent = `
+        .weapons-mini{width:100%;border-collapse:collapse;font-size:10px;margin-top:6px}
+        .weapons-mini th,.weapons-mini td{padding:3px 6px;border-bottom:1px solid var(--border,#2a2f3a)}
+        .weapons-mini thead th{text-align:left;background:#0e1522}
+        .dim{opacity:.7}
+      `;
+      document.head.appendChild(st);
+    }
+  } catch (e) {
+    console.warn('[weapons] failed to load weapons.json', e);
+  }
+}
+
+function getWeaponRefByName(name){
+  if (!name) return null;
+  const key = normKey(name);
+  return state.weaponsMap.get(key) || null;
+}
+
+  const normKey = (s) => String(s||'')
+  .toLowerCase()
+  .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
+  .trim();
+
+// ---- BV-lite helpers (estimator for missing BV) ----
+function sumArmorPoints(armorBy = {}) {
+  const keys = ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL'];
+  let s = 0;
+  for (const k of keys) {
+    const v = armorBy[k];
+    if (v == null) continue;
+    if (typeof v === 'object') s += Number(v.a ?? v.A ?? v.front ?? v.value ?? v.armor ?? 0);
+    else s += Number(v) || 0;
+  }
+  return s;
+}
+function sumInternalPoints(internalBy = {}) {
+  // Matches your internal keys; ensureInternals already set these.
+  const keys = ['HD','CT','RT','LT','RA','LA','RL','LL'];
+  let s = 0;
+  for (const k of keys) {
+    const v = internalBy[k];
+    if (v == null) continue;
+    if (typeof v === 'object') s += Number(v.s ?? v.S ?? v.structure ?? v.value ?? 0);
+    else s += Number(v) || 0;
+  }
+  return s;
+}
+function tmmFromWalk(walkMP) {
+  // Approximate standard TMM from hexes moved; use walk as a proxy.
+  const w = Number(walkMP)||0;
+  if (w <= 2) return 0;
+  if (w <= 4) return 1;
+  if (w <= 6) return 2;
+  if (w <= 9) return 3;
+  if (w <= 17) return 4;
+  return 5; // very fast
+}
+function weaponAlpha(mech) {
+  // Use your weapons DB to get damage + heat. Fall back to 0 if unknown.
+  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
+  let dmgShort=0, dmgMed=0, dmgLong=0, heat=0;
+  for (const w of list) {
+    const ref = getWeaponRefByName(w.name);
+    if (!ref) continue;
+    const r = ref.range || {};
+    const d = Number(ref.damage)||0;
+    // Simple model: full damage at any band it can reach
+    if (r.short != null)  dmgShort += d;
+    if (r.medium != null) dmgMed   += d;
+    if (r.long != null)   dmgLong  += d;
+    heat += Number(ref.heat)||0;
+  }
+  return { dmgShort, dmgMed, dmgLong, heat };
+}
+function sustainableFactor(alphaHeat, heatCap) {
+  // Penalize if alpha exceeds sinks; clamp to a floor so PPC boats aren’t gutted.
+  if (!alphaHeat) return 1;
+  const over = Math.max(0, alphaHeat - (Number(heatCap)||0));
+  if (over <= 0) return 1;
+  const f = 1 - (over / (alphaHeat*1.5)); // allow some overheat management
+  return Math.max(0.5, Math.min(1, f));
+}
+function estimateBV(mech) {
+  // Gather basics
+  const mv = mech?._mv || {};
+  const walk = Number(mv.walk)||0;
+  const jump = Number(mv.jump)||0;
+  const tmm  = tmmFromWalk(walk);
+  const armorPts = sumArmorPoints(mech.armorByLocation || {});
+  const structPts= sumInternalPoints(mech.internalByLocation || {});
+  const { dmgShort, dmgMed, dmgLong, heat } = weaponAlpha(mech);
+  const heatCap = Number(mech?.heatCapacity)||0;
+
+// Offense: weighted by typical engagement time (short>med>long), heat-sustained
+const expectedDmg = (dmgShort*0.6) + (dmgMed*0.3) + (dmgLong*0.1);
+const sustain     = sustainableFactor(heat, heatCap);
+const offense     = expectedDmg * sustain * 16;
+
+// Defense: armor+structure scaled by mobility (use max of walk/run/jump for TMM-ish)
+const bestMP        = Math.max(Number(mech?._mv?.walk)||0, Number(mech?._mv?.run)||0, Number(mech?._mv?.jump)||0);
+const tmmVal        = bestMP <= 2 ? 0 : bestMP <= 4 ? 1 : bestMP <= 6 ? 2 : bestMP <= 9 ? 3 : bestMP <= 17 ? 4 : 5;
+const mobilityBonus = 1 + (0.15 * tmmVal) + (0.05 * Math.min(Number(mech?._mv?.jump)||0, 6));
+const defenseBase   = (armorPts + structPts);
+const defense       = defenseBase * 2.25 * mobilityBonus;
+
+// Small bumps for common defensive gear if present in text
+const text = JSON.stringify(mech.equipment || mech.extras || {}).toLowerCase();
+let specials = 1;
+if (/\b(ecm|guardian ecm|angel ecm)\b/.test(text)) specials += 0.03;
+if (/\bams\b/.test(text))                           specials += 0.02;
+if (/\bcase ii\b/.test(text))                       specials += 0.03; // better than CASE
+else if (/\bcase\b/.test(text))                     specials += 0.02;
+
+const bv = Math.round((offense + defense) * specials);
+return Math.max(1, bv);
+}
+  
+function ensureBV(mech){
+  if (!mech) return mech;
+  if (mech.bv == null && mech.BV == null) {
+    const bv = estimateBV(mech);
+    mech.bv = bv; // use lowercase like the rest of your UI
+  }
+  return mech;
+}
+
+
+  
+// ---- Internals by tonnage (Total Warfare) + filler ----
+function getInternalsByTonnage(t) {
+  const ton = Math.max(20, Math.min(100, Number(t)||0));
+  let CT, ST, ARM, LEG;
+  if (ton <= 35)      { CT = 10; ST = 7;  ARM = 5;  LEG = 7;  }
+  else if (ton <= 55) { CT = 18; ST = 13; ARM = 9;  LEG = 13; }
+  else if (ton <= 75) { CT = 22; ST = 15; ARM = 11; LEG = 15; }
+  else                { CT = 31; ST = 21; ARM = 15; LEG = 21; }
+  return { HD:3, CT, RT:ST, LT:ST, RA:ARM, LA:ARM, RL:LEG, LL:LEG };
+}
+
+function ensureInternals(mech){
+  if (!mech) return mech;
+  // Only fill if missing or empty
+  const ibl = mech.internalByLocation;
+  const empty = !ibl || Object.values(ibl).every(v => v == null || v === '—');
+  if (empty && mech.tonnage != null) {
+    mech.internalByLocation = getInternalsByTonnage(mech.tonnage);
+  }
+  return mech;
+}
+
+  
   /* ---------- Manifest + Fetch ---------- */
   async function fetchJson(pathOrUrl) {
     const base = new URL('.', state.manifestUrl || document.baseURI);
@@ -49,9 +228,24 @@
         .map(e => {
           const path = (e.path || e.url || e.file || '').replace(/\\/g,'/').trim();
           const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
-          return { id: e.id || null, name: e.displayName || e.displayname || e.name || null, variant: e.variant || null, path, url: abs };
+return {
+  id: e.id || null,
+  name: e.displayName || e.displayname || e.name || null,
+  variant: e.variant || null,
+  path,
+  url: abs,
+  tons: e.tons ?? e.tonnage ?? e.mass,
+  tech: e.tech ?? e.techBase,
+  role: e.role,
+  class: e.class,
+  move: e.move,
+  // 👇 add this properly
+  rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
+};
         });
 
+      // Refresh search index if search has mounted
+      window._rebuildSearchIndex?.();
       showToast(`Manifest loaded — ${state.manifest.length} mechs`);
     } catch (err) {
       console.error(err);
@@ -61,7 +255,7 @@
 
   /* ---------- Schema normalization ---------- */
   function normalizeMech(raw) {
-    if (!raw || typeof raw !== 'object') return raw;
+     if (!raw || typeof raw !== 'object') return raw;
     const out = { ...raw, extras: { ...(raw.extras||{}) } };
 
     out.displayName = out.displayName || out.name || out.Name || '—';
@@ -144,12 +338,75 @@
       ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : '—';
     byId('ov-move').textContent = mvStr;
 
-    const w = Array.isArray(m?.weapons) ? m.weapons : [];
-    byId('ov-weps').textContent = w.length
-      ? w.slice(0,6).map(wi => `${wi.name}${wi.loc?` [${wi.loc}]`:''}`).join(' • ')
-      : '—';
+const w = Array.isArray(m?.weapons) ? m.weapons : [];
+byId('ov-weps').textContent = w.length
+  ? w.slice(0,6).map(wi => `${wi.name}${wi.loc?` [${wi.loc}]`:''}`).join(' • ')
+  : '—';
+
+// NEW: render the mini stats table under the line above
+renderOverviewWeaponsMini(m);
+
   }
 
+function renderOverviewWeaponsMini(mech){
+  const host = byId('ov-weps');
+  if (!host) return;
+
+  // ensure a sibling container just under the "Key Weapons" line
+  let wrap = byId('ov-weps-mini');
+  if (!wrap) {
+    wrap = document.createElement('div');
+    wrap.id = 'ov-weps-mini';
+    wrap.className = 'weapon-block';
+    // insert after #ov-weps
+    host.insertAdjacentElement('afterend', wrap);
+  }
+
+  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
+  if (!list.length) { wrap.innerHTML = ''; return; }
+
+  const rows = list.map(w => {
+    const ref = getWeaponRefByName(w.name);
+    if (!ref) {
+      // unknown: show blanks per your rule
+      return `<tr>
+        <td>${esc(w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
+        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+      </tr>`;
+    }
+    const r = ref.range || {};
+    return `<tr>
+      <td>${esc(ref.name || w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
+      <td>${esc(ref.type ?? '—')}</td>
+      <td>${ref.damage ?? '—'}</td>
+      <td>${ref.heat ?? '—'}</td>
+      <td>${ref.ammo ?? '—'}</td>
+      <td>${r.pointblank ?? 0}</td>
+      <td>${r.short ?? '—'}</td>
+      <td>${r.medium ?? '—'}</td>
+      <td>${r.long ?? '—'}</td>
+    </tr>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <table class="weapons-mini">
+          <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Dmg</th>
+        <th>Ht</th>
+        <th>A</th>
+        <th>C</th><th>S</th><th>M</th><th>L</th>
+      </tr>
+    </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+  
+  
   /* ---------- Tech Readout fill (no innerHTML building of layout) ---------- */
   const LOCS = [
     {key:'HD', name:'Head'},
@@ -202,58 +459,72 @@
   }
 
   function fillTechReadout() {
-    const m = state.mech;
-    if (!m) {
-      // Clear basic headline items; rest can keep placeholders
-      ['tr-name','tr-model','tr-tons','tr-tech','tr-rules','tr-engine','tr-hs','tr-move','tr-structure','tr-cockpit','tr-gyro','tr-config','tr-role','tr-myomer','tr-armor-sys','tr-bv','tr-cost','tr-era','tr-sources']
-        .forEach(id => byId(id).textContent = '—');
-      ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
-        .forEach(id => byId(id).hidden = true);
-      // Armor table
-      ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL'].forEach(k => byId((k==='RTC'||k==='RTR'||k==='RTL')?'ar-'+k:'ar-'+k).textContent='—');
-      ['HD','CT','RT','LT','RA','LA','RL','LL'].forEach(k => byId('in-'+k).textContent='—');
-      byId('tr-weapons').textContent='—'; byId('tr-equipment').textContent='—'; byId('tr-ammo').textContent='—';
-      return;
+  const m = state.mech;
+
+  if (!m) {
+    // Clear basic headline items; rest can keep placeholders
+    ['tr-name','tr-model','tr-tons','tr-tech','tr-rules','tr-engine','tr-hs','tr-move','tr-structure','tr-cockpit','tr-gyro','tr-config','tr-role','tr-myomer','tr-armor-sys','tr-bv','tr-cost','tr-era','tr-sources']
+      .forEach(id => byId(id).textContent = '—');
+    ['loc-equip-wrap','tr-overview-wrap','tr-capabilities-wrap','tr-deployment-wrap','tr-history-wrap','tr-mfr-wrap','tr-license-wrap']
+      .forEach(id => byId(id).hidden = true);
+
+    // Armor table
+    ['HD','CT','RT','LT','RA','LA','RL','LL','RTC','RTR','RTL']
+      .forEach(k => { const cell = byId('ar-'+k); if (cell) cell.textContent = '—'; });
+
+    ['HD','CT','RT','LT','RA','LA','RL','LL']
+      .forEach(k => { const cell = byId('in-'+k); if (cell) cell.textContent = '—'; });
+
+    byId('tr-weapons').textContent   = '—';
+    byId('tr-equipment').textContent = '—';
+    byId('tr-ammo').textContent      = '—';
+    return; // <-- early exit when no mech loaded
+  } // <-- CLOSE the if (!m) block
+
+  // Basics
+  byId('tr-name').textContent  = m.displayName || m.name || m.Name || '—';
+  byId('tr-model').textContent = m.model || m.variant || m.Model || '—';
+  byId('tr-tons').textContent  = m.tonnage ?? m.Tonnage ?? m.mass ?? '—';
+  byId('tr-tech').textContent  = m.techBase || m.TechBase || '—';
+  byId('tr-rules').textContent = m.rulesLevel || m.Rules || '—';
+  byId('tr-engine').textContent= m.engine || m.Engine || '—';
+  const hs = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
+  byId('tr-hs').textContent    = hs;
+
+  const mv = getMovement(m || {});
+  const mvStr = (mv.walk || mv.run || mv.jump) ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : (m?.Movement || '—');
+  byId('tr-move').textContent  = mvStr;
+
+  byId('tr-structure').textContent = m.structure || m.Structure || '—';
+  byId('tr-cockpit').textContent   = m.cockpit || m.Cockpit || '—';
+  byId('tr-gyro').textContent      = m.gyro || m.Gyro || '—';
+  byId('tr-config').textContent    = m.extras?.Config || m.extras?.config || '—';
+  byId('tr-role').textContent      = m.extras?.role || m.extras?.Role || '—';
+  byId('tr-myomer').textContent    = m.extras?.myomer || '—';
+  byId('tr-armor-sys').textContent = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
+
+  // Armor/Internals table
+  const armorBy  = m.armorByLocation || {};
+  const internal = m.internalByLocation || {};
+  const extras   = m.extras || {};
+  for (const loc of LOCS) {
+    const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
+    const s = getInternalCell(internal, loc.key);
+    const arCell = byId('ar-'+loc.key);
+    if (arCell) arCell.textContent = a.front;
+    if (loc.rearKey) {
+      const rearCell = byId('ar-'+loc.rearKey);
+      if (rearCell) rearCell.textContent = a.rear;
     }
+    const inCell = byId('in-'+loc.key);
+    if (inCell) inCell.textContent = s;
+  }
 
-    // Basics
-    byId('tr-name').textContent  = m.displayName || m.name || m.Name || '—';
-    byId('tr-model').textContent = m.model || m.variant || m.Model || '—';
-    byId('tr-tons').textContent  = m.tonnage ?? m.Tonnage ?? m.mass ?? '—';
-    byId('tr-tech').textContent  = m.techBase || m.TechBase || '—';
-    byId('tr-rules').textContent = m.rulesLevel || m.Rules || '—';
-    byId('tr-engine').textContent= m.engine || m.Engine || '—';
-    const hs = m.heatSinks || m.HeatSinks || (m.sinks ? `${m.sinks.count ?? '—'} ${m.sinks.type ?? ''}`.trim() : '—');
-    byId('tr-hs').textContent    = hs;
-
-    const mv = getMovement(m || {});
-    const mvStr = (mv.walk || mv.run || mv.jump) ? `W ${mv.walk ?? '—'} / R ${mv.run ?? '—'}${mv.jump ? ' / J ' + mv.jump : ''}` : (m?.Movement || '—');
-    byId('tr-move').textContent  = mvStr;
-
-    byId('tr-structure').textContent = m.structure || m.Structure || '—';
-    byId('tr-cockpit').textContent   = m.cockpit || m.Cockpit || '—';
-    byId('tr-gyro').textContent      = m.gyro || m.Gyro || '—';
-    byId('tr-config').textContent    = m.extras?.Config || m.extras?.config || '—';
-    byId('tr-role').textContent      = m.extras?.role || m.extras?.Role || '—';
-    byId('tr-myomer').textContent    = m.extras?.myomer || '—';
-    byId('tr-armor-sys').textContent = (typeof m.armor === 'string' ? m.armor : (m.armor?.total || m.armor?.type)) || m.Armor || '—';
-
-    // Armor/Internals table
-    const armorBy  = m.armorByLocation || {};
-    const internal = m.internalByLocation || {};
-    const extras   = m.extras || {};
-    for (const loc of LOCS) {
-      const a = getArmorCell(armorBy, extras, loc.key, loc.rearKey);
-      const s = getInternalCell(internal, loc.key);
-      byId('ar-'+loc.key).textContent = a.front;
-      if (loc.rearKey) byId('ar-'+loc.rearKey).textContent = a.rear;
-      byId('in-'+loc.key).textContent = s;
-    }
-
-    // Per-location equipment
-    const locs = m?.locations || null;
-    if (locs) {
-      const tbody = byId('loc-equip-body');
+  // Per-location equipment
+  const locs = m?.locations || null;
+  if (locs) {
+    const tbody = byId('loc-equip-body');
+    if (tbody) {
       tbody.innerHTML = '';
       let rows = 0;
       for (const [label, key] of LOC_ORDER) {
@@ -267,106 +538,114 @@
         rows++;
       }
       byId('loc-equip-wrap').hidden = rows === 0;
-    } else {
-      byId('loc-equip-wrap').hidden = true;
     }
-
-    // Weapons / Equipment / Ammo
-    const mapItem = (x) => (x.name || x.Name || x.type || x.Type || 'Item') + ((x.loc||x.Location)?` [${x.loc||x.Location}]`:'') + (x.count?` x${x.count}`:'');
-    const weapons   = Array.isArray(m.weapons) ? m.weapons : (Array.isArray(m.Weapons) ? m.Weapons : []);
-    const equipment = Array.isArray(m.equipment) ? m.equipment : (Array.isArray(m.Equipment) ? m.Equipment : []);
-    const ammo      = Array.isArray(m.ammo) ? m.ammo : (Array.isArray(m.Ammo) ? m.Ammo : []);
-    byId('tr-weapons').textContent   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
-    byId('tr-equipment').textContent = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
-    byId('tr-ammo').textContent      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
-
-    // Narrative
-    const setBlock = (key, wrapId, textId) => {
-      const val = m.extras?.[key] || '';
-      const wrap = byId(wrapId), tx = byId(textId);
-      if (val) { tx.textContent = val; wrap.hidden = false; } else { wrap.hidden = true; tx.textContent=''; }
-    };
-    setBlock('overview',     'tr-overview-wrap',     'tr-overview');
-    setBlock('capabilities', 'tr-capabilities-wrap', 'tr-capabilities');
-    setBlock('deployment',   'tr-deployment-wrap',   'tr-deployment');
-    setBlock('history',      'tr-history-wrap',      'tr-history');
-
-    // Meta
-    byId('tr-bv').textContent    = m.bv ?? m.BV ?? '—';
-    byId('tr-cost').textContent  = fmtMoney(m.cost ?? m.Cost ?? null);
-    byId('tr-era').textContent   = m.era || '—';
-    const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
-    byId('tr-sources').textContent = sourcesArr.length ? sourcesArr.join(' • ') : '—';
-
-    const manufacturers = listify(m.extras?.manufacturer);
-    const factories     = listify(m.extras?.primaryfactory);
-    const systems       = listify(m.extras?.systemmanufacturer);
-    const mfrWrap = byId('tr-mfr-wrap');
-    if (manufacturers.length || factories.length || systems.length) {
-      byId('tr-mfrs').textContent = manufacturers.join(' • ') || '—';
-      byId('tr-factories').textContent = factories.join(' • ') || '—';
-      byId('tr-systems').textContent = systems.join(' • ') || '—';
-      mfrWrap.hidden = false;
-    } else mfrWrap.hidden = true;
-
-    const licWrap = byId('tr-license-wrap');
-    const lic = m._source?.license || '';
-    const licUrl = m._source?.license_url || '';
-    const origin = m._source?.origin || '';
-    const copyright = m._source?.copyright || '';
-    if (lic || origin || copyright) {
-      byId('tr-origin').textContent = origin || '';
-      byId('tr-license').innerHTML = licUrl ? `License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a>` :
-                                             (lic ? `License: ${esc(lic)}` : '');
-      byId('tr-copyright').textContent = copyright || '';
-      licWrap.hidden = false;
-    } else licWrap.hidden = true;
+  } else {
+    byId('loc-equip-wrap').hidden = true;
   }
+
+  // Weapons / Equipment / Ammo
+  const mapItem = (x) => (x.name || x.Name || x.type || x.Type || 'Item') +
+                         ((x.loc||x.Location)?` [${x.loc||x.Location}]`:'') +
+                         (x.count?` x${x.count}`:'');
+  const weapons   = Array.isArray(m.weapons) ? m.weapons : (Array.isArray(m.Weapons) ? m.Weapons : []);
+  const equipment = Array.isArray(m.equipment) ? m.equipment : (Array.isArray(m.Equipment) ? m.Equipment : []);
+  const ammo      = Array.isArray(m.ammo) ? m.ammo : (Array.isArray(m.Ammo) ? m.Ammo : []);
+  byId('tr-weapons').textContent   = weapons.length   ? weapons.map(mapItem).join(' • ')   : '—';
+  byId('tr-equipment').textContent = equipment.length ? equipment.map(mapItem).join(' • ') : '—';
+  byId('tr-ammo').textContent      = ammo.length      ? ammo.map(mapItem).join(' • ')      : '—';
+
+  // Narrative
+  const setBlock = (key, wrapId, textId) => {
+    const val = m.extras?.[key] || '';
+    const wrap = byId(wrapId), tx = byId(textId);
+    if (val) { tx.textContent = val; wrap.hidden = false; } else { wrap.hidden = true; tx.textContent=''; }
+  };
+  setBlock('overview',     'tr-overview-wrap',     'tr-overview');
+  setBlock('capabilities', 'tr-capabilities-wrap', 'tr-capabilities');
+  setBlock('deployment',   'tr-deployment-wrap',   'tr-deployment');
+  setBlock('history',      'tr-history-wrap',      'tr-history');
+
+  // Meta
+  byId('tr-bv').textContent    = m.bv ?? m.BV ?? '—';
+  byId('tr-cost').textContent  = fmtMoney(m.cost ?? m.Cost ?? null);
+  byId('tr-era').textContent   = m.era || '—';
+  const sourcesArr = Array.isArray(m.sources) ? m.sources : (m.sources ? [m.sources] : []);
+  byId('tr-sources').textContent = sourcesArr.length ? sourcesArr.join(' • ') : '—';
+
+  const manufacturers = listify(m.extras?.manufacturer);
+  const factories     = listify(m.extras?.primaryfactory);
+  const systems       = listify(m.extras?.systemmanufacturer);
+  const mfrWrap = byId('tr-mfr-wrap');
+  if (manufacturers.length || factories.length || systems.length) {
+    byId('tr-mfrs').textContent = manufacturers.join(' • ') || '—';
+    byId('tr-factories').textContent = factories.join(' • ') || '—';
+    byId('tr-systems').textContent = systems.join(' • ') || '—';
+    mfrWrap.hidden = false;
+  } else mfrWrap.hidden = true;
+
+  const licWrap = byId('tr-license-wrap');
+  const lic = m._source?.license || '';
+  const licUrl = m._source?.license_url || '';
+  const origin = m._source?.origin || '';
+  const copyright = m._source?.copyright || '';
+  if (lic || origin || copyright) {
+    byId('tr-origin').textContent = origin || '';
+    byId('tr-license').innerHTML = licUrl ? `License: <a href="${esc(licUrl)}" target="_blank" rel="noopener">${esc(lic)}</a>` :
+                                           (lic ? `License: ${esc(lic)}` : '');
+    byId('tr-copyright').textContent = copyright || '';
+    licWrap.hidden = false;
+  } else licWrap.hidden = true;
+}
+
 
   /* ---------- Mech load ---------- */
-  async function loadMechFromUrl(url) {
-    try {
-      showToast('Loading mech…');
-      const raw = await fetchJson(url);
-      const mech = normalizeMech(raw) || raw;
-      state.mech = mech; window.DEBUG_MECH = mech;
-      const cap = Number.isFinite(mech?.heatCapacity) ? mech.heatCapacity : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
-      setHeat(0, cap|0);
-      updateOverview();
-      fillTechReadout();
-      showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
-    } catch (err) {
-      console.error(err);
-      showToast(`Failed to load mech JSON: ${err.message}`);
-    }
+async function loadMechFromUrl(url) {
+  try {
+    showToast('Loading mech…');
+    const raw  = await fetchJson(url);
+    const mech = ensureBV(ensureInternals(normalizeMech(raw) || raw));  // one-and-done
+    state.mech = mech; window.DEBUG_MECH = mech;
+
+    const cap = Number.isFinite(mech?.heatCapacity) 
+      ? mech.heatCapacity 
+      : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
+
+    setHeat(0, cap|0);
+    updateOverview();
+    fillTechReadout();
+    showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
+  } catch (err) {
+    console.error(err);
+    showToast(`Failed to load mech JSON: ${err.message}`);
   }
+}
 
   /* ---------- Import / Export ---------- */
-  function importJson() {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
-      try {
-        const text = await file.text(); const data = JSON.parse(text);
-        if (data.mech || data.pilot || data.heat) {
-          if (data.mech) state.mech = normalizeMech(data.mech) || data.mech;
-          if (data.pilot) state.pilot = data.pilot;
-          if (data.heat)  state.heat  = data.heat;
-          window.DEBUG_MECH = state.mech;
-          setHeat(state.heat.current|0, state.heat.capacity|0);
-          updateOverview(); fillTechReadout();
-        } else {
-          state.mech = normalizeMech(data) || data;
-          window.DEBUG_MECH = state.mech;
-          const cap = Number.isFinite(state.mech?.heatCapacity) ? state.mech.heatCapacity : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
-          setHeat(0, cap|0); updateOverview(); fillTechReadout();
-        }
-        showToast('JSON imported');
-      } catch (e) { console.error(e); showToast('Import failed'); }
-    };
-    input.click();
-  }
+ function importJson() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = 'application/json';
+  input.onchange = async () => {
+    const file = input.files?.[0]; if (!file) return;
+    try {
+      const text = await file.text(); const data = JSON.parse(text);
+      if (data.mech || data.pilot || data.heat) {
+        if (data.mech) state.mech = ensureBV(ensureInternals(normalizeMech(data.mech) || data.mech));
+        if (data.pilot) state.pilot = data.pilot;
+        if (data.heat)  state.heat  = data.heat;
+        window.DEBUG_MECH = state.mech;
+        setHeat(state.heat.current|0, state.heat.capacity|0);
+        updateOverview(); fillTechReadout();
+      } else {
+        state.mech = ensureBV(ensureInternals(normalizeMech(data) || data));
+        window.DEBUG_MECH = state.mech;
+        const cap = Number.isFinite(state.mech?.heatCapacity) ? state.mech.heatCapacity : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
+        setHeat(0, cap|0); updateOverview(); fillTechReadout();
+      }
+      showToast('JSON imported');
+    } catch (e) { console.error(e); showToast('Import failed'); }
+  };
+  input.click();
+}
   function exportState() {
     const payload = { mech: state.mech, pilot: state.pilot, heat: state.heat, gator: state.gator, timestamp: new Date().toISOString() };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -399,6 +678,124 @@
   function backdropClose(e){ if (e.target === byId('settings-modal')) closeModal(); }
   function escClose(e){ if (e.key === 'Escape') closeModal(); }
 
+  /* ---------- Filter modal ---------- */
+  const btnCustomMech = byId('btn-custom-mech'); // used to open filter modal
+  const fModal      = document.getElementById('filter-modal');
+  const fClose      = document.getElementById('filter-close');
+  const fApply      = document.getElementById('filter-apply');
+  const fClear      = document.getElementById('filter-clear');
+
+  const fTech       = document.getElementById('f-tech');
+  const fClassL     = document.getElementById('f-class-L');
+  const fClassM     = document.getElementById('f-class-M');
+  const fClassH     = document.getElementById('f-class-H');
+  const fClassA     = document.getElementById('f-class-A');
+  const fJump       = document.getElementById('f-jump');
+  const fMinWalk    = document.getElementById('f-minwalk');
+  const fRoles      = document.getElementById('f-roles');
+const fRules      = document.getElementById('f-rules'); // NEW
+
+  function openFilterModal(){
+    if (!fModal) return;
+    document.body.classList.add('modal-open');
+    fModal.hidden = false;
+    // preload UI from state
+    if (fTech) fTech.value = filterState.tech || "";
+    if (fClassL) fClassL.checked = filterState.classes.has('Light');
+    if (fClassM) fClassM.checked = filterState.classes.has('Medium');
+    if (fClassH) fClassH.checked = filterState.classes.has('Heavy');
+    if (fClassA) fClassA.checked = filterState.classes.has('Assault');
+    if (fJump) fJump.checked   = !!filterState.canJump;
+    if (fMinWalk) fMinWalk.value  = filterState.minWalk ?? "";
+    if (fRoles) fRoles.value    = filterState.roles.join(', ');
+    if (fRules) fRules.value = filterState.rulesLevel ?? "";
+  }
+
+  function closeFilterModal(){
+    if (!fModal) return;
+    fModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    btnCustomMech?.focus();
+  }
+
+  btnCustomMech?.addEventListener('click', openFilterModal);
+  fClose?.addEventListener('click', closeFilterModal);
+
+  /* Build predicate from controls, filter manifest, and close */
+  function applyFilters(){
+    // capture state
+    const classes = new Set();
+    if (fClassL?.checked) classes.add('Light');
+    if (fClassM?.checked) classes.add('Medium');
+    if (fClassH?.checked) classes.add('Heavy');
+    if (fClassA?.checked) classes.add('Assault');
+
+    filterState = {
+      tech: fTech?.value || "",
+      classes,
+      canJump: !!fJump?.checked,
+      minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
+      roles: (fRoles?.value || "")
+              .split(/[,\s]+/)
+              .map(s=>s.trim())
+              .filter(Boolean)
+              .map(s=>s.toLowerCase()),
+       rulesLevel: (fRules?.value || "") || null,
+    };
+
+    // turn state into a predicate (requires enriched manifest entries to be effective)
+    const pred = (m) => {
+      const tons = m.tons ?? m.tonnage ?? m.mass ?? null;
+      const cls  = m.class || (tons!=null ? (tons>=80?'Assault':tons>=60?'Heavy':tons>=40?'Medium':'Light') : null);
+      const mv   = m.move || {};
+      const w    = mv.w ?? mv.walk ?? null;
+      const j    = mv.j ?? mv.jump ?? 0;
+      const role = (m.role || (m.extras?.role) || "").toLowerCase();
+      const tech = m.tech || m.techBase || "";
+
+      if (filterState.tech && tech !== filterState.tech) return false;
+      if (filterState.classes.size && !filterState.classes.has(cls)) return false;
+      if (filterState.canJump && !(j > 0)) return false;
+      if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
+      if (filterState.roles.length){
+        const tokens = role.split(/[\/, ]+/).filter(Boolean);
+        const hit = tokens.some(t => filterState.roles.includes(t));
+        if (!hit) return false;
+      }
+      const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
+  if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
+      return true;
+    };
+
+    // apply over full manifest (if no filters active -> null to use full set)
+const anyOn = filterState.tech
+           || filterState.classes.size
+           || filterState.canJump
+           || filterState.minWalk != null
+           || filterState.roles.length
+           || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
+    manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
+
+    // tell search UI to rebuild its index from the filtered set
+    window._rebuildSearchIndex?.();
+
+    closeFilterModal();
+
+    // if search UI is open, re-render its list
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  }
+
+  function clearFilters(){
+    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
+    manifestFiltered = null;
+    window._rebuildSearchIndex?.();
+    closeFilterModal();
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  }
+
+  fApply?.addEventListener('click', applyFilters);
+  fClear?.addEventListener('click', clearFilters);
+
   /* ---------- Tabs ---------- */
   function initTabs(){
     const topSwapper = byId('top-swapper');
@@ -425,17 +822,17 @@
     const anchor = btnLoadMech || byId('btn-load-manifest') || toolbar.lastElementChild;
 
     const wrap = document.createElement('div');
-    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'220px', marginLeft:'6px' });
+    Object.assign(wrap.style, { position:'relative', display:'inline-block', minWidth:'140px', marginLeft:'6px' });
 
     const input = document.createElement('input');
     Object.assign(input, { type:'search', id:'mech-search', placeholder:'Search mechs…', autocomplete:'off', spellcheck:false });
-    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'220px' });
+    Object.assign(input.style, { padding:'6px 10px', borderRadius:'6px', border:'1px solid var(--border)', background:'#0e1522', color:'var(--ink)', width:'140px' });
 
     const panel = document.createElement('div');
     panel.id = 'search-results';
     Object.assign(panel.style, {
       position:'absolute', top:'calc(100% + 4px)', left:'0', zIndex:'100',
-      minWidth:'280px', maxWidth:'420px', maxHeight:'50vh', overflowY:'auto',
+      minWidth:'200px', maxWidth:'300px', maxHeight:'50vh', overflowY:'auto',
       border:'1px solid var(--border)', borderRadius:'8px', background:'var(--panel)',
       display:'none', boxShadow:'0 8px 24px rgba(0,0,0,0.35)'
     });
@@ -449,8 +846,11 @@
     const openPanel  = () => { if (!open){ panel.style.display='block'; open = true; } };
     const closePanel = () => { if (open){ panel.style.display='none'; open = false; hi = -1; } };
 
-    function buildIndex(manifest) {
-      return manifest.map(m => {
+    function currentList() {
+      return manifestFiltered ?? state.manifest;
+    }
+    function buildIndex(list) {
+      return list.map(m => {
         const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
         return { ...m, _key: ' ' + label + ' ' };
       });
@@ -477,6 +877,9 @@
           <span class="result-variant dim mono small" style="float:right; margin-left:8px;">${e.id || e.variant || ''}</span>
         </div>`).join('');
     }
+
+    function rebuildIndex() { index = buildIndex(currentList()); }
+    window._rebuildSearchIndex = rebuildIndex; // expose for filters/manifest loader
 
     let tId = 0;
     input.addEventListener('input', () => {
@@ -514,13 +917,13 @@
 
     // manifest hooks
     byId('btn-load-manifest')?.addEventListener('click', async () => {
-      await loadManifest(); index = buildIndex(state.manifest);
+      await loadManifest(); rebuildIndex();
     });
     input.addEventListener('focus', async () => {
-      if (!state.manifest.length) { await loadManifest(); index = buildIndex(state.manifest); }
+      if (!state.manifest.length) { await loadManifest(); rebuildIndex(); }
     });
     // autoload once
-    (async ()=>{ if (!state.manifest.length) { await loadManifest(); index = buildIndex(state.manifest); } })();
+    (async ()=>{ if (!state.manifest.length) { await loadManifest(); rebuildIndex(); } else { rebuildIndex(); } })();
   }
 
   /* ---------- GATOR ---------- */
@@ -587,25 +990,98 @@
     });
     rmin?.addEventListener('change', ()=> { state.gator.Rmin = rmin.value; });
 
-    // Dice
-    const attDice = byId('roll-att-dice'), attMod = byId('roll-att-mod'), attRes = byId('roll-att-res');
-    const btnAtt  = byId('btn-roll-att'), btnBoth = byId('btn-roll-both');
-    const parseDice = (str)=> (str||'2d6').match(/(\d+)d(\d+)/i)?.slice(1).map(Number) || [2,6];
-    const rollOne = (s)=> Math.floor(Math.random()*s)+1;
-    const bounce = (el)=>{ el.style.transform='translateY(-6px)'; el.style.transition='transform .15s ease'; requestAnimationFrame(()=> el.style.transform=''); };
-    function doRoll(){
-      const [n,sides] = parseDice(attDice?.value); const mod = Number(attMod?.value||0);
-      const rolls = Array.from({length:n}, ()=> rollOne(sides));
-      const total = rolls.reduce((a,b)=>a+b,0)+mod;
-      if (attRes){ attRes.textContent = total; attRes.title = `rolls: ${rolls.join(', ')} + ${mod}`; bounce(attRes); }
-      return total;
-    }
-    btnAtt?.addEventListener('click', doRoll);
-    btnBoth?.addEventListener('click', doRoll);
-    window.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)) doRoll(); });
+// Dice
+const attDice = byId('roll-att-dice'),
+      attMod  = byId('roll-att-mod'),
+      attRes  = byId('roll-att-res'),
+      btnAtt  = byId('btn-roll-att'),
+      btnBoth = byId('btn-roll-both'),
+      attDetail = byId('roll-att-detail'); // ← NEW (optional)
 
-    sumOther(); recompute();
+const parseDice = (str)=> (str||'2d6').match(/(\d+)d(\d+)/i)?.slice(1).map(Number) || [2,6];
+const rollOne   = (s)=> Math.floor(Math.random()*s)+1;
+const bounce    = (el)=>{ el.style.transform='translateY(-6px)'; el.style.transition='transform .15s ease'; requestAnimationFrame(()=> el.style.transform=''); };
+
+function doRoll(){
+  const [n, sides] = parseDice(attDice?.value);
+  const mod = Number(attMod?.value || 0);
+  const rolls = Array.from({ length: n }, () => rollOne(sides));
+  const sum   = rolls.reduce((a,b)=> a+b, 0);
+  const total = sum + mod;
+
+  if (attRes){
+    attRes.textContent = total;
+    attRes.title = `rolls: ${rolls.join(', ')}${mod ? ` + ${mod}` : ''}`;
+    bounce(attRes);
   }
+  if (attDetail){
+    attDetail.textContent = `[${rolls.join(' + ')}]${mod ? ` + ${mod}` : ''}`;
+  }
+  return total;
+}
+
+btnAtt ?.addEventListener('click', doRoll);
+btnBoth?.addEventListener('click', doRoll);
+window.addEventListener('keydown', (e)=>{
+  if (e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)) doRoll();
+});
+
+sumOther(); recompute();
+
+  }
+
+  function initGatorSubtabs(){
+  const root = document.getElementById('gator-compact');
+  if (!root) return;
+
+  const tabs  = root.querySelectorAll('.gtr-subtab');
+  const panes = root.querySelectorAll('.gtr-pane');
+
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gtr-subtab');
+    if (!btn) return;
+    const id = btn.getAttribute('data-gtr-tab');
+
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
+    });
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+    // focus first control in the newly active pane
+    const pane = document.getElementById(id);
+    const first = pane && pane.querySelector('select, input, button, [tabindex]');
+    if (first) setTimeout(() => first.focus(), 0);
+  });
+}
+
+
+  function initTechSubtabs(){
+  const root = document.getElementById('tech-compact');
+  if (!root) return;
+
+  const tabs  = root.querySelectorAll('.gtr-subtab');
+  const panes = root.querySelectorAll('.gtr-pane');
+
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gtr-subtab');
+    if (!btn) return;
+    const id = btn.getAttribute('data-tr-tab');
+
+    tabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
+    });
+    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+
+    const pane = document.getElementById(id);
+    const first = pane && pane.querySelector('select, input, button, [tabindex]');
+    if (first) setTimeout(() => first.focus(), 0);
+  });
+}
+
 
   /* ---------- Wire UI ---------- */
   function initUI(){
@@ -625,43 +1101,23 @@
     initTabs();
     initSearchUI();
     initGator();
-initGatorSubtabs();   // <-- new line
+    initGatorSubtabs();
+    initTechSubtabs();
   }
 
-function initGatorSubtabs(){
-  const root = document.getElementById('gator-compact');
-  if (!root) return;
-  const tabs = root.querySelectorAll('.gtr-subtab');
-  const panes= root.querySelectorAll('.gtr-pane');
-
-  root.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-    const id = btn.getAttribute('data-gtr-tab');
-    tabs.forEach(b => {
-      const active = b === btn;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-selected', String(active));
-    });
-    panes.forEach(p => p.classList.toggle('is-active', p.id === id));
+  
+  /* ---------- Init ---------- */
+function init(){
+  loadWeaponsDb().then(()=> {
+    renderOverviewWeaponsMini(state.mech);
   });
-
-  // Optional: focus first control when switching
-  root.addEventListener('click', (e) => {
-    const btn = e.target.closest('.gtr-subtab'); if (!btn) return;
-    const pane = document.getElementById(btn.getAttribute('data-gtr-tab'));
-    const firstInput = pane?.querySelector('select, input, button');
-    if (firstInput) setTimeout(()=> firstInput.focus(), 0);
-  });
+  setHeat(0,0);
+  updateOverview();
+  fillTechReadout();
+  initUI();
+  console.info('Gator Console ready (single-file).');
 }
 
-  /* ---------- Init ---------- */
-  function init(){
-    setHeat(0,0);
-    updateOverview();
-    fillTechReadout();
-    initUI();
-    console.info('Gator Console ready (single-file).');
-  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

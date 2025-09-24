@@ -12,7 +12,7 @@
 
   <div class="app is-embed"><!-- keep .is-embed for compact widget -->
 
-    <!-- Top bar (toolbar actions) -->
+    <!-- Top bar (toolbar actions) --> 
     <header class="ui-topbar">
       <div class="topbar-left">
         <div class="brand">
@@ -22,17 +22,22 @@
       </div>
       <div class="topbar-right actions actions--top">
         <button id="btn-load-mech"   class="btn"       title="Load a mech JSON">Load</button>
-        <button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder">Custom</button>
-        <button id="btn-import"      class="btn ghost" title="Import session JSON" aria-label="Import">Import</button>
-        <button id="btn-export"      class="btn ghost" title="Export session JSON" aria-label="Export">Export</button>
+<button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder" aria-label="Filter">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;">
+    <path d="M3 4h18l-7 8v6l-4 2v-8z"/>
+  </svg>
+</button>
+<button id="btn-import" class="btn icon ghost" title="Import session JSON" aria-label="Import">⬇</button>
+<button id="btn-export" class="btn icon ghost" title="Export session JSON" aria-label="Export">⬆</button>
 
-        <div class="divider"></div>
+<div class="divider"></div>
 
-        <button id="btn-load-manifest" class="btn" title="Fetch manifest.json">Manifest</button>
+<button id="btn-load-manifest" class="btn icon" title="Fetch manifest.json">📄</button>
 
-        <!-- ▼ Search mounts here (JS inserts input next to this button) -->
+<!-- ▼ Search mounts here (JS inserts input next to this button) -->
 
-        <button id="btn-settings" class="btn ghost" title="Settings (About & Attribution)">⚙</button>
+<button id="btn-settings" class="btn icon ghost" title="Settings (About & Attribution)">⚙</button>
+
       </div>
     </header>
 
@@ -54,7 +59,7 @@
             <!-- OVERVIEW -->
             <section id="pane-overview" class="swap-pane is-active" role="tabpanel" aria-labelledby="Overview">
               <div class="overview-flex">
-                <!-- Vertical Heat -->
+                <!-- Vertical Heat --> 
                 <div class="vheat">
                   <div class="vheat-bar" id="vheat" role="meter" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
                     <div class="vheat-fill" id="vheat-fill" style="height:0%"></div>
@@ -100,95 +105,111 @@
 
             <!-- TECH READOUT (pure HTML – JS just fills the spans) -->
             <section id="pane-techreadout" class="swap-pane" role="tabpanel" aria-labelledby="Tech Readout">
-              <div class="tro-grid">
-                <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
-                <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
-                <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
-                <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
-                <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
-                <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
-                <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
-                <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
-                <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
-                <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
-                <div><strong>Config</strong><br><span id="tr-config">—</span></div>
-                <div><strong>Role</strong><br><span id="tr-role">—</span></div>
-                <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
-                <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
-              </div>
+             <!-- Tech Readout with sub-tabs -->
+<div id="tech-compact" class="tr-compact">
 
-              <hr class="modal-divider">
+  <!-- Sub-tabs (reuse GATOR tab styles: .gtr-subtabs / .gtr-subtab / .gtr-pane) -->
+  <div class="gtr-subtabs" role="tablist" aria-label="Tech Readout sections">
+    <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-tr-tab="tr-pane-C">Chassis &amp; Systems</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-AI">Armor &amp; Internals</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-EQ">Equipment</button>
+    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-LORE">Lore &amp; History</button>
+  </div>
 
-              <!-- Armor & Internals per location -->
-              <div>
-                <strong>Armor & Internals by Location</strong>
-                <table class="small mono fullw">
-                  <thead>
-                    <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Head</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
-                    <tr><td>Center Torso</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
-                    <tr><td>Right Torso</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
-                    <tr><td>Left Torso</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
-                    <tr><td>Right Arm</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
-                    <tr><td>Left Arm</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
-                    <tr><td>Right Leg</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
-                    <tr><td>Left Leg</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
-                  </tbody>
-                </table>
-              </div>
+  <!-- Chassis & Systems -->
+  <section id="tr-pane-C" class="gtr-pane is-active" role="tabpanel" aria-labelledby="Chassis & Systems">
+    <div class="tro-grid">
+      <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
+      <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
+      <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
+      <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
+      <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
+      <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
+      <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
+      <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
+      <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
+      <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
+      <div><strong>Config</strong><br><span id="tr-config">—</span></div>
+      <div><strong>Role</strong><br><span id="tr-role">—</span></div>
+      <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
+      <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
+    </div>
 
-              <hr class="modal-divider">
+    <hr class="modal-divider">
 
-              <!-- Equipment by Location -->
-              <div id="loc-equip-wrap" hidden>
-                <strong>Equipment by Location</strong>
-                <table class="small mono fullw">
-                  <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
-                  <tbody id="loc-equip-body"></tbody>
-                </table>
-                <hr class="modal-divider">
-              </div>
+    <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
 
-              <!-- Weapons / Equipment / Ammo -->
-              <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
-              <div class="mt6"><strong>Equipment</strong><div class="mt6" id="tr-equipment">—</div></div>
-              <div class="mt6"><strong>Ammo</strong><div class="mt6" id="tr-ammo">—</div></div>
+    <hr class="modal-divider">
 
-              <hr class="modal-divider">
+    <div class="tro-grid">
+      <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
+      <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
+      <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
+      <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
+    </div>
 
-              <!-- Narrative -->
-              <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
-              <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
-              <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
-              <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+    <div id="tr-mfr-wrap" hidden>
+      <hr class="modal-divider">
+      <div class="tro-grid">
+        <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
+        <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
+        <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
+      </div>
+    </div>
 
-              <hr class="modal-divider">
+    <div id="tr-license-wrap" class="small dim" hidden>
+      <hr class="modal-divider">
+      <div id="tr-origin"></div>
+      <div id="tr-license"></div>
+      <div id="tr-copyright"></div>
+    </div>
+  </section>
 
-              <!-- Meta -->
-              <div class="tro-grid">
-                <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
-                <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
-                <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
-                <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
-              </div>
+  <!-- Armor & Internals -->
+  <section id="tr-pane-AI" class="gtr-pane" role="tabpanel" aria-labelledby="Armor & Internals">
+    <div>
+      <strong>Armor &amp; Internals by Location</strong>
+      <table class="small mono fullw">
+        <thead>
+          <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Head [2|12]</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
+          <tr><td>Center Torso [7]</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
+          <tr><td>Right Torso [6]</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
+          <tr><td>Left Torso [8]</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
+          <tr><td>Right Arm [3|4]</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
+          <tr><td>Left Arm [10|11]</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
+          <tr><td>Right Leg [5]</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
+          <tr><td>Left Leg [9]</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-              <div id="tr-mfr-wrap" hidden>
-                <hr class="modal-divider">
-                <div class="tro-grid">
-                  <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
-                  <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
-                  <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
-                </div>
-              </div>
+    <hr class="modal-divider">
+  </section>
 
-              <div id="tr-license-wrap" class="small dim" hidden>
-                <hr class="modal-divider">
-                <div id="tr-origin"></div>
-                <div id="tr-license"></div>
-                <div id="tr-copyright"></div>
-              </div>
+  <!-- Equipment -->
+  <section id="tr-pane-EQ" class="gtr-pane" role="tabpanel" aria-labelledby="Equipment">
+    <div id="loc-equip-wrap" hidden>
+      <strong>Equipment by Location</strong>
+      <table class="small mono fullw">
+        <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
+        <tbody id="loc-equip-body"></tbody>
+      </table>
+    </div>
+    <div id="tr-equipment" hidden></div>
+     <div id="tr-ammo" hidden></div>
+  </section>
+
+  <!-- Lore & History -->
+  <section id="tr-pane-LORE" class="gtr-pane" role="tabpanel" aria-labelledby="Lore & History">
+    <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
+    <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
+    <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
+    <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+  </section>
+</div>
             </section>
 
             <!-- GATOR (COMPACT) -->
@@ -215,9 +236,9 @@
     <div class="gtr-col">
       <div class="gtr-title"><span class="dot dot-att"></span> Gunnery</div>
       <label class="gtr-lab">Gunnery</label>
-      <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery">
-        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-        <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+      <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery [Ultra Elite 1 <-> 6 Ultra Green]">
+        <option value="1">1-Ultra Elite</option><option value="2">2-Elite</option><option value="3">3-Veteran</option>
+        <option value="4" selected>4-Recruit</option><option value="5">5-Green</option><option value="6">6-Ultra Green</option>
       </select>
     </div>
   </section>
@@ -321,33 +342,31 @@
   </section>
 
   <!-- Dice/TN -->
-  <section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
-    <div class="gtr-col">
-      <div class="gtr-title">Dice & Target Number</div>
-      <div class="gtr-roller" style="margin-bottom:8px;">
-        <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
-          <option>2d6</option><option>1d6</option><option>1d8</option><option>1d10</option><option>1d20</option>
-        </select>
-        <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
-        <button class="icon-btn" id="btn-roll-att" title="Roll attacker">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>
-        </button>
-        <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
-      </div>
-
-      <div class="gtr-footer" style="padding-top:0; border-top:0;">
-        <div class="gtr-tn">
-          <div>Target Number</div>
-          <div id="gtr-total" class="tn tn-auto">Auto</div>
-        </div>
-        <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">roll both</button>
-      </div>
+<section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
+  <div class="gtr-col">
+    <div class="gtr-title">Dice & Target Number</div>
+    <div class="gtr-roller" style="margin-bottom:8px;">
+      <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
+        <option>2d6</option>
+        <option>1d6</option>
+      </select>
+      <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
+      <span>=</span>
+      <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
+      <!-- NEW: dice breakdown -->
+      <div id="roll-att-detail" class="small dim" style="margin-left:6px;"> </div>
     </div>
-  </section>
-</div>
-        </div>
 
-      </section>
+    <div class="gtr-footer" style="padding-top:0; border-top:0;">
+      <div class="gtr-tn">
+        <div>Target Number</div>
+        <div id="gtr-total" class="tn tn-auto">Auto</div>
+      </div>
+      <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">Roll</button>
+    </div>
+  </div>
+</section>
+
     </main>
 
     <!-- Footer with attribution -->
@@ -393,6 +412,68 @@
       </footer>
     </div>
   </div>
+
+<!-- Filter / Find Mechs -->
+<div id="filter-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="filter-title" hidden>
+  <div class="modal-card" role="document">
+    <header class="modal-h">
+      <h2 id="filter-title">Filter Mechs</h2>
+      <button id="filter-close" class="icon-btn" aria-label="Close">✕</button>
+    </header>
+    <div class="modal-c small">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div>
+          <label class="dim">Tech Base</label>
+          <select id="f-tech" class="gtr-sel">
+            <option value="">Any</option>
+            <option>Inner Sphere</option>
+            <option>Clan</option>
+          </select>
+        </div>
+<div>
+  <label class="dim">Rules Level</label>
+  <select id="f-rules" class="gtr-sel">
+    <option value="">Any</option>
+    <option value="1">Introductory (Level 1)</option>
+    <option value="2">Standard (Level 2)</option>
+    <option value="3">Advanced (Level 3)</option>
+    <option value="4">Experimental (Level 4)</option>
+  </select>
+</div>
+        <div>
+          <label class="dim">Weight Class</label>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <label class="chk"><input type="checkbox" id="f-class-L" /> Light</label>
+            <label class="chk"><input type="checkbox" id="f-class-M" /> Medium</label>
+            <label class="chk"><input type="checkbox" id="f-class-H" /> Heavy</label>
+            <label class="chk"><input type="checkbox" id="f-class-A" /> Assault</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="chk"><input type="checkbox" id="f-jump" /> Can Jump</label>
+        </div>
+
+        <div>
+          <label class="dim">Min Walk (MP)</label>
+          <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any" />
+        </div>
+
+        <div style="grid-column:1 / -1;">
+          <label class="dim">Role tokens (comma-separated)</label>
+          <input id="f-roles" class="gtr-sel" type="text" placeholder="e.g. brawler, sniper, skirmisher" />
+        </div>
+      </div>
+      <div class="dim small" style="margin-top:8px;">
+        Filters apply to the search list. Use the search box to narrow further.
+      </div>
+    </div>
+    <footer class="modal-f" style="display:flex;gap:8px;justify-content:flex-end;">
+      <button id="filter-clear" class="btn ghost sm">Clear</button>
+      <button id="filter-apply" class="btn sm">Apply</button>
+    </footer>
+  </div>
+</div>
 
   <!-- Toast (used by script.js) -->
   <div id="toast" class="toast" hidden></div>
