@@ -1,5 +1,5 @@
 # TRS:80
-##Technical Readout System:80
+## Technical Readout System:80
 
 A compact, fast, **BattleTech** helper for table or VTT: browse mechs, read Tech Readouts, and compute **G.A.T.O.R.** target numbers without rules-flipping.
 
