@@ -1212,11 +1212,11 @@ sumOther(); recompute();
   
   /* ---------- Init ---------- */
 function init(){
-loadWeaponsDb().then(()=>{
-  renderOverviewWeaponsMini(state.mech);
-  loadWeaponsDb();
-  renderWeaponsTab(); // <-- make the first render
-});
+  loadWeaponsDb().then(()=>{
+    renderOverviewWeaponsMini(state.mech);
+    renderWeaponsTab(); // only call after weapons DB is ready
+  });
+
   setHeat(0,0);
   updateOverview();
   fillTechReadout();
