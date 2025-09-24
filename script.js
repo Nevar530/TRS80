@@ -832,22 +832,36 @@ if (filterState.source) {
   fApply?.addEventListener('click', applyFilters);
   fClear?.addEventListener('click', clearFilters);
 
-  /* ---------- Tabs ---------- */
-  function initTabs(){
-    const topSwapper = byId('top-swapper');
-    if (!topSwapper) return;
-    const swapTabs = topSwapper.querySelectorAll('[data-swap]');
-    topSwapper.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-swap]'); if (!btn) return;
-      const id = btn.getAttribute('data-swap');
-      swapTabs.forEach(b => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-      topSwapper.querySelectorAll('.swap-pane').forEach(p => p.classList.toggle('is-active', p.id === id));
+/* ---------- Tabs ---------- */
+function initTabs(){
+  const topSwapper = byId('top-swapper');
+  if (!topSwapper) return;
+  const swapTabs = topSwapper.querySelectorAll('[data-swap]');
+
+  topSwapper.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-swap]');
+    if (!btn) return;
+
+    const id = btn.getAttribute('data-swap');
+
+    // toggle tabs
+    swapTabs.forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', String(active));
     });
-  }
+
+    // toggle panes
+    topSwapper.querySelectorAll('.swap-pane').forEach(
+      p => p.classList.toggle('is-active', p.id === id)
+    );
+
+    // 🔽 hook for weapons tab
+    if (id === 'tab-weapons') {
+      renderWeaponsTab();
+    }
+  });
+}
 
   /* ---------- Search (mounts input into toolbar) ---------- */
   function initSearchUI(){
@@ -1144,9 +1158,10 @@ sumOther(); recompute();
   
   /* ---------- Init ---------- */
 function init(){
-  loadWeaponsDb().then(()=> {
-    renderOverviewWeaponsMini(state.mech);
-  });
+loadWeaponsDb().then(()=>{
+  renderOverviewWeaponsMini(state.mech);
+  renderWeaponsTab(); // <-- make the first render
+});
   setHeat(0,0);
   updateOverview();
   fillTechReadout();
