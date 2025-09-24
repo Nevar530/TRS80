@@ -793,7 +793,7 @@ if (filterState.source) {
              || filterState.canJump
              || filterState.minWalk != null
              || filterState.roles.length
-             || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "");
+             || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "")
              || filterState.source;
   manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
 
