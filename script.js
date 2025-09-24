@@ -213,48 +213,55 @@ function ensureInternals(mech){
   }
 
   async function loadManifest() {
-    try {
-      state.manifestUrl = new URL('data/manifest.json', document.baseURI).href;
-      const raw = await fetchJson(state.manifestUrl);
+  try {
+    state.manifestUrl = new URL('data/manifest.json', document.baseURI).href;
+    const raw = await fetchJson(state.manifestUrl);
 
-      let items = [];
-      if (Array.isArray(raw)) items = raw;
-      else if (raw?.mechs) items = raw.mechs;
-      else if (raw && typeof raw === 'object') for (const v of Object.values(raw)) if (Array.isArray(v)) items.push(...v);
-
-      const base = new URL('.', state.manifestUrl);
-      state.manifest = items
-        .filter(e => e && (e.path || e.url || e.file))
-        .map(e => {
-          const path = (e.path || e.url || e.file || '').replace(/\\/g,'/').trim();
-          const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
-return {
-  id: e.id || null,
-  name: e.displayName || e.displayname || e.name || null,
-  variant: e.variant || null,
-  path,
-  url: abs,
-  tons: e.tons ?? e.tonnage ?? e.mass,
-  tech: e.tech ?? e.techBase,
-  role: e.role,
-  class: e.class,
-    const mvRaw = e.movement ?? e.move ?? {};
-    const walk  = Number(mvRaw.walk ?? mvRaw.w ?? 0) || 0;
-    const jump  = Number(mvRaw.jump ?? mvRaw.j ?? 0) || 0;
-    return { move: { w: walk, walk, j: jump, jump } };
-  })(),
-  rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
-};
-        });
-
-      // Refresh search index if search has mounted
-      window._rebuildSearchIndex?.();
-      showToast(`Manifest loaded — ${state.manifest.length} mechs`);
-    } catch (err) {
-      console.error(err);
-      showToast(`Failed to load manifest: ${err.message}`);
+    let items = [];
+    if (Array.isArray(raw)) items = raw;
+    else if (raw?.mechs) items = raw.mechs;
+    else if (raw && typeof raw === 'object') {
+      for (const v of Object.values(raw)) {
+        if (Array.isArray(v)) items.push(...v);
+      }
     }
+
+    const base = new URL('.', state.manifestUrl);
+    state.manifest = items
+      .filter(e => e && (e.path || e.url || e.file))
+      .map(e => {
+        const path = (e.path || e.url || e.file || '').replace(/\\/g, '/').trim();
+        const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
+
+        // normalize movement
+        const mv = e.movement ?? e.move ?? {};
+        const w  = Number(mv.walk ?? mv.w ?? 0) || 0;
+        const j  = Number(mv.jump ?? mv.j ?? 0) || 0;
+
+        return {
+          id:      e.id || null,
+          name:    e.displayName || e.displayname || e.name || null,
+          variant: e.variant || null,
+          path,
+          url:     abs,
+          tons:    e.tons ?? e.tonnage ?? e.mass,
+          tech:    e.tech ?? e.techBase,
+          role:    e.role,
+          class:   e.class,
+          move:    { w, walk: w, j, jump: j }, // normalized movement
+          rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
+        };
+      });
+
+    // Refresh search index if search has mounted
+    window._rebuildSearchIndex?.();
+    showToast(`Manifest loaded — ${state.manifest.length} mechs`);
+  } catch (err) {
+    console.error(err);
+    showToast(`Failed to load manifest: ${err.message}`);
   }
+}
+
 
   /* ---------- Schema normalization ---------- */
   function normalizeMech(raw) {
