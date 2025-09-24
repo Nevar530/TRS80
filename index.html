@@ -378,15 +378,20 @@
 
     </main>
 
-    <!-- Footer with attribution -->
-    <footer class="app-footer" role="contentinfo">
-      <div class="app-footer-row mono small">
-        <span>Mech data © MegaMek Data (CC BY-NC-SA 4.0). Non-commercial fan tool.</span>
-        <span class="sep">•</span>
-        <span>BattleTech, BattleMech, ’Mech, AeroTech are trademarks of their respective owners.</span>
-        <button id="footer-about" class="linklike" aria-label="Open About & Attribution">About</button>
-      </div>
-    </footer>
+<!-- Footer with slim attribution -->
+<footer class="app-footer" role="contentinfo" 
+        style="position:fixed; bottom:0; left:0; width:100%; 
+               font-size:0.65em; text-align:center; color:#888; 
+               padding:2px 0; border-top:1px solid #333; 
+               background:#111; z-index:999;">
+
+  © MegaMek Data (CC BY-NC-SA 4.0) • Fan tool  
+  <button id="footer-about" class="linklike" 
+          style="background:none; border:0; color:#4af; cursor:pointer;">
+    About
+  </button>
+
+</footer>
 
   </div>
 
