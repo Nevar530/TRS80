@@ -771,16 +771,32 @@ function applyFilters(){
     if (filterState.canJump && !(j > 0)) return false;
     if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
 
-    if (filterState.roles.length){
-      // supports "Juggernaut / Brawler" etc.
-      const tokens = role.split(/[\/,]+|\s+(?![xX]\d+)/).map(s=>s.trim()).filter(Boolean);
-      const hit = tokens.some(t => filterState.roles.includes(t));
-      if (!hit) return false;
-    }
-if (filterState.source) {
-  const srcStr = (m.source || (Array.isArray(m.sources) ? m.sources.join(' • ') : '') || '');
-  if (srcStr !== filterState.source) return false;
+if (filterState.roles.length) {
+  const choose  = new Set(filterState.roles);            // e.g., "missile boat", "brawler"
+  const hasNone = choose.has('none');
+  const roleStr = String(m.role || m.extras?.role || '').toLowerCase().trim();
+
+  // If "None" is selected, accept mechs with an empty/missing role
+  if (hasNone && !roleStr) {
+    // ok
+  } else {
+    // OR-match: any selected role appears as a substring in the mech's role text
+    const hasAny = [...choose]
+      .filter(r => r !== 'none')
+      .some(r => roleStr.includes(r));
+    if (!hasAny) return false;
+  }
 }
+    
+if (filterState.source) {
+  const wanted = String(filterState.source).toLowerCase().replace(/\s+/g, ' ').trim();
+  const srcStr = String(
+    m.source || (Array.isArray(m.sources) ? m.sources.join(' • ') : '')
+  ).toLowerCase().replace(/\s+/g, ' ').trim();
+
+  if (!srcStr.includes(wanted)) return false;
+}
+    
     const rules = m.rules ?? m.rulesLevel ?? m.Rules ?? null;
     if (filterState.rulesLevel && String(rules) !== String(filterState.rulesLevel)) return false;
 
