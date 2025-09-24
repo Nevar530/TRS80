@@ -178,6 +178,60 @@ function ensureBV(mech){
   return mech;
 }
 
+function renderWeaponsTab(){
+  const host = document.getElementById('weapons-list');
+  if (!host) return;
+
+  const list = Array.isArray(state.weaponsDb) ? state.weaponsDb.slice() : [];
+  if (!list.length) { host.innerHTML = '<div class="dim small">No weapons loaded.</div>'; return; }
+
+  // Group by type, then sort by damage (desc), then name
+  const groups = new Map();
+  for (const w of list) {
+    const t = w.type || 'Other';
+    if (!groups.has(t)) groups.set(t, []);
+    groups.get(t).push(w);
+  }
+  const typeOrder = Array.from(groups.keys()).sort((a,b)=> a.localeCompare(b));
+
+  let html = '';
+  for (const t of typeOrder) {
+    const rows = groups.get(t)
+      .slice()
+      .sort((a,b) => (Number(b.damage)||0) - (Number(a.damage)||0) || String(a.name).localeCompare(b.name))
+      .map(w => {
+        const r = w.range || {};
+        return `<tr>
+          <td class="mono">${esc(w.name||w.id||'—')}</td>
+          <td class="mono" style="text-align:right;">${w.damage ?? '—'}</td>
+          <td class="mono" style="text-align:right;">${w.heat ?? '—'}</td>
+          <td class="mono">${esc(w.ammo ?? '—')}</td>
+          <td class="mono" style="text-align:right;">${r.short ?? '—'}</td>
+          <td class="mono" style="text-align:right;">${r.medium ?? '—'}</td>
+          <td class="mono" style="text-align:right;">${r.long ?? '—'}</td>
+        </tr>`;
+      }).join('');
+
+    html += `
+      <h3 style="margin:12px 0 6px;">${esc(t)}</h3>
+      <table class="weapons-mini" style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Name</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Dmg</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ht</th>
+            <th style="text-align:left;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ammo</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">S</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">M</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">L</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  host.innerHTML = html;
+}
 
   
 // ---- Internals by tonnage (Total Warfare) + filler ----
@@ -1160,6 +1214,7 @@ sumOther(); recompute();
 function init(){
 loadWeaponsDb().then(()=>{
   renderOverviewWeaponsMini(state.mech);
+  loadWeaponsDb();
   renderWeaponsTab(); // <-- make the first render
 });
   setHeat(0,0);
