@@ -226,32 +226,33 @@ function ensureInternals(mech){
       }
     }
 
-    const base = new URL('.', state.manifestUrl);
-    state.manifest = items
-      .filter(e => e && (e.path || e.url || e.file))
-      .map(e => {
-        const path = (e.path || e.url || e.file || '').replace(/\\/g, '/').trim();
-        const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
+const base = new URL('.', state.manifestUrl);
+state.manifest = items
+  .filter(e => e && (e.path || e.url || e.file))
+  .map(e => {
+    const path = (e.path || e.url || e.file || '').replace(/\\/g, '/').trim();
+    const abs  = /^https?:/i.test(path) ? path : new URL(path, base).href;
 
-        // normalize movement
-        const mv = e.movement ?? e.move ?? {};
-        const w  = Number(mv.walk ?? mv.w ?? 0) || 0;
-        const j  = Number(mv.jump ?? mv.j ?? 0) || 0;
+    // normalize movement
+    const mv = e.movement ?? e.move ?? {};
+    const w  = Number(mv.walk ?? mv.w ?? 0) || 0;
+    const j  = Number(mv.jump ?? mv.j ?? 0) || 0;
 
-        return {
-          id:      e.id || null,
-          name:    e.displayName || e.displayname || e.name || null,
-          variant: e.variant || null,
-          path,
-          url:     abs,
-          tons:    e.tons ?? e.tonnage ?? e.mass,
-          tech:    e.tech ?? e.techBase,
-          role:    e.role,
-          class:   e.class,
-          move:    { w, walk: w, j, jump: j }, // normalized movement
-          rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
-        };
-      });
+    return {
+      id:      e.id || null,
+      name:    e.displayName || e.displayname || e.name || null,
+      variant: e.variant || null,
+      path,
+      url:     abs,
+      tons:    e.tons ?? e.tonnage ?? e.mass,
+      tech:    e.tech ?? e.techBase,
+      role:    e.role,
+      source:  e.source || (Array.isArray(e.sources) ? e.sources.join(' • ') : null), // ← add this
+      class:   e.class,
+      move:    { w, walk: w, j, jump: j }, // normalized movement
+      rulesLevel: e.rules ?? e.rulesLevel ?? e.Rules ?? null
+    };
+  });
 
     // Refresh search index if search has mounted
     window._rebuildSearchIndex?.();
