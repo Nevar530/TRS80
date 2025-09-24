@@ -459,10 +459,21 @@
           <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any" />
         </div>
 
-        <div style="grid-column:1 / -1;">
-          <label class="dim">Role tokens (comma-separated)</label>
-          <input id="f-roles" class="gtr-sel" type="text" placeholder="e.g. brawler, sniper, skirmisher" />
-        </div>
+<div style="grid-column:1 / -1;">
+  <label class="dim">Role</label>
+  <div>
+    <label><input type="checkbox" class="f-role" data-role="missile boat"> Missile Boat</label>
+    <label><input type="checkbox" class="f-role" data-role="scout"> Scout</label>
+    <label><input type="checkbox" class="f-role" data-role="juggernaut"> Juggernaut</label>
+    <label><input type="checkbox" class="f-role" data-role="sniper"> Sniper</label>
+    <label><input type="checkbox" class="f-role" data-role="brawler"> Brawler</label>
+    <label><input type="checkbox" class="f-role" data-role="skirmisher"> Skirmisher</label>
+    <label><input type="checkbox" class="f-role" data-role="striker"> Striker</label>
+    <label><input type="checkbox" class="f-role" data-role="ambusher"> Ambusher</label>
+    <label><input type="checkbox" class="f-role" data-role="none"> None</label>
+  </div>
+</div>
+
       </div>
       <div class="dim small" style="margin-top:8px;">
         Filters apply to the search list. Use the search box to narrow further.
