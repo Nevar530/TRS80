@@ -420,124 +420,137 @@
       <h2 id="filter-title">Filter Mechs</h2>
       <button id="filter-close" class="icon-btn" aria-label="Close">✕</button>
     </header>
-    <div class="modal-c small">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div>
-          <label class="dim">Tech Base</label>
-          <select id="f-tech" class="gtr-sel">
-            <option value="">Any</option>
-            <option>Inner Sphere</option>
-            <option>Clan</option>
-          </select>
-        </div>
-<div>
-  <label class="dim">Rules Level</label>
-  <select id="f-rules" class="gtr-sel">
-    <option value="">Any</option>
-    <option value="1">Introductory (Level 1)</option>
-    <option value="2">Standard (Level 2)</option>
-    <option value="3">Advanced (Level 3)</option>
-    <option value="4">Experimental (Level 4)</option>
-  </select>
-</div>
-        <div>
-          <label class="dim">Weight Class</label>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <label class="chk"><input type="checkbox" id="f-class-L" /> Light</label>
-            <label class="chk"><input type="checkbox" id="f-class-M" /> Medium</label>
-            <label class="chk"><input type="checkbox" id="f-class-H" /> Heavy</label>
-            <label class="chk"><input type="checkbox" id="f-class-A" /> Assault</label>
-          </div>
-        </div>
+   <div class="modal-c small">
+  <!-- Layout grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
 
-        <div>
-          <label class="chk"><input type="checkbox" id="f-jump" /> Can Jump</label>
-        </div>
+    <!-- Tech / Rules -->
+    <fieldset style="margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Tech Base</legend>
+      <select id="f-tech" class="gtr-sel">
+        <option value="">Any</option>
+        <option>Inner Sphere</option>
+        <option>Clan</option>
+      </select>
+    </fieldset>
 
-        <div>
-          <label class="dim">Min Walk (MP)</label>
-          <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any" />
-        </div>
+    <fieldset style="margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Rules Level</legend>
+      <select id="f-rules" class="gtr-sel">
+        <option value="">Any</option>
+        <option value="1">Introductory (Level 1)</option>
+        <option value="2">Standard (Level 2)</option>
+        <option value="3">Advanced (Level 3)</option>
+        <option value="4">Experimental (Level 4)</option>
+      </select>
+    </fieldset>
 
-<div style="grid-column:1 / -1;">
-  <label class="dim">Role</label>
-  <div>
-    <label><input type="checkbox" class="f-role" data-role="missile boat"> Missile Boat</label>
-    <label><input type="checkbox" class="f-role" data-role="scout"> Scout</label>
-    <label><input type="checkbox" class="f-role" data-role="juggernaut"> Juggernaut</label>
-    <label><input type="checkbox" class="f-role" data-role="sniper"> Sniper</label>
-    <label><input type="checkbox" class="f-role" data-role="brawler"> Brawler</label>
-    <label><input type="checkbox" class="f-role" data-role="skirmisher"> Skirmisher</label>
-    <label><input type="checkbox" class="f-role" data-role="striker"> Striker</label>
-    <label><input type="checkbox" class="f-role" data-role="ambusher"> Ambusher</label>
-    <label><input type="checkbox" class="f-role" data-role="none"> None</label>
+    <!-- Weight / Jump -->
+    <fieldset style="margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Weight Class</legend>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <label class="chk"><input type="checkbox" id="f-class-L"> Light</label>
+        <label class="chk"><input type="checkbox" id="f-class-M"> Medium</label>
+        <label class="chk"><input type="checkbox" id="f-class-H"> Heavy</label>
+        <label class="chk"><input type="checkbox" id="f-class-A"> Assault</label>
+      </div>
+    </fieldset>
+
+    <fieldset style="margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Mobility</legend>
+      <label class="chk" style="display:inline-block;margin-right:12px;">
+        <input type="checkbox" id="f-jump"> Can Jump
+      </label>
+      <div style="margin-top:8px;">
+        <label class="dim" for="f-minwalk" style="display:block;margin-bottom:4px;">Min Walk (MP)</label>
+        <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
+      </div>
+    </fieldset>
+
+    <!-- Roles -->
+    <fieldset style="grid-column:1 / -1;margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Role</legend>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;">
+        <label><input type="checkbox" class="f-role" data-role="missile boat"> Missile Boat</label>
+        <label><input type="checkbox" class="f-role" data-role="scout"> Scout</label>
+        <label><input type="checkbox" class="f-role" data-role="juggernaut"> Juggernaut</label>
+        <label><input type="checkbox" class="f-role" data-role="sniper"> Sniper</label>
+        <label><input type="checkbox" class="f-role" data-role="brawler"> Brawler</label>
+        <label><input type="checkbox" class="f-role" data-role="skirmisher"> Skirmisher</label>
+        <label><input type="checkbox" class="f-role" data-role="striker"> Striker</label>
+        <label><input type="checkbox" class="f-role" data-role="ambusher"> Ambusher</label>
+        <label><input type="checkbox" class="f-role" data-role="none"> None</label>
+      </div>
+    </fieldset>
+
+    <!-- Source -->
+    <fieldset style="grid-column:1 / -1;margin:0;padding:0;border:0;">
+      <legend class="dim" style="margin-bottom:6px;">Source</legend>
+      <select id="f-source" class="gtr-sel">
+        <option value="">Any</option>
+
+        <optgroup label="Record Sheets">
+          <option>Record Sheets: 3067 Unabridged</option>
+          <option>Record Sheets: 3075</option>
+          <option>Record Sheets: 3085 Unabridged - Cutting Edge</option>
+          <option>Record Sheets: 3085 Unabridged - Old is the New New</option>
+          <option>Record Sheets: 3085 Unabridged - Project Phoenix</option>
+          <option>Record Sheets: 3085 Unabridged — Project Phoenix</option>
+          <option>Record Sheets: 3145 New Tech New Upgrades</option>
+          <option>Record Sheets: 3150</option>
+          <option>Record Sheets: Clan Invasion</option>
+        </optgroup>
+
+        <optgroup label="TRO / Rec Guide">
+          <option>TRO 3060</option>
+          <option>TRO: 3039</option>
+          <option>TRO: 3050</option>
+          <option>TRO: 3055</option>
+          <option>TRO: 3058</option>
+          <option>TRO: 3060</option>
+          <option>TRO: 3067</option>
+          <option>TRO: 3067U</option>
+          <option>TRO: 3075</option>
+          <option>TRO: 3085</option>
+          <option>TRO: 3085u</option>
+          <option>TRO: 3145</option>
+          <option>TRO: 3145 Capellan Confederation</option>
+          <option>TRO: 3145 Draconis Combine</option>
+          <option>TRO: 3145 Federated Suns</option>
+          <option>TRO: 3145 Free Worlds League</option>
+          <option>TRO: 3145 Lyran Commonwealth</option>
+          <option>TRO: 3145 Mercenaries</option>
+          <option>TRO: 3145 NTNU</option>
+          <option>TRO: 3145 Republic of the Sphere</option>
+          <option>TRO: 3145 The Clans</option>
+          <option>TRO: 3150</option>
+          <option>TRO: Clan Invasion</option>
+          <option>TRO: Dark Age</option>
+          <option>TRO: Jihad</option>
+          <option>TRO: Project Phoenix</option>
+          <option>TRO: Succession Wars</option>
+          <option>Rec Guide:ilClan #3</option>
+        </optgroup>
+
+        <optgroup label="Starterbooks & Misc">
+          <option>Starterbook: Sword and Dragon</option>
+          <option>Starterbook: Wolf & Blake</option>
+          <option>BattleTech Dossiers: The Bounty Hunter</option>
+          <option>Mercenaries Supplemental II</option>
+          <option>Rhonda's Irregulars</option>
+          <option>Unbound</option>
+          <option>XTR: Primitives I</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
+  </div>
+
+  <div class="dim small" style="margin-top:10px;">
+    Filters apply to the search list. Use the search box to narrow further.
   </div>
 </div>
 
-<div style="grid-column:1 / -1;">
-  <label class="dim">Source</label>
-  <select id="f-source" class="gtr-sel">
-    <option value="">Any</option>
-    <option>BattleTech Dossiers: The Bounty Hunter</option>
-    <option>Mercenaries Supplemental II</option>
-    <option>Rec Guide:ilClan #3</option>
-    <option>Record Sheets: 3067 Unabridged</option>
-    <option>Record Sheets: 3075</option>
-    <option>Record Sheets: 3085 Unabridged - Cutting Edge</option>
-    <option>Record Sheets: 3085 Unabridged - Old is the New New</option>
-    <option>Record Sheets: 3085 Unabridged - Project Phoenix</option>
-    <option>Record Sheets: 3085 Unabridged — Project Phoenix</option>
-    <option>Record Sheets: 3145 New Tech New Upgrades</option>
-    <option>Record Sheets: 3150</option>
-    <option>Record Sheets: Clan Invasion</option>
-    <option>Record Sheets: Record Sheets: 3067 Unabridged</option>
-    <option>Rhonda's Irregulars</option>
-    <option>Starterbook: Sword and Dragon</option>
-    <option>Starterbook: Wolf & Blake</option>
-    <option>TRO 3060</option>
-    <option>TRO: 3039</option>
-    <option>TRO: 3050</option>
-    <option>TRO: 3055</option>
-    <option>TRO: 3058</option>
-    <option>TRO: 3060</option>
-    <option>TRO: 3067</option>
-    <option>TRO: 3067U</option>
-    <option>TRO: 3075</option>
-    <option>TRO: 3085</option>
-    <option>TRO: 3085u</option>
-    <option>TRO: 3145</option>
-    <option>TRO: 3145 Capellan Confederation</option>
-    <option>TRO: 3145 Draconis Combine</option>
-    <option>TRO: 3145 Federated Suns</option>
-    <option>TRO: 3145 Free Worlds League</option>
-    <option>TRO: 3145 Lyran Commonwealth</option>
-    <option>TRO: 3145 Mercenaries</option>
-    <option>TRO: 3145 NTNU</option>
-    <option>TRO: 3145 Republic of the Sphere</option>
-    <option>TRO: 3145 The Clans</option>
-    <option>TRO: 3150</option>
-    <option>TRO: Clan Invasion</option>
-    <option>TRO: Dark Age</option>
-    <option>TRO: Jihad</option>
-    <option>TRO: Project Phoenix</option>
-    <option>TRO: Succession Wars</option>
-    <option>Unbound</option>
-    <option>XTR: Primitives I</option>
-  </select>
-</div>
-
-        
-      </div>
-      <div class="dim small" style="margin-top:8px;">
-        Filters apply to the search list. Use the search box to narrow further.
-      </div>
-    </div>
-    <footer class="modal-f" style="display:flex;gap:8px;justify-content:flex-end;">
-      <button id="filter-clear" class="btn ghost sm">Clear</button>
-      <button id="filter-apply" class="btn sm">Apply</button>
-    </footer>
-  </div>
-</div>
 
   <!-- Toast (used by script.js) -->
   <div id="toast" class="toast" hidden></div>
