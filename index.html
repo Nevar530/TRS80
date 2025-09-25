@@ -42,6 +42,22 @@
     </header>
 
     <main class="layout">
+
+<!-- Sidebar (constant mech list) -->
+<aside class="col-left" id="mech-sidebar" aria-label="Mech List">
+  <div class="panel">
+    <div class="panel-h" style="gap:8px;">
+      <input id="side-search" type="search" placeholder="Search mechs…" autocomplete="off" spellcheck="false" />
+      <button id="btn-side-filter" class="btn sm ghost" title="Open filters">Filter</button>
+    </div>
+    <div class="panel-c">
+      <!-- scrollable list -->
+      <div id="mech-list" role="listbox" aria-label="Mechs" tabindex="0"></div>
+    </div>
+  </div>
+</aside>
+
+      
       <section class="col-right">
 
         <!-- Swappable header card (Overview ↔ Tech Readout ↔ GATOR) -->
