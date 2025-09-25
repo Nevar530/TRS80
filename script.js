@@ -474,18 +474,20 @@ function updateOverview() {
  *  OVERVIEW — WEAPONS MINI TABLE
  * --------------------------------------- */
 function renderOverviewWeaponsMini(mech) {
-  const wrap = document.getElementById('overview-weapons-mini');
-  if (!wrap) return;
-  if (!mech) {
-    wrap.innerHTML = `<div class="dim small">No mech loaded</div>`;
-    return;
+  const host = document.getElementById('ov-weps');
+  if (!host) return;
+
+  // ensure a sibling container just under the "Key Weapons" line
+  let wrap = document.getElementById('ov-weps-mini');
+  if (!wrap) {
+    wrap = document.createElement('div');
+    wrap.id = 'ov-weps-mini';
+    wrap.className = 'weapon-block';
+    host.insertAdjacentElement('afterend', wrap);
   }
 
-  const list = Array.isArray(mech.weapons) ? mech.weapons : [];
-  if (!list.length) {
-    wrap.innerHTML = `<div class="dim small">No weapons listed</div>`;
-    return;
-  }
+  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
+  if (!list.length) { wrap.innerHTML = ''; return; }
 
   const rows = list.map(w => {
     const ref = getWeaponRefByName(w.name);
@@ -502,7 +504,6 @@ function renderOverviewWeaponsMini(mech) {
         <td class="dim">—</td>  <!-- L   -->
       </tr>`;
     }
-
     const r = ref.range || {};
     return `<tr>
       <td>${esc(ref.name || w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
@@ -535,6 +536,7 @@ function renderOverviewWeaponsMini(mech) {
       <tbody>${rows}</tbody>
     </table>`;
 }
+
 
 
 /* -----------------------------------------
