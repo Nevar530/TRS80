@@ -5,63 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TRS:80//Technical Readout System:80</title>
   <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="./style.css?v=5">
+  <link rel="stylesheet" href="./style.css?v=6">
 </head>
 <body>
   <noscript><div class="noscript">This module requires JavaScript enabled.</div></noscript>
 
   <div class="app">
-
-<!-- In .ui-topbar (left side is a good spot) -->
-<div class="topbar-left">
-  <button id="btn-side-toggle" class="icon-btn" aria-label="Open mech list" aria-expanded="false" aria-controls="mech-sidebar" style="margin-right:6px;">☰</button>
-  <div class="brand">
-    <span class="glyph" aria-hidden="true">✚</span>
-    <span class="brand-text">[TRS:80]</span>
-  </div>
-</div>
+    <!-- Topbar -->
+    <header class="ui-topbar" role="banner">
+      <div class="topbar-left">
+        <button id="btn-side-toggle" class="icon-btn" aria-label="Open mech list" aria-expanded="false" aria-controls="mech-sidebar" style="margin-right:6px;">☰</button>
+        <div class="brand">
+          <span class="glyph" aria-hidden="true">✚</span>
+          <span class="brand-text">[TRS:80]</span>
+        </div>
+      </div>
 
       <div class="topbar-right actions actions--top">
-        <button id="btn-load-mech"   class="btn"       title="Load a mech JSON">Load</button>
-<button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder" aria-label="Filter">
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;">
-    <path d="M3 4h18l-7 8v6l-4 2v-8z"/>
-  </svg>
-</button>
-<button id="btn-import" class="btn icon ghost" title="Import session JSON" aria-label="Import">⬇</button>
-<button id="btn-export" class="btn icon ghost" title="Export session JSON" aria-label="Export">⬆</button>
+        <button id="btn-load-mech" class="btn" title="Load a mech JSON">Load</button>
 
-<div class="divider"></div>
+        <button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder" aria-label="Filter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px">
+            <path d="M3 4h18l-7 8v6l-4 2v-8z"/>
+          </svg>
+          Builder
+        </button>
 
-<button id="btn-load-manifest" class="btn icon" title="Fetch manifest.json">📄</button>
+        <button id="btn-import" class="btn icon ghost" title="Import session JSON" aria-label="Import">⬇</button>
+        <button id="btn-export" class="btn icon ghost" title="Export session JSON" aria-label="Export">⬆</button>
 
-<!-- ▼ Search mounts here (JS inserts input next to this button) -->
+        <div class="divider" aria-hidden="true"></div>
 
-<button id="btn-settings" class="btn icon ghost" title="Settings (About & Attribution)">⚙</button>
+        <button id="btn-load-manifest" class="btn icon" title="Fetch manifest.json" aria-label="Load Manifest">📄</button>
 
+        <!-- Search mounts here (JS inserts input next to this button) -->
+
+        <button id="btn-settings" class="btn icon ghost" title="Settings (About & Attribution)" aria-label="Settings">⚙</button>
       </div>
     </header>
 
+    <!-- App layout -->
     <main class="layout">
+      <!-- Sidebar (constant mech list) -->
+      <aside class="col-left" id="mech-sidebar" aria-label="Mech List">
+        <div class="panel">
+          <div class="panel-h" style="gap:8px;">
+            <input id="side-search" type="search" placeholder="Search mechs…" autocomplete="off" spellcheck="false" />
+            <button id="btn-side-filter" class="btn sm ghost" title="Open filters">Filter</button>
+          </div>
+          <div class="panel-c">
+            <div id="mech-list" role="listbox" aria-label="Mechs" tabindex="0"></div>
+          </div>
+        </div>
+      </aside>
+      <!-- Scrim for mobile drawer -->
+      <div id="sidebar-scrim" hidden></div>
 
-<!-- Sidebar (constant mech list) -->
-<aside class="col-left" id="mech-sidebar" aria-label="Mech List">
-  <div class="panel">
-    <div class="panel-h" style="gap:8px;">
-      <input id="side-search" type="search" placeholder="Search mechs…" autocomplete="off" spellcheck="false" />
-      <button id="btn-side-filter" class="btn sm ghost" title="Open filters">Filter</button>
-    </div>
-    <div class="panel-c">
-      <!-- scrollable list -->
-      <div id="mech-list" role="listbox" aria-label="Mechs" tabindex="0"></div>
-    </div>
-  </div>
-</aside>
-<!-- Scrim for mobile drawer -->
-<div id="sidebar-scrim" hidden></div>
-      
+      <!-- Main column -->
       <section class="col-right">
-
         <!-- Swappable header card (Overview ↔ Tech Readout ↔ GATOR) -->
         <div class="card" id="top-swapper">
           <div class="card-h">
@@ -70,7 +71,7 @@
               <button class="tab is-active" role="tab" aria-selected="true"  data-swap="pane-overview">Overview</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-techreadout">Tech Readout</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-gator">GATOR</button>
-              <button class="tab" role="tab" aria-selected="false" data-swap="tab-weapons">Weapons</button>
+              <button class="tab"           role="tab" aria-selected="false" data-swap="tab-weapons">Weapons</button>
             </div>
           </div>
 
@@ -122,296 +123,285 @@
               </div>
             </section>
 
-            <!-- TECH READOUT (pure HTML – JS just fills the spans) -->
+            <!-- TECH READOUT -->
             <section id="pane-techreadout" class="swap-pane" role="tabpanel" aria-labelledby="Tech Readout">
-             <!-- Tech Readout with sub-tabs -->
-<div id="tech-compact" class="tr-compact">
+              <div id="tech-compact" class="tr-compact">
+                <div class="gtr-subtabs" role="tablist" aria-label="Tech Readout sections">
+                  <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-tr-tab="tr-pane-C">Chassis &amp; Systems</button>
+                  <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-AI">Armor &amp; Internals</button>
+                  <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-EQ">Equipment</button>
+                  <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-LORE">Lore &amp; History</button>
+                </div>
 
-  <!-- Sub-tabs (reuse GATOR tab styles: .gtr-subtabs / .gtr-subtab / .gtr-pane) -->
-  <div class="gtr-subtabs" role="tablist" aria-label="Tech Readout sections">
-    <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-tr-tab="tr-pane-C">Chassis &amp; Systems</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-AI">Armor &amp; Internals</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-EQ">Equipment</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-tr-tab="tr-pane-LORE">Lore &amp; History</button>
-  </div>
+                <!-- Chassis & Systems -->
+                <section id="tr-pane-C" class="gtr-pane is-active" role="tabpanel" aria-labelledby="Chassis & Systems">
+                  <div class="tro-grid">
+                    <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
+                    <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
+                    <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
+                    <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
+                    <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
+                    <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
+                    <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
+                    <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
+                    <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
+                    <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
+                    <div><strong>Config</strong><br><span id="tr-config">—</span></div>
+                    <div><strong>Role</strong><br><span id="tr-role">—</span></div>
+                    <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
+                    <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
+                  </div>
 
-  <!-- Chassis & Systems -->
-  <section id="tr-pane-C" class="gtr-pane is-active" role="tabpanel" aria-labelledby="Chassis & Systems">
-    <div class="tro-grid">
-      <div><strong>Chassis</strong><br><span id="tr-name">—</span> <span class="dim">(<span id="tr-model">—</span>)</span></div>
-      <div><strong>Tonnage</strong><br><span id="tr-tons">—</span></div>
-      <div><strong>Tech Base</strong><br><span id="tr-tech">—</span></div>
-      <div><strong>Rules Level</strong><br><span id="tr-rules">—</span></div>
-      <div><strong>Engine</strong><br><span id="tr-engine">—</span></div>
-      <div><strong>Heat Sinks</strong><br><span id="tr-hs">—</span></div>
-      <div><strong>Movement</strong><br><span id="tr-move">—</span></div>
-      <div><strong>Structure</strong><br><span id="tr-structure">—</span></div>
-      <div><strong>Cockpit</strong><br><span id="tr-cockpit">—</span></div>
-      <div><strong>Gyro</strong><br><span id="tr-gyro">—</span></div>
-      <div><strong>Config</strong><br><span id="tr-config">—</span></div>
-      <div><strong>Role</strong><br><span id="tr-role">—</span></div>
-      <div><strong>Myomer</strong><br><span id="tr-myomer">—</span></div>
-      <div><strong>Armor System</strong><br><span id="tr-armor-sys">—</span></div>
-    </div>
+                  <hr class="modal-divider">
 
-    <hr class="modal-divider">
+                  <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
 
-    <div><strong>Weapons</strong><div class="mt6" id="tr-weapons">—</div></div>
+                  <hr class="modal-divider">
 
-    <hr class="modal-divider">
+                  <div class="tro-grid">
+                    <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
+                    <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
+                    <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
+                    <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
+                  </div>
 
-    <div class="tro-grid">
-      <div><strong>Battle Value (BV)</strong><br><span id="tr-bv">—</span></div>
-      <div><strong>Cost</strong><br><span id="tr-cost">—</span></div>
-      <div><strong>Era / Year</strong><br><span id="tr-era">—</span></div>
-      <div><strong>Sources</strong><br><span id="tr-sources">—</span></div>
-    </div>
+                  <div id="tr-mfr-wrap" hidden>
+                    <hr class="modal-divider">
+                    <div class="tro-grid">
+                      <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
+                      <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
+                      <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
+                    </div>
+                  </div>
 
-    <div id="tr-mfr-wrap" hidden>
-      <hr class="modal-divider">
-      <div class="tro-grid">
-        <div><strong>Manufacturers</strong><br><span id="tr-mfrs">—</span></div>
-        <div><strong>Primary Factories</strong><br><span id="tr-factories">—</span></div>
-        <div style="grid-column:1/-1;"><strong>Systems</strong><br><span id="tr-systems">—</span></div>
-      </div>
-    </div>
+                  <div id="tr-license-wrap" class="small dim" hidden>
+                    <hr class="modal-divider">
+                    <div id="tr-origin"></div>
+                    <div id="tr-license"></div>
+                    <div id="tr-copyright"></div>
+                  </div>
+                </section>
 
-    <div id="tr-license-wrap" class="small dim" hidden>
-      <hr class="modal-divider">
-      <div id="tr-origin"></div>
-      <div id="tr-license"></div>
-      <div id="tr-copyright"></div>
-    </div>
-  </section>
+                <!-- Armor & Internals -->
+                <section id="tr-pane-AI" class="gtr-pane" role="tabpanel" aria-labelledby="Armor & Internals">
+                  <div>
+                    <strong>Armor &amp; Internals by Location</strong>
+                    <table class="small mono fullw">
+                      <thead>
+                        <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Head [2|12]</td>      <td id="ar-HD">—</td>  <td>—</td>            <td id="in-HD">—</td></tr>
+                        <tr><td>Center Torso [7]</td> <td id="ar-CT">—</td>  <td id="ar-RTC">—</td><td id="in-CT">—</td></tr>
+                        <tr><td>Right Torso [6]</td>  <td id="ar-RT">—</td>  <td id="ar-RTR">—</td><td id="in-RT">—</td></tr>
+                        <tr><td>Left Torso [8]</td>   <td id="ar-LT">—</td>  <td id="ar-RTL">—</td><td id="in-LT">—</td></tr>
+                        <tr><td>Right Arm [3|4]</td>  <td id="ar-RA">—</td>  <td>—</td>            <td id="in-RA">—</td></tr>
+                        <tr><td>Left Arm [10|11]</td> <td id="ar-LA">—</td>  <td>—</td>            <td id="in-LA">—</td></tr>
+                        <tr><td>Right Leg [5]</td>    <td id="ar-RL">—</td>  <td>—</td>            <td id="in-RL">—</td></tr>
+                        <tr><td>Left Leg [9]</td>     <td id="ar-LL">—</td>  <td>—</td>            <td id="in-LL">—</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-  <!-- Armor & Internals -->
-  <section id="tr-pane-AI" class="gtr-pane" role="tabpanel" aria-labelledby="Armor & Internals">
-    <div>
-      <strong>Armor &amp; Internals by Location</strong>
-      <table class="small mono fullw">
-        <thead>
-          <tr><th>Location</th><th>Armor</th><th>Rear</th><th>Internal</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Head [2|12]</td>          <td id="ar-HD">—</td>  <td>—</td>             <td id="in-HD">—</td></tr>
-          <tr><td>Center Torso [7]</td>  <td id="ar-CT">—</td>  <td id="ar-RTC">—</td> <td id="in-CT">—</td></tr>
-          <tr><td>Right Torso [6]</td>   <td id="ar-RT">—</td>  <td id="ar-RTR">—</td> <td id="in-RT">—</td></tr>
-          <tr><td>Left Torso [8]</td>    <td id="ar-LT">—</td>  <td id="ar-RTL">—</td> <td id="in-LT">—</td></tr>
-          <tr><td>Right Arm [3|4]</td>     <td id="ar-RA">—</td>  <td>—</td>             <td id="in-RA">—</td></tr>
-          <tr><td>Left Arm [10|11]</td>      <td id="ar-LA">—</td>  <td>—</td>             <td id="in-LA">—</td></tr>
-          <tr><td>Right Leg [5]</td>     <td id="ar-RL">—</td>  <td>—</td>             <td id="in-RL">—</td></tr>
-          <tr><td>Left Leg [9]</td>      <td id="ar-LL">—</td>  <td>—</td>             <td id="in-LL">—</td></tr>
-        </tbody>
-      </table>
-    </div>
+                  <hr class="modal-divider">
+                </section>
 
-    <hr class="modal-divider">
-  </section>
+                <!-- Equipment -->
+                <section id="tr-pane-EQ" class="gtr-pane" role="tabpanel" aria-labelledby="Equipment">
+                  <div id="loc-equip-wrap" hidden>
+                    <strong>Equipment by Location</strong>
+                    <table class="small mono fullw">
+                      <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
+                      <tbody id="loc-equip-body"></tbody>
+                    </table>
+                  </div>
+                  <div id="tr-equipment" hidden></div>
+                  <div id="tr-ammo" hidden></div>
+                </section>
 
-  <!-- Equipment -->
-  <section id="tr-pane-EQ" class="gtr-pane" role="tabpanel" aria-labelledby="Equipment">
-    <div id="loc-equip-wrap" hidden>
-      <strong>Equipment by Location</strong>
-      <table class="small mono fullw">
-        <thead><tr><th style="width:160px;">Location</th><th>Items</th></tr></thead>
-        <tbody id="loc-equip-body"></tbody>
-      </table>
-    </div>
-    <div id="tr-equipment" hidden></div>
-     <div id="tr-ammo" hidden></div>
-  </section>
-
-  <!-- Lore & History -->
-  <section id="tr-pane-LORE" class="gtr-pane" role="tabpanel" aria-labelledby="Lore & History">
-    <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
-    <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
-    <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
-    <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
-  </section>
-</div>
+                <!-- Lore -->
+                <section id="tr-pane-LORE" class="gtr-pane" role="tabpanel" aria-labelledby="Lore & History">
+                  <div id="tr-overview-wrap"     hidden><strong>Overview</strong><div class="mt6" id="tr-overview"></div></div>
+                  <div id="tr-capabilities-wrap" hidden><strong>Capabilities</strong><div class="mt6" id="tr-capabilities"></div></div>
+                  <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
+                  <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
+                </section>
+              </div>
             </section>
 
-            <!-- GATOR (COMPACT) -->
+            <!-- GATOR -->
             <section id="pane-gator" class="swap-pane" role="tabpanel" aria-labelledby="GATOR">
               <div class="card" id="gator-card">
                 <div class="card-h">
                   <div class="card-title">G.A.T.O.R. (Target Number)</div>
                 </div>
                 <div class="card-c">
-                 <div id="gator-compact" class="gtr-compact">
+                  <div id="gator-compact" class="gtr-compact">
+                    <div class="gtr-subtabs" role="tablist" aria-label="GATOR sections">
+                      <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-gtr-tab="gtr-pane-G">G</button>
+                      <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-A">A</button>
+                      <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-T">T</button>
+                      <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-O">O</button>
+                      <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-R">R</button>
+                      <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-D">Dice/TN</button>
+                    </div>
 
-  <!-- Sub-tabs -->
-  <div class="gtr-subtabs" role="tablist" aria-label="GATOR sections">
-    <button class="gtr-subtab is-active" role="tab" aria-selected="true"  data-gtr-tab="gtr-pane-G">G</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-A">A</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-T">T</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-O">O</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-R">R</button>
-    <button class="gtr-subtab"           role="tab" aria-selected="false" data-gtr-tab="gtr-pane-D">Dice/TN</button>
-  </div>
+                    <!-- G -->
+                    <section id="gtr-pane-G" class="gtr-pane is-active" role="tabpanel" aria-labelledby="G">
+                      <div class="gtr-col">
+                        <div class="gtr-title"><span class="dot dot-att"></span> Gunnery</div>
+                        <label class="gtr-lab">Gunnery</label>
+                        <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery [Ultra Elite 1 <-> 6 Ultra Green]">
+                          <option value="1">1-Ultra Elite</option><option value="2">2-Elite</option><option value="3">3-Veteran</option>
+                          <option value="4" selected>4-Recruit</option><option value="5">5-Green</option><option value="6">6-Ultra Green</option>
+                        </select>
+                      </div>
+                    </section>
 
-  <!-- G -->
-  <section id="gtr-pane-G" class="gtr-pane is-active" role="tabpanel" aria-labelledby="G">
-    <div class="gtr-col">
-      <div class="gtr-title"><span class="dot dot-att"></span> Gunnery</div>
-      <label class="gtr-lab">Gunnery</label>
-      <select class="gtr-sel" id="gtr-gunnery-sel" aria-label="Gunnery [Ultra Elite 1 <-> 6 Ultra Green]">
-        <option value="1">1-Ultra Elite</option><option value="2">2-Elite</option><option value="3">3-Veteran</option>
-        <option value="4" selected>4-Recruit</option><option value="5">5-Green</option><option value="6">6-Ultra Green</option>
-      </select>
-    </div>
-  </section>
+                    <!-- A -->
+                    <section id="gtr-pane-A" class="gtr-pane" role="tabpanel" aria-labelledby="A">
+                      <div class="gtr-col">
+                        <div class="gtr-title"><span class="dot dot-att"></span> Attacker Movement</div>
+                        <label class="gtr-lab">Movement</label>
+                        <select class="gtr-sel" id="gtr-attacker-sel" aria-label="Attacker movement">
+                          <option value="0">Stationary (+0)</option>
+                          <option value="1">Walk (+1)</option>
+                          <option value="2">Run (+2)</option>
+                          <option value="3">Jump (+3)</option>
+                          <option value="2">Prone (+2)</option>
+                        </select>
+                      </div>
+                    </section>
 
-  <!-- A -->
-  <section id="gtr-pane-A" class="gtr-pane" role="tabpanel" aria-labelledby="A">
-    <div class="gtr-col">
-      <div class="gtr-title"><span class="dot dot-att"></span> Attacker Movement</div>
-      <label class="gtr-lab">Movement</label>
-      <select class="gtr-sel" id="gtr-attacker-sel" aria-label="Attacker movement">
-        <option value="0">Stationary (+0)</option>
-        <option value="1">Walk (+1)</option>
-        <option value="2">Run (+2)</option>
-        <option value="3">Jump (+3)</option>
-        <option value="2">Prone (+2)</option>
-      </select>
-    </div>
-  </section>
+                    <!-- T -->
+                    <section id="gtr-pane-T" class="gtr-pane" role="tabpanel" aria-labelledby="T">
+                      <div class="gtr-col">
+                        <div class="gtr-title"><span class="dot dot-tgt"></span> Target Movement</div>
 
-  <!-- T -->
-  <section id="gtr-pane-T" class="gtr-pane" role="tabpanel" aria-labelledby="T">
-    <div class="gtr-col">
-      <div class="gtr-title"><span class="dot dot-tgt"></span> Target Movement</div>
+                        <label class="gtr-lab">Move Mods (MP spent)</label>
+                        <select class="gtr-sel" id="gtr-target-band" aria-label="Target movement band">
+                          <option value="0">0–2 (0)</option>
+                          <option value="1">3–4 (+1)</option>
+                          <option value="2">5–6 (+2)</option>
+                          <option value="3">7–9 (+3)</option>
+                          <option value="4">10–17 (+4)</option>
+                          <option value="5">18–24 (+5)</option>
+                          <option value="6">25+ (+6)</option>
+                        </select>
 
-      <label class="gtr-lab">Move Mods (MP spent)</label>
-      <select class="gtr-sel" id="gtr-target-band" aria-label="Target movement band">
-        <option value="0">0–2 (0)</option>
-        <option value="1">3–4 (+1)</option>
-        <option value="2">5–6 (+2)</option>
-        <option value="3">7–9 (+3)</option>
-        <option value="4">10–17 (+4)</option>
-        <option value="5">18–24 (+5)</option>
-        <option value="6">25+ (+6)</option>
-      </select>
+                        <div class="gtr-toggles" style="margin-top:6px;">
+                          <label class="chk"><input type="checkbox" id="gtr-tgt-jump"> +Jump</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-none" checked> normal</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-padj"> prone (adj) = -2</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-prone"> prone = +1</label>
+                          <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-imm"> immobile = -4</label>
+                        </div>
+                      </div>
+                    </section>
 
-      <div class="gtr-toggles" style="margin-top:6px;">
-        <label class="chk"><input type="checkbox" id="gtr-tgt-jump"> +Jump</label>
-        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-none" checked> normal</label>
-        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-padj"> prone (adj) = -2</label>
-        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-prone"> prone = +1</label>
-        <label class="chk"><input type="radio" name="tgt-posture" id="gtr-tgt-imm"> immobile = -4</label>
-      </div>
-    </div>
-  </section>
+                    <!-- O -->
+                    <section id="gtr-pane-O" class="gtr-pane" role="tabpanel" aria-labelledby="O">
+                      <div class="gtr-col">
+                        <div class="gtr-title">Other Modifiers</div>
+                        <div class="gtr-groups">
+                          <select class="gtr-sel xs" id="gtr-wb" aria-label="Woods Between">
+                            <option value="0">Woods Between: —</option>
+                            <option value="1">Lv1 (+1)</option>
+                            <option value="2">Lv2 (+2)</option>
+                            <option value="2">Lv1×2 (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-wa" aria-label="Woods Among">
+                            <option value="0">Woods Among: —</option>
+                            <option value="1">Lv1 (+1)</option>
+                            <option value="2">Lv2 (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-ot" aria-label="Other Terrain">
+                            <option value="0">Other Terrain: —</option>
+                            <option value="1">Partial Cover (+1)</option>
+                            <option value="1">Water Lv1 (+1)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-st" aria-label="Second Target">
+                            <option value="0">2nd Target: —</option>
+                            <option value="1">Front Arc (+1)</option>
+                            <option value="2">Side/Rear (+2)</option>
+                          </select>
+                          <select class="gtr-sel xs" id="gtr-ht" aria-label="Heat">
+                            <option value="0">Heat: —</option>
+                            <option value="1">≤ 8 (+1)</option>
+                            <option value="2">≤ 13 (+2)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </section>
 
-  <!-- O -->
-  <section id="gtr-pane-O" class="gtr-pane" role="tabpanel" aria-labelledby="O">
-    <div class="gtr-col">
-      <div class="gtr-title">Other Modifiers</div>
-      <div class="gtr-groups">
-        <select class="gtr-sel xs" id="gtr-wb" aria-label="Woods Between">
-          <option value="0">Woods Between: —</option>
-          <option value="1">Lv1 (+1)</option>
-          <option value="2">Lv2 (+2)</option>
-          <option value="2">Lv1×2 (+2)</option>
-        </select>
-        <select class="gtr-sel xs" id="gtr-wa" aria-label="Woods Among">
-          <option value="0">Woods Among: —</option>
-          <option value="1">Lv1 (+1)</option>
-          <option value="2">Lv2 (+2)</option>
-        </select>
-        <select class="gtr-sel xs" id="gtr-ot" aria-label="Other Terrain">
-          <option value="0">Other Terrain: —</option>
-          <option value="1">Partial Cover (+1)</option>
-          <option value="1">Water Lv1 (+1)</option>
-        </select>
-        <select class="gtr-sel xs" id="gtr-st" aria-label="Second Target">
-          <option value="0">2nd Target: —</option>
-          <option value="1">Front Arc (+1)</option>
-          <option value="2">Side/Rear (+2)</option>
-        </select>
-        <select class="gtr-sel xs" id="gtr-ht" aria-label="Heat">
-          <option value="0">Heat: —</option>
-          <option value="1">≤ 8 (+1)</option>
-          <option value="2">≤ 13 (+2)</option>
-        </select>
-      </div>
-    </div>
-  </section>
+                    <!-- R -->
+                    <section id="gtr-pane-R" class="gtr-pane" role="tabpanel" aria-labelledby="R">
+                      <div class="gtr-col">
+                        <div class="gtr-title">Range</div>
+                        <div class="gtr-groups" id="gtr-range-wrap">
+                          <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
+                            <button data-val="0" class="is-active" title="Short (+0)">Short</button>
+                            <button data-val="2" title="Medium (+2)">Med</button>
+                            <button data-val="4" title="Long (+4)">Long</button>
+                          </div>
+                          <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
+                            <option value="eq">Minimum: Equal</option>
+                            <option value="-1">-1 (+2)</option>
+                            <option value="-2">-2 (+3)</option>
+                            <option value="-3">-3 (+4)</option>
+                            <option value="-4">-4 (+5)</option>
+                            <option value="-5">-5 (+6)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </section>
 
-  <!-- R -->
-  <section id="gtr-pane-R" class="gtr-pane" role="tabpanel" aria-labelledby="R">
-    <div class="gtr-col">
-      <div class="gtr-title">Range</div>
-      <div class="gtr-groups" id="gtr-range-wrap">
-        <div class="gtr-seg" id="gtr-range-seg" role="group" aria-label="Range">
-          <button data-val="0" class="is-active" title="Short (+0)">Short</button>
-          <button data-val="2" title="Medium (+2)">Med</button>
-          <button data-val="4" title="Long (+4)">Long</button>
-        </div>
-        <select class="gtr-sel xs" id="gtr-min" aria-label="Minimum">
-          <option value="eq">Minimum: Equal</option>
-          <option value="-1">-1 (+2)</option>
-          <option value="-2">-2 (+3)</option>
-          <option value="-3">-3 (+4)</option>
-          <option value="-4">-4 (+5)</option>
-          <option value="-5">-5 (+6)</option>
-        </select>
-      </div>
-    </div>
-  </section>
+                    <!-- Dice/TN -->
+                    <section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
+                      <div class="gtr-col">
+                        <div class="gtr-title">Dice & Target Number</div>
+                        <div class="gtr-roller" style="margin-bottom:8px;">
+                          <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
+                            <option>2d6</option>
+                            <option>1d6</option>
+                          </select>
+                          <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
+                          <span>=</span>
+                          <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
+                          <div id="roll-att-detail" class="small dim" style="margin-left:6px;"></div>
+                        </div>
 
-  <!-- Dice/TN -->
-<section id="gtr-pane-D" class="gtr-pane" role="tabpanel" aria-labelledby="Dice/TN">
-  <div class="gtr-col">
-    <div class="gtr-title">Dice & Target Number</div>
-    <div class="gtr-roller" style="margin-bottom:8px;">
-      <select class="gtr-sel tiny" id="roll-att-dice" aria-label="Attacker dice">
-        <option>2d6</option>
-        <option>1d6</option>
-      </select>
-      <input class="gtr-in tiny" id="roll-att-mod" type="number" value="0" aria-label="Attacker modifier">
-      <span>=</span>
-      <div class="result-badge" id="roll-att-res" aria-live="polite">—</div>
-      <!-- NEW: dice breakdown -->
-      <div id="roll-att-detail" class="small dim" style="margin-left:6px;"> </div>
-    </div>
+                        <div class="gtr-footer" style="padding-top:0; border-top:0;">
+                          <div class="gtr-tn">
+                            <div>Target Number</div>
+                            <div id="gtr-total" class="tn tn-auto">Auto</div>
+                          </div>
+                          <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">Roll</button>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-    <div class="gtr-footer" style="padding-top:0; border-top:0;">
-      <div class="gtr-tn">
-        <div>Target Number</div>
-        <div id="gtr-total" class="tn tn-auto">Auto</div>
-      </div>
-      <button class="ghost-btn" id="btn-roll-both" title="Roll both (R)">Roll</button>
-    </div>
-  </div>
-</section> <!-- closes gtr-pane-D (Dice/TN) -->
-
-</section> <!-- closes pane-gator -->                   
-  <!-- Weapons (sibling swap-pane) -->
-  <section id="tab-weapons" class="swap-pane" role="tabpanel" aria-labelledby="Weapons">
-    <div id="weapons-list" style="padding:10px;"></div>
-  </section>
-</div> <!-- end .card-c -->
-
-
+            <!-- Weapons -->
+            <section id="tab-weapons" class="swap-pane" role="tabpanel" aria-labelledby="Weapons">
+              <div id="weapons-list" style="padding:10px;"></div>
+            </section>
+          </div> <!-- /.card-c -->
+        </div>   <!-- /#top-swapper -->
+      </section> <!-- /.col-right -->
     </main>
 
-<!-- Slim in-app footer -->
-<footer class="app-footer" role="contentinfo" 
-        style="font-size:0.65em; line-height:1.2; color:#888; 
-               padding:2px 4px; border-top:1px solid #333; 
-               background:#111; text-align:center;">
- <span>
-    BattleTech & ’Mech © Topps / Catalyst • App code © 2025 MIT License • Data sourced from MegaMek (CC BY-NC-SA 4.0)
-  </span>
-  <button id="footer-about" class="linklike" 
-          style="background:none; border:0; color:#4af; 
-                 cursor:pointer; margin-left:6px; font-size:1em;">
-    About
-  </button>
-</footer>
-
-  </div>
+    <!-- Slim in-app footer -->
+    <footer class="app-footer" role="contentinfo">
+      <span>
+        BattleTech & ’Mech © Topps / Catalyst • App code © 2025 MIT License • Data sourced from MegaMek (CC BY-NC-SA 4.0)
+      </span>
+      <button id="footer-about" class="linklike">About</button>
+    </footer>
+  </div> <!-- /.app -->
 
   <!-- Settings / About Modal -->
   <div id="settings-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
@@ -445,166 +435,162 @@
     </div>
   </div>
 
-<!-- Filter / Find Mechs -->
-<div id="filter-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="filter-title" hidden>
-  <div class="modal-card" role="document">
-    <header class="modal-h">
-      <h2 id="filter-title">Filter Mechs</h2>
-      <button id="filter-close" class="icon-btn" aria-label="Close">✕</button>
-    </header>
+  <!-- Filter / Find Mechs -->
+  <div id="filter-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="filter-title" hidden>
+    <div class="modal-card" role="document">
+      <header class="modal-h">
+        <h2 id="filter-title">Filter Mechs</h2>
+        <button id="filter-close" class="icon-btn" aria-label="Close">✕</button>
+      </header>
 
-    <div class="modal-c small">
-      <!-- Layout grid -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+      <div class="modal-c small">
+        <div class="filter-grid">
+          <!-- Tech / Rules -->
+          <fieldset>
+            <legend class="dim">Tech Base</legend>
+            <select id="f-tech" class="gtr-sel">
+              <option value="">Any</option>
+              <option>Inner Sphere</option>
+              <option>Clan</option>
+            </select>
+          </fieldset>
 
-        <!-- Tech / Rules -->
-        <fieldset style="margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Tech Base</legend>
-          <select id="f-tech" class="gtr-sel">
-            <option value="">Any</option>
-            <option>Inner Sphere</option>
-            <option>Clan</option>
-          </select>
-        </fieldset>
+          <fieldset>
+            <legend class="dim">Rules Level</legend>
+            <select id="f-rules" class="gtr-sel">
+              <option value="">Any</option>
+              <option value="1">Introductory (Level 1)</option>
+              <option value="2">Standard (Level 2)</option>
+              <option value="3">Advanced (Level 3)</option>
+              <option value="4">Experimental (Level 4)</option>
+            </select>
+          </fieldset>
 
-        <fieldset style="margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Rules Level</legend>
-          <select id="f-rules" class="gtr-sel">
-            <option value="">Any</option>
-            <option value="1">Introductory (Level 1)</option>
-            <option value="2">Standard (Level 2)</option>
-            <option value="3">Advanced (Level 3)</option>
-            <option value="4">Experimental (Level 4)</option>
-          </select>
-        </fieldset>
+          <!-- Weight / Jump -->
+          <fieldset>
+            <legend class="dim">Weight Class</legend>
+            <div class="weight-choices">
+              <label class="chk"><input type="checkbox" id="f-class-L"> Light</label>
+              <label class="chk"><input type="checkbox" id="f-class-M"> Medium</label>
+              <label class="chk"><input type="checkbox" id="f-class-H"> Heavy</label>
+              <label class="chk"><input type="checkbox" id="f-class-A"> Assault</label>
+            </div>
+          </fieldset>
 
-        <!-- Weight / Jump -->
-        <fieldset style="margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Weight Class</legend>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <label class="chk"><input type="checkbox" id="f-class-L"> Light</label>
-            <label class="chk"><input type="checkbox" id="f-class-M"> Medium</label>
-            <label class="chk"><input type="checkbox" id="f-class-H"> Heavy</label>
-            <label class="chk"><input type="checkbox" id="f-class-A"> Assault</label>
-          </div>
-        </fieldset>
+          <fieldset>
+            <legend class="dim">Mobility</legend>
+            <label class="chk" style="display:inline-block;margin-right:12px;">
+              <input type="checkbox" id="f-jump"> Can Jump
+            </label>
+            <div style="margin-top:8px;">
+              <label class="dim" for="f-minwalk" style="display:block;margin-bottom:4px;">Min Walk (MP)</label>
+              <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
+            </div>
+          </fieldset>
 
-        <fieldset style="margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Mobility</legend>
-          <label class="chk" style="display:inline-block;margin-right:12px;">
-            <input type="checkbox" id="f-jump"> Can Jump
-          </label>
-          <div style="margin-top:8px;">
-            <label class="dim" for="f-minwalk" style="display:block;margin-bottom:4px;">Min Walk (MP)</label>
-            <input id="f-minwalk" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
-          </div>
-        </fieldset>
+          <!-- BV -->
+          <fieldset>
+            <legend class="dim">Battle Value (BV)</legend>
+            <div class="bv-range">
+              <div>
+                <label class="dim small" for="f-bv-min">Min</label>
+                <input id="f-bv-min" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
+              </div>
+              <div>
+                <label class="dim small" for="f-bv-max">Max</label>
+                <input id="f-bv-max" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
+              </div>
+            </div>
+          </fieldset>
 
-<fieldset style="margin:0;padding:0;border:0;">
-  <legend class="dim" style="margin-bottom:6px;">Battle Value (BV)</legend>
-  <div style="display:flex;gap:8px;align-items:end;">
-    <div>
-      <label class="dim small" for="f-bv-min">Min</label>
-      <input id="f-bv-min" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
-    </div>
-    <div>
-      <label class="dim small" for="f-bv-max">Max</label>
-      <input id="f-bv-max" class="gtr-in tiny" type="number" min="0" step="1" placeholder="Any">
-    </div>
-  </div>
-</fieldset>
+          <!-- Roles -->
+          <fieldset class="roles">
+            <legend class="dim">Role</legend>
+            <div class="role-grid">
+              <label><input type="checkbox" class="f-role" data-role="missile boat"> Missile Boat</label>
+              <label><input type="checkbox" class="f-role" data-role="scout"> Scout</label>
+              <label><input type="checkbox" class="f-role" data-role="juggernaut"> Juggernaut</label>
+              <label><input type="checkbox" class="f-role" data-role="sniper"> Sniper</label>
+              <label><input type="checkbox" class="f-role" data-role="brawler"> Brawler</label>
+              <label><input type="checkbox" class="f-role" data-role="skirmisher"> Skirmisher</label>
+              <label><input type="checkbox" class="f-role" data-role="striker"> Striker</label>
+              <label><input type="checkbox" class="f-role" data-role="ambusher"> Ambusher</label>
+              <label><input type="checkbox" class="f-role" data-role="none"> None</label>
+            </div>
+          </fieldset>
 
-        
-        <!-- Roles -->
-        <fieldset style="grid-column:1 / -1;margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Role</legend>
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;">
-            <label><input type="checkbox" class="f-role" data-role="missile boat"> Missile Boat</label>
-            <label><input type="checkbox" class="f-role" data-role="scout"> Scout</label>
-            <label><input type="checkbox" class="f-role" data-role="juggernaut"> Juggernaut</label>
-            <label><input type="checkbox" class="f-role" data-role="sniper"> Sniper</label>
-            <label><input type="checkbox" class="f-role" data-role="brawler"> Brawler</label>
-            <label><input type="checkbox" class="f-role" data-role="skirmisher"> Skirmisher</label>
-            <label><input type="checkbox" class="f-role" data-role="striker"> Striker</label>
-            <label><input type="checkbox" class="f-role" data-role="ambusher"> Ambusher</label>
-            <label><input type="checkbox" class="f-role" data-role="none"> None</label>
-          </div>
-        </fieldset>
+          <!-- Source -->
+          <fieldset class="source">
+            <legend class="dim">Source</legend>
+            <select id="f-source" class="gtr-sel">
+              <option value="">Any</option>
 
-        <!-- Source -->
-        <fieldset style="grid-column:1 / -1;margin:0;padding:0;border:0;">
-          <legend class="dim" style="margin-bottom:6px;">Source</legend>
-          <select id="f-source" class="gtr-sel">
-            <option value="">Any</option>
+              <optgroup label="Record Sheets">
+                <option>Record Sheets: 3067 Unabridged</option>
+                <option>Record Sheets: 3075</option>
+                <option>Record Sheets: 3085 Unabridged - Cutting Edge</option>
+                <option>Record Sheets: 3085 Unabridged - Old is the New New</option>
+                <option>Record Sheets: 3085 Unabridged - Project Phoenix</option>
+                <option>Record Sheets: 3085 Unabridged — Project Phoenix</option>
+                <option>Record Sheets: 3145 New Tech New Upgrades</option>
+                <option>Record Sheets: 3150</option>
+                <option>Record Sheets: Clan Invasion</option>
+              </optgroup>
 
-            <optgroup label="Record Sheets">
-              <option>Record Sheets: 3067 Unabridged</option>
-              <option>Record Sheets: 3075</option>
-              <option>Record Sheets: 3085 Unabridged - Cutting Edge</option>
-              <option>Record Sheets: 3085 Unabridged - Old is the New New</option>
-              <option>Record Sheets: 3085 Unabridged - Project Phoenix</option>
-              <option>Record Sheets: 3085 Unabridged — Project Phoenix</option>
-              <option>Record Sheets: 3145 New Tech New Upgrades</option>
-              <option>Record Sheets: 3150</option>
-              <option>Record Sheets: Clan Invasion</option>
-            </optgroup>
+              <optgroup label="TRO / Rec Guide">
+                <option>TRO: 3039</option>
+                <option>TRO: 3050</option>
+                <option>TRO: 3055</option>
+                <option>TRO: 3058</option>
+                <option>TRO: 3060</option>
+                <option>TRO: 3067</option>
+                <option>TRO: 3067U</option>
+                <option>TRO: 3075</option>
+                <option>TRO: 3085</option>
+                <option>TRO: 3085u</option>
+                <option>TRO: 3145</option>
+                <option>TRO: 3145 Capellan Confederation</option>
+                <option>TRO: 3145 Draconis Combine</option>
+                <option>TRO: 3145 Federated Suns</option>
+                <option>TRO: 3145 Free Worlds League</option>
+                <option>TRO: 3145 Lyran Commonwealth</option>
+                <option>TRO: 3145 Mercenaries</option>
+                <option>TRO: 3145 NTNU</option>
+                <option>TRO: 3145 Republic of the Sphere</option>
+                <option>TRO: 3145 The Clans</option>
+                <option>TRO: 3150</option>
+                <option>TRO: Clan Invasion</option>
+                <option>TRO: Dark Age</option>
+                <option>TRO: Jihad</option>
+                <option>TRO: Project Phoenix</option>
+                <option>TRO: Succession Wars</option>
+                <option>Rec Guide:ilClan #3</option>
+              </optgroup>
 
-            <optgroup label="TRO / Rec Guide">
-              <option>TRO: 3039</option>
-              <option>TRO: 3050</option>
-              <option>TRO: 3055</option>
-              <option>TRO: 3058</option>
-              <option>TRO: 3060</option>
-              <option>TRO: 3067</option>
-              <option>TRO: 3067U</option>
-              <option>TRO: 3075</option>
-              <option>TRO: 3085</option>
-              <option>TRO: 3085u</option>
-              <option>TRO: 3145</option>
-              <option>TRO: 3145 Capellan Confederation</option>
-              <option>TRO: 3145 Draconis Combine</option>
-              <option>TRO: 3145 Federated Suns</option>
-              <option>TRO: 3145 Free Worlds League</option>
-              <option>TRO: 3145 Lyran Commonwealth</option>
-              <option>TRO: 3145 Mercenaries</option>
-              <option>TRO: 3145 NTNU</option>
-              <option>TRO: 3145 Republic of the Sphere</option>
-              <option>TRO: 3145 The Clans</option>
-              <option>TRO: 3150</option>
-              <option>TRO: Clan Invasion</option>
-              <option>TRO: Dark Age</option>
-              <option>TRO: Jihad</option>
-              <option>TRO: Project Phoenix</option>
-              <option>TRO: Succession Wars</option>
-              <option>Rec Guide:ilClan #3</option>
-            </optgroup>
+              <optgroup label="Starterbooks & Misc">
+                <option>Starterbook: Sword and Dragon</option>
+                <option>Starterbook: Wolf & Blake</option>
+                <option>BattleTech Dossiers: The Bounty Hunter</option>
+                <option>Mercenaries Supplemental II</option>
+                <option>Rhonda's Irregulars</option>
+                <option>Unbound</option>
+                <option>XTR: Primitives I</option>
+              </optgroup>
+            </select>
+          </fieldset>
+        </div>
 
-            <optgroup label="Starterbooks & Misc">
-              <option>Starterbook: Sword and Dragon</option>
-              <option>Starterbook: Wolf & Blake</option>
-              <option>BattleTech Dossiers: The Bounty Hunter</option>
-              <option>Mercenaries Supplemental II</option>
-              <option>Rhonda's Irregulars</option>
-              <option>Unbound</option>
-              <option>XTR: Primitives I</option>
-            </optgroup>
-          </select>
-        </fieldset>
-
+        <div class="dim small" style="margin-top:10px;">
+          Filters apply to the search list. Use the search box to narrow further.
+        </div>
       </div>
 
-      <div class="dim small" style="margin-top:10px;">
-        Filters apply to the search list. Use the search box to narrow further.
-      </div>
+      <footer class="modal-f" style="display:flex;gap:8px;justify-content:flex-end;">
+        <button id="filter-clear" class="btn ghost sm">Clear</button>
+        <button id="filter-apply" class="btn sm">Apply</button>
+      </footer>
     </div>
-
-    <footer class="modal-f" style="display:flex;gap:8px;justify-content:flex-end;">
-      <button id="filter-clear" class="btn ghost sm">Clear</button>
-      <button id="filter-apply" class="btn sm">Apply</button>
-    </footer>
   </div>
-</div>
-
 
   <!-- Toast (used by script.js) -->
   <div id="toast" class="toast" hidden></div>
