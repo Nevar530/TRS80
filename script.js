@@ -19,7 +19,8 @@ const state = {
 
   /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
   let manifestFiltered = null;       // null = no filters; otherwise filtered array
-  let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
+ let filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:"", bvMin:null, bvMax:null };
+
 
 
   /* ---------- Helpers ---------- */
@@ -64,6 +65,20 @@ function allMechKeys(m) {
   if (tons != null && n && v) keys.push(`${n} ${v} ${tons}`);
   return Array.from(new Set(keys)).filter(Boolean);
 }
+
+  function keyForManifestItem(m){
+  const n = normKey(m?.name || '');
+  const v = normKey(m?.variant || '');
+  if (n && v) return `${n} ${v}`;
+  return n || v || null;
+}
+function bvForManifestItem(m){
+  const k = keyForManifestItem(m);
+  if (!k) return null;
+  const bv = state.bvMap.get(k);
+  return Number.isFinite(bv) ? bv : null;
+}
+
 
 // ---------- Weapons loader (replaces your old one 1:1) ----------
 async function loadWeaponsDb() {
@@ -846,6 +861,9 @@ async function loadMechFromUrl(url) {
   const fRoles      = document.getElementById('f-roles');
 const fRules      = document.getElementById('f-rules'); // NEW
   const fSource     = document.getElementById('f-source'); // NEW
+  const fBVMin    = document.getElementById('f-bv-min');
+const fBVMax    = document.getElementById('f-bv-max');
+
 
   function openFilterModal(){
     if (!fModal) return;
@@ -862,6 +880,9 @@ const fRules      = document.getElementById('f-rules'); // NEW
     if (fRoles) fRoles.value    = filterState.roles.join(', ');
     if (fRules) fRules.value = filterState.rulesLevel ?? "";
     if (fSource) fSource.value = filterState.source || "";
+    if (fBVMin) fBVMin.value = filterState.bvMin ?? "";
+if (fBVMax) fBVMax.value = filterState.bvMax ?? "";
+
   }
 
   function closeFilterModal(){
@@ -887,15 +908,18 @@ function applyFilters(){
   const roles = Array.from(document.querySelectorAll('.f-role:checked'))
     .map(cb => (cb.dataset.role || '').toLowerCase());
 
-  filterState = {
-    tech: fTech?.value || "",
-    classes,
-    canJump: !!fJump?.checked,
-    minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
-    roles, // <- use the local variable
-    rulesLevel: (fRules?.value || "") || null,
-    source: fSource?.value || "",   // NEW
-  };
+filterState = {
+  tech: fTech?.value || "",
+  classes,
+  canJump: !!fJump?.checked,
+  minWalk: !fMinWalk || fMinWalk.value === "" ? null : Number(fMinWalk.value),
+  roles,
+  rulesLevel: (fRules?.value || "") || null,
+  source: fSource?.value || "",
+  bvMin: fBVMin && fBVMin.value !== "" ? Number(fBVMin.value) : null,
+  bvMax: fBVMax && fBVMax.value !== "" ? Number(fBVMax.value) : null,
+};
+
 
   // turn state into a predicate (requires enriched manifest entries to be effective)
   const pred = (m) => {
@@ -928,6 +952,15 @@ if (filterState.roles.length) {
     if (!hasAny) return false;
   }
 }
+
+// BV range (from bv.json via bvMap)
+if (filterState.bvMin != null || filterState.bvMax != null) {
+  const bv = bvForManifestItem(m);
+  if (bv == null) return false; // exclude if BV unknown while filtering by BV
+  if (filterState.bvMin != null && bv < filterState.bvMin) return false;
+  if (filterState.bvMax != null && bv > filterState.bvMax) return false;
+}
+
     
 if (filterState.source) {
   const wanted = String(filterState.source).toLowerCase().replace(/\s+/g, ' ').trim();
@@ -946,13 +979,15 @@ if (filterState.source) {
 
   // apply over full manifest (if no filters active -> null to use full set)
   const anyOn = filterState.tech
-             || filterState.classes.size
-             || filterState.canJump
-             || filterState.minWalk != null
-             || filterState.roles.length
-             || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "")
-             || filterState.source;
-  manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
+           || filterState.classes.size
+           || filterState.canJump
+           || filterState.minWalk != null
+           || filterState.roles.length
+           || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== "")
+           || filterState.source
+           || filterState.bvMin != null
+           || filterState.bvMax != null;
+
 
   // tell search UI to rebuild its index from the filtered set
   window._rebuildSearchIndex?.();
