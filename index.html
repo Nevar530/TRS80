@@ -12,14 +12,15 @@
 
   <div class="app is-embed"><!-- keep .is-embed for compact widget -->
 
-    <!-- Top bar (toolbar actions) --> 
-    <header class="ui-topbar">
-      <div class="topbar-left">
-        <div class="brand">
-          <span class="glyph" aria-hidden="true">✚</span>
-          <span class="brand-text">[TRS:80]</span>
-        </div>
-      </div>
+<!-- In .ui-topbar (left side is a good spot) -->
+<div class="topbar-left">
+  <button id="btn-side-toggle" class="icon-btn" aria-label="Open mech list" aria-expanded="false" aria-controls="mech-sidebar" style="margin-right:6px;">☰</button>
+  <div class="brand">
+    <span class="glyph" aria-hidden="true">✚</span>
+    <span class="brand-text">[TRS:80]</span>
+  </div>
+</div>
+
       <div class="topbar-right actions actions--top">
         <button id="btn-load-mech"   class="btn"       title="Load a mech JSON">Load</button>
 <button id="btn-custom-mech" class="btn ghost" title="Open Custom Builder" aria-label="Filter">
@@ -56,7 +57,8 @@
     </div>
   </div>
 </aside>
-
+<!-- Scrim for mobile drawer -->
+<div id="sidebar-scrim" hidden></div>
       
       <section class="col-right">
 
