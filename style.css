@@ -304,3 +304,90 @@ main.layout { display: flex; flex: 1 0 auto; overflow: visible; }
   align-items: center;   
   justify-content: center;
 }
+
+/* ===== Sidebar layout ===== */
+main.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* sidebar + main */
+  gap: 12px;
+}
+
+/* Sidebar container */
+.col-left {
+  padding: 12px;
+  overflow: hidden; /* keep panel-rounded edges clean */
+}
+
+/* Make the list area scroll independently */
+#mech-sidebar .panel {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px); /* heuristic so it fits under the topbar */
+  max-height: calc(100vh - 140px);
+}
+
+#mech-sidebar .panel-h {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+#side-search {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0e1522;
+  color: var(--ink);
+}
+
+/* Scrollable list */
+#mech-list {
+  overflow-y: auto;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.05);
+}
+
+/* List rows (lightweight) */
+.mech-row {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+}
+.mech-row:last-child { border-bottom: 0; }
+
+.mech-row:hover,
+.mech-row:focus {
+  background: var(--accent-dim);
+  color: #000;
+  outline: none;
+}
+
+.mech-row .name {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.mech-row .variant {
+  margin-left: auto;
+  opacity: .6;
+  font-size: 12px;
+}
+
+/* ===== Embed tweaks ===== */
+.app.is-embed {
+  /* give the widget more width to fit a sidebar nicely */
+  --widget-w: 720px; /* was 400px */
+}
+.app.is-embed main.layout {
+  grid-template-columns: 240px 1fr; /* a bit narrower in embed */
+}
