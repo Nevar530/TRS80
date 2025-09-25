@@ -90,7 +90,18 @@ main.layout{display:grid;grid-template-columns:280px 1fr;gap:12px;}
 
 /* ---------- Cards / Panels ---------- */
 .card,.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px}
-.card-h,.panel-h{padding:6px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px}
+.card-h,
+.panel-h {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* ⬅️ was space-between */
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 .card-c,.panel-c{padding:8px 10px}
 
 /* ---------- Tabs ---------- */
