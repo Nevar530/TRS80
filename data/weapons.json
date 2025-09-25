@@ -2093,7 +2093,7 @@
     "id": "Charge",
     "name": "Charge",
     "type": "Melee",
-    "damage": "(t/10)+m",
+    "damage": "T[(t/10)+d]|S[t/10]",
     "heat": 0,
     "ammo": null,
     "range": {
@@ -2115,7 +2115,7 @@
     "id": "DFA",
     "name": "Death From Above",
     "type": "Melee",
-    "damage": "A[(t/5)*2}|A[t/10}",
+    "damage": "T[(t/5)*2}]|S[t/10]}",
     "heat": 0,
     "ammo": null,
     "range": {
