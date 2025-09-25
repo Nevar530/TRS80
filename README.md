@@ -26,16 +26,21 @@ Browse mechs, read Tech Readouts, and compute **G.A.T.O.R.** target numbers — 
 
 ## 🚀 Quick Start
 
-Play instantly in your browser:  
-👉 **[Launch TRS:80](https://nevar530.github.io/TRS80/)**  
+- **Play instantly in your browser**  
+  👉 **[Launch TRS:80](https://nevar530.github.io/TRS80/)**  
 
-No installs. No setup. Just click and play.  
+- **Offline use**  
+  1. Download this repo as a ZIP or clone it.  
+  2. Open `index.html` in any modern browser (Chrome, Firefox, Edge, Safari).  
+  3. That’s it — no installs, no build tools.  
+
+Runs virtually **anywhere HTML does**: Windows, macOS, Linux, tablets, even a USB stick.  
 
 ---
 
 ## ⚙️ Tech Stack
 
-- Pure **HTML / CSS / JavaScript** (no frameworks)  
+- Pure **HTML / CSS / JavaScript** (no frameworks, no dependencies)  
 - Uses **MegaMek mech JSON data** (CC BY-NC-SA 4.0)  
 - Designed to be **lightweight, offline-capable, and fast**  
 
@@ -49,11 +54,17 @@ No installs. No setup. Just click and play.
 
 ---
 
+## 🛠️ For Modders & Devs
+
+- Data lives in `/data` (`manifest.json`, mech JSONs, weapons, BV)  
+- UI is all in `index.html` + `style.css` + `script.js`  
+- No build step: edit → refresh → done  
+- Forkable and hackable — add your own mechs, filters, or house rules  
+
+---
+
 ## 🛈 Attribution
 
 - **Mech data** © MegaMek Data, licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 - **BattleTech**, **BattleMech**, **’Mech**, **AeroTech** are trademarks of their respective owners  
 - This is a **non-commercial, fan-made tool**, not affiliated with or endorsed by Topps, Catalyst Game Labs, or Microsoft  
-
----
-
