@@ -47,6 +47,17 @@ const getPB = (r = {}) => {
   return Number.isFinite(v) ? v : 0;
 };
 
+// --- Sorting helpers (chassis A–Z, then variant/model) ---
+const _collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+const chassisKey = (m) => String(m?.name ?? '').trim();
+const variantKey = (m) => String(m?.variant ?? m?.model ?? '').trim();
+function cmpMech(a, b) {
+  const c = _collator.compare(chassisKey(a), chassisKey(b));
+  if (c !== 0) return c;
+  return _collator.compare(variantKey(a), variantKey(b));
+}
+
+  
 function allMechKeys(m) {
   // Build many ways to find the same mech in bv.json
   const name   = String(m?.displayName || m?.name || m?.Name || '').trim();
@@ -409,6 +420,10 @@ state.manifest = items
     };
   });
 
+// Sort manifest by chassis then variant
+state.manifest.sort(cmpMech);
+
+    
     // Refresh search index if search has mounted
     window._rebuildSearchIndex?.();
     showToast(`Manifest loaded — ${state.manifest.length} mechs`);
@@ -1080,12 +1095,15 @@ function initTabs(){
     function currentList() {
       return manifestFiltered ?? state.manifest;
     }
-    function buildIndex(list) {
-      return list.map(m => {
-        const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
-        return { ...m, _key: ' ' + label + ' ' };
-      });
-    }
+    
+function buildIndex(list) {
+  const sorted = list.slice().sort(cmpMech);
+  return sorted.map(m => {
+    const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
+    return { ...m, _key: ' ' + label + ' ' };
+  });
+}
+    
     function scoreHit(key, terms) {
       let s = 0;
       for (const t of terms) { const idx = key.indexOf(t); if (idx < 0) return -1; s += (idx === 1 ? 3 : (key[idx-1] === ' ' ? 2 : 1)); }
