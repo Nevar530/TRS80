@@ -53,6 +53,10 @@
       "type": "Medium Laser",
       "location": "RA"
     },
+        {
+      "type": "Hatchet",
+      "location": "RA"
+    },
     {
       "type": "AC/20",
       "location": "CT"
