@@ -1482,6 +1482,51 @@ byId('btn-side-filter')?.addEventListener('click', openFilterModal); // open the
     initTechSubtabs();
   }
 
+   /* ---------- Sidebar Collapse ---------- */
+  function initSidebarDrawer(){
+  const sidebar = document.getElementById('mech-sidebar');
+  const scrim   = document.getElementById('sidebar-scrim');
+  const btn     = document.getElementById('btn-side-toggle');
+  if (!sidebar || !btn || !scrim) return;
+
+  const open = () => {
+    sidebar.classList.add('is-open');
+    scrim.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    // optional: focus the search field when opening
+    sidebar.querySelector('#side-search')?.focus();
+  };
+  const close = () => {
+    sidebar.classList.remove('is-open');
+    scrim.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+  };
+  const isMobile = () => window.matchMedia('(max-width: 800px)').matches;
+  const toggle = () => (sidebar.classList.contains('is-open') ? close() : open());
+
+  // Open/close via button (only meaningful on mobile)
+  btn.addEventListener('click', (e) => {
+    if (!isMobile()) return; // pinned on desktop; ignore
+    toggle();
+  });
+
+  // Close when tapping scrim
+  scrim.addEventListener('click', () => { if (isMobile()) close(); });
+
+  // Close on ESC
+  window.addEventListener('keydown', (e) => {
+    if (!isMobile()) return;
+    if (e.key === 'Escape' && sidebar.classList.contains('is-open')) close();
+  });
+
+  // Optional: close after picking a mech (improves flow on phones)
+  document.getElementById('mech-list')?.addEventListener('click', (e) => {
+    const item = e.target.closest('.mech-row'); // or whatever class you use for rows
+    if (item && isMobile()) close();
+  });
+}
+
   
   /* ---------- Init ---------- */
 function init(){
@@ -1494,6 +1539,7 @@ function init(){
   updateOverview();
   fillTechReadout();
   initUI();
+  initSidebarDrawer();
   console.info('Gator Console ready (single-file).');
 }
 
