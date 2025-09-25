@@ -589,7 +589,7 @@ function renderWeaponsTab(){
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Dmg</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ht</th>
             <th style="text-align:left;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ammo</th>
-            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">C</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Min</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">S</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">M</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">L</th>
