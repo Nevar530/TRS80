@@ -503,3 +503,19 @@ main.layout {
 @media (min-width: 801px) {
   #btn-side-toggle { display: none; }
 }
+
+/* === Main two-column layout === */
+main.layout { display: flex; }
+.col-left  { flex: 0 0 280px; max-width: 320px; padding: 12px; }
+.col-right { flex: 1 1 auto; min-width: 0; padding: 12px; }
+
+/* Make the mech list actually scroll without overlapping */
+#mech-sidebar .panel { height: calc(100vh - 96px); } /* tweak 96px if your topbar height differs */
+#mech-sidebar .panel-c { padding: 0; }
+#mech-list { max-height: calc(100vh - 96px - 44px); overflow: auto; }
+
+/* === Topbar: keep on one line === */
+.ui-topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; }
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.actions--top { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
+.actions--top > * { flex: 0 0 auto; }
