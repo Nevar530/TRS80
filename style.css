@@ -16,13 +16,50 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);
 button,input,select{font:inherit;color:inherit}
 
 /* ---------- App shell ---------- */
-.app{display:flex;flex-direction:column;height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;}
-/* Topbar (single line, no wrap) */
-.ui-topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;
-  background:var(--panel);border-bottom:1px solid var(--border);padding:8px 12px;}
-.topbar-left,.topbar-right{display:flex;align-items:center;gap:6px;min-width:0;}
-.brand{display:flex;align-items:center;gap:6px;font-weight:600}
-.brand-text{color:var(--accent)}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Topbar (single line, left-aligned) */
+.ui-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* ⬅️ keep everything on the left */
+  gap: 10px;
+  flex-wrap: nowrap;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 12px;
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* give a little breathing room between brand + actions */
+.topbar-right {
+  margin-left: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.brand-text {
+  color: var(--accent);
+}
+
 
 /* Actions */
 .actions--top .btn{padding:4px 8px;font-size:12px;line-height:1;border-radius:6px}
