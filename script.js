@@ -94,7 +94,7 @@ async function loadWeaponsDb() {
 
 function getWeaponRefByName(name){
   if (!name) return null;
-  const key = normKey(w.name || w.id);
+  const key = normKey(name);
   return state.weaponsMap.get(key) || null;
 }
 
@@ -260,20 +260,8 @@ function renderWeaponsTab(){
   const host = document.getElementById('weapons-list');
   if (!host) return;
 
-  // De-dupe by normalized NAME
-  const seen = new Set();
-  const list = (Array.isArray(state.weaponsDb) ? state.weaponsDb : [])
-    .filter(w => {
-      const key = normKey(w.name || w.id);  // prefer name for uniqueness
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
-
-  if (!list.length) {
-    host.innerHTML = '<div class="dim small">No weapons loaded.</div>';
-    return;
-  }
+  const list = Array.isArray(state.weaponsDb) ? state.weaponsDb.slice() : [];
+  if (!list.length) { host.innerHTML = '<div class="dim small">No weapons loaded.</div>'; return; }
 
   // Group by type, then sort by damage (desc), then name
   const groups = new Map();
@@ -322,7 +310,6 @@ function renderWeaponsTab(){
 
   host.innerHTML = html;
 }
-
 
   
 // ---- Internals by tonnage (Total Warfare) + filler ----
