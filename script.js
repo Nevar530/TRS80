@@ -473,31 +473,36 @@ function updateOverview() {
 /* -----------------------------------------
  *  OVERVIEW — WEAPONS MINI TABLE
  * --------------------------------------- */
-function renderOverviewWeaponsMini(mech){
-  const host = byId('ov-weps');
-  if (!host) return;
-
-  // ensure container just under the "Key Weapons" line
-  let wrap = byId('ov-weps-mini');
-  if (!wrap) {
-    wrap = document.createElement('div');
-    wrap.id = 'ov-weps-mini';
-    wrap.className = 'weapon-block';
-    host.insertAdjacentElement('afterend', wrap);
+function renderOverviewWeaponsMini(mech) {
+  const wrap = document.getElementById('overview-weapons-mini');
+  if (!wrap) return;
+  if (!mech) {
+    wrap.innerHTML = `<div class="dim small">No mech loaded</div>`;
+    return;
   }
 
-  const list = Array.isArray(mech?.weapons) ? mech.weapons : [];
-  if (!list.length) { wrap.innerHTML = ''; return; }
+  const list = Array.isArray(mech.weapons) ? mech.weapons : [];
+  if (!list.length) {
+    wrap.innerHTML = `<div class="dim small">No weapons listed</div>`;
+    return;
+  }
 
   const rows = list.map(w => {
     const ref = getWeaponRefByName(w.name);
     if (!ref) {
       return `<tr>
         <td>${esc(w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
-        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
-        <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        <td class="dim">—</td>  <!-- Type -->
+        <td class="dim">—</td>  <!-- Dmg -->
+        <td class="dim">—</td>  <!-- Ht  -->
+        <td class="dim">—</td>  <!-- Ammo -->
+        <td class="dim">—</td>  <!-- C   -->
+        <td class="dim">—</td>  <!-- S   -->
+        <td class="dim">—</td>  <!-- M   -->
+        <td class="dim">—</td>  <!-- L   -->
       </tr>`;
     }
+
     const r = ref.range || {};
     return `<tr>
       <td>${esc(ref.name || w.name)}${w.loc ? ` [${esc(w.loc)}]` : ''}</td>
@@ -521,12 +526,16 @@ function renderOverviewWeaponsMini(mech){
           <th>Dmg</th>
           <th>Ht</th>
           <th>A</th>
-          <th>C</th><th>S</th><th>M</th><th>L</th>
+          <th>C</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
         </tr>
       </thead>
       <tbody>${rows}</tbody>
     </table>`;
 }
+
 
 /* -----------------------------------------
  *  WEAPONS TAB (catalog)
