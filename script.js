@@ -396,7 +396,7 @@ state.manifest = items
     return {
       id:      e.id || null,
       name:    e.displayName || e.displayname || e.name || null,
-      variant: e.variant || null,
+      variant: e.variant || e.model || null,
       path,
       url:     abs,
       tons:    e.tons ?? e.tonnage ?? e.mass,
@@ -920,6 +920,9 @@ filterState = {
   bvMax: fBVMax && fBVMax.value !== "" ? Number(fBVMax.value) : null,
 };
 
+   if ((filterState.bvMin != null || filterState.bvMax != null) && !state.bvMap.size) {
+    showToast('BV database not loaded yet');
+  }
 
   // turn state into a predicate (requires enriched manifest entries to be effective)
   const pred = (m) => {
@@ -987,6 +990,7 @@ if (filterState.source) {
            || filterState.source
            || filterState.bvMin != null
            || filterState.bvMax != null;
+manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
 
 
   // tell search UI to rebuild its index from the filtered set
@@ -997,7 +1001,7 @@ if (filterState.source) {
 
 
   function clearFilters(){
-    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null };
+    filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:"", bvMin:null, bvMax:null };
     manifestFiltered = null;
     window._rebuildSearchIndex?.();
     closeFilterModal();
