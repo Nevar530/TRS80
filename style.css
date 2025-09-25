@@ -452,3 +452,54 @@ main.layout {
   border-radius: 4px;
 }
 
+/* ===== Sidebar sizing (desktop default) ===== */
+.col-left {
+  width: 280px;            /* tweak as you like */
+  flex: 0 0 auto;
+  padding: 12px;
+}
+
+/* Sidebar content */
+#mech-sidebar .panel { height: calc(100vh - 96px); /* topbar + padding budget */ }
+#mech-sidebar .panel-c { padding: 0; }
+#mech-sidebar #mech-list {
+  max-height: calc(100vh - 96px - 44px); /* subtract panel header */
+  overflow: auto;
+}
+
+/* Scrim base */
+#sidebar-scrim {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 998;
+}
+
+/* ===== Mobile: turn sidebar into a sliding drawer ===== */
+@media (max-width: 800px) {
+  /* app width goes full; sidebar overlays instead of taking layout space */
+  .layout { position: relative; }
+
+  .col-left {
+    position: fixed;
+    top: 46px;               /* height of topbar; adjust if yours differs */
+    left: 0;
+    bottom: 0;
+    width: min(86vw, 320px);
+    padding: 8px;
+    z-index: 999;            /* above content, below modal */
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+  }
+
+  .col-left.is-open {
+    transform: translateX(0);
+  }
+
+  /* hide scrim by default; shown by JS when open */
+  #sidebar-scrim[hidden] { display: none; }
+}
+
+/* Optional: hide the hamburger on wide screens */
+@media (min-width: 801px) {
+  #btn-side-toggle { display: none; }
+}
