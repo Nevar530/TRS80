@@ -424,4 +424,31 @@ main.layout {
   border-radius: var(--radius);
 }
 
+/* Sidebar column */
+.col-left {
+  flex: 0 0 280px;        /* fixed width for sidebar */
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+/* Panel body is the scroll container */
+#mech-list {
+  max-height: calc(100vh - 120px); /* prevent it from growing too tall */
+  overflow-y: auto;                /* ✅ scrolling enabled */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Optional: give visible scrollbars here, since the app hides them globally */
+#mech-list {
+  scrollbar-width: auto;             /* Firefox */
+}
+#mech-list::-webkit-scrollbar {      /* Chromium/WebKit */
+  width: 8px;
+}
+#mech-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
 
