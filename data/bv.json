@@ -1,12 +1,5 @@
 [
   {
-    "name": "manifest",
-    "model": null,
-    "mulId": null,
-    "bv": 0,
-    "path": "X:\\Meks\\manifest.json"
-  },
-  {
     "name": "Akuma",
     "model": "AKU-1X",
     "mulId": 3691,
