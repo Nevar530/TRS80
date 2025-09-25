@@ -78,11 +78,27 @@ function allMechKeys(m) {
 }
 
   function keyForManifestItem(m){
-  const n = normKey(m?.name || '');
-  const v = normKey(m?.variant || '');
-  if (n && v) return `${n} ${v}`;
+  const rawName = String(m?.name || '').trim();
+  const rawVar  = String(m?.variant || '').trim();
+
+  // If name already includes variant suffix (e.g., "Archer ARC-2K"),
+  // peel the variant off so we get just "Archer"
+  let chassisName = rawName;
+  if (rawName && rawVar) {
+    const lcName = rawName.toLowerCase();
+    const tail1  = (' ' + rawVar).toLowerCase();     // " ARC-2K"
+    if (lcName.endsWith(tail1)) {
+      chassisName = rawName.slice(0, -tail1.length).trim();
+    }
+  }
+
+  const n = normKey(chassisName);  // "archer"
+  const v = normKey(rawVar);       // "arc 2k"
+
+  if (n && v) return `${n} ${v}`;  // "archer arc 2k" ✅ matches bv.json
   return n || v || null;
 }
+
 function bvForManifestItem(m){
   const k = keyForManifestItem(m);
   if (!k) return null;
