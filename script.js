@@ -40,6 +40,12 @@ const normKey = (s) => String(s||'')
   .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
   .trim();
 
+// Point-blank / Close band helper
+const getPB = (r = {}) => {
+  const v = r.pointblank ?? r.pb ?? r.close ?? r.C ?? r.c;
+  return Number.isFinite(v) ? v : 0;
+};
+
 function allMechKeys(m) {
   // Build many ways to find the same mech in bv.json
   const name   = String(m?.displayName || m?.name || m?.Name || '').trim();
@@ -276,7 +282,7 @@ function renderWeaponsTab(){
   for (const t of typeOrder) {
     const rows = groups.get(t)
       .slice()
-      .sort((a,b) => (Number(b.damage)||0) - (Number(a.damage)||0) || String(a.name).localeCompare(b.name))
+      .sort((a,b) => (Number(b.damage)||0) - (Number(a.damage)||0) || String(a.name||'').localeCompare(b.name||''))
       .map(w => {
         const r = w.range || {};
         return `<tr>
@@ -284,9 +290,10 @@ function renderWeaponsTab(){
           <td class="mono" style="text-align:right;">${w.damage ?? '—'}</td>
           <td class="mono" style="text-align:right;">${w.heat ?? '—'}</td>
           <td class="mono">${esc(w.ammo ?? '—')}</td>
-          <td class="mono" style="text-align:right;">${r.short ?? '—'}</td>
+          <td class="mono" style="text-align:right;">${getPB(r)}</td>
+          <td class="mono" style="text-align:right;">${r.short  ?? '—'}</td>
           <td class="mono" style="text-align:right;">${r.medium ?? '—'}</td>
-          <td class="mono" style="text-align:right;">${r.long ?? '—'}</td>
+          <td class="mono" style="text-align:right;">${r.long   ?? '—'}</td>
         </tr>`;
       }).join('');
 
@@ -299,6 +306,7 @@ function renderWeaponsTab(){
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Dmg</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ht</th>
             <th style="text-align:left;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">Ammo</th>
+            <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">C</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">S</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">M</th>
             <th style="text-align:right;padding:6px;border-bottom:1px solid var(--border,#2a2f3a);">L</th>
@@ -525,7 +533,7 @@ function renderOverviewWeaponsMini(mech){
       <td>${ref.damage ?? '—'}</td>
       <td>${ref.heat ?? '—'}</td>
       <td>${ref.ammo ?? '—'}</td>
-      <td>${r.pointblank ?? 0}</td>
+     <td>${getPB(r)}</td>
       <td>${r.short ?? '—'}</td>
       <td>${r.medium ?? '—'}</td>
       <td>${r.long ?? '—'}</td>
