@@ -991,7 +991,7 @@ if (filterState.source) {
            || filterState.bvMin != null
            || filterState.bvMax != null;
 manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
-
+window._rebuildSidebarList?.();
 
   // tell search UI to rebuild its index from the filtered set
   window._rebuildSearchIndex?.();
@@ -1003,6 +1003,8 @@ manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
   function clearFilters(){
     filterState = { tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:"", bvMin:null, bvMax:null };
     manifestFiltered = null;
+    window._rebuildSidebarList?.();
+
     window._rebuildSearchIndex?.();
     closeFilterModal();
     document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
@@ -1155,6 +1157,128 @@ function initTabs(){
     (async ()=>{ if (!state.manifest.length) { await loadManifest(); rebuildIndex(); } else { rebuildIndex(); } })();
   }
 
+/* ---------- Sidebar list (constant) ---------- */
+function initSidebarList(){
+  const listEl   = byId('mech-list');
+  const searchEl = byId('side-search');
+  if (!listEl || !searchEl) return; // sidebar not present
+
+  let selectedUrl = null;     // remember which row is active
+  let index = [];             // simple label index for fast includes()
+
+  function currentList() {
+    return manifestFiltered ?? state.manifest;
+  }
+
+  function buildIndex(list) {
+    // Very similar to the dropdown search index
+    return list.map(m => {
+      const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
+      return { ...m, _key: ' ' + label + ' ' };
+    });
+  }
+
+  function scoreHit(key, terms) {
+    // same lightweight scoring you used before; returns -1 when a term is missing
+    let s = 0;
+    for (const t of terms) {
+      const idx = key.indexOf(t);
+      if (idx < 0) return -1;
+      s += (idx === 1 ? 3 : (key[idx-1] === ' ' ? 2 : 1));
+    }
+    return s;
+  }
+
+  function searchIndex(idx, q) {
+    const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean).slice(0,5);
+    if (!terms.length) return idx.slice(0, 1000); // cap render count, 2600 is fine but 1000 feels snappier
+    const out = [];
+    for (const m of idx) {
+      const sc = scoreHit(m._key, terms);
+      if (sc >= 0) out.push([sc, m]);
+    }
+    out.sort((a,b)=> b[0]-a[0]);
+    return out.map(x=>x[1]).slice(0, 1000);
+  }
+
+  function render(){
+    const q   = searchEl.value || '';
+    const src = searchIndex(index, q);
+
+    if (!src.length) {
+      listEl.innerHTML = `<div class="dim small" style="padding:8px;">No matches</div>`;
+      return;
+    }
+
+    listEl.innerHTML = src.map(m => {
+      const nm = esc(m.name || m.id || m.variant || m.path || '—');
+      const vr = esc(m.variant || '');
+      const url = esc(m.url || '');
+      const activeCls = (url && selectedUrl === url) ? ' is-active' : '';
+      return `<div class="mech-row${activeCls}" data-url="${url}" tabindex="0" role="option" aria-label="${nm} ${vr}">
+        <span class="name mono" title="${nm}">${nm}</span>
+        <span class="variant mono small">${vr}</span>
+      </div>`;
+    }).join('');
+  }
+
+  function rebuild() {
+    index = buildIndex(currentList());
+    render();
+  }
+
+  // expose hooks so filters/manifest loader can refresh the list
+  window._renderSidebarList  = render;
+  window._rebuildSidebarList = rebuild;
+
+  // delegate clicks/Enter on rows
+  listEl.addEventListener('click', (e) => {
+    const row = e.target.closest('.mech-row');
+    if (!row) return;
+    const url = row.getAttribute('data-url');
+    if (url) {
+      selectedUrl = url;
+      loadMechFromUrl(url);
+      // visual active state (no re-query required)
+      listEl.querySelectorAll('.mech-row.is-active').forEach(n => n.classList.remove('is-active'));
+      row.classList.add('is-active');
+    }
+  });
+  listEl.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const row = e.target.closest('.mech-row');
+    if (!row) return;
+    const url = row.getAttribute('data-url');
+    if (url) {
+      selectedUrl = url;
+      loadMechFromUrl(url);
+      listEl.querySelectorAll('.mech-row.is-active').forEach(n => n.classList.remove('is-active'));
+      row.classList.add('is-active');
+    }
+  });
+
+  // search typing (debounced)
+  let tId = 0;
+  searchEl.addEventListener('input', () => {
+    clearTimeout(tId);
+    tId = setTimeout(render, 100);
+  });
+
+  // ensure manifest present, then build once
+  const boot = async () => {
+    if (!state.manifest.length) await loadManifest();
+    rebuild();
+  };
+  boot();
+
+  // when user clicks the top “load manifest” button, rebuild the sidebar too
+  byId('btn-load-manifest')?.addEventListener('click', async () => {
+    await loadManifest();
+    rebuild();
+  });
+}
+
+  
   /* ---------- GATOR ---------- */
   const GATOR = {
     targetBandToMod: [0,1,2,3,4,5,6],
@@ -1328,7 +1452,13 @@ sumOther(); recompute();
     });
 
     initTabs();
-    initSearchUI();
+    // use sidebar search if present; otherwise mount the old dropdown search
+if (!byId('side-search')) {
+  initSearchUI();
+}
+initSidebarList();              // <— NEW: wire sidebar if it exists
+byId('btn-side-filter')?.addEventListener('click', openFilterModal); // open the same filter modal
+
     initGator();
     initGatorSubtabs();
     initTechSubtabs();
