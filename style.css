@@ -391,3 +391,10 @@ main.layout {
 .app.is-embed main.layout {
   grid-template-columns: 240px 1fr; /* a bit narrower in embed */
 }
+
+.mech-row.is-active {
+  background: var(--accent-dim);
+  color: #000;
+}
+
+
