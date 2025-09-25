@@ -2,7 +2,7 @@
 (() => {
   'use strict';
 
-  /* ---------- State ---------- */
+/* ---------- State ---------- */
 const state = {
   mech: null,
   pilot: { name: '—', gunnery: 4, piloting: 5 },
@@ -11,7 +11,10 @@ const state = {
   manifest: [],
   manifestUrl: '',
   weaponsDb: [],            // <— NEW: raw list
-  weaponsMap: new Map()     // <— NEW: lookup by id/name (lowercased)
+  weaponsMap: new Map(),    // <— NEW: lookup by id/name (lowercased)
+
+  bvDb: [],                 // <— NEW: raw bv list
+  bvMap: new Map()          // <— NEW: lookup by multiple keys
 };
 
   /* ----- Filter state (UI reads these; manifest must be enriched to use fully) ----- */
@@ -31,6 +34,32 @@ const state = {
   const fmtMoney = (v) => { if (v == null || v === '') return '—'; const n = toNum(String(v).replace(/[^\d.-]/g,'')); return n == null ? String(v) : n.toLocaleString(undefined,{maximumFractionDigits:0}) + ' C-bills'; };
   function showToast(msg, ms=1600){ const t = byId('toast'); if(!t){console.log('[toast]',msg);return;} t.textContent=msg; t.hidden=false; t.style.display='block'; clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.hidden=true; t.style.display='none'; },ms); }
 
+// ---------- Key/lookup helpers (keep close to loaders) ----------
+const normKey = (s) => String(s||'')
+  .toLowerCase()
+  .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
+  .trim();
+
+function allMechKeys(m) {
+  // Build many ways to find the same mech in bv.json
+  const name   = String(m?.displayName || m?.name || m?.Name || '').trim();
+  const model  = String(m?.model || m?.variant || m?.Model || '').trim();
+  const mv     = (m?._mv) || {};
+  const tons   = m?.tonnage ?? m?.Tonnage ?? m?.mass ?? null;
+
+  const keys = [];
+  const n = name ? normKey(name) : '';
+  const v = model ? normKey(model) : '';
+
+  if (n && v) keys.push(`${n} ${v}`);       // "mad cat mk ii"
+  if (v)      keys.push(v);                 // "mk ii"
+  if (n)      keys.push(n);                 // "mad cat"
+  if (m?.mulId != null) keys.push(String(m.mulId));
+  if (tons != null && n && v) keys.push(`${n} ${v} ${tons}`);
+  return Array.from(new Set(keys)).filter(Boolean);
+}
+
+// ---------- Weapons loader (replaces your old one 1:1) ----------
 async function loadWeaponsDb() {
   try {
     const list = await fetchJson('data/weapons.json');
@@ -41,13 +70,12 @@ async function loadWeaponsDb() {
       const keys = new Set();
       if (w.id)   keys.add(normKey(w.id));
       if (w.name) keys.add(normKey(w.name));
-      // NEW: alias indexing
       const aliases = Array.isArray(w.aliases) ? w.aliases : [];
       for (const a of aliases) if (a) keys.add(normKey(a));
-
       for (const k of keys) if (k && !state.weaponsMap.has(k)) state.weaponsMap.set(k, w);
     }
-    // inject tiny CSS once
+
+    // inject tiny CSS once (for the mini table)
     if (!document.getElementById('weap-mini-css')) {
       const st = document.createElement('style');
       st.id = 'weap-mini-css';
@@ -70,10 +98,51 @@ function getWeaponRefByName(name){
   return state.weaponsMap.get(key) || null;
 }
 
-  const normKey = (s) => String(s||'')
-  .toLowerCase()
-  .replace(/[\s._\-\/]+/g, ' ')  // collapse punctuation-ish to spaces
-  .trim();
+// ---------- BV loader (NEW) ----------
+async function loadBVDb() {
+  try {
+    const list = await fetchJson('data/bv.json'); // array of { name, model, bv, mulId, ... }
+    state.bvDb = Array.isArray(list) ? list : [];
+
+    const map = new Map();
+    for (const e of state.bvDb) {
+      const name  = String(e.name  ?? '').trim();
+      const model = String(e.model ?? '').trim();
+      const mulId = e.mulId != null ? String(e.mulId) : null;
+      const bv    = Number(e.bv);
+
+      if (!Number.isFinite(bv)) continue;
+
+      const n = name  ? normKey(name)  : '';
+      const v = model ? normKey(model) : '';
+
+      const keys = new Set();
+      if (n && v) keys.add(`${n} ${v}`);
+      if (v)      keys.add(v);
+      if (n)      keys.add(n);
+      if (mulId)  keys.add(mulId);
+
+      for (const k of keys) {
+        if (!k) continue;
+        // prefer first seen; if duplicates exist, keep the earliest
+        if (!map.has(k)) map.set(k, bv);
+      }
+    }
+    state.bvMap = map;
+  } catch (e) {
+    console.warn('[bv] failed to load data/bv.json', e);
+  }
+}
+
+function lookupBVForMech(mech) {
+  if (!mech || !state.bvMap || !state.bvMap.size) return null;
+  const keys = allMechKeys(mech);
+  for (const k of keys) {
+    const bv = state.bvMap.get(k);
+    if (bv != null) return Number(bv);
+  }
+  return null;
+}
 
 // ---- BV-lite helpers (estimator for missing BV) ----
 function sumArmorPoints(armorBy = {}) {
@@ -171,12 +240,21 @@ return Math.max(1, bv);
   
 function ensureBV(mech){
   if (!mech) return mech;
+
+  // If no BV present, try exact lookup from bv.json first
   if (mech.bv == null && mech.BV == null) {
+    const bvFound = lookupBVForMech(mech);
+    if (Number.isFinite(bvFound)) {
+      mech.bv = Math.round(bvFound);
+      return mech;
+    }
+    // fallback to estimator if not in bv.json
     const bv = estimateBV(mech);
-    mech.bv = bv; // use lowercase like the rest of your UI
+    mech.bv = bv;
   }
   return mech;
 }
+
 
 function renderWeaponsTab(){
   const host = document.getElementById('weapons-list');
@@ -1212,9 +1290,9 @@ sumOther(); recompute();
   
   /* ---------- Init ---------- */
 function init(){
-  loadWeaponsDb().then(()=>{
+  Promise.all([loadWeaponsDb(), loadBVDb()]).then(()=>{
     renderOverviewWeaponsMini(state.mech);
-    renderWeaponsTab(); // only call after weapons DB is ready
+    renderWeaponsTab();
   });
 
   setHeat(0,0);
