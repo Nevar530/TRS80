@@ -38,6 +38,31 @@ Runs virtually **anywhere HTML does**: Windows, macOS, Linux, tablets, even a US
 
 ---
 
+## 🎲 How to Use TRS:80 in Your Games
+
+TRS:80 is a fast **Classic BattleTech** companion — no Alpha Strike values (yet).  
+It’s designed to help you browse, filter, and compare mechs before and during play:
+
+- **Pick your ride:** Search by name (e.g. “Archer”) to instantly see *all variants* in the manifest.  
+- **Narrow the field with filters:**  
+  - **BV range** — balance your lance by staying within a target Battle Value budget.  
+  - **Role** — find the right mix (Missile Boat, Skirmisher, Brawler, Scout) to cover the battlefield.  
+  - **Tonnage** — fill weight brackets (Light/Medium/Heavy/Assault) when organizing by classic lance structure.  
+  - **Rules Level / Era** — filter by Tech Base or time period to stay “by the book.”  
+- **Compare loadouts:** Check movement, armor, and weapon layouts side by side to decide which variant fits your force.  
+- **Prep your game:** Once you pick a variant, look it up in Flechs Sheets (for digital record sheets) **or** fill out a paper record sheet if you’re playing old-school.  
+- **In-game helper:** Use the built-in G.A.T.O.R. calculator and dice roller to speed up target number math during play.  
+- **Lore on tap:** Need quick background on a chassis? Jump into the Tech Readout tabs for flavor text and deployment history.
+
+### 🛠️ Go-to Filters When Building a Lance
+- **BV first** if you want fair matchups between players.  
+- **Role + Tonnage** if you’re aiming for a classic lance composition (e.g. 1 Scout, 1 Skirmisher, 1 Missile Boat, 1 Brawler).  
+- **Rules Level/Era** if you’re sticking to a campaign, time period, or tech restriction.
+
+TRS:80 helps you cut through the noise of endless variants so you can focus on building forces that are both fun and balanced.
+
+---
+
 ## ⚙️ Tech Stack
 
 - Pure **HTML / CSS / JavaScript** (no frameworks, no dependencies)  
