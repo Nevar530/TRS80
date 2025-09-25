@@ -260,8 +260,19 @@ function renderWeaponsTab(){
   const host = document.getElementById('weapons-list');
   if (!host) return;
 
-  const list = Array.isArray(state.weaponsDb) ? state.weaponsDb.slice() : [];
-  if (!list.length) { host.innerHTML = '<div class="dim small">No weapons loaded.</div>'; return; }
+const seen = new Set();
+const list = (Array.isArray(state.weaponsDb) ? state.weaponsDb : [])
+  .filter(w => {
+    const key = normKey(w.id || w.name);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+if (!list.length) {
+  host.innerHTML = '<div class="dim small">No weapons loaded.</div>';
+  return;
+}
 
   // Group by type, then sort by damage (desc), then name
   const groups = new Map();
