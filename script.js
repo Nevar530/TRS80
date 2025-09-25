@@ -498,7 +498,7 @@ function renderOverviewWeaponsMini(mech) {
         <td class="dim">—</td>  <!-- Dmg -->
         <td class="dim">—</td>  <!-- Ht  -->
         <td class="dim">—</td>  <!-- Ammo -->
-        <td class="dim">—</td>  <!-- C   -->
+        <td class="dim">—</td>  <!-- Min   -->
         <td class="dim">—</td>  <!-- S   -->
         <td class="dim">—</td>  <!-- M   -->
         <td class="dim">—</td>  <!-- L   -->
@@ -526,8 +526,8 @@ function renderOverviewWeaponsMini(mech) {
           <th>Type</th>
           <th>Dmg</th>
           <th>Ht</th>
-          <th>A</th>
-          <th>C</th>
+          <th>Ammo</th>
+          <th>Min</th>
           <th>S</th>
           <th>M</th>
           <th>L</th>
