@@ -397,4 +397,31 @@ main.layout {
   color: #000;
 }
 
+/* Layout: right now main.layout is already display:flex */
+.col-left{
+  flex: 0 0 280px;           /* sidebar width */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+/* header (search + buttons) stays visible, list scrolls under it */
+.mech-list-h{
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+  z-index: 1;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* this is the scrollable area */
+.mech-list-body{
+  flex: 1 1 auto;
+  overflow: auto;            /* ✅ scrollable */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
 
