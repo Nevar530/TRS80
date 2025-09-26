@@ -960,17 +960,18 @@ function applyFilters(){
   const roles = Array.from(document.querySelectorAll('.f-role:checked'))
     .map(cb => (cb.dataset.role || '').toLowerCase());
 
-  filterState = {
-    tech: fTech?.value || '',
-    classes,
-    canJump: !!fJump?.checked,
-    minWalk: !fMinWalk || fMinWalk.value === '' ? null : Number(fMinWalk.value),
-    roles,
-    rulesLevel: (fRules?.value || '') || null,
-    source: fSource?.value || '',
-    bvMin: fBVMin && fBVMin.value !== '' ? Number(fBVMin.value) : null,
-    bvMax: fBVMax && fBVMax.value !== '' ? Number(fBVMax.value) : null,
-  };
+filterState = {
+  tech: fTech?.value || '',
+  classes,
+  canJump: !!fJump?.checked,
+  minWalk: !fMinWalk || fMinWalk.value === '' ? null : Number(fMinWalk.value),
+  roles,
+  rulesLevel: (fRules?.value || '') || null,
+  source: fSource?.value || '',
+  bvMin: fBVMin && fBVMin.value !== '' ? Number(fBVMin.value) : null,
+  bvMax: fBVMax && fBVMax.value !== '' ? Number(fBVMax.value) : null,
+  ownedOnly: !!filterState.ownedOnly      // ← keep the toggle
+};
 
   if ((filterState.bvMin != null || filterState.bvMax != null) && !state.bvMap.size) {
     showToast('BV database not loaded yet');
@@ -991,20 +992,21 @@ function applyFilters(){
     if (filterState.canJump && !(j > 0)) return false;
     if (filterState.minWalk != null && !(Number(w) >= filterState.minWalk)) return false;
 
-    if (filterState.roles.length) {
-      const choose  = new Set(filterState.roles);
-      const hasNone = choose.has('none');
-      const roleStr = String(m.role || m.extras?.role || '').toLowerCase().trim();
-      if (hasNone && !roleStr) {
-        // ok
-      } else {
-        const hasAny = [...choose].filter(r => r !== 'none').some(r => roleStr.includes(r));
-        if (!hasAny) return false;
-      }
-      // Owned-only gate (by chassis)
+if (filterState.roles.length) {
+  const choose  = new Set(filterState.roles);
+  const hasNone = choose.has('none');
+  const roleStr = String(m.role || m.extras?.role || '').toLowerCase().trim();
+  if (!(hasNone && !roleStr)) {
+    const hasAny = [...choose].filter(r => r !== 'none').some(r => roleStr.includes(r));
+    if (!hasAny) return false;
+  }
+}
+
+// Owned-only gate (by chassis; Owned.isOwned tolerates variant suffixes)
 if (filterState.ownedOnly) {
   if (!(window.Owned?.isOwned(m.name))) return false;
 }
+
 
     }
 
@@ -1050,7 +1052,7 @@ if (filterState.ownedOnly) {
 }
 
 function clearFilters(){
-  filterState = { tech:'', classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:'', bvMin:null, bvMax:null };
+  filterState = { tech:'', classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:'', bvMin:null, bvMax:null, ownedOnly:false };
   manifestFiltered = null;
   window._rebuildSidebarList?.();
   window._rebuildSearchIndex?.();
@@ -1593,9 +1595,7 @@ function init(){
   App.getManifest = () => state.manifest;
 App.applyOwnedFilter = (on) => {
   filterState.ownedOnly = !!on;
-  window._rebuildSidebarList?.();
-  window._rebuildSearchIndex?.();
-  document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  applyFilters(); // reuse existing predicate + manifestFiltered logic
 };
 
   // Now that UI + sidebar are ready, hook up modules
