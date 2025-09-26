@@ -987,6 +987,11 @@ filterState = {
     const role = (m.role || (m.extras?.role) || '').toLowerCase();
     const tech = m.tech || m.techBase || '';
 
+    // Owned-only gate (by chassis; Owned.isOwned tolerates variant suffixes)
+if (filterState.ownedOnly) {
+  if (!(window.Owned?.isOwned(m.name))) return false;
+}
+
     if (filterState.tech && tech !== filterState.tech) return false;
     if (filterState.classes.size && !filterState.classes.has(cls)) return false;
     if (filterState.canJump && !(j > 0)) return false;
@@ -1002,13 +1007,8 @@ if (filterState.roles.length) {
   }
 }
 
-// Owned-only gate (by chassis; Owned.isOwned tolerates variant suffixes)
-if (filterState.ownedOnly) {
-  if (!(window.Owned?.isOwned(m.name))) return false;
-}
 
-
-    }
+    
 
     // BV range (from bv.json via bvMap)
     if (filterState.bvMin != null || filterState.bvMax != null) {
@@ -1032,7 +1032,8 @@ if (filterState.ownedOnly) {
     return true;
   };
 
-  // apply over full manifest
+  // expose a tiny internal so other modules can re-apply filters without touching the modal
+window._applyFiltersInternal = function() {
   const anyOn = filterState.tech
     || filterState.classes.size
     || filterState.canJump
@@ -1042,14 +1043,14 @@ if (filterState.ownedOnly) {
     || filterState.source
     || filterState.bvMin != null
     || filterState.bvMax != null
-  || filterState.ownedOnly;     // ← include this
+    || filterState.ownedOnly;
 
   manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
   window._rebuildSidebarList?.();
   window._rebuildSearchIndex?.();
   closeFilterModal();
   document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
-}
+};
 
 function clearFilters(){
   filterState = { tech:'', classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:'', bvMin:null, bvMax:null, ownedOnly:false };
@@ -1595,7 +1596,14 @@ function init(){
   App.getManifest = () => state.manifest;
 App.applyOwnedFilter = (on) => {
   filterState.ownedOnly = !!on;
-  applyFilters(); // reuse existing predicate + manifestFiltered logic
+  if (typeof window._applyFiltersInternal === 'function') {
+    window._applyFiltersInternal();
+  } else {
+    // fallback just in case
+    window._rebuildSidebarList?.();
+    window._rebuildSearchIndex?.();
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  }
 };
 
   // Now that UI + sidebar are ready, hook up modules
