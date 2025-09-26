@@ -69,6 +69,7 @@
           </svg>
           </button>
         -->
+<button id="btn-lance" class="btn ghost" title="Show Lance" aria-controls="lance-dock">Lance</button>
 
         <button id="btn-import" class="btn icon ghost" title="Import session JSON" aria-label="Import">⬇</button>
         <button id="btn-export" class="btn icon ghost" title="Export session JSON" aria-label="Export">⬆</button>
@@ -101,6 +102,8 @@
       <div id="sidebar-scrim" hidden></div>
 
       <!-- Main column -->
+      <div id="lance-dock" class="hidden"></div>
+
       <section class="col-right">
         <!-- Swappable header card (Overview ↔ Tech Readout ↔ GATOR) -->
         <div class="card" id="top-swapper">
@@ -635,5 +638,7 @@
   <div id="toast" class="toast" hidden></div>
 
   <script src="./script.js" defer></script>
+  <script src="./modules/lance.js" defer></script>
+
 </body>
 </html>
