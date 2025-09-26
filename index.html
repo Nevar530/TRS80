@@ -70,6 +70,8 @@
           </button>
         -->
 <button id="btn-lance" class="btn ghost" title="Show Lance" aria-controls="lance-dock">Lance</button>
+        <button id="btn-owned" class="btn ghost" title="Owned Chassis" aria-controls="owned-dock">Owned</button>
+
 
         <button id="btn-import" class="btn icon ghost" title="Import session JSON" aria-label="Import">⬇</button>
         <button id="btn-export" class="btn icon ghost" title="Export session JSON" aria-label="Export">⬆</button>
@@ -106,6 +108,8 @@
 
       <section class="col-right">
               <div id="lance-dock" class="hidden"></div>
+        <div id="owned-dock" hidden></div>
+
         <!-- Swappable header card (Overview ↔ Tech Readout ↔ GATOR) -->
         <div class="card" id="top-swapper">
           <div class="card-h">
@@ -639,7 +643,9 @@
   <div id="toast" class="toast" hidden></div>
 
 <script src="./modules/lance.js" defer></script>
+<script src="./modules/owned.js" defer></script>
 <script src="./script.js" defer></script>
+
 
 </body>
 </html>
