@@ -1591,12 +1591,12 @@ function init(){
   };
   App.openMech = (idOrSource) => loadMechFromUrl(idOrSource);
   App.getManifest = () => state.manifest;
-  App.applyOwnedFilter = (on) => {
-    filterState.ownedOnly = !!on;
-    window._rebuildSidebarList?.();
-    window._rebuildSearchIndex?.();
-    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
-  };
+App.applyOwnedFilter = (on) => {
+  filterState.ownedOnly = !!on;
+  window._rebuildSidebarList?.();
+  window._rebuildSearchIndex?.();
+  document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+};
 
   // Now that UI + sidebar are ready, hook up modules
   Lance.init({
