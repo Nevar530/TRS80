@@ -1039,7 +1039,8 @@ if (filterState.ownedOnly) {
     || (filterState.rulesLevel != null && String(filterState.rulesLevel) !== '')
     || filterState.source
     || filterState.bvMin != null
-    || filterState.bvMax != null;
+    || filterState.bvMax != null
+  || filterState.ownedOnly;     // ← include this
 
   manifestFiltered = anyOn ? state.manifest.filter(pred) : null;
   window._rebuildSidebarList?.();
