@@ -1599,14 +1599,7 @@ function init(){
   App.getManifest = () => state.manifest;
 App.applyOwnedFilter = (on) => {
   filterState.ownedOnly = !!on;
-  if (typeof window._applyFiltersInternal === 'function') {
-    window._applyFiltersInternal();
-  } else {
-    // fallback just in case
-    window._rebuildSidebarList?.();
-    window._rebuildSearchIndex?.();
-    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
-  }
+  applyFilters();   // reuse the same filter logic as the modal
 };
 
   // Now that UI + sidebar are ready, hook up modules
