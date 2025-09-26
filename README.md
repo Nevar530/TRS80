@@ -4,9 +4,9 @@
 > Welcome to TRS:80, a complete digital console for managing your BattleTech forces.  
 > Designed as a reference, builder, and catalog, it brings the entire scope of ’Mech warfare to your fingertips.  
 
-[![Play TRS:80](https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Play%20TRS:80-black?style=for-the-badge)](https://nevar530.github.io/TRS80/)  
-![License: MIT](https://img.shields.io/badge/Code-MIT-black)  
-![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Data-CC--BY--NC--SA--4.0-black)  
+[![▶ LOAD TRS:80](https://img.shields.io/badge/:%3E%20LOAD%20TRS:80-green?style=for-the-badge&logo=gnu-bash&logoColor=red)](https://nevar530.github.io/TRS80/)
+
+![License: MIT](https://img.shields.io/badge/Code-MIT-black) ![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Data-CC--BY--NC--SA--4.0-black)  
 
 ---
 
