@@ -1,20 +1,28 @@
-/* ===== TRS:80 – Owned Chassis (drop-in module) ===== */
+/* ===== TRS:80 – Owned Chassis (drop-in module) =====
+   - Zero core rewrites required
+   - Uses existing CSS variables
+   - Persists to localStorage
+   - Import/Export JSON
+   - Optional "Owned only" filter toggle wired via hook
+---------------------------------------------------------------- */
 (() => {
   'use strict';
 
   const STORAGE_KEY = 'trs80:owned@1';
 
-  // ------- internal state -------
+  // -------- hooks provided by host app (filled in init) --------
   let hooks = {
-    getManifest: () => [],
-    applyOwnedFilter: (on) => {}
+    getManifest: () => [],          // () => state.manifest
+    applyOwnedFilter: (_on) => {}   // (boolean) -> void  (sets filterState.ownedOnly and refreshes UI)
   };
-  let owned = new Set();      // chassis names
-  let isFilterOn = false;     // UI toggle state
-  let chassisIndex = [];      // [{ name, count }]
-  let dom = {};               // refs
 
-  // ------- storage -------
+  // -------- module state --------
+  let owned = new Set();      // Set<string chassisName>
+  let isFilterOn = false;     // header toggle state (mirrors filterState.ownedOnly)
+  let chassisIndex = [];      // [{ name, count }]
+  let dom = {};               // cached DOM refs
+
+  // -------- storage --------
   function load() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -23,36 +31,66 @@
       if (data && data.v === 1 && Array.isArray(data.owned)) {
         owned = new Set(data.owned.map(String));
       }
-    } catch (e) { /* ignore */ }
+    } catch { /* ignore */ }
   }
   function save() {
     try {
       const payload = { v: 1, owned: Array.from(owned), updatedAt: new Date().toISOString() };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    } catch (e) { /* ignore */ }
+    } catch { /* ignore */ }
   }
 
-  // ------- manifest → chassis list -------
+  // -------- helpers --------
+  // Given a manifest row, return the chassis-only name (strips trailing variant from displayName)
+  function chassisFrom(m){
+    // In state.manifest, m.name is displayName like "Archer ARC-2K"
+    // and m.variant is "ARC-2K". Remove the suffix when present.
+    let n = String(m?.name || '').trim();
+    const v = String(m?.variant || '').trim();
+    if (n && v) {
+      const tail = (' ' + v).toLowerCase();
+      if (n.toLowerCase().endsWith(tail)) n = n.slice(0, -tail.length).trim();
+    }
+    // fallback: raw chassis if host also exposes it on m (not guaranteed)
+    return n || String(m?.id || '').trim();
+  }
+
+  // Heuristic: if given a display label (e.g., "Archer ARC-2K"), strip a trailing variant-like token.
+  // This lets Owned.isOwned(...) work when caller only passes m.name (displayName).
+  function stripVariantHeuristic(label){
+    const s = String(label || '').trim();
+    // common patterns: "ABC-1A", "ABC-2K-L", "HBK-4G", sometimes "HBK-4G (XL)" etc.
+    // We'll remove the last token if it looks like a variant code: contains a dash OR is alnum+caps
+    const m = s.match(/^(.*?)(?:\s+([A-Z0-9][A-Z0-9-]{1,}|[A-Z]{2,}\d+[A-Z0-9-]*|\d+[A-Z0-9-]+))(?:\s*\(.*\))?$/);
+    if (!m) return s;
+    const [, base, maybeVar] = m;
+    // Be conservative: only strip if token has a dash or is all-caps/digits
+    const looksVariant = /-|^[A-Z0-9-]+$/.test(maybeVar);
+    return looksVariant ? base.trim() : s;
+  }
+
+  // -------- manifest → unique chassis index --------
   function buildChassisIndex() {
     const manifest = Array.isArray(hooks.getManifest?.()) ? hooks.getManifest() : [];
     const map = new Map();
     for (const m of manifest) {
-      const name = (m?.name || '').trim();
-      if (!name) continue;
-      map.set(name, (map.get(name) || 0) + 1);
+      const chassis = chassisFrom(m);
+      if (!chassis) continue;
+      map.set(chassis, (map.get(chassis) || 0) + 1);
     }
     chassisIndex = Array.from(map.entries())
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
   }
 
-  // ------- DOM helpers -------
+  // -------- DOM helpers --------
   const $ = (sel, root=document) => root.querySelector(sel);
   const el = (tag, attrs={}, html='') => {
     const n = document.createElement(tag);
     for (const [k,v] of Object.entries(attrs)) {
       if (k === 'class') n.className = v;
       else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2), v);
+      else if (v === '' && (k === 'hidden' || k === 'disabled')) n.setAttribute(k, '');
       else n.setAttribute(k, v);
     }
     if (html) n.innerHTML = html;
@@ -70,10 +108,11 @@
     return dock;
   }
 
-  // ------- minimal styles (scoped) -------
+  // -------- minimal styles (scoped) --------
   function injectCss() {
     if (document.getElementById('owned-css')) return;
-    const st = el('style', { id:'owned-css' }); st.textContent = `
+    const st = el('style', { id:'owned-css' });
+    st.textContent = `
 #owned-dock{background:var(--panel);border:1px solid var(--border);border-radius:8px;margin:0 0 12px 0}
 #owned-dock .od-h{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:8px 10px;border-bottom:1px solid var(--border)}
 #owned-dock .od-title{font-weight:700}
@@ -83,7 +122,7 @@
 #owned-list{max-height:42vh;overflow:auto;border:1px solid var(--border);border-radius:6px}
 #owned-list .row{display:flex;align-items:center;gap:10px;padding:6px 8px;border-bottom:1px solid var(--border)}
 #owned-list .row:last-child{border-bottom:0}
-#owned-list .row .name{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#owned-list .row .name{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #owned-list .row .count{margin-left:auto;opacity:.65;font-size:12px}
 #owned-dock .btn.sm{padding:4px 8px;font-size:13px}
 #owned-empty{padding:8px 10px}
@@ -92,7 +131,7 @@
     document.head.appendChild(st);
   }
 
-  // ------- render -------
+  // -------- render --------
   function renderList(filter='') {
     const host = dom.list;
     if (!host) return;
@@ -188,7 +227,7 @@
     renderList('');
   }
 
-  // ------- import/export -------
+  // -------- import/export --------
   function doExport() {
     const payload = { v: 1, owned: Array.from(owned), exportedAt: new Date().toISOString() };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
@@ -218,19 +257,32 @@
     input.click();
   }
 
-  // ------- public API -------
+  // -------- public API --------
   function open()  { const d = ensureDock(); d.hidden = false; }
   function close() { const d = ensureDock(); d.hidden = true; }
   function toggle(){ const d = ensureDock(); d.hidden = !d.hidden; }
 
-  function isOwned(name) { return owned.has(String(name || '').trim()); }
+  // Accepts either a chassis name OR a displayName with variant; returns true if chassis is marked owned.
+  function isOwned(nameOrDisplay) {
+    const s = String(nameOrDisplay || '').trim();
+    if (!s) return false;
+    if (owned.has(s)) return true;               // exact match (already a chassis string)
+    const chassisGuess = stripVariantHeuristic(s);
+    return owned.has(chassisGuess);
+  }
+
+  function refreshAndShow() {
+    buildChassisIndex();
+    renderDock();
+    open();
+  }
 
   function init(opts = {}) {
     // store hooks
     hooks.getManifest = opts.getManifest || hooks.getManifest;
     hooks.applyOwnedFilter = opts.applyOwnedFilter || hooks.applyOwnedFilter;
 
-    // wire button (module self-wires to avoid core edits)
+    // wire button (self-contained)
     const btn = document.getElementById('btn-owned');
     if (btn && !btn._ownedHooked) {
       btn.addEventListener('click', () => {
@@ -240,18 +292,12 @@
       btn._ownedHooked = true;
     }
 
-    // state
+    // load state + render
     load();
     buildChassisIndex();
     renderDock();
   }
 
-  function refreshAndShow() {
-    buildChassisIndex();
-    renderDock();
-    open();
-  }
-
-  // Expose globally
+  // expose on window
   window.Owned = { init, isOwned, open, close, toggle };
 })();
