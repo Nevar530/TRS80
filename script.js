@@ -813,6 +813,8 @@ async function loadMechFromUrl(url) {
     showToast('Loading mech…');
     const raw  = await fetchJson(url);
     const mech = ensureBV(ensureInternals(normalizeMech(raw) || raw));
+    mech._sourceUrl = url; // allow Lance to reopen this mech
+
     state.mech = mech; window.DEBUG_MECH = mech;
 
     const cap = Number.isFinite(mech?.heatCapacity)
@@ -1219,6 +1221,12 @@ function initSidebarList(){
   if (!listEl || !searchEl) return;
 
   let selectedUrl = null;
+  function _clearMenuSelection(){
+  selectedUrl = null;
+  byId('mech-list')?.querySelectorAll('.mech-row.is-active')
+    .forEach(n => n.classList.remove('is-active'));
+}
+
   let index = [];
 
   const currentList = () => (manifestFiltered ?? state.manifest);
@@ -1318,6 +1326,9 @@ function initSidebarList(){
     await loadManifest();
     rebuild();
   });
+window.App = window.App || {};
+App.clearMenuSelection = _clearMenuSelection;
+ 
 }
 
 /* -----------------------------------------
@@ -1557,6 +1568,28 @@ function init(){
   initUI();
   initSidebarDrawer();
   console.info('Gator Console ready (single-file).');
+
+  // Expose minimal API for Lance
+  window.App = window.App || {};
+  App.getCurrentMechSummary = () => {
+    const m = state.mech;
+    if (!m) return null;
+    return {
+      id: m.displayName || m.name || m.Model || null,
+      name: m.displayName || m.name || m.Model || '—',
+      bv: m.bv ?? m.BV ?? null,
+      tonnage: m.tonnage ?? m.Tonnage ?? m.mass ?? null,
+      source: m._sourceUrl || null
+    };
+  };
+  App.openMech = (idOrSource) => loadMechFromUrl(idOrSource);
+
+  // Now that UI + sidebar are ready, hook up Lance
+  Lance.init({
+    getCurrentMech: App.getCurrentMechSummary,
+    openMechById: App.openMech,
+    onMenuDeselect: App.clearMenuSelection
+  });
 }
 
 if (document.readyState === 'loading') {
@@ -1565,4 +1598,5 @@ if (document.readyState === 'loading') {
   init();
 }
 })();
+
  
