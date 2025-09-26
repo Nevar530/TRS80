@@ -1049,8 +1049,11 @@ window._applyFiltersInternal = function() {
   window._rebuildSidebarList?.();
   window._rebuildSearchIndex?.();
   closeFilterModal();
-  document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
 };
+
+  window._applyFiltersInternal();
+}
 
 function clearFilters(){
   filterState = { tech:'', classes:new Set(), canJump:false, minWalk:null, roles:[], rulesLevel:null, source:'', bvMin:null, bvMax:null, ownedOnly:false };
