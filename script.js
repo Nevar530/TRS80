@@ -26,7 +26,8 @@ const state = {
 let manifestFiltered = null;
 let filterState = {
   tech:"", classes:new Set(), canJump:false, minWalk:null, roles:[],
-  rulesLevel:null, source:"", bvMin:null, bvMax:null
+  rulesLevel:null, source:"", bvMin:null, bvMax:null,
+  ownedOnly:false
 };
 
 /* -----------------------------------------
@@ -1000,6 +1001,11 @@ function applyFilters(){
         const hasAny = [...choose].filter(r => r !== 'none').some(r => roleStr.includes(r));
         if (!hasAny) return false;
       }
+      // Owned-only gate (by chassis)
+if (filterState.ownedOnly) {
+  if (!(window.Owned?.isOwned(m.name))) return false;
+}
+
     }
 
     // BV range (from bv.json via bvMap)
@@ -1569,7 +1575,7 @@ function init(){
   initSidebarDrawer();
   console.info('Gator Console ready (single-file).');
 
-  // Expose minimal API for Lance
+  // Expose minimal API for modules
   window.App = window.App || {};
   App.getCurrentMechSummary = () => {
     const m = state.mech;
@@ -1583,12 +1589,24 @@ function init(){
     };
   };
   App.openMech = (idOrSource) => loadMechFromUrl(idOrSource);
+  App.getManifest = () => state.manifest;
+  App.applyOwnedFilter = (on) => {
+    filterState.ownedOnly = !!on;
+    window._rebuildSidebarList?.();
+    window._rebuildSearchIndex?.();
+    document.querySelector('#mech-search')?.dispatchEvent(new Event('input'));
+  };
 
-  // Now that UI + sidebar are ready, hook up Lance
+  // Now that UI + sidebar are ready, hook up modules
   Lance.init({
     getCurrentMech: App.getCurrentMechSummary,
     openMechById: App.openMech,
     onMenuDeselect: App.clearMenuSelection
+  });
+
+  Owned.init({
+    getManifest: App.getManifest,
+    applyOwnedFilter: App.applyOwnedFilter
   });
 }
 
