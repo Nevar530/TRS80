@@ -349,7 +349,7 @@ async function loadManifest() {
 
         return {
           id:       e.id || null,
-          name:     e.name || e.displayName || e.displayname || null,
+          name:     e.name || e.displayName || e.displayname || null, 
           variant:  e.variant || e.model || null,
           path,
           url:      abs,
