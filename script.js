@@ -1226,24 +1226,47 @@ function initSearchUI(){
 }
 
 /* -----------------------------------------
- *  SIDEBAR LIST (persistent)
+ *  SIDEBAR LIST (grouped by chassis, collapsible)
  * --------------------------------------- */
 function initSidebarList(){
   const listEl   = byId('mech-list');
   const searchEl = byId('side-search');
   if (!listEl || !searchEl) return;
 
+  // minimal styles for group headers; injected once
+  if (!document.getElementById('mech-groups-css')) {
+    const st = document.createElement('style');
+    st.id = 'mech-groups-css';
+    st.textContent = `
+      .group-row{display:flex;align-items:center;gap:8px; padding:6px 8px;
+        border-bottom:1px solid var(--border,#2a2f3a); cursor:pointer; user-select:none}
+      .group-row:hover{background:rgba(255,255,255,.04)}
+      .group-caret{width:1em; text-align:center; opacity:.8}
+      .group-name{flex:1 1 auto; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+      .group-count{opacity:.6; font-variant-numeric:tabular-nums}
+      .var-row{display:flex; justify-content:space-between; padding:4px 28px 4px 28px; cursor:pointer}
+      .var-row:hover{background:rgba(255,255,255,.03)}
+      .var-row.is-active{background:rgba(255,255,255,.07)}
+      .var-name,.var-variant{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+      .var-variant{opacity:.7}
+    `;
+    document.head.appendChild(st);
+  }
+
   let selectedUrl = null;
   function _clearMenuSelection(){
-  selectedUrl = null;
-  byId('mech-list')?.querySelectorAll('.mech-row.is-active')
-    .forEach(n => n.classList.remove('is-active'));
-}
+    selectedUrl = null;
+    byId('mech-list')?.querySelectorAll('.var-row.is-active')
+      .forEach(n => n.classList.remove('is-active'));
+  }
+
+  // remember which chassis are expanded
+  const openGroups = new Set();
 
   let index = [];
-
   const currentList = () => (manifestFiltered ?? state.manifest);
 
+  // Build per-variant search index
   const buildIndex = (list) => list.map(m => {
     const label = [m.name, m.variant, m.id, m.path].filter(Boolean).join(' ').toLowerCase();
     return { ...m, _key: ' ' + label + ' ' };
@@ -1271,6 +1294,19 @@ function initSidebarList(){
     return out.map(x=>x[1]).slice(0, 1000);
   };
 
+  // Group an array of manifest items by chassis (m.name)
+  function groupByChassis(arr){
+    const map = new Map();
+    for (const m of arr) {
+      const chassis = m.name || '—';
+      if (!map.has(chassis)) map.set(chassis, []);
+      map.get(chassis).push(m);
+    }
+    // keep deterministic chassis order (locale/numeric)
+    const keys = Array.from(map.keys()).sort((a,b)=> a.localeCompare(b, undefined, {numeric:true, sensitivity:'base'}));
+    return { map, order: keys };
+  }
+
   function render(){
     const q   = searchEl.value || '';
     const src = searchIndex(index, q);
@@ -1280,16 +1316,46 @@ function initSidebarList(){
       return;
     }
 
-    listEl.innerHTML = src.map(m => {
-      const nm = esc(m.name || m.id || m.variant || m.path || '—');
-      const vr = esc(m.variant || '');
-      const url = esc(m.url || '');
-      const activeCls = (url && selectedUrl === url) ? ' is-active' : '';
-      return `<div class="mech-row${activeCls}" data-url="${url}" tabindex="0" role="option" aria-label="${nm} ${vr}">
-        <span class="name mono" title="${nm}">${nm}</span>
-        <span class="variant mono small">${vr}</span>
-      </div>`;
-    }).join('');
+    const { map, order } = groupByChassis(src);
+
+    // auto-open groups when searching; otherwise keep user toggles
+    if (q.trim()) {
+      openGroups.clear();
+      for (const [ch, items] of map.entries()) if (items && items.length) openGroups.add(ch);
+    }
+
+    let html = '';
+    for (const ch of order) {
+      const items = map.get(ch) || [];
+      const isOpen = openGroups.has(ch);
+      const caret  = isOpen ? '▾' : '▸';
+      html += `
+        <div class="group-row" data-chassis="${esc(ch)}" tabindex="0" role="button" aria-expanded="${isOpen}">
+          <span class="group-caret mono">${caret}</span>
+          <span class="group-name mono" title="${esc(ch)}">${esc(ch)}</span>
+          <span class="group-count mono small">${items.length}</span>
+        </div>
+      `;
+      if (isOpen) {
+        // stable per-variant ordering (variant then id)
+        const rows = items.slice().sort((a,b)=>{
+          const v = (a.variant||'').localeCompare(b.variant||'', undefined, {numeric:true, sensitivity:'base'});
+          return v || (a.id||'').localeCompare(b.id||'', undefined, {numeric:true, sensitivity:'base'});
+        }).map(m=>{
+          const nm  = esc(m.name || m.id || m.variant || m.path || '—');
+          const vr  = esc(m.variant || '');
+          const url = esc(m.url || '');
+          const activeCls = (url && selectedUrl === url) ? ' is-active' : '';
+          return `<div class="var-row${activeCls}" data-url="${url}" tabindex="0" role="option" aria-label="${nm} ${vr}">
+                    <span class="var-name mono" title="${nm}">${nm}</span>
+                    <span class="var-variant mono small">${vr}</span>
+                  </div>`;
+        }).join('');
+        html += rows;
+      }
+    }
+
+    listEl.innerHTML = html;
   }
 
   function rebuild() {
@@ -1300,30 +1366,48 @@ function initSidebarList(){
   window._renderSidebarList  = render;
   window._rebuildSidebarList = rebuild;
 
+  // Toggle groups
   listEl.addEventListener('click', (e) => {
-    const row = e.target.closest('.mech-row');
-    if (!row) return;
-    const url = row.getAttribute('data-url');
-    if (url) {
-      selectedUrl = url;
-      loadMechFromUrl(url);
-      listEl.querySelectorAll('.mech-row.is-active').forEach(n => n.classList.remove('is-active'));
-      row.classList.add('is-active');
+    const grp = e.target.closest('.group-row');
+    if (grp) {
+      const chassis = grp.getAttribute('data-chassis') || '';
+      if (openGroups.has(chassis)) openGroups.delete(chassis); else openGroups.add(chassis);
+      render();
+      return;
     }
-  });
-  listEl.addEventListener('keydown', (e) => {
-    if (e.key !== 'Enter') return;
-    const row = e.target.closest('.mech-row');
+    const row = e.target.closest('.var-row');
     if (!row) return;
     const url = row.getAttribute('data-url');
     if (url) {
       selectedUrl = url;
       loadMechFromUrl(url);
-      listEl.querySelectorAll('.mech-row.is-active').forEach(n => n.classList.remove('is-active'));
+      listEl.querySelectorAll('.var-row.is-active').forEach(n => n.classList.remove('is-active'));
       row.classList.add('is-active');
     }
   });
 
+  // Keyboard: Enter toggles/open/loads
+  listEl.addEventListener('keydown', (e) => {
+    const grp = e.target.closest('.group-row');
+    if (grp && e.key === 'Enter') {
+      const chassis = grp.getAttribute('data-chassis') || '';
+      if (openGroups.has(chassis)) openGroups.delete(chassis); else openGroups.add(chassis);
+      render();
+      return;
+    }
+    const row = e.target.closest('.var-row');
+    if (row && e.key === 'Enter') {
+      const url = row.getAttribute('data-url');
+      if (url) {
+        selectedUrl = url;
+        loadMechFromUrl(url);
+        listEl.querySelectorAll('.var-row.is-active').forEach(n => n.classList.remove('is-active'));
+        row.classList.add('is-active');
+      }
+    }
+  });
+
+  // Debounced search → re-render (auto-opens matched groups)
   let tId = 0;
   searchEl.addEventListener('input', () => {
     clearTimeout(tId);
@@ -1339,9 +1423,10 @@ function initSidebarList(){
     await loadManifest();
     rebuild();
   });
-window.App = window.App || {};
-App.clearMenuSelection = _clearMenuSelection;
- 
+
+  // expose clear for Lance module
+  window.App = window.App || {};
+  App.clearMenuSelection = _clearMenuSelection;
 }
 
 /* -----------------------------------------
