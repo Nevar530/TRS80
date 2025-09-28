@@ -437,6 +437,7 @@ function normalizeMech(raw) {
 function setHeat(current, capacity) {
   state.heat.current  = Math.max(0, current|0);
   state.heat.capacity = Math.max(0, capacity|0);
+
   const cap = state.heat.capacity || 1;
   const pct = clamp((state.heat.current / cap) * 100, 0, 100);
 
@@ -466,6 +467,25 @@ function updateOverview() {
   byId('ov-weps').textContent = w.length
     ? w.slice(0,6).map(wi => `${wi.name}${wi.loc?` [${wi.loc}]`:''}`).join(' • ')
     : '—';
+
+  // ----- Heat capacity calculation -----
+  let cap = 0;
+
+  if (m?.heatSinks) {
+    const match = m.heatSinks.match(/\d+/);   // pull the number
+    if (match) {
+      cap = parseInt(match[0], 10);
+      if (/double/i.test(m.heatSinks)) {
+        cap *= 2; // double heat sinks count double
+      }
+    }
+  }
+
+  if (m?.heatCapacity) {
+    cap = m.heatCapacity; // explicit override
+  }
+
+  state.heat.capacity = cap;
 
   // mini stats table under "Key Weapons"
   renderOverviewWeaponsMini(m);
