@@ -58,6 +58,27 @@ function showToast(msg, ms=1600){
   showToast._t = setTimeout(()=>{ t.hidden = true; t.style.display = 'none'; }, ms);
 }
 
+function getHeatCapacityFor(mech){
+  if (!mech) return 0;
+
+  // Explicit numeric wins
+  if (Number.isFinite(mech.heatCapacity)) return mech.heatCapacity | 0;
+
+  // Structured sinks
+  if (mech?.sinks?.count != null) {
+    const cnt = Number(mech.sinks.count) || 0;
+    const tag = String(mech.sinks.type || '').toLowerCase();
+    return /\bdouble\b/.test(tag) ? cnt * 2 : cnt;
+  }
+
+  // String forms like "13 IS Double"
+  const hsStr = String(mech.heatSinks ?? mech.HeatSinks ?? '');
+  const m = hsStr.match(/\d+/);
+  const cnt = m ? parseInt(m[0], 10) : 0;
+  return /\bdouble\b/i.test(hsStr) ? cnt * 2 : cnt;
+}
+
+
 /* -----------------------------------------
  *  KEYS + SORTING
  * --------------------------------------- */
@@ -422,11 +443,20 @@ function normalizeMech(raw) {
   out.era = out.era ?? raw.era ?? '—';
   if (!out.sources && raw.source) out.sources = [String(raw.source)];
 
-  if (out.heatCapacity == null && out.heatSinks != null) {
-    const mhs = String(out.heatSinks).match(/\d+/);
-    if (mhs) out.heatCapacity = Number(mhs[0]);
+ if (out.heatCapacity == null) {
+  // Prefer structured sinks if present
+  if (out?.sinks?.count != null) {
+    const cnt = Number(out.sinks.count) || 0;
+    const tag = String(out.sinks.type || '').toLowerCase();
+    out.heatCapacity = /\bdouble\b/.test(tag) ? cnt * 2 : cnt;
+  } else if (out.heatSinks != null || out.HeatSinks != null) {
+    const hsStr = String(out.heatSinks ?? out.HeatSinks ?? '');
+    const m = hsStr.match(/\d+/);
+    const cnt = m ? parseInt(m[0], 10) : 0;
+    out.heatCapacity = /\bdouble\b/i.test(hsStr) ? cnt * 2 : cnt;
   }
-  if (out.tonnage == null && out.mass != null) out.tonnage = out.mass;
+} 
+if (out.tonnage == null && out.mass != null) out.tonnage = out.mass;
 
   return out;
 }
@@ -838,9 +868,8 @@ async function loadMechFromUrl(url) {
 
     state.mech = mech; window.DEBUG_MECH = mech;
 
-    const cap = Number.isFinite(mech?.heatCapacity)
-      ? mech.heatCapacity
-      : (mech?.sinks?.count ?? mech?.HeatSinks ?? 0);
+   const cap = getHeatCapacityFor(mech);
+setHeat(0, cap | 0);
 
     setHeat(0, cap|0);
     updateOverview();
@@ -869,9 +898,7 @@ function importJson() {
       } else {
         state.mech = ensureBV(ensureInternals(normalizeMech(data) || data));
         window.DEBUG_MECH = state.mech;
-        const cap = Number.isFinite(state.mech?.heatCapacity)
-          ? state.mech.heatCapacity
-          : (state.mech?.sinks?.count ?? state.mech?.HeatSinks ?? 0);
+       setHeat(0, getHeatCapacityFor(state.mech) | 0);
         setHeat(0, cap|0); updateOverview(); fillTechReadout();
       }
       showToast('JSON imported');
