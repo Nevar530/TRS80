@@ -18,8 +18,6 @@ TRS:80 now connects directly with **[BattleTech // Mobile Skirmish](https://neva
 - **Import into Mobile Skirmish** → instantly places those ’Mechs on the tactical map  
 - Pilot info, call signs, and skills carry over  
 - Team colors sync (Alpha, Bravo, Clan, Merc)  
-- **Round-trip:** export from Skirmish back into TRS:80  
-
 👉 Your **force construction** (TRS:80) and **gameplay skirmishes** (Mobile Skirmish) are now seamlessly linked. Build once, play anywhere.  
 
 ---
