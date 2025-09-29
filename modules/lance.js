@@ -1,55 +1,52 @@
-/* ===== TRS:80 Lance Module (drop-in, with pilots & skills & Skirmish export) =====
- * Public surface stays: Lance.init(api), Lance.setVisible(on), Lance.getState()
+/* ===== TRS:80 Lance Module (self-contained; pilots, skills, stacked mobile, Skirmish export) =====
+ * Public surface: Lance.init(api), Lance.setVisible(on), Lance.getState()
  * Host API contract:
  *   api.getCurrentMech(): { id?:string|null, name?:string|null, bv?:number|null, tonnage?:number|null, source?:string|null } | null
  *   api.openMechById(idOrSource: string): void
  *   api.onMenuDeselect(): void
- *
- * Minimal HTML expected:
- *   <button id="btn-lance" class="btn ghost" title="Show Lance" aria-controls="lance-dock">Lance</button>
- *   <div id="lance-dock" class="hidden"></div>
  */
 (function(){
   'use strict';
 
   const STORAGE_KEY = 'trs80:lance';
   const UI_STATE_KEY = 'trs80:lance:ui';
-  const SCHEMA = 'trs80-lance@2'; // bump: now stores pilotName/piloting/gunnery/team per unit
+  const SCHEMA = 'trs80-lance@2';
 
-  // Team → colorIndex mapping (Skirmish expectations)
+  // Team → colorIndex mapping (for Skirmish token colors)
   const TEAM_COLOR = { Alpha:1, Bravo:0, Clan:4, Merc:3 };
 
-  // Lightweight call sign bank (no dupes until wrap)
+  // Call signs (exact list you provided)
   const CALLSIGNS = [
-    'Rook','Shade','Viper','Ghost','Warden','Mako','Bullfrog','Nomad','Sable','Gambit','Hollow',
-    'Vector','Talon','Aegis','Kestrel','Badger','Switch','Onyx','Goliath','Jinx','Quarry','Havoc',
-    'Triage','Horizon','Magpie','Gunner','Torque','Ranger','Sparks','Whisper','Grimm','Hawkeye',
-    'Longshot','Ironclad','Banshee','Prowler','Orbit','Spire','Static','Trigger','Paladin','Valkyr',
-    'Jackdaw','Wraith','Courier','Oracle','Kodiak','Anvil','Fathom','Tide','Zephyr','Blizzard','Cobalt',
-    'Wildcat','Breaker','Dusty','Nimbus','Sable-2','Cricket','Coywolf','Bandit','Copper','Lancer','Echo',
-    'Siren','Foxglove','Harrier','Phantom','Quicksilver','Seeker','Thresher','Badmoon','Sundog','Cinder',
-    'Howler','Bluejay','Vandal','Tessera','Nettle','Crown','Relay','Switchback','Tango'
+    'Ghost','Reaper','Shadow','Viper','Echo','Frost','Blaze','Onyx','Phantom','Apex',
+    'Striker','Nova','Havoc','Iron','Vector','Zero','Rift','Cinder','Talon','Ash'
   ];
-  let _callsignIdx = 0;
-  const nextCallsign = ()=> CALLSIGNS[_callsignIdx++ % CALLSIGNS.length];
+  // Shuffle once to reduce early repeats, then cycle
+  let _cs = shuffle([...CALLSIGNS]);
+  let _csIdx = 0;
+  function nextCallsign(){
+    if (_csIdx >= _cs.length){ _cs = shuffle([...CALLSIGNS]); _csIdx = 0; }
+    return _cs[_csIdx++];
+  }
+  function shuffle(a){
+    for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
 
-  // ---------- Types (JSDoc) ----------
+  // ---------- Types ----------
   /**
    * @typedef {{
-   *   id: string|null,        // optional mech id from host
-   *   name: string,           // "Atlas D"
+   *   id: string|null,
+   *   name: string,
    *   bv: number|null,
    *   tonnage: number|null,
-   *   source: string,         // host lookup key
-   *   pilotName: string,      // "Rook"
-   *   piloting: number,       // default 4
-   *   gunnery: number,        // default 4
-   *   team: "Alpha"|"Bravo"|"Clan"|"Merc", // default Alpha (or keep last used)
-   *   variantCode?: string    // optional short code like "AS7-D"; if absent, we derive from name
+   *   source: string,
+   *   pilotName: string,   // "Ghost", etc.
+   *   piloting: number,    // default 4
+   *   gunnery: number,     // default 4
+   *   team: "Alpha"|"Bravo"|"Clan"|"Merc",
+   *   variantCode?: string // optional short code like "AS7-D"
    * }} LanceUnit
-   *
    * @typedef {{ v:number, schema:string, name:string, units:LanceUnit[] }} LanceState
-   *
    * @typedef {{
    *   getCurrentMech: ()=>({id?:string|null,name?:string|null,bv?:number|null,tonnage?:number|null,source?:string|null})|null,
    *   openMechById: (idOrSource:string)=>void,
@@ -60,7 +57,6 @@
   /** @type {HostApi|null} */
   let host = null;
 
-  // ---------- Internal state ----------
   /** @type {LanceState} */
   let _state = { v:1, schema:SCHEMA, name:'Unnamed Lance', units:[] };
   let _visible = false;
@@ -68,37 +64,35 @@
   // UI refs
   let _dock, _btn, _list, _totBV, _totTons, _totCount, _nameInp, _warn;
 
-  // ---------- Public ----------
   const Lance = { init, setVisible, getState };
   window.Lance = Lance;
 
   // ---------- Init ----------
   function init(api){
     host = api || null;
-    _btn = document.getElementById('btn-lance');
+    _btn  = document.getElementById('btn-lance');
     _dock = document.getElementById('lance-dock');
-
-    if (!_dock) { console.warn('[Lance] #lance-dock not found'); return; }
+    if (!_dock){ console.warn('[Lance] #lance-dock not found'); return; }
 
     injectCssOnce();
     _state = loadState();
     _visible = loadUi().visible ?? false;
+
+    // Seed any missing pilot names on load (defensive)
+    for (const u of _state.units){ if (!u.pilotName) u.pilotName = nextCallsign(); if (!u.piloting) u.piloting=4; if (!u.gunnery) u.gunnery=4; }
 
     renderDock();
     renderList();
     updateTotals();
 
     if (_btn) {
-      _btn.addEventListener('click', () => setVisible(!_visible));
+      _btn.addEventListener('click', ()=> setVisible(!_visible));
       _btn.setAttribute('aria-expanded', String(_visible));
     }
-
     setVisible(_visible);
 
-    window.addEventListener('keydown', (e) => {
-      if ((e.altKey || e.metaKey) && (e.key.toLowerCase() === 'l')) {
-        e.preventDefault(); setVisible(!_visible);
-      }
+    window.addEventListener('keydown', (e)=>{
+      if ((e.altKey || e.metaKey) && e.key.toLowerCase()==='l'){ e.preventDefault(); setVisible(!_visible); }
     });
 
     console.info('[Lance] ready. Units:', _state.units.length);
@@ -110,7 +104,6 @@
     if (_btn)  _btn.setAttribute('aria-expanded', String(_visible));
     saveUi({ visible:_visible });
   }
-
   function getState(){ return structuredClone(_state); }
 
   // ---------- Rendering ----------
@@ -126,7 +119,7 @@
           <div class="lance-actions">
             <button id="lance-add" class="btn sm" title="Add current mech">Add Current</button>
             <button id="lance-import" class="btn ghost sm" title="Import lance JSON">Import</button>
-            <button id="lance-export" class="btn ghost sm" title="Export to Skirmish</br>mechs.json" aria-label="Export mechs.json">Export</button>
+            <button id="lance-export" class="btn ghost sm" title="Export Skirmish JSON">Export</button>
             <button id="lance-clear" class="btn ghost sm" title="Clear roster">Clear</button>
             <button id="lance-hide" class="btn sm" title="Hide panel">Hide</button>
           </div>
@@ -141,31 +134,31 @@
         </div>
       </section>`;
 
-    _list = document.getElementById('lance-list');
-    _totBV = document.getElementById('lance-tot-bv');
-    _totTons = document.getElementById('lance-tot-tons');
+    _list     = document.getElementById('lance-list');
+    _totBV    = document.getElementById('lance-tot-bv');
+    _totTons  = document.getElementById('lance-tot-tons');
     _totCount = document.getElementById('lance-tot-count');
-    _nameInp = document.getElementById('lance-name');
-    _warn = document.getElementById('lance-warn');
+    _nameInp  = document.getElementById('lance-name');
+    _warn     = document.getElementById('lance-warn');
 
     document.getElementById('lance-add')   ?.addEventListener('click', onAddCurrent);
     document.getElementById('lance-import')?.addEventListener('click', onImport);
     document.getElementById('lance-export')?.addEventListener('click', onExportSkirmish);
     document.getElementById('lance-clear') ?.addEventListener('click', onClear);
-    document.getElementById('lance-hide')  ?.addEventListener('click', () => setVisible(false));
+    document.getElementById('lance-hide')  ?.addEventListener('click', ()=> setVisible(false));
 
-    _nameInp?.addEventListener('change', () => { _state.name = _nameInp.value.trim() || 'Unnamed Lance'; saveState(); });
+    _nameInp?.addEventListener('change', ()=>{ _state.name = _nameInp.value.trim() || 'Unnamed Lance'; saveState(); });
     _nameInp?.addEventListener('keydown', (e)=>{ if(e.key==='Enter') e.currentTarget.blur(); });
   }
 
   function renderList(){
     if (!_list) return;
-    if (!_state.units.length) {
+    if (!_state.units.length){
       _list.innerHTML = `<div class="dim small" style="padding:6px;">No units yet. Use <strong>Add Current</strong>.</div>`;
       return;
     }
 
-    const rows = _state.units.map((u, i) => `
+    const rows = _state.units.map((u, i)=>`
       <div class="lance-row" data-idx="${i}" role="listitem">
         <div class="l-col name mono" title="${esc(u.name)}">${esc(u.name)}</div>
         <div class="l-col ton mono small" title="Tonnage">${fmt(u.tonnage,'—')}</div>
@@ -178,12 +171,12 @@
 
         <div class="l-col edit">
           <label class="small dim">Piloting</label>
-          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting)}" />
+          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??4)}" />
         </div>
 
         <div class="l-col edit">
           <label class="small dim">Gunnery</label>
-          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery)}" />
+          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
         </div>
 
         <div class="l-col edit">
@@ -198,13 +191,13 @@
           <span class="dim">•</span>
           <button class="linklike" data-act="remove" title="Remove">Remove</button>
         </div>
-      </div>`).join('');
+      </div>
+    `).join('');
 
     _list.innerHTML = rows;
 
-    // per-row handlers
-    _list.addEventListener('input', onRowEdit, { once:true });
-    _list.addEventListener('change', onRowEdit, { once:false });
+    _list.addEventListener('input', onRowEdit, { once:true });   // seed live editing
+    _list.addEventListener('change', onRowEdit);
     _list.addEventListener('click', onRowAction);
   }
 
@@ -230,11 +223,11 @@
       tonnage: numOrNull(m.tonnage),
       source: String(m.source),
 
-      pilotName: nextCallsign(),
+      pilotName: nextCallsign() || 'Ghost',
       piloting: 4,
       gunnery: 4,
-      team: 'Alpha',          // default; editable per row
-      // variantCode: undefined // optional; fill if your host can provide it later
+      team: 'Alpha',
+      // variantCode: optional
     };
 
     _state.units.push(unit);
@@ -263,15 +256,12 @@
     const row = e.target.closest('.lance-row'); if(!row) return;
     const idx = Number(row.getAttribute('data-idx')); if(!Number.isFinite(idx)) return;
     const act = btn.getAttribute('data-act');
-
     const u = _state.units[idx]; if(!u) return;
 
     if (act === 'view') {
       if (!host || !host.openMechById) return warn('Host API missing: openMechById');
-      try{
-        host.onMenuDeselect?.();
-        host.openMechById(u.source);
-      }catch{ warn('Open failed'); }
+      try{ host.onMenuDeselect?.(); host.openMechById(u.source); }
+      catch{ warn('Open failed'); }
     }
     else if (act === 'remove') {
       _state.units.splice(idx,1);
@@ -282,8 +272,8 @@
   function onImport(){
     const input = document.createElement('input');
     input.type = 'file'; input.accept = 'application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0]; if (!file) return;
+    input.onchange = async ()=>{
+      const file = input.files?.[0]; if(!file) return;
       try{
         const text = await file.text();
         const data = JSON.parse(text);
@@ -295,19 +285,18 @@
     input.click();
   }
 
-  // === Export to Skirmish mechs.json (array) ===
+  // === Export to Skirmish format (array of tokens) ===
   function onExportSkirmish(){
     try{
-      const items = _state.units.map((u, i) => {
+      const items = _state.units.map((u, i)=>{
         const label = u.variantCode || deriveLabelFromName(u.name);
         const team = u.team || 'Alpha';
         const colorIndex = TEAM_COLOR[team] ?? 1;
-
-        // Simple left-to-right row placement; Skirmish clamps bounds anyway
+        // Simple left-to-right row placement; Skirmish clamps if needed
         const q = i, r = 0;
 
         return {
-          id: null,          // Skirmish will auto-assign
+          id: null,
           q, r,
           scale: 1,
           angle: 0,
@@ -321,13 +310,14 @@
         };
       });
 
-      const blob = new Blob([JSON.stringify(items, null, 2)], { type:'application/json' });
+      const json = JSON.stringify(items, null, 2);
+      const blob = new Blob([json], { type:'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      const safe = (_state.name || 'lance').toLowerCase().replace(/[^a-z0-9._-]+/g,'-');
-      a.download = `mechs.json`; // must be mechs.json for Skirmish importer
+      const safe = (_state.name || 'lance').trim().toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-+|-+$/g,'') || 'lance';
+      a.download = `${safe}.json`;  // filename = Lance name
       a.click(); URL.revokeObjectURL(a.href);
-      toast('Exported mechs.json');
+      toast(`Exported ${safe}.json`);
     }catch(err){ warn('Export failed'); }
   }
 
@@ -366,12 +356,11 @@
   // ---------- Validation / migration ----------
   function validateImport(x){
     if (!x || typeof x !== 'object') throw new Error('bad json');
-    const schema = x.schema || SCHEMA;
     const name = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Unnamed Lance';
     const units = Array.isArray(x.units) ? x.units : [];
     const clean = [];
 
-    for (const u of units) {
+    for (const u of units){
       const nameS = String(u?.name || '').trim();
       const srcS  = String(u?.source || '').trim();
       if (!nameS || !srcS) continue;
@@ -383,7 +372,7 @@
         tonnage: numOrNull(u?.tonnage),
         source: srcS,
 
-        pilotName: String(u?.pilotName ?? u?.pilot ?? '—') || '—',
+        pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || nextCallsign(),
         piloting: clampInt(u?.piloting ?? 4, 0, 9, 4),
         gunnery:  clampInt(u?.gunnery  ?? 4, 0, 9, 4),
         team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
@@ -414,8 +403,7 @@
   }
   function warn(msg){ if (_warn){ _warn.hidden = false; _warn.textContent = msg; setTimeout(()=>{ _warn.hidden=true; }, 1800); } }
 
-  // Naive derivation for label if no variantCode is stored:
-  // Take upper-case letters/digits from name; fall back to first 8 chars.
+  // Label derivation if you don’t have a variant code on hand
   function deriveLabelFromName(name){
     const compact = String(name||'MECH').toUpperCase().replace(/[^A-Z0-9]+/g,'');
     return compact ? compact.slice(0,12) : 'MECH';
@@ -427,6 +415,7 @@
     return `${nm} - P${ps}/G${gs}`;
   }
 
+  // ---------- Scoped CSS (includes mobile stacking) ----------
   function injectCssOnce(){
     if (document.getElementById('lance-css')) return;
     const st = document.createElement('style'); st.id = 'lance-css';
@@ -439,30 +428,44 @@
       #lance-dock .lance-actions{ display:flex; gap:6px; flex-wrap:wrap; }
       #lance-dock .lance-warn{ font-size:12px; color:var(--bt-amber,#ffd06e); }
       #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
-      #lance-dock .lance-list{ display:flex; flex-direction:column; gap:6px; }
+      #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
       #lance-dock .lance-row{
         display:grid;
-        grid-template-columns: 1fr 56px 70px auto auto auto auto auto;
-        gap:8px; align-items:center; padding:8px; border:1px solid var(--border,#1f2a3a);
-        border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
+        grid-template-columns: 1fr 56px 80px auto auto auto auto auto;
+        gap:8px; align-items:center; padding:8px;
+        border:1px solid var(--border,#1f2a3a);
+        border-radius:8px;
+        background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
       }
       #lance-dock .l-col.name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
       #lance-dock .l-col.actions{ justify-self:end; display:flex; gap:8px; }
-
-      #lance-dock .mini{ width:120px; padding:4px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
-      #lance-dock .mini.num{ width:64px; text-align:center; }
-      #lance-dock .mini.sel{ width:100px; }
+      #lance-dock .mini{ width:140px; padding:4px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
+      #lance-dock .mini.num{ width:70px; text-align:center; }
+      #lance-dock .mini.sel{ width:110px; }
       #lance-dock .small{ font-size:12px; }
       #lance-dock .dim{ color:#a9b4c2; }
       #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
 
-      @media (max-width:980px){
-        #lance-dock .lance-row{ grid-template-columns: 1fr 56px 70px auto auto auto auto; }
+      /* Tablet: compress a bit */
+      @media (max-width: 980px){
+        #lance-dock .lance-row{ grid-template-columns: 1fr 56px 80px auto auto auto auto; }
       }
-      @media (max-width:800px){
-        #lance-dock .lance-row{ grid-template-columns: 1fr auto auto auto; }
-        #lance-dock .l-col.ton, #lance-dock .l-col.bv{ display:none; }
+
+      /* Phones: stack to multi-row card */
+      @media (max-width: 800px){
+        #lance-dock .lance-row{
+          grid-template-columns: 1fr;
+          grid-auto-rows: auto;
+          row-gap: 6px;
+        }
+        #lance-dock .l-col.name{ order:0; }
+        #lance-dock .l-col.ton, #lance-dock .l-col.bv{ order:1; display:block; }
+        #lance-dock .l-col.edit{ order:2; }
+        #lance-dock .l-col.actions{ order:3; justify-self:start; }
+        #lance-dock .mini{ width:100%; max-width: 220px; }
+        #lance-dock .mini.num{ max-width: 100px; }
+        #lance-dock .mini.sel{ max-width: 140px; }
       }
     `;
     document.head.appendChild(st);
