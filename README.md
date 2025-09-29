@@ -10,9 +10,23 @@
 
 ---
 
+## 🔄 Cross-App Crossover  
+
+TRS:80 now connects directly with **[BattleTech // Mobile Skirmish](https://nevar530.github.io/Battletech-Mobile-Skirmish/)**.  
+
+- **Export from TRS:80 Lance Builder** → produces a `"Lance Name".json` file  
+- **Import into Mobile Skirmish** → instantly places those ’Mechs on the tactical map  
+- Pilot info, call signs, and skills carry over  
+- Team colors sync (Alpha, Bravo, Clan, Merc)  
+- **Round-trip:** export from Skirmish back into TRS:80  
+
+👉 Your **force construction** (TRS:80) and **gameplay skirmishes** (Mobile Skirmish) are now seamlessly linked. Build once, play anywhere.  
+
+---
+
 ## 📚 Chassis & Variants  
 
-- **400+ chassis** and **2,500+ variants** in the manifest.  
+- **400+ chassis** and **2,500+ variants** in the manifest  
 - Full TRO data:  
   - Weapons, loadouts, and armaments  
   - Armor & internals by location  
@@ -20,16 +34,16 @@
   - Tonnage & movement profiles  
   - Battle Value (BV)  
   - Role & sourcebook refs  
-- Variants grouped under parent chassis for clarity.  
+- Variants grouped under parent chassis for clarity  
 
 ---
 
 ## 🖥️ Technical Readout Panels  
 
-- **Overview tab** – heat scale, pilot skill, core stats.  
-- **Tech Readout tab** – chassis/systems, armor/internals, equipment, and lore.  
-- **Weapons tab** – complete list of mounted weapons.  
-- **G.A.T.O.R. console** – integrated target number calculator:  
+- **Overview tab** – heat scale, pilot skill, core stats  
+- **Tech Readout tab** – chassis/systems, armor/internals, equipment, and lore  
+- **Weapons tab** – complete list of mounted weapons  
+- **G.A.T.O.R. console** – integrated target number calculator  
   - Gunnery, attacker, target, terrain, heat, range  
   - Dice roller with live TN display  
 
@@ -37,21 +51,21 @@
 
 ## 🎯 Lance Builder  
 
-- Build lances or stars directly from the manifest.  
-- Tracks **total BV, tonnage, mobility, roles**.  
-- Swap mechs in/out quickly.  
-- Export/import lance builds for easy sharing and reloading.  
-- Ideal for scenario prep or force balancing.  
+- Build lances or stars directly from the manifest  
+- Tracks **total BV, tonnage, mobility, roles**  
+- Swap mechs in/out quickly  
+- Export/import lance builds for easy sharing and reloading  
+- **Exports are Skirmish-compatible** for instant crossover  
 
 ---
 
 ## 🗂️ Chassis Catalogue  
 
-- Track which chassis you physically own in miniature form.  
-- Checkbox per chassis (not variant-specific).  
-- Toggle **“Filter by Owned”** to view only your collection.  
-- Combine with BV, role, and tech filters to plan games around owned forces.  
-- Export/import your collection across devices.  
+- Track which chassis you physically own in miniature form  
+- Checkbox per chassis (not variant-specific)  
+- Toggle **“Filter by Owned”** to view only your collection  
+- Combine with BV, role, and tech filters to plan games around owned forces  
+- Export/import your collection across devices  
 
 ---
 
@@ -61,7 +75,8 @@
   - Owned catalogue  
   - Lance builds  
   - Session state  
-- Export to JSON, import later, continue instantly.  
+- Export to JSON, import later, continue instantly  
+- **Lance exports can be dropped into Mobile Skirmish as `mechs.json`**  
 
 ---
 
@@ -90,17 +105,17 @@ Runs anywhere HTML does: Windows, macOS, Linux, tablets, even a USB stick.
 
 ## 🎲 Using TRS:80 in BattleTech  
 
-- **Pick a chassis** – e.g. search “Archer” to see all variants.  
-- **Filter the field** – by BV, role, weight class, rules level, or era.  
-- **Compare loadouts** – movement, armor, and weapon mixes side by side.  
-- **Prep games** – build balanced lances, export, and share.  
-- **In-game assist** – G.A.T.O.R. console handles TN math and rolls.  
-- **Lore ready** – Tech Readout panels give quick fluff & history.  
+- **Pick a chassis** – e.g. search “Archer” to see all variants  
+- **Filter the field** – by BV, role, weight class, rules level, or era  
+- **Compare loadouts** – movement, armor, and weapon mixes side by side  
+- **Prep games** – build balanced lances, export, and share  
+- **In-game assist** – G.A.T.O.R. console handles TN math and rolls  
+- **Lore ready** – Tech Readout panels give quick fluff & history  
 
 ### Go-to filters for lance building:  
-- **BV first** – ensures fair matchups.  
-- **Role + Tonnage** – classic lance comp (Scout, Skirmisher, Missile Boat, Brawler).  
-- **Era / Tech Base** – campaign or TRO-specific forces.  
+- **BV first** – ensures fair matchups  
+- **Role + Tonnage** – classic lance comp (Scout, Skirmisher, Missile Boat, Brawler)  
+- **Era / Tech Base** – campaign or TRO-specific forces  
 
 ---
 
