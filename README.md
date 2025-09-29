@@ -115,7 +115,7 @@ Runs anywhere HTML does: Windows, macOS, Linux, tablets, even a USB stick.
 ## 🔗 Related Tools  
 
 - **[BattleTech // Mobile Skirmish](https://nevar530.github.io/Battletech-Mobile-Skirmish/)**  
-  A browser-based **hex-map skirmish tool** for quick pickup games.  
+  A browser-based **hex-map skirmish app** for quick pickup games.  
 
 ---
 
