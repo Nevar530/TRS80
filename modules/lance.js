@@ -1,10 +1,9 @@
-/* ===== TRS:80 Lance Module (drop-in) =====
- * Self-contained roster/lance panel with localStorage.
- *
- * Contract expected from host app (set in script.js):
- *   App.getCurrentMechSummary(): { id,name,bv,tonnage,source } | null
- *   App.openMech(idOrSource: string): void
- *   App.clearMenuSelection(): void
+/* ===== TRS:80 Lance Module (drop-in, with pilots & skills & Skirmish export) =====
+ * Public surface stays: Lance.init(api), Lance.setVisible(on), Lance.getState()
+ * Host API contract:
+ *   api.getCurrentMech(): { id?:string|null, name?:string|null, bv?:number|null, tonnage?:number|null, source?:string|null } | null
+ *   api.openMechById(idOrSource: string): void
+ *   api.onMenuDeselect(): void
  *
  * Minimal HTML expected:
  *   <button id="btn-lance" class="btn ghost" title="Show Lance" aria-controls="lance-dock">Lance</button>
@@ -15,25 +14,42 @@
 
   const STORAGE_KEY = 'trs80:lance';
   const UI_STATE_KEY = 'trs80:lance:ui';
-  const SCHEMA = 'trs80-lance@1';
+  const SCHEMA = 'trs80-lance@2'; // bump: now stores pilotName/piloting/gunnery/team per unit
 
-  // Public surface
-  const Lance = {
-    init,
-    setVisible,
-    getState,
-  };
-  window.Lance = Lance;
+  // Team → colorIndex mapping (Skirmish expectations)
+  const TEAM_COLOR = { Alpha:1, Bravo:0, Clan:4, Merc:3 };
 
-  // ---------- Internal state ----------
-  let _state = /** @type {LanceState} */ ({ v:1, schema:SCHEMA, name:'Unnamed Lance', units:[] });
-  let _visible = false;
-  let _dock, _btn, _list, _totBV, _totTons, _totCount, _nameInp, _warn;
+  // Lightweight call sign bank (no dupes until wrap)
+  const CALLSIGNS = [
+    'Rook','Shade','Viper','Ghost','Warden','Mako','Bullfrog','Nomad','Sable','Gambit','Hollow',
+    'Vector','Talon','Aegis','Kestrel','Badger','Switch','Onyx','Goliath','Jinx','Quarry','Havoc',
+    'Triage','Horizon','Magpie','Gunner','Torque','Ranger','Sparks','Whisper','Grimm','Hawkeye',
+    'Longshot','Ironclad','Banshee','Prowler','Orbit','Spire','Static','Trigger','Paladin','Valkyr',
+    'Jackdaw','Wraith','Courier','Oracle','Kodiak','Anvil','Fathom','Tide','Zephyr','Blizzard','Cobalt',
+    'Wildcat','Breaker','Dusty','Nimbus','Sable-2','Cricket','Coywolf','Bandit','Copper','Lancer','Echo',
+    'Siren','Foxglove','Harrier','Phantom','Quicksilver','Seeker','Thresher','Badmoon','Sundog','Cinder',
+    'Howler','Bluejay','Vandal','Tessera','Nettle','Crown','Relay','Switchback','Tango'
+  ];
+  let _callsignIdx = 0;
+  const nextCallsign = ()=> CALLSIGNS[_callsignIdx++ % CALLSIGNS.length];
 
   // ---------- Types (JSDoc) ----------
   /**
-   * @typedef {{id?:string|null,name:string,bv?:number|null,tonnage?:number|null,source:string}} LanceUnit
-   * @typedef {{v:number,schema:string,name:string,units:LanceUnit[]}} LanceState
+   * @typedef {{
+   *   id: string|null,        // optional mech id from host
+   *   name: string,           // "Atlas D"
+   *   bv: number|null,
+   *   tonnage: number|null,
+   *   source: string,         // host lookup key
+   *   pilotName: string,      // "Rook"
+   *   piloting: number,       // default 4
+   *   gunnery: number,        // default 4
+   *   team: "Alpha"|"Bravo"|"Clan"|"Merc", // default Alpha (or keep last used)
+   *   variantCode?: string    // optional short code like "AS7-D"; if absent, we derive from name
+   * }} LanceUnit
+   *
+   * @typedef {{ v:number, schema:string, name:string, units:LanceUnit[] }} LanceState
+   *
    * @typedef {{
    *   getCurrentMech: ()=>({id?:string|null,name?:string|null,bv?:number|null,tonnage?:number|null,source?:string|null})|null,
    *   openMechById: (idOrSource:string)=>void,
@@ -44,39 +60,41 @@
   /** @type {HostApi|null} */
   let host = null;
 
+  // ---------- Internal state ----------
+  /** @type {LanceState} */
+  let _state = { v:1, schema:SCHEMA, name:'Unnamed Lance', units:[] };
+  let _visible = false;
+
+  // UI refs
+  let _dock, _btn, _list, _totBV, _totTons, _totCount, _nameInp, _warn;
+
+  // ---------- Public ----------
+  const Lance = { init, setVisible, getState };
+  window.Lance = Lance;
+
   // ---------- Init ----------
-  function init(api /** @type {HostApi} */){
+  function init(api){
     host = api || null;
     _btn = document.getElementById('btn-lance');
     _dock = document.getElementById('lance-dock');
 
-    if (!_dock) {
-      console.warn('[Lance] #lance-dock not found');
-      return;
-    }
+    if (!_dock) { console.warn('[Lance] #lance-dock not found'); return; }
 
-    // Inject minimal scoped CSS (inside shadow-ish class namespace)
     injectCssOnce();
-
-    // Load state & UI prefs
     _state = loadState();
     _visible = loadUi().visible ?? false;
 
-    // Render UI scaffold
     renderDock();
     renderList();
     updateTotals();
 
-    // Wire toggle button
     if (_btn) {
       _btn.addEventListener('click', () => setVisible(!_visible));
       _btn.setAttribute('aria-expanded', String(_visible));
     }
 
-    // First visibility
     setVisible(_visible);
 
-    // Keyboard: Alt+L toggle
     window.addEventListener('keydown', (e) => {
       if ((e.altKey || e.metaKey) && (e.key.toLowerCase() === 'l')) {
         e.preventDefault(); setVisible(!_visible);
@@ -108,7 +126,7 @@
           <div class="lance-actions">
             <button id="lance-add" class="btn sm" title="Add current mech">Add Current</button>
             <button id="lance-import" class="btn ghost sm" title="Import lance JSON">Import</button>
-            <button id="lance-export" class="btn ghost sm" title="Export lance JSON">Export</button>
+            <button id="lance-export" class="btn ghost sm" title="Export to Skirmish</br>mechs.json" aria-label="Export mechs.json">Export</button>
             <button id="lance-clear" class="btn ghost sm" title="Clear roster">Clear</button>
             <button id="lance-hide" class="btn sm" title="Hide panel">Hide</button>
           </div>
@@ -130,14 +148,12 @@
     _nameInp = document.getElementById('lance-name');
     _warn = document.getElementById('lance-warn');
 
-    // Wire header actions
     document.getElementById('lance-add')   ?.addEventListener('click', onAddCurrent);
     document.getElementById('lance-import')?.addEventListener('click', onImport);
-    document.getElementById('lance-export')?.addEventListener('click', onExport);
+    document.getElementById('lance-export')?.addEventListener('click', onExportSkirmish);
     document.getElementById('lance-clear') ?.addEventListener('click', onClear);
     document.getElementById('lance-hide')  ?.addEventListener('click', () => setVisible(false));
 
-    // Name edit
     _nameInp?.addEventListener('change', () => { _state.name = _nameInp.value.trim() || 'Unnamed Lance'; saveState(); });
     _nameInp?.addEventListener('keydown', (e)=>{ if(e.key==='Enter') e.currentTarget.blur(); });
   }
@@ -154,16 +170,41 @@
         <div class="l-col name mono" title="${esc(u.name)}">${esc(u.name)}</div>
         <div class="l-col ton mono small" title="Tonnage">${fmt(u.tonnage,'—')}</div>
         <div class="l-col bv mono small" title="BV">${fmt(u.bv,'—')}</div>
+
+        <div class="l-col edit">
+          <label class="small dim">Pilot</label>
+          <input class="mini" data-field="pilotName" value="${esc(u.pilotName||'')}" maxlength="32" />
+        </div>
+
+        <div class="l-col edit">
+          <label class="small dim">Piloting</label>
+          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting)}" />
+        </div>
+
+        <div class="l-col edit">
+          <label class="small dim">Gunnery</label>
+          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery)}" />
+        </div>
+
+        <div class="l-col edit">
+          <label class="small dim">Team</label>
+          <select class="mini sel" data-field="team">
+            ${['Alpha','Bravo','Clan','Merc'].map(t=>`<option${u.team===t?' selected':''}>${t}</option>`).join('')}
+          </select>
+        </div>
+
         <div class="l-col actions">
           <button class="linklike" data-act="view" title="Open in viewer">View</button>
           <span class="dim">•</span>
-          <button class="linklike" data-act="remove" title="Remove from lance">Remove</button>
+          <button class="linklike" data-act="remove" title="Remove">Remove</button>
         </div>
       </div>`).join('');
 
     _list.innerHTML = rows;
 
-    // event delegation for row actions
+    // per-row handlers
+    _list.addEventListener('input', onRowEdit, { once:true });
+    _list.addEventListener('change', onRowEdit, { once:false });
     _list.addEventListener('click', onRowAction);
   }
 
@@ -187,13 +228,55 @@
       name: String(m.name),
       bv: numOrNull(m.bv),
       tonnage: numOrNull(m.tonnage),
-      source: String(m.source)
+      source: String(m.source),
+
+      pilotName: nextCallsign(),
+      piloting: 4,
+      gunnery: 4,
+      team: 'Alpha',          // default; editable per row
+      // variantCode: undefined // optional; fill if your host can provide it later
     };
+
     _state.units.push(unit);
     saveState();
     renderList();
     updateTotals();
-    toast('Added to Lance');
+    toast('Added to Lance (pilot seeded)');
+  }
+
+  function onRowEdit(e){
+    const row = e.target.closest('.lance-row'); if(!row) return;
+    const idx = Number(row.getAttribute('data-idx')); if(!Number.isFinite(idx)) return;
+    const u = _state.units[idx]; if(!u) return;
+    const field = e.target.getAttribute('data-field'); if(!field) return;
+
+    if (field === 'pilotName') u.pilotName = e.target.value.trim().slice(0,32) || '—';
+    else if (field === 'piloting') u.piloting = clampInt(e.target.value, 0, 9, 4);
+    else if (field === 'gunnery')  u.gunnery  = clampInt(e.target.value, 0, 9, 4);
+    else if (field === 'team')     u.team     = (['Alpha','Bravo','Clan','Merc'].includes(e.target.value)? e.target.value : 'Alpha');
+
+    saveState();
+  }
+
+  function onRowAction(e){
+    const btn = e.target.closest('button[data-act]'); if(!btn) return;
+    const row = e.target.closest('.lance-row'); if(!row) return;
+    const idx = Number(row.getAttribute('data-idx')); if(!Number.isFinite(idx)) return;
+    const act = btn.getAttribute('data-act');
+
+    const u = _state.units[idx]; if(!u) return;
+
+    if (act === 'view') {
+      if (!host || !host.openMechById) return warn('Host API missing: openMechById');
+      try{
+        host.onMenuDeselect?.();
+        host.openMechById(u.source);
+      }catch{ warn('Open failed'); }
+    }
+    else if (act === 'remove') {
+      _state.units.splice(idx,1);
+      saveState(); renderList(); updateTotals();
+    }
   }
 
   function onImport(){
@@ -212,42 +295,45 @@
     input.click();
   }
 
-  function onExport(){
+  // === Export to Skirmish mechs.json (array) ===
+  function onExportSkirmish(){
     try{
-      const blob = new Blob([JSON.stringify(_state, null, 2)], { type:'application/json' });
+      const items = _state.units.map((u, i) => {
+        const label = u.variantCode || deriveLabelFromName(u.name);
+        const team = u.team || 'Alpha';
+        const colorIndex = TEAM_COLOR[team] ?? 1;
+
+        // Simple left-to-right row placement; Skirmish clamps bounds anyway
+        const q = i, r = 0;
+
+        return {
+          id: null,          // Skirmish will auto-assign
+          q, r,
+          scale: 1,
+          angle: 0,
+          colorIndex,
+          label,
+          meta: {
+            name: u.name || 'MECH',
+            pilot: formatPilot(u.pilotName, u.piloting, u.gunnery), // "Name - P#/G#"
+            team
+          }
+        };
+      });
+
+      const blob = new Blob([JSON.stringify(items, null, 2)], { type:'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       const safe = (_state.name || 'lance').toLowerCase().replace(/[^a-z0-9._-]+/g,'-');
-      a.download = `lance_${safe || 'roster'}.json`;
+      a.download = `mechs.json`; // must be mechs.json for Skirmish importer
       a.click(); URL.revokeObjectURL(a.href);
-      toast('Lance exported');
+      toast('Exported mechs.json');
     }catch(err){ warn('Export failed'); }
   }
 
   function onClear(){
     if (!confirm('Clear the current lance?')) return;
     _state.units = []; saveState(); renderList(); updateTotals();
-  }
-
-  function onRowAction(e){
-    const btn = e.target.closest('button[data-act]'); if(!btn) return;
-    const row = e.target.closest('.lance-row'); if(!row) return;
-    const idx = Number(row.getAttribute('data-idx')); if(!Number.isFinite(idx)) return;
-    const act = btn.getAttribute('data-act');
-
-    const u = _state.units[idx]; if(!u) return;
-
-    if (act === 'view') {
-      if (!host || !host.openMechById) return warn('Host API missing: openMechById');
-      try{
-        host.onMenuDeselect?.();
-        host.openMechById(u.source);
-      }catch(err){ warn('Open failed'); }
-    }
-    else if (act === 'remove') {
-      _state.units.splice(idx,1);
-      saveState(); renderList(); updateTotals();
-    }
   }
 
   // ---------- Persistence ----------
@@ -262,13 +348,10 @@
       return { v:1, schema:SCHEMA, name:'Unnamed Lance', units:[] };
     }
   }
-
   function saveState(){
-    try{
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(_state));
-    }catch(err){ warn('Saving failed (storage)'); }
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(_state)); }
+    catch{ warn('Saving failed (storage)'); }
   }
-
   function loadUi(){
     try{ return JSON.parse(localStorage.getItem(UI_STATE_KEY)||'{}') || {}; }
     catch{ return {}; }
@@ -280,54 +363,74 @@
     }catch{}
   }
 
+  // ---------- Validation / migration ----------
   function validateImport(x){
     if (!x || typeof x !== 'object') throw new Error('bad json');
     const schema = x.schema || SCHEMA;
-    if (schema !== SCHEMA) console.warn('[Lance] schema mismatch, attempting soft parse:', schema);
     const name = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Unnamed Lance';
     const units = Array.isArray(x.units) ? x.units : [];
     const clean = [];
+
     for (const u of units) {
       const nameS = String(u?.name || '').trim();
       const srcS  = String(u?.source || '').trim();
-      if (!nameS || !srcS) continue; // require minimal fields
+      if (!nameS || !srcS) continue;
+
       clean.push({
         id: u?.id ?? null,
         name: nameS,
         bv: numOrNull(u?.bv),
         tonnage: numOrNull(u?.tonnage),
-        source: srcS
+        source: srcS,
+
+        pilotName: String(u?.pilotName ?? u?.pilot ?? '—') || '—',
+        piloting: clampInt(u?.piloting ?? 4, 0, 9, 4),
+        gunnery:  clampInt(u?.gunnery  ?? 4, 0, 9, 4),
+        team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
+        variantCode: typeof u?.variantCode === 'string' ? u.variantCode : undefined
       });
     }
-    /** @type {LanceState} */
-    const out = { v:1, schema:SCHEMA, name, units:clean };
-    return out;
+
+    return { v:1, schema:SCHEMA, name, units:clean };
   }
 
   // ---------- Utilities ----------
   function numOrNull(v){ const n = Number(v); return Number.isFinite(n) ? n : null; }
+  function clampInt(v, min, max, dflt){
+    const n = Math.round(Number(v));
+    if (!Number.isFinite(n)) return dflt;
+    return Math.min(max, Math.max(min, n));
+  }
   function esc(s){ return String(s||'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[c])); }
   function fmt(v, dash='—'){ return (v==null || v==='') ? dash : String(v); }
-
   function toast(msg){
-    // reuse host toast if present, else simple inline flash
     const t = document.getElementById('toast');
     if (t) {
       t.textContent = msg; t.hidden = false; t.style.display='block';
       clearTimeout(toast._t); toast._t = setTimeout(()=>{ t.hidden = true; t.style.display='none'; }, 1400);
       return;
     }
-    // fallback: header blip
     if (_warn) { _warn.hidden=false; _warn.textContent=msg; setTimeout(()=>{ if(_warn) _warn.hidden=true; }, 1000); }
   }
-
   function warn(msg){ if (_warn){ _warn.hidden = false; _warn.textContent = msg; setTimeout(()=>{ _warn.hidden=true; }, 1800); } }
+
+  // Naive derivation for label if no variantCode is stored:
+  // Take upper-case letters/digits from name; fall back to first 8 chars.
+  function deriveLabelFromName(name){
+    const compact = String(name||'MECH').toUpperCase().replace(/[^A-Z0-9]+/g,'');
+    return compact ? compact.slice(0,12) : 'MECH';
+  }
+  function formatPilot(name, p, g){
+    const nm = (String(name||'—').trim() || '—').slice(0,32);
+    const ps = Number.isFinite(+p) ? +p : 4;
+    const gs = Number.isFinite(+g) ? +g : 4;
+    return `${nm} - P${ps}/G${gs}`;
+  }
 
   function injectCssOnce(){
     if (document.getElementById('lance-css')) return;
     const st = document.createElement('style'); st.id = 'lance-css';
     st.textContent = `
-      /* Scoped Lance styles */
       #lance-dock.hidden{ display:none; }
       #lance-dock .lance.panel{ margin:12px; border-radius:var(--radius,8px); }
       #lance-dock .lance-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
@@ -336,13 +439,29 @@
       #lance-dock .lance-actions{ display:flex; gap:6px; flex-wrap:wrap; }
       #lance-dock .lance-warn{ font-size:12px; color:var(--bt-amber,#ffd06e); }
       #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
-      #lance-dock .lance-list{ display:flex; flex-direction:column; gap:4px; }
-      #lance-dock .lance-row{ display:grid; grid-template-columns: 1fr 70px 90px auto; gap:8px; align-items:center; padding:6px 8px; border:1px solid var(--border,#1f2a3a); border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02)); }
+      #lance-dock .lance-list{ display:flex; flex-direction:column; gap:6px; }
+
+      #lance-dock .lance-row{
+        display:grid;
+        grid-template-columns: 1fr 56px 70px auto auto auto auto auto;
+        gap:8px; align-items:center; padding:8px; border:1px solid var(--border,#1f2a3a);
+        border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
+      }
       #lance-dock .l-col.name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
       #lance-dock .l-col.actions{ justify-self:end; display:flex; gap:8px; }
+
+      #lance-dock .mini{ width:120px; padding:4px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
+      #lance-dock .mini.num{ width:64px; text-align:center; }
+      #lance-dock .mini.sel{ width:100px; }
+      #lance-dock .small{ font-size:12px; }
+      #lance-dock .dim{ color:#a9b4c2; }
       #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
+
+      @media (max-width:980px){
+        #lance-dock .lance-row{ grid-template-columns: 1fr 56px 70px auto auto auto auto; }
+      }
       @media (max-width:800px){
-        #lance-dock .lance-row{ grid-template-columns: 1fr auto; }
+        #lance-dock .lance-row{ grid-template-columns: 1fr auto auto auto; }
         #lance-dock .l-col.ton, #lance-dock .l-col.bv{ display:none; }
       }
     `;
