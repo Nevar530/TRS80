@@ -264,145 +264,117 @@
     }
   }
 
+// === IMPORT (file picker + dispatch) ===
 function onImport(){
   const input = document.createElement('input');
-  input.type = 'file'; input.accept = 'application/json';
+  input.type = 'file';
+  input.accept = 'application/json';
   input.onchange = async ()=>{
     const file = input.files?.[0]; if(!file) return;
     try{
       const text = await file.text();
       const data = JSON.parse(text);
-      const next = validateImport(data);            // <-- more flexible now
+      const next = validateImport(data);           // ← handles TRS80, Skirmish, and saved objects
       _state = next;
-      saveState();
-      renderDock();
-      renderList();
-      updateTotals();
+      saveState(); renderDock(); renderList(); updateTotals();
       toast('Lance imported');
     }catch(err){
       console.warn('[Lance] import error', err);
-      warn('Import failed (bad format)');
+      warn('Import failed (bad JSON)');
     }
   };
   input.click();
 }
 
-/* Accepts:
- * 1) { name, units:[ {name, source, bv?, tonnage?, pilotName?, gunnery?, piloting?, team?, variantCode?}, ... ] }
- * 2) Skirmish array: [ { label, meta:{ name, pilot, team, bv, tonnage, source } }, ... ]
- * 3) Minimal arrays: [ { name, source, ... } ] or [ { source } ]
- */
-function validateImport(payload){
-  const CALLSIGN_FALLBACK = () => nextCallsign();
 
-  // --- Case A: Already a lance state object ---
-  if (payload && typeof payload === 'object' && Array.isArray(payload.units)) {
-    const name = (typeof payload.name === 'string' && payload.name.trim()) ? payload.name.trim() : 'Unnamed Lance';
+// === NORMALIZER (accepts TRS80 array, Skirmish array, or saved object) ===
+function validateImport(x){
+  // helpers local to import
+  const numOrNull = (v)=>{ const n = Number(v); return Number.isFinite(n) ? n : null; };
+  const clampInt  = (v, min, max, dflt)=>{ const n = Math.round(Number(v)); return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : dflt; };
+
+  function parsePilot(str){
+    const s = String(str||'').trim();
+    // Formats like "Echo - G4/P5" or "Echo G4/P5"
+    const m = s.match(/^(.+?)\s*(?:-\s*)?G(\d+)\s*\/\s*P(\d+)$/i);
+    if (m) return { name:m[1].trim(), g:Number(m[2]), p:Number(m[3]) };
+    // Fallbacks: try simple split "Name - something"
+    const n = s.split(' - ')[0] || s;
+    return { name:n.trim() || '—', g:4, p:5 };
+  }
+  function tokenToUnit(tok){
+    // TRS80 & Skirmish tokens look the same for our needs
+    const meta = tok?.meta || {};
+    const src  = String(meta.source || '').trim();
+    const long = String(meta.name   || tok?.label || '').trim();
+    const team = String(meta.team   || 'Alpha');
+    const { name: pilotName, g, p } = parsePilot(meta.pilot);
+
+    // Try to pull display + variant from manifest; else sniff from label/name
+    const ent = getManifestEntryBySource(src);
+    const code = (tok?.label || ent?.model || sniffVariantCode(long) || '').toUpperCase();
+    const display = ent?.displayName ? ensureLongNameHasCode(ent.displayName, code)
+                                     : ensureLongNameHasCode(long || 'MECH', code);
+
+    return {
+      id: null,
+      name: display,
+      bv: numOrNull(meta.bv),
+      tonnage: numOrNull(meta.tonnage),
+      source: src,
+      pilotName: pilotName || nextCallsign(),
+      gunnery: clampInt(g, 0, 9, 4),
+      piloting: clampInt(p, 0, 9, 5),
+      team: (['Alpha','Bravo','Clan','Merc'].includes(team) ? team : 'Alpha'),
+      variantCode: code || undefined
+    };
+  }
+
+  // 1) If it’s an ARRAY → treat as TRS80/Skirmish token list
+  if (Array.isArray(x)){
+    const units = x
+      .filter(t => t && t.meta && t.meta.source)
+      .map(tokenToUnit);
+    return { v:1, schema:SCHEMA, name: _state?.name || 'Imported Lance', units };
+  }
+
+  // 2) If it’s an OBJECT with .units (our saved format) → sanitize
+  if (x && typeof x === 'object'){
+    const name  = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Imported Lance';
+    const arr   = Array.isArray(x.units) ? x.units : [];
     const clean = [];
-    for (const u of payload.units){
+
+    for (const u of arr){
       const srcS  = String(u?.source || '').trim();
-      const nameS = String(u?.name || '').trim();
-      if (!srcS || !nameS) continue;
-
-      // Manifest resolution
-      const ent = getManifestEntryBySource(srcS);
-      const disp = ent?.displayName || nameS;
-      const vcode = (typeof u?.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(disp) || undefined;
-
-      clean.push({
-        id: u?.id ?? null,
-        name: disp,
-        bv: numOrNull(u?.bv),
-        tonnage: numOrNull(u?.tonnage),
-        source: srcS,
-
-        pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || CALLSIGN_FALLBACK(),
-        gunnery: clampInt(u?.gunnery ?? 4, 0, 9, 4),
-        piloting: clampInt(u?.piloting ?? 5, 0, 9, 5),
-        team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
-        variantCode: vcode
-      });
-    }
-    return { v:1, schema:SCHEMA, name, units:clean };
-  }
-
-  // --- Case B: Skirmish export (array of tokens) ---
-  if (Array.isArray(payload) && payload.length && payload.every(t => t && typeof t === 'object')) {
-    const clean = [];
-    for (const t of payload){
-      const meta = t.meta || {};
-      const srcS = String(meta.source || '').trim();
-      // Skip if no source; tokens without a source can't be reopened here.
-      if (!srcS) continue;
-
-      const ent   = getManifestEntryBySource(srcS);
-      const label = String(t.label || '').trim();
-      const disp0 = String(meta.name || '').trim(); // may already include variant
-      const disp  = ent?.displayName || disp0 || label || 'MECH';
-      const vcode = ent?.model || sniffVariantCode(disp) || sniffVariantCode(label) || undefined;
-
-      // Parse "Pilot - Gx/Py" if present
-      const pilotStr = String(meta.pilot || '').trim();
-      let pilotName = pilotStr || '';
-      let gunnery = 4, piloting = 5;
-      const m = pilotStr.match(/-\s*G(\d+)\s*\/\s*P(\d+)/i);
-      if (m) {
-        pilotName = pilotStr.split('-')[0].trim();
-        gunnery = clampInt(+m[1], 0, 9, 4);
-        piloting = clampInt(+m[2], 0, 9, 5);
-      }
-      if (!pilotName) pilotName = CALLSIGN_FALLBACK();
-
-      clean.push({
-        id: null,
-        name: disp,
-        bv: numOrNull(meta.bv),
-        tonnage: numOrNull(meta.tonnage),
-        source: srcS,
-
-        pilotName,
-        gunnery,
-        piloting,
-        team: (['Alpha','Bravo','Clan','Merc'].includes(meta.team) ? meta.team : 'Alpha'),
-        variantCode: vcode
-      });
-    }
-    return { v:1, schema:SCHEMA, name:'Imported Lance', units:clean };
-  }
-
-  // --- Case C: Minimal list of units (array) ---
-  if (Array.isArray(payload)) {
-    const clean = [];
-    for (const u of payload){
-      if (!u || typeof u !== 'object') continue;
-      const srcS  = String(u.source || '').trim();
-      const nameS = String(u.name || '').trim();
+      const nameS = String(u?.name   || '').trim();
       if (!srcS) continue;
 
       const ent  = getManifestEntryBySource(srcS);
-      const disp = ent?.displayName || nameS || lastSegment(srcS) || 'MECH';
-      const vcode= (typeof u.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(disp) || undefined;
+      const code = (typeof u?.variantCode === 'string' && u.variantCode)
+                || ent?.model
+                || sniffVariantCode(nameS)
+                || '';
 
       clean.push({
-        id: null,
-        name: disp,
-        bv: numOrNull(u.bv),
-        tonnage: numOrNull(u.tonnage),
+        id: u?.id ?? null,
+        name: ent?.displayName || ensureLongNameHasCode(nameS || 'MECH', code),
+        bv: numOrNull(u?.bv),
+        tonnage: numOrNull(u?.tonnage),
         source: srcS,
-
-        pilotName: String(u.pilotName || u.pilot || '').trim() || CALLSIGN_FALLBACK(),
-        gunnery: clampInt(u.gunnery ?? 4, 0, 9, 4),
-        piloting: clampInt(u.piloting ?? 5, 0, 9, 5),
-        team: (['Alpha','Bravo','Clan','Merc'].includes(u.team) ? u.team : 'Alpha'),
-        variantCode: vcode
+        pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || nextCallsign(),
+        gunnery: clampInt(u?.gunnery ?? 4, 0, 9, 4),
+        piloting: clampInt(u?.piloting ?? 5, 0, 9, 5),
+        team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
+        variantCode: code || undefined
       });
     }
-    return { v:1, schema:SCHEMA, name:'Imported Lance', units:clean };
+
+    return { v:1, schema:SCHEMA, name, units: clean };
   }
 
-  // Not recognized
-  throw new Error('Unsupported import format');
+  throw new Error('Unrecognized import format');
 }
+
 
 
   // === Export to Skirmish format (array of tokens) ===
