@@ -648,7 +648,7 @@ function injectCssOnce(){
     #lance-dock input.mini.num[data-field="piloting"]{
       width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
     }
-    #lance-dock .mini.sel{ width:100; min-width:80px; }
+    #lance-dock .mini.sel{ width:10ch; min-width:8ch; }
 
     /* Actions */
     #lance-dock .actions{ display:flex; align-items:center; gap:8px; }
@@ -676,11 +676,11 @@ function injectCssOnce(){
       }
       #lance-dock .team-lab{ display:none; }
       #lance-dock .pilotline .hide-sm{ display:none; }
-      #lance-dock .mini.sel{ min-width:100px; }
+      #lance-dock .mini.sel{ min-width:10ch; }
     }
 
     @media (max-width: 380px){
-      #lance-dock .mini.sel{ min-width:90px; }
+      #lance-dock .mini.sel{ min-width:6ch; }
     }
   `;
   document.head.appendChild(st);
