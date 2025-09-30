@@ -608,24 +608,25 @@ function injectCssOnce(){
     #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
     #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
-    /* ===== Card: three rows ===== */
-    #lance-dock .lance-row.three-line{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      grid-template-rows: auto auto auto;
-      grid-template-areas:
-        "name  meta"
-        "pilot ."
-        ".     act";
-      align-items:center; gap:8px; padding:8px;
-      border:1px solid var(--border,#1f2a3a);
-      border-radius:8px;
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
-    }
-    #lance-dock .lance-row.three-line .name{ grid-area:name; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    #lance-dock .lance-row.three-line .meta{ grid-area:meta; justify-self:end; }
-    #lance-dock .lance-row.three-line .pilotline{ grid-area:pilot; }
-    #lance-dock .lance-row.three-line .actions{ grid-area:act; justify-self:end; }
+/* ===== Card: three rows (pilot spans both columns) ===== */
+#lance-dock .lance-row.three-line{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "name  meta"
+    "pilot pilot"   /* ← give row 2 full width */
+    ".     act";
+  align-items:center; gap:8px; padding:8px;
+  border:1px solid var(--border,#1f2a3a);
+  border-radius:8px;
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
+}
+#lance-dock .lance-row.three-line .name{ grid-area:name; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#lance-dock .lance-row.three-line .meta{ grid-area:meta; justify-self:end; }
+#lance-dock .lance-row.three-line .pilotline{ grid-area:pilot; }    /* spans both cols now */
+#lance-dock .lance-row.three-line .actions{ grid-area:act; justify-self:end; }
+
 
     #lance-dock .name .chassis{ font-weight:600; letter-spacing:.2px; }
     #lance-dock .variant-sup{ font-size:.8em; vertical-align:super; opacity:.85; margin-left:6px; }
@@ -698,6 +699,15 @@ function injectCssOnce(){
       #lance-dock .team-lab{ display:none; }   /* save space on phones */
       #lance-dock .pilotline .hide-sm{ display:none; }
     }
+
+/* Prevent pilot line wrap on phones now that widths are tight */
+@media (max-width: 800px){
+  #lance-dock .pilotline{
+    flex-wrap: nowrap;    /* keep it one line */
+    gap: 6px;
+  }
+  #lance-dock .pilotline .sep{ margin:0 2px; }
+}
 
     /* Ultra-small phones */
     @media (max-width: 380px){
