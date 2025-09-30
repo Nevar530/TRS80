@@ -691,10 +691,10 @@ function injectCssOnce(){
 
     /* ===== Phones (≤800px): pilot = 10ch; G/P keep tight; team floor stays ===== */
     @media (max-width: 800px){
-      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; min-width:10ch; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:12ch; min-width:10ch; }
       #lance-dock input.mini.num[data-field="gunnery"],
       #lance-dock input.mini.num[data-field="piloting"]{
-        width:3.5ch; min-width:3.5ch; height:22px;
+        width:4.5ch; min-width:4.5ch; height:22px;
       }
       #lance-dock .team-lab{ display:none; }   /* save space on phones */
       #lance-dock .pilotline .hide-sm{ display:none; }
@@ -704,14 +704,14 @@ function injectCssOnce(){
 @media (max-width: 800px){
   #lance-dock .pilotline{
     flex-wrap: nowrap;    /* keep it one line */
-    gap: 6px;
+    gap: 4px;
   }
   #lance-dock .pilotline .sep{ margin:0 2px; }
 }
 
     /* Ultra-small phones */
     @media (max-width: 380px){
-      #lance-dock .mini.sel{ min-width:6ch; }
+      #lance-dock .mini.sel{ min-width:8ch; }
     }
   `;
   document.head.appendChild(st);
