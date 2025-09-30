@@ -59,8 +59,8 @@
     // Seed defaults, firm up names/variants from manifest if possible
     for (const u of _state.units){
       if (!u.pilotName) u.pilotName = nextCallsign();
-      if (!Number.isFinite(u.piloting)) u.piloting = 4;
-      if (!Number.isFinite(u.gunnery))  u.gunnery  = 4;
+      if (!Number.isFinite(u.gunnery)) u.gunnery = 4;
+      if (!Number.isFinite(u.piloting))  u.piloting  = 5;
       const ent = getManifestEntryBySource(u.source);
       u.variantCode = u.variantCode || ent?.model || sniffVariantCode(u.name) || undefined;
       if (ent?.displayName) u.name = ent.displayName;
@@ -160,13 +160,13 @@
         </div>
 
         <div class="l-col edit">
-          <label class="small dim">Piloting</label>
-          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??4)}" />
+          <label class="small dim">Gunnery</label>
+          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
         </div>
 
         <div class="l-col edit">
-          <label class="small dim">Gunnery</label>
-          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
+          <label class="small dim">Piloting</label>
+          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??5)}" />
         </div>
 
         <div class="l-col edit">
@@ -219,8 +219,8 @@
       source: String(m.source),
 
       pilotName: nextCallsign() || 'Ghost',
-      piloting: 4,
       gunnery: 4,
+      piloting: 5,
       team: 'Alpha',
       variantCode: variantCode || undefined
     };
@@ -239,8 +239,8 @@
     const field = e.target.getAttribute('data-field'); if(!field) return;
 
     if (field === 'pilotName') u.pilotName = e.target.value.trim().slice(0,32) || '—';
-    else if (field === 'piloting') u.piloting = clampInt(e.target.value, 0, 9, 4);
-    else if (field === 'gunnery')  u.gunnery  = clampInt(e.target.value, 0, 9, 4);
+    else if (field === 'gunnery') u.gunnery = clampInt(e.target.value, 0, 9, 4);
+    else if (field === 'piloting')  u.piloting  = clampInt(e.target.value, 0, 9, 5);
     else if (field === 'team')     u.team     = (['Alpha','Bravo','Clan','Merc'].includes(e.target.value)? e.target.value : 'Alpha');
 
     saveState();
@@ -303,7 +303,7 @@
           label: code,               // e.g., "ARC-2K"
           meta: {
             name: longName,          // e.g., "Archer ARC-2K"
-            pilot: formatPilot(u.pilotName, u.piloting, u.gunnery),
+            pilot: formatPilot(u.pilotName, u.gunnery, u.piloting),
             team,
             bv: u.bv ?? null,
             tonnage: u.tonnage ?? null,
@@ -377,8 +377,8 @@
         source: srcS,
 
         pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || nextCallsign(),
-        piloting: clampInt(u?.piloting ?? 4, 0, 9, 4),
-        gunnery:  clampInt(u?.gunnery  ?? 4, 0, 9, 4),
+        gunnery: clampInt(u?.gunnery ?? 4, 0, 9, 4),
+        piloting:  clampInt(u?.piloting  ?? 5, 0, 9, 4),
         team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
         variantCode: (typeof u?.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(nameS) || undefined
       });
@@ -512,11 +512,11 @@
     const compact = String(name||'MECH').toUpperCase().replace(/[^A-Z0-9]+/g,'');
     return compact ? compact.slice(0,12) : 'MECH';
   }
-  function formatPilot(name, p, g){
+  function formatPilot(name, g, p){
     const nm = (String(name||'—').trim() || '—').slice(0,32);
-    const ps = Number.isFinite(+p) ? +p : 4;
+    const ps = Number.isFinite(+p) ? +p : 5;
     const gs = Number.isFinite(+g) ? +g : 4;
-    return `${nm} - P${ps}/G${gs}`;
+    return `${nm} - G${gs}/P${ps}`;
   }
   function splitDisplay(display, src, variantCode){
     const ent  = getManifestEntryBySource(src);
