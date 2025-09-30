@@ -451,38 +451,6 @@ function validateImport(x){
     }catch{}
   }
 
-  // ---------- Validation / migration ----------
-  function validateImport(x){
-    if (!x || typeof x !== 'object') throw new Error('bad json');
-    const name = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Unnamed Lance';
-    const units = Array.isArray(x.units) ? x.units : [];
-    const clean = [];
-
-    for (const u of units){
-      const nameS = String(u?.name || '').trim();
-      const srcS  = String(u?.source || '').trim();
-      if (!nameS || !srcS) continue;
-
-      const ent = getManifestEntryBySource(srcS);
-
-      clean.push({
-        id: u?.id ?? null,
-        name: ent?.displayName || nameS,
-        bv: numOrNull(u?.bv),
-        tonnage: numOrNull(u?.tonnage),
-        source: srcS,
-
-        pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || nextCallsign(),
-        gunnery: clampInt(u?.gunnery ?? 4, 0, 9, 4),
-        piloting:  clampInt(u?.piloting  ?? 5, 0, 9, 4),
-        team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
-        variantCode: (typeof u?.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(nameS) || undefined
-      });
-    }
-
-    return { v:1, schema:SCHEMA, name, units:clean };
-  }
-
   // ---------- Manifest resolver ----------
   // Robust resolver: host hook > App.getManifest() > MANIFEST_INDEX
   // Matches by:
