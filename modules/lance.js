@@ -1,13 +1,14 @@
 /* ===== TRS:80 Lance Module (manifest-aware; pilots, skills, mobile, Skirmish export) =====
- * Public surface: Lance.init(api), Lance.setVisible(on), Lance.getState()
- * Host API (recommended):
+ * Public: Lance.init(api), Lance.setVisible(on), Lance.getState()
+ * Expects host API:
  *   api.getCurrentMech(): { id?:string|null, name?:string|null, bv?:number|null, tonnage?:number|null, source?:string|null } | null
  *   api.openMechById(idOrSource: string): void
  *   api.onMenuDeselect(): void
- *   api.getManifestBySource?(sourcePath: string): ManifestEntry | null   // optional, preferred
+ *   api.getManifestBySource?(sourcePathOrUrl: string): ManifestEntry | null   // optional
  *
- * Global fallback (optional):
- *   window.MANIFEST_INDEX[pathOrFilename] = { displayName, name, model, path, ... }
+ * Fallbacks used automatically if the host doesn’t provide getManifestBySource:
+ *   - window.App.getManifest()  (your main app exposes this)
+ *   - window.MANIFEST_INDEX[pathOrFilename] = { displayName, name, model, path, url, ... }
  */
 (function(){
   'use strict';
@@ -16,10 +17,10 @@
   const UI_STATE_KEY = 'trs80:lance:ui';
   const SCHEMA = 'trs80-lance@2';
 
-  // Team → colorIndex mapping (for Skirmish token colors)
+  // Skirmish token color indexes per team
   const TEAM_COLOR = { Alpha:1, Bravo:0, Clan:4, Merc:3 };
 
-  // Call signs
+  // Callsigns
   const CALLSIGNS = [
     'Ghost','Reaper','Shadow','Viper','Echo','Frost','Blaze','Onyx','Phantom','Apex',
     'Striker','Nova','Havoc','Iron','Vector','Zero','Rift','Cinder','Talon','Ash'
@@ -32,33 +33,9 @@
   }
   function shuffle(a){ for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
-  // ---------- Types ----------
-  /**
-   * @typedef {{
-   *   id: string|null,
-   *   name: string,           // display name (chassis + variant)
-   *   bv: number|null,
-   *   tonnage: number|null,
-   *   source: string,         // manifest path or id used by host
-   *   pilotName: string,
-   *   piloting: number,
-   *   gunnery: number,
-   *   team: "Alpha"|"Bravo"|"Clan"|"Merc",
-   *   variantCode?: string    // short code like "MAD-6D", "VND-1R"
-   * }} LanceUnit
-   * @typedef {{ v:number, schema:string, name:string, units:LanceUnit[] }} LanceState
-   * @typedef {{
-   *   getCurrentMech: ()=>({id?:string|null,name?:string|null,bv?:number|null,tonnage?:number|null,source?:string|null})|null,
-   *   openMechById: (idOrSource:string)=>void,
-   *   onMenuDeselect: ()=>void,
-   *   getManifestBySource?: (src:string)=>any|null
-   * }} HostApi
-   */
-
-  /** @type {HostApi|null} */
+  // Host + state
+  /** @type {ReturnType<typeof mkHost>|null} */
   let host = null;
-
-  /** @type {LanceState} */
   let _state = { v:1, schema:SCHEMA, name:'Unnamed Lance', units:[] };
   let _visible = false;
 
@@ -70,7 +47,7 @@
 
   // ---------- Init ----------
   function init(api){
-    host = api || null;
+    host = mkHost(api || {});
     _btn  = document.getElementById('btn-lance');
     _dock = document.getElementById('lance-dock');
     if (!_dock){ console.warn('[Lance] #lance-dock not found'); return; }
@@ -79,12 +56,11 @@
     _state = loadState();
     _visible = loadUi().visible ?? false;
 
-    // Defensive: seed pilots/skills and backfill variantCode from manifest/name if missing
+    // Seed defaults, firm up names/variants from manifest if possible
     for (const u of _state.units){
       if (!u.pilotName) u.pilotName = nextCallsign();
       if (!Number.isFinite(u.piloting)) u.piloting = 4;
       if (!Number.isFinite(u.gunnery))  u.gunnery  = 4;
-      // Ensure display name and variant are correct from manifest when possible
       const ent = getManifestEntryBySource(u.source);
       u.variantCode = u.variantCode || ent?.model || sniffVariantCode(u.name) || undefined;
       if (ent?.displayName) u.name = ent.displayName;
@@ -230,10 +206,10 @@
     const m = host.getCurrentMech();
     if (!m || !m.name || !m.source) return warn('No current mech or missing source');
 
-    // Prefer manifest entry for accurate model/displayName
+    // Resolve manifest entry for accurate displayName + model
     const entry = getManifestEntryBySource(String(m.source));
     const variantCode = entry?.model || sniffVariantCode(m.name);
-    const displayName = entry?.displayName || String(m.name);
+    const displayName = entry?.displayName || (m.name && variantCode ? ensureLongNameHasCode(m.name, variantCode) : String(m.name));
 
     const unit = {
       id: m.id ?? null,
@@ -253,7 +229,7 @@
     saveState();
     renderList();
     updateTotals();
-    toast('Added to Lance (pilot seeded)');
+    toast('Added to Lance');
   }
 
   function onRowEdit(e){
@@ -315,7 +291,7 @@
         const team = u.team || 'Alpha';
         const colorIndex = TEAM_COLOR[team] ?? 1;
 
-        // Simple left-to-right row placement; Skirmish clamps if needed
+        // Simple left-to-right row placement; Skirmish will clamp if needed
         const q = i, r = 0;
 
         return {
@@ -324,9 +300,9 @@
           scale: 1,
           angle: 0,
           colorIndex,
-          label: code,               // variant ID for token label (e.g., "MAD-6D")
+          label: code,               // e.g., "ARC-2K"
           meta: {
-            name: longName,          // chassis + variant (e.g., "Marauder II MAD-6D")
+            name: longName,          // e.g., "Archer ARC-2K"
             pilot: formatPilot(u.pilotName, u.piloting, u.gunnery),
             team,
             bv: u.bv ?? null,
@@ -352,7 +328,7 @@
     _state.units = []; saveState(); renderList(); updateTotals();
   }
 
-  // ---------- Persistence ----------
+  // ---------- State (persist) ----------
   function loadState(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -412,26 +388,87 @@
   }
 
   // ---------- Manifest resolver ----------
+  // Robust resolver: host hook > App.getManifest() > MANIFEST_INDEX
+  // Matches by:
+  //   - exact path (manifest.path)
+  //   - absolute URL (manifest.url)
+  //   - filename (last segment)
   function getManifestEntryBySource(src){
     if (!src) return null;
 
-    // Host-provided hook
-    if (host && typeof host.getManifestBySource === 'function') {
+    // 1) Host-provided function
+    if (typeof host.getManifestBySource === 'function') {
       try {
         const r = host.getManifestBySource(src);
         if (r) return r;
       } catch {}
     }
 
-    // Global index fallback
-    const idx = (window.MANIFEST_INDEX || window.MechManifestIndex || null);
-    if (!idx) return null;
+    // 2) Use App.getManifest() if available
+    const app = (window.App || null);
+    if (app && typeof app.getManifest === 'function') {
+      try {
+        const list = app.getManifest() || [];
+        if (Array.isArray(list) && list.length) {
+          const idx = _lazyIndexFromManifest(list);
+          const hit = idxLookup(idx, src);
+          if (hit) return hit;
+        }
+      } catch {}
+    }
 
-    // Try exact path, then filename
-    const byPath = idx[src];
-    if (byPath) return byPath;
-    const fname = String(src).split('/').pop();
-    return idx[fname] || null;
+    // 3) Fallback global index (simple object map)
+    const globalIdx = (window.MANIFEST_INDEX || window.MechManifestIndex || null);
+    if (globalIdx && typeof globalIdx === 'object') {
+      // direct
+      if (globalIdx[src]) return globalIdx[src];
+      // filename
+      const fname = lastSegment(src);
+      if (globalIdx[fname]) return globalIdx[fname];
+      // path normalization: try stripping base URLs
+      for (const [k,v] of Object.entries(globalIdx)) {
+        if (lastSegment(k) === fname) return v;
+      }
+    }
+
+    return null;
+  }
+
+  // Build a flexible index from App.getManifest() once per page
+  let _manifestFlexIndex = null;
+  function _lazyIndexFromManifest(list){
+    if (_manifestFlexIndex) return _manifestFlexIndex;
+
+    const mapBy = new Map(); // keys → entry
+    for (const e of list){
+      const entry = {
+        displayName: e.displayName || e.name || null,
+        name:       e.name || null,
+        model:      e.variant || e.model || null,
+        path:       e.path || e.url || e.file || null,
+        url:        e.url || null
+      };
+      const path = String(entry.path || '').replace(/\\/g,'/').trim();
+      const url  = String(entry.url  || '').trim();
+      const file = lastSegment(path || url);
+
+      const keys = new Set([path, url, file].filter(Boolean));
+      // Also index by "name + model" for good measure
+      const nm = [entry.name, entry.model].filter(Boolean).join(' ');
+      if (nm) keys.add(nm);
+      for (const k of keys) if (k && !mapBy.has(k)) mapBy.set(k, entry);
+    }
+    _manifestFlexIndex = mapBy;
+    return mapBy;
+  }
+  function idxLookup(idx, src){
+    if (!idx) return null;
+    const s = String(src||'').replace(/\\/g,'/').trim();
+    const file = lastSegment(s);
+    return idx.get(s) || idx.get(file) || null;
+  }
+  function lastSegment(p){
+    const s = String(p||'').split(/[\\/]/); return s[s.length-1] || '';
   }
 
   // ---------- Utilities ----------
@@ -454,10 +491,10 @@
   }
   function warn(msg){ if (_warn){ _warn.hidden = false; _warn.textContent = msg; setTimeout(()=>{ _warn.hidden=true; }, 1800); } }
 
-  // Variant helpers (kept as last-resort fallback)
+  // Variant helpers
   function sniffVariantCode(name){
     const s = String(name||'').toUpperCase();
-    const m1 = s.match(/\b[A-Z0-9]{2,6}(?:-[A-Z0-9]+)+\b/); // MAD-6D, DWF-PRIME, TIM-PRIME
+    const m1 = s.match(/\b[A-Z0-9]{2,6}(?:-[A-Z0-9]+)+\b/); // MAD-6D, ARC-2K, DWF-PRIME
     if (m1) return m1[0];
     const tokens = s.trim().split(/\s+/);
     const last = tokens[tokens.length-1] || '';
@@ -481,8 +518,6 @@
     const gs = Number.isFinite(+g) ? +g : 4;
     return `${nm} - P${ps}/G${gs}`;
   }
-
-  // Split chassis vs variant for display, with robust suffix match
   function splitDisplay(display, src, variantCode){
     const ent  = getManifestEntryBySource(src);
     const disp = String(ent?.displayName || display || '—');
@@ -501,7 +536,18 @@
     return { chassis: chassis || disp, code, full: ensureLongNameHasCode(disp, code) };
   }
 
-  // ---------- Scoped CSS (includes mobile stacking) ----------
+  // ---------- Host wrapper ----------
+  function mkHost(api){
+    const h = {
+      getCurrentMech: typeof api.getCurrentMech === 'function' ? api.getCurrentMech : ()=>null,
+      openMechById:   typeof api.openMechById   === 'function' ? api.openMechById   : ()=>{},
+      onMenuDeselect: typeof api.onMenuDeselect === 'function' ? api.onMenuDeselect : ()=>{},
+      getManifestBySource: typeof api.getManifestBySource === 'function' ? api.getManifestBySource : null
+    };
+    return h;
+  }
+
+  // ---------- Scoped CSS ----------
   function injectCssOnce(){
     if (document.getElementById('lance-css')) return;
     const st = document.createElement('style'); st.id = 'lance-css';
