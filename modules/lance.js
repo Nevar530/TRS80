@@ -126,63 +126,57 @@
   }
 
   function renderList(){
-    if (!_list) return;
-    if (!_state.units.length){
-      _list.innerHTML = `<div class="dim small" style="padding:6px;">No units yet. Use <strong>Add Current</strong>.</div>`;
-      return;
-    }
-
-    const rows = _state.units.map((u, i)=>{
-      const nm = splitDisplay(u.name, u.source, u.variantCode);
-      return `
-      <div class="lance-row" data-idx="${i}" role="listitem">
-        <!-- Name -->
-        <div class="l-col name mono" title="${esc(nm.full)}">
-          <span class="chassis">${esc(nm.chassis)}</span>
-          ${nm.code ? `<sup class="variant-sup">${esc(nm.code)}</sup>` : ``}
-        </div>
-
-        <!-- Compact meta line (mobile shows this; desktop keeps Ton/BV cols) -->
-        <div class="l-col meta mono small">
-          <span class="chip">${fmt(u.tonnage,'—')}t</span>
-          <span class="chip">${fmt(u.bv,'—')} BV</span>
-        </div>
-
-        <!-- Desktop Ton/BV -->
-        <div class="l-col ton mono small" title="Tonnage">${fmt(u.tonnage,'—')}</div>
-        <div class="l-col bv  mono small" title="BV">${fmt(u.bv,'—')}</div>
-
-        <!-- Pilot inline: name + G + P -->
-        <div class="l-col pilotline">
-          <label class="small dim">Pilot</label>
-          <input class="mini" data-field="pilotName" value="${esc(u.pilotName||'')}" maxlength="32" />
-          <span class="sep">•</span>
-          <label class="small dim">G</label>
-          <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
-          <label class="small dim">P</label>
-          <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??5)}" />
-        </div>
-
-        <!-- Actions: Team inline with View / Remove -->
-        <div class="l-col actions">
-          <label class="small dim team-lab">Team</label>
-          <select class="mini sel" data-field="team">
-            ${['Alpha','Bravo','Clan','Merc'].map(t=>`<option${u.team===t?' selected':''}>${t}</option>`).join('')}
-          </select>
-          <span class="flex-gap"></span>
-          <button class="linklike" data-act="view" title="Open in viewer">View</button>
-          <span class="dim">•</span>
-          <button class="linklike" data-act="remove" title="Remove">Remove</button>
-        </div>
-      </div>`;
-    }).join('');
-
-    _list.innerHTML = rows;
-
-    _list.addEventListener('input', onRowEdit, { once:true });
-    _list.addEventListener('change', onRowEdit);
-    _list.addEventListener('click', onRowAction);
+  if(!_list) return;
+  if(!_state.units.length){
+    _list.innerHTML = `<div class="dim small" style="padding:6px;">No units yet. Use <strong>Add Current</strong>.</div>`;
+    return;
   }
+
+  const rows = _state.units.map((u, i)=>{
+    const nm = splitDisplay(u.name, u.source, u.variantCode);
+    return `
+    <div class="lance-row two-line" data-idx="${i}" role="listitem">
+      <!-- Row 1: Name (left) • T/BV (right) -->
+      <div class="name mono" title="${esc(nm.full)}">
+        <span class="chassis">${esc(nm.chassis)}</span>
+        ${nm.code ? `<sup class="variant-sup">${esc(nm.code)}</sup>` : ``}
+      </div>
+      <div class="meta mono small">
+        <span class="chip">${fmt(u.tonnage,'—')}t</span>
+        <span class="chip">${fmt(u.bv,'—')} BV</span>
+      </div>
+
+      <!-- Row 2: Pilot + G + P + Team (left) • Actions (right) -->
+      <div class="pilotline">
+        <label class="small dim">Pilot</label>
+        <input class="mini" data-field="pilotName" placeholder="Pilot" value="${esc(u.pilotName||'')}" maxlength="32" />
+        <span class="sep">•</span>
+        <label class="small dim">G</label>
+        <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
+        <label class="small dim">P</label>
+        <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??5)}" />
+        <span class="sep hide-sm">•</span>
+        <label class="small dim team-lab">Team</label>
+        <select class="mini sel" data-field="team">
+          ${['Alpha','Bravo','Clan','Merc'].map(t=>`<option${u.team===t?' selected':''}>${t}</option>`).join('')}
+        </select>
+      </div>
+
+      <div class="actions">
+        <button class="linklike" data-act="view" title="Open in viewer">View</button>
+        <span class="dim">•</span>
+        <button class="linklike" data-act="remove" title="Remove">Remove</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  _list.innerHTML = rows;
+
+  _list.addEventListener('input', onRowEdit, { once:true });
+  _list.addEventListener('change', onRowEdit);
+  _list.addEventListener('click', onRowAction);
+}
+
 
   function updateTotals(){
     const bv = _state.units.reduce((s,u)=> s + (Number(u.bv)||0), 0);
@@ -611,102 +605,76 @@ function injectCssOnce(){
     #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
     #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
-    /* Desktop grid: Name | Ton | BV | Pilotline | Actions */
-    #lance-dock .lance-row{
+    /* ===== Card: exactly two rows ===== */
+    #lance-dock .lance-row.two-line{
       display:grid;
-      grid-template-columns: 1fr 56px 80px minmax(360px, 1.2fr) auto;
+      grid-template-columns: 1fr auto;       /* left grows, right hugs */
+      grid-template-rows: auto auto;         /* two rows */
+      grid-template-areas:
+        "name  meta"
+        "pilot act";
       align-items:center; gap:8px; padding:8px;
       border:1px solid var(--border,#1f2a3a);
       border-radius:8px;
       background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
     }
-    #lance-dock .l-col.name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    #lance-dock .l-col.name .chassis{ font-weight:600; letter-spacing:.2px; }
-    #lance-dock .variant-sup{ font-size:.8em; vertical-align: super; opacity:.85; margin-left:6px; }
+    #lance-dock .lance-row.two-line .name{ grid-area:name; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #lance-dock .lance-row.two-line .meta{ grid-area:meta; justify-self:end; }
+    #lance-dock .lance-row.two-line .pilotline{ grid-area:pilot; }
+    #lance-dock .lance-row.two-line .actions{ grid-area:act; justify-self:end; }
 
-    /* Pilotline inline */
+    #lance-dock .name .chassis{ font-weight:600; letter-spacing:.2px; }
+    #lance-dock .variant-sup{ font-size:.8em; vertical-align:super; opacity:.85; margin-left:6px; }
+
+    /* Pilotline inline + compact */
     #lance-dock .pilotline{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
     #lance-dock .pilotline .sep{ color:#93a1b5; opacity:.8; }
-
-    /* ===== Compact inputs (shorter bars, narrow fields) ===== */
     #lance-dock .mini{
-      padding:3px 6px;
-      border-radius:6px;
-      border:1px solid var(--border,#2a2f3a);
+      padding:3px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a);
       background:#0e1522; color:var(--ink,#e8eef6);
-      height:26px;
-      font-size:13px;
-      width:auto;               /* widths controlled below */
+      height:26px; font-size:13px; width:auto;
     }
-    /* Pilot name narrower (character-based) */
-    #lance-dock input.mini[data-field="pilotName"]{
-      width:22ch;
-      min-width:16ch;
-    }
-    /* 1-digit G/P fields: tiny, centered */
+    #lance-dock input.mini[data-field="pilotName"]{ width:22ch; min-width:16ch; }
     #lance-dock input.mini.num[data-field="gunnery"],
     #lance-dock input.mini.num[data-field="piloting"]{
-      width:4.5ch;
-      min-width:4.5ch;
-      text-align:center;
-      padding:2px 4px;
+      width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
     }
-    /* Keep Team select compact */
     #lance-dock .mini.sel{ width:auto; min-width:110px; }
 
-    /* Actions with Team inline */
-    #lance-dock .l-col.actions{ display:flex; align-items:center; gap:8px; justify-self:end; }
-    #lance-dock .l-col.actions .flex-gap{ flex:1 1 auto; }
+    /* Actions */
+    #lance-dock .actions{ display:flex; align-items:center; gap:8px; }
     #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
     #lance-dock .small{ font-size:12px; }
     #lance-dock .dim{ color:#a9b4c2; }
 
-    /* Chips for compact meta line */
+    /* Chips */
     #lance-dock .chip{
       display:inline-block; padding:2px 6px; border:1px solid var(--border,#2a2f3a);
-      border-radius:999px; font-size:11px; line-height:1.2; margin-right:6px; opacity:.9;
+      border-radius:999px; font-size:11px; line-height:1.2; margin-left:6px; opacity:.9;
     }
-    #lance-dock .meta{ display:none; } /* hidden on desktop */
 
-    /* Tablet: compress pilotline column before full stack */
+    /* Tablet: tighten name + inputs a bit */
     @media (max-width: 980px){
-      #lance-dock .lance-row{ grid-template-columns: 1fr 56px 80px minmax(280px, 1fr) auto; }
       #lance-dock input.mini[data-field="pilotName"]{ width:20ch; }
     }
 
-    /* Phones: tight 2-col layout, chips visible, Ton/BV columns hidden */
+    /* Phones: keep two rows; make fields tighter; hide extra dots/label */
     @media (max-width: 800px){
-      #lance-dock .lance-row{
-        grid-template-columns: 1fr 1fr;
-        gap:6px; padding:6px;
-      }
-      #lance-dock .l-col.name{ grid-column: 1 / -1; }
-      #lance-dock .meta{ display:block; grid-column: 1 / -1; margin-top:-2px; }
-      #lance-dock .l-col.ton, #lance-dock .l-col.bv{ display:none !important; }
-
-      /* Pilotline spans full width; shrink inputs further */
-      #lance-dock .pilotline{ grid-column: 1 / -1; gap:6px; }
       #lance-dock input.mini[data-field="pilotName"]{ width:16ch; }
       #lance-dock input.mini.num[data-field="gunnery"],
       #lance-dock input.mini.num[data-field="piloting"]{
         width:3.5ch; min-width:3.5ch; font-size:12px; height:24px;
       }
-
-      /* Actions: bottom-right; Team inline with actions */
-      #lance-dock .l-col.actions{
-        grid-column: 2 / 3; justify-self:end; gap:8px; flex-wrap:wrap;
-      }
-      #lance-dock .team-lab{ display:none; } /* save space on phones */
+      #lance-dock .team-lab{ display:none; }
+      #lance-dock .pilotline .hide-sm{ display:none; }
       #lance-dock .mini.sel{ min-width:100px; }
     }
 
-    /* Ultra-small phones */
     @media (max-width: 380px){
       #lance-dock .mini.sel{ min-width:90px; }
     }
   `;
   document.head.appendChild(st);
 }
-
 
 })();
