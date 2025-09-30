@@ -142,8 +142,8 @@ function renderList(){
         ${nm.code ? `<sup class="variant-sup">${esc(nm.code)}</sup>` : ``}
       </div>
       <div class="meta mono small">
-        <span class="chip">${fmt(u.tonnage,'—')}t</span>
-        <span class="chip">${fmt(u.bv,'—')} BV</span>
+        <span class="chip emphasize">${fmt(u.tonnage,'—')}t</span>
+        <span class="chip emphasize">${fmt(u.bv,'—')} BV</span>
       </div>
 
       <!-- Row 2: Pilot + G + P + Team (left) -->
@@ -152,9 +152,9 @@ function renderList(){
         <input class="mini" data-field="pilotName" placeholder="Pilot" value="${esc(u.pilotName||'')}" maxlength="32" />
         <span class="sep">•</span>
         <label class="small dim">G</label>
-        <input class="mini num" data-field="gunnery" type="number" min="0" max="9" step="1" value="${esc(u.gunnery??4)}" />
+        <input class="mini num" data-field="gunnery" type="number" min="1" max="6" step="1" value="${esc(u.gunnery??4)}" />
         <label class="small dim">P</label>
-        <input class="mini num" data-field="piloting" type="number" min="0" max="9" step="1" value="${esc(u.piloting??5)}" />
+        <input class="mini num" data-field="piloting" type="number" min="1" max="6" step="1" value="${esc(u.piloting??5)}" />
         <span class="sep hide-sm">•</span>
         <label class="small dim team-lab">Team</label>
         <select class="mini sel" data-field="team">
@@ -177,6 +177,7 @@ function renderList(){
   _list.addEventListener('change', onRowEdit);
   _list.addEventListener('click', onRowAction);
 }
+
 
 
 
@@ -592,7 +593,7 @@ function renderList(){
     return h;
   }
 
- // ---------- Scoped CSS ----------
+// ---------- Scoped CSS ----------
 function injectCssOnce(){
   if (document.getElementById('lance-css')) return;
   const st = document.createElement('style'); st.id = 'lance-css';
@@ -607,11 +608,7 @@ function injectCssOnce(){
     #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
     #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
-    /* ===== Card: exactly three rows =====
-       Row1: name | meta
-       Row2: pilotline | (empty)
-       Row3: (empty) | actions
-    */
+    /* ===== Card: three rows ===== */
     #lance-dock .lance-row.three-line{
       display:grid;
       grid-template-columns: 1fr auto;
@@ -633,58 +630,83 @@ function injectCssOnce(){
     #lance-dock .name .chassis{ font-weight:600; letter-spacing:.2px; }
     #lance-dock .variant-sup{ font-size:.8em; vertical-align:super; opacity:.85; margin-left:6px; }
 
-    /* Pilotline inline + compact */
+    /* ===== Typography sizing per your baseline ===== */
+    #lance-dock .small,
+    #lance-dock .pilotline label,
+    #lance-dock .mini{ font-size:10px; }
+    #lance-dock .dim{ color:#a9b4c2; }
+
+    /* Pilotline inline + compact bars */
     #lance-dock .pilotline{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
     #lance-dock .pilotline .sep{ color:#93a1b5; opacity:.8; }
 
-    /* Compact inputs */
+    /* Inputs/Selects baseline */
     #lance-dock .mini{
-      padding:3px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a);
+      padding:3px 6px;
+      border-radius:6px;
+      border:1px solid var(--border,#2a2f3a);
       background:#0e1522; color:var(--ink,#e8eef6);
-      height:24px; font-size:10px; width:auto;
+      height:24px;               /* shorter bar */
+      width:auto;                /* width set below per-field */
+      line-height:1.2;
     }
-    #lance-dock input.mini[data-field="pilotName"]{ width:10ch; min-width:10ch; }
+    /* Desktop pilot width: a bit wider; we'll clamp on mobile */
+    #lance-dock input.mini[data-field="pilotName"]{ width:20ch; min-width:12ch; }
+
+    /* One-digit G/P fields */
     #lance-dock input.mini.num[data-field="gunnery"],
     #lance-dock input.mini.num[data-field="piloting"]{
       width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
     }
-    #lance-dock .mini.sel{ width:10ch; min-width:8ch; }
+
+    /* Team select — sized to largest ("Alpha" = 5ch) + breathing room */
+    #lance-dock .mini.sel{
+      width:auto;               /* let content define, but keep a floor */
+      min-width:6.5ch;          /* ≈ 5ch + padding */
+      padding-right:18px;       /* room for the arrow */
+    }
 
     /* Actions */
     #lance-dock .actions{ display:flex; align-items:center; gap:8px; }
-    #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:10px; }
-    #lance-dock .small{ font-size:10px; }
-    #lance-dock .dim{ color:#a9b4c2; }
+    #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
 
-    /* Chips */
+    /* Chips (Ton/BV) — slightly larger as requested */
     #lance-dock .chip{
-      display:inline-block; padding:2px 6px; border:1px solid var(--border,#2a2f3a);
-      border-radius:999px; font-size:10px; line-height:1.2; margin-left:6px; opacity:.9;
+      display:inline-block;
+      padding:2px 8px;
+      border:1px solid var(--border,#2a2f3a);
+      border-radius:999px;
+      font-size:12px;           /* larger than field text */
+      line-height:1.2;
+      margin-left:6px;
+      opacity:.95;
     }
+    #lance-dock .chip.emphasize{ font-weight:600; }
 
-    /* Tablet tighten */
+    /* ===== Tablet tighten ===== */
     @media (max-width: 980px){
-      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:16ch; }
     }
 
-    /* Phones: keep three rows, make fields tighter */
+    /* ===== Phones (≤800px): pilot = 10ch; G/P keep tight; team floor stays ===== */
     @media (max-width: 800px){
-      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; min-width:10ch; }
       #lance-dock input.mini.num[data-field="gunnery"],
       #lance-dock input.mini.num[data-field="piloting"]{
-        width:3.5ch; min-width:3.5ch; font-size:12px; height:24px;
+        width:3.5ch; min-width:3.5ch; height:22px;
       }
-      #lance-dock .team-lab{ display:none; }
+      #lance-dock .team-lab{ display:none; }   /* save space on phones */
       #lance-dock .pilotline .hide-sm{ display:none; }
-      #lance-dock .mini.sel{ min-width:10ch; }
     }
 
+    /* Ultra-small phones */
     @media (max-width: 380px){
-      #lance-dock .mini.sel{ min-width:8ch; }
+      #lance-dock .mini.sel{ min-width:6ch; }
     }
   `;
   document.head.appendChild(st);
 }
+
 
 
 })();
