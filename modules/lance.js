@@ -596,90 +596,117 @@
     return h;
   }
 
-  // ---------- Scoped CSS ----------
-  function injectCssOnce(){
-    if (document.getElementById('lance-css')) return;
-    const st = document.createElement('style'); st.id = 'lance-css';
-    st.textContent = `
-      #lance-dock.hidden{ display:none; }
-      #lance-dock .lance.panel{ margin:12px; border-radius:var(--radius,8px); }
-      #lance-dock .lance-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
-      #lance-dock .lance-title{ display:flex; align-items:center; gap:8px; min-width:0; }
-      #lance-dock .lance-name{ width:min(260px, 50vw); padding:4px 8px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
-      #lance-dock .lance-actions{ display:flex; gap:6px; flex-wrap:wrap; }
-      #lance-dock .lance-warn{ font-size:12px; color:var(--bt-amber,#ffd06e); }
-      #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
-      #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
+ // ---------- Scoped CSS ----------
+function injectCssOnce(){
+  if (document.getElementById('lance-css')) return;
+  const st = document.createElement('style'); st.id = 'lance-css';
+  st.textContent = `
+    #lance-dock.hidden{ display:none; }
+    #lance-dock .lance.panel{ margin:12px; border-radius:var(--radius,8px); }
+    #lance-dock .lance-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    #lance-dock .lance-title{ display:flex; align-items:center; gap:8px; min-width:0; }
+    #lance-dock .lance-name{ width:min(260px, 50vw); padding:4px 8px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
+    #lance-dock .lance-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+    #lance-dock .lance-warn{ font-size:12px; color:var(--bt-amber,#ffd06e); }
+    #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
+    #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
-      /* Desktop grid: Name | Ton | BV | Pilotline | Actions */
+    /* Desktop grid: Name | Ton | BV | Pilotline | Actions */
+    #lance-dock .lance-row{
+      display:grid;
+      grid-template-columns: 1fr 56px 80px minmax(360px, 1.2fr) auto;
+      align-items:center; gap:8px; padding:8px;
+      border:1px solid var(--border,#1f2a3a);
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
+    }
+    #lance-dock .l-col.name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #lance-dock .l-col.name .chassis{ font-weight:600; letter-spacing:.2px; }
+    #lance-dock .variant-sup{ font-size:.8em; vertical-align: super; opacity:.85; margin-left:6px; }
+
+    /* Pilotline inline */
+    #lance-dock .pilotline{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    #lance-dock .pilotline .sep{ color:#93a1b5; opacity:.8; }
+
+    /* ===== Compact inputs (shorter bars, narrow fields) ===== */
+    #lance-dock .mini{
+      padding:3px 6px;
+      border-radius:6px;
+      border:1px solid var(--border,#2a2f3a);
+      background:#0e1522; color:var(--ink,#e8eef6);
+      height:26px;
+      font-size:13px;
+      width:auto;               /* widths controlled below */
+    }
+    /* Pilot name narrower (character-based) */
+    #lance-dock input.mini[data-field="pilotName"]{
+      width:22ch;
+      min-width:16ch;
+    }
+    /* 1-digit G/P fields: tiny, centered */
+    #lance-dock input.mini.num[data-field="gunnery"],
+    #lance-dock input.mini.num[data-field="piloting"]{
+      width:4.5ch;
+      min-width:4.5ch;
+      text-align:center;
+      padding:2px 4px;
+    }
+    /* Keep Team select compact */
+    #lance-dock .mini.sel{ width:auto; min-width:110px; }
+
+    /* Actions with Team inline */
+    #lance-dock .l-col.actions{ display:flex; align-items:center; gap:8px; justify-self:end; }
+    #lance-dock .l-col.actions .flex-gap{ flex:1 1 auto; }
+    #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
+    #lance-dock .small{ font-size:12px; }
+    #lance-dock .dim{ color:#a9b4c2; }
+
+    /* Chips for compact meta line */
+    #lance-dock .chip{
+      display:inline-block; padding:2px 6px; border:1px solid var(--border,#2a2f3a);
+      border-radius:999px; font-size:11px; line-height:1.2; margin-right:6px; opacity:.9;
+    }
+    #lance-dock .meta{ display:none; } /* hidden on desktop */
+
+    /* Tablet: compress pilotline column before full stack */
+    @media (max-width: 980px){
+      #lance-dock .lance-row{ grid-template-columns: 1fr 56px 80px minmax(280px, 1fr) auto; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:20ch; }
+    }
+
+    /* Phones: tight 2-col layout, chips visible, Ton/BV columns hidden */
+    @media (max-width: 800px){
       #lance-dock .lance-row{
-        display:grid;
-        grid-template-columns: 1fr 56px 80px minmax(360px, 1.2fr) auto;
-        align-items:center; gap:8px; padding:8px;
-        border:1px solid var(--border,#1f2a3a);
-        border-radius:8px;
-        background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
+        grid-template-columns: 1fr 1fr;
+        gap:6px; padding:6px;
       }
-      #lance-dock .l-col.name{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-      #lance-dock .l-col.name .chassis{ font-weight:600; letter-spacing:.2px; }
-      #lance-dock .variant-sup{ font-size:.8em; vertical-align: super; opacity:.85; margin-left:6px; }
+      #lance-dock .l-col.name{ grid-column: 1 / -1; }
+      #lance-dock .meta{ display:block; grid-column: 1 / -1; margin-top:-2px; }
+      #lance-dock .l-col.ton, #lance-dock .l-col.bv{ display:none !important; }
 
-      /* Pilotline inline */
-      #lance-dock .pilotline{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-      #lance-dock .pilotline .sep{ color:#93a1b5; opacity:.8; }
-      #lance-dock .mini{ width:140px; padding:4px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a); background:#0e1522; color:var(--ink,#e8eef6); }
-      #lance-dock .mini.num{ width:70px; text-align:center; }
-      #lance-dock .mini.sel{ width:110px; }
-
-      /* Actions with Team inline */
-      #lance-dock .l-col.actions{ display:flex; align-items:center; gap:8px; justify-self:end; }
-      #lance-dock .l-col.actions .flex-gap{ flex:1 1 auto; }
-      #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
-      #lance-dock .small{ font-size:12px; }
-      #lance-dock .dim{ color:#a9b4c2; }
-
-      /* Chips for compact meta line */
-      #lance-dock .chip{
-        display:inline-block; padding:2px 6px; border:1px solid var(--border,#2a2f3a);
-        border-radius:999px; font-size:11px; line-height:1.2; margin-right:6px; opacity:.9;
-      }
-      #lance-dock .meta{ display:none; } /* hidden on desktop */
-
-      /* Tablet: compress pilotline column before full stack */
-      @media (max-width: 980px){
-        #lance-dock .lance-row{ grid-template-columns: 1fr 56px 80px minmax(280px, 1fr) auto; }
+      /* Pilotline spans full width; shrink inputs further */
+      #lance-dock .pilotline{ grid-column: 1 / -1; gap:6px; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:16ch; }
+      #lance-dock input.mini.num[data-field="gunnery"],
+      #lance-dock input.mini.num[data-field="piloting"]{
+        width:3.5ch; min-width:3.5ch; font-size:12px; height:24px;
       }
 
-      /* Phones: tight 2-col layout, chips visible, Ton/BV columns hidden */
-      @media (max-width: 800px){
-        #lance-dock .lance-row{
-          grid-template-columns: 1fr 1fr;
-          gap:6px; padding:6px;
-        }
-        #lance-dock .l-col.name{ grid-column: 1 / -1; }
-        #lance-dock .meta{ display:block; grid-column: 1 / -1; margin-top:-2px; }
-        #lance-dock .l-col.ton, #lance-dock .l-col.bv{ display:none !important; }
-
-        /* Pilotline spans full width; shrink inputs */
-        #lance-dock .pilotline{ grid-column: 1 / -1; gap:6px; }
-        #lance-dock .mini{ flex:1 1 120px; min-width:0; }
-        #lance-dock .mini.num{ flex:0 0 70px; }
-
-        /* Actions: bottom-right; Team inline with actions */
-        #lance-dock .l-col.actions{
-          grid-column: 2 / 3; justify-self:end; gap:8px; flex-wrap:wrap;
-        }
-        #lance-dock .team-lab{ display:none; } /* save space on phones */
-        #lance-dock .mini.sel{ max-width: 140px; }
+      /* Actions: bottom-right; Team inline with actions */
+      #lance-dock .l-col.actions{
+        grid-column: 2 / 3; justify-self:end; gap:8px; flex-wrap:wrap;
       }
+      #lance-dock .team-lab{ display:none; } /* save space on phones */
+      #lance-dock .mini.sel{ min-width:100px; }
+    }
 
-      /* Ultra-small phones */
-      @media (max-width: 380px){
-        #lance-dock .mini.sel{ max-width:120px; }
-        #lance-dock .mini.num{ max-width:70px; }
-      }
-    `;
-    document.head.appendChild(st);
-  }
+    /* Ultra-small phones */
+    @media (max-width: 380px){
+      #lance-dock .mini.sel{ min-width:90px; }
+    }
+  `;
+  document.head.appendChild(st);
+}
+
 
 })();
