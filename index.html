@@ -646,6 +646,31 @@
 <script src="./modules/owned.js" defer></script>
 <script src="./script.js" defer></script>
 
+<!-- ===== TRS:80 • Technical Readout Boot ===== -->
+<div id="troBoot" class="tro-boot" aria-hidden="false">
+  <div class="tro-boot__vignette"></div>
+  <div class="tro-boot__scan"></div>
+  <div class="tro-boot__grid"></div>
+  <div class="tro-boot__watermark" aria-hidden="true"></div>
+
+  <section class="tro-boot__panel" role="dialog" aria-label="TRS:80 Technical Readout Loader">
+    <header class="tro-boot__hdr">
+      <h1 class="tro-boot__title">TRS:80 // TECHNICAL READOUT LOADER</h1>
+      <div class="tro-boot__meta">CAT#: TRS-80-TROLDR v2.0 · TRO-PREFACE · PAGE 00</div>
+    </header>
+
+    <pre id="troLog" class="tro-boot__log" aria-live="polite"></pre>
+
+    <div class="tro-boot__progress" aria-hidden="true">
+      <div id="troBar" class="tro-boot__bar"></div>
+    </div>
+
+    <div id="troHint" class="tro-boot__hint">
+      PRESS <kbd>ENTER</kbd> TO OPEN TRO ▌ • AUTO WHEN READY
+    </div>
+  </section>
+</div>
+  
 
 </body>
 </html>
