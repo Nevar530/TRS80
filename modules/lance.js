@@ -287,93 +287,92 @@ function onImport(){
 }
 
 
-// === NORMALIZER (accepts TRS80 array, Skirmish array, or saved object) ===
+// ---------- Validation / migration ----------
 function validateImport(x){
-  // helpers local to import
-  const numOrNull = (v)=>{ const n = Number(v); return Number.isFinite(n) ? n : null; };
-  const clampInt  = (v, min, max, dflt)=>{ const n = Math.round(Number(v)); return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : dflt; };
+  // Helpers to pull pilot data out of "Echo - G4/P5" or "Echo - P5/G4" or "Echo"
+  const parsePilot = (s) => {
+    const out = { name:'', g:4, p:5 };
+    if (!s) return out;
+    const str = String(s).trim();
+    const namePart = str.split(' - ')[0] || str; // before " - "
+    out.name = namePart.trim() || '';
+    // Try G#/P# first
+    let m = str.match(/G\s*(\d+)\s*\/\s*P\s*(\d+)/i);
+    if (m) { out.g = +m[1]; out.p = +m[2]; return out; }
+    // Try P#/G#
+    m = str.match(/P\s*(\d+)\s*\/\s*G\s*(\d+)/i);
+    if (m) { out.p = +m[1]; out.g = +m[2]; return out; }
+    return out;
+  };
 
-  function parsePilot(str){
-    const s = String(str||'').trim();
-    // Formats like "Echo - G4/P5" or "Echo G4/P5"
-    const m = s.match(/^(.+?)\s*(?:-\s*)?G(\d+)\s*\/\s*P(\d+)$/i);
-    if (m) return { name:m[1].trim(), g:Number(m[2]), p:Number(m[3]) };
-    // Fallbacks: try simple split "Name - something"
-    const n = s.split(' - ')[0] || s;
-    return { name:n.trim() || '—', g:4, p:5 };
+  // Accept three shapes:
+  // 1) Array of tokens (TRS80 or Skirmish export)
+  // 2) Lance save object { name, units }
+  // 3) Anything else -> throw
+  if (Array.isArray(x)) {
+    // Array of tokens → normalize to Lance units
+    const clean = [];
+    for (const t of x) {
+      if (!t || typeof t !== 'object') continue;
+      const meta = t.meta || {};
+      const srcS = String(meta.source || '').trim();
+      const nameS = String(meta.name || t.label || '').trim();
+      if (!srcS || !nameS) continue;
+
+      const ent = getManifestEntryBySource(srcS);
+      const { name: pilotRaw, g, p } = parsePilot(meta.pilot || '');
+
+      clean.push({
+        id: null,
+        name: ent?.displayName || nameS,
+        bv: numOrNull(meta.bv),
+        tonnage: numOrNull(meta.tonnage),
+        source: srcS,
+
+        pilotName: pilotRaw || nextCallsign(),
+        gunnery: clampInt(g, 0, 9, 4),
+        piloting: clampInt(p, 0, 9, 5),
+        team: (['Alpha','Bravo','Clan','Merc'].includes(meta.team) ? meta.team : 'Alpha'),
+        variantCode: (ent?.model || sniffVariantCode(nameS) || '').trim() || undefined
+      });
+    }
+    const name = 'Imported Lance';
+    return { v:1, schema:SCHEMA, name, units:clean };
   }
-  function tokenToUnit(tok){
-    // TRS80 & Skirmish tokens look the same for our needs
-    const meta = tok?.meta || {};
-    const src  = String(meta.source || '').trim();
-    const long = String(meta.name   || tok?.label || '').trim();
-    const team = String(meta.team   || 'Alpha');
-    const { name: pilotName, g, p } = parsePilot(meta.pilot);
 
-    // Try to pull display + variant from manifest; else sniff from label/name
-    const ent = getManifestEntryBySource(src);
-    const code = (tok?.label || ent?.model || sniffVariantCode(long) || '').toUpperCase();
-    const display = ent?.displayName ? ensureLongNameHasCode(ent.displayName, code)
-                                     : ensureLongNameHasCode(long || 'MECH', code);
-
-    return {
-      id: null,
-      name: display,
-      bv: numOrNull(meta.bv),
-      tonnage: numOrNull(meta.tonnage),
-      source: src,
-      pilotName: pilotName || nextCallsign(),
-      gunnery: clampInt(g, 0, 9, 4),
-      piloting: clampInt(p, 0, 9, 5),
-      team: (['Alpha','Bravo','Clan','Merc'].includes(team) ? team : 'Alpha'),
-      variantCode: code || undefined
-    };
-  }
-
-  // 1) If it’s an ARRAY → treat as TRS80/Skirmish token list
-  if (Array.isArray(x)){
-    const units = x
-      .filter(t => t && t.meta && t.meta.source)
-      .map(tokenToUnit);
-    return { v:1, schema:SCHEMA, name: _state?.name || 'Imported Lance', units };
-  }
-
-  // 2) If it’s an OBJECT with .units (our saved format) → sanitize
-  if (x && typeof x === 'object'){
-    const name  = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Imported Lance';
-    const arr   = Array.isArray(x.units) ? x.units : [];
+  if (x && typeof x === 'object') {
+    // Lance save object
+    const name = typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Unnamed Lance';
+    const units = Array.isArray(x.units) ? x.units : [];
     const clean = [];
 
-    for (const u of arr){
+    for (const u of units){
+      const nameS = String(u?.name || '').trim();
       const srcS  = String(u?.source || '').trim();
-      const nameS = String(u?.name   || '').trim();
-      if (!srcS) continue;
+      if (!nameS || !srcS) continue;
 
-      const ent  = getManifestEntryBySource(srcS);
-      const code = (typeof u?.variantCode === 'string' && u.variantCode)
-                || ent?.model
-                || sniffVariantCode(nameS)
-                || '';
+      const ent = getManifestEntryBySource(srcS);
 
       clean.push({
         id: u?.id ?? null,
-        name: ent?.displayName || ensureLongNameHasCode(nameS || 'MECH', code),
+        name: ent?.displayName || nameS,
         bv: numOrNull(u?.bv),
         tonnage: numOrNull(u?.tonnage),
         source: srcS,
+
         pilotName: String(u?.pilotName ?? u?.pilot ?? '').trim() || nextCallsign(),
         gunnery: clampInt(u?.gunnery ?? 4, 0, 9, 4),
         piloting: clampInt(u?.piloting ?? 5, 0, 9, 5),
         team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
-        variantCode: code || undefined
+        variantCode: (typeof u?.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(nameS) || undefined
       });
     }
-
-    return { v:1, schema:SCHEMA, name, units: clean };
+    return { v:1, schema:SCHEMA, name, units:clean };
   }
 
-  throw new Error('Unrecognized import format');
+  throw new Error('Unsupported import format');
 }
+
 
 
 
