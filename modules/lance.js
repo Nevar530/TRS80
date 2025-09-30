@@ -641,9 +641,9 @@ function injectCssOnce(){
     #lance-dock .mini{
       padding:3px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a);
       background:#0e1522; color:var(--ink,#e8eef6);
-      height:26px; font-size:13px; width:auto;
+      height:20px; font-size:10px; width:auto;
     }
-    #lance-dock input.mini[data-field="pilotName"]{ width:16ch; min-width:10ch; }
+    #lance-dock input.mini[data-field="pilotName"]{ width:12ch; min-width:8ch; }
     #lance-dock input.mini.num[data-field="gunnery"],
     #lance-dock input.mini.num[data-field="piloting"]{
       width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
@@ -664,12 +664,12 @@ function injectCssOnce(){
 
     /* Tablet tighten */
     @media (max-width: 980px){
-      #lance-dock input.mini[data-field="pilotName"]{ width:20ch; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; }
     }
 
     /* Phones: keep three rows, make fields tighter */
     @media (max-width: 800px){
-      #lance-dock input.mini[data-field="pilotName"]{ width:16ch; }
+      #lance-dock input.mini[data-field="pilotName"]{ width:10ch; }
       #lance-dock input.mini.num[data-field="gunnery"],
       #lance-dock input.mini.num[data-field="piloting"]{
         width:3.5ch; min-width:3.5ch; font-size:12px; height:24px;
