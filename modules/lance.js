@@ -125,7 +125,7 @@
     _nameInp?.addEventListener('keydown', (e)=>{ if(e.key==='Enter') e.currentTarget.blur(); });
   }
 
-  function renderList(){
+function renderList(){
   if(!_list) return;
   if(!_state.units.length){
     _list.innerHTML = `<div class="dim small" style="padding:6px;">No units yet. Use <strong>Add Current</strong>.</div>`;
@@ -135,8 +135,8 @@
   const rows = _state.units.map((u, i)=>{
     const nm = splitDisplay(u.name, u.source, u.variantCode);
     return `
-    <div class="lance-row two-line" data-idx="${i}" role="listitem">
-      <!-- Row 1: Name (left) • T/BV (right) -->
+    <div class="lance-row three-line" data-idx="${i}" role="listitem">
+      <!-- Row 1: Name (L) • T/BV (R) -->
       <div class="name mono" title="${esc(nm.full)}">
         <span class="chassis">${esc(nm.chassis)}</span>
         ${nm.code ? `<sup class="variant-sup">${esc(nm.code)}</sup>` : ``}
@@ -146,7 +146,7 @@
         <span class="chip">${fmt(u.bv,'—')} BV</span>
       </div>
 
-      <!-- Row 2: Pilot + G + P + Team (left) • Actions (right) -->
+      <!-- Row 2: Pilot + G + P + Team (left) -->
       <div class="pilotline">
         <label class="small dim">Pilot</label>
         <input class="mini" data-field="pilotName" placeholder="Pilot" value="${esc(u.pilotName||'')}" maxlength="32" />
@@ -162,6 +162,7 @@
         </select>
       </div>
 
+      <!-- Row 3: actions (right) -->
       <div class="actions">
         <button class="linklike" data-act="view" title="Open in viewer">View</button>
         <span class="dim">•</span>
@@ -176,6 +177,7 @@
   _list.addEventListener('change', onRowEdit);
   _list.addEventListener('click', onRowAction);
 }
+
 
 
   function updateTotals(){
@@ -605,23 +607,28 @@ function injectCssOnce(){
     #lance-dock .lance-totals{ display:flex; gap:14px; margin:6px 0 10px; }
     #lance-dock .lance-list{ display:flex; flex-direction:column; gap:8px; }
 
-    /* ===== Card: exactly two rows ===== */
-    #lance-dock .lance-row.two-line{
+    /* ===== Card: exactly three rows =====
+       Row1: name | meta
+       Row2: pilotline | (empty)
+       Row3: (empty) | actions
+    */
+    #lance-dock .lance-row.three-line{
       display:grid;
-      grid-template-columns: 1fr auto;       /* left grows, right hugs */
-      grid-template-rows: auto auto;         /* two rows */
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
       grid-template-areas:
         "name  meta"
-        "pilot act";
+        "pilot ."
+        ".     act";
       align-items:center; gap:8px; padding:8px;
       border:1px solid var(--border,#1f2a3a);
       border-radius:8px;
       background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02));
     }
-    #lance-dock .lance-row.two-line .name{ grid-area:name; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    #lance-dock .lance-row.two-line .meta{ grid-area:meta; justify-self:end; }
-    #lance-dock .lance-row.two-line .pilotline{ grid-area:pilot; }
-    #lance-dock .lance-row.two-line .actions{ grid-area:act; justify-self:end; }
+    #lance-dock .lance-row.three-line .name{ grid-area:name; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #lance-dock .lance-row.three-line .meta{ grid-area:meta; justify-self:end; }
+    #lance-dock .lance-row.three-line .pilotline{ grid-area:pilot; }
+    #lance-dock .lance-row.three-line .actions{ grid-area:act; justify-self:end; }
 
     #lance-dock .name .chassis{ font-weight:600; letter-spacing:.2px; }
     #lance-dock .variant-sup{ font-size:.8em; vertical-align:super; opacity:.85; margin-left:6px; }
@@ -629,6 +636,8 @@ function injectCssOnce(){
     /* Pilotline inline + compact */
     #lance-dock .pilotline{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
     #lance-dock .pilotline .sep{ color:#93a1b5; opacity:.8; }
+
+    /* Compact inputs */
     #lance-dock .mini{
       padding:3px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a);
       background:#0e1522; color:var(--ink,#e8eef6);
@@ -653,12 +662,12 @@ function injectCssOnce(){
       border-radius:999px; font-size:11px; line-height:1.2; margin-left:6px; opacity:.9;
     }
 
-    /* Tablet: tighten name + inputs a bit */
+    /* Tablet tighten */
     @media (max-width: 980px){
       #lance-dock input.mini[data-field="pilotName"]{ width:20ch; }
     }
 
-    /* Phones: keep two rows; make fields tighter; hide extra dots/label */
+    /* Phones: keep three rows, make fields tighter */
     @media (max-width: 800px){
       #lance-dock input.mini[data-field="pilotName"]{ width:16ch; }
       #lance-dock input.mini.num[data-field="gunnery"],
@@ -676,5 +685,6 @@ function injectCssOnce(){
   `;
   document.head.appendChild(st);
 }
+
 
 })();
