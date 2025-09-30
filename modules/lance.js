@@ -1,9 +1,13 @@
-/* ===== TRS:80 Lance Module (self-contained; pilots, skills, stacked mobile, Skirmish export) =====
+/* ===== TRS:80 Lance Module (manifest-aware; pilots, skills, mobile, Skirmish export) =====
  * Public surface: Lance.init(api), Lance.setVisible(on), Lance.getState()
- * Host API contract:
+ * Host API (recommended):
  *   api.getCurrentMech(): { id?:string|null, name?:string|null, bv?:number|null, tonnage?:number|null, source?:string|null } | null
  *   api.openMechById(idOrSource: string): void
  *   api.onMenuDeselect(): void
+ *   api.getManifestBySource?(sourcePath: string): ManifestEntry | null   // optional, preferred
+ *
+ * Global fallback (optional):
+ *   window.MANIFEST_INDEX[pathOrFilename] = { displayName, name, model, path, ... }
  */
 (function(){
   'use strict';
@@ -32,20 +36,26 @@
   /**
    * @typedef {{
    *   id: string|null,
-   *   name: string,           // display name (often chassis or chassis+variant)
+   *   name: string,           // display name (chassis + variant)
    *   bv: number|null,
    *   tonnage: number|null,
-   *   source: string,
+   *   source: string,         // manifest path or id used by host
    *   pilotName: string,
    *   piloting: number,
    *   gunnery: number,
    *   team: "Alpha"|"Bravo"|"Clan"|"Merc",
-   *   variantCode?: string    // short code like "MAD-6D", "DWF-PRIME"
+   *   variantCode?: string    // short code like "MAD-6D", "VND-1R"
    * }} LanceUnit
    * @typedef {{ v:number, schema:string, name:string, units:LanceUnit[] }} LanceState
+   * @typedef {{
+   *   getCurrentMech: ()=>({id?:string|null,name?:string|null,bv?:number|null,tonnage?:number|null,source?:string|null})|null,
+   *   openMechById: (idOrSource:string)=>void,
+   *   onMenuDeselect: ()=>void,
+   *   getManifestBySource?: (src:string)=>any|null
+   * }} HostApi
    */
 
-  /** @type {{ getCurrentMech:Function, openMechById:Function, onMenuDeselect:Function }|null} */
+  /** @type {HostApi|null} */
   let host = null;
 
   /** @type {LanceState} */
@@ -69,12 +79,18 @@
     _state = loadState();
     _visible = loadUi().visible ?? false;
 
-    // Defensive: seed pilots/skills and backfill variantCode from name if missing
+    // Defensive: seed pilots/skills and backfill variantCode from manifest/name if missing
     for (const u of _state.units){
       if (!u.pilotName) u.pilotName = nextCallsign();
-      if (!u.piloting && u.piloting !== 0) u.piloting = 4;
-      if (!u.gunnery  && u.gunnery  !== 0) u.gunnery  = 4;
-      if (!u.variantCode) u.variantCode = sniffVariantCode(u.name);
+      if (!Number.isFinite(u.piloting)) u.piloting = 4;
+      if (!Number.isFinite(u.gunnery))  u.gunnery  = 4;
+      if (!u.variantCode) {
+        const ent = getManifestEntryBySource(u.source);
+        u.variantCode = ent?.model || sniffVariantCode(u.name) || undefined;
+      }
+      // Ensure display name is chassis+variant when possible
+      const ent = getManifestEntryBySource(u.source);
+      if (ent?.displayName) u.name = ent.displayName;
     }
 
     renderDock();
@@ -212,12 +228,14 @@
     const m = host.getCurrentMech();
     if (!m || !m.name || !m.source) return warn('No current mech or missing source');
 
-    // Try to sniff a variant code from the name we get from host
-    const code = sniffVariantCode(m.name);
+    // Prefer manifest entry for accurate model/displayName
+    const entry = getManifestEntryBySource(String(m.source));
+    const variantCode = entry?.model || sniffVariantCode(m.name);
+    const displayName = entry?.displayName || String(m.name);
 
     const unit = {
       id: m.id ?? null,
-      name: String(m.name),
+      name: displayName,                 // chassis + variant
       bv: numOrNull(m.bv),
       tonnage: numOrNull(m.tonnage),
       source: String(m.source),
@@ -226,7 +244,7 @@
       piloting: 4,
       gunnery: 4,
       team: 'Alpha',
-      variantCode: code || undefined
+      variantCode: variantCode || undefined
     };
 
     _state.units.push(unit);
@@ -288,9 +306,10 @@
   function onExportSkirmish(){
     try{
       const items = _state.units.map((u, i)=>{
-        // Prefer stored variantCode; else sniff from name; else fallback
-        const code = u.variantCode || sniffVariantCode(u.name) || deriveLabelFromName(u.name);
-        const longName = ensureLongNameHasCode(u.name, code);
+        const entry = getManifestEntryBySource(u.source);
+        const code = u.variantCode || entry?.model || deriveLabelFromName(u.name);
+        const longName = entry?.displayName ? ensureLongNameHasCode(entry.displayName, code)
+                                            : ensureLongNameHasCode(u.name, code);
         const team = u.team || 'Alpha';
         const colorIndex = TEAM_COLOR[team] ?? 1;
 
@@ -303,10 +322,10 @@
           scale: 1,
           angle: 0,
           colorIndex,
-          label: code,               // <- variant ID for the token label
+          label: code,               // variant ID for token label (e.g., "MAD-6D")
           meta: {
-            name: longName,          // <- chassis + variant (human-friendly)
-            pilot: formatPilot(u.pilotName, u.piloting, u.gunnery), // "Name - P#/G#"
+            name: longName,          // chassis + variant (e.g., "Marauder II MAD-6D")
+            pilot: formatPilot(u.pilotName, u.piloting, u.gunnery),
             team
           }
         };
@@ -367,9 +386,11 @@
       const srcS  = String(u?.source || '').trim();
       if (!nameS || !srcS) continue;
 
+      const ent = getManifestEntryBySource(srcS);
+
       clean.push({
         id: u?.id ?? null,
-        name: nameS,
+        name: ent?.displayName || nameS,
         bv: numOrNull(u?.bv),
         tonnage: numOrNull(u?.tonnage),
         source: srcS,
@@ -378,11 +399,34 @@
         piloting: clampInt(u?.piloting ?? 4, 0, 9, 4),
         gunnery:  clampInt(u?.gunnery  ?? 4, 0, 9, 4),
         team: (['Alpha','Bravo','Clan','Merc'].includes(u?.team) ? u.team : 'Alpha'),
-        variantCode: typeof u?.variantCode === 'string' ? u.variantCode : sniffVariantCode(nameS) || undefined
+        variantCode: (typeof u?.variantCode === 'string' && u.variantCode) || ent?.model || sniffVariantCode(nameS) || undefined
       });
     }
 
     return { v:1, schema:SCHEMA, name, units:clean };
+  }
+
+  // ---------- Manifest resolver ----------
+  function getManifestEntryBySource(src){
+    if (!src) return null;
+
+    // Host-provided hook
+    if (host && typeof host.getManifestBySource === 'function') {
+      try {
+        const r = host.getManifestBySource(src);
+        if (r) return r;
+      } catch {}
+    }
+
+    // Global index fallback
+    const idx = (window.MANIFEST_INDEX || window.MechManifestIndex || null);
+    if (!idx) return null;
+
+    // Try exact path, then filename
+    const byPath = idx[src];
+    if (byPath) return byPath;
+    const fname = String(src).split('/').pop();
+    return idx[fname] || null;
   }
 
   // ---------- Utilities ----------
@@ -405,24 +449,16 @@
   }
   function warn(msg){ if (_warn){ _warn.hidden = false; _warn.textContent = msg; setTimeout(()=>{ _warn.hidden=true; }, 1800); } }
 
-  // --- Variant helpers ---
-  // Try to extract a code like "MAD-6D", "VND-1R", "DWF-PRIME", "TIM-PRIME" from a name.
+  // Variant helpers (kept as last-resort fallback)
   function sniffVariantCode(name){
     const s = String(name||'').toUpperCase();
-
-    // Common pattern: token containing at least one hyphen, made of A-Z0-9 (e.g., MAD-6D, DWF-PRIME)
-    const m1 = s.match(/\b[A-Z0-9]{2,6}(?:-[A-Z0-9]+)+\b/);
+    const m1 = s.match(/\b[A-Z0-9]{2,6}(?:-[A-Z0-9]+)+\b/); // MAD-6D, DWF-PRIME, TIM-PRIME
     if (m1) return m1[0];
-
-    // Fallback: last ALLCAPS token (2–12 chars) if it looks code-ish
     const tokens = s.trim().split(/\s+/);
     const last = tokens[tokens.length-1] || '';
     if (/^[A-Z0-9]{2,12}$/.test(last)) return last;
-
     return '';
   }
-
-  // Ensure meta.name includes the variant code once (e.g., "Marauder II MAD-6D")
   function ensureLongNameHasCode(displayName, code){
     const nm = String(displayName||'MECH');
     const c  = String(code||'').trim();
@@ -430,13 +466,10 @@
     if (nm.toUpperCase().includes(c.toUpperCase())) return nm;
     return `${nm} ${c}`;
   }
-
-  // Label derivation if we truly have no code (kept as a last resort)
   function deriveLabelFromName(name){
     const compact = String(name||'MECH').toUpperCase().replace(/[^A-Z0-9]+/g,'');
     return compact ? compact.slice(0,12) : 'MECH';
   }
-
   function formatPilot(name, p, g){
     const nm = (String(name||'—').trim() || '—').slice(0,32);
     const ps = Number.isFinite(+p) ? +p : 4;
