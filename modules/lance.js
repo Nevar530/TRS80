@@ -641,9 +641,9 @@ function injectCssOnce(){
     #lance-dock .mini{
       padding:3px 6px; border-radius:6px; border:1px solid var(--border,#2a2f3a);
       background:#0e1522; color:var(--ink,#e8eef6);
-      height:20px; font-size:10px; width:auto;
+      height:24px; font-size:10px; width:auto;
     }
-    #lance-dock input.mini[data-field="pilotName"]{ width:12ch; min-width:8ch; }
+    #lance-dock input.mini[data-field="pilotName"]{ width:10ch; min-width:10ch; }
     #lance-dock input.mini.num[data-field="gunnery"],
     #lance-dock input.mini.num[data-field="piloting"]{
       width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
@@ -652,14 +652,14 @@ function injectCssOnce(){
 
     /* Actions */
     #lance-dock .actions{ display:flex; align-items:center; gap:8px; }
-    #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:12.5px; }
-    #lance-dock .small{ font-size:12px; }
+    #lance-dock .linklike{ background:transparent; border:0; color:var(--accent,#ffd06e); cursor:pointer; text-decoration:underline; padding:0; font-size:10px; }
+    #lance-dock .small{ font-size:10px; }
     #lance-dock .dim{ color:#a9b4c2; }
 
     /* Chips */
     #lance-dock .chip{
       display:inline-block; padding:2px 6px; border:1px solid var(--border,#2a2f3a);
-      border-radius:999px; font-size:11px; line-height:1.2; margin-left:6px; opacity:.9;
+      border-radius:999px; font-size:10px; line-height:1.2; margin-left:6px; opacity:.9;
     }
 
     /* Tablet tighten */
@@ -680,7 +680,7 @@ function injectCssOnce(){
     }
 
     @media (max-width: 380px){
-      #lance-dock .mini.sel{ min-width:6ch; }
+      #lance-dock .mini.sel{ min-width:8ch; }
     }
   `;
   document.head.appendChild(st);
