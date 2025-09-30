@@ -1698,6 +1698,101 @@ function initSidebarDrawer(){
   });
 }
 
+/* ===== TRS:80 • Technical Readout Boot ===== */
+(() => {
+  const root   = document.getElementById('troBoot');
+  if (!root) return;
+
+  const logEl  = document.getElementById('troLog');
+  const barEl  = document.getElementById('troBar');
+  const hintEl = document.getElementById('troHint');
+
+  // Optional boot speed override: window.trsBoot = { speed: 'fast'|'standard'|'cinematic' }
+  const speed = (window.trsBoot && window.trsBoot.speed) || 'standard';
+  const pace  = speed === 'fast' ? [60, 120] : speed === 'cinematic' ? [180, 320] : [120, 220];
+
+  const LINES = [
+    '[PWR]  TRS:80 Loader • Bootstrap OK',
+    '[FS]   Manifest Index • parsing /data/mechs/*.json',
+    '[DB]   Weapons Catalog • bound',
+    '[BV]   BattleValue Engine • ready',
+    '[NAV]  Hex Grid & TRO Layout • online',
+    '[I/O]  Sheets Dock • handshake OK',
+    '[UX]   G.A.T.O.R. Console • widgets alive',
+    '[MEM]  Local Save State • present',
+    '[REF]  TechReadout Schema • v1.3 loaded',
+    '[SYS]  All modules nominal • commit → UI'
+  ];
+
+  // Utilities
+  const rand = (min, max) => Math.floor(min + Math.random() * (max - min + 1));
+  const setProgress = p => { if (barEl) barEl.style.width = Math.max(0, Math.min(100, p)) + '%'; };
+  const appendLine = line => {
+    if (!logEl) return;
+    logEl.textContent += line + '\n';
+    logEl.scrollTop = logEl.scrollHeight;
+  };
+
+  let i = 0;
+  function next(){
+    if (i < LINES.length){
+      appendLine(LINES[i]);
+      setProgress(Math.round(((i+1) / (LINES.length + 2)) * 100));
+      i++;
+      // a couple of longer beats to feel "calibration-y"
+      const longBeat = (i === 3 || i === 6) ? 260 : 0;
+      setTimeout(next, rand(pace[0], pace[1]) + longBeat);
+    } else {
+      setTimeout(() => setProgress(100), 180);
+      if (hintEl) hintEl.textContent = 'PRESS ENTER TO OPEN TRO ▌ • OR WAIT';
+      enableDismiss();
+      // brief binding beat then auto-hide
+      setTimeout(hideBoot, 650);
+    }
+  }
+
+  function hideBoot(){
+    if (!root) return;
+    root.classList.add('tro-boot--hidden');
+    // After transition, remove node and announce launch
+    const onEnd = () => {
+      root.removeEventListener('transitionend', onEnd);
+      if (root && root.parentNode) root.parentNode.removeChild(root);
+      window.dispatchEvent(new Event('trs:trolaunch'));
+    };
+    root.addEventListener('transitionend', onEnd);
+    // Fallback in case transitionend doesn’t fire
+    setTimeout(onEnd, 700);
+  }
+
+  function enableDismiss(){
+    const onKey = (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        cleanup();
+        hideBoot();
+      }
+    };
+    const onClick = () => { cleanup(); hideBoot(); };
+
+    function cleanup(){
+      window.removeEventListener('keydown', onKey);
+      root.removeEventListener('click', onClick);
+    }
+
+    window.addEventListener('keydown', onKey, { passive:false });
+    root.addEventListener('click', onClick, { once:true });
+  }
+
+  // Kick off on window load so the overlay doesn't block app init
+  window.addEventListener('load', () => {
+    if (logEl) logEl.textContent = '';
+    if (barEl) barEl.style.width = '0%';
+    next();
+  }, { once:true });
+})();
+
+  
 /* -----------------------------------------
  *  BOOT
  * --------------------------------------- */
