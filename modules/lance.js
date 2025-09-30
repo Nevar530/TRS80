@@ -643,12 +643,12 @@ function injectCssOnce(){
       background:#0e1522; color:var(--ink,#e8eef6);
       height:26px; font-size:13px; width:auto;
     }
-    #lance-dock input.mini[data-field="pilotName"]{ width:22ch; min-width:16ch; }
+    #lance-dock input.mini[data-field="pilotName"]{ width:16ch; min-width:10ch; }
     #lance-dock input.mini.num[data-field="gunnery"],
     #lance-dock input.mini.num[data-field="piloting"]{
       width:4.5ch; min-width:4.5ch; text-align:center; padding:2px 4px;
     }
-    #lance-dock .mini.sel{ width:auto; min-width:110px; }
+    #lance-dock .mini.sel{ width:100; min-width:80px; }
 
     /* Actions */
     #lance-dock .actions{ display:flex; align-items:center; gap:8px; }
