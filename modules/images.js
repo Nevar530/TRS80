@@ -86,6 +86,7 @@ const needsQualifier = new Map([
   ['Omen',       '(OmniMech)'],
   ['Tomahawk',   '(OmniMech)'],
   ['Vandal',     '(OmniMech)'],
+  ['Nova Cat',   '(OmniMech)'],
 ]);
 
 // --- Sarna image helpers (must be inside the IIFE) ---
