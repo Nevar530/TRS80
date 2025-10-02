@@ -1,4 +1,4 @@
-/* ===== TRS:80 Images Module — modules/images.js ===== */
+/* ===== TRS:80 Images Module — modules/images.js (no-distort) ===== */
 (() => {
   'use strict';
 
@@ -6,7 +6,6 @@
   const THUMB_SIZE_DEFAULT = 900;
 
   // Fallback image (your repo)
-  // If you prefer local, change to './images/background.png'
   const DEFAULT_FALLBACK_IMAGEURL =
     'https://raw.githubusercontent.com/Nevar530/TRS80/main/images/background.png';
 
@@ -35,7 +34,6 @@
   function normalizeChassisTitle(name){
     if (!name) return '';
     let base = titleCase(name);
-    // keep parentheses if present (e.g., "Hellbringer (Loki)")
     if (needsBMQualifier.has(base)) base = `${base} (BattleMech)`;
     return base;
   }
@@ -82,10 +80,8 @@
   async function resolveImageForTitle(title, width){
     const lead = await fetchLeadThumb(title, width);
     if (lead?.thumbUrl) return lead;
-
     const first = await fetchFirstFileThumbWithCredits(title, width);
     if (first?.thumbUrl) return first;
-
     return null;
   }
 
@@ -130,7 +126,7 @@
   function mountUI(host){
     host.innerHTML = `
       <div class="imgwrap" style="width:100%;background:#0a0d14;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
-        <img id="img-art" alt="Mech image" style="max-width:100%;max-height:100%;display:block"/>
+        <img id="img-art" alt="Mech image" style="display:block;"/>
         <div id="img-ph" class="small dim" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">Select a ’Mech…</div>
       </div>
 
@@ -143,6 +139,7 @@
       <div id="img-note" class="small dim" style="margin-top:4px;"></div>
     `;
     return {
+      frame: host.querySelector('.imgwrap'),
       img: host.querySelector('#img-art'),
       ph: host.querySelector('#img-ph'),
       btnSarna: host.querySelector('#btn-sarna'),
@@ -176,31 +173,47 @@
         });
         mo.observe(pane, { attributes:true, attributeFilter:['class'] });
       }
-      // first pass
       this.reflow();
+    },
+
+    // Compute scale to fit inside (maxW, maxH) without upscaling, preserving aspect ratio.
+    _fitContain(nw, nh, maxW, maxH){
+      if (!nw || !nh) return { w: 0, h: 0 };
+      const s = Math.min(1, maxW / nw, maxH / nh); // never upscale (>1)
+      return { w: Math.floor(nw * s), h: Math.floor(nh * s) };
     },
 
     reflow(){
       if (!this._els) return;
       const host = document.querySelector(this._cfg.mountSel);
-      if (!host) return;
+      const { frame, img } = this._els;
+      if (!host || !frame || !img) return;
 
-      const { img } = this._els;
+      // If image not loaded yet, just let the placeholder show.
+      if (!img.complete || !img.naturalWidth || !img.naturalHeight) {
+        frame.style.height = '240px';
+        return;
+      }
+
       const btnrow = document.getElementById('img-btnrow');
       const credits = document.getElementById('img-credits');
       const note = document.getElementById('img-note');
 
-      // available height = viewport minus everything below the image
+      // Available area for the image (no scroll): viewport minus controls
       const hostRect = host.getBoundingClientRect();
       const controlsH =
         (btnrow?.offsetHeight || 0) +
         (credits?.offsetHeight || 0) +
         (note?.offsetHeight || 0) + 20; // padding
-      const avail = Math.max(160, Math.floor(window.innerHeight - hostRect.top - controlsH - 24));
+      const maxH = Math.max(160, Math.floor(window.innerHeight - hostRect.top - controlsH - 24));
+      const maxW = Math.max(160, host.clientWidth - 2); // minus borders
 
-      img.style.width = '100%';
-      img.style.height = 'auto';
-      img.style.maxHeight = avail + 'px';
+      const { w, h } = this._fitContain(img.naturalWidth, img.naturalHeight, maxW, maxH);
+
+      // Apply exact pixel size (prevents any CSS stretching)
+      img.style.width = w + 'px';
+      img.style.height = h + 'px';
+      frame.style.height = h + 'px';
     },
 
     async setChassis(name){
@@ -208,7 +221,11 @@
       const { img, ph, btnSarna, btnImage, credits, note } = this._els;
       if (!img) return;
 
-      img.src = '';
+      img.removeAttribute('width');
+      img.removeAttribute('height');
+      img.style.width = '';
+      img.style.height = '';
+
       ph.textContent = 'Loading image…';
       ph.style.opacity = 1;
       credits.textContent = '';
@@ -228,10 +245,12 @@
 
         const { result, openPageTitle, note: noteText } = resolved;
 
-        img.onload = () => this.reflow();
+        img.onload = () => {
+          ph.style.opacity = 0;
+          this.reflow();
+        };
         img.src = result.thumbUrl;
         img.alt = `${openPageTitle} image`;
-        ph.style.opacity = 0;
 
         // Buttons
         btnSarna.href = pageUrlFromTitle(openPageTitle);
@@ -241,13 +260,14 @@
         renderCredits(credits, result.credits, result.fileTitle);
         note.textContent = noteText || '';
 
-        // settle sizing after layout
+        // one more after layout settles
         requestAnimationFrame(() => this.reflow());
       } catch (e) {
         console.warn('[Images] lookup failed', e);
         ph.textContent = 'Lookup failed — showing fallback';
-        img.onload = () => this.reflow();
+        img.onload = () => { ph.style.opacity = 0; this.reflow(); };
         img.src = this._cfg.fallbackImageUrl;
+        img.alt = 'Fallback image';
         btnSarna.href = '#';
         btnImage.href = this._cfg.fallbackImageUrl;
         credits.textContent = '';
