@@ -76,6 +76,48 @@ const needsQualifier = new Map([
   ['Vandal',     '(OmniMech)'],
 ]);
 
+// --- Sarna image helpers (must be inside the IIFE) ---
+async function fetchLeadThumb(title, width){
+  const url = `${API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail|name&pithumbsize=${width}&titles=${encodeURIComponent(title)}`;
+  const r = await fetch(url, { mode:'cors' }); if(!r.ok) return null;
+  const data = await r.json();
+  const page = data?.query?.pages?.[Object.keys(data.query.pages)[0]];
+  if (page?.thumbnail?.source){
+    return { thumbUrl: page.thumbnail.source, fileTitle: page?.pageimage ? `File:${page.pageimage}` : null, credits: null };
+  }
+  return null;
+}
+
+async function fetchFirstFileThumbWithCredits(title, width){
+  const listUrl = `${API}?action=query&format=json&origin=*&redirects=1&prop=images&imlimit=50&titles=${encodeURIComponent(title)}`;
+  const r = await fetch(listUrl, { mode:'cors' }); if(!r.ok) return null;
+  const data = await r.json();
+  const page = data?.query?.pages?.[Object.keys(data.query.pages)[0]];
+  const files = page?.images || [];
+  const fileTitles = files.map(f=>f.title).filter(t=>/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(t));
+  if (!fileTitles.length) return null;
+
+  const filesParam = fileTitles.map(encodeURIComponent).join('|');
+  const infoUrl = `${API}?action=query&format=json&origin=*&redirects=1&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=${width}&titles=${filesParam}`;
+  const ir = await fetch(infoUrl, { mode:'cors' }); if(!ir.ok) return null;
+  const id = await ir.json();
+  const ip = id?.query?.pages || {};
+  for (const k of Object.keys(ip)){
+    const p = ip[k];
+    const ii = p?.imageinfo?.[0];
+    if (ii?.thumburl || ii?.url){
+      return {
+        thumbUrl: ii.thumburl || ii.url,
+        fileTitle: p.title,
+        credits: ii.extmetadata || null
+      };
+    }
+  }
+  return null;
+}
+// --- end helpers ---
+
+  
  // ===== REPLACEMENT START =====
 
 // (Keep your existing needsBMQualifier, needsQualifier, aliasPairs above this)
