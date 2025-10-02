@@ -18,7 +18,25 @@ const needsBMQualifier = new Set([
   'Scorpion'
 ]);
 
+// Add alongside your needsBMQualifier set:
+const needsQualifier = new Map([
+  ['Arctic Fox', '(OmniMech)']
+]);
 
+// When building the Sarna page title:
+function pageTitleFor(chassisName) {
+  if (needsQualifier.has(chassisName)) {
+    return `${chassisName} ${needsQualifier.get(chassisName)}`;
+  }
+  if (needsBMQualifier.has(chassisName)) {
+    return `${chassisName} (BattleMech)`;
+  }
+  return chassisName;
+}
+
+// Then use:
+const page = pageTitleFor(chassis);
+const url  = `https://www.sarna.net/wiki/${encodeURIComponent(page.replaceAll(' ', '_'))}`;
 
 // IS ⇄ Clan alias pairs (both directions), per Sarna’s alias list
 const aliasPairs = {
