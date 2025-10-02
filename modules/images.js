@@ -5,11 +5,12 @@
   const API = 'https://www.sarna.net/wiki/api.php';
   const THUMB_SIZE_DEFAULT = 900;
 
-  // Default fallback (you can keep these, or override in init)
-  const DEFAULT_FALLBACK_FILEPAGE = 'https://www.sarna.net/wiki/File:Deep_Periphery_-_lg.png';
-  const DEFAULT_FALLBACK_IMAGEURL = 'https://cf.sarna.net/w/images/7/7b/Deep_Periphery_-_lg.png';
+  // Fallback image (your repo)
+  // If you prefer local, change to './images/background.png'
+  const DEFAULT_FALLBACK_IMAGEURL =
+    'https://raw.githubusercontent.com/Nevar530/TRS80/main/images/background.png';
 
-  // Titles that need (BattleMech) suffix to avoid disambiguation
+  // Titles that need (BattleMech) to avoid disambiguation
   const needsBMQualifier = new Set(['Scorpion','Phoenix','Crab','Hawk','Falcon','Raven','Manticore','Cobra']);
 
   // IS ⇄ Clan alias pairs
@@ -88,10 +89,12 @@
     return null;
   }
 
-  async function resolveForChassis(rawName, { width, useAlias, fallbackImg, fallbackFilePage }){
+  // Try primary → alias → fallback; always return a Sarna page to open (primary or alias)
+  async function resolveForChassis(rawName, { width, useAlias, fallbackImg }){
     const primary = normalizeChassisTitle(rawName);
+
     let res = await resolveImageForTitle(primary, width);
-    if (res) return { result: res, pageTitle: primary, usedAlias: false, globalFallback:false };
+    if (res) return { result: res, openPageTitle: primary, note: '' };
 
     if (useAlias){
       const base = titleCase(rawName);
@@ -99,16 +102,12 @@
       if (alias){
         const aliasTitle = normalizeChassisTitle(alias);
         res = await resolveImageForTitle(aliasTitle, width);
-        if (res) return { result: res, pageTitle: aliasTitle, usedAlias: true, aliasOf: base, globalFallback:false };
+        if (res) return { result: res, openPageTitle: aliasTitle, note: `No image for “${base}”; using alias “${aliasTitle}”.` };
+        return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: aliasTitle, note: `Image not found — alias “${aliasTitle}”; showing fallback.` };
       }
     }
 
-    return {
-      result: { thumbUrl: fallbackImg, fileTitle: 'File:Deep_Periphery_-_lg.png', credits: null },
-      pageTitle: 'Deep Periphery',
-      usedAlias: false,
-      globalFallback: true
-    };
+    return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: primary, note: 'Image not found — showing fallback.' };
   }
 
   function renderCredits(el, credits, fileTitle){
@@ -128,15 +127,14 @@
     el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
   }
 
-  // ------- Minimal UI scaffold (uses your existing CSS tokens) -------
   function mountUI(host){
     host.innerHTML = `
-      <div class="imgwrap" style="width:100%;aspect-ratio:4/3;background:#0a0d14;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
+      <div class="imgwrap" style="width:100%;background:#0a0d14;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
         <img id="img-art" alt="Mech image" style="max-width:100%;max-height:100%;display:block"/>
         <div id="img-ph" class="small dim" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">Select a ’Mech…</div>
       </div>
 
-      <div class="btnrow" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+      <div id="img-btnrow" class="btnrow" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
         <a id="btn-sarna" class="btn sm" href="#" target="_blank" rel="noopener">Open Sarna Page</a>
         <a id="btn-image" class="btn sm ghost" href="#" target="_blank" rel="noopener">Open Image</a>
       </div>
@@ -154,14 +152,12 @@
     };
   }
 
-  // ------- Public module -------
   const Images = {
     _cfg: {
       mountSel: '#image-panel',
       thumbSize: THUMB_SIZE_DEFAULT,
       useAlias: true,
-      fallbackImageUrl: DEFAULT_FALLBACK_IMAGEURL,
-      fallbackFilePage: DEFAULT_FALLBACK_FILEPAGE
+      fallbackImageUrl: DEFAULT_FALLBACK_IMAGEURL
     },
     _els: null,
 
@@ -170,6 +166,41 @@
       const host = document.querySelector(this._cfg.mountSel);
       if (!host) { console.warn('[Images] mount not found:', this._cfg.mountSel); return; }
       this._els = mountUI(host);
+
+      // dynamic sizing on resize + when tab shown
+      window.addEventListener('resize', () => this.reflow());
+      const pane = document.getElementById('pane-image');
+      if (pane) {
+        const mo = new MutationObserver(() => {
+          if (pane.classList.contains('is-active')) this.reflow();
+        });
+        mo.observe(pane, { attributes:true, attributeFilter:['class'] });
+      }
+      // first pass
+      this.reflow();
+    },
+
+    reflow(){
+      if (!this._els) return;
+      const host = document.querySelector(this._cfg.mountSel);
+      if (!host) return;
+
+      const { img } = this._els;
+      const btnrow = document.getElementById('img-btnrow');
+      const credits = document.getElementById('img-credits');
+      const note = document.getElementById('img-note');
+
+      // available height = viewport minus everything below the image
+      const hostRect = host.getBoundingClientRect();
+      const controlsH =
+        (btnrow?.offsetHeight || 0) +
+        (credits?.offsetHeight || 0) +
+        (note?.offsetHeight || 0) + 20; // padding
+      const avail = Math.max(160, Math.floor(window.innerHeight - hostRect.top - controlsH - 24));
+
+      img.style.width = '100%';
+      img.style.height = 'auto';
+      img.style.maxHeight = avail + 'px';
     },
 
     async setChassis(name){
@@ -177,7 +208,6 @@
       const { img, ph, btnSarna, btnImage, credits, note } = this._els;
       if (!img) return;
 
-      // reset UI
       img.src = '';
       ph.textContent = 'Loading image…';
       ph.style.opacity = 1;
@@ -193,45 +223,42 @@
         const resolved = await resolveForChassis(name, {
           width: cfg.thumbSize,
           useAlias: cfg.useAlias,
-          fallbackImg: cfg.fallbackImageUrl,
-          fallbackFilePage: cfg.fallbackFilePage
+          fallbackImg: cfg.fallbackImageUrl
         });
 
-        const { result, pageTitle, usedAlias, aliasOf, globalFallback } = resolved;
+        const { result, openPageTitle, note: noteText } = resolved;
+
+        img.onload = () => this.reflow();
         img.src = result.thumbUrl;
-        img.alt = `${pageTitle} image`;
+        img.alt = `${openPageTitle} image`;
         ph.style.opacity = 0;
 
         // Buttons
-        btnSarna.href = globalFallback ? cfg.fallbackFilePage : pageUrlFromTitle(pageTitle);
+        btnSarna.href = pageUrlFromTitle(openPageTitle);
         btnImage.href = result.thumbUrl;
 
-        // Credits
+        // Credits & note
         renderCredits(credits, result.credits, result.fileTitle);
+        note.textContent = noteText || '';
 
-        // Note
-        if (usedAlias) {
-          note.textContent = `No image found for “${aliasOf}”; using alias page “${pageTitle}”.`;
-        } else if (globalFallback) {
-          note.textContent = `Image not found — showing fallback.`;
-        } else {
-          note.textContent = '';
-        }
+        // settle sizing after layout
+        requestAnimationFrame(() => this.reflow());
       } catch (e) {
         console.warn('[Images] lookup failed', e);
         ph.textContent = 'Lookup failed — showing fallback';
+        img.onload = () => this.reflow();
         img.src = this._cfg.fallbackImageUrl;
-        btnSarna.href = this._cfg.fallbackFilePage;
+        btnSarna.href = '#';
         btnImage.href = this._cfg.fallbackImageUrl;
         credits.textContent = '';
         note.textContent = 'Network/API error.';
+        requestAnimationFrame(() => this.reflow());
       }
     }
   };
 
-  // Expose & auto-init on DOM ready
+  // Expose & auto-init with defaults
   window.Images = Images;
   if (document.readyState !== 'loading') Images.init();
   else document.addEventListener('DOMContentLoaded', () => Images.init());
-
 })();
