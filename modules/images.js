@@ -74,12 +74,34 @@ const aliasPairs = {
   const encTitle = s => encodeURIComponent(String(s||'').replace(/ /g,'_'));
   const pageUrlFromTitle = t => `https://www.sarna.net/wiki/${encTitle(t)}`;
 
-  function normalizeChassisTitle(name){
-    if (!name) return '';
-    let base = titleCase(name);
-    if (needsBMQualifier.has(base)) base = `${base} (BattleMech)`;
-    return base;
+// Specific non-(BattleMech) qualifier needed by Sarna
+const needsQualifier = new Map([
+  ['Arctic Fox', '(OmniMech)']
+]);
+
+// Strip variant bits like "ARC-2R", "(A)", "(Standard)" from labels
+function stripVariant(s){
+  let n = String(s || '').trim();
+  n = n.replace(/\s+\((?:[A-Z]|Standard)\)$/i, '');   // (A) / (S) / (Standard)
+  n = n.replace(/\s+[A-Z]{2,4}-[A-Z0-9]+$/i, '');     // ARC-2R, BL-6-KNT, etc.
+  return n;
+}
+
+  
+function normalizeChassisTitle(name){
+  if (!name) return '';
+  let base = titleCase(stripVariant(name));
+  const q = needsQualifier.get(base);
+  if (q) {
+    // e.g., "Arctic Fox (OmniMech)"
+    base = `${base} ${q}`;
+  } else if (needsBMQualifier.has(base)) {
+    // only add (BattleMech) when no specific qualifier is needed
+    base = `${base} (BattleMech)`;
   }
+  return base;
+}
+
 
   async function fetchLeadThumb(title, width){
     const url = `${API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail|name&pithumbsize=${width}&titles=${encodeURIComponent(title)}`;
@@ -209,7 +231,7 @@ const aliasPairs = {
 
       // dynamic sizing on resize + when tab shown
       window.addEventListener('resize', () => this.reflow());
-      const pane = document.getElementById('pane-image');
+      const pane = document.getElementById('pane-image') || document.getElementById('pane-images');
       if (pane) {
         const mo = new MutationObserver(() => {
           if (pane.classList.contains('is-active')) this.reflow();
