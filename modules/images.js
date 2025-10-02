@@ -9,69 +9,59 @@
   const DEFAULT_FALLBACK_IMAGEURL =
     'https://raw.githubusercontent.com/Nevar530/TRS80/main/images/background.png';
 
-  // Titles that need (BattleMech) to avoid disambiguation on Sarna
-// (curated from Sarna’s "(BattleMech)" pages + obvious animal/vehicle overlaps)
-// Note: not every chassis needs this, but ALL of these are known to.
+// Titles that need (BattleMech) to avoid disambiguation on Sarna
+// (picked from your chassis list where Sarna’s page title includes “(BattleMech)”)
 const needsBMQualifier = new Set([
-  // your originals
-  'Scorpion','Phoenix','Crab','Hawk','Falcon','Raven','Manticore','Cobra',
-
-  // confirmed "(BattleMech)" pages / common conflicts
-  'Apollo','Avatar','Banshee','Beowulf','Black Hawk','Blackjack','Blade','Blitzkrieg',
-  'Brigand','Bruin','Buccaneer','Calliope','Centurion','Cerberus','Chimera','Colossus',
-  'Crossbow','Crucible','Cygnus','Daedalus','Dart','Defiance','Dragoon','Eagle',
-  'Epimetheus','Excalibur','Firestarter','Merlin','Orca','Raptor'
+  'Apollo','Avatar','Banshee','Blackjack','Blade','Blitzkrieg','Brigand','Buccaneer',
+  'Calliope','Centurion','Cerberus','Cobra','Crossbow','Daedalus','Dart','Defiance',
+  'Eagle','Excalibur','Firestarter','Galahad','Hammer','Helios','Hercules','Phoenix',
+  'Scorpion'
 ]);
 
 
-// IS ⇄ Clan alias pairs (bidirectional) from Sarna’s “Inner Sphere Designation for Clan BattleMechs”
-// Includes common edge-case/House nicknames. Keys are canonical page titles.
-const aliasPairs = {
-  // 20–35t
-  'Emerald Harrier':'Roadrunner','Roadrunner':'Emerald Harrier',
-  'Howler':'Baboon','Baboon':'Howler',
-  'Ion Sparrow':'Butcherbird','Butcherbird':'Ion Sparrow',
-  'Fire Moth':'Dasher','Dasher':'Fire Moth',
-  'Mist Lynx':'Koshi','Koshi':'Mist Lynx',
-  'Arctic Cheetah':'Hankyu','Hankyu':'Arctic Cheetah',
-  'Kit Fox':'Uller','Uller':'Kit Fox',
-  'Incubus':'Vixen','Vixen':'Incubus',
-  'Horned Owl':'Peregrine','Peregrine':'Horned Owl',
-  'Adder':'Puma','Puma':'Adder',
-  'Viper':'Dragonfly','Dragonfly':'Viper',          // note: “Viper” also used for Black Python (see below)
 
-  // 40–55t
-  'Ice Ferret':'Fenris','Fenris':'Ice Ferret',
-  'Mongrel':'Grendel','Grendel':'Mongrel',
-  'Nova':'Black Hawk','Black Hawk':'Nova',
-  'Conjurer':'Hellhound','Hellhound':'Conjurer',
-  'Huntsman':'Nobori-nin','Nobori-nin':'Huntsman',
-  'Vapor Eagle':'Goshawk','Goshawk':'Vapor Eagle',
-  'Stormcrow':'Ryoken','Ryoken':'Stormcrow',
-  'Skinwalker':'Ryoken III','Ryoken III':'Skinwalker',
-  'Glass Spider':'Galahad','Galahad':'Glass Spider',
-  'Mad Dog':'Vulture','Vulture':'Mad Dog',
+// IS ⇄ Clan alias pairs (both directions), per Sarna’s alias list
+const aliasPairs = {
+  // 20–45t
+  'Emerald Harrier':'Roadrunner', 'Roadrunner':'Emerald Harrier',
+  'Howler':'Baboon',              'Baboon':'Howler',
+  'Fire Moth':'Dasher',           'Dasher':'Fire Moth',
+  'Mist Lynx':'Koshi',            'Koshi':'Mist Lynx',
+  'Arctic Cheetah':'Hankyu',      'Hankyu':'Arctic Cheetah',
+  'Kit Fox':'Uller',              'Uller':'Kit Fox',
+  'Incubus':'Vixen',              'Vixen':'Incubus',
+  'Horned Owl':'Peregrine',       'Peregrine':'Horned Owl',
+  'Adder':'Puma',                 'Puma':'Adder',
+  'Viper':'Dragonfly',            'Dragonfly':'Viper',
+  'Ice Ferret':'Fenris',          'Fenris':'Ice Ferret',
+  'Mongrel':'Grendel',            'Grendel':'Mongrel',
+  'Nova':'Black Hawk',            'Black Hawk':'Nova',
+  'Conjurer':'Hellhound',         'Hellhound':'Conjurer',
+  'Huntsman':'Nobori-nin',        'Nobori-nin':'Huntsman',
+  'Vapor Eagle':'Goshawk',        'Goshawk':'Vapor Eagle',
+
+  // 50–65t
+  'Stormcrow':'Ryoken',           'Ryoken':'Stormcrow',
+  'Mad Dog':'Vulture',            'Vulture':'Mad Dog',
   'Mad Dog Mk III':'Vulture Mk III','Vulture Mk III':'Mad Dog Mk III',
   'Mad Dog Mk IV':'Vulture Mk IV','Vulture Mk IV':'Mad Dog Mk IV',
-  'Ebon Jaguar':'Cauldron-Born','Cauldron-Born':'Ebon Jaguar',
-  'Hellbringer':'Loki','Loki':'Hellbringer',
-  'Hel':'Loki Mk II','Loki Mk II':'Hel',
-  'Summoner':'Thor','Thor':'Summoner',
-  'Grand Summoner':'Thor II','Thor II':'Grand Summoner',
+  'Ebon Jaguar':'Cauldron-Born',  'Cauldron-Born':'Ebon Jaguar',
+  'Hellbringer':'Loki',           'Loki':'Hellbringer',
+  'Hel':'Loki Mk II',             'Loki Mk II':'Hel',
+  'Summoner':'Thor',              'Thor':'Summoner',
+  'Grand Summoner':'Thor II',     'Thor II':'Grand Summoner',
 
-  // 60–100t
-  'Timber Wolf':'Mad Cat','Mad Cat':'Timber Wolf',
-  'Savage Wolf':'Mad Cat Mk IV','Mad Cat Mk IV':'Savage Wolf',
-  // “Black Python” edge case: some sources call it “Viper”, which clashes with Dragonfly.
-  // We map Black Python → Viper one-way and keep Viper ↔ Dragonfly as the primary usage.
-  'Black Python':'Viper',
-  'Gargoyle':'Man O\' War','Man O\' War':'Gargoyle',
-  'Warhawk':'Masakari','Masakari':'Warhawk',
-  'Executioner':'Gladiator','Gladiator':'Executioner',
-  'Stone Rhino':'Behemoth','Behemoth':'Stone Rhino',
-  'Dire Wolf':'Daishi','Daishi':'Dire Wolf',
-  'Bane':'Kraken','Kraken':'Bane'
+  // 75–100t
+  'Timber Wolf':'Mad Cat',        'Mad Cat':'Timber Wolf',
+  'Savage Wolf':'Mad Cat Mk IV',  'Mad Cat Mk IV':'Savage Wolf',
+  'Gargoyle':'Man O\' War',       'Man O\' War':'Gargoyle',
+  'Warhawk':'Masakari',           'Masakari':'Warhawk',
+  'Executioner':'Gladiator',      'Gladiator':'Executioner',
+  'Stone Rhino':'Behemoth',       'Behemoth':'Stone Rhino',
+  'Dire Wolf':'Daishi',           'Daishi':'Dire Wolf',
+  'Bane':'Kraken',                'Kraken':'Bane'
 };
+
 
 
   const titleCase = s => String(s||'')
