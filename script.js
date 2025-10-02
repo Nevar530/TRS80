@@ -874,6 +874,7 @@ setHeat(0, cap | 0);
     setHeat(0, cap|0);
     updateOverview();
     fillTechReadout();
+    window.Images?.setChassis(state.mech?.displayName || state.mech?.name || '');
     showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
   } catch (err) {
     console.error(err);
@@ -895,6 +896,7 @@ function importJson() {
         window.DEBUG_MECH = state.mech;
         setHeat(state.heat.current|0, state.heat.capacity|0);
         updateOverview(); fillTechReadout();
+        window.Images?.setChassis(state.mech?.displayName || state.mech?.name || '');
       } else {
         state.mech = ensureBV(ensureInternals(normalizeMech(data) || data));
         window.DEBUG_MECH = state.mech;
