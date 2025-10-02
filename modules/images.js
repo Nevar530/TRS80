@@ -18,6 +18,18 @@ const needsBMQualifier = new Set([
   'Scorpion'
 ]);
 
+// Pages that must point to their canonical "Clan (IS)" title
+const overridePages = new Map([
+  ["Black Hawk", "Nova (Black Hawk)"],
+  ["Loki", "Hellbringer (Loki)"],
+  ["Ryoken", "Stormcrow (Ryoken)"],
+  ["Masakari", "Warhawk (Masakari)"],
+  ["Cauldron-Born", "Ebon Jaguar (Cauldron-Born)"],
+  ["Man O' War", "Gargoyle (Man O' War)"],
+  ["Daishi", "Dire Wolf (Daishi)"],
+  ["Kraken", "Bane (Kraken)"]
+  // …add more as you run into them
+]);
 
 
 // IS ⇄ Clan alias pairs (both directions), per Sarna’s alias list
@@ -180,8 +192,15 @@ async function resolveImageForTitle(title, width){
   return null;
 }
 
-// Try primary → alias → fallback; always return a Sarna page to open (primary or alias)
 async function resolveForChassis(rawName, { width, useAlias, fallbackImg }){
+  // 1) check overrides first
+  const override = overridePages.get(rawName);
+  if (override) {
+    let res = await resolveImageForTitle(override, width);
+    if (res) return { result: res, openPageTitle: override, note: '' };
+  }
+
+  // 2) fall back to your normal logic
   const primary = normalizeChassisTitle(rawName);
 
   let res = await resolveImageForTitle(primary, width);
