@@ -170,13 +170,15 @@ function normalizeChassisTitle(name){
   }
 }
     
-    if (useAlias){
+if (useAlias){
   const base = titleCase(rawName);
   const alias = aliasPairs[base];
   if (alias){
     const aliasTitle = normalizeChassisTitle(alias);
     let ares = await resolveImageForTitle(aliasTitle, width);
-    if (ares) return { result: ares, openPageTitle: aliasTitle, note: `No image for “${base}”; using alias “${aliasTitle}”.` };
+    if (ares) {
+      return { result: ares, openPageTitle: aliasTitle, note: `No image for “${base}”; using alias “${aliasTitle}”.` };
+    }
 
     // alias → try "(OmniMech)" too
     const aliasPlain = titleCase(stripVariant(alias));
@@ -188,10 +190,25 @@ function normalizeChassisTitle(name){
       }
     }
 
-    return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: aliasTitle, note: `Image not found — alias “${aliasTitle}”; showing fallback.` };
+    return {
+      result: { thumbUrl: fallbackImg, fileTitle: null, credits: null },
+      openPageTitle: aliasTitle,
+      note: `Image not found — alias “${aliasTitle}”; showing fallback.`
+    };
   }
 }
 
+// If we got here: primary failed, (optional) Omni try failed,
+// and either alias didn't exist or also failed → show fallback.
+return {
+  result: { thumbUrl: fallbackImg, fileTitle: null, credits: null },
+  openPageTitle: primary,
+  note: 'Image not found — showing fallback.'
+};
+
+
+
+ 
   function renderCredits(el, credits, fileTitle){
     if (!el) return;
     let parts = [];
