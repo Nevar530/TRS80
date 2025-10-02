@@ -75,8 +75,17 @@ const aliasPairs = {
   const pageUrlFromTitle = t => `https://www.sarna.net/wiki/${encTitle(t)}`;
 
 // Specific non-(BattleMech) qualifier needed by Sarna
+// (only chassis from your list that resolve to '(OmniMech)' pages)
 const needsQualifier = new Map([
-  ['Arctic Fox', '(OmniMech)']
+  ['Arctic Fox', '(OmniMech)'],
+  ['Ares',       '(OmniMech)'],
+  ['Avatar',     '(OmniMech)'],
+  ['Centurion',  '(OmniMech)'],
+  ['Crossbow',   '(OmniMech)'],
+  ['Deimos',     '(OmniMech)'],
+  ['Omen',       '(OmniMech)'],
+  ['Tomahawk',   '(OmniMech)'],
+  ['Vandal',     '(OmniMech)'],
 ]);
 
 // Strip variant bits like "ARC-2R", "(A)", "(Standard)" from labels
