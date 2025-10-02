@@ -62,18 +62,6 @@ const aliasPairs = {
   'Bane':'Kraken',                'Kraken':'Bane'
 };
 
-
-
-  const titleCase = s => String(s||'')
-    .replace(/[_\-]+/g,' ')
-    .replace(/\s+/g,' ')
-    .trim()
-    .toLowerCase()
-    .replace(/\b\w/g,c=>c.toUpperCase());
-
-  const encTitle = s => encodeURIComponent(String(s||'').replace(/ /g,'_'));
-  const pageUrlFromTitle = t => `https://www.sarna.net/wiki/${encTitle(t)}`;
-
 // Specific non-(BattleMech) qualifier needed by Sarna
 // (only chassis from your list that resolve to '(OmniMech)' pages)
 const needsQualifier = new Map([
@@ -88,6 +76,34 @@ const needsQualifier = new Map([
   ['Vandal',     '(OmniMech)'],
 ]);
 
+ // ===== REPLACEMENT START =====
+
+// (Keep your existing needsBMQualifier, needsQualifier, aliasPairs above this)
+
+// Pretty-case for UI labels only (optional). Don't use this for URLs.
+const titleCase = s => String(s||'')
+  .replace(/[_\-]+/g,' ')
+  .replace(/\s+/g,' ')
+  .trim()
+  .toLowerCase()
+  .replace(/\b\w/g, c => c.toUpperCase());
+
+// URL helpers (unchanged)
+const encTitle = s => encodeURIComponent(String(s||'').replace(/ /g,'_'));
+const pageUrlFromTitle = t => `https://www.sarna.net/wiki/${encTitle(t)}`;
+
+// Case-insensitive lookup keys
+const normKey = s => String(s||'')
+  .replace(/[_\-]+/g,' ')
+  .replace(/\s+/g,' ')
+  .trim()
+  .toLowerCase();
+
+// Lowercased mirrors of your lookups for case-insensitive checks
+const needsBMQualifier_lc = new Set([...needsBMQualifier].map(x => x.toLowerCase()));
+const needsQualifier_lc   = new Map([...needsQualifier.entries()].map(([k,v]) => [k.toLowerCase(), v]));
+const aliasPairs_lc       = new Map(Object.entries(aliasPairs).map(([k,v]) => [k.toLowerCase(), v]));
+
 // Strip variant bits like "ARC-2R", "(A)", "(Standard)" from labels
 function stripVariant(s){
   let n = String(s || '').trim();
@@ -96,89 +112,54 @@ function stripVariant(s){
   return n;
 }
 
-  
+// Build a Sarna title while PRESERVING original casing (fixes II→Ii)
 function normalizeChassisTitle(name){
   if (!name) return '';
-  let base = titleCase(stripVariant(name));
-  const q = needsQualifier.get(base);
+  let base = stripVariant(String(name))
+    .replace(/[_\-]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+  const key = normKey(base);
+  const q = needsQualifier_lc.get(key);
   if (q) {
-    // e.g., "Arctic Fox (OmniMech)"
-    base = `${base} ${q}`;
-  } else if (needsBMQualifier.has(base)) {
-    // only add (BattleMech) when no specific qualifier is needed
+    base = `${base} ${q}`;                  // e.g., "Arctic Fox (OmniMech)"
+  } else if (needsBMQualifier_lc.has(key)) {
     base = `${base} (BattleMech)`;
   }
-  return base;
+  return base; // keep original casing of "II", "IIC", acronyms, etc.
 }
 
+async function resolveImageForTitle(title, width){
+  const lead = await fetchLeadThumb(title, width);
+  if (lead?.thumbUrl) return lead;
+  const first = await fetchFirstFileThumbWithCredits(title, width);
+  if (first?.thumbUrl) return first;
+  return null;
+}
 
-  async function fetchLeadThumb(title, width){
-    const url = `${API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail|name&pithumbsize=${width}&titles=${encodeURIComponent(title)}`;
-    const r = await fetch(url, { mode:'cors' }); if(!r.ok) return null;
-    const data = await r.json();
-    const page = data?.query?.pages?.[Object.keys(data.query.pages)[0]];
-    if (page?.thumbnail?.source){
-      return { thumbUrl: page.thumbnail.source, fileTitle: page?.pageimage ? `File:${page.pageimage}` : null, credits: null };
+// Try primary → alias → fallback; always return a Sarna page to open (primary or alias)
+async function resolveForChassis(rawName, { width, useAlias, fallbackImg }){
+  const primary = normalizeChassisTitle(rawName);
+
+  let res = await resolveImageForTitle(primary, width);
+  if (res) return { result: res, openPageTitle: primary, note: '' };
+
+  if (useAlias){
+    const alias = aliasPairs_lc.get(normKey(rawName));
+    if (alias){
+      const aliasTitle = normalizeChassisTitle(alias);
+      res = await resolveImageForTitle(aliasTitle, width);
+      if (res) return { result: res, openPageTitle: aliasTitle, note: `No image for “${rawName}”; using alias “${aliasTitle}”.` };
+      return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: aliasTitle, note: `Image not found — alias “${aliasTitle}”; showing fallback.` };
     }
-    return null;
   }
 
-  async function fetchFirstFileThumbWithCredits(title, width){
-    const listUrl = `${API}?action=query&format=json&origin=*&redirects=1&prop=images&imlimit=50&titles=${encodeURIComponent(title)}`;
-    const r = await fetch(listUrl, { mode:'cors' }); if(!r.ok) return null;
-    const data = await r.json();
-    const page = data?.query?.pages?.[Object.keys(data.query.pages)[0]];
-    const files = page?.images || [];
-    const fileTitles = files.map(f=>f.title).filter(t=>/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(t));
-    if (!fileTitles.length) return null;
+  return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: primary, note: 'Image not found — showing fallback.' };
+}
 
-    const filesParam = fileTitles.map(encodeURIComponent).join('|');
-    const infoUrl = `${API}?action=query&format=json&origin=*&redirects=1&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=${width}&titles=${filesParam}`;
-    const ir = await fetch(infoUrl, { mode:'cors' }); if(!ir.ok) return null;
-    const id = await ir.json();
-    const ip = id?.query?.pages || {};
-    for (const k of Object.keys(ip)){
-      const p = ip[k];
-      const ii = p?.imageinfo?.[0];
-      if (ii?.thumburl || ii?.url){
-        return {
-          thumbUrl: ii.thumburl || ii.url,
-          fileTitle: p.title,
-          credits: ii.extmetadata || null
-        };
-      }
-    }
-    return null;
-  }
+// ===== REPLACEMENT END =====
 
-  async function resolveImageForTitle(title, width){
-    const lead = await fetchLeadThumb(title, width);
-    if (lead?.thumbUrl) return lead;
-    const first = await fetchFirstFileThumbWithCredits(title, width);
-    if (first?.thumbUrl) return first;
-    return null;
-  }
-
-  // Try primary → alias → fallback; always return a Sarna page to open (primary or alias)
-  async function resolveForChassis(rawName, { width, useAlias, fallbackImg }){
-    const primary = normalizeChassisTitle(rawName);
-
-    let res = await resolveImageForTitle(primary, width);
-    if (res) return { result: res, openPageTitle: primary, note: '' };
-
-    if (useAlias){
-      const base = titleCase(rawName);
-      const alias = aliasPairs[base];
-      if (alias){
-        const aliasTitle = normalizeChassisTitle(alias);
-        res = await resolveImageForTitle(aliasTitle, width);
-        if (res) return { result: res, openPageTitle: aliasTitle, note: `No image for “${base}”; using alias “${aliasTitle}”.` };
-        return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: aliasTitle, note: `Image not found — alias “${aliasTitle}”; showing fallback.` };
-      }
-    }
-
-    return { result: { thumbUrl: fallbackImg, fileTitle: null, credits: null }, openPageTitle: primary, note: 'Image not found — showing fallback.' };
-  }
 
   function renderCredits(el, credits, fileTitle){
     if (!el) return;
