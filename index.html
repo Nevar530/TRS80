@@ -117,6 +117,7 @@
             <div class="tabs" role="tablist" aria-label="Top view switch">
               <button class="tab is-active" role="tab" aria-selected="true"  data-swap="pane-overview">Overview</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-techreadout">Tech Readout</button>
+              <button class="tab" role="tab" aria-selected="false" data-swap="pane-image">Image</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-gator">GATOR</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="tab-weapons">Weapons</button>
             </div>
@@ -276,6 +277,13 @@
               </div>
             </section>
 
+<section id="pane-image" class="swap-pane" role="tabpanel" aria-labelledby="Image">
+  <div id="image-panel" class="card" style="padding:10px;">
+    <!-- images.js will render inside here -->
+  </div>
+</section>
+
+            
             <!-- GATOR -->
             <section id="pane-gator" class="swap-pane" role="tabpanel" aria-labelledby="GATOR">
               <div class="card" id="gator-card">
@@ -644,6 +652,7 @@
 
 <script src="./modules/lance.js" defer></script>
 <script src="./modules/owned.js" defer></script>
+<script src="./modules/images.js" defer></script>
 <script src="./script.js" defer></script>
 
 <!-- ===== TRS:80 • Technical Readout Boot ===== -->
