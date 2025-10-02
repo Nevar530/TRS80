@@ -364,11 +364,14 @@
     }
   }
 
-  // expose API
-  window.Images = {
-    init,
-    onChassisChange: showForChassis
-  };
+// expose API (back-compat)
+window.Images = window.Images || {};
+Object.assign(window.Images, {
+  init,                               // optional config
+  onChassisChange: showForChassis,    // new name
+  setChassis: showForChassis,         // ← legacy name your script.js calls
+  setMech: showForChassis             // ← extra alias in case older builds used this
+});
 
   // auto-init later to avoid blocking boot
   window.addEventListener('load', () => init(), { once:true });
