@@ -1,463 +1,410 @@
-/* script.js (replacement) — ES Module
-   Requires: <script type="module" src="./script.js"></script>
-   Modules expected in ./modules/: techreadout.js, gator.js, weapons.js, lance.js, owned.js, images.js
-*/
+// script.js  (ES module)
+// Make sure index.html uses: <script type="module" src="./script.js"></script>
 
-import * as TechReadout from './modules/techreadout.js';
-import * as GATOR      from './modules/gator.js';
-import * as Weapons    from './modules/weapons.js';
+import * as Sidebar from "./modules/sidebar.js";
+import * as Tech from "./modules/techreadout.js";
+import * as Gator from "./modules/gator.js";
+import * as Weapons from "./modules/weapons.js";
+import * as Lance from "./modules/lance.js";
+import * as Owned from "./modules/owned.js";
+import * as Images from "./modules/images.js";
 
-// Existing modules you already have:
-import * as Lance      from './modules/lance.js';
-import * as Owned      from './modules/owned.js';
-import * as Images     from './modules/images.js';
-
-/* ------------------------------ Config: selectors ------------------------------ */
-const SEL = {
-  // Sidebar / list
-  side: {
-    root:        '#sidebar',         // <aside> or container for the mech list (optional)
-    list:        '#mech-list',       // <ul> or <div> list of mechs
-    search:      '#side-search',     // <input> for text search
-    count:       '#list-count',      // <span> results count (optional)
-    filterBtn:   '#btn-filter',      // opens filter modal (optional)
-    drawerScrim: '#side-scrim'       // mobile scrim (optional)
-  },
-
-  // Tabs → containers each module will fill (IDs should already exist in your HTML)
-  tabs: {
-    tech:    '#tab-tech',
-    weapons: '#tab-weapons',
-    gator:   '#tab-gator'
-  },
-
-  // Tech Readout sub-sections (inside the Tech tab)
-  tech: {
-    chassis:   '#tech-chassis',
-    armor:     '#tech-armor',
-    equipment: '#tech-equipment',
-    lore:      '#tech-lore'    // image will be injected at the top of this section
-  },
-
-  // G.A.T.O.R. inputs / outputs (inside GATOR tab)
-  gator: {
-    gunnery:   '#gator-gunnery',
-    attMove:   '#gator-att-move',
-    tgtMove:   '#gator-tgt-move',
-    range:     '#gator-range',
-    other:     '#gator-other',
-    total:     '#gator-total',
-    breakdown: '#gator-breakdown'
-  },
-
-  // Topbar buttons (optional – wired if present)
-  topbar: {
-    openLance: '#btn-open-lance',
-    openOwned: '#btn-open-owned',
-    addToLance:'#btn-add-current',
-    importBtn: '#btn-import-session',
-    exportBtn: '#btn-export-session',
-    settings:  '#btn-settings',
-    about:     '#btn-about'
-  },
-
-  // Toast (optional)
-  toast: '#toast'
-};
-
-/* ------------------------------ App state ------------------------------ */
+/* --------------------------- App State --------------------------- */
 const state = {
-  manifest: [],        // array of entries { file?, displayName?, name, model, path, ... }
-  filtered: [],        // filtered manifest
-  current: null,       // current manifest entry
-  mech: null,          // current mech JSON (raw/normalized enough for modules)
-  filters: {
-    text: '',
-    ownedOnly: false,
-    // (Optional) you can add techbase/weight/role filters here; applyFilters() will use them if present.
-  }
+  mech: null,
+  bootDone: false,
 };
 
-/* ------------------------------ Utilities ------------------------------ */
-const $  = (sel, root = document) => (typeof sel === 'string' ? root.querySelector(sel) : sel);
-const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+/* ------------------------- Bootstrapping ------------------------- */
+document.addEventListener("DOMContentLoaded", async () => {
+  wireTabs();
+  wireSettingsModal();
+  wireImportExport();
+  wireTopbarButtons();
+  prepareMountPoints();      // ensure #tech-root / #gator-root / #weapons-root exist
+  initModules();             // mount the islands
+  bootOverlay();             // run and hide the loader
 
-function toast(msg, ms = 1600){
-  const el = $(SEL.toast);
-  if (!el) { console.info('[toast]', msg); return; }
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(()=> el.classList.remove('show'), ms);
-}
-
-function displayNameOf(entry){
-  return entry.displayName || [entry.name, entry.model].filter(Boolean).join(' ') || entry.file || '—';
-}
-
-function mechKey(entry){
-  // stable key for maps: prefer path or "name|model"
-  return entry.path || `${entry.name || ''}|${entry.model || ''}`;
-}
-
-/* ------------------------------ Bootstrap ------------------------------ */
-document.addEventListener('DOMContentLoaded', init);
-
-async function init(){
-  // Initialize modules (Tech pulls art from Images; limit image height inside lore)
-  TechReadout.init({
-    containers: {
-      chassis:   $(SEL.tech.chassis),
-      armor:     $(SEL.tech.armor),
-      equipment: $(SEL.tech.equipment),
-      lore:      $(SEL.tech.lore)
-    },
-    images: {
-      getFor: Images.getFor   // your existing images.js API
-    },
-    imageMaxHeight: 320
-  });
-
-  GATOR.init({
-    selectors: {
-      gunnery:   SEL.gator.gunnery,
-      attMove:   SEL.gator.attMove,
-      tgtMove:   SEL.gator.tgtMove,
-      range:     SEL.gator.range,
-      other:     SEL.gator.other,
-      total:     SEL.gator.total,
-      breakdown: SEL.gator.breakdown
-    },
-    clampMin: 2
-  });
-
-  Weapons.init({
-    container: $(SEL.tabs.weapons)
-    // resolveWeapon: optional resolver if you have a DB → (abbrOrName) => meta
-  });
-
-  // Features (existing)
-  Lance.init?.();
-  Owned.init?.({
-    onFilterToggle: (ownedOnly) => {
-      state.filters.ownedOnly = !!ownedOnly;
-      applyFilters();
-      renderList();
+  // Optionally auto-load manifest via Sidebar (if it exposes a helper)
+  if (typeof Sidebar.loadManifest === "function") {
+    try {
+      const count = await Sidebar.loadManifest();
+      toast(`Manifest loaded — ${count} mechs`);
+    } catch (e) {
+      // Optional: silent; user can click "Load" button instead
     }
-  });
-
-  wireTopbar();
-  wireSidebar();
-
-  await loadManifest();
-  applyFilters();
-  renderList();
-
-  // Optionally, focus search on desktop
-  const search = $(SEL.side.search);
-  if (search && window.matchMedia('(pointer:fine)').matches) {
-    search.focus();
   }
-
-  toast('Manifest loaded');
-}
-
-/* ------------------------------ Data loading ------------------------------ */
-async function loadManifest(){
-  try {
-    const res = await fetch('data/manifest.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    // Expecting an array; if object with property, adjust here.
-    state.manifest = Array.isArray(json) ? json : (json?.items || []);
-  } catch (err) {
-    console.error('Failed to load manifest:', err);
-    state.manifest = [];
-  }
-}
-
-/* ------------------------------ Sidebar / filters ------------------------------ */
-function wireSidebar(){
-  const search = $(SEL.side.search);
-  if (search){
-    search.addEventListener('input', () => {
-      state.filters.text = (search.value || '').trim();
-      applyFilters();
-      renderList();
-    });
-  }
-
-  // If you have a Filter button & modal, wire it here (optional)
-  const filterBtn = $(SEL.side.filterBtn);
-  if (filterBtn){
-    filterBtn.addEventListener('click', () => {
-      // open your existing modal here (no change to your modal code)
-      // when filters apply, call applyFilters(); renderList();
-      // For now, we just re-run with current ownedOnly/text.
-      applyFilters();
-      renderList();
-    });
-  }
-}
-
-function applyFilters(){
-  const text = state.filters.text.toLowerCase();
-  const ownedOnly = !!state.filters.ownedOnly;
-
-  state.filtered = state.manifest.filter(entry => {
-    if (text){
-      const hay = [
-        displayNameOf(entry),
-        entry.name, entry.model, entry.role, entry.techBase
-      ].filter(Boolean).join(' ').toLowerCase();
-      if (!hay.includes(text)) return false;
-    }
-    if (ownedOnly){
-      const chassisName = entry.name || displayNameOf(entry);
-      if (typeof Owned.isOwned === 'function'){
-        if (!Owned.isOwned(chassisName)) return false;
-      }
-    }
-    // (Optional) add tech base / weight / role filtering here if you already have UI controls
-    return true;
-  });
-}
-
-function renderList(){
-  const listEl = $(SEL.side.list);
-  if (!listEl) return;
-
-  const items = state.filtered.length ? state.filtered : state.manifest;
-
-  listEl.innerHTML = items.map((e, idx) => {
-    const name = displayNameOf(e);
-    const role = e.role ? `<span class="role">${escapeHtml(e.role)}</span>` : '';
-    const mass = (e.mass != null) ? `<span class="mass">${e.mass}t</span>` : '';
-    // Mark owned if available
-    const isOwned = typeof Owned.isOwned === 'function' && Owned.isOwned(e.name || name);
-    const star = isOwned ? '★ ' : '';
-    return `
-      <li class="mech-row" data-key="${escapeAttr(mechKey(e))}" tabindex="0" role="option" aria-label="${escapeAttr(name)}">
-        <div class="title">${star}${escapeHtml(name)}</div>
-        <div class="meta">${mass}${role}</div>
-      </li>`;
-  }).join('');
-
-  // count label
-  const countEl = $(SEL.side.count);
-  if (countEl){
-    const n = items.length;
-    countEl.textContent = `${n} mech${n===1?'':'s'}`;
-  }
-
-  // selection wiring
-  $$('.mech-row', listEl).forEach(li => {
-    li.addEventListener('click', onRowSelect);
-    li.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); onRowSelect.call(li, ev); }
-    });
-  });
-}
-
-async function onRowSelect(){
-  const key = this.getAttribute('data-key');
-  const entry = (state.filtered.length ? state.filtered : state.manifest)
-    .find(e => mechKey(e) === key);
-  if (!entry) return;
-
-  await loadMech(entry);
-}
-
-/* ------------------------------ Load a mech ------------------------------ */
-async function loadMech(entry){
-  try {
-    // fetch JSON
-    const url = normalizeDataPath(entry);
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
-    const mech = await res.json();
-
-    state.current = entry;
-    state.mech = mech;
-
-    // Render tabs
-    await updatePanels();
-
-    toast(`Loaded: ${displayNameOf(entry)}`);
-  } catch (err) {
-    console.error('Failed to load mech JSON:', err);
-    toast('Failed to load mech');
-  }
-}
-
-function normalizeDataPath(entry){
-  // manifest entry may contain "path" pointing under data/
-  // If path looks relative, prefix with "data/"
-  const p = entry.path || entry.file || '';
-  if (!p) return '';
-  return /^https?:\/\//i.test(p) ? p : `data/${p}`;
-}
-
-/* ------------------------------ Render panels ------------------------------ */
-async function updatePanels(){
-  const mech = state.mech;
-
-  // Tech Readout (includes image inside Lore & History)
-  if (mech) {
-    await TechReadout.render(mech);
-  } else {
-    TechReadout.clear();
-  }
-
-  // Weapons
-  Weapons.render(mech || null);
-
-  // G.A.T.O.R.
-  GATOR.render(mech || null);
-}
-
-/* ------------------------------ Topbar actions ------------------------------ */
-function wireTopbar(){
-  const openLance = $(SEL.topbar.openLance);
-  if (openLance && typeof Lance.open === 'function'){
-    openLance.addEventListener('click', () => Lance.open());
-  }
-
-  const openOwned = $(SEL.topbar.openOwned);
-  if (openOwned && typeof Owned.open === 'function'){
-    openOwned.addEventListener('click', () => Owned.open());
-  }
-
-  const addToLance = $(SEL.topbar.addToLance);
-  if (addToLance && typeof Lance.addCurrent === 'function'){
-    addToLance.addEventListener('click', () => {
-      if (!state.mech) { toast('Select a mech first'); return; }
-      Lance.addCurrent({
-        // pass through a minimal payload used by your Lance module
-        name: state.mech.displayName || [state.mech.name, state.mech.model].filter(Boolean).join(' '),
-        mech: state.mech,
-        manifest: state.current || null
-      });
-      toast('Added to Lance');
-    });
-  }
-
-  const importBtn = $(SEL.topbar.importBtn);
-  if (importBtn){
-    importBtn.addEventListener('click', async () => {
-      try {
-        const text = await promptFileOpen('.json');
-        if (!text) return;
-        const payload = JSON.parse(text);
-
-        // Restore minimal session: search, ownedOnly, last selected mech path
-        if (payload.filters){
-          state.filters.text = payload.filters.text || '';
-          const search = $(SEL.side.search);
-          if (search) search.value = state.filters.text;
-          state.filters.ownedOnly = !!payload.filters.ownedOnly;
-        }
-        applyFilters();
-        renderList();
-
-        if (payload.selectedPath){
-          const entry = state.manifest.find(e => (e.path || e.file) === payload.selectedPath);
-          if (entry) await loadMech(entry);
-        }
-
-        // Optionally hand off to Lance/Owned modules if they expose importers
-        if (payload.lance && typeof Lance.import === 'function'){
-          Lance.import(payload.lance);
-        }
-        if (payload.owned && typeof Owned.import === 'function'){
-          Owned.import(payload.owned);
-        }
-
-        toast('Session imported');
-      } catch (e){
-        console.error(e);
-        toast('Import failed');
-      }
-    });
-  }
-
-  const exportBtn = $(SEL.topbar.exportBtn);
-  if (exportBtn){
-    exportBtn.addEventListener('click', async () => {
-      const payload = {
-        version: 1,
-        selectedPath: state.current?.path || state.current?.file || null,
-        filters: {
-          text: state.filters.text,
-          ownedOnly: state.filters.ownedOnly
-        }
-      };
-      // Optionally include Lance/Owned state if modules expose exporters
-      if (typeof Lance.export === 'function') payload.lance = Lance.export();
-      if (typeof Owned.export === 'function') payload.owned = Owned.export();
-
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-      const url  = URL.createObjectURL(blob);
-      const dt   = new Date();
-      const fn   = `trs80-session-${dt.toISOString().slice(0,19).replace(/[:T]/g,'-')}.json`;
-      downloadURL(url, fn);
-      setTimeout(()=> URL.revokeObjectURL(url), 2500);
-
-      toast('Session exported');
-    });
-  }
-}
-
-/* ------------------------------ File helpers (import/export) ------------------------------ */
-function promptFileOpen(accept = '.json'){
-  return new Promise((resolve) => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = accept;
-    input.addEventListener('change', () => {
-      const file = input.files && input.files[0];
-      if (!file) return resolve(null);
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result || ''));
-      reader.onerror = () => resolve(null);
-      reader.readAsText(file);
-    });
-    input.click();
-  });
-}
-
-function downloadURL(url, filename){
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename || 'download';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
-
-/* ------------------------------ Escaping ------------------------------ */
-function escapeHtml(v){
-  return String(v ?? '').replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  })[m]);
-}
-function escapeAttr(v){ return escapeHtml(v); }
-
-/* ------------------------------ Legacy window.App surface (optional) ------------------------------ */
-window.App = Object.assign(window.App || {}, {
-  // For external buttons that might call into the app:
-  selectByPath: async (path) => {
-    const entry = state.manifest.find(e => (e.path || e.file) === path);
-    if (entry) await loadMech(entry);
-  },
-  refreshList: () => { applyFilters(); renderList(); },
-  addCurrentToLance: () => {
-    if (!state.mech || typeof Lance.addCurrent !== 'function') return;
-    Lance.addCurrent({
-      name: state.mech.displayName || [state.mech.name, state.mech.model].filter(Boolean).join(' '),
-      mech: state.mech, manifest: state.current || null
-    });
-  },
-  // Expose modules (debug-friendly)
-  TechReadout, GATOR, Weapons, Lance, Owned, Images
 });
+
+/* -------------------------- Mount Islands ------------------------ */
+function initModules() {
+  // Sidebar: owns the list, search, filters, and will call onSelect(mech)
+  Sidebar.mount({
+    sidebar: "#mech-sidebar",
+    scrim: "#sidebar-scrim",
+    filterModal: "#filter-modal",
+    searchInput: "#side-search",
+    list: "#mech-list",
+    onSelect: (mech) => selectMech(mech),
+    onManifestLoaded: (count) => toast(`Manifest loaded — ${count} mechs`),
+  });
+
+  // Tech Readout island (with image via Images module)
+  if (typeof Tech.mount === "function") {
+    Tech.mount("#tech-root", { images: Images, imageMaxHeight: 320 });
+  } else if (typeof Tech.init === "function") {
+    // Back-compat (non-island version)
+    console.warn("[techreadout] Using legacy init() API; consider switching to mount().");
+    Tech.init({
+      images: { getFor: Images.getFor },
+      containers: {
+        chassis: qs("#tr-pane-C"),
+        armor: qs("#tr-pane-AI"),
+        equipment: qs("#tr-pane-EQ"),
+        lore: qs("#tr-pane-LORE"),
+      },
+      imageMaxHeight: 320,
+    });
+  }
+
+  // GATOR island
+  if (typeof Gator.mount === "function") {
+    Gator.mount("#gator-root");
+  }
+
+  // Weapons island (or simple renderer)
+  if (typeof Weapons.mount === "function") {
+    Weapons.mount("#weapons-root");
+  } else if (typeof Weapons.init === "function") {
+    Weapons.init({ container: "#weapons-list" });
+  }
+
+  // Lance & Owned (keep your existing modules’ behavior)
+  safeCall(Lance, "mount", "#lance-dock");
+  safeCall(Owned, "mount", "#owned-dock");
+
+  // Buttons for Lance/Owned panes (if modules expose open/close)
+  on("#btn-lance", "click", () => {
+    if (!safeCall(Lance, "open")) {
+      // simple fallback: toggle the dock visibility
+      toggleHidden("#lance-dock");
+    }
+  });
+  on("#btn-owned", "click", () => {
+    if (!safeCall(Owned, "open")) {
+      toggleHidden("#owned-dock");
+    }
+  });
+}
+
+/* -------------------------- Mech Selection ----------------------- */
+function selectMech(mech) {
+  state.mech = mech || null;
+  renderOverview(mech);
+  // forward to islands
+  if (typeof Tech.render === "function") Tech.render(mech);
+  if (typeof Gator.render === "function") Gator.render(mech);
+  if (typeof Weapons.render === "function") Weapons.render(mech);
+  // Lance might want current mech for "Add Current"
+  safeCall(Lance, "setCurrent", mech);
+}
+
+/* ------------------------ Overview Rendering --------------------- */
+function renderOverview(mech) {
+  const empty = () => {
+    text("#ov-mech", "—");
+    text("#ov-variant", "—");
+    text("#ov-tons", "—");
+    text("#ov-pilot", "—");
+    text("#ov-gun", "—");
+    text("#ov-pil", "—");
+    text("#ov-move", "—");
+    text("#ov-weps", "—");
+    text("#heat-now", "0");
+    text("#heat-cap", "—");
+    css("#vheat-fill", { height: "0%" });
+  };
+
+  if (!mech) return empty();
+
+  const name = mech.displayName || [mech.name, mech.model].filter(Boolean).join(" ");
+  const tons = mech.mass ?? mech.tonnage ?? "—";
+  const move = mech.movement ? fmtMove(mech.movement) : "—";
+  const pilot = mech.pilot || "—";
+  const gun = mech.pilotGunnery ?? "—";
+  const pil = mech.pilotPiloting ?? "—";
+  const keys = summarizeWeapons(mech);
+
+  text("#ov-mech", name || "—");
+  text("#ov-variant", mech.model || "—");
+  text("#ov-tons", tons !== undefined ? `${tons}` : "—");
+  text("#ov-pilot", String(pilot));
+  text("#ov-gun", String(gun));
+  text("#ov-pil", String(pil));
+  text("#ov-move", move);
+  text("#ov-weps", keys || "—");
+
+  // Heat gauge — keep it simple (cap if available)
+  const cap = mech.heatCapacity ?? mech.heatSinks ?? null;
+  text("#heat-cap", cap != null ? String(cap) : "—");
+  text("#heat-now", "0");
+  css("#vheat-fill", { height: "0%" });
+}
+
+function fmtMove(m) {
+  const w = (m.walk ?? m.run ?? "—");
+  const j = (m.jump ?? 0);
+  return j ? `${w} / J${j}` : `${w}`;
+}
+
+function summarizeWeapons(mech) {
+  const w = mech.weapons || mech.armaments || [];
+  if (!w.length) return "";
+  // Try to produce a compact, readable line
+  const names = w.map((x) => (typeof x === "string" ? x : x.name || "")).filter(Boolean);
+  // Reduce near-duplicates like "ER Medium Laser (x2)" if counts exist
+  const counts = {};
+  for (const n of names) counts[n] = (counts[n] || 0) + 1;
+  return Object.entries(counts)
+    .map(([n, c]) => (c > 1 ? `${n} (x${c})` : n))
+    .slice(0, 6)
+    .join(" · ");
+}
+
+/* --------------------------- Top Tabs ---------------------------- */
+function wireTabs() {
+  const tabsWrap = qs("#top-swapper .tabs");
+  if (!tabsWrap) return;
+
+  tabsWrap.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tab");
+    if (!btn) return;
+    const target = btn.getAttribute("data-swap");
+    if (!target) return;
+
+    // aria + visual state
+    tabsWrap.querySelectorAll(".tab").forEach((b) => {
+      b.classList.toggle("is-active", b === btn);
+      b.setAttribute("aria-selected", b === btn ? "true" : "false");
+    });
+
+    // swap panes
+    const paneSel = ["#pane-overview", "#pane-techreadout", "#pane-gator", "#tab-weapons"];
+    paneSel.forEach((sel) => {
+      const el = qs(sel);
+      if (el) el.classList.toggle("is-active", el.id === target);
+    });
+  });
+}
+
+/* ------------------------- Import / Export ----------------------- */
+function wireImportExport() {
+  const btnImport = qs("#btn-import");
+  const btnExport = qs("#btn-export");
+
+  if (btnImport) {
+    btnImport.addEventListener("click", () => {
+      const inp = document.createElement("input");
+      inp.type = "file";
+      inp.accept = "application/json";
+      inp.addEventListener("change", async () => {
+        const file = inp.files && inp.files[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const json = JSON.parse(text);
+          applySession(json);
+          toast("Session imported.");
+        } catch (e) {
+          console.error(e);
+          toast("Import failed.");
+        }
+      });
+      inp.click();
+    });
+  }
+
+  if (btnExport) {
+    btnExport.addEventListener("click", async () => {
+      const data = await buildSession();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "trs80-session.json";
+      a.click();
+      URL.revokeObjectURL(url);
+      toast("Session exported.");
+    });
+  }
+}
+
+async function buildSession() {
+  const sess = {
+    version: 1,
+    selected: state.mech?.id || state.mech?.displayName || null,
+    timestamp: new Date().toISOString(),
+    sidebar: safeCall(Sidebar, "toJSON") || null,
+    lance: safeCall(Lance, "toJSON") || null,
+    owned: safeCall(Owned, "toJSON") || null,
+  };
+  return sess;
+}
+
+function applySession(json) {
+  // Feed to modules that understand it
+  if (json.lance) safeCall(Lance, "fromJSON", json.lance);
+  if (json.owned) safeCall(Owned, "fromJSON", json.owned);
+  if (json.sidebar) safeCall(Sidebar, "fromJSON", json.sidebar);
+
+  // Attempt to select the previously selected mech by id/name
+  if (json.selected && typeof Sidebar.selectByIdOrName === "function") {
+    Sidebar.selectByIdOrName(json.selected).catch(() => {});
+  }
+}
+
+/* --------------------------- Topbar misc ------------------------- */
+function wireTopbarButtons() {
+  // Load manifest on demand (optional button)
+  on("#btn-load-manifest", "click", async () => {
+    try {
+      const count = await Sidebar.loadManifest();
+      toast(`Manifest loaded — ${count} mechs`);
+    } catch (e) {
+      toast("Failed to load manifest.");
+    }
+  });
+
+  // Sidebar drawer (mobile)
+  on("#btn-side-toggle", "click", () => Sidebar.toggle?.());
+
+  // Footer "About"
+  on("#footer-about", "click", () => openSettings());
+}
+
+/* ---------------------------- Settings --------------------------- */
+function wireSettingsModal() {
+  on("#btn-settings", "click", () => openSettings());
+  on("#modal-close", "click", () => closeSettings());
+  on("#modal-ok", "click", () => closeSettings());
+  on("#settings-modal", "click", (e) => {
+    if (e.target.id === "settings-modal") closeSettings();
+  });
+
+  // Build line timestamp (optional)
+  const tsEl = qs('[data-build-ts]');
+  if (tsEl) tsEl.textContent = new Date().toLocaleString();
+}
+
+function openSettings() {
+  const m = qs("#settings-modal");
+  if (!m) return;
+  m.hidden = false;
+  m.querySelector("#modal-ok")?.focus();
+}
+function closeSettings() {
+  const m = qs("#settings-modal");
+  if (!m) return;
+  m.hidden = true;
+}
+
+/* ---------------------------- Boot UX ---------------------------- */
+function bootOverlay() {
+  const wrap = qs("#troBoot");
+  if (!wrap) return (state.bootDone = true);
+
+  const bar = qs("#troBar");
+  const log = qs("#troLog");
+  const hint = qs("#troHint");
+
+  const lines = [
+    "Initializing TRO engine …",
+    "Loading mech manifest …",
+    "Priming G.A.T.O.R. console …",
+    "Mounting UI modules …",
+    "Ready.",
+  ];
+
+  let i = 0;
+  const tick = () => {
+    if (i < lines.length) {
+      appendLog(lines[i++]);
+      setBar((i / lines.length) * 100);
+      setTimeout(tick, 220);
+    } else {
+      finish();
+    }
+  };
+
+  const finish = () => {
+    state.bootDone = true;
+    hint.textContent = "PRESS ENTER TO OPEN TRO ▌";
+    const close = () => {
+      wrap.setAttribute("aria-hidden", "true");
+      wrap.style.opacity = "0";
+      setTimeout(() => (wrap.style.display = "none"), 200);
+      document.removeEventListener("keydown", onKey);
+    };
+    const onKey = (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        close();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    // Auto close as well
+    setTimeout(close, 800);
+  };
+
+  function appendLog(t) {
+    if (!log) return;
+    log.textContent += (log.textContent ? "\n" : "") + t;
+    log.scrollTop = log.scrollHeight;
+  }
+  function setBar(pct) {
+    if (bar) bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+  }
+
+  tick();
+}
+
+/* --------------------------- Utilities --------------------------- */
+function qs(sel, root = document) { return root.querySelector(sel); }
+function on(sel, ev, fn) { const el = qs(sel); if (el) el.addEventListener(ev, fn); }
+function text(sel, val) { const el = qs(sel); if (el) el.textContent = val; }
+function css(sel, obj) { const el = qs(sel); if (!el) return; Object.assign(el.style, obj); }
+function toggleHidden(sel) {
+  const el = qs(sel);
+  if (!el) return;
+  el.hidden = !el.hidden;
+}
+function toast(msg, ms = 1800) {
+  const el = qs("#toast");
+  if (!el) return;
+  el.textContent = msg;
+  el.hidden = false;
+  el.style.opacity = "1";
+  setTimeout(() => { el.style.opacity = "0"; }, ms);
+  setTimeout(() => { el.hidden = true; el.textContent = ""; }, ms + 200);
+}
+function safeCall(mod, fnName, ...args) {
+  if (!mod || typeof mod[fnName] !== "function") return null;
+  try { return mod[fnName](...args); } catch { return null; }
+}
+
+/* Create mount point divs inside panes if they don't exist yet */
+function prepareMountPoints() {
+  ensureMount("#pane-techreadout", "tech-root");
+  ensureMount("#pane-gator", "gator-root");
+  ensureMount("#tab-weapons", "weapons-root");
+}
+
+function ensureMount(paneSel, mountId) {
+  const pane = qs(paneSel);
+  if (!pane) return;
+  let mount = qs(`#${mountId}`, pane);
+  if (!mount) {
+    // Clear inner content if you want the module to fully own it
+    pane.innerHTML = `<div id="${mountId}"></div>`;
+  }
+}
