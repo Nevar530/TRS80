@@ -1,47 +1,97 @@
 // modules/weapons.js
-// Self-contained Weapons tab (island). No global IDs; no template literals.
-// Usage in script.js:
-//   import * as Weapons from "./modules/weapons.js";
-//   Weapons.mount("#weapons-root");
-//   Weapons.render(currentMech);
+// Self-contained Weapons tab (island).
+// Public API:
+//   mount(rootEl, { resolveWeapon? }?)
+//   render(mech)
+//   clear()
+//   destroy()
+//
+// - rootEl must be a DOM element (not a selector).
+// - No auto-mounts, no globals, no external IDs.
+// - Minimal namespaced CSS is injected and removed on destroy.
 
-let rootEl = null;
-let styleEl = null;
+let root = null;
+let styleNode = null;
 
 const cfg = {
-  // Optional resolver to map abbreviations → pretty names
-  // resolveWeapon: (nameOrAbbr) => ({ name: "ER Medium Laser", notes: "…" })
-  resolveWeapon: null
+  resolveWeapon: null // optional: (nameOrAbbr) => { name, notes? }
 };
 
-export function mount(root, options = {}) {
-  if (rootEl) destroy();
-  rootEl = (typeof root === "string") ? document.querySelector(root) : root;
-  if (!rootEl) throw new Error("[weapons] mount target not found");
+export function mount(rootEl, options = {}) {
+  if (!rootEl || rootEl.nodeType !== 1) {
+    throw new Error("[weapons] mount(rootEl) requires a DOM element");
+  }
+  if (root) destroy(); // safety if double-mounted
 
+  root = rootEl;
   if (typeof options.resolveWeapon === "function") {
     cfg.resolveWeapon = options.resolveWeapon;
   }
 
-  injectMarkup();
-  injectStyles();
+  // Inject markup (module owns everything inside root)
+  root.innerHTML =
+    '<div class="mod-weapons" data-module="weapons">' +
+      '<div class="mw-head">' +
+        '<div class="mw-title">Weapons</div>' +
+      '</div>' +
+      '<div class="mw-body"></div>' +
+    '</div>';
+
+  // Inject tiny, namespaced styles
+  styleNode = document.createElement("style");
+  styleNode.setAttribute("data-mod", "weapons");
+  styleNode.textContent =
+    ".mod-weapons{display:block}" +
+    ".mod-weapons .mw-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}" +
+    ".mod-weapons .mw-title{font-weight:600;opacity:.9}" +
+    ".mod-weapons .mw-body{min-height:2rem}" +
+    ".mod-weapons .mw-table{width:100%;border-collapse:collapse}" +
+    ".mod-weapons .mw-table thead th{border-bottom:1px solid var(--line,rgba(255,255,255,.12));padding:.45rem .55rem;text-align:left;opacity:.85}" +
+    ".mod-weapons .mw-table td{border-top:1px solid var(--line,rgba(255,255,255,.08));padding:.45rem .55rem;vertical-align:top}" +
+    ".mod-weapons .mw-note{opacity:.75}";
+  document.head.appendChild(styleNode);
 }
 
 export function render(mech) {
-  if (!rootEl) return;
+  if (!root) return;
+
+  const tgt = q(".mw-body");
+  if (!tgt) return;
+
   const list = normalizeWeapons(mech);
   if (!list.length) {
-    q(".mw-body").innerHTML = "<div>—</div>";
+    tgt.innerHTML = "<div>—</div>";
     return;
   }
 
-  // Rows
+  // Build rows via safe string concatenation (avoids template literal pitfalls)
   let rows = "";
   for (let i = 0; i < list.length; i++) {
-    rows += buildRow(list[i]);
+    const w = list[i];
+    const name = esc(resolveName(w.name));
+    const loc  = esc(first(w.location, w.loc, ""));
+    const heat = esc(first(w.heat, w.heatPerShot, "—"));
+    const dmg  = esc(first(w.damage, w.dmg, "—"));
+    const sr   = esc(first(w.short, w.sr, "—"));
+    const mr   = esc(first(w.medium, w.mr, "—"));
+    const lr   = esc(first(w.long, w.lr, "—"));
+    const notes= esc(first(w.notes, w.special, ""));
+
+    rows += (
+      "<tr>" +
+        "<td>" + name + "</td>" +
+        "<td>" + loc + "</td>" +
+        "<td>" + heat + "</td>" +
+        "<td>" + dmg + "</td>" +
+        "<td>" + sr + "</td>" +
+        "<td>" + mr + "</td>" +
+        "<td>" + lr + "</td>" +
+        "<td class=\"mw-note\">" + notes + "</td>" +
+      "</tr>"
+    );
   }
 
-  const html =
+  tgt.innerHTML =
     '<table class="mw-table">' +
       '<thead>' +
         '<tr>' +
@@ -57,66 +107,25 @@ export function render(mech) {
       '</thead>' +
       '<tbody>' + rows + '</tbody>' +
     '</table>';
-
-  q(".mw-body").innerHTML = html;
 }
 
 export function clear() {
-  if (!rootEl) return;
-  q(".mw-body").innerHTML = "";
+  if (!root) return;
+  const tgt = q(".mw-body");
+  if (tgt) tgt.innerHTML = "";
 }
 
 export function destroy() {
-  if (!rootEl) return;
-  rootEl.replaceChildren();
-  if (styleEl && styleEl.parentNode) styleEl.parentNode.removeChild(styleEl);
-  rootEl = null;
-  styleEl = null;
+  if (!root) return;
+  root.replaceChildren();
+  if (styleNode && styleNode.parentNode) styleNode.parentNode.removeChild(styleNode);
+  root = null;
+  styleNode = null;
 }
 
-/* ---------------------------- internals ---------------------------- */
+/* ------------------------------ utils ------------------------------ */
 
-function injectMarkup() {
-  rootEl.innerHTML =
-    '<div class="mod-weapons" data-module="weapons">' +
-      '<div class="mw-body"></div>' +
-    '</div>';
-}
-
-function injectStyles() {
-  styleEl = document.createElement("style");
-  styleEl.setAttribute("data-mod", "weapons");
-  styleEl.textContent =
-    ".mod-weapons{display:block}" +
-    ".mod-weapons .mw-table{width:100%;border-collapse:collapse}" +
-    ".mod-weapons .mw-table th,.mod-weapons .mw-table td{padding:.4rem .5rem;border-top:1px solid var(--line,rgba(255,255,255,.08));text-align:left}" +
-    ".mod-weapons .mw-table thead th{border-top:0;opacity:.8}";
-  document.head.appendChild(styleEl);
-}
-
-function buildRow(w) {
-  const name  = esc(resolveName(w.name));
-  const loc   = esc(first(w.location, w.loc, ""));
-  const heat  = esc(first(w.heat, w.heatPerShot, "—"));
-  const dmg   = esc(first(w.damage, w.dmg, "—"));
-  const sr    = esc(first(w.short, w.sr, "—"));
-  const mr    = esc(first(w.medium, w.mr, "—"));
-  const lr    = esc(first(w.long, w.lr, "—"));
-  const notes = esc(first(w.notes, w.special, ""));
-
-  return (
-    "<tr>" +
-      "<td>" + name + "</td>" +
-      "<td>" + loc + "</td>" +
-      "<td>" + heat + "</td>" +
-      "<td>" + dmg + "</td>" +
-      "<td>" + sr + "</td>" +
-      "<td>" + mr + "</td>" +
-      "<td>" + lr + "</td>" +
-      "<td>" + notes + "</td>" +
-    "</tr>"
-  );
-}
+function q(sel) { return root ? root.querySelector(sel) : null; }
 
 function normalizeWeapons(mech) {
   const arr = (mech && (mech.weapons || mech.armaments)) || [];
@@ -156,5 +165,3 @@ function esc(v) {
            m === '"' ? "&quot;" : "&#39;";
   });
 }
-
-function q(sel) { return rootEl.querySelector(sel); }
