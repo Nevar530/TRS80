@@ -1,44 +1,57 @@
 // script.js  (ES module)
-// Make sure index.html uses: <script type="module" src="./script.js"></script>
 
-import * as Sidebar from "./modules/sidebar.js";
-import * as Tech from "./modules/techreadout.js";
-import * as Gator from "./modules/gator.js";
-import * as Weapons from "./modules/weapons.js";
-import * as Lance from "./modules/lance.js";
-import * as Owned from "./modules/owned.js";
-import * as Images from "./modules/images.js";
+// ---- Module islands ----
+import * as Sidebar from "./modules/sidebar.js";       // list + filter modal (emits onSelect)
+import * as Tech from "./modules/techreadout.js";      // Tech Readout + image in Lore
+import * as Gator from "./modules/gator.js";           // G.A.T.O.R. calculator
+import * as Weapons from "./modules/weapons.js";       // Weapons tab
+import * as Lance from "./modules/lance.js";           // existing module (self-contained)
+import * as Owned from "./modules/owned.js";           // existing module (self-contained)
+import * as Images from "./modules/images.js";         // image provider for Tech
 
-/* --------------------------- App State --------------------------- */
+/* ========================================================================== */
+/*                                  STATE                                     */
+/* ========================================================================== */
 const state = {
   mech: null,
   bootDone: false,
 };
 
-/* ------------------------- Bootstrapping ------------------------- */
+/* ========================================================================== */
+/*                               ENTRY POINT                                  */
+/* ========================================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
+  // Core wiring that existed before (tabs, settings, import/export)
   wireTabs();
   wireSettingsModal();
   wireImportExport();
   wireTopbarButtons();
-  prepareMountPoints();      // ensure #tech-root / #gator-root / #weapons-root exist
-  initModules();             // mount the islands
-  bootOverlay();             // run and hide the loader
 
-  // Optionally auto-load manifest via Sidebar (if it exposes a helper)
+  // Ensure mount points exist (keeps HTML stable; modules own their DOM)
+  prepareMountPoints();
+
+  // Mount the feature islands
+  initModules();
+
+  // Boot overlay (kept from original UX)
+  bootOverlay();
+
+  // Optionally load manifest at start if Sidebar exposes it
   if (typeof Sidebar.loadManifest === "function") {
     try {
       const count = await Sidebar.loadManifest();
       toast(`Manifest loaded — ${count} mechs`);
-    } catch (e) {
-      // Optional: silent; user can click "Load" button instead
+    } catch {
+      // Fine to be silent; user can manually load via button.
     }
   }
 });
 
-/* -------------------------- Mount Islands ------------------------ */
+/* ========================================================================== */
+/*                              MODULE MOUNTING                                */
+/* ========================================================================== */
 function initModules() {
-  // Sidebar: owns the list, search, filters, and will call onSelect(mech)
+  // Sidebar: owns the list, search, filters; notifies selection
   Sidebar.mount({
     sidebar: "#mech-sidebar",
     scrim: "#sidebar-scrim",
@@ -49,12 +62,11 @@ function initModules() {
     onManifestLoaded: (count) => toast(`Manifest loaded — ${count} mechs`),
   });
 
-  // Tech Readout island (with image via Images module)
+  // Tech Readout (with embedded image via Images module)
   if (typeof Tech.mount === "function") {
     Tech.mount("#tech-root", { images: Images, imageMaxHeight: 320 });
   } else if (typeof Tech.init === "function") {
-    // Back-compat (non-island version)
-    console.warn("[techreadout] Using legacy init() API; consider switching to mount().");
+    // Back-compat if you still have the non-island version around
     Tech.init({
       images: { getFor: Images.getFor },
       containers: {
@@ -67,49 +79,58 @@ function initModules() {
     });
   }
 
-  // GATOR island
+  // GATOR calculator
   if (typeof Gator.mount === "function") {
     Gator.mount("#gator-root");
   }
 
-  // Weapons island (or simple renderer)
+  // Weapons tab
   if (typeof Weapons.mount === "function") {
     Weapons.mount("#weapons-root");
   } else if (typeof Weapons.init === "function") {
     Weapons.init({ container: "#weapons-list" });
   }
 
-  // Lance & Owned (keep your existing modules’ behavior)
+  // Lance & Owned (unchanged, self-contained)
   safeCall(Lance, "mount", "#lance-dock");
   safeCall(Owned, "mount", "#owned-dock");
 
-  // Buttons for Lance/Owned panes (if modules expose open/close)
+  // Topbar toggles for Lance / Owned docks (if modules expose open())
   on("#btn-lance", "click", () => {
-    if (!safeCall(Lance, "open")) {
-      // simple fallback: toggle the dock visibility
-      toggleHidden("#lance-dock");
-    }
+    if (!safeCall(Lance, "open")) toggleHidden("#lance-dock");
   });
   on("#btn-owned", "click", () => {
-    if (!safeCall(Owned, "open")) {
-      toggleHidden("#owned-dock");
-    }
+    if (!safeCall(Owned, "open")) toggleHidden("#owned-dock");
   });
+
+  // Expose a tiny `App` surface for any legacy callers
+  exposeAppSurface();
 }
 
-/* -------------------------- Mech Selection ----------------------- */
+/* ========================================================================== */
+/*                             MECH SELECTION                                  */
+/* ========================================================================== */
 function selectMech(mech) {
   state.mech = mech || null;
+
+  // Keep original Overview panel behavior
   renderOverview(mech);
-  // forward to islands
-  if (typeof Tech.render === "function") Tech.render(mech);
-  if (typeof Gator.render === "function") Gator.render(mech);
+
+  // Notify islands
+  if (typeof Tech.render === "function")   Tech.render(mech);
+  if (typeof Gator.render === "function")  Gator.render(mech);
   if (typeof Weapons.render === "function") Weapons.render(mech);
-  // Lance might want current mech for "Add Current"
+
+  // Let Lance know (for "Add Current")
   safeCall(Lance, "setCurrent", mech);
+
+  // Fire a custom event for any external hooks
+  document.dispatchEvent(new CustomEvent("trs:mech:selected", { detail: mech }));
 }
 
-/* ------------------------ Overview Rendering --------------------- */
+/* ========================================================================== */
+/*                           OVERVIEW RENDER (kept)                            */
+/* ========================================================================== */
 function renderOverview(mech) {
   const empty = () => {
     text("#ov-mech", "—");
@@ -137,14 +158,14 @@ function renderOverview(mech) {
 
   text("#ov-mech", name || "—");
   text("#ov-variant", mech.model || "—");
-  text("#ov-tons", tons !== undefined ? `${tons}` : "—");
+  text("#ov-tons", tons !== undefined ? String(tons) : "—");
   text("#ov-pilot", String(pilot));
   text("#ov-gun", String(gun));
   text("#ov-pil", String(pil));
   text("#ov-move", move);
   text("#ov-weps", keys || "—");
 
-  // Heat gauge — keep it simple (cap if available)
+  // Heat gauge (simple reset—cap if available)
   const cap = mech.heatCapacity ?? mech.heatSinks ?? null;
   text("#heat-cap", cap != null ? String(cap) : "—");
   text("#heat-now", "0");
@@ -160,9 +181,7 @@ function fmtMove(m) {
 function summarizeWeapons(mech) {
   const w = mech.weapons || mech.armaments || [];
   if (!w.length) return "";
-  // Try to produce a compact, readable line
   const names = w.map((x) => (typeof x === "string" ? x : x.name || "")).filter(Boolean);
-  // Reduce near-duplicates like "ER Medium Laser (x2)" if counts exist
   const counts = {};
   for (const n of names) counts[n] = (counts[n] || 0) + 1;
   return Object.entries(counts)
@@ -171,7 +190,9 @@ function summarizeWeapons(mech) {
     .join(" · ");
 }
 
-/* --------------------------- Top Tabs ---------------------------- */
+/* ========================================================================== */
+/*                                 TABS (kept)                                 */
+/* ========================================================================== */
 function wireTabs() {
   const tabsWrap = qs("#top-swapper .tabs");
   if (!tabsWrap) return;
@@ -182,13 +203,14 @@ function wireTabs() {
     const target = btn.getAttribute("data-swap");
     if (!target) return;
 
-    // aria + visual state
+    // aria + visual
     tabsWrap.querySelectorAll(".tab").forEach((b) => {
-      b.classList.toggle("is-active", b === btn);
-      b.setAttribute("aria-selected", b === btn ? "true" : "false");
+      const active = b === btn;
+      b.classList.toggle("is-active", active);
+      b.setAttribute("aria-selected", active ? "true" : "false");
     });
 
-    // swap panes
+    // panes
     const paneSel = ["#pane-overview", "#pane-techreadout", "#pane-gator", "#tab-weapons"];
     paneSel.forEach((sel) => {
       const el = qs(sel);
@@ -197,7 +219,9 @@ function wireTabs() {
   });
 }
 
-/* ------------------------- Import / Export ----------------------- */
+/* ========================================================================== */
+/*                            IMPORT / EXPORT (kept)                           */
+/* ========================================================================== */
 function wireImportExport() {
   const btnImport = qs("#btn-import");
   const btnExport = qs("#btn-export");
@@ -240,49 +264,47 @@ function wireImportExport() {
 }
 
 async function buildSession() {
-  const sess = {
+  return {
     version: 1,
-    selected: state.mech?.id || state.mech?.displayName || null,
     timestamp: new Date().toISOString(),
+    selected: state.mech?.id || state.mech?.displayName || null,
     sidebar: safeCall(Sidebar, "toJSON") || null,
     lance: safeCall(Lance, "toJSON") || null,
     owned: safeCall(Owned, "toJSON") || null,
   };
-  return sess;
 }
 
 function applySession(json) {
-  // Feed to modules that understand it
-  if (json.lance) safeCall(Lance, "fromJSON", json.lance);
-  if (json.owned) safeCall(Owned, "fromJSON", json.owned);
+  if (json.lance)  safeCall(Lance, "fromJSON", json.lance);
+  if (json.owned)  safeCall(Owned, "fromJSON", json.owned);
   if (json.sidebar) safeCall(Sidebar, "fromJSON", json.sidebar);
 
-  // Attempt to select the previously selected mech by id/name
+  // Reselect last mech if possible
   if (json.selected && typeof Sidebar.selectByIdOrName === "function") {
     Sidebar.selectByIdOrName(json.selected).catch(() => {});
   }
 }
 
-/* --------------------------- Topbar misc ------------------------- */
+/* ========================================================================== */
+/*                           TOPBAR BUTTONS (kept)                             */
+/* ========================================================================== */
 function wireTopbarButtons() {
-  // Load manifest on demand (optional button)
   on("#btn-load-manifest", "click", async () => {
     try {
       const count = await Sidebar.loadManifest();
       toast(`Manifest loaded — ${count} mechs`);
-    } catch (e) {
+    } catch {
       toast("Failed to load manifest.");
     }
   });
 
-  // Sidebar drawer (mobile)
   on("#btn-side-toggle", "click", () => Sidebar.toggle?.());
-
-  // Footer "About"
   on("#footer-about", "click", () => openSettings());
 }
 
-/* ---------------------------- Settings --------------------------- */
+/* ========================================================================== */
+/*                          SETTINGS / ABOUT (kept)                            */
+/* ========================================================================== */
 function wireSettingsModal() {
   on("#btn-settings", "click", () => openSettings());
   on("#modal-close", "click", () => closeSettings());
@@ -291,7 +313,7 @@ function wireSettingsModal() {
     if (e.target.id === "settings-modal") closeSettings();
   });
 
-  // Build line timestamp (optional)
+  // Build line timestamp
   const tsEl = qs('[data-build-ts]');
   if (tsEl) tsEl.textContent = new Date().toLocaleString();
 }
@@ -308,7 +330,9 @@ function closeSettings() {
   m.hidden = true;
 }
 
-/* ---------------------------- Boot UX ---------------------------- */
+/* ========================================================================== */
+/*                           BOOT OVERLAY (kept)                               */
+/* ========================================================================== */
 function bootOverlay() {
   const wrap = qs("#troBoot");
   if (!wrap) return (state.bootDone = true);
@@ -345,15 +369,9 @@ function bootOverlay() {
       setTimeout(() => (wrap.style.display = "none"), 200);
       document.removeEventListener("keydown", onKey);
     };
-    const onKey = (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        close();
-      }
-    };
+    const onKey = (e) => { if (e.key === "Enter") { e.preventDefault(); close(); } };
     document.addEventListener("keydown", onKey);
-    // Auto close as well
-    setTimeout(close, 800);
+    setTimeout(close, 800); // auto-close too
   };
 
   function appendLog(t) {
@@ -368,16 +386,40 @@ function bootOverlay() {
   tick();
 }
 
-/* --------------------------- Utilities --------------------------- */
+/* ========================================================================== */
+/*                               APP SURFACE                                   */
+/* ========================================================================== */
+function exposeAppSurface() {
+  // Minimal surface for legacy interop or debugging
+  window.App = {
+    getCurrentMech: () => state.mech,
+    selectMech,                // external modules can trigger selection
+    toast,                     // reuse global toast
+    onMechSelected: (fn) => {
+      if (typeof fn !== "function") return () => {};
+      const h = (e) => fn(e.detail);
+      document.addEventListener("trs:mech:selected", h);
+      return () => document.removeEventListener("trs:mech:selected", h);
+    },
+    // Pass-throughs in case other modules expect them:
+    Lance,
+    Owned,
+    Sidebar,
+    Tech,
+    Weapons,
+    Gator,
+    Images,
+  };
+}
+
+/* ========================================================================== */
+/*                               UTILITIES                                     */
+/* ========================================================================== */
 function qs(sel, root = document) { return root.querySelector(sel); }
 function on(sel, ev, fn) { const el = qs(sel); if (el) el.addEventListener(ev, fn); }
 function text(sel, val) { const el = qs(sel); if (el) el.textContent = val; }
 function css(sel, obj) { const el = qs(sel); if (!el) return; Object.assign(el.style, obj); }
-function toggleHidden(sel) {
-  const el = qs(sel);
-  if (!el) return;
-  el.hidden = !el.hidden;
-}
+function toggleHidden(sel) { const el = qs(sel); if (!el) return; el.hidden = !el.hidden; }
 function toast(msg, ms = 1800) {
   const el = qs("#toast");
   if (!el) return;
@@ -392,19 +434,16 @@ function safeCall(mod, fnName, ...args) {
   try { return mod[fnName](...args); } catch { return null; }
 }
 
-/* Create mount point divs inside panes if they don't exist yet */
+// Create mount points inside panes if they aren't present yet
 function prepareMountPoints() {
   ensureMount("#pane-techreadout", "tech-root");
   ensureMount("#pane-gator", "gator-root");
   ensureMount("#tab-weapons", "weapons-root");
 }
-
 function ensureMount(paneSel, mountId) {
   const pane = qs(paneSel);
   if (!pane) return;
-  let mount = qs(`#${mountId}`, pane);
-  if (!mount) {
-    // Clear inner content if you want the module to fully own it
+  if (!qs(`#${mountId}`, pane)) {
     pane.innerHTML = `<div id="${mountId}"></div>`;
   }
 }
