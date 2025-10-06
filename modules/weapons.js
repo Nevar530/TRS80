@@ -1,90 +1,56 @@
-// weapons.js
-// Owns the Weapons tab: renders mech weapons exactly from provided data.
-// No DB assumptions; optionally accept a resolver in init().
+// /modules/weapons.js
+// Island module: owns the Weapons tab markup + rendering from mech data.
 
-let cfg = {
-  container: null,                 // selector or element for Weapons tab content
-  resolveWeapon: null              // optional: (abbrOrName) => { name, notes, ... }
-};
+let rootEl = null;
 
-export function init(options = {}) {
-  cfg = { ...cfg, ...options };
-}
-
-export function render(mech) {
-  const root = getEl(cfg.container);
-  if (!root) return;
-
-  const list = normalizeWeapons(mech);
-  if (!list.length) {
-    root.innerHTML = `<div>—</div>`;
-    return;
-  }
-
-  root.innerHTML = /* html */`
-    <table class="trs-table">
-      <thead>
-        <tr>
-          <th>Weapon</th>
-          <th>Loc</th>
-          <th>Heat</th>
-          <th>Dmg</th>
-          <th>SR</th>
-          <th>MR</th>
-          <th>LR</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${list.map(w => row(w)).join('')}
-      </tbody>
-    </table>
+export function mount(root) {
+  rootEl = getEl(root);
+  if (!rootEl) { console.warn("[weapons] mount root not found:", root); return; }
+  rootEl.classList.add("mod-weapons");
+  rootEl.innerHTML = `
+    <div class="wep-wrap" style="padding:10px;">
+      <table class="trs-table" id="wep-table">
+        <thead>
+          <tr>
+            <th>Weapon</th><th>Loc</th><th>Heat</th><th>Dmg</th>
+            <th>SR</th><th>MR</th><th>LR</th><th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="wep-tbody"></tbody>
+      </table>
+    </div>
   `;
 }
 
-function row(w){
-  const name = resolveName(w.name);
-  const loc  = safe(w.location ?? w.loc ?? '');
-  const heat = safe(w.heat ?? w.heatPerShot ?? '—');
-  const dmg  = safe(w.damage ?? w.dmg ?? '—');
-  const sr   = safe(w.short ?? w.sr ?? '—');
-  const mr   = safe(w.medium ?? w.mr ?? '—');
-  const lr   = safe(w.long ?? w.lr ?? '—');
-  const notes= safe(w.notes ?? w.special ?? '');
+export function destroy(){ if (rootEl) rootEl.innerHTML = ""; }
+export function clear(){ if (rootEl) rootEl.querySelector("#wep-tbody").innerHTML = ""; }
 
+export function render(mech) {
+  if (!rootEl || !mech) return clear();
+  const list = normalizeWeapons(mech);
+  const tb = rootEl.querySelector("#wep-tbody");
+  if (!list.length) {
+    tb.innerHTML = `<tr><td colspan="8">—</td></tr>`;
+    return;
+  }
+  tb.innerHTML = list.map(w => row(w)).join("");
+}
+
+/* ---------------- helpers ---------------- */
+function row(w){
+  const name = esc(w.name ?? w.item ?? "—");
+  const loc  = esc(w.location ?? w.loc ?? "");
+  const heat = esc(w.heat ?? w.heatPerShot ?? "—");
+  const dmg  = esc(w.damage ?? w.dmg ?? "—");
+  const sr   = esc(w.short ?? w.sr ?? "—");
+  const mr   = esc(w.medium ?? w.mr ?? "—");
+  const lr   = esc(w.long ?? w.lr ?? "—");
+  const notes= esc(w.notes ?? w.special ?? "");
   return `<tr>
-    <td>${name}</td>
-    <td>${loc}</td>
-    <td>${heat}</td>
-    <td>${dmg}</td>
-    <td>${sr}</td>
-    <td>${mr}</td>
-    <td>${lr}</td>
-    <td>${notes}</td>
+    <td>${name}</td><td>${loc}</td><td>${heat}</td><td>${dmg}</td>
+    <td>${sr}</td><td>${mr}</td><td>${lr}</td><td>${notes}</td>
   </tr>`;
 }
-
-function normalizeWeapons(mech){
-  const arr = (mech?.weapons ?? mech?.armaments ?? []);
-  return arr.map(w => (typeof w === 'string' ? { name: w } : w));
-}
-
-function resolveName(n){
-  if (!n) return '—';
-  if (typeof cfg.resolveWeapon === 'function') {
-    const meta = cfg.resolveWeapon(n);
-    if (meta && meta.name) return safe(meta.name);
-  }
-  return safe(n);
-}
-
-function getEl(selOrEl){
-  if (!selOrEl) return null;
-  return (typeof selOrEl === 'string') ? document.querySelector(selOrEl) : selOrEl;
-}
-
-function safe(v) {
-  return String(v ?? '').replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  })[m]);
-}
+function normalizeWeapons(m){ const arr=(m?.weapons ?? m?.armaments ?? []); return arr.map(w=> typeof w==="string" ? {name:w} : w); }
+function getEl(x){ return (typeof x === "string") ? document.querySelector(x) : x; }
+function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }
