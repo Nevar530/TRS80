@@ -52,6 +52,7 @@
       root.id = "sheet-root";
       document.body.appendChild(root);
     }
+window.addEventListener("resize", updatePipCols);
 
     if (!$("#trs80-sheet-style")) {
       const s = document.createElement("style");
@@ -96,6 +97,7 @@
 .lrow .lab{color:var(--muted); font-size:10px}
 
 /* Pips (fixed shapes) */
+
 .pips{
   display:grid;
   grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
@@ -111,6 +113,23 @@
 .pip.armor{ border-radius:50%; }               /* circle */
 .pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
 .pip.rear{ border-radius:2px; }                /* square */
+
+/* === TRS-only pips (namespaced) === */
+.trs-pips{
+  display:grid;
+  grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
+  grid-auto-rows: var(--pip-cell);
+  gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
+  justify-content:start; align-content:start;
+}
+.trs-pip{
+  display:inline-block; box-sizing:border-box;
+  width:var(--pip-size); height:var(--pip-size);
+  border:1px solid #aab; background:transparent;
+}
+.trs-pip.armor{ border-radius:50%; }            /* circle */
+.trs-pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
+.trs-pip.rear{ border-radius:2px; }             /* square */
 
 /* Heat */
 .heatTable{width:100%; table-layout:fixed; border-collapse:collapse; font-size:10px; flex:1}
@@ -269,7 +288,21 @@
   }
 
   // ---------- UI helpers ----------
-  function pipRow(label, count, cls) {
+  // Auto-fit columns up to 10 per row (matches CodePen behavior)
+function updatePipCols(){
+  document.querySelectorAll(".trs-pips").forEach((p) => {
+    const cs = getComputedStyle(p);
+    const gap = parseFloat(cs.columnGap) || 0;
+    const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
+    const cellNum = parseFloat(cellRaw);
+    const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum; // assume 96dpi
+    const width = p.clientWidth;
+    const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
+    p.style.setProperty("--pip-cols", cols);
+  });
+}
+
+    function pipRow(label, count, cls) {
     const r = document.createElement("div");
     r.className = "lrow";
     const cells = Math.max(0, num(count, 0));
@@ -278,6 +311,16 @@
       `<div class="pips">${"<div class='pip " + cls + "'></div>".repeat(cells)}</div>`;
     return r;
   }
+  // (override) use namespaced classes to avoid global CSS collisions
+function pipRow(label, count, cls){
+  const r = document.createElement("div");
+  r.className = "lrow";
+  const cells = Math.max(0, Number(count) || 0);
+  r.innerHTML =
+    `<div class="lab">${label}</div>` +
+    `<div class="trs-pips">${"<div class='trs-pip "+cls+"'></div>".repeat(cells)}</div>`;
+  return r;
+}
 
   function drawArmor(mech, host) {
     const grid = $("#armorMatrix", host);
@@ -416,6 +459,7 @@
 
     drawArmor(mech, host);
     drawWeapons(mech, host);
+    updatePipCols();
     drawEquipment(mech, host);
   }
 
