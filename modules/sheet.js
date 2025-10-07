@@ -91,19 +91,25 @@
   display:grid;
   grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
   grid-auto-rows: var(--pip-cell);
-  gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
+  gap: calc(var(--pip-gap, 0.01in) * 0.5) var(--pip-gap, 0.01in);
   justify-content:start; align-content:start;
   font-size:0; line-height:0;
+  padding:0;                     /* make width calc predictable */
 }
+
 .trs-pip{
   display:block; box-sizing:border-box;
-  width:100%; height:100%;
+  width:100%;                    /* fill the grid cell */
+  height:100%;
+  aspect-ratio: 1 / 1;           /* force perfect squares = true circles */
   border:1px solid #aab; background:transparent;
 }
+
 /* shapes */
-.trs-pip.armor{ border-radius:50%; }                        /* circle */
+.trs-pip.armor{ border-radius:50%; }                         /* circle */
 .trs-pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
-.trs-pip.rear{ border-radius:2px; }                         /* square */
+.trs-pip.rear{ border-radius:2px; }                          /* square */
+
 
 /* Heat */
 .heatTable{width:100%; table-layout:fixed; border-collapse:collapse; font-size:10px; flex:1}
@@ -271,17 +277,28 @@
   }
 
   function updatePipCols(){
-    document.querySelectorAll(".trs-pips").forEach((p) => {
-      const cs = getComputedStyle(p);
-      const gap = parseFloat(cs.columnGap) || 0;
-      const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
-      const cellNum = parseFloat(cellRaw);
-      const cellPx = /in$/.test(cellRaw) ? cellNum * 96 : cellNum; // assume 96dpi
-      const width = p.clientWidth;
-      const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
-      p.style.setProperty("--pip-cols", cols);
-    });
-  }
+  document.querySelectorAll(".trs-pips").forEach((p) => {
+    const cs = getComputedStyle(p);
+
+    // cell size in px
+    const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
+    const cellNum = parseFloat(cellRaw);
+    const cellPx  = /in$/.test(cellRaw) ? cellNum * 96 : cellNum;
+
+    // gap in px
+    const gapX = parseFloat(cs.columnGap) || 0;
+
+    // available width (content box)
+    const padL = parseFloat(cs.paddingLeft)  || 0;
+    const padR = parseFloat(cs.paddingRight) || 0;
+    const avail = Math.max(0, p.clientWidth - padL - padR);
+
+    // compute columns; cap to 10 like the CodePen
+    const cols = Math.max(1, Math.min(10, Math.floor((avail + gapX) / (cellPx + gapX))));
+    p.style.setProperty("--pip-cols", cols);
+  });
+}
+
 
   function pipRow(label, count, cls){
     const r = document.createElement("div");
