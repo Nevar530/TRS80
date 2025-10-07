@@ -269,12 +269,40 @@
 
   // ---------- Helpers ----------
   // tolerate "10", "10/16", "12 (max 20)", etc.
-  function parsePipCount(raw){
-    if (typeof raw === "number") return Math.max(0, raw|0);
-    if (raw == null) return 0;
-    const m = String(raw).match(/\d+/);
-    return m ? Math.max(0, parseInt(m[0],10)) : 0;
+  // --- helpers (add/replace) ---
+function parsePipCount(raw){
+  if (typeof raw === "number") return Math.max(0, raw|0);
+  if (raw == null) return 0;
+  const m = String(raw).match(/\d+/);
+  return m ? Math.max(0, parseInt(m[0],10)) : 0;
+}
+
+// pull "front armor" from many possible shapes
+function armorFront(val){
+  if (val == null) return 0;
+  if (typeof val === 'object') {
+    return parsePipCount(val.a ?? val.A ?? val.front ?? val.value ?? val.armor);
   }
+  return parsePipCount(val);
+}
+
+// pull "rear armor" from many possible shapes
+function armorRear(val){
+  if (val == null) return 0;
+  if (typeof val === 'object') {
+    return parsePipCount(val.r ?? val.R ?? val.rear ?? val.value ?? val.armor);
+  }
+  return parsePipCount(val);
+}
+
+// pull internals from many possible shapes
+function internalsVal(val){
+  if (val == null) return 0;
+  if (typeof val === 'object') {
+    return parsePipCount(val.s ?? val.S ?? val.structure ?? val.value);
+  }
+  return parsePipCount(val);
+}
 
   function updatePipCols(){
   document.querySelectorAll(".trs-pips").forEach((p) => {
@@ -312,34 +340,67 @@
     return r;
   }
 
-  function drawArmor(mech, host){
-    const grid = $("#armorMatrix", host);
-    grid.innerHTML = "";
-    const order = ["LA","HD","CT","RA","LL","LT","RT","RL"];
-    const A = mech.armor || {};
-    const front = {
-      LA:num(A.leftArm,0),    HD:num(A.head,0),         CT:num(A.centerTorso,0), RA:num(A.rightArm,0),
-      LL:num(A.leftLeg,0),    LT:num(A.leftTorso,0),    RT:num(A.rightTorso,0),  RL:num(A.rightLeg,0)
-    };
-    const rear = {
-      LT:num(A.rearLeftTorso,0), CT:num(A.rearCenterTorso,0), RT:num(A.rearRightTorso,0)
-    };
-    // LT is [06] (your correction), CT carries [02/07]
-    const ROLL = { LA:"[04-05]", HD:"[12]", RA:"[09-10]", LL:"[03]", LT:"[06]", CT:"[02/07]", RT:"[08]", RL:"[11]" };
-    const INTERNALS = {HD:3, CT:11, LT:8, RT:8, LA:5, RA:5, LL:7, RL:7};
+  // --- drawArmor (REPLACE the whole function) ---
+function drawArmor(mech, host){
+  const grid = document.querySelector("#armorMatrix");
+  grid.innerHTML = "";
 
-    for (const code of order) {
-      const box = document.createElement("div");
-      box.className = "loc";
-      box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code]||"[—]"}</div></div>`;
-      box.appendChild(pipRow("ARMOR", front[code], "armor"));
-      box.appendChild(pipRow("INTERNAL", INTERNALS[code]||0, "internal"));
-      if (code === "LT" || code === "CT" || code === "RT") {
-        box.appendChild(pipRow("REAR", rear[code], "rear"));
-      }
-      grid.appendChild(box);
+  // preferred sources from your app
+  const ABL = mech.armorByLocation || {};
+  const IBL = mech.internalByLocation || {};
+
+  // fallback: raw .armor object (older JSONs)
+  const Araw = mech.armor || {};
+
+  // render order + CT/LT/RT rear keys used in your app
+  const order = ["LA","HD","CT","RA","LL","LT","RT","RL"];
+  const ROLL  = { LA:"[04-05]", HD:"[12]", RA:"[09-10]", LL:"[03]", LT:"[06]", CT:"[02/07]", RT:"[08]", RL:"[11]" };
+
+  // mapping for both front + fallback
+  const front = {
+    HD: armorFront(ABL.HD ?? Araw.head),
+    CT: armorFront(ABL.CT ?? Araw.centerTorso),
+    RT: armorFront(ABL.RT ?? Araw.rightTorso),
+    LT: armorFront(ABL.LT ?? Araw.leftTorso),
+    RA: armorFront(ABL.RA ?? Araw.rightArm),
+    LA: armorFront(ABL.LA ?? Araw.leftArm),
+    RL: armorFront(ABL.RL ?? Araw.rightLeg),
+    LL: armorFront(ABL.LL ?? Araw.leftLeg),
+  };
+
+  // rears (your app uses RTC/RTL/RTR; raw uses rear* fields)
+  const rear = {
+    CT: armorFront(ABL.RTC ?? Araw.rearCenterTorso),
+    RT: armorFront(ABL.RTR ?? Araw.rearRightTorso),
+    LT: armorFront(ABL.RTL ?? Araw.rearLeftTorso),
+  };
+
+  // internals (fallback small table if missing — keep your earlier defaults if you want)
+  const internals = {
+    HD: internalsVal(IBL.HD),
+    CT: internalsVal(IBL.CT),
+    RT: internalsVal(IBL.RT),
+    LT: internalsVal(IBL.LT),
+    RA: internalsVal(IBL.RA),
+    LA: internalsVal(IBL.LA),
+    RL: internalsVal(IBL.RL),
+    LL: internalsVal(IBL.LL),
+  };
+
+  for (const code of order) {
+    const box = document.createElement("div");
+    box.className = "loc";
+    box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code]||"[—]"}</div></div>`;
+
+    box.appendChild(pipRow("ARMOR",    front[code] || 0, "armor"));
+    box.appendChild(pipRow("INTERNAL", internals[code] || 0, "internal"));
+    if (code === "LT" || code === "CT" || code === "RT") {
+      box.appendChild(pipRow("REAR", rear[code] || 0, "rear"));
     }
+    grid.appendChild(box);
   }
+}
+
 
   function drawWeapons(mech, host){
     const tbody = $("#weapRows", host);
