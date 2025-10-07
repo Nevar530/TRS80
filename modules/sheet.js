@@ -1,7 +1,5 @@
 // modules/sheet.js — self-contained printable sheet (CodePen layout)
-// - No router required
-// - Exposes: window.TRS_SHEET.update(mech)
-// - Lazily fetches /data/weapons.json for weapon stats
+// Exposes: window.TRS_SHEET.update(mech)
 
 (() => {
   const API = {};
@@ -10,7 +8,6 @@
   const num = (x, d = 0) => (Number.isFinite(Number(x)) ? Number(x) : d);
 
   // ---------- Weapon catalog (lazy) ----------
-  let WEAP_LIST = null;
   let WEAP_MAP = null;
   const normKey = (s) => String(s || "").toLowerCase().replace(/[\s._\-\/]+/g, " ").trim();
 
@@ -21,20 +18,14 @@
       const url = new URL("data/weapons.json", base).href;
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      WEAP_LIST = await res.json();
+      const list = await res.json();
       WEAP_MAP = new Map();
-      for (const w of WEAP_LIST) {
+      for (const w of list || []) {
         if (!w) continue;
-        const keys = new Set();
-        if (w.id) keys.add(normKey(w.id));
-        if (w.name) keys.add(normKey(w.name));
-        const aliases = Array.isArray(w.aliases) ? w.aliases : [];
-        for (const a of aliases) if (a) keys.add(normKey(a));
+        const keys = new Set([w.id, w.name, ...(w.aliases || [])].map(normKey));
         for (const k of keys) if (k && !WEAP_MAP.has(k)) WEAP_MAP.set(k, w);
       }
-    } catch (e) {
-      console.warn("[sheet] failed to load data/weapons.json", e);
-      WEAP_LIST = [];
+    } catch {
       WEAP_MAP = new Map();
     }
   }
@@ -52,7 +43,6 @@
       root.id = "sheet-root";
       document.body.appendChild(root);
     }
-window.addEventListener("resize", updatePipCols);
 
     if (!$("#trs80-sheet-style")) {
       const s = document.createElement("style");
@@ -60,7 +50,7 @@ window.addEventListener("resize", updatePipCols);
       s.textContent = `
 :root{
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
-  --font:"Inter",ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;
+  --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
   --pip-size:0.09in; --pip-cell:0.12in; --pip-gap:0.01in;
 }
 .sheet{font-family:var(--font); color:var(--ink); max-width:1500px; margin:12px auto; padding:0 8px}
@@ -95,29 +85,25 @@ window.addEventListener("resize", updatePipCols);
 .locHeader .roll{color:var(--muted); font-size:11px}
 .lrow{display:grid; grid-template-columns:50px 1fr; gap:6px; align-items:center}
 .lrow .lab{color:var(--muted); font-size:10px}
-/* force any legacy text pips to disappear; our div pips stay visible */
-.lrow .pips,
-.lrow .trs-pips{ font-size:0; line-height:0; }
-.lrow .pips > *,
-.lrow .trs-pips > *{ font-size:initial; line-height:initial; }
 
-/* Pips (fixed shapes) */
-
+/* TRS pips (scoped, collision-proof) */
 .trs-pips{
   display:grid;
   grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
   grid-auto-rows: var(--pip-cell);
   gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
   justify-content:start; align-content:start;
+  font-size:0; line-height:0;   /* nuke stray text from global styles */
 }
 .trs-pip{
   display:inline-block; box-sizing:border-box;
   width:var(--pip-size); height:var(--pip-size);
   border:1px solid #aab; background:transparent;
+  font-size:initial; line-height:initial;
 }
-.trs-pip.armor{ border-radius:50%; }            /* circle */
+.trs-pip.armor{ border-radius:50%; }                        /* circle */
 .trs-pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
-.trs-pip.rear{ border-radius:2px; }             /* square */
+.trs-pip.rear{ border-radius:2px; }                         /* square */
 
 /* Heat */
 .heatTable{width:100%; table-layout:fixed; border-collapse:collapse; font-size:10px; flex:1}
@@ -159,7 +145,6 @@ window.addEventListener("resize", updatePipCols);
   .weapTable th,.weapTable td,.heatTable th,.heatTable td{border-color:#000;background:#fff;color:#000}
   .trs-pip{border-color:#000}
   .trs-pips{ --pip-cols: 10 !important; }
-
 }
       `;
       document.head.appendChild(s);
@@ -252,18 +237,18 @@ window.addEventListener("resize", updatePipCols);
       `;
       root.appendChild(host);
 
-      // Heat rows (30 → 1)
+      // Heat table (30 → 1)
       const HEAT = {
-        30: "Shutdown", 28: "Ammo explosion chk (8+)", 26: "Shutdown (10+)",
-        25: "-5 MP", 24: "+4 To-Hit", 23: "Ammo explosion chk (6+)",
-        22: "Shutdown (8+)", 20: "-4 MP", 19: "Ammo explosion chk (4+)",
-        17: "Shutdown (6+)", 15: "+3 To-Hit", 14: "-3 MP", 12: "+2 To-Hit",
-        10: "-2 MP", 8: "+1 To-Hit"
+        30:"Shutdown", 28:"Ammo explosion chk (8+)", 26:"Shutdown (10+)",
+        25:"-5 MP", 24:"+4 To-Hit", 23:"Ammo explosion chk (6+)",
+        22:"Shutdown (8+)", 20:"-4 MP", 19:"Ammo explosion chk (4+)",
+        17:"Shutdown (6+)", 15:"+3 To-Hit", 14:"-3 MP", 12:"+2 To-Hit",
+        10:"-2 MP", 8:"+1 To-Hit"
       };
       const heatBody = $("#heatRows", host);
       for (let h = 30; h >= 1; h--) {
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td>[${String(h).padStart(2, "0")}]</td><td>${HEAT[h] || "—"}</td>`;
+        tr.innerHTML = `<td>[${String(h).padStart(2,"0")}]</td><td>${HEAT[h] || "—"}</td>`;
         heatBody.appendChild(tr);
       }
 
@@ -276,73 +261,51 @@ window.addEventListener("resize", updatePipCols);
     return $("#trs80-sheet-host");
   }
 
-  // ---------- UI helpers ----------
-  // Auto-fit columns up to 10 per row (matches CodePen behavior)
-function updatePipCols(){
-  document.querySelectorAll(".pips").forEach((p) => {
-    const cs = getComputedStyle(p);
-    const gap = parseFloat(cs.columnGap) || 0;
-    const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
-    const cellNum = parseFloat(cellRaw);
-    const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum;
-    const width = p.clientWidth;
-    const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
-    p.style.setProperty("--pip-cols", cols);
-  });
-  document.querySelectorAll(".trs-pips").forEach((p) => {
-    const cs = getComputedStyle(p);
-    const gap = parseFloat(cs.columnGap) || 0;
-    const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
-    const cellNum = parseFloat(cellRaw);
-    const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum; // assume 96dpi
-    const width = p.clientWidth;
-    const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
-    p.style.setProperty("--pip-cols", cols);
-  });
-}
+  // ---------- Helpers ----------
+  function updatePipCols(){
+    document.querySelectorAll(".trs-pips").forEach((p) => {
+      const cs = getComputedStyle(p);
+      const gap = parseFloat(cs.columnGap) || 0;
+      const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
+      const cellNum = parseFloat(cellRaw);
+      const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum; // assume 96dpi
+      const width = p.clientWidth;
+      const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
+      p.style.setProperty("--pip-cols", cols);
+    });
+  }
 
-    function pipRow(label, count, cls) {
+  function pipRow(label, count, cls){
     const r = document.createElement("div");
     r.className = "lrow";
-    const cells = Math.max(0, num(count, 0));
+    const cells = Math.max(0, Number(count) || 0);
     r.innerHTML =
       `<div class="lab">${label}</div>` +
-      `<div class="pips">${"<div class='pip " + cls + "'></div>".repeat(cells)}</div>`;
+      `<div class="trs-pips">${"<div class='trs-pip "+cls+"'></div>".repeat(cells)}</div>`;
     return r;
   }
-  // (override) use namespaced classes to avoid global CSS collisions
-function pipRow(label, count, cls){
-  const r = document.createElement("div");
-  r.className = "lrow";
-  const cells = Math.max(0, Number(count) || 0);
-  r.innerHTML =
-    `<div class="lab">${label}</div>` +
-    `<div class="trs-pips">${"<div class='trs-pip "+cls+"'></div>".repeat(cells)}</div>`;
-  return r;
-}
 
-  function drawArmor(mech, host) {
+  function drawArmor(mech, host){
     const grid = $("#armorMatrix", host);
     grid.innerHTML = "";
-    const order = ["LA", "HD", "CT", "RA", "LL", "LT", "RT", "RL"];
+    const order = ["LA","HD","CT","RA","LL","LT","RT","RL"];
     const A = mech.armor || {};
-
     const front = {
-      LA: num(A.leftArm, 0),  HD: num(A.head, 0),        CT: num(A.centerTorso, 0), RA: num(A.rightArm, 0),
-      LL: num(A.leftLeg, 0),  LT: num(A.leftTorso, 0),   RT: num(A.rightTorso, 0),  RL: num(A.rightLeg, 0)
+      LA:num(A.leftArm,0), HD:num(A.head,0), CT:num(A.centerTorso,0), RA:num(A.rightArm,0),
+      LL:num(A.leftLeg,0), LT:num(A.leftTorso,0), RT:num(A.rightTorso,0), RL:num(A.rightLeg,0)
     };
     const rear = {
-      LT: num(A.rearLeftTorso, 0), CT: num(A.rearCenterTorso, 0), RT: num(A.rearRightTorso, 0)
+      LT:num(A.rearLeftTorso,0), CT:num(A.rearCenterTorso,0), RT:num(A.rearRightTorso,0)
     };
     const ROLL = { LA:"[04-05]", HD:"[12]", RA:"[09-10]", LL:"[03]", LT:"[06]", CT:"[02/07]", RT:"[08]", RL:"[11]" };
-    const INTERNALS = { HD:3, CT:11, LT:8, RT:8, LA:5, RA:5, LL:7, RL:7 };
+    const INTERNALS = {HD:3, CT:11, LT:8, RT:8, LA:5, RA:5, LL:7, RL:7};
 
     for (const code of order) {
       const box = document.createElement("div");
       box.className = "loc";
-      box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code] || "[—]"}</div></div>`;
+      box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code]||"[—]"}</div></div>`;
       box.appendChild(pipRow("ARMOR", front[code], "armor"));
-      box.appendChild(pipRow("INTERNAL", INTERNALS[code] || 0, "internal"));
+      box.appendChild(pipRow("INTERNAL", INTERNALS[code]||0, "internal"));
       if (code === "LT" || code === "CT" || code === "RT") {
         box.appendChild(pipRow("REAR", rear[code], "rear"));
       }
@@ -350,38 +313,27 @@ function pipRow(label, count, cls){
     }
   }
 
-  function drawWeapons(mech, host) {
+  function drawWeapons(mech, host){
     const tbody = $("#weapRows", host);
     tbody.innerHTML = "";
 
-    // Melee derived from tonnage
+    // Melee from tonnage
     const tons = mech.tonnage ?? mech.Tonnage ?? mech.mass ?? 0;
-    const punch = Math.ceil(tons / 10);
-    const kick = Math.ceil(tons / 5);
-    const charge = Math.ceil(tons / 10);
-    const dfa = Math.ceil(kick * 1.5);
+    const punch = Math.ceil(tons / 10), kick = Math.ceil(tons / 5), charge = Math.ceil(tons / 10), dfa = Math.ceil(kick * 1.5);
     const melee = [
-      ["Punch", "Melee", punch, 0, 1, 1, 1, 1, "∞"],
-      ["Kick", "Melee",  kick, 0, 1, 1, 1, 1, "∞"],
-      ["Charge","Melee", charge,0, 1, 1, 1, 1, "∞"],
-      ["DFA",  "Melee",  dfa,  0, 1, 1, 1, 1, "∞"],
+      ["Punch","Melee", punch,0,1,1,1,1,"∞"],
+      ["Kick","Melee",  kick,0,1,1,1,1,"∞"],
+      ["Charge","Melee",charge,0,1,1,1,1,"∞"],
+      ["DFA","Melee",   dfa,  0,1,1,1,1,"∞"],
     ];
-    for (const row of melee) tbody.insertAdjacentHTML("beforeend", `<tr>${row.map(c => `<td>${c}</td>`).join("")}</tr>`);
+    for (const row of melee) tbody.insertAdjacentHTML("beforeend", `<tr>${row.map(c=>`<td>${c}</td>`).join("")}</tr>`);
 
     const list = Array.isArray(mech.weapons) ? mech.weapons : [];
-    if (!list.length) return;
-
     for (const w of list) {
       const name = w.name || w.type || "—";
       const rec = lookupWeapon(name);
       const r = rec?.range || {};
-      const ammoTxt = (() => {
-        if (!rec) return "";
-        const t = String(rec.type || "").toLowerCase();
-        if (t === "energy" || t === "melee") return "∞";
-        return rec.ammo ? String(rec.ammo) : "";
-      })();
-
+      const ammoTxt = (!rec) ? "" : (String(rec.type||"").toLowerCase().match(/^(energy|melee)$/) ? "∞" : (rec.ammo ? String(rec.ammo) : ""));
       const row = [
         esc(name),
         esc(rec?.type ?? ""),
@@ -393,54 +345,50 @@ function pipRow(label, count, cls){
         r.long ?? "",
         ammoTxt
       ];
-      tbody.insertAdjacentHTML("beforeend", `<tr>${row.map(c => `<td>${c}</td>`).join("")}</tr>`);
+      tbody.insertAdjacentHTML("beforeend", `<tr>${row.map(c=>`<td>${c}</td>`).join("")}</tr>`);
     }
   }
 
-  function drawEquipment(mech, host) {
+  function drawEquipment(mech, host){
     const eq = $("#equipRows", host);
     eq.innerHTML = "";
     const locs = mech.locations || {};
-    const cols = ["LA", "LL", "LT", "CT", "HD", "RT", "RL", "RA"];
+    const cols = ["LA","LL","LT","CT","HD","RT","RL","RA"];
     const map  = {LA:"leftArm",LL:"leftLeg",LT:"leftTorso",CT:"centerTorso",HD:"head",RT:"rightTorso",RL:"rightLeg",RA:"rightArm"};
-
     const BASE = 12;
     let maxLen = BASE;
-    for (const c of cols) maxLen = Math.max(maxLen, (locs[map[c]] || []).length);
+    for (const c of cols) maxLen = Math.max(maxLen, (locs[map[c]]||[]).length);
 
-    for (let i = 1; i <= maxLen; i++) {
+    for (let i=1; i<=maxLen; i++){
       for (const c of cols) {
-        eq.insertAdjacentHTML("beforeend", `<div class="eqSlot">[${String(i).padStart(2, "0")}]</div>`);
-        const v = (locs[map[c]] || [])[i - 1] || "";
+        eq.insertAdjacentHTML("beforeend", `<div class="eqSlot">[${String(i).padStart(2,"0")}]</div>`);
+        const v = (locs[map[c]]||[])[i-1] || "";
         eq.insertAdjacentHTML("beforeend", `<div class="eqVal">${esc(v)}</div>`);
       }
     }
     eq.parentElement.parentElement.dataset.rows = String(maxLen);
   }
 
-  function movementString(mech) {
+  function movementString(mech){
     const mv = mech._mv || mech.movement || mech.move || {};
     const walk = mv.walk ?? mv.Walk ?? mv.w ?? null;
-    const run  = mv.run  ?? mv.Run  ?? mv.r ?? (walk != null ? Math.ceil(Number(walk) * 1.5) : null);
+    const run  = mv.run  ?? mv.Run  ?? mv.r ?? (walk!=null ? Math.ceil(Number(walk)*1.5) : null);
     const jump = mv.jump ?? mv.Jump ?? mv.j ?? null;
-    const fmt = (x) => (x == null ? "—" : String(x));
+    const fmt = x => (x==null ? "—" : String(x));
     return `${fmt(walk)} / ${fmt(run)} / ${fmt(jump)}`;
   }
 
-  function hsInfo(mech) {
+  function hsInfo(mech){
     if (mech?.sinks?.count != null) {
-      const cnt = num(mech.sinks.count, 0);
-      const dbl = /double/i.test(String(mech.sinks.type || ""));
-      return { type: dbl ? "Double" : "Single", count: cnt, cap: cnt * (dbl ? 2 : 1) };
+      const cnt = num(mech.sinks.count,0), dbl = /double/i.test(String(mech.sinks.type||""));
+      return { type: dbl ? "Double" : "Single", count: cnt, cap: cnt * (dbl?2:1) };
     }
     const s = String(mech?.heatSinks ?? "");
-    const m = s.match(/(\d+)/);
-    const cnt = m ? parseInt(m[1], 10) : null;
-    const dbl = /double/i.test(s);
-    return { type: cnt == null ? "—" : (dbl ? "Double" : "Single"), count: cnt ?? "—", cap: cnt == null ? "—" : cnt * (dbl ? 2 : 1) };
+    const m = s.match(/(\d+)/); const cnt = m ? parseInt(m[1],10) : null; const dbl = /double/i.test(s);
+    return { type: cnt==null ? "—" : (dbl?"Double":"Single"), count: cnt ?? "—", cap: cnt==null ? "—" : cnt*(dbl?2:1) };
   }
 
-  async function render(mech) {
+  async function render(mech){
     const host = ensureDOM();
     await ensureWeaponsLoaded();
 
@@ -458,10 +406,16 @@ function pipRow(label, count, cls){
 
     drawArmor(mech, host);
     drawWeapons(mech, host);
-    updatePipCols();
     drawEquipment(mech, host);
+
+    // layout pass for pips
+    updatePipCols();
   }
 
+  // expose
   API.update = (mech) => render(mech);
   window.TRS_SHEET = API;
+
+  // global listeners
+  window.addEventListener("resize", updatePipCols);
 })();
