@@ -304,8 +304,12 @@ function internalsVal(val){
   return parsePipCount(val);
 }
 
-  function updatePipCols(){
+  // --- visibility-safe layout ---------------------------------
+function updatePipCols(){
   document.querySelectorAll(".trs-pips").forEach((p) => {
+    // Skip while hidden (e.g., tab not active) — keep default.
+    if (!p.isConnected || p.offsetParent === null) return;
+
     const cs = getComputedStyle(p);
 
     // cell size in px
@@ -316,16 +320,42 @@ function internalsVal(val){
     // gap in px
     const gapX = parseFloat(cs.columnGap) || 0;
 
-    // available width (content box)
+    // available width
     const padL = parseFloat(cs.paddingLeft)  || 0;
     const padR = parseFloat(cs.paddingRight) || 0;
     const avail = Math.max(0, p.clientWidth - padL - padR);
 
-    // compute columns; cap to 10 like the CodePen
+    if (avail <= 0) return; // still not measurable; wait for observers
+
     const cols = Math.max(1, Math.min(10, Math.floor((avail + gapX) / (cellPx + gapX))));
     p.style.setProperty("--pip-cols", cols);
   });
 }
+
+// Re-run a few times after (re)render to catch async layout
+function schedulePipLayout(bursts = 3){
+  let i = 0;
+  const tick = () => { updatePipCols(); if (++i < bursts) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+
+// Observe visibility + size changes; create once and attach to all .trs-pips
+let __pipIO, __pipRO;
+function bindPipObservers(root = document){
+  if (!__pipIO) {
+    __pipIO = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) schedulePipLayout(2);
+    }, { threshold: 0 });
+  }
+  if (!__pipRO) {
+    __pipRO = new ResizeObserver(() => schedulePipLayout(1));
+  }
+  root.querySelectorAll(".trs-pips").forEach(el => {
+    __pipIO.observe(el);
+    __pipRO.observe(el);
+  });
+}
+
 
 
 function pipRow(label, count, cls){
@@ -496,6 +526,9 @@ if (code === "LT" || code === "CT" || code === "RT") {
     drawArmor(mech, host);
     drawWeapons(mech, host);
     drawEquipment(mech, host);
+    bindPipObservers(host);
+    schedulePipLayout(3);
+
 
     // layout pass for pips
     updatePipCols();
@@ -507,4 +540,5 @@ if (code === "LT" || code === "CT" || code === "RT") {
 
   // global listeners
   window.addEventListener("resize", updatePipCols);
+  window.addEventListener("trs:mechSelected", () => schedulePipLayout(3));
 })();
