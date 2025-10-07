@@ -142,16 +142,45 @@
 .eqSlot{ color:var(--muted); font-size:10px; text-align:right; padding-right:2px }
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
-/* Print */
+/* Print only the Sheet tab */
 @media print{
-  @page{size:11in 8.5in; margin:0.25in}
-  .sheet{max-width:none; margin:0}
-  .sheet__controls{display:none}
-  .card{border-color:#000}
-  .weapTable th,.weapTable td,.heatTable th,.heatTable td{border-color:#000;background:#fff;color:#000}
-  .trs-pip{border-color:#000}
-  .trs-pips{ --pip-cols: 10 !important; }
+  @page{ size:11in 8.5in; margin:0.25in }   /* landscape letter */
+
+  /* Hide the rest of the app */
+  body *{ visibility: hidden !important; }
+
+  /* Show only the sheet host */
+  #trs80-sheet-host,
+  #trs80-sheet-host *{ visibility: visible !important; }
+
+  /* Lay the sheet out on the page */
+  #trs80-sheet-host{
+    position: absolute !important;
+    inset: 0 !important;           /* pin to page box */
+    margin: 0 !important;
+    padding: 0.25in !important;    /* same as @page margin feel */
+    width: auto !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    background: #fff !important;   /* cleaner print background */
+  }
+
+  /* Your existing print cosmetics */
+  .sheet__controls{ display: none !important; }
+  .card{ border-color:#000 !important; }
+  .weapTable th,.weapTable td,
+  .heatTable th,.heatTable td{
+    border-color:#000 !important;
+    background:#fff !important;
+    color:#000 !important;
+  }
+  .trs-pip{ border-color:#000 !important; }
+  .trs-pips{ --pip-cols: 10 !important; }   /* fixed 10-col grid for print */
 }
+
+
+
       `;
       document.head.appendChild(s);
     }
@@ -161,9 +190,12 @@
       host.id = "trs80-sheet-host";
       host.className = "sheet";
       host.innerHTML = `
+
+     
 <header class="sheet__bar">
   <h1 class="sheet__title">Technical Readout Sheet</h1>
   <div class="sheet__controls">
+    <button id="trs80-sheet-png" title="Export this sheet as PNG">PNG</button>
     <button id="trs80-sheet-print" title="Print this sheet">Print</button>
   </div>
 </header>
@@ -304,6 +336,53 @@ function internalsVal(val){
   return parsePipCount(val);
 }
 
+// Lazy-load a script (UMD) – works for html2canvas
+function loadScript(src){
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.async = true; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+
+async function exportSheetPNG(){
+  const host = document.getElementById('trs80-sheet-host');
+  if (!host) return;
+
+  // load html2canvas on-demand
+  if (!window.html2canvas){
+    await loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js');
+  }
+
+  // background color for the PNG (from your theme vars)
+  const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#111';
+
+  // upscale a bit for readable printouts
+  const scale = Math.min(3, Math.ceil((window.devicePixelRatio || 1) * 2));
+
+  const canvas = await window.html2canvas(host, {
+    backgroundColor: bg,
+    scale,
+    windowWidth: host.scrollWidth,
+    windowHeight: host.scrollHeight,
+    removeContainer: true
+  });
+
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `TRS_Sheet_${Date.now()}.png`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }, 'image/png');
+}
+
+// Wire the PNG button
+document.getElementById('trs80-sheet-png')?.addEventListener('click', exportSheetPNG);
+
+
+  
   // --- visibility-safe layout ---------------------------------
 function updatePipCols(){
   document.querySelectorAll(".trs-pips").forEach((p) => {
