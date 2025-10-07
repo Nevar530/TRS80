@@ -449,7 +449,10 @@ function updatePipCols(){
     // available width
     const padL = parseFloat(cs.paddingLeft)  || 0;
     const padR = parseFloat(cs.paddingRight) || 0;
-    const avail = Math.max(0, p.clientWidth - padL - padR);
+    // NEW — measure the *visual* width (respects transform scale)
+const rect = p.getBoundingClientRect();
+const avail = Math.max(0, rect.width - padL - padR);
+
 
     if (avail <= 0) return; // still not measurable; wait for observers
 
