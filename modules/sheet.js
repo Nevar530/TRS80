@@ -95,6 +95,11 @@ window.addEventListener("resize", updatePipCols);
 .locHeader .roll{color:var(--muted); font-size:11px}
 .lrow{display:grid; grid-template-columns:50px 1fr; gap:6px; align-items:center}
 .lrow .lab{color:var(--muted); font-size:10px}
+/* force any legacy text pips to disappear; our div pips stay visible */
+.lrow .pips,
+.lrow .trs-pips{ font-size:0; line-height:0; }
+.lrow .pips > *,
+.lrow .trs-pips > *{ font-size:initial; line-height:initial; }
 
 /* Pips (fixed shapes) */
 
@@ -274,6 +279,16 @@ window.addEventListener("resize", updatePipCols);
   // ---------- UI helpers ----------
   // Auto-fit columns up to 10 per row (matches CodePen behavior)
 function updatePipCols(){
+  document.querySelectorAll(".pips").forEach((p) => {
+    const cs = getComputedStyle(p);
+    const gap = parseFloat(cs.columnGap) || 0;
+    const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
+    const cellNum = parseFloat(cellRaw);
+    const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum;
+    const width = p.clientWidth;
+    const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
+    p.style.setProperty("--pip-cols", cols);
+  });
   document.querySelectorAll(".trs-pips").forEach((p) => {
     const cs = getComputedStyle(p);
     const gap = parseFloat(cs.columnGap) || 0;
