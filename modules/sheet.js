@@ -98,23 +98,6 @@ window.addEventListener("resize", updatePipCols);
 
 /* Pips (fixed shapes) */
 
-.pips{
-  display:grid;
-  grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
-  grid-auto-rows: var(--pip-cell);
-  gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
-  justify-content:start; align-content:start;
-}
-.pip{
-  display:inline-block; box-sizing:border-box;
-  width:var(--pip-size); height:var(--pip-size);
-  border:1px solid #aab; background:transparent;
-}
-.pip.armor{ border-radius:50%; }               /* circle */
-.pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
-.pip.rear{ border-radius:2px; }                /* square */
-
-/* === TRS-only pips (namespaced) === */
 .trs-pips{
   display:grid;
   grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
@@ -169,8 +152,9 @@ window.addEventListener("resize", updatePipCols);
   .sheet__controls{display:none}
   .card{border-color:#000}
   .weapTable th,.weapTable td,.heatTable th,.heatTable td{border-color:#000;background:#fff;color:#000}
-  .pip{border-color:#000}
-  .pips{ --pip-cols: 10 !important; }
+  .trs-pip{border-color:#000}
+  .trs-pips{ --pip-cols: 10 !important; }
+
 }
       `;
       document.head.appendChild(s);
