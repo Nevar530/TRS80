@@ -143,82 +143,41 @@
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
 /* Print only the Sheet tab */
-@media print {
-  /* Force U.S. letter, landscape, minimal margins */
-  @page {
-    size: letter landscape;
-    margin: 0.25in;
-  }
+@media print{
+  @page{ size:11in 8.5in; margin:0.25in }   /* landscape letter */
 
-  /* Hide everything except the sheet */
-  body * {
-    visibility: hidden !important;
-  }
+  /* Hide the rest of the app */
+  body *{ visibility: hidden !important; }
+
+  /* Show only the sheet host */
   #trs80-sheet-host,
-  #trs80-sheet-host * {
-    visibility: visible !important;
-  }
+  #trs80-sheet-host *{ visibility: visible !important; }
 
-  /* Sheet positioning and scaling */
-  #trs80-sheet-host {
+  /* Lay the sheet out on the page */
+  #trs80-sheet-host{
     position: absolute !important;
-    inset: 0 !important;
-    margin: 0 auto !important;
-    padding: 0.25in !important;
-    width: 10.5in !important;
-    height: 8in !important;
-    background: #fff !important;
-    color: #000 !important;
+    inset: 0 !important;           /* pin to page box */
+    margin: 0 !important;
+    padding: 0.25in !important;    /* same as @page margin feel */
+    width: auto !important;
+    max-width: none !important;
     box-shadow: none !important;
-    border: none !important;
-    transform: scale(1) !important;
-    transform-origin: top left;
-    page-break-inside: avoid;
+    border: 0 !important;
+    background: #fff !important;   /* cleaner print background */
   }
 
-  /* Force black-and-white output */
-  #trs80-sheet-host, #trs80-sheet-host * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    color: #000 !important;
-    background: #fff !important;
+  /* Your existing print cosmetics */
+  .sheet__controls{ display: none !important; }
+  .card{ border-color:#000 !important; }
+  .weapTable th,.weapTable td,
+  .heatTable th,.heatTable td{
+    border-color:#000 !important;
+    background:#fff !important;
+    color:#000 !important;
   }
-
-  /* Clean up visuals */
-  .sheet__controls,
-  #btnPng,
-  select,
-  nav,
-  header:not(.sheet__bar) {
-    display: none !important;
-  }
-  .card, .panel, .grid, .armorMatrix {
-    box-shadow: none !important;
-    border-color: #000 !important;
-  }
-  .weapTable th, .weapTable td,
-  .heatTable th, .heatTable td {
-    border-color: #000 !important;
-    background: #fff !important;
-    color: #000 !important;
-  }
-  .trs-pip { border-color: #000 !important; }
+  .trs-pip{ border-color:#000 !important; }
+  .trs-pips{ --pip-cols: 10 !important; }   /* fixed 10-col grid for print */
 }
-
-.sheet-frame {
-  width: 100%;
-  aspect-ratio: 11 / 8.5;
-  overflow: auto;
-  background: var(--bg, #111);
-}
-#trs80-sheet-host {
-  transform: scale(var(--sheet-scale, 1));
-  transform-origin: top left;
-  width: 1100px;
-  height: 850px;
-}
-@media (max-width: 900px) { :root { --sheet-scale: 0.6; } }
-@media (max-width: 600px) { :root { --sheet-scale: 0.45; } }
 
 
 
@@ -313,14 +272,7 @@
   Catalyst Game Labs and the Catalyst Game Labs logo are trademarks of InMediaRes Productions, LLC. This sheet is not affiliated with, or endorsed by, those rights holders.
 </footer>
       `;
-      let frame = $("#trs80-sheet-frame");
-if (!frame) {
-  frame = document.createElement("div");
-  frame.id = "trs80-sheet-frame";
-  frame.className = "sheet-frame";
-  root.appendChild(frame);
-}
-frame.appendChild(host);
+      root.appendChild(host);
 
       // Heat table (30 → 1)
       const HEAT = {
@@ -449,10 +401,7 @@ function updatePipCols(){
     // available width
     const padL = parseFloat(cs.paddingLeft)  || 0;
     const padR = parseFloat(cs.paddingRight) || 0;
-    // NEW — measure the *visual* width (respects transform scale)
-const rect = p.getBoundingClientRect();
-const avail = Math.max(0, rect.width - padL - padR);
-
+    const avail = Math.max(0, p.clientWidth - padL - padR);
 
     if (avail <= 0) return; // still not measurable; wait for observers
 
