@@ -118,8 +118,7 @@
               <button class="tab is-active" role="tab" aria-selected="true"  data-swap="pane-overview">Overview</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-techreadout">Tech Readout</button>
               <button class="tab"           role="tab" aria-selected="false" data-swap="pane-gator">GATOR</button>
-              <button class="tab"           role="tab" aria-selected="false" data-swap="tab-weapons">Weapons</button>
-              <button class="tab" role="tab" aria-selected="false" data-swap="pane-sheet">Sheet</button>
+              <button class="tab"           role="tab" aria-selected="false" data-swap="pane-sheet">Sheet</button>
             </div>
           </div>
 
@@ -280,14 +279,16 @@
                   <div id="tr-deployment-wrap"   hidden><strong>Deployment</strong><div class="mt6" id="tr-deployment"></div></div>
                   <div id="tr-history-wrap"      hidden><strong>History</strong><div class="mt6" id="tr-history"></div></div>
                 </section>
+
+                <section id="pane-image" class="gtr-pane" role="tabpanel" aria-labelledby="Image">
+                  <div id="image-panel" class="card" style="padding:10px;">
+                      <!-- images.js will render inside here -->
+                  </div>
+                </section>
               </div>
             </section>
 
-<section id="pane-image" class="gtr-pane" role="tabpanel" aria-labelledby="Image">
-  <div id="image-panel" class="card" style="padding:10px;">
-    <!-- images.js will render inside here -->
-  </div>
-</section>
+
 
             
             <!-- GATOR -->
