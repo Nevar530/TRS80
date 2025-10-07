@@ -875,6 +875,9 @@ setHeat(0, cap | 0);
     updateOverview();
     fillTechReadout();
     window.Images?.setChassis(state.mech?.displayName || state.mech?.name || '');
+    window.TRS_SHEET && window.TRS_SHEET.update(state.mech);
+window.dispatchEvent(new CustomEvent('trs:mechSelected', { detail: { mech: state.mech } }));
+
     showToast(`${mech?.displayName || mech?.name || 'Mech'} loaded`);
   } catch (err) {
     console.error(err);
@@ -897,11 +900,16 @@ function importJson() {
         setHeat(state.heat.current|0, state.heat.capacity|0);
         updateOverview(); fillTechReadout();
         window.Images?.setChassis(state.mech?.displayName || state.mech?.name || '');
+        window.TRS_SHEET && window.TRS_SHEET.update(state.mech);
+window.dispatchEvent(new CustomEvent('trs:mechSelected', { detail: { mech: state.mech } }));
       } else {
         state.mech = ensureBV(ensureInternals(normalizeMech(data) || data));
         window.DEBUG_MECH = state.mech;
        setHeat(0, getHeatCapacityFor(state.mech) | 0);
         setHeat(0, cap|0); updateOverview(); fillTechReadout();
+        window.TRS_SHEET && window.TRS_SHEET.update(state.mech);
+window.dispatchEvent(new CustomEvent('trs:mechSelected', { detail: { mech: state.mech } }));
+
       }
       showToast('JSON imported');
     } catch (e) { console.error(e); showToast('Import failed'); }
