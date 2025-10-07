@@ -105,10 +105,10 @@
   border:1px solid #aab; background:transparent;
 }
 
-/* shapes */
-.trs-pip.armor{ border-radius:50%; }                         /* circle */
-.trs-pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
-.trs-pip.rear{ border-radius:2px; }                          /* square */
+/* shapes – namespaced to avoid collisions with .armor section etc. */
+.trs-pip.pip-armor   { border-radius:50%; transform:none; }
+.trs-pip.pip-internal{ border-radius:2px; transform:rotate(45deg); }
+.trs-pip.pip-rear    { border-radius:2px; transform:none; }
 
 
 /* Heat */
@@ -328,17 +328,17 @@ function internalsVal(val){
 }
 
 
-  function pipRow(label, count, cls){
-    const r = document.createElement("div");
-    r.className = "lrow";
-    const cells = parsePipCount(count);
-    const safeCls = cls ? String(cls).trim() : "";
-    const pipHTML = `<div class="trs-pip${safeCls ? " " + safeCls : ""}"></div>`;
-    r.innerHTML =
-      `<div class="lab">${label}</div>` +
-      `<div class="trs-pips" data-count="${cells}">${cells>0 ? pipHTML.repeat(cells) : ""}</div>`;
-    return r;
-  }
+function pipRow(label, count, cls){
+  const r = document.createElement("div");
+  r.className = "lrow";
+  const cells = parsePipCount(count);
+  const safeCls = cls ? String(cls).trim() : "";
+  const pipHTML = `<div class="trs-pip${safeCls ? " " + safeCls : ""}"></div>`;
+  r.innerHTML =
+    `<div class="lab">${label}</div>` +
+    `<div class="trs-pips" data-count="${cells}">${cells>0 ? pipHTML.repeat(cells) : ""}</div>`;
+  return r;
+}
 
   // --- drawArmor (REPLACE the whole function) ---
 function drawArmor(mech, host){
@@ -392,11 +392,11 @@ function drawArmor(mech, host){
     box.className = "loc";
     box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code]||"[—]"}</div></div>`;
 
-    box.appendChild(pipRow("ARMOR",    front[code] || 0, "armor"));
-    box.appendChild(pipRow("INTERNAL", internals[code] || 0, "internal"));
-    if (code === "LT" || code === "CT" || code === "RT") {
-      box.appendChild(pipRow("REAR", rear[code] || 0, "rear"));
-    }
+box.appendChild(pipRow("ARMOR",    front[code] || 0, "pip-armor"));
+box.appendChild(pipRow("INTERNAL", internals[code] || 0, "pip-internal"));
+if (code === "LT" || code === "CT" || code === "RT") {
+  box.appendChild(pipRow("REAR", rear[code] || 0, "pip-rear"));
+}
     grid.appendChild(box);
   }
 }
