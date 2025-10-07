@@ -51,7 +51,7 @@
 :root{
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
-  --pip-size:0.09in; --pip-cell:0.12in; --pip-gap:0.01in;
+  --pip-cell:0.12in; --pip-gap:0.01in; /* cell is the grid unit; pips fill the cell */
 }
 .sheet{font-family:var(--font); color:var(--ink); max-width:1500px; margin:12px auto; padding:0 8px}
 .sheet__bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
@@ -93,14 +93,14 @@
   grid-auto-rows: var(--pip-cell);
   gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
   justify-content:start; align-content:start;
-  font-size:0; line-height:0;   /* nuke stray text from global styles */
+  font-size:0; line-height:0;
 }
 .trs-pip{
-  display:inline-block; box-sizing:border-box;
-  width:var(--pip-size); height:var(--pip-size);
+  display:block; box-sizing:border-box;
+  width:100%; height:100%;
   border:1px solid #aab; background:transparent;
-  font-size:initial; line-height:initial;
 }
+/* shapes */
 .trs-pip.armor{ border-radius:50%; }                        /* circle */
 .trs-pip.internal{ border-radius:2px; transform:rotate(45deg); } /* diamond */
 .trs-pip.rear{ border-radius:2px; }                         /* square */
@@ -262,13 +262,21 @@
   }
 
   // ---------- Helpers ----------
+  // tolerate "10", "10/16", "12 (max 20)", etc.
+  function parsePipCount(raw){
+    if (typeof raw === "number") return Math.max(0, raw|0);
+    if (raw == null) return 0;
+    const m = String(raw).match(/\d+/);
+    return m ? Math.max(0, parseInt(m[0],10)) : 0;
+  }
+
   function updatePipCols(){
     document.querySelectorAll(".trs-pips").forEach((p) => {
       const cs = getComputedStyle(p);
       const gap = parseFloat(cs.columnGap) || 0;
       const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
       const cellNum = parseFloat(cellRaw);
-      const cellPx = cellRaw.endsWith("in") ? cellNum * 96 : cellNum; // assume 96dpi
+      const cellPx = /in$/.test(cellRaw) ? cellNum * 96 : cellNum; // assume 96dpi
       const width = p.clientWidth;
       const cols = Math.max(1, Math.min(10, Math.floor((width + gap) / (cellPx + gap))));
       p.style.setProperty("--pip-cols", cols);
@@ -278,10 +286,12 @@
   function pipRow(label, count, cls){
     const r = document.createElement("div");
     r.className = "lrow";
-    const cells = Math.max(0, Number(count) || 0);
+    const cells = parsePipCount(count);
+    const safeCls = cls ? String(cls).trim() : "";
+    const pipHTML = `<div class="trs-pip${safeCls ? " " + safeCls : ""}"></div>`;
     r.innerHTML =
       `<div class="lab">${label}</div>` +
-      `<div class="trs-pips">${"<div class='trs-pip "+cls+"'></div>".repeat(cells)}</div>`;
+      `<div class="trs-pips" data-count="${cells}">${cells>0 ? pipHTML.repeat(cells) : ""}</div>`;
     return r;
   }
 
@@ -291,12 +301,13 @@
     const order = ["LA","HD","CT","RA","LL","LT","RT","RL"];
     const A = mech.armor || {};
     const front = {
-      LA:num(A.leftArm,0), HD:num(A.head,0), CT:num(A.centerTorso,0), RA:num(A.rightArm,0),
-      LL:num(A.leftLeg,0), LT:num(A.leftTorso,0), RT:num(A.rightTorso,0), RL:num(A.rightLeg,0)
+      LA:num(A.leftArm,0),    HD:num(A.head,0),         CT:num(A.centerTorso,0), RA:num(A.rightArm,0),
+      LL:num(A.leftLeg,0),    LT:num(A.leftTorso,0),    RT:num(A.rightTorso,0),  RL:num(A.rightLeg,0)
     };
     const rear = {
       LT:num(A.rearLeftTorso,0), CT:num(A.rearCenterTorso,0), RT:num(A.rearRightTorso,0)
     };
+    // LT is [06] (your correction), CT carries [02/07]
     const ROLL = { LA:"[04-05]", HD:"[12]", RA:"[09-10]", LL:"[03]", LT:"[06]", CT:"[02/07]", RT:"[08]", RL:"[11]" };
     const INTERNALS = {HD:3, CT:11, LT:8, RT:8, LA:5, RA:5, LL:7, RL:7};
 
