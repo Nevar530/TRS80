@@ -195,7 +195,6 @@
 <header class="sheet__bar">
   <h1 class="sheet__title">Technical Readout Sheet</h1>
   <div class="sheet__controls">
-    <button id="trs80-sheet-png" title="Export this sheet as PNG">PNG</button>
     <button id="trs80-sheet-print" title="Print this sheet">Print</button>
   </div>
 </header>
