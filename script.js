@@ -1838,6 +1838,9 @@ function init(){
   };
   App.openMech = (idOrSource) => loadMechFromUrl(idOrSource);
   App.getManifest = () => state.manifest;
+    // expose weapon catalog lookup for the Sheet
+  App.lookupWeapon = (name) => getWeaponRefByName(name);
+
 App.applyOwnedFilter = (on) => {
   filterState.ownedOnly = !!on;
   applyFilters();   // reuse the same filter logic as the modal
