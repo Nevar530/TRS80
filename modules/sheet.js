@@ -179,7 +179,39 @@
   .trs-pips{ --pip-cols: 10 !important; }   /* fixed 10-col grid for print */
 }
 
+/* ===== Mobile scaling: shrink pips + text, keep layout intact ===== */
 
+/* Tablet-ish */
+@media (max-width: 900px) {
+  :root{
+    /* smaller circles & gaps */
+    --pip-cell: 0.10in;
+    --pip-gap:  0.008in;
+  }
+
+  /* nudge global text a bit smaller */
+  .sheet { font-size: 14px; }                 /* base */
+  .grid2 { font-size: 11px; }                 /* pilot panel */
+  .weapTable, .heatTable { font-size: 11px; } /* tables */
+  .weapTable th, .weapTable td,
+  .heatTable th, .heatTable td { padding: 2px 3px; }
+  .card h2 { font-size: 0.95rem; }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  :root{
+    --pip-cell: 0.08in;
+    --pip-gap:  0.006in;
+  }
+
+  .sheet { font-size: 12px; }
+  .grid2 { font-size: 10px; }
+  .weapTable, .heatTable { font-size: 10px; }
+  .weapTable th, .weapTable td,
+  .heatTable th, .heatTable td { padding: 2px; }
+  .card h2 { font-size: 0.9rem; }
+}
 
       `;
       document.head.appendChild(s);
