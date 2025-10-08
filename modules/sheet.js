@@ -145,12 +145,12 @@
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
 
-/* Tablet (<= 900px): 3 columns x 3 rows (last cell empty) */
-@media (max-width: 900px) {
+/* Tablet (<= 900px): 3 columns x 3 rows (last cell empty) — SCREEN ONLY */
+@media screen and (max-width: 900px) {
   :root{
     --pip-cell: 0.085in;
     --pip-gap:  0.007in;
-    --loc-cols: 3; /* NEW */
+    --loc-cols: 3;
   }
   .armorMatrix { gap: 6px; }
   .loc { padding: 5px; gap: 3px; }
@@ -160,12 +160,12 @@
   .lrow .lab { font-size: 9px; }
 }
 
-/* Small tablet / large phone (<= 700px): keep 3x3 */
-@media (max-width: 700px) {
+/* Small tablet / large phone (<= 700px): keep 3x3 — SCREEN ONLY */
+@media screen and (max-width: 700px) {
   :root{
     --pip-cell: 0.075in;
     --pip-gap:  0.006in;
-    --loc-cols: 3; /* NEW (still 3 wide here) */
+    --loc-cols: 3;
   }
   .armorMatrix { gap: 5px; }
   .loc { padding: 4px; gap: 2px; }
@@ -175,48 +175,65 @@
   .lrow .lab { font-size: 8px; }
 }
 
-/* Phone (<= 600px): 2 columns x 4 rows */
-@media (max-width: 600px) {
+/* Phone (<= 600px): 2 columns x 4 rows — SCREEN ONLY */
+@media screen and (max-width: 600px) {
   :root{
-    --pip-cell: 0.065in;
-    --pip-gap:  0.005in;
-    --loc-cols: 2; /* NEW */
+    --pip-cell: 0.060in;  /* slightly smaller so pips fit */
+    --pip-gap:  0.0045in;
+    --loc-cols: 2;
   }
   .armorMatrix { gap: 4px; }
   .loc { padding: 3px; gap: 2px; }
   .locHeader .name { font-size: 11px; }
   .locHeader .roll { font-size: 8px; }
-  .lrow { grid-template-columns: 35px 1fr; gap: 3px; }
+  .lrow { grid-template-columns: 34px 1fr; gap: 3px; }
   .lrow .lab { font-size: 7px; }
 }
 
+/* PRINT: layout to full page width, then rotate/scale if needed */
+@media print {
+  @page { size: Letter landscape; margin: 0.25in; }
 
+  html, body { width: 100%; height: 100%; }
 
-/* Print only the Sheet tab */
-@media print{
-  @page{ size:11in 8.5in; margin:0.25in }   /* landscape letter */
-
-  /* Hide the rest of the app */
-  body *{ visibility: hidden !important; }
-
-  /* Show only the sheet host */
+  /* Show only the sheet */
+  body * { visibility: hidden !important; }
   #trs80-sheet-host,
-  #trs80-sheet-host *{ visibility: visible !important; }
+  #trs80-sheet-host * { visibility: visible !important; }
 
-  /* Lay the sheet out on the page */
+  /* Lock core vars so screen breakpoints don't leak */
+  :root{
+    --loc-cols: 4 !important;     /* 4x2 armor grid */
+    --pip-cell: 0.10in !important;
+    --pip-gap:  0.008in !important;
+  }
+  .trs-pips { --pip-cols: 10 !important; }
+
+  /* Make the sheet compute layout at full width BEFORE scaling */
+  .sheet { max-width: none !important; } /* remove any cap */
   #trs80-sheet-host{
-    position: absolute !important;
-    inset: 0 !important;           /* pin to page box */
+    /* JS sets --print-base-width to the long edge so layout is wide first */
+    width: var(--print-base-width, auto) !important;
+
+    /* Center + transform */
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
     margin: 0 !important;
-    padding: 0.25in !important;    /* same as @page margin feel */
-    width: auto !important;
+    padding: 0 !important;
     max-width: none !important;
+    height: auto !important;
     box-shadow: none !important;
     border: 0 !important;
-    background: #fff !important;   /* cleaner print background */
+    background: #fff !important;
+    transform-origin: center center !important;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--print-rot, 0deg))
+      scale(var(--print-scale, 1)) !important;
   }
 
-  /* Your existing print cosmetics */
+  /* Print cosmetics */
   .sheet__controls{ display: none !important; }
   .card{ border-color:#000 !important; }
   .weapTable th,.weapTable td,
@@ -226,9 +243,7 @@
     color:#000 !important;
   }
   .trs-pip{ border-color:#000 !important; }
-  .trs-pips{ --pip-cols: 10 !important; }   /* fixed 10-col grid for print */
 }
-
 
 
       `;
@@ -338,16 +353,110 @@
         tr.innerHTML = `<td>[${String(h).padStart(2,"0")}]</td><td>${HEAT[h] || "—"}</td>`;
         heatBody.appendChild(tr);
       }
-
-      // Print
-      $("#trs80-sheet-print")?.addEventListener("click", () => {
-        requestAnimationFrame(() => window.print());
-      });
     }
 
     return $("#trs80-sheet-host");
   }
 
+  // ---- Fit-to-page scaling for print (force full-width layout, auto-rotate) ----
+  (function () {
+    const DPI = 96;
+    const MARGIN_IN = 0.25; // keep in sync with @page margin
+
+    function pageBox() {
+      // Prefer print/viewport orientation signal; fallback to viewport heuristic
+      let isLandscape = false;
+      try { isLandscape = matchMedia('(orientation: landscape)').matches; } catch {}
+      if (!isLandscape && typeof innerWidth === 'number') isLandscape = innerWidth >= innerHeight;
+
+      const pageWIn = isLandscape ? 11 : 8.5; // US Letter
+      const pageHIn = isLandscape ?  8.5 : 11;
+
+      return {
+        wPx: pageWIn * DPI - 2 * MARGIN_IN * DPI,
+        hPx: pageHIn * DPI - 2 * MARGIN_IN * DPI,
+        // also expose the opposite side (long edge) so we can force a wide layout
+        longPx: Math.max(11, 8.5) * DPI - 2 * MARGIN_IN * DPI,
+        isLandscape
+      };
+    }
+
+    function fitForPrint() {
+      const host = document.getElementById('trs80-sheet-host');
+      if (!host) return;
+
+      // reset vars
+      host.style.removeProperty('--print-scale');
+      host.style.removeProperty('--print-rot');
+      host.style.removeProperty('--print-base-width');
+
+      const { wPx: PAGE_W, hPx: PAGE_H, longPx, isLandscape } = pageBox();
+
+      // **Force a wide reflow before measuring** so content isn't stuck in portrait proportions.
+      // We set a CSS var that the print CSS uses as width for the host.
+      host.style.setProperty('--print-base-width', `${longPx}px`);
+
+      // Force a synchronous reflow so width takes effect before we measure.
+      // (Reading layout does that.)
+      void host.getBoundingClientRect();
+
+      // Now measure unscaled content after reflow
+      const cw = Math.max(host.scrollWidth, host.offsetWidth);
+      const ch = Math.max(host.scrollHeight, host.offsetHeight);
+
+      // If the page is portrait, rotate; otherwise keep as-is.
+      const rotDeg = isLandscape ? 0 : 90;
+
+      // When rotating, swap for fit math.
+      const fitW = rotDeg ? ch : cw;
+      const fitH = rotDeg ? cw : ch;
+
+      const scale = Math.min(PAGE_W / fitW, PAGE_H / fitH);
+
+      host.style.setProperty('--print-rot', `${rotDeg}deg`);
+      host.style.setProperty('--print-scale', `${scale}`);
+    }
+
+    // Hooks
+    if ('onbeforeprint' in window) {
+      window.addEventListener('beforeprint', fitForPrint);
+      window.addEventListener('afterprint', () => {
+        const host = document.getElementById('trs80-sheet-host');
+        if (host) {
+          host.style.removeProperty('--print-scale');
+          host.style.removeProperty('--print-rot');
+          host.style.removeProperty('--print-base-width');
+        }
+      });
+    } else {
+      // Safari fallback
+      const mql = matchMedia('print');
+      const onChange = (e) => {
+        if (e.matches) fitForPrint();
+        else {
+          const host = document.getElementById('trs80-sheet-host');
+          host?.style.removeProperty('--print-scale');
+          host?.style.removeProperty('--print-rot');
+          host?.style.removeProperty('--print-base-width');
+        }
+      };
+      if (mql.addEventListener) mql.addEventListener('change', onChange);
+      else mql.addListener(onChange);
+    }
+
+    // Delegated click so timing doesn't matter
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && (t.id === 'trs80-sheet-print' || t.closest?.('#trs80-sheet-print'))) {
+        fitForPrint();
+        requestAnimationFrame(() => window.print());
+      }
+    });
+  })();
+
+
+
+    
   // ---------- Helpers ----------
   // tolerate "10", "10/16", "12 (max 20)", etc.
   // --- helpers (add/replace) ---
