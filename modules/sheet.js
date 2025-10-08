@@ -142,24 +142,6 @@
 .eqSlot{ color:var(--muted); font-size:10px; text-align:right; padding-right:2px }
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
-/* ===== Mobile scaling: shrink pips + text, keep layout intact ===== */
-
-/* Tablet-ish */
-@media (max-width: 900px) {
-  :root{
-    /* smaller circles & gaps */
-    --pip-cell: 0.10in;
-    --pip-gap:  0.008in;
-  }
-
-  /* nudge global text a bit smaller */
-  .sheet { font-size: 14px; }                 /* base */
-  .grid2 { font-size: 11px; }                 /* pilot panel */
-  .weapTable, .heatTable { font-size: 11px; } /* tables */
-  .weapTable th, .weapTable td,
-  .heatTable th, .heatTable td { padding: 2px 3px; }
-  .card h2 { font-size: 0.95rem; }
-}
 
 /* Phone */
 @media (max-width: 600px) {
