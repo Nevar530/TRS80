@@ -51,7 +51,8 @@
 :root{
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
-  --pip-cell:0.12in; --pip-gap:0.01in; /* cell is the grid unit; pips fill the cell */
+  --pip-cell:0.10in; --pip-gap:0.008in;
+  --loc-cols: 4; /* NEW: armor grid columns, desktop = 4x2 */
 }
 .sheet{font-family:var(--font); color:var(--ink); max-width:1500px; margin:12px auto; padding:0 8px}
 .sheet__bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
@@ -66,7 +67,7 @@
 
 .card{background:var(--pane); border:1px solid var(--line); padding:10px; min-width:0; min-height:0; display:flex; flex-direction:column}
 .pilot{grid-area:pilot}
-.armor{grid-area:armor}
+.armor{grid-area:armor; overflow:auto}
 .heat{grid-area:heat}
 .weapons{grid-area:weapons}
 .equipment{grid-area:equipment}
@@ -78,13 +79,14 @@
 .hints{margin-top:6px; display:flex; gap:14px; font-size:11px; color:var(--muted)}
 
 /* Armor matrix */
-.armorMatrix{display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:1fr 1fr; gap:8px; min-height:0}
-.loc{border:1px solid var(--line); padding:6px; background:#0b0b0b; display:flex; flex-direction:column; gap:4px}
-.locHeader{display:flex; justify-content:space-between; align-items:center}
-.locHeader .name{font-weight:600}
-.locHeader .roll{color:var(--muted); font-size:11px}
-.lrow{display:grid; grid-template-columns:50px 1fr; gap:6px; align-items:center}
-.lrow .lab{color:var(--muted); font-size:10px}
+.armorMatrix{
+  display:grid;
+  grid-template-columns: repeat(var(--loc-cols), minmax(0,1fr));
+  grid-auto-rows: 1fr;          /* make all boxes even height */
+  grid-auto-flow: row dense;    /* pack cleanly when rows/cols change */
+  gap:8px;
+  min-height:0;
+}
 
 /* TRS pips (scoped, collision-proof) */
 .trs-pips{
@@ -143,19 +145,37 @@
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
 
-/* Phone */
+/* Tablet (<= 900px): 3 columns x 3 rows (last cell empty) */
+@media (max-width: 900px) {
+  :root{
+    --pip-cell: 0.085in;
+    --pip-gap:  0.007in;
+    --loc-cols: 3; /* NEW */
+  }
+  .armorMatrix { gap: 6px; }
+  /* ...rest of your existing rules... */
+}
+
+/* Small tablet / large phone (<= 700px): keep 3x3 */
+@media (max-width: 700px) {
+  :root{
+    --pip-cell: 0.075in;
+    --pip-gap:  0.006in;
+    --loc-cols: 3; /* NEW (still 3 wide here) */
+  }
+  .armorMatrix { gap: 5px; }
+  /* ...rest of your existing rules... */
+}
+
+/* Phone (<= 600px): 2 columns x 4 rows */
 @media (max-width: 600px) {
   :root{
-    --pip-cell: 0.08in;
-    --pip-gap:  0.006in;
+    --pip-cell: 0.065in;
+    --pip-gap:  0.005in;
+    --loc-cols: 2; /* NEW */
   }
-
-  .sheet { font-size: 12px; }
-  .grid2 { font-size: 10px; }
-  .weapTable, .heatTable { font-size: 10px; }
-  .weapTable th, .weapTable td,
-  .heatTable th, .heatTable td { padding: 2px; }
-  .card h2 { font-size: 0.9rem; }
+  .armorMatrix { gap: 4px; }
+  /* ...rest of your existing rules... */
 }
 
 
@@ -423,7 +443,7 @@ function updatePipCols(){
 
     if (avail <= 0) return; // still not measurable; wait for observers
 
-    const cols = Math.max(1, Math.min(10, Math.floor((avail + gapX) / (cellPx + gapX))));
+    const cols = Math.max(5, Math.min(10, Math.floor((avail + gapX) / (cellPx + gapX))));
     p.style.setProperty("--pip-cols", cols);
   });
 }
