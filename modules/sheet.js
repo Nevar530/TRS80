@@ -35,14 +35,22 @@
 
   // ---------------------- DOM + Styles ----------------------
   function ensureStyle() {
-    if ($("#trs80-sheet-style")) return;
+    document.querySelectorAll('#trs80-sheet-style').forEach(n => n.remove());
     const s = document.createElement("style");
     s.id = "trs80-sheet-style";
     s.textContent = `
 :root{
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
-  --pip-cell:0.10in; --pip-gap:0.008in;
+
+  /* SCREEN pip behavior */
+  --pip-gap: 0.008in;
+  --pip-cell-max: 0.10in;    /* normal size */
+  --pip-cell-min: 0.065in;   /* min when space is tiny */
+  --pip-cell: var(--pip-cell-max);
+  --pip-cols-min: 5;         /* never show fewer than 5 */
+  --pip-cols-max: 40;        /* allow very wide rows */
+
   --loc-cols: 4;
 }
 .sheet{font-family:var(--font); color:var(--ink); max-width:1500px; margin:12px auto; padding:0 8px}
@@ -82,12 +90,11 @@
 /* TRS pips */
 .trs-pips{
   display:grid;
-  grid-template-columns: repeat(var(--pip-cols, 10), var(--pip-cell));
+  grid-template-columns: repeat(var(--pip-cols, var(--pip-cols-max)), var(--pip-cell));
   grid-auto-rows: var(--pip-cell);
-  gap: calc(var(--pip-gap, 0.01in) * 0.5) var(--pip-gap, 0.01in);
+  gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
   justify-content:start; align-content:start;
-  font-size:0; line-height:0;
-  padding:0;
+  font-size:0; line-height:0; padding:0;
 }
 .trs-pip{ display:block; box-sizing:border-box; width:100%; height:100%; aspect-ratio:1/1; border:1px solid #aab; background:transparent; }
 .trs-pip.pip-armor   { border-radius:50%; }
@@ -127,49 +134,40 @@
 
 /* SCREEN FIT */
 @media screen {
-#trs80-screenfit{
-  display:grid; place-content:start center;
-  width: 100%;                     /* full row width by default */
-  height: var(--screen-fit-h, auto);
-  margin: 0 auto;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-#trs80-sheet-host{
-  transform-origin: top left;
-  transform: scale(var(--screen-scale, 1));
-}
-}
-
-/* PRINT: show only the sheet; auto-rotate + scale-to-fit Letter */
-@media print{
-  @page { size: 11in 8.5in; margin: 0.25in; }
-
-  body *{ visibility: hidden !important; }
-  #trs80-sheet-host,
-  #trs80-sheet-host *{ visibility: visible !important; }
-
-  .sheet{ max-width:none !important; }
+  #trs80-screenfit{
+    display:grid; place-content:start center;
+    width: 100%;
+    height: var(--screen-fit-h, auto);
+    margin: 0 auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   #trs80-sheet-host{
-    z-index:2147483647 !important;
-    width: var(--print-base-width, auto) !important;
-    position: fixed !important; left: 50% !important; top: 50% !important;
-    margin: 0 !important; padding: 0 !important;
-    max-width: none !important; height: auto !important;
-    box-shadow: none !important; border: 0 !important; background:#fff !important;
-    transform-origin: center center !important;
-    transform:
-      translate(-50%,-50%)
-      rotate(var(--print-rot, 0deg))
-      scale(var(--print-scale, 1)) !important;
+    transform-origin: top left;
+    transform: scale(var(--screen-scale, 1));
+  }
+}
+
+/* PRINT (independent of screen) */
+@media print{
+  @page { margin: 0.25in; }
+
+  /* hide everything except the sheet */
+  body *{ visibility: hidden !important; }
+  #trs80-sheet-host, #trs80-sheet-host *{ visibility: visible !important; }
+
+  /* paper tuning */
+  :root{
+    --pip-gap: 0.006in;
+    --pip-cell-max: 0.095in;
+    --pip-cell-min: 0.070in;
+    --pip-cell: var(--pip-cell-max);
+    --pip-cols-min: 5;
+    --pip-cols-max: 48; /* let rows go very wide on paper */
   }
 
-  .sheet__controls{ display:none !important; }
-  .card{ border-color:#000 !important; }
-  .weapTable th,.weapTable td,
-  .heatTable th,.heatTable td{ border-color:#000 !important; background:#fff !important; color:#000 !important; }
-  .trs-pip{ border-color:#000 !important; }
-  .trs-pips{ --pip-cols: 10 !important; }
+  .sheet{ max-width:none !important; background:#fff !important; }
+  /* host is positioned/scaled by JS before print; don't override here */
 }
 `;
     document.head.appendChild(s);
@@ -301,167 +299,50 @@
     return { wrap, host };
   }
 
-  // ---------------------- Screen fit ----------------------
-  let screenRaf = 0;
-  function fitToViewport(){
-    const { wrap, host } = ensureWrapper();
-    if (!host || !wrap) return;
-
-    // Clear prior values
-    host.style.removeProperty('--screen-scale');
-    wrap.style.removeProperty('--screen-fit-w');
-    wrap.style.removeProperty('--screen-fit-h');
-
-    // Bail if the tab is hidden (we'll refit when it shows)
-    if (host.offsetParent === null && !matchMedia('print').matches) return;
-
-    // Natural (unscaled) size
-    const baseW = Math.max(host.scrollWidth, host.offsetWidth);
-    const baseH = Math.max(host.scrollHeight, host.offsetHeight);
-    if (baseW < 10 || baseH < 10) return;
-
-    // Available row width + viewport height
-    const rect = wrap.parentElement?.getBoundingClientRect?.() || { width: window.innerWidth };
-    const SAFE = 12;
-    const availW = Math.max(0, rect.width  - SAFE*2);
-    const availH = Math.max(0, window.innerHeight - SAFE*2);
-
-    // Desktop: width-fit only (allow vertical scroll). Mobile: fit both.
-    const isDesktop = rect.width >= 1024;
-    const scaleW = availW / baseW;
-    const scaleH = availH / baseH;
-    let scale = isDesktop ? scaleW : Math.min(scaleW, scaleH);
-
-    // Never upscale; clamp to a sensible minimum
-    scale = Math.max(0.5, Math.min(1, scale));
-
-    if (scale >= 0.999) {
-      // Natural size—let wrapper stretch to row width
-      host.style.removeProperty('--screen-scale');
-      wrap.style.removeProperty('--screen-fit-w');
-      wrap.style.removeProperty('--screen-fit-h');
-    } else {
-      const scaledW = Math.max(1, Math.round(baseW * scale));
-      const scaledH = Math.max(1, Math.round(baseH * scale));
-      host.style.setProperty('--screen-scale', String(scale));
-      wrap.style.setProperty('--screen-fit-w', `${scaledW}px`);
-      wrap.style.setProperty('--screen-fit-h', `${scaledH}px`);
-    }
-  }
-  function onViewportResize(){
-    if (screenRaf) cancelAnimationFrame(screenRaf);
-    screenRaf = requestAnimationFrame(() => { screenRaf = 0; fitToViewport(); });
-  }
-
-
-  // ---------------------- Print fit ----------------------
-  (function installPrintHooks(){
-    const DPI = 96;
-    const MARGIN_IN = 0.25;
-
-    function pageBox() {
-      let isLandscape = false;
-      try { isLandscape = matchMedia('(orientation: landscape)').matches; } catch {}
-      if (!isLandscape && typeof innerWidth === 'number') isLandscape = innerWidth >= innerHeight;
-      const pageWIn = isLandscape ? 11 : 8.5;
-      const pageHIn = isLandscape ?  8.5 : 11;
-      return {
-        wPx: pageWIn * DPI - 2 * MARGIN_IN * DPI,
-        hPx: pageHIn * DPI - 2 * MARGIN_IN * DPI,
-        longPx: 11 * DPI - 2 * MARGIN_IN * DPI,
-        isLandscape
-      };
-    }
-
-    function fitForPrint() {
-      const { host } = ensureWrapper();
-      host.style.removeProperty('--print-scale');
-      host.style.removeProperty('--print-rot');
-      host.style.removeProperty('--print-base-width');
-
-      const { wPx: PAGE_W, hPx: PAGE_H, longPx, isLandscape } = pageBox();
-
-      // Refit when the host actually enters the viewport (e.g., tab becomes visible)
-      let __hostIO;
-      function bindHostVisibilityObserver(){
-        const host = document.getElementById('trs80-sheet-host');
-        if (!host || __hostIO) return;
-        __hostIO = new IntersectionObserver((entries) => {
-          if (entries.some(e => e.isIntersecting)) fitToViewport();
-        }, { threshold: 0 });
-        __hostIO.observe(host);
-      }
-      // call once during init:
-      bindHostVisibilityObserver();
-
-      
-      // force wide layout before measuring
-      host.style.setProperty('--print-base-width', `${longPx}px`);
-      void host.getBoundingClientRect(); // reflow
-
-      const cw = Math.max(host.scrollWidth, host.offsetWidth);
-      const ch = Math.max(host.scrollHeight, host.offsetHeight);
-      const rotDeg = isLandscape ? 0 : 90;
-      const fitW = rotDeg ? ch : cw;
-      const fitH = rotDeg ? cw : ch;
-      const scale = Math.min(PAGE_W / fitW, PAGE_H / fitH);
-
-      host.style.setProperty('--print-rot', `${rotDeg}deg`);
-      host.style.setProperty('--print-scale', `${scale}`);
-    }
-
-    if ('onbeforeprint' in window) {
-      window.addEventListener('beforeprint', fitForPrint);
-      window.addEventListener('afterprint', () => {
-        const host = $("#trs80-sheet-host");
-        if (!host) return;
-        host.style.removeProperty('--print-scale');
-        host.style.removeProperty('--print-rot');
-        host.style.removeProperty('--print-base-width');
-      });
-    } else {
-      const mql = matchMedia('print');
-      const onChange = (e) => e.matches ? fitForPrint() : (() => {
-        const host = $("#trs80-sheet-host");
-        if (!host) return;
-        host.style.removeProperty('--print-scale');
-        host.style.removeProperty('--print-rot');
-        host.style.removeProperty('--print-base-width');
-      })();
-      if (mql.addEventListener) mql.addEventListener('change', onChange);
-      else mql.addListener(onChange);
-    }
-
-    // print button
-    document.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && (t.id === 'trs80-sheet-print' || t.closest?.('#trs80-sheet-print'))) {
-        fitForPrint();
-        requestAnimationFrame(() => window.print());
-      }
-    });
-
-    // expose
-    API.print = () => { fitForPrint(); window.print(); };
-  })();
-
-  // ---------------------- Pips responsiveness ----------------------
+  // ---------------------- Responsive pips (screen & print) ----------------------
   function updatePipCols(){
-    document.querySelectorAll(".trs-pips").forEach((p) => {
+    const rootCS = getComputedStyle(document.documentElement);
+    const COLS_MIN = parseInt(rootCS.getPropertyValue('--pip-cols-min')) || 5;
+    const COLS_MAX = parseInt(rootCS.getPropertyValue('--pip-cols-max')) || 40;
+    const CELL_MAX_RAW = rootCS.getPropertyValue('--pip-cell-max').trim() || '0.10in';
+    const CELL_MIN_RAW = rootCS.getPropertyValue('--pip-cell-min').trim() || '0.065in';
+    const GAP_RAW      = rootCS.getPropertyValue('--pip-gap').trim() || '0in';
+
+    const toPx = (raw) => {
+      const v = parseFloat(raw||0);
+      return /in$/.test(raw) ? v*96 : v;
+    };
+    const CELL_MAX = toPx(CELL_MAX_RAW);
+    const CELL_MIN = toPx(CELL_MIN_RAW);
+    const GAP_PX   = toPx(GAP_RAW);
+
+    document.querySelectorAll('.trs-pips').forEach(p => {
       if (!p.isConnected || p.offsetParent === null) return;
+
       const cs = getComputedStyle(p);
-      const cellRaw = cs.getPropertyValue("--pip-cell").trim() || "12px";
-      const cellNum = parseFloat(cellRaw);
-      const cellPx  = /in$/.test(cellRaw) ? cellNum * 96 : cellNum;
-      const gapX = parseFloat(cs.columnGap) || 0;
-      const padL = parseFloat(cs.paddingLeft)  || 0;
-      const padR = parseFloat(cs.paddingRight) || 0;
-      const avail = Math.max(0, p.clientWidth - padL - padR);
-      if (avail <= 0) return;
-      const cols = Math.max(5, Math.min(10, Math.floor((avail + gapX) / (cellPx + gapX))));
-      p.style.setProperty("--pip-cols", cols);
+      const padL  = parseFloat(cs.paddingLeft) || 0;
+      const padR  = parseFloat(cs.paddingRight) || 0;
+
+      const rectW = p.getBoundingClientRect().width || p.clientWidth;
+      const avail = Math.max(0, rectW - padL - padR);
+
+      const colsAtMax = Math.floor((avail + GAP_PX) / (CELL_MAX + GAP_PX));
+
+      if (colsAtMax >= COLS_MIN){
+        const cols = Math.max(COLS_MIN, Math.min(COLS_MAX, colsAtMax));
+        p.style.setProperty('--pip-cols', cols);
+        p.style.removeProperty('--pip-cell'); // fallback to CSS var (max)
+      } else {
+        const cellForFive = Math.max(
+          CELL_MIN,
+          Math.min(CELL_MAX, (avail - (COLS_MIN - 1) * GAP_PX) / COLS_MIN)
+        );
+        p.style.setProperty('--pip-cols', COLS_MIN);
+        p.style.setProperty('--pip-cell', `${cellForFive}px`);
+      }
     });
   }
+
   function schedulePipLayout(bursts = 3){
     let i = 0;
     const tick = () => { updatePipCols(); if (++i < bursts) requestAnimationFrame(tick); };
@@ -482,6 +363,125 @@
       __pipRO.observe(el);
     });
   }
+
+  // ---------------------- Screen fit (scales container; pips handle width) ----------------------
+  let screenRaf = 0;
+  function fitToViewport(){
+    const { wrap, host } = ensureWrapper();
+    if (!host || !wrap) return;
+
+    host.style.removeProperty('--screen-scale');
+    wrap.style.removeProperty('--screen-fit-w');
+    wrap.style.removeProperty('--screen-fit-h');
+
+    if (host.offsetParent === null && !matchMedia('print').matches) return;
+
+    const baseW = Math.max(host.scrollWidth, host.offsetWidth);
+    const baseH = Math.max(host.scrollHeight, host.offsetHeight);
+    if (baseW < 10 || baseH < 10) return;
+
+    const rect = wrap.parentElement?.getBoundingClientRect?.() || { width: window.innerWidth };
+    const SAFE = 12;
+    const availW = Math.max(0, rect.width  - SAFE*2);
+    const availH = Math.max(0, window.innerHeight - SAFE*2);
+
+    const isDesktop = rect.width >= 1024;
+    const scaleW = availW / baseW;
+    const scaleH = availH / baseH;
+    let scale = isDesktop ? scaleW : Math.min(scaleW, scaleH);
+
+    scale = Math.max(0.5, Math.min(1, scale));
+
+    if (scale >= 0.999) {
+      host.style.removeProperty('--screen-scale');
+      wrap.style.removeProperty('--screen-fit-w');
+      wrap.style.removeProperty('--screen-fit-h');
+    } else {
+      const scaledW = Math.max(1, Math.round(baseW * scale));
+      const scaledH = Math.max(1, Math.round(baseH * scale));
+      host.style.setProperty('--screen-scale', String(scale));
+      wrap.style.setProperty('--screen-fit-w', `${scaledW}px`);
+      wrap.style.setProperty('--screen-fit-h', `${scaledH}px`);
+    }
+  }
+  function onViewportResize(){
+    if (screenRaf) cancelAnimationFrame(screenRaf);
+    screenRaf = requestAnimationFrame(() => { screenRaf = 0; fitToViewport(); });
+  }
+
+  // ---------------------- Print hooks (independent layout) ----------------------
+  (function installPrintHooks(){
+    function recomputePipsBursty(times = 6){
+      let i = 0;
+      const tick = () => { updatePipCols(); if (++i < times) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }
+
+    function beforePrint(){
+      const host = $("#trs80-sheet-host");
+      if (!host) return;
+
+      // Determine printable box (independent of screen)
+      const DPI = 96, MARGIN_IN = 0.25;
+      const isLandscape = (() => {
+        try { return matchMedia('(orientation: landscape)').matches; } catch {}
+        return innerWidth >= innerHeight;
+      })();
+      const pageW = (isLandscape ? 11 : 8.5) * DPI - 2*MARGIN_IN*DPI;
+      const pageH = (isLandscape ? 8.5 : 11) * DPI - 2*MARGIN_IN*DPI;
+
+      // Give content a very wide working width so pips spread horizontally.
+      host.style.width = '18in';
+      host.style.maxWidth = 'none';
+      host.style.position = 'fixed';
+      host.style.left = '50%';
+      host.style.top = '50%';
+      host.style.transformOrigin = 'center center';
+
+      // Reflow + compute pip layout for this wide width
+      void host.getBoundingClientRect();
+      recomputePipsBursty(4);
+
+      // Measure and scale to fit HEIGHT (portrait/landscape)
+      const naturalH = Math.max(host.scrollHeight, host.offsetHeight);
+      const scale = Math.max(0.1, Math.min(2, pageH / naturalH));
+
+      host.style.transform = `translate(-50%,-50%) scale(${scale})`;
+    }
+
+    function afterPrint(){
+      const host = $("#trs80-sheet-host");
+      if (!host) return;
+      host.style.removeProperty('width');
+      host.style.removeProperty('maxWidth');
+      host.style.removeProperty('position');
+      host.style.removeProperty('left');
+      host.style.removeProperty('top');
+      host.style.removeProperty('transformOrigin');
+      host.style.removeProperty('transform');
+    }
+
+    if ('onbeforeprint' in window) {
+      window.addEventListener('beforeprint', beforePrint);
+      window.addEventListener('afterprint',  afterPrint);
+    } else {
+      const mql = matchMedia('print');
+      const onChange = (e) => e.matches ? beforePrint() : afterPrint();
+      if (mql.addEventListener) mql.addEventListener('change', onChange);
+      else mql.addListener(onChange);
+    }
+
+    // button shortcut
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && (t.id === 'trs80-sheet-print' || t.closest?.('#trs80-sheet-print'))) {
+        beforePrint();
+        requestAnimationFrame(() => window.print());
+      }
+    });
+
+    API.print = () => { beforePrint(); window.print(); };
+  })();
 
   // ---------------------- Drawing helpers ----------------------
   function parsePipCount(raw){
@@ -620,19 +620,8 @@
     return `${fmt(walk)} / ${fmt(run)} / ${fmt(jump)}`;
   }
 
-  function hsInfo(mech){
-    if (mech?.sinks?.count != null) {
-      const cnt = num(mech.sinks.count,0), dbl = /double/i.test(String(mech.sinks.type||""));
-      return { type: dbl ? "Double" : "Single", count: cnt, cap: cnt * (dbl?2:1) };
-    }
-    const s = String(mech?.heatSinks ?? "");
-    const m = s.match(/(\d+)/); const cnt = m ? parseInt(m[1],10) : null; const dbl = /double/i.test(s);
-    return { type: cnt==null ? "—" : (dbl?"Double":"Single"), count: cnt ?? "—", cap: cnt==null ? "—" : cnt*(dbl?2:1) };
-  }
-
   // ---------------------- Render ----------------------
   let LAST_MECH = null;
-
   async function render(mech){
     LAST_MECH = mech || LAST_MECH;
     ensureStyle();
@@ -662,20 +651,28 @@
     fitToViewport();
   }
 
+  function hsInfo(mech){
+    if (mech?.sinks?.count != null) {
+      const cnt = num(mech.sinks.count,0), dbl = /double/i.test(String(mech.sinks.type||""));
+      return { type: dbl ? "Double" : "Single", count: cnt, cap: cnt * (dbl?2:1) };
+    }
+    const s = String(mech?.heatSinks ?? "");
+    const m = s.match(/(\d+)/); const cnt = m ? parseInt(m[1],10) : null; const dbl = /double/i.test(s);
+    return { type: cnt==null ? "—" : (dbl?"Double":"Single"), count: cnt ?? "—", cap: cnt==null ? "—" : cnt*(dbl?2:1) };
+  }
+
   // ---------------------- Public API ----------------------
   API.update = (mech) => render(mech);
   API.fit    = () => { ensureStyle(); ensureWrapper(); fitToViewport(); };
+  API.print  = () => { const e = new Event('beforeprint'); window.dispatchEvent(e); window.print(); };
 
   window.TRS_SHEET = API;
 
   // ---------------------- Global listeners ----------------------
   window.addEventListener("resize", onViewportResize);
   window.addEventListener("orientationchange", onViewportResize);
-
-  // If app fires a selection event, just refit pips; rendering is up to .update()
   window.addEventListener("trs:mechSelected", () => { schedulePipLayout(3); fitToViewport(); });
 
-  // First-time setup for screen-fit on visibility
   ensureStyle(); ensureWrapper();
   requestAnimationFrame(fitToViewport);
 })();
