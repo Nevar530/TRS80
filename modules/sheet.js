@@ -127,23 +127,23 @@
 
 /* SCREEN FIT */
 @media screen {
-  #trs80-screenfit{
-    display:grid; place-content:start center;
-    width:  var(--screen-fit-w, auto);
-    height: var(--screen-fit-h, auto);
-    margin: 0 auto;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  #trs80-sheet-host{
-    transform-origin: top left;
-    transform: scale(var(--screen-scale, 1));
-  }
+#trs80-screenfit{
+  display:grid; place-content:start center;
+  width: 100%;                     /* full row width by default */
+  height: var(--screen-fit-h, auto);
+  margin: 0 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#trs80-sheet-host{
+  transform-origin: top left;
+  transform: scale(var(--screen-scale, 1));
+}
 }
 
 /* PRINT: show only the sheet; auto-rotate + scale-to-fit Letter */
 @media print{
-  @page { size: Letter landscape; margin: 0.25in; }
+  @page { size: 11in 8.5in; margin: 0.25in; }
 
   body *{ visibility: hidden !important; }
   #trs80-sheet-host,
@@ -303,49 +303,56 @@
 
   // ---------------------- Screen fit ----------------------
   let screenRaf = 0;
-  function fitToViewport() {
+  function fitToViewport(){
     const { wrap, host } = ensureWrapper();
+    if (!host || !wrap) return;
 
-    // clear
+    // Clear prior values
     host.style.removeProperty('--screen-scale');
     wrap.style.removeProperty('--screen-fit-w');
     wrap.style.removeProperty('--screen-fit-h');
 
-    // if hidden (display:none) bail until visible
+    // Bail if the tab is hidden (we'll refit when it shows)
     if (host.offsetParent === null && !matchMedia('print').matches) return;
 
-    // natural size
+    // Natural (unscaled) size
     const baseW = Math.max(host.scrollWidth, host.offsetWidth);
     const baseH = Math.max(host.scrollHeight, host.offsetHeight);
-    if (baseW < 10 || baseH < 10) return; // nothing laid out yet
+    if (baseW < 10 || baseH < 10) return;
 
-    // available area: width of container row, page height
+    // Available row width + viewport height
     const rect = wrap.parentElement?.getBoundingClientRect?.() || { width: window.innerWidth };
     const SAFE = 12;
     const availW = Math.max(0, rect.width  - SAFE*2);
     const availH = Math.max(0, window.innerHeight - SAFE*2);
 
-    // fit both, never upscale, clamp min
-    let scale = Math.min(1, Math.min(availW / baseW, availH / baseH)) || 1;
-    scale = Math.max(0.5, scale);
+    // Desktop: width-fit only (allow vertical scroll). Mobile: fit both.
+    const isDesktop = rect.width >= 1024;
+    const scaleW = availW / baseW;
+    const scaleH = availH / baseH;
+    let scale = isDesktop ? scaleW : Math.min(scaleW, scaleH);
 
-    const scaledW = Math.max(1, Math.round(baseW * scale));
-    const scaledH = Math.max(1, Math.round(baseH * scale));
+    // Never upscale; clamp to a sensible minimum
+    scale = Math.max(0.5, Math.min(1, scale));
 
     if (scale >= 0.999) {
+      // Natural size—let wrapper stretch to row width
       host.style.removeProperty('--screen-scale');
       wrap.style.removeProperty('--screen-fit-w');
       wrap.style.removeProperty('--screen-fit-h');
     } else {
+      const scaledW = Math.max(1, Math.round(baseW * scale));
+      const scaledH = Math.max(1, Math.round(baseH * scale));
       host.style.setProperty('--screen-scale', String(scale));
       wrap.style.setProperty('--screen-fit-w', `${scaledW}px`);
       wrap.style.setProperty('--screen-fit-h', `${scaledH}px`);
     }
   }
-  function onViewportResize() {
+  function onViewportResize(){
     if (screenRaf) cancelAnimationFrame(screenRaf);
     screenRaf = requestAnimationFrame(() => { screenRaf = 0; fitToViewport(); });
   }
+
 
   // ---------------------- Print fit ----------------------
   (function installPrintHooks(){
@@ -374,6 +381,20 @@
 
       const { wPx: PAGE_W, hPx: PAGE_H, longPx, isLandscape } = pageBox();
 
+      // Refit when the host actually enters the viewport (e.g., tab becomes visible)
+      let __hostIO;
+      function bindHostVisibilityObserver(){
+        const host = document.getElementById('trs80-sheet-host');
+        if (!host || __hostIO) return;
+        __hostIO = new IntersectionObserver((entries) => {
+          if (entries.some(e => e.isIntersecting)) fitToViewport();
+        }, { threshold: 0 });
+        __hostIO.observe(host);
+      }
+      // call once during init:
+      bindHostVisibilityObserver();
+
+      
       // force wide layout before measuring
       host.style.setProperty('--print-base-width', `${longPx}px`);
       void host.getBoundingClientRect(); // reflow
