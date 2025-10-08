@@ -153,7 +153,11 @@
     --loc-cols: 3; /* NEW */
   }
   .armorMatrix { gap: 6px; }
-  /* ...rest of your existing rules... */
+  .loc { padding: 5px; gap: 3px; }
+  .locHeader .name { font-size: 13px; }
+  .locHeader .roll { font-size: 10px; }
+  .lrow { grid-template-columns: 45px 1fr; gap: 5px; }
+  .lrow .lab { font-size: 9px; }
 }
 
 /* Small tablet / large phone (<= 700px): keep 3x3 */
@@ -164,7 +168,11 @@
     --loc-cols: 3; /* NEW (still 3 wide here) */
   }
   .armorMatrix { gap: 5px; }
-  /* ...rest of your existing rules... */
+  .loc { padding: 4px; gap: 2px; }
+  .locHeader .name { font-size: 12px; }
+  .locHeader .roll { font-size: 9px; }
+  .lrow { grid-template-columns: 40px 1fr; gap: 4px; }
+  .lrow .lab { font-size: 8px; }
 }
 
 /* Phone (<= 600px): 2 columns x 4 rows */
@@ -175,7 +183,11 @@
     --loc-cols: 2; /* NEW */
   }
   .armorMatrix { gap: 4px; }
-  /* ...rest of your existing rules... */
+  .loc { padding: 3px; gap: 2px; }
+  .locHeader .name { font-size: 11px; }
+  .locHeader .roll { font-size: 8px; }
+  .lrow { grid-template-columns: 35px 1fr; gap: 3px; }
+  .lrow .lab { font-size: 7px; }
 }
 
 
