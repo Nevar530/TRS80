@@ -1,4 +1,4 @@
-// modules/sheet.js — self-contained printable sheet (CodePen layout)
+// modules/sheet.js — fixed armor (4x2), no width shrink, 15-wide pips, print-stable, print isolation
 // Exposes: window.TRS_SHEET.update(mech), .fit(), .print()
 
 (() => {
@@ -43,58 +43,105 @@
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
 
-  /* SCREEN pip behavior */
-  --pip-gap: 0.008in;
-  --pip-cell-max: 0.10in;    /* normal size */
-  --pip-cell-min: 0.065in;   /* min when space is tiny */
-  --pip-cell: var(--pip-cell-max);
-  --pip-cols-min: 5;         /* never show fewer than 5 */
-  --pip-cols-max: 40;        /* allow very wide rows */
+  /* Main grid columns (base) */
+  --col-left: 310px;    /* pilot */
+  --col-right:220px;    /* heat */
+  --gap: 12px;
 
-  --loc-cols: 4;
+  /* Armor box sizing: 4 fixed boxes across; center column must never go below this width */
+  --loc-w: 260px;       /* width of each armor box */
+  --loc-gap: 8px;
+  --armor-fixed-width: calc((4 * var(--loc-w)) + (3 * var(--loc-gap)));
+
+  /* Pips: fixed 10 across */
+  --pip-gap: 0.01in;
+  --pip-cell: 0.10in;   /* size of each pip */
+  --pip-cols: 15;
 }
-.sheet{font-family:var(--font); color:var(--ink); max-width:1500px; margin:12px auto; padding:0 8px}
+
+html, body { height:100%; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); }
+
+/* SCREEN: anchor everything at top-left */
+#sheet-root{
+  display:block !important;
+  padding:8px;
+}
+#trs80-screenfit{
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#trs80-sheet-host{
+  margin:0 !important;
+}
+
+/* Header / controls */
 .sheet__bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
-.sheet__title{margin:0 0 8px 0; font-size:1.1rem}
+.sheet__title{margin:0; font-size:1.05rem}
 .sheet__controls button{background:#151515;border:1px solid var(--line);color:var(--ink);padding:6px 10px;cursor:pointer}
 
+/* Main grid — center column can grow but NEVER shrink below armor-fixed-width */
 .grid{
-  display:grid; grid-template-columns:310px 1fr 220px; grid-template-rows:auto auto auto; gap:12px;
-  grid-template-areas:"pilot armor heat" "weapons weapons heat" "equipment equipment heat";
-  position:relative;
+  display:grid;
+  grid-template-columns: var(--col-left) minmax(var(--armor-fixed-width), 1fr) var(--col-right);
+  grid-template-rows:auto auto auto;
+  gap:var(--gap);
+  grid-template-areas:
+    "pilot armor heat"
+    "weapons weapons heat"
+    "equipment equipment heat";
 }
 
-.card{background:var(--pane); border:1px solid var(--line); padding:10px; min-width:0; min-height:0; display:flex; flex-direction:column}
+.card{background:var(--pane); border:1px solid var(--line); padding:10px; min-width:0; min-height:0; display:flex; flex-direction:column; border-radius:6px}
 .pilot{grid-area:pilot}
-.armor{grid-area:armor; overflow:auto}
+.armor{grid-area:armor; overflow:auto}   /* scroll instead of shrinking */
 .heat{grid-area:heat}
 .weapons{grid-area:weapons}
 .equipment{grid-area:equipment}
 .card h2{margin:0 0 8px 0; font-size:1rem}
 
+/* Two-column info blocks */
 .grid2{display:grid; grid-template-columns:120px 1fr; gap:4px 8px; font-size:12px}
 .grid2 .lab{color:var(--muted)}
 .grid2 .val{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .hints{margin-top:6px; display:flex; gap:14px; font-size:11px; color:var(--muted)}
 
-/* Armor matrix */
+/* Armor matrix: fixed inner width, 4 columns x 2 rows */
+.armorMatrixWrap{ min-width: var(--armor-fixed-width); }
 .armorMatrix{
   display:grid;
-  grid-template-columns: repeat(var(--loc-cols), minmax(0,1fr));
-  grid-auto-rows: 1fr;
-  grid-auto-flow: row dense;
-  gap:8px;
-  min-height:0;
+  grid-template-columns: repeat(4, var(--loc-w));
+  grid-template-rows: auto auto;
+  gap: var(--loc-gap);
+}
+.loc{ width: var(--loc-w); }
+.locHeader{ display:flex; align-items:center; gap:6px; margin-bottom:4px; font-size:12px; color:var(--muted) }
+.locHeader .name{ font-weight:600; color:var(--ink) }
+/* label column hugs its text; pips fill the rest */
+.lrow{
+  display:grid;
+  grid-template-columns: auto 1fr;   /* was 0.9fr 1fr */
+  column-gap:6px;                    /* was gap:8px */
+  align-items:center;
+  margin:2px 0;                      /* a touch tighter vertically */
+}
+.lrow .lab{
+  font-size:11px;
+  color:var(--muted);
+  white-space:nowrap;                 /* keep “ARMOR” on one line */
 }
 
-/* TRS pips */
+/* Pips: fixed 15 per row */
 .trs-pips{
   display:grid;
-  grid-template-columns: repeat(var(--pip-cols, var(--pip-cols-max)), var(--pip-cell));
+  grid-template-columns: repeat(var(--pip-cols), var(--pip-cell));
   grid-auto-rows: var(--pip-cell);
   gap: calc(var(--pip-gap) * 0.5) var(--pip-gap);
   justify-content:start; align-content:start;
-  font-size:0; line-height:0; padding:0;
+  font-size:0; line-height:0; padding:0.01in;
 }
 .trs-pip{ display:block; box-sizing:border-box; width:100%; height:100%; aspect-ratio:1/1; border:1px solid #aab; background:transparent; }
 .trs-pip.pip-armor   { border-radius:50%; }
@@ -132,43 +179,70 @@
 .eqSlot{ color:var(--muted); font-size:10px; text-align:right; padding-right:2px }
 .eqVal{ border-bottom:1px solid var(--line); min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:10px }
 
-/* SCREEN FIT */
-@media screen {
-  #trs80-screenfit{
-    display:grid; place-content:start center;
-    width: 100%;
-    height: var(--screen-fit-h, auto);
-    margin: 0 auto;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  #trs80-sheet-host{
-    transform-origin: top left;
-    transform: scale(var(--screen-scale, 1));
-  }
+/* Give the CHASSIS value more space by slimming the label column a bit */
+.pilot .grid2{ grid-template-columns: 96px 1fr; }  /* was 120px */
+
+/* stack name over variant */
+.val-chassis{
+  display:flex;
+  flex-direction:column;
 }
 
-/* PRINT (independent of screen) */
+/* bigger chassis name */
+#mechChassis{
+  font-size:1.25rem;
+  font-weight:700;
+  line-height:1.15;
+  white-space:normal;
+}
+
+/* smaller, muted variant under it */
+#mechVariant{
+  font-size:.9rem;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* make sure value cells can wrap */
+.pilot .grid2 .val{
+  white-space:normal;
+  overflow:visible;
+}
+
 @media print{
-  @page { margin: 0.25in; }
+  @page { size:auto; margin:0.25in; }
 
-  /* hide everything except the sheet */
-  body *{ visibility: hidden !important; }
-  #trs80-sheet-host, #trs80-sheet-host *{ visibility: visible !important; }
-
-  /* paper tuning */
-  :root{
-    --pip-gap: 0.006in;
-    --pip-cell-max: 0.095in;
-    --pip-cell-min: 0.070in;
-    --pip-cell: var(--pip-cell-max);
-    --pip-cols-min: 5;
-    --pip-cols-max: 48; /* let rows go very wide on paper */
+  html, body, #sheet-root, #trs80-screenfit, #trs80-sheet-host{
+    margin:0 !important;
+    padding:0 !important;
   }
 
-  .sheet{ max-width:none !important; background:#fff !important; }
-  /* host is positioned/scaled by JS before print; don't override here */
+  /* ✅ isolate by hiding only direct children of <body> except the host */
+  body.trs80-printing > :not(#trs80-sheet-host){
+    display: none !important;
+  }
+
+  #trs80-sheet-host{
+    display:block !important;
+    position:static !important;
+    transform:none !important;
+    padding:0.25in !important;           /* forced visual margin */
+    box-sizing:border-box !important;
+    background:#fff !important;
+    break-inside:avoid; page-break-inside:avoid;
+  }
+
+  .card{ break-inside:avoid; page-break-inside:avoid; }
+  .weapTable thead, .heatTable thead { display: table-header-group; }
+  .weapTable tr, .heatTable tr { break-inside:avoid; page-break-inside:avoid; }
+
+  .armor{ overflow: visible !important; }
+  .armorMatrixWrap{ min-width: var(--armor-fixed-width) !important; }
+  .heatTable{ flex: none !important; }
 }
+
+
+
 `;
     document.head.appendChild(s);
   }
@@ -179,6 +253,13 @@
       root = document.createElement("div");
       root.id = "sheet-root";
       document.body.appendChild(root);
+    }
+
+    let wrap = $("#trs80-screenfit");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.id = "trs80-screenfit";
+      root.appendChild(wrap);
     }
 
     let host = $("#trs80-sheet-host");
@@ -202,11 +283,15 @@
       <div class="lab">GUNNERY (G)</div> <div class="val">[____]</div>
       <div class="lab">PILOTING (P)</div> <div class="val">[____]</div>
       <div class="lab">HITS TAKEN</div> <div class="val">|01| |02| |03| |04| |05| |06|</div>
-      <div class="lab">CONSCIOUSNESS #</div> <div class="val">|03| |05| |07| |10| |11| |KIA|</div>
+      <div class="lab">K.O. #</div> <div class="val">|03| |05| |07| |10| |11| |KIA|</div>
     </div>
     <hr/>
     <div class="grid2">
-      <div class="lab">CHASSIS</div> <div class="val"><span id="mechChassis">—</span><sup id="mechVariant">—</sup></div>
+      <div class="lab">CHASSIS</div>
+<div class="val val-chassis">
+  <div id="mechChassis">—</div>
+  <div id="mechVariant">—</div>
+</div>
       <div class="lab">TECH BASE</div>  <div class="val" id="mechTech">—</div>
       <div class="lab">TONNAGE</div>    <div class="val" id="mechTonnage">—</div>
       <div class="lab">BV</div>         <div class="val" id="mechBV">—</div>
@@ -217,7 +302,9 @@
 
   <section class="card armor" aria-label="Armor / Structure">
     <h2>Armor / Structure by Location</h2>
-    <div id="armorMatrix" class="armorMatrix"></div>
+    <div class="armorMatrixWrap">
+      <div id="armorMatrix" class="armorMatrix"></div>
+    </div>
   </section>
 
   <aside class="card heat" aria-label="Heat">
@@ -264,224 +351,32 @@
 
 <footer class="sheet__legal" style="opacity:.8;font-size:9px;margin-top:6px">
   Unofficial, non-commercial fan work. BattleTech®, BattleMech®, ’Mech®, and AeroTech® are trademarks or registered trademarks of The Topps Company, Inc.
-  Catalyst Game Labs and the Catalyst Game Labs logo are trademarks of InMediaRes Productions, LLC. This sheet is not affiliated with, or endorsed by, those rights holders.
+  Catalyst Game Labs and the Catalyst Game Labs logo are trademarks or registered trademarks of InMediaRes Productions, LLC. This sheet is not affiliated with, or endorsed by, those rights holders.
 </footer>`;
-      root.appendChild(host);
+      wrap.appendChild(host);
 
-      // Heat table (30 → 1)
-      const HEAT = {
-        30:"Shutdown", 28:"Ammo explosion chk (8+)", 26:"Shutdown (10+)",
-        25:"-5 MP", 24:"+4 To-Hit", 23:"Ammo explosion chk (6+)",
-        22:"Shutdown (8+)", 20:"-4 MP", 19:"Ammo explosion chk (4+)",
-        17:"Shutdown (6+)", 15:"+3 To-Hit", 14:"-3 MP", 12:"+2 To-Hit",
-        10:"-2 MP", 8:"+1 To-Hit"
-      };
-      const heatBody = $("#heatRows", host);
-      for (let h = 30; h >= 1; h--) {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `<td>[${String(h).padStart(2,"0")}]</td><td>${HEAT[h] || "—"}</td>`;
-        heatBody.appendChild(tr);
-      }
+      ensureHeatTable(); // build once now
     }
-    return { root, host };
+    return { host: $("#trs80-sheet-host") };
   }
 
-  // Ensure wrapper and move host inside
-  function ensureWrapper() {
-    const { root, host } = ensureRootAndHost();
-    let wrap = $("#trs80-screenfit");
-    if (!wrap) {
-      wrap = document.createElement("div");
-      wrap.id = "trs80-screenfit";
-      root.appendChild(wrap);
-    }
-    if (host.parentElement !== wrap) wrap.appendChild(host);
-    return { wrap, host };
-  }
-
-  // ---------------------- Responsive pips (screen & print) ----------------------
-  function updatePipCols(){
-    const rootCS = getComputedStyle(document.documentElement);
-    const COLS_MIN = parseInt(rootCS.getPropertyValue('--pip-cols-min')) || 5;
-    const COLS_MAX = parseInt(rootCS.getPropertyValue('--pip-cols-max')) || 40;
-    const CELL_MAX_RAW = rootCS.getPropertyValue('--pip-cell-max').trim() || '0.10in';
-    const CELL_MIN_RAW = rootCS.getPropertyValue('--pip-cell-min').trim() || '0.065in';
-    const GAP_RAW      = rootCS.getPropertyValue('--pip-gap').trim() || '0in';
-
-    const toPx = (raw) => {
-      const v = parseFloat(raw||0);
-      return /in$/.test(raw) ? v*96 : v;
+  // ---------------------- Heat table: (re)build defensively ----------------------
+  function ensureHeatTable(){
+    const body = $("#heatRows");
+    if (!body || body.children.length) return;
+    const HEAT = {
+      30:"Shutdown", 28:"Ammo explosion chk (8+)", 26:"Shutdown (10+)",
+      25:"-5 MP", 24:"+4 To-Hit", 23:"Ammo explosion chk (6+)",
+      22:"Shutdown (8+)", 20:"-4 MP", 19:"Ammo explosion chk (4+)",
+      17:"Shutdown (6+)", 15:"+3 To-Hit", 14:"-3 MP", 12:"+2 To-Hit",
+      10:"-2 MP", 8:"+1 To-Hit"
     };
-    const CELL_MAX = toPx(CELL_MAX_RAW);
-    const CELL_MIN = toPx(CELL_MIN_RAW);
-    const GAP_PX   = toPx(GAP_RAW);
-
-    document.querySelectorAll('.trs-pips').forEach(p => {
-      if (!p.isConnected || p.offsetParent === null) return;
-
-      const cs = getComputedStyle(p);
-      const padL  = parseFloat(cs.paddingLeft) || 0;
-      const padR  = parseFloat(cs.paddingRight) || 0;
-
-      const rectW = p.getBoundingClientRect().width || p.clientWidth;
-      const avail = Math.max(0, rectW - padL - padR);
-
-      const colsAtMax = Math.floor((avail + GAP_PX) / (CELL_MAX + GAP_PX));
-
-      if (colsAtMax >= COLS_MIN){
-        const cols = Math.max(COLS_MIN, Math.min(COLS_MAX, colsAtMax));
-        p.style.setProperty('--pip-cols', cols);
-        p.style.removeProperty('--pip-cell'); // fallback to CSS var (max)
-      } else {
-        const cellForFive = Math.max(
-          CELL_MIN,
-          Math.min(CELL_MAX, (avail - (COLS_MIN - 1) * GAP_PX) / COLS_MIN)
-        );
-        p.style.setProperty('--pip-cols', COLS_MIN);
-        p.style.setProperty('--pip-cell', `${cellForFive}px`);
-      }
-    });
-  }
-
-  function schedulePipLayout(bursts = 3){
-    let i = 0;
-    const tick = () => { updatePipCols(); if (++i < bursts) requestAnimationFrame(tick); };
-    requestAnimationFrame(tick);
-  }
-  let __pipIO, __pipRO;
-  function bindPipObservers(root = document){
-    if (!__pipIO) {
-      __pipIO = new IntersectionObserver((entries) => {
-        if (entries.some(e => e.isIntersecting)) { schedulePipLayout(2); fitToViewport(); }
-      }, { threshold: 0 });
-    }
-    if (!__pipRO) {
-      __pipRO = new ResizeObserver(() => schedulePipLayout(1));
-    }
-    root.querySelectorAll(".trs-pips").forEach(el => {
-      __pipIO.observe(el);
-      __pipRO.observe(el);
-    });
-  }
-
-  // ---------------------- Screen fit (scales container; pips handle width) ----------------------
-  let screenRaf = 0;
-  function fitToViewport(){
-    const { wrap, host } = ensureWrapper();
-    if (!host || !wrap) return;
-
-    host.style.removeProperty('--screen-scale');
-    wrap.style.removeProperty('--screen-fit-w');
-    wrap.style.removeProperty('--screen-fit-h');
-
-    if (host.offsetParent === null && !matchMedia('print').matches) return;
-
-    const baseW = Math.max(host.scrollWidth, host.offsetWidth);
-    const baseH = Math.max(host.scrollHeight, host.offsetHeight);
-    if (baseW < 10 || baseH < 10) return;
-
-    const rect = wrap.parentElement?.getBoundingClientRect?.() || { width: window.innerWidth };
-    const SAFE = 12;
-    const availW = Math.max(0, rect.width  - SAFE*2);
-    const availH = Math.max(0, window.innerHeight - SAFE*2);
-
-    const isDesktop = rect.width >= 1024;
-    const scaleW = availW / baseW;
-    const scaleH = availH / baseH;
-    let scale = isDesktop ? scaleW : Math.min(scaleW, scaleH);
-
-    scale = Math.max(0.5, Math.min(1, scale));
-
-    if (scale >= 0.999) {
-      host.style.removeProperty('--screen-scale');
-      wrap.style.removeProperty('--screen-fit-w');
-      wrap.style.removeProperty('--screen-fit-h');
-    } else {
-      const scaledW = Math.max(1, Math.round(baseW * scale));
-      const scaledH = Math.max(1, Math.round(baseH * scale));
-      host.style.setProperty('--screen-scale', String(scale));
-      wrap.style.setProperty('--screen-fit-w', `${scaledW}px`);
-      wrap.style.setProperty('--screen-fit-h', `${scaledH}px`);
+    for (let h = 30; h >= 1; h--) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>[${String(h).padStart(2,"0")}]</td><td>${HEAT[h] || "–"}</td>`;
+      body.appendChild(tr);
     }
   }
-  function onViewportResize(){
-    if (screenRaf) cancelAnimationFrame(screenRaf);
-    screenRaf = requestAnimationFrame(() => { screenRaf = 0; fitToViewport(); });
-  }
-
-  // ---------------------- Print hooks (independent layout) ----------------------
-  (function installPrintHooks(){
-    function recomputePipsBursty(times = 6){
-      let i = 0;
-      const tick = () => { updatePipCols(); if (++i < times) requestAnimationFrame(tick); };
-      requestAnimationFrame(tick);
-    }
-
-    function beforePrint(){
-      const host = $("#trs80-sheet-host");
-      if (!host) return;
-
-      // Determine printable box (independent of screen)
-      const DPI = 96, MARGIN_IN = 0.25;
-      const isLandscape = (() => {
-        try { return matchMedia('(orientation: landscape)').matches; } catch {}
-        return innerWidth >= innerHeight;
-      })();
-      const pageW = (isLandscape ? 11 : 8.5) * DPI - 2*MARGIN_IN*DPI;
-      const pageH = (isLandscape ? 8.5 : 11) * DPI - 2*MARGIN_IN*DPI;
-
-      // Give content a very wide working width so pips spread horizontally.
-      host.style.width = '18in';
-      host.style.maxWidth = 'none';
-      host.style.position = 'fixed';
-      host.style.left = '50%';
-      host.style.top = '50%';
-      host.style.transformOrigin = 'center center';
-
-      // Reflow + compute pip layout for this wide width
-      void host.getBoundingClientRect();
-      recomputePipsBursty(4);
-
-      // Measure and scale to fit HEIGHT (portrait/landscape)
-      const naturalH = Math.max(host.scrollHeight, host.offsetHeight);
-      const scale = Math.max(0.1, Math.min(2, pageH / naturalH));
-
-      host.style.transform = `translate(-50%,-50%) scale(${scale})`;
-    }
-
-    function afterPrint(){
-      const host = $("#trs80-sheet-host");
-      if (!host) return;
-      host.style.removeProperty('width');
-      host.style.removeProperty('maxWidth');
-      host.style.removeProperty('position');
-      host.style.removeProperty('left');
-      host.style.removeProperty('top');
-      host.style.removeProperty('transformOrigin');
-      host.style.removeProperty('transform');
-    }
-
-    if ('onbeforeprint' in window) {
-      window.addEventListener('beforeprint', beforePrint);
-      window.addEventListener('afterprint',  afterPrint);
-    } else {
-      const mql = matchMedia('print');
-      const onChange = (e) => e.matches ? beforePrint() : afterPrint();
-      if (mql.addEventListener) mql.addEventListener('change', onChange);
-      else mql.addListener(onChange);
-    }
-
-    // button shortcut
-    document.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && (t.id === 'trs80-sheet-print' || t.closest?.('#trs80-sheet-print'))) {
-        beforePrint();
-        requestAnimationFrame(() => window.print());
-      }
-    });
-
-    API.print = () => { beforePrint(); window.print(); };
-  })();
 
   // ---------------------- Drawing helpers ----------------------
   function parsePipCount(raw){
@@ -519,11 +414,16 @@
   function drawArmor(mech){
     const grid = $("#armorMatrix");
     grid.innerHTML = "";
+
     const ABL = mech.armorByLocation || {};
     const IBL = mech.internalByLocation || {};
+
     const Araw = mech.armor || {};
+
+    // Fixed display order in 4×2 layout
     const order = ["LA","HD","CT","RA","LL","LT","RT","RL"];
     const ROLL  = { LA:"[04-05]", HD:"[12]", RA:"[09-10]", LL:"[03]", LT:"[06]", CT:"[02/07]", RT:"[08]", RL:"[11]" };
+
     const front = {
       HD: armorFront(ABL.HD ?? Araw.head),
       CT: armorFront(ABL.CT ?? Araw.centerTorso),
@@ -545,14 +445,15 @@
       RA: internalsVal(IBL.RA), LA: internalsVal(IBL.LA),
       RL: internalsVal(IBL.RL), LL: internalsVal(IBL.LL),
     };
+
     for (const code of order) {
       const box = document.createElement("div");
       box.className = "loc";
-      box.innerHTML = `<div class="locHeader"><div class="name">${code}</div><div class="roll">${ROLL[code]||"[—]"}</div></div>`;
-      box.appendChild(pipRow("ARMOR",    front[code] || 0, "pip-armor"));
-      box.appendChild(pipRow("INTERNAL", internals[code] || 0, "pip-internal"));
+      box.innerHTML = `<div class="locHeader"><span class="name">${code}</span> <span class="roll">${ROLL[code] || "[–]"}</span></div>`;
+      box.appendChild(pipRow(`<span title="EXTERNAL ARMOR">EXTL.ARMOR</span>`, front[code] || 0, "pip-armor"));
+      box.appendChild(pipRow(`<span title="Internal Structure">INTL.STRCTR</span>`, internals[code] || 0, "pip-internal"));
       if (code === "LT" || code === "CT" || code === "RT") {
-        box.appendChild(pipRow("REAR", rear[code] || 0, "pip-rear"));
+        box.appendChild(pipRow(`<span title="REAR ARMOR">REAR.ARMOR</span>`, rear[code] || 0, "pip-rear"));
       }
       grid.appendChild(box);
     }
@@ -561,8 +462,12 @@
   function drawWeapons(mech){
     const tbody = $("#weapRows");
     tbody.innerHTML = "";
+
     const tons = mech.tonnage ?? mech.Tonnage ?? mech.mass ?? 0;
-    const punch = Math.ceil(tons / 10), kick = Math.ceil(tons / 5), charge = Math.ceil(tons / 10), dfa = Math.ceil(kick * 1.5);
+    const punch  = Math.ceil(tons / 10);
+    const kick   = Math.ceil(tons / 5);
+    const charge = Math.ceil(tons / 10);
+    const dfa    = Math.ceil(kick * 1.5);
     const melee = [
       ["Punch","Melee", punch,0,1,1,1,1,"∞"],
       ["Kick","Melee",  kick,0,1,1,1,1,"∞"],
@@ -574,8 +479,8 @@
     const list = Array.isArray(mech.weapons) ? mech.weapons : [];
     for (const w of list) {
       const name = w.name || w.type || "—";
-      const rec = lookupWeapon(name);
-      const r = rec?.range || {};
+      const rec  = lookupWeapon(name);
+      const r    = rec?.range || {};
       const ammoTxt = (!rec) ? "" : (/^(energy|melee)$/i.test(String(rec.type||"")) ? "∞" : (rec.ammo ? String(rec.ammo) : ""));
       const row = [
         esc(name),
@@ -621,34 +526,27 @@
   }
 
   // ---------------------- Render ----------------------
-  let LAST_MECH = null;
   async function render(mech){
-    LAST_MECH = mech || LAST_MECH;
     ensureStyle();
-    const { host } = ensureRootAndHost();
-    ensureWrapper();
+    ensureRootAndHost();
     await ensureWeaponsLoaded();
 
-    $("#mechChassis", host).textContent = esc(mech?.displayName || mech?.name || "—");
-    $("#mechVariant", host).textContent = esc(mech?.model || mech?.variant || "—");
-    $("#mechTech", host).textContent    = esc(mech?.techBase || mech?.tech || "—");
-    $("#mechTonnage", host).textContent = esc(mech?.tonnage ?? mech?.Tonnage ?? mech?.mass ?? "—");
-    $("#mechBV", host).textContent      = esc(mech?.bv ?? mech?.BV ?? "—");
-    $("#mechMove", host).textContent    = movementString(mech);
+    $("#mechChassis").textContent = esc(mech?.displayName || mech?.name || "—");
+    $("#mechVariant").textContent = esc(mech?.model || mech?.variant || "–");
+    $("#mechTech").textContent    = esc(mech?.techBase || mech?.tech || "–");
+    $("#mechTonnage").textContent = esc(mech?.tonnage ?? mech?.Tonnage ?? mech?.mass ?? "–");
+    $("#mechBV").textContent      = esc(mech?.bv ?? mech?.BV ?? "–");
+    $("#mechMove").textContent    = movementString(mech);
 
     const hs = hsInfo(mech);
-    $("#hsType", host).textContent     = esc(hs.type);
-    $("#hsCount", host).textContent    = esc(hs.count);
-    $("#hsCapacity", host).textContent = esc(hs.cap);
+    $("#hsType").textContent     = esc(hs.type);
+    $("#hsCount").textContent    = esc(hs.count);
+    $("#hsCapacity").textContent = esc(hs.cap);
 
+    ensureHeatTable();   // rebuild if needed
     drawArmor(mech);
     drawWeapons(mech);
     drawEquipment(mech);
-    bindPipObservers(host);
-    schedulePipLayout(3);
-
-    updatePipCols();
-    fitToViewport();
   }
 
   function hsInfo(mech){
@@ -658,21 +556,73 @@
     }
     const s = String(mech?.heatSinks ?? "");
     const m = s.match(/(\d+)/); const cnt = m ? parseInt(m[1],10) : null; const dbl = /double/i.test(s);
-    return { type: cnt==null ? "—" : (dbl?"Double":"Single"), count: cnt ?? "—", cap: cnt==null ? "—" : cnt*(dbl?2:1) };
+    return { type: cnt==null ? "—" : (dbl?"Double":"Single"), count: cnt ?? "—", cap: cnt==null ? "–" : cnt*(dbl?2:1) };
   }
+
+  // ---------------------- Print button ----------------------
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t && (t.id === 'trs80-sheet-print' || t.closest?.('#trs80-sheet-print'))) {
+      window.print();
+    }
+  });
+
+  // ---------------------- Print isolation hooks ----------------------
+  let __restoreSheetPosition = null;
+
+  function beforePrintIsolate(){
+    // Guard: don't run twice
+    if (typeof __restoreSheetPosition === 'function') return;
+
+    const host = document.getElementById('trs80-sheet-host');
+    if (!host) return;
+
+    // Remember where the host was with a placeholder (more robust than nextSibling)
+    const parent = host.parentNode;
+    const marker = document.createComment('trs80-print-anchor');
+    parent.insertBefore(marker, host.nextSibling);
+
+    // Optional: force a consistent inner margin for print (remove afterwards)
+    const prevPadding = host.style.padding;
+    host.style.padding = '0.25in';   // tweak to taste
+
+    // Move to <body> and mark printing
+    document.body.appendChild(host);
+    document.body.classList.add('trs80-printing');
+
+    __restoreSheetPosition = () => {
+      document.body.classList.remove('trs80-printing');
+      // restore host to exact original spot
+      if (marker.parentNode) marker.parentNode.insertBefore(host, marker);
+      marker.remove();
+      host.style.padding = prevPadding;  // restore pre-print padding
+      __restoreSheetPosition = null;
+    };
+  }
+
+  function afterPrintRestore(){
+    if (typeof __restoreSheetPosition === 'function') __restoreSheetPosition();
+  }
+
+  // Cover Ctrl+P and window.print()
+  if ('onbeforeprint' in window){
+    window.addEventListener('beforeprint', beforePrintIsolate);
+    window.addEventListener('afterprint',  afterPrintRestore);
+  } else {
+    const mql = matchMedia('print');
+    const onChange = (e) => e.matches ? beforePrintIsolate() : afterPrintRestore();
+    if (mql.addEventListener) mql.addEventListener('change', onChange);
+    else mql.addListener(onChange);
+  }
+
 
   // ---------------------- Public API ----------------------
   API.update = (mech) => render(mech);
-  API.fit    = () => { ensureStyle(); ensureWrapper(); fitToViewport(); };
-  API.print  = () => { const e = new Event('beforeprint'); window.dispatchEvent(e); window.print(); };
+  API.fit    = () => {};          // no scaling/fit logic
+  API.print  = () => window.print();
 
   window.TRS_SHEET = API;
 
-  // ---------------------- Global listeners ----------------------
-  window.addEventListener("resize", onViewportResize);
-  window.addEventListener("orientationchange", onViewportResize);
-  window.addEventListener("trs:mechSelected", () => { schedulePipLayout(3); fitToViewport(); });
-
-  ensureStyle(); ensureWrapper();
-  requestAnimationFrame(fitToViewport);
+  // Init
+  ensureStyle(); ensureRootAndHost();
 })();
