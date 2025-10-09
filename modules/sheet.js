@@ -1,5 +1,5 @@
 // modules/sheet.js — fixed armor (4x2), no width shrink, 15-wide pips, print-stable, print isolation
-// Exposes: window.TRS_SHEET.update(mech), .fit(), .print() 
+// Exposes: window.TRS_SHEET.update(mech), .fit(), .print()
 
 (() => {
   const API = {};
