@@ -169,6 +169,11 @@
     #gtr-extra-rolls select.gtr-sel{
       padding:6px 8px; border-radius:6px; border:1px solid var(--border); background:#0e1522; color:var(--ink);
     }
+.gtrx-break{ flex-basis:100%; height:0; }          /* forces new line in the flex row */
+.gtrx-title{ font-size:12px; color:var(--muted); } /* section heading style */
+.gtrx-line{ display:flex; align-items:center; gap:8px; } /* keep number + type on one line */
+}
+    
     `;
     const st = document.createElement('style');
     st.id = 'gtrx-css';
@@ -208,12 +213,17 @@
 
         <span class="gtrx-sep" aria-hidden="true"></span>
 
-        <span class="gtrx-label">Missiles:</span>
-        <input id="gtr-miss-size" class="gtr-in tiny" type="number" min="2" max="20" value="10" />
-        <select id="gtr-miss-type" class="gtr-sel">
-          <option value="LRM" selected>LRM (1 dmg/shot)</option>
-          <option value="SRM">SRM (2 dmg/shot)</option>
-        </select>
+<span class="gtrx-break"></span>
+<strong class="gtrx-title">Missile Cluster</strong>
+
+<div class="gtrx-line">
+  <span class="gtrx-label">Missiles:</span>
+  <input id="gtr-miss-size" class="gtr-in tiny" type="number" min="2" max="20" value="10" />
+  <select id="gtr-miss-type" class="gtr-sel">
+    <option value="LRM" selected>LRM (1 dmg/shot)</option>
+    <option value="SRM">SRM (2 dmg/shot)</option>
+  </select>
+</div>
 
         <span class="gtrx-sep" aria-hidden="true"></span>
 
@@ -226,6 +236,7 @@
 
         <button id="gtr-miss" type="button" class="btn sm">Roll Cluster</button>
       </div>
+      <hr>
 RESULTS
       <div id="gtr-extra-out" class="gtrx-out">
         <span class="gtrx-note">Results will appear here.</span>
