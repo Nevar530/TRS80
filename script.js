@@ -1509,6 +1509,95 @@ const GATOR = {
   }
 };
 
+  // ---- Mount the Extra Rolls UI just under the TN/Dice block ----
+  function mountExtraRollsUnderTN(){
+    // Require the rolls module
+    if (!window.GATOR_ROLLS) { console.warn('[gator] rolls.js not loaded'); return; }
+
+    // Find a stable anchor in your current TN/Dice section
+    const anchor = document.getElementById('roll-att-detail') 
+                || document.getElementById('btn-roll-both') 
+                || document.getElementById('btn-roll-att');
+    if (!anchor) { console.warn('[gator] TN dice anchor not found'); return; }
+
+    // Avoid dup mounting
+    if (document.getElementById('gtr-extra-rolls')) return;
+
+    // Build a small block to live directly under the dice area
+    const wrap = document.createElement('div');
+    wrap.id = 'gtr-extra-rolls';
+    wrap.style.cssText = 'margin-top:10px;padding-top:8px;border-top:1px solid var(--border,#2a2f3a);font-size:13px';
+
+    wrap.innerHTML = `
+      <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <button id="gtr-loc-front"  type="button">Location (Front)</button>
+        <button id="gtr-loc-rear"   type="button">Location (Rear)</button>
+        <button id="gtr-crit"       type="button">Critical Check</button>
+        <span class="dim" style="margin-left:6px;">|</span>
+        <label class="dim">Missiles:</label>
+        <input id="gtr-miss-size" type="number" min="2" max="20" value="10" style="width:64px">
+        <label class="dim">Mods</label>
+        <input id="gtr-miss-mods" type="number" min="-4" max="4" value="0" style="width:52px">
+        <label class="dim"><input id="gtr-miss-streak" type="checkbox"> Streak</label>
+        <button id="gtr-miss" type="button">Roll Cluster</button>
+      </div>
+      <div id="gtr-extra-out" class="mono" style="margin-top:6px;opacity:.9;"></div>
+    `;
+
+    // Insert immediately after the dice details line so it “opens where the rolls are currently”
+    anchor.insertAdjacentElement('afterend', wrap);
+
+    // Wire events
+    const out = (msg) => { const el = document.getElementById('gtr-extra-out'); if (el) el.textContent = msg; };
+
+    document.getElementById('gtr-loc-front')?.addEventListener('click', () => {
+      const r = GATOR_ROLLS.rollLocation('front');
+      out(`Hit Location (Front): ${r.location} — roll ${r.roll}`);
+    });
+
+    document.getElementById('gtr-loc-rear')?.addEventListener('click', () => {
+      const r = GATOR_ROLLS.rollLocation('rear');
+      out(`Hit Location (Rear): ${r.location} — roll ${r.roll}`);
+    });
+
+    document.getElementById('gtr-crit')?.addEventListener('click', () => {
+      const r = GATOR_ROLLS.rollCrit();
+      out(`Critical Check: ${r.crits ? `${r.crits} critical${r.crits>1?'s':''}` : 'No criticals'} — roll ${r.roll}`);
+    });
+
+    document.getElementById('gtr-miss')?.addEventListener('click', () => {
+      const size   = Math.max(2, Math.min(20, +document.getElementById('gtr-miss-size').value || 10));
+      const mods   = (+document.getElementById('gtr-miss-mods').value) || 0;
+      const streak = !!document.getElementById('gtr-miss-streak').checked;
+      const r = GATOR_ROLLS.rollCluster({ size, mods, streak });
+      if (streak) out(`Missiles: STREAK → ${size} on hit`);
+      else out(`Missile Cluster: ${r.hits}/${size} — roll ${r.roll}${mods?` (adj ${r.adj})`:''}`);
+    });
+  }
+
+  // ---- Roll result success/fail styling (injected once) ----
+  (function injectRollHitMissCSS(){
+    if (document.getElementById('roll-hitmiss-css')) return;
+    const st = document.createElement('style');
+    st.id = 'roll-hitmiss-css';
+    st.textContent = `
+      /* These target the numeric roll readout (#roll-att-res) */
+      #roll-att-res.is-hit{
+        color: #00e676;           /* green */
+        text-shadow: 0 0 6px rgba(0,230,118,.25);
+      }
+      #roll-att-res.is-miss{
+        color: #ff6b6b;           /* red */
+        text-shadow: 0 0 6px rgba(255,107,107,.18);
+      }
+      /* Optional: emphasize breakdown line on miss/hit */
+      #roll-att-detail.is-hit  { color: var(--ink); opacity:.95; }
+      #roll-att-detail.is-miss { color: #ffb3b3; }
+    `;
+    document.head.appendChild(st);
+  })();
+
+  
 function initGator(){
   const gunnerySel = byId('gtr-gunnery-sel');
   const attackerSel= byId('gtr-attacker-sel');
@@ -1576,16 +1665,34 @@ function initGator(){
     const sum   = rolls.reduce((a,b)=> a+b, 0);
     const total = sum + mod;
 
+    // --- Compare against current TN ---
+    const tnInfo = GATOR.computeTN(state.gator);
+    const tnVal  = tnInfo.val;             // numeric threshold (<=2 means "Auto")
+    const isAuto = tnVal <= 2;
+    const isHit  = isAuto || (total >= tnVal);
+
+    // Write result number
     if (attRes){
       attRes.textContent = total;
       attRes.title = `rolls: ${rolls.join(', ')}${mod ? ` + ${mod}` : ''}`;
+      // success/fail color
+      attRes.classList.toggle('is-hit',  isHit);
+      attRes.classList.toggle('is-miss', !isHit);
       bounce(attRes);
     }
+
+    // Show full breakdown + verdict
     if (attDetail){
-      attDetail.textContent = `[${rolls.join(' + ')}]${mod ? ` + ${mod}` : ''}`;
+      const verdict = isHit ? 'HIT' : 'MISS';
+      const tnTxt   = isAuto ? 'Auto' : `${tnVal}+`;
+      attDetail.textContent = `[${rolls.join(' + ')}]${mod ? ` + ${mod}` : ''} = ${total}  vs TN ${tnTxt} — ${verdict}`;
+      attDetail.classList.toggle('is-hit',  isHit);
+      attDetail.classList.toggle('is-miss', !isHit);
     }
+
     return total;
   }
+
 
   btnAtt ?.addEventListener('click', doRoll);
   btnBoth?.addEventListener('click', doRoll);
@@ -1593,8 +1700,11 @@ function initGator(){
     if (e.key.toLowerCase()==='r' && !['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)) doRoll();
   });
 
-  sumOther(); recompute();
-}
+    sumOther(); recompute();
+
+  // Mount the extra rolls UI directly under the TN/Dice section
+  window.mountGatorRollsUnderTN?.();
+  }
 
 /* Subtabs inside compact Gator */
 function initGatorSubtabs(){
@@ -1673,6 +1783,29 @@ function initUI(){
 
   byId('btn-side-filter')?.addEventListener('click', openFilterModal);
 
+  // ---- Roll result success/fail styling (injected once) ----
+  (function injectRollHitMissCSS(){
+    if (document.getElementById('roll-hitmiss-css')) return;
+    const st = document.createElement('style');
+    st.id = 'roll-hitmiss-css';
+    st.textContent = `
+      /* These target the numeric roll readout (#roll-att-res) */
+      #roll-att-res.is-hit{
+        color: #00e676;           /* green */
+        text-shadow: 0 0 6px rgba(0,230,118,.25);
+      }
+      #roll-att-res.is-miss{
+        color: #ff6b6b;           /* red */
+        text-shadow: 0 0 6px rgba(255,107,107,.18);
+      }
+      /* Optional: emphasize breakdown line on miss/hit */
+      #roll-att-detail.is-hit  { color: var(--ink); opacity:.95; }
+      #roll-att-detail.is-miss { color: #ffb3b3; }
+    `;
+    document.head.appendChild(st);
+  })();
+
+  
   initGator();
   initGatorSubtabs();
   initTechSubtabs();
