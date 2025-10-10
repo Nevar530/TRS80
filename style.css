@@ -376,3 +376,20 @@ main.layout{display:grid;grid-template-columns:var(--side-w) 1fr;gap:12px;transi
   .tro-boot__hint{ animation:none; }
 }
 
+/* Keep the GATOR footer row left-aligned */
+#pane-gator .gtr-footer{ justify-content:flex-start !important; }
+
+/* Stop the TN chip from pushing the Roll button to the right */
+#pane-gator .gtr-footer .gtr-tn{ margin-right:8px !important; } /* or 0 */
+
+/* If your TN + buttons sit in another row container, belt-and-suspenders: */
+#pane-gator .card-c .row{ justify-content:flex-start !important; }
+
+/* Keep your current button look */
+#pane-gator #btn-roll-att,
+#pane-gator #btn-roll-both{
+  background:var(--bt-amber);
+  color:#000;
+  font-weight:400;
+  margin-left:0 !important; /* in case something set it to auto */
+}
