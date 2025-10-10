@@ -40,6 +40,7 @@
     s.id = "trs80-sheet-style";
     s.textContent = `
 :root{
+  --sheet-scale: 1;   /* screen=1 (100%), print will override */
   --bg:#111; --pane:#0b0b0b; --line:#2a2a2a; --ink:#eaeaea; --muted:#9bb;
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto;
 
@@ -55,8 +56,8 @@
 
   /* Pips: fixed 10 across */
   --pip-gap: 0.01in;
-  --pip-cell: 0.10in;   /* size of each pip */
-  --pip-cols: 15;
+  --pip-cell: 0.15in;   /* size of each pip */
+  --pip-cols: 10;
 }
 
 html, body { height:100%; }
@@ -76,7 +77,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font)
 }
 #trs80-sheet-host{
   margin:0 !important;
-}
+  transform-origin: top left;   /* so scaling shrinks from top-left corner */
+  }
 
 /* Header / controls */
 .sheet__bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
@@ -212,6 +214,15 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font)
 @media print{
   @page { size:auto; margin:0.25in; }
 
+/* ↓↓↓ scale the whole sheet for print; tweak 0.92 to taste */
+:root { --sheet-scale: 0.6; }
+
+/* Scale + width compensation so the layout still fits the printable area 
+#trs80-sheet-host{
+  transform: scale(var(--sheet-scale)) !important;
+  width: calc(100% / var(--sheet-scale)) !important;
+}*/
+
   html, body, #sheet-root, #trs80-screenfit, #trs80-sheet-host{
     margin:0 !important;
     padding:0 !important;
@@ -222,19 +233,59 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font)
     display: none !important;
   }
 
-  #trs80-sheet-host{
-    display:block !important;
-    position:static !important;
-    transform:none !important;
-    padding:0.25in !important;           /* forced visual margin */
-    box-sizing:border-box !important;
-    background:#fff !important;
-    break-inside:avoid; page-break-inside:avoid;
-  }
+#trs80-sheet-host{
+  display:block !important;
+  position:static !important;
+
+  /* ✅ Use zoom for Chrome; avoid transform so the paginator keeps blocks together */
+  zoom: var(--sheet-scale) !important;
+  transform:none !important;
+  width:auto !important;
+
+  padding:0.25in !important;
+  box-sizing:border-box !important;
+  background:#fff !important;
+
+  /* Keep the whole sheet together as one fragment */
+  break-inside:avoid-page !important;
+  page-break-inside:avoid !important;
+}
+
 
   .card{ break-inside:avoid; page-break-inside:avoid; }
   .weapTable thead, .heatTable thead { display: table-header-group; }
   .weapTable tr, .heatTable tr { break-inside:avoid; page-break-inside:avoid; }
+/* Keep the entire Equipment card on the same printed page */
+/* Keep the entire Equipment card on the same printed page */
+.equipment{
+  display:block !important;                  /* override .card flex context */
+  break-inside:avoid-page !important;
+  page-break-inside:avoid !important;
+}
+
+/* Prevent internal grid pieces from forcing a break */
+.equipGrid,
+.eqRows,
+.eqRows > *{
+  break-inside:avoid !important;
+  page-break-inside:avoid !important;
+  -webkit-column-break-inside:avoid !important;
+}
+
+/* Ensure the grid stays a grid in print */
+.equipGrid{
+  display:grid !important;
+  grid-template-columns:repeat(8,36px minmax(0,1fr)) !important;
+  column-gap:4px !important;
+  row-gap:4px !important;
+  overflow:visible !important;
+}
+
+/* Belt & suspenders: don’t allow any child to trigger a break either */
+.eqRows > * {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
 
   .armor{ overflow: visible !important; }
   .armorMatrixWrap{ min-width: var(--armor-fixed-width) !important; }
@@ -365,11 +416,21 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font)
     const body = $("#heatRows");
     if (!body || body.children.length) return;
     const HEAT = {
-      30:"Shutdown", 28:"Ammo explosion chk (8+)", 26:"Shutdown (10+)",
-      25:"-5 MP", 24:"+4 To-Hit", 23:"Ammo explosion chk (6+)",
-      22:"Shutdown (8+)", 20:"-4 MP", 19:"Ammo explosion chk (4+)",
-      17:"Shutdown (6+)", 15:"+3 To-Hit", 14:"-3 MP", 12:"+2 To-Hit",
-      10:"-2 MP", 8:"+1 To-Hit"
+      30: "Shutdown",
+      28: "Ammo Exp. avoid on 8+",
+      26: "Shutdown, avoid on 10+",
+      25: "-5 Movement Points",
+      24: "+4 Modifier to Fire",
+      23: "Ammo Exp. avoid on 6+",
+      22: "Shutdown, avoid on 8+",
+      20: "-4 Movement Points",
+      19: "Ammo Exp. avoid on 4+",
+      18: "Shutdown, avoid on 6+",
+      15: "+3 Modifier to Fire",
+      14: "-3 Movement Points",
+      12: "+2 Modifier to Fire",
+      10: "-2 Movement Points",
+      8: "+1 Modifier to Fire"
     };
     for (let h = 30; h >= 1; h--) {
       const tr = document.createElement("tr");
@@ -618,8 +679,12 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font)
 
   // ---------------------- Public API ----------------------
   API.update = (mech) => render(mech);
-  API.fit    = () => {};          // no scaling/fit logic
+  API.fit    = (scale = 1) => {
+    const s = Math.max(0.5, Math.min(1.2, Number(scale) || 1)); // clamp for sanity
+    document.documentElement.style.setProperty('--sheet-scale', String(s));
+  };
   API.print  = () => window.print();
+
 
   window.TRS_SHEET = API;
 
