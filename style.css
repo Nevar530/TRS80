@@ -2,6 +2,7 @@
 
 /* ---------- Core theme ---------- */
 :root{
+  --side-w: 280px; /* desktop sidebar width (used by grid) */
   --bg:#0b0f14; --panel:#121826; --ink:#e8eef6; --muted:#93a4b8; --border:#1f2a3a;
   --bt-amber:#ffd06e; --bt-amber-dim:#e0b45c;
   --accent:var(--bt-amber); --accent-dim:var(--bt-amber-dim);
@@ -66,7 +67,7 @@ button,input,select{font:inherit;color:inherit}
 .divider{width:1px;height:20px;background:var(--border)}
 
 /* ---------- Layout: sidebar + main ---------- */
-main.layout{display:grid;grid-template-columns:280px 1fr;gap:12px;}
+main.layout{display:grid;grid-template-columns:var(--side-w) 1fr;gap:12px;transition:grid-template-columns var(--transition);}
 .col-left{padding:12px}
 .col-right{padding:12px;min-width:0}
 
@@ -180,7 +181,7 @@ main.layout{display:grid;grid-template-columns:280px 1fr;gap:12px;}
 /* ---------- Embed Mode (optional) ---------- */
 .app.is-embed{font-size:var(--embed-font);line-height:1.25;border:1px solid var(--border);border-radius:10px;overflow:auto;background:var(--panel);box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .app.is-embed .ui-topbar{padding:var(--embed-pad)} .app.is-embed .btn{padding:4px 8px}
-.app.is-embed main.layout{grid-template-columns:240px 1fr}
+.app.is-embed main.layout{grid-template-columns:var(--side-w) 1fr}
 .app.is-embed .col-right{padding:var(--embed-pad)}
 .app.is-embed .card,.app.is-embed .panel{margin-bottom:var(--embed-gap)}
 .app.is-embed .card-h,.app.is-embed .panel-h{padding:4px 6px}
@@ -229,9 +230,33 @@ main.layout{display:grid;grid-template-columns:280px 1fr;gap:12px;}
   /* Hide hamburger only on wide screens; visible here by default */
 }
 
+/* Desktop collapse state — JS toggles :root.side-collapsed */
+:root.side-collapsed{ --side-w: 0px; }
+
+:root.side-collapsed #mech-sidebar{
+  overflow:hidden;
+  border-right:0;
+}
+
+:root.side-collapsed .col-left{
+  padding:0; /* ensures true 0px column */
+}
+
+:root.side-collapsed #mech-sidebar .panel{
+  visibility:hidden; /* avoid tab stops when collapsed */
+}
+
+:root.side-collapsed #sidebar-scrim{
+  display:none !important; /* scrim is mobile-only */
+}
+
+
 @media (min-width:801px){
   #btn-side-toggle{display:none}
 }
+
+#btn-side-toggle{display:inline-flex;}
+
 
 /* ===== TRS:80 • Technical Readout Boot (namespaced) ===== */
 :root{
