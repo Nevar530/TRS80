@@ -1681,36 +1681,78 @@ function initUI(){
 /* -----------------------------------------
  *  SIDEBAR DRAWER (mobile)
  * --------------------------------------- */
-function initSidebarDrawer(){
-  const sidebar = document.getElementById('mech-sidebar');
-  const scrim   = document.getElementById('sidebar-scrim');
-  const btn     = document.getElementById('btn-side-toggle');
-  if (!sidebar || !btn || !scrim) return;
+  function initSidebarDrawer(){
+    const sidebar = document.getElementById('mech-sidebar');
+    const scrim   = document.getElementById('sidebar-scrim');
+    const btn     = document.getElementById('btn-side-toggle');
+    if (!sidebar || !btn || !scrim) return;
 
-  const open = () => {
-    sidebar.classList.add('is-open');
-    scrim.hidden = false;
-    btn.setAttribute('aria-expanded', 'true');
-    sidebar.querySelector('#side-search')?.focus();
-  };
-  const close = () => {
-    sidebar.classList.remove('is-open');
-    scrim.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
-    btn.focus();
-  };
-  const isMobile = () => window.matchMedia('(max-width: 800px)').matches;
-  const toggle = () => (sidebar.classList.contains('is-open') ? close() : open());
+    const isMobile = () => window.matchMedia('(max-width: 800px)').matches;
 
-  btn.addEventListener('click', () => { if (isMobile()) toggle(); });
-  scrim.addEventListener('click', () => { if (isMobile()) close(); });
-  window.addEventListener('keydown', (e) => { if (isMobile() && e.key === 'Escape' && sidebar.classList.contains('is-open')) close(); });
+    // ----- Desktop collapse (persist to localStorage)
+    const KEY = 'trs80:sideCollapsed';
+    function applyDesktopCollapsed(on){
+      document.documentElement.classList.toggle('side-collapsed', !!on);
+      btn.setAttribute('aria-expanded', String(!on));
+      try { localStorage.setItem(KEY, on ? '1' : '0'); } catch {}
+    }
+    // On first load, apply saved collapse if we're on desktop
+    const saved = (() => { try { return localStorage.getItem(KEY) === '1'; } catch { return false; } })();
+    if (!isMobile()) applyDesktopCollapsed(saved);
 
-  document.getElementById('mech-list')?.addEventListener('click', (e) => {
-    const item = e.target.closest('.mech-row');
-    if (item && isMobile()) close();
-  });
-}
+    // ----- Mobile drawer (overlay)
+    const openMobile = () => {
+      sidebar.classList.add('is-open');
+      scrim.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      sidebar.querySelector('#side-search')?.focus();
+    };
+    const closeMobile = () => {
+      sidebar.classList.remove('is-open');
+      scrim.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    };
+
+    // ----- One toggle that works everywhere
+    btn.addEventListener('click', () => {
+      if (isMobile()) {
+        if (sidebar.classList.contains('is-open')) closeMobile();
+        else openMobile();
+      } else {
+        const nowCollapsed = !document.documentElement.classList.contains('side-collapsed');
+        applyDesktopCollapsed(nowCollapsed);
+      }
+    });
+
+    // Mobile: tap scrim to close, Esc to close
+    scrim.addEventListener('click', () => { if (isMobile()) closeMobile(); });
+    window.addEventListener('keydown', (e) => {
+      if (isMobile() && e.key === 'Escape' && sidebar.classList.contains('is-open')) closeMobile();
+    });
+
+    // Close after a selection on mobile
+    document.getElementById('mech-list')?.addEventListener('click', (e) => {
+      const row = e.target.closest('.var-row, .mech-row');
+      if (row && isMobile()) closeMobile();
+    });
+
+    // React to breakpoint changes
+    const mql = window.matchMedia('(max-width: 800px)');
+    mql.addEventListener('change', (ev) => {
+      if (ev.matches) {
+        // Entering mobile: clear desktop collapse (drawer handles visibility)
+        document.documentElement.classList.remove('side-collapsed');
+        btn.setAttribute('aria-expanded', String(!sidebar.classList.contains('is-open')));
+      } else {
+        // Leaving mobile: ensure overlay closed and reapply saved collapse
+        closeMobile();
+        const again = (() => { try { return localStorage.getItem(KEY) === '1'; } catch { return false; } })();
+        applyDesktopCollapsed(again);
+      }
+    });
+  }
+
 
 /* ===== TRS:80 • Technical Readout Boot ===== */
 (() => {
