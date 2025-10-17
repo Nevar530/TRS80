@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#00e676">
+<meta name="mobile-web-app-capable" content="yes">
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TRS:80//Technical Readout System:80</title>
@@ -703,7 +707,12 @@
     </div>
   </section>
 </div>
-  
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  }
+</script>
+
 
 </body>
 </html>
