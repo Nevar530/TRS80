@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTXBTK3F9X"></script>
 <script>
@@ -9,6 +10,17 @@
 
   gtag('config', 'G-JTXBTK3F9X');
 </script>
+  <script>
+  // Call this safely anywhere
+  function track(event, params){ 
+    try { gtag('event', event, params || {}); } catch(e){} 
+  }
+  // Optional: label this app in GA
+  gtag('set', 'user_properties', { app: 'TRS:80' });
+  // Better page label
+  gtag('config', 'G-JTXBTK3F9X', { page_title: 'TRS:80' });
+</script>
+  
 <head>
   <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#00e676">
@@ -722,6 +734,108 @@
   }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Top bar buttons
+  const hook = (id, ev, name, extra={}) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener(ev, () => track(name, extra));
+  };
+
+  hook('btn-load-manifest', 'click', 'manifest_load_click');
+  hook('btn-lance',         'click', 'open_panel',   {panel:'lance'});
+  hook('btn-owned',         'click', 'open_panel',   {panel:'owned'});
+  hook('btn-import',        'click', 'import_click');
+  hook('btn-export',        'click', 'export_click');
+  hook('btn-settings',      'click', 'settings_open');
+  hook('btn-side-toggle',   'click', 'sidebar_toggle');
+
+  // --- Tab switches (Overview / Tech / GATOR / Sheet)
+  document.querySelectorAll('[data-swap]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      track('tab_switch', {tab: btn.getAttribute('data-swap')});
+    });
+  });
+
+  // --- GATOR sub-tabs
+  document.querySelectorAll('[data-gtr-tab]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      track('gator_tab', {tab: btn.getAttribute('data-gtr-tab')});
+    });
+  });
+
+  // --- Tech Readout sub-tabs
+  document.querySelectorAll('[data-tr-tab]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      track('techreadout_tab', {tab: btn.getAttribute('data-tr-tab')});
+    });
+  });
+
+  // --- Filters
+  const fApply = document.getElementById('filter-apply');
+  if (fApply) fApply.addEventListener('click', ()=>{
+    const f = {
+      tech:  (document.getElementById('f-tech')?.value)||'',
+      rules: (document.getElementById('f-rules')?.value)||'',
+      jump:  !!document.getElementById('f-jump')?.checked,
+      minwalk: document.getElementById('f-minwalk')?.value || '',
+      bvmin: document.getElementById('f-bv-min')?.value || '',
+      bvmax: document.getElementById('f-bv-max')?.value || ''
+    };
+    track('filters_apply', f);
+  });
+  const fClear = document.getElementById('filter-clear');
+  if (fClear) fClear.addEventListener('click', ()=>track('filters_clear'));
+
+  // --- Search
+  const sideSearch = document.getElementById('side-search');
+  if (sideSearch){
+    let t;
+    sideSearch.addEventListener('input', ()=>{
+      clearTimeout(t);
+      t = setTimeout(()=>track('search_type', {q: sideSearch.value.slice(0,64)}), 400);
+    });
+  }
+
+  // --- Mech selection (list box container)
+  const mechList = document.getElementById('mech-list');
+  if (mechList){
+    mechList.addEventListener('click', (e)=>{
+      const item = e.target.closest('[data-mech-id]'); // if your script adds attributes
+      const mechId = item?.getAttribute?.('data-mech-id') || item?.textContent?.trim() || 'unknown';
+      track('mech_select', {mech: mechId});
+    });
+  }
+
+  // --- Sheet ready (modules/sheet.js should dispatch a custom event when it renders)
+  window.addEventListener('trs:sheet:render', (e)=>{
+    track('sheet_render', {mech: e.detail?.mechId || ''});
+  });
+
+  // --- Image panel loaded (modules/images.js can dispatch a custom event)
+  window.addEventListener('trs:image:loaded', (e)=>{
+    track('image_loaded', {src: e.detail?.src || ''});
+  });
+
+  // --- Import/Export completion hooks (fire these from your code paths)
+  window.addEventListener('trs:import:done', (e)=>{
+    track('import_done', {ok:true, size: e.detail?.bytes||0});
+  });
+  window.addEventListener('trs:export:done', (e)=>{
+    track('export_done', {ok:true, size: e.detail?.bytes||0});
+  });
+
+  // --- Service worker status (nice to have)
+  if ('serviceWorker' in navigator){
+    navigator.serviceWorker.ready.then(()=>{
+      track('sw_ready', {scope: (navigator.serviceWorker.controller ? 'controlled':'ready')});
+    });
+  }
+
+  // --- First paint milestone
+  track('app_ready');
+});
+</script>
 
 </body>
 </html>
